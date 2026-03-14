@@ -34,11 +34,11 @@
     .hero {
       position: relative;
       overflow: hidden;
-      border-radius: 28px;
-      padding: 34px 26px 28px;
-      background: linear-gradient(135deg, #ffffff 0%, #f7faff 100%);
+      border-radius: 30px;
+      padding: 36px 28px 28px;
+      background: linear-gradient(135deg, #ffffff 0%, #f6f9ff 100%);
       border: 1px solid rgba(31, 54, 199, 0.08);
-      box-shadow: 0 20px 60px rgba(22, 34, 78, 0.08);
+      box-shadow: 0 24px 60px rgba(22, 34, 78, 0.08);
       margin-bottom: 28px;
     }
 
@@ -51,19 +51,19 @@
     }
 
     .hero::before {
-      width: 220px;
-      height: 220px;
-      background: rgba(31, 54, 199, 0.08);
-      top: -90px;
-      right: -70px;
+      width: 260px;
+      height: 260px;
+      background: rgba(49, 91, 255, 0.10);
+      top: -100px;
+      right: -80px;
     }
 
     .hero::after {
-      width: 160px;
-      height: 160px;
-      background: rgba(43, 120, 255, 0.08);
+      width: 180px;
+      height: 180px;
+      background: rgba(0, 195, 255, 0.10);
       bottom: -70px;
-      left: -50px;
+      left: -40px;
     }
 
     .heroTop {
@@ -73,16 +73,23 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 20px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
     }
 
     .heroText h1 {
       margin: 0 0 10px;
-      font-size: 42px;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
+      font-size: 44px;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
       color: #0f172a;
+    }
+
+    .gradientText {
+      background: linear-gradient(135deg, #1f36c7 0%, #4a78ff 55%, #00a6ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .heroText p {
@@ -94,19 +101,40 @@
     }
 
     .heroBadge {
-      background: rgba(31, 54, 199, 0.08);
+      background: linear-gradient(135deg, #eef3ff 0%, #f5f8ff 100%);
       color: #1f36c7;
-      padding: 10px 16px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+      border: 1px solid #dce6ff;
+    }
+
+    .miniStats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 18px 0 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .miniStat {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #e4ebf8;
+      color: #23304d;
+      padding: 10px 14px;
       border-radius: 999px;
       font-size: 14px;
       font-weight: 700;
-      white-space: nowrap;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
     }
 
     .searchWrap {
       position: relative;
       z-index: 1;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(8px);
       border: 1px solid #e5ebf7;
       border-radius: 24px;
@@ -139,20 +167,15 @@
       min-width: 150px;
     }
 
-    .searchInput::placeholder {
-      color: #8a94a7;
-    }
-
     .searchBtn {
       border: none;
-      outline: none;
       cursor: pointer;
       background: linear-gradient(135deg, #1f36c7 0%, #3258f2 100%);
       color: #fff;
       border-radius: 14px;
       padding: 14px 22px;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
       box-shadow: 0 10px 24px rgba(31, 54, 199, 0.25);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
@@ -176,10 +199,6 @@
       color: #49556c;
     }
 
-    .resultsInfo strong {
-      color: #111827;
-    }
-
     .resultsCount {
       background: #ffffff;
       border: 1px solid #e7edf8;
@@ -187,33 +206,48 @@
       padding: 10px 14px;
       border-radius: 999px;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
       box-shadow: 0 8px 20px rgba(0,0,0,0.04);
     }
 
     .resultsGrid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+      gap: 22px;
     }
 
     .collegeCard {
+      position: relative;
+      overflow: hidden;
       background: rgba(255, 255, 255, 0.96);
       border: 1px solid #e8eef8;
-      border-radius: 24px;
+      border-radius: 26px;
       padding: 22px;
       box-shadow: 0 14px 34px rgba(16, 24, 40, 0.06);
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
       display: flex;
       flex-direction: column;
       gap: 18px;
-      min-height: 250px;
+      min-height: 270px;
     }
 
     .collegeCard:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
       border-color: #d9e5ff;
-      box-shadow: 0 22px 44px rgba(31, 54, 199, 0.10);
+      box-shadow: 0 24px 48px rgba(31, 54, 199, 0.12);
+    }
+
+    .featuredTag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: linear-gradient(135deg, #ffb703 0%, #ff8c00 100%);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 12px;
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(255, 140, 0, 0.25);
     }
 
     .topRow {
@@ -223,9 +257,9 @@
     }
 
     .logoBox {
-      width: 72px;
-      height: 72px;
-      border-radius: 20px;
+      width: 78px;
+      height: 78px;
+      border-radius: 22px;
       background: linear-gradient(135deg, #eaf0ff 0%, #f7f9ff 100%);
       border: 1px solid #e1e8f7;
       display: flex;
@@ -236,6 +270,7 @@
       font-weight: 800;
       color: #1f36c7;
       overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
     }
 
     .logoBox img {
@@ -256,6 +291,7 @@
       color: #0f172a;
       font-weight: 800;
       text-transform: capitalize;
+      padding-right: 80px;
     }
 
     .collegeMeta {
@@ -276,7 +312,7 @@
       padding: 9px 12px;
       border-radius: 999px;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       border: 1px solid #e4ebf8;
       background: #f8fbff;
       color: #39517b;
@@ -305,7 +341,7 @@
       background: linear-gradient(135deg, #1f36c7 0%, #3258f2 100%);
       color: #ffffff;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
       min-width: 145px;
       box-shadow: 0 10px 24px rgba(31, 54, 199, 0.22);
       transition: transform 0.15s ease;
@@ -322,26 +358,7 @@
       padding: 42px 24px;
       text-align: center;
       box-shadow: 0 12px 30px rgba(0,0,0,0.05);
-    }
-
-    .emptyIcon {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .emptyTitle {
-      font-size: 24px;
-      font-weight: 800;
-      color: #111827;
-      margin-bottom: 10px;
-    }
-
-    .emptyText {
-      font-size: 16px;
-      color: #667085;
-      line-height: 1.7;
-      max-width: 560px;
-      margin: 0 auto;
+      grid-column: 1 / -1;
     }
 
     .helpBox {
@@ -372,42 +389,21 @@
     }
 
     @media (max-width: 700px) {
-      .page {
-        padding: 20px 14px 50px;
-      }
-
-      .hero {
-        padding: 24px 16px 20px;
-        border-radius: 22px;
-      }
-
       .heroText h1 {
         font-size: 32px;
       }
 
-      .heroText p {
-        font-size: 15px;
-      }
-
       .searchBar {
         flex-wrap: wrap;
-        border-radius: 16px;
-      }
-
-      .searchInput {
-        width: 100%;
       }
 
       .searchBtn {
         width: 100%;
       }
 
-      .collegeCard {
-        padding: 18px;
-      }
-
       .collegeName {
         font-size: 22px;
+        padding-right: 0;
       }
 
       .viewBtn {
@@ -416,6 +412,11 @@
 
       .cardFooter {
         align-items: stretch;
+      }
+
+      .featuredTag {
+        position: static;
+        width: fit-content;
       }
     }
   </style>
@@ -426,7 +427,7 @@
     <section class="hero">
       <div class="heroTop">
         <div class="heroText">
-          <h1>Find Your Dream College</h1>
+          <h1>Find Your <span class="gradientText">Dream College</span></h1>
           <p>
             Search verified colleges, compare options, and open full college profiles
             with admission details, recognition, and counselling support.
@@ -435,15 +436,16 @@
         <div class="heroBadge">Swadeshi Shiksha Search</div>
       </div>
 
+      <div class="miniStats">
+        <div class="miniStat">🎓 Verified Colleges</div>
+        <div class="miniStat">📍 Search by Name</div>
+        <div class="miniStat">🧭 Free Counselling Support</div>
+      </div>
+
       <div class="searchWrap">
         <div class="searchBar">
           <span class="searchIcon">🔍</span>
-          <input
-            type="text"
-            id="searchInput"
-            class="searchInput"
-            placeholder="Search by college name..."
-          />
+          <input type="text" id="searchInput" class="searchInput" placeholder="Search by college name..." />
           <button id="searchBtn" class="searchBtn">Search</button>
         </div>
       </div>
@@ -488,11 +490,7 @@
 
     function goToSearch() {
       const query = searchInput.value.trim();
-      if (!query) {
-        window.location.href = "colleges.html";
-        return;
-      }
-      window.location.href = "colleges.html?search=" + encodeURIComponent(query);
+      window.location.href = query ? "colleges.html?search=" + encodeURIComponent(query) : "colleges.html";
     }
 
     searchBtn.addEventListener("click", goToSearch);
@@ -502,12 +500,7 @@
 
     function getInitials(name) {
       if (!name) return "C";
-      return name
-        .split(" ")
-        .filter(Boolean)
-        .slice(0, 2)
-        .map(word => word[0].toUpperCase())
-        .join("");
+      return name.split(" ").filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join("");
     }
 
     db.collection("colleges")
@@ -515,7 +508,6 @@
       .get()
       .then(snapshot => {
         list.innerHTML = "";
-
         const results = [];
 
         snapshot.forEach(doc => {
@@ -532,28 +524,23 @@
               established: d.established || "",
               course: d.course || d.program || "",
               type: d.type || "",
-              logo: d.logo || d.logoUrl || d.image || ""
+              logo: d.logo || d.logoUrl || d.image || "",
+              featured: d.featured === true
             });
           }
         });
 
-        if (searchQuery) {
-          searchInfo.innerHTML = `Showing results for <strong>${rawSearch}</strong>`;
-        } else {
-          searchInfo.innerHTML = `Showing all available colleges`;
-        }
+        searchInfo.innerHTML = searchQuery
+          ? `Showing results for <strong>${rawSearch}</strong>`
+          : `Showing all available colleges`;
 
         resultsCount.textContent = `${results.length} college${results.length === 1 ? "" : "s"}`;
 
         if (results.length === 0) {
           list.innerHTML = `
             <div class="emptyState">
-              <div class="emptyIcon">🎓</div>
-              <div class="emptyTitle">No college found</div>
-              <div class="emptyText">
-                We couldn’t find any college matching <strong>${rawSearch}</strong>.
-                Try a different name or search with fewer words.
-              </div>
+              <h3>No college found</h3>
+              <p>We couldn’t find any college matching <strong>${rawSearch}</strong>. Try a different search.</p>
             </div>
           `;
           return;
@@ -561,7 +548,6 @@
 
         results.forEach(college => {
           const locationText = [college.city, college.state].filter(Boolean).join(", ");
-
           const badges = [
             college.type,
             college.course,
@@ -573,13 +559,11 @@
           card.className = "collegeCard";
 
           card.innerHTML = `
+            ${college.featured ? `<div class="featuredTag">Featured</div>` : ""}
             <div class="topRow">
               <div class="logoBox">
-                ${college.logo
-                  ? `<img src="${college.logo}" alt="${college.name}">`
-                  : getInitials(college.name)}
+                ${college.logo ? `<img src="${college.logo}" alt="${college.name}">` : getInitials(college.name)}
               </div>
-
               <div class="collegeMain">
                 <h3 class="collegeName">${college.name}</h3>
                 <div class="collegeMeta">
@@ -591,7 +575,7 @@
             <div class="badgeRow">
               ${badges.length
                 ? badges.map(b => `<span class="badge">${b}</span>`).join("")
-                : `<span class="badge">College Profile</span><span class="badge">Admissions</span>`}
+                : `<span class="badge">Admissions</span><span class="badge">College Profile</span>`}
             </div>
 
             <div class="cardFooter">
@@ -605,18 +589,9 @@
           list.appendChild(card);
         });
       })
-      .catch(error => {
-        console.error("Error loading colleges:", error);
+      .catch(() => {
         resultsCount.textContent = "0 colleges";
-        list.innerHTML = `
-          <div class="emptyState">
-            <div class="emptyIcon">⚠️</div>
-            <div class="emptyTitle">Something went wrong</div>
-            <div class="emptyText">
-              We couldn’t load the college list right now. Please refresh and try again.
-            </div>
-          </div>
-        `;
+        list.innerHTML = `<div class="emptyState"><h3>Error loading colleges</h3><p>Please refresh and try again.</p></div>`;
       });
   </script>
 </body>
