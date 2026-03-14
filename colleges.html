@@ -3,16 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <title>All Colleges</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1e1e1e;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .hero {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 30px 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      margin-bottom: 28px;
+    }
+
+    .title {
+      margin: 0 0 20px;
+      font-size: 40px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .searchBar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid #d9deea;
+      border-radius: 50px;
+      padding: 10px 12px 10px 18px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+    }
+
+    .searchIcon {
+      font-size: 22px;
+      color: #6b7280;
+    }
+
+    .searchInput {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 17px;
+      background: transparent;
+      color: #111827;
+    }
+
+    .searchBtn {
+      border: none;
+      background: #1f36c7;
+      color: #fff;
+      border-radius: 999px;
+      padding: 13px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .searchBtn:hover {
+      background: #182ca7;
+    }
+
+    .infoBar {
+      margin: 20px 0 24px;
+      font-size: 18px;
+      color: #4b5563;
+    }
+
+    .infoBar strong {
+      color: #111827;
+    }
+
+    .resultsGrid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .collegeCard {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+      border: 1px solid #edf1f7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .collegeLeft {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .collegeName {
+      margin: 0 0 10px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #111827;
+      text-transform: capitalize;
+    }
+
+    .collegeMeta {
+      font-size: 15px;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .viewBtn {
+      display: inline-block;
+      text-decoration: none;
+      background: #1f36c7;
+      color: #ffffff;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .viewBtn:hover {
+      background: #182ca7;
+    }
+
+    .emptyState {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+      border: 1px solid #edf1f7;
+      color: #6b7280;
+      font-size: 17px;
+    }
+
+    .helpBox {
+      margin-top: 28px;
+      background: #eef3ff;
+      border: 1px solid #dbe6ff;
+      border-radius: 18px;
+      padding: 18px 20px;
+      font-size: 16px;
+      color: #243b7a;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .title {
+        font-size: 30px;
+      }
+
+      .searchBar {
+        flex-wrap: wrap;
+        border-radius: 24px;
+        padding: 14px;
+      }
+
+      .searchInput {
+        width: 100%;
+      }
+
+      .searchBtn {
+        width: 100%;
+      }
+
+      .collegeCard {
+        align-items: flex-start;
+      }
+
+      .collegeName {
+        font-size: 24px;
+      }
+
+      .viewBtn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 
-<body style="font-family: Arial, sans-serif; margin: 30px;">
+<body>
+  <div class="page">
+    <div class="hero">
+      <h1 class="title">All Colleges</h1>
 
-  <h1>All Colleges</h1>
-  <div id="searchInfo" style="margin-bottom:20px; color:#555;"></div>
-  <div id="collegeList"></div>
+      <div class="searchBar">
+        <span class="searchIcon">🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          class="searchInput"
+          placeholder="Search college name..."
+        />
+        <button id="searchBtn" class="searchBtn">Search</button>
+      </div>
+    </div>
+
+    <div id="searchInfo" class="infoBar"></div>
+
+    <div id="collegeList" class="resultsGrid"></div>
+
+    <div class="helpBox">
+      Didn’t find your college? Apply for free counselling and get expert guidance.
+    </div>
+  </div>
 
   <script>
     const firebaseConfig = {
@@ -28,9 +241,30 @@
     const db = firebase.firestore();
     const list = document.getElementById("collegeList");
     const searchInfo = document.getElementById("searchInfo");
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
 
     const params = new URLSearchParams(window.location.search);
     const searchQuery = (params.get("search") || "").trim().toLowerCase();
+
+    searchInput.value = params.get("search") || "";
+
+    function goToSearch() {
+      const query = searchInput.value.trim();
+      if (!query) {
+        window.location.href = "colleges.html";
+        return;
+      }
+      window.location.href = "colleges.html?search=" + encodeURIComponent(query);
+    }
+
+    searchBtn.addEventListener("click", goToSearch);
+
+    searchInput.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        goToSearch();
+      }
+    });
 
     db.collection("colleges")
       .where("status", "==", "published")
@@ -47,39 +281,66 @@
           if (!searchQuery || collegeName.includes(searchQuery)) {
             results.push({
               id: doc.id,
-              name: d.name || "Unnamed College"
+              name: d.name || "Unnamed College",
+              city: d.city || "",
+              state: d.state || "",
+              approvedBy: d.approvedBy || "",
+              established: d.established || ""
             });
           }
         });
 
         if (searchQuery) {
-          searchInfo.innerHTML = `Showing results for: <strong>${searchQuery}</strong>`;
+          searchInfo.innerHTML = `Showing results for: <strong>${params.get("search")}</strong>`;
         } else {
-          searchInfo.innerHTML = `Showing all colleges`;
+          searchInfo.innerHTML = `Showing all available colleges`;
         }
 
         if (results.length === 0) {
-          list.innerHTML = "<p>No college found.</p>";
+          list.innerHTML = `
+            <div class="emptyState">
+              No college found for <strong>${params.get("search") || ""}</strong>.
+            </div>
+          `;
           return;
         }
 
         results.forEach(college => {
-          const div = document.createElement("div");
+          const locationText = [college.city, college.state].filter(Boolean).join(", ");
+          const extraText = [
+            college.approvedBy ? "Approved by " + college.approvedBy : "",
+            college.established ? "Est. " + college.established : ""
+          ].filter(Boolean).join(" | ");
 
-          div.innerHTML = `
-            <h3>${college.name}</h3>
-            <a href="college.html?slug=${college.id}">View College</a>
-            <hr>
+          const metaParts = [locationText, extraText].filter(Boolean).join(" | ");
+
+          const card = document.createElement("div");
+          card.className = "collegeCard";
+
+          card.innerHTML = `
+            <div class="collegeLeft">
+              <h3 class="collegeName">${college.name}</h3>
+              <div class="collegeMeta">
+                ${metaParts || "Explore full college details, admission info, and counselling support."}
+              </div>
+            </div>
+
+            <a class="viewBtn" href="college.html?slug=${encodeURIComponent(college.id)}" target="_blank">
+              View College
+            </a>
           `;
 
-          list.appendChild(div);
+          list.appendChild(card);
         });
       })
       .catch(error => {
         console.error("Error loading colleges:", error);
-        list.innerHTML = "<p>Error loading colleges.</p>";
+        list.innerHTML = `
+          <div class="emptyState">
+            Error loading colleges. Please try again.
+          </div>
+        `;
       });
   </script>
-
 </body>
 </html>
