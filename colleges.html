@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explore Colleges | Swadeshi Shiksha</title>
+  <title>Swadeshi Shiksha | Search, Compare & Decide</title>
 
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -20,31 +20,36 @@
     body {
       margin: 0;
       font-family: Inter, Arial, sans-serif;
-      background: #f3f6fb;
-      color: #111827;
+      background: #faf8f2;
+      color: #16202f;
     }
 
     a {
       text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
     }
 
     .siteHeader {
       position: sticky;
       top: 0;
       z-index: 999;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255, 251, 245, 0.92);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e8edf7;
+      border-bottom: 1px solid #eee2d4;
     }
 
     .siteHeaderInner {
-      max-width: 1220px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 14px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
@@ -55,64 +60,72 @@
     }
 
     .brandLogo {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  box-shadow: 0 10px 22px rgba(16,24,40,0.12);
-  padding: 6px;
-}
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 12px 24px rgba(22, 32, 47, 0.10);
+      padding: 6px;
+      flex-shrink: 0;
+    }
 
-.brandLogo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
+    .brandLogo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
     .brandText strong {
       display: block;
-      font-size: 18px;
-      color: #101828;
+      font-size: 20px;
+      color: #16202f;
       line-height: 1.1;
     }
 
     .brandText span {
       display: block;
       font-size: 13px;
-      color: #667085;
-      margin-top: 2px;
+      color: #657287;
+      margin-top: 4px;
     }
 
-    .headerActions {
+    .headerNav {
       display: flex;
+      align-items: center;
       gap: 10px;
       flex-wrap: wrap;
     }
 
-    .headerBtn {
+    .navBtn {
       padding: 10px 14px;
       border-radius: 999px;
       font-size: 13px;
       font-weight: 800;
-      border: 1px solid #d9e3f7;
-      background: #fff;
-      color: #1f36c7;
+      border: 1px solid #e5ebdf;
+      background: #ffffff;
+      color: #168b10;
       cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .headerBtn.primary {
-      background: linear-gradient(135deg, #1f36c7 0%, #3258f2 100%);
-      color: white;
+    .navBtn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(22, 139, 16, 0.08);
+    }
+
+    .navBtn.primary {
+      background: linear-gradient(135deg, #ff6a00 0%, #ff8f1f 100%);
+      color: #ffffff;
       border: none;
-      box-shadow: 0 10px 20px rgba(31,54,199,0.2);
+      box-shadow: 0 10px 20px rgba(255, 106, 0, 0.22);
     }
 
     .page {
-      max-width: 1220px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 24px 18px 70px;
     }
@@ -120,12 +133,13 @@
     .hero {
       position: relative;
       overflow: hidden;
-      border-radius: 32px;
+      border-radius: 34px;
       padding: 42px 28px 30px;
-      background: linear-gradient(135deg, #091540 0%, #132c7a 55%, #1f36c7 100%);
-      color: white;
-      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+      background: linear-gradient(135deg, #fff8ef 0%, #fff3e6 38%, #eef8ea 100%);
+      color: #16202f;
+      box-shadow: 0 24px 60px rgba(22, 32, 47, 0.10);
       margin-bottom: 28px;
+      border: 1px solid #f1e4d3;
     }
 
     .hero::before,
@@ -139,7 +153,7 @@
     .hero::before {
       width: 280px;
       height: 280px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 106, 0, 0.08);
       top: -120px;
       right: -60px;
       filter: blur(6px);
@@ -148,7 +162,7 @@
     .hero::after {
       width: 220px;
       height: 220px;
-      background: rgba(0, 229, 255, 0.12);
+      background: rgba(22, 161, 10, 0.08);
       bottom: -90px;
       left: -60px;
       filter: blur(10px);
@@ -167,33 +181,65 @@
 
     .heroText h1 {
       margin: 0 0 12px;
-      font-size: 48px;
+      font-size: 52px;
       line-height: 1.02;
       letter-spacing: -0.03em;
-      color: #ffffff;
+      color: #16202f;
+      max-width: 760px;
     }
 
     .heroText .accent {
-      color: #ffd54a;
+      color: #ff6a00;
     }
 
     .heroText p {
       margin: 0;
       max-width: 760px;
       font-size: 17px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.86);
+      line-height: 1.75;
+      color: #4f5b67;
     }
 
     .heroBadge {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
-      color: #ffffff;
+      background: #ffffff;
+      border: 1px solid #f1e4d3;
+      color: #168b10;
       padding: 11px 16px;
       border-radius: 999px;
       font-size: 14px;
       font-weight: 800;
-      backdrop-filter: blur(8px);
+      white-space: nowrap;
+      box-shadow: 0 10px 18px rgba(22, 32, 47, 0.05);
+    }
+
+    .heroActions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 18px 0 22px;
+    }
+
+    .heroActionBtn {
+      padding: 13px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .heroActionBtn.primary {
+      background: linear-gradient(135deg, #ff6a00 0%, #ff8f1f 100%);
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(255, 106, 0, 0.20);
+    }
+
+    .heroActionBtn.secondary {
+      background: #fff;
+      color: #168b10;
+      border: 1px solid #e5ebdf;
     }
 
     .miniStats {
@@ -206,31 +252,31 @@
     }
 
     .miniStat {
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: #fff;
+      background: #ffffff;
+      border: 1px solid #e8eddc;
+      color: #168b10;
       padding: 10px 14px;
       border-radius: 999px;
       font-size: 14px;
       font-weight: 700;
-      backdrop-filter: blur(8px);
       cursor: pointer;
-      transition: transform 0.15s ease, background 0.15s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 8px 16px rgba(22, 161, 10, 0.06);
     }
 
     .miniStat:hover {
       transform: translateY(-1px);
-      background: rgba(255,255,255,0.16);
+      box-shadow: 0 12px 22px rgba(22, 161, 10, 0.10);
     }
 
     .searchWrap {
       position: relative;
       z-index: 1;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.55);
+      border: 1px solid #f0e3d3;
       border-radius: 24px;
       padding: 14px;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(8px);
     }
 
     .searchBar {
@@ -240,7 +286,7 @@
       background: white;
       border-radius: 18px;
       padding: 10px 10px 10px 16px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
     }
 
     .searchIcon {
@@ -260,13 +306,13 @@
     .searchBtn {
       border: none;
       cursor: pointer;
-      background: linear-gradient(135deg, #ffb703 0%, #ff8c00 100%);
-      color: #111827;
+      background: linear-gradient(135deg, #ff6a00 0%, #ff8f1f 100%);
+      color: #ffffff;
       border-radius: 14px;
       padding: 14px 22px;
       font-size: 15px;
       font-weight: 800;
-      box-shadow: 0 10px 24px rgba(255, 167, 38, 0.28);
+      box-shadow: 0 10px 24px rgba(255, 106, 0, 0.22);
       transition: transform 0.15s ease;
     }
 
@@ -274,9 +320,8 @@
       transform: translateY(-1px);
     }
 
-    .trendingSection,
-    .featuredSection {
-      margin-bottom: 26px;
+    .sectionBlock {
+      margin-bottom: 28px;
     }
 
     .sectionTitle {
@@ -290,8 +335,8 @@
 
     .sectionTitle h2 {
       margin: 0;
-      font-size: 24px;
-      color: #101828;
+      font-size: 26px;
+      color: #16202f;
     }
 
     .sectionTitle p {
@@ -300,6 +345,7 @@
       font-size: 14px;
     }
 
+    .browseWrap,
     .trendingWrap,
     .topStrip {
       display: flex;
@@ -308,11 +354,12 @@
       align-items: center;
     }
 
+    .browseChip,
     .trendChip,
     .topChip {
       background: white;
-      border: 1px solid #e4ebf7;
-      color: #1f36c7;
+      border: 1px solid #e8e2d9;
+      color: #1d63c6;
       padding: 10px 14px;
       border-radius: 999px;
       font-size: 14px;
@@ -322,17 +369,40 @@
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
+    .browseChip:hover,
     .trendChip:hover,
     .topChip:hover {
       transform: translateY(-1px);
       box-shadow: 0 12px 20px rgba(0,0,0,0.07);
     }
 
+    .whyGrid,
     .featuredGrid,
     .resultsGrid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
+    }
+
+    .whyCard {
+      background: linear-gradient(135deg, #ffffff 0%, #fffdf9 100%);
+      border: 1px solid #eee3d6;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 12px 28px rgba(16,24,40,0.05);
+    }
+
+    .whyCard h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: #16202f;
+    }
+
+    .whyCard p {
+      margin: 0;
+      color: #667085;
+      line-height: 1.75;
+      font-size: 15px;
     }
 
     .resultsHeader {
@@ -354,9 +424,9 @@
     }
 
     .resultsCount {
-      background: linear-gradient(135deg, #eef3ff 0%, #ffffff 100%);
-      color: #1f36c7;
-      border: 1px solid #dbe5ff;
+      background: linear-gradient(135deg, #fff4e7 0%, #ffffff 100%);
+      color: #ff6a00;
+      border: 1px solid #f1ddc8;
       padding: 10px 14px;
       border-radius: 999px;
       font-size: 14px;
@@ -367,20 +437,20 @@
       overflow: hidden;
       background: white;
       border-radius: 28px;
-      border: 1px solid #e7edf8;
+      border: 1px solid #ece3d8;
       box-shadow: 0 16px 36px rgba(16, 24, 40, 0.07);
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
     .collegeCard:hover {
       transform: translateY(-6px);
-      box-shadow: 0 26px 48px rgba(31, 54, 199, 0.12);
+      box-shadow: 0 26px 48px rgba(255, 106, 0, 0.12);
     }
 
     .cardImageWrap {
       position: relative;
-      height: 210px;
-      background: linear-gradient(135deg, #dbe8ff 0%, #f4f8ff 100%);
+      height: 220px;
+      background: linear-gradient(135deg, #e6eefc 0%, #f7fbff 100%);
       overflow: hidden;
     }
 
@@ -399,34 +469,33 @@
       justify-content: center;
       font-size: 48px;
       font-weight: 800;
-      color: #1f36c7;
-      background: linear-gradient(135deg, #dce7ff 0%, #eef4ff 100%);
+      color: #1d63c6;
+      background: linear-gradient(135deg, #e3ecff 0%, #f4f8ff 100%);
     }
 
     .featuredTag {
       position: absolute;
       top: 16px;
       left: 16px;
-      background: linear-gradient(135deg, #ffb703 0%, #ff8c00 100%);
+      background: linear-gradient(135deg, #ff6a00 0%, #ff8f1f 100%);
       color: white;
       font-size: 12px;
       font-weight: 800;
       padding: 8px 12px;
       border-radius: 999px;
-      box-shadow: 0 8px 20px rgba(255, 140, 0, 0.25);
+      box-shadow: 0 8px 20px rgba(255, 106, 0, 0.25);
     }
 
     .verifiedTag {
       position: absolute;
       top: 16px;
       right: 16px;
-      background: rgba(17,24,39,0.75);
+      background: rgba(22, 161, 10, 0.92);
       color: #fff;
       font-size: 12px;
       font-weight: 800;
       padding: 8px 12px;
       border-radius: 999px;
-      backdrop-filter: blur(8px);
     }
 
     .cardBody {
@@ -446,7 +515,7 @@
       font-size: 28px;
       line-height: 1.15;
       font-weight: 800;
-      color: #0f172a;
+      color: #16202f;
       text-transform: capitalize;
     }
 
@@ -454,8 +523,8 @@
       width: 52px;
       height: 52px;
       border-radius: 16px;
-      border: 1px solid #e4ebf8;
-      background: #f8fbff;
+      border: 1px solid #e7e2db;
+      background: #fffefb;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -463,7 +532,7 @@
       flex-shrink: 0;
       font-size: 16px;
       font-weight: 800;
-      color: #1f36c7;
+      color: #1d63c6;
     }
 
     .logoMini img {
@@ -493,9 +562,9 @@
       border-radius: 999px;
       font-size: 13px;
       font-weight: 800;
-      border: 1px solid #e4ebf8;
-      background: #f8fbff;
-      color: #39517b;
+      border: 1px solid #efe4d8;
+      background: #fffaf4;
+      color: #4e5968;
     }
 
     .cardFooter {
@@ -518,15 +587,15 @@
       min-width: 150px;
       border-radius: 14px;
       padding: 14px 20px;
-      background: linear-gradient(135deg, #1f36c7 0%, #3258f2 100%);
+      background: linear-gradient(135deg, #1d63c6 0%, #4684dd 100%);
       color: white;
       font-size: 15px;
       font-weight: 800;
-      box-shadow: 0 10px 24px rgba(31, 54, 199, 0.22);
+      box-shadow: 0 10px 24px rgba(29, 99, 198, 0.18);
     }
 
     .leadCtaCard {
-      background: linear-gradient(135deg, #101828 0%, #1f36c7 100%);
+      background: linear-gradient(135deg, #16202f 0%, #1d63c6 100%);
       color: white;
       border-radius: 28px;
       padding: 24px;
@@ -573,8 +642,8 @@
       justify-content: center;
       padding: 14px 18px;
       border-radius: 14px;
-      background: linear-gradient(135deg, #ffb703 0%, #ff8c00 100%);
-      color: #111827;
+      background: linear-gradient(135deg, #ff6a00 0%, #ff8f1f 100%);
+      color: #ffffff;
       font-size: 15px;
       font-weight: 800;
       cursor: pointer;
@@ -586,7 +655,7 @@
       grid-column: 1 / -1;
       background: white;
       border-radius: 28px;
-      border: 1px solid #e7edf8;
+      border: 1px solid #ece3d8;
       padding: 48px 24px;
       text-align: center;
       box-shadow: 0 16px 36px rgba(16, 24, 40, 0.06);
@@ -607,22 +676,62 @@
     .helpBox {
       margin-top: 28px;
       border-radius: 24px;
-      padding: 24px 20px;
-      background: linear-gradient(135deg, #101828 0%, #1f36c7 100%);
-      color: white;
+      padding: 26px 22px;
+      background: linear-gradient(135deg, #fff2e5 0%, #eef8ea 100%);
+      color: #16202f;
       text-align: center;
-      box-shadow: 0 20px 38px rgba(16, 24, 40, 0.18);
+      box-shadow: 0 16px 28px rgba(16, 24, 40, 0.08);
+      border: 1px solid #efe1d2;
     }
 
     .helpBox strong {
       display: block;
       margin-bottom: 8px;
-      font-size: 20px;
+      font-size: 22px;
     }
 
     .helpBox span {
       font-size: 15px;
-      opacity: 0.92;
+      color: #667085;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .footer {
+      margin-top: 34px;
+      background: #16202f;
+      color: #ffffff;
+      border-radius: 28px;
+      padding: 30px 24px;
+    }
+
+    .footerGrid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    .footer h3,
+    .footer h4 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .footer p,
+    .footer li {
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer li {
+      margin-bottom: 8px;
     }
 
     .popupOverlay {
@@ -684,12 +793,12 @@
       padding: 14px;
       border: none;
       border-radius: 14px;
-      background: linear-gradient(135deg, #1f36c7 0%, #3258f2 100%);
+      background: linear-gradient(135deg, #ff6a00 0%, #ff8f1f 100%);
       color: white;
       font-weight: 800;
       cursor: pointer;
       font-size: 15px;
-      box-shadow: 0 10px 24px rgba(31,54,199,0.22);
+      box-shadow: 0 10px 24px rgba(255,106,0,0.22);
     }
 
     .popupNote {
@@ -699,16 +808,18 @@
       font-size: 12px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
+      .whyGrid,
       .featuredGrid,
-      .resultsGrid {
+      .resultsGrid,
+      .footerGrid {
         grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 700px) {
       .heroText h1 {
-        font-size: 34px;
+        font-size: 36px;
       }
 
       .searchBar {
@@ -735,11 +846,11 @@
         height: 190px;
       }
 
-      .headerActions {
+      .headerNav {
         width: 100%;
       }
 
-      .headerBtn {
+      .navBtn {
         flex: 1;
         text-align: center;
       }
@@ -752,18 +863,20 @@
     <div class="siteHeaderInner">
       <div class="brand">
         <div class="brandLogo">
-  <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
-</div>
+          <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+        </div>
         <div class="brandText">
           <strong>Swadeshi Shiksha</strong>
-          <span>Search. Compare. Decide.</span>
+          <span>Aaj Select Karo, Kal Shine Karo</span>
         </div>
       </div>
 
-      <div class="headerActions">
-        <button class="headerBtn" onclick="window.location.href='https://swadeshi-shiksha.com'">Home</button>
-        <button class="headerBtn" onclick="document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'})">Search Results</button>
-        <button class="headerBtn primary" onclick="openLeadPopup('Free Counselling Support')">Free Counselling</button>
+      <div class="headerNav">
+        <button class="navBtn" onclick="window.location.href='https://YOUR-HOMEPAGE-URL-HERE'">Home</button>
+        <button class="navBtn" onclick="document.getElementById('featuredSection').scrollIntoView({behavior:'smooth'})">Colleges</button>
+        <button class="navBtn" onclick="document.getElementById('browseCourseSection').scrollIntoView({behavior:'smooth'})">Courses</button>
+        <button class="navBtn" onclick="document.getElementById('browseExamSection').scrollIntoView({behavior:'smooth'})">Exams</button>
+        <button class="navBtn primary" onclick="openLeadPopup('Header Free Counselling CTA')">Get Free Counselling</button>
       </div>
     </div>
   </header>
@@ -772,13 +885,18 @@
     <section class="hero">
       <div class="heroTop">
         <div class="heroText">
-          <h1>Explore Your <span class="accent">Best-Fit College</span></h1>
+          <h1>Find the <span class="accent">Right College</span> for Your Future</h1>
           <p>
-            Search verified colleges, compare options, and discover admission-focused
-            profiles with counselling support from Swadeshi Shiksha.
+            Search verified college profiles, explore MBA admissions guidance, compare options,
+            and get free counselling support from Swadeshi Shiksha.
           </p>
         </div>
-        <div class="heroBadge">Admissions Search Portal</div>
+        <div class="heroBadge">Admissions • Counselling • Guidance</div>
+      </div>
+
+      <div class="heroActions">
+        <button class="heroActionBtn primary" onclick="openLeadPopup('Hero Free Counselling CTA')">Apply for Free Counselling</button>
+        <button class="heroActionBtn secondary" onclick="document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'})">Explore Colleges</button>
       </div>
 
       <div class="miniStats">
@@ -790,16 +908,57 @@
       <div class="searchWrap">
         <div class="searchBar">
           <span class="searchIcon">🔍</span>
-          <input type="text" id="searchInput" class="searchInput" placeholder="Search by college name..." />
+          <input type="text" id="searchInput" class="searchInput" placeholder="Search by college, city, exam, or course..." />
           <button id="searchBtn" class="searchBtn">Search</button>
         </div>
       </div>
     </section>
 
-    <section class="trendingSection" id="trendingSection">
+    <section class="sectionBlock" id="browseCourseSection">
+      <div class="sectionTitle">
+        <h2>Browse by Course</h2>
+        <p>Quickly jump into the most searched program categories</p>
+      </div>
+      <div class="browseWrap">
+        <button class="browseChip" data-search="MBA">MBA</button>
+        <button class="browseChip" data-search="PGDM">PGDM</button>
+        <button class="browseChip" data-search="BBA">BBA</button>
+        <button class="browseChip" data-search="Direct Admission">Direct Admission</button>
+      </div>
+    </section>
+
+    <section class="sectionBlock" id="browseExamSection">
+      <div class="sectionTitle">
+        <h2>Browse by Exam</h2>
+        <p>Inspired by your current exam-led discovery flow</p>
+      </div>
+      <div class="browseWrap">
+        <button class="browseChip" data-search="CAT">CAT</button>
+        <button class="browseChip" data-search="XAT">XAT</button>
+        <button class="browseChip" data-search="NMAT">NMAT</button>
+        <button class="browseChip" data-search="CMAT">CMAT</button>
+        <button class="browseChip" data-search="SNAP">SNAP</button>
+        <button class="browseChip" data-search="MH-CET">MH-CET</button>
+      </div>
+    </section>
+
+    <section class="sectionBlock" id="browseCitySection">
+      <div class="sectionTitle">
+        <h2>Browse by City</h2>
+        <p>Search colleges in popular student destinations</p>
+      </div>
+      <div class="browseWrap">
+        <button class="browseChip" data-search="Delhi NCR">Delhi NCR</button>
+        <button class="browseChip" data-search="Bangalore">Bangalore</button>
+        <button class="browseChip" data-search="Pune">Pune</button>
+        <button class="browseChip" data-search="Mumbai">Mumbai</button>
+      </div>
+    </section>
+
+    <section class="sectionBlock" id="trendingSection">
       <div class="sectionTitle">
         <h2>Trending Searches</h2>
-        <p>Click any search below to instantly update results on this page</p>
+        <p>Click any topic below to update results on this page instantly</p>
       </div>
 
       <div class="trendingWrap" id="trendingWrap">
@@ -816,10 +975,36 @@
       <button class="topChip" onclick="openLeadPopup('MBA admissions guidance')">MBA admissions guidance</button>
     </div>
 
-    <section class="featuredSection" id="featuredSection">
+    <section class="sectionBlock" id="whySection">
       <div class="sectionTitle">
-        <h2>Verified College Profiles</h2>
-        <p>Profiles curated for students exploring admissions, fees, and placements</p>
+        <h2>Why Swadeshi Shiksha</h2>
+        <p>Built around guidance, clarity, and student-first discovery</p>
+      </div>
+
+      <div class="whyGrid">
+        <div class="whyCard">
+          <h3>Verified College Profiles</h3>
+          <p>Explore admission-focused college pages with key details like approvals, fees, placements, and basic profile data.</p>
+        </div>
+        <div class="whyCard">
+          <h3>Free Counselling Support</h3>
+          <p>Students can get help with shortlisting, admissions, eligibility clarity, and confusion around exams or direct admission routes.</p>
+        </div>
+        <div class="whyCard">
+          <h3>Search. Compare. Decide.</h3>
+          <p>Use this page to discover colleges by exam, course, city, or name without jumping around multiple pages again and again.</p>
+        </div>
+        <div class="whyCard">
+          <h3>Future-Ready Discovery Portal</h3>
+          <p>This page is designed to evolve into a stronger Swadeshi Shiksha homepage-style experience with search, trust, and lead conversion together.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sectionBlock" id="featuredSection">
+      <div class="sectionTitle">
+        <h2>Featured & Verified Colleges</h2>
+        <p>Priority picks highlighted by Swadeshi Shiksha</p>
       </div>
 
       <div id="featuredList" class="featuredGrid"></div>
@@ -835,9 +1020,52 @@
     </section>
 
     <div class="helpBox">
-      <strong>Didn’t find your college?</strong>
-      <span>Get free counselling support and personalised college guidance from Swadeshi Shiksha.</span>
+      <strong>Still confused about college admissions?</strong>
+      <span>Get free personalised counselling for shortlisting, admissions, fees, and profile matching.</span>
+      <button class="heroActionBtn primary" onclick="openLeadPopup('Bottom Help Box CTA')">Talk to a Counsellor</button>
     </div>
+
+    <footer class="footer">
+      <div class="footerGrid">
+        <div>
+          <h3>Swadeshi Shiksha</h3>
+          <p>
+            Search colleges, explore verified profiles, and get expert admission guidance
+            with Swadeshi Shiksha.
+          </p>
+        </div>
+
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li>Top Colleges</li>
+            <li>MBA / PGDM</li>
+            <li>Direct Admission Guidance</li>
+            <li>Free Counselling</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Exams</h4>
+          <ul>
+            <li>CAT</li>
+            <li>XAT</li>
+            <li>NMAT</li>
+            <li>CMAT</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li>College Shortlisting</li>
+            <li>Admission Guidance</li>
+            <li>Profile Evaluation</li>
+            <li>Scholarship Guidance</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <div class="popupOverlay" id="leadPopup">
@@ -874,7 +1102,6 @@
     const resultsCount = document.getElementById("resultsCount");
     const searchInput = document.getElementById("searchInput");
     const searchBtn = document.getElementById("searchBtn");
-    const trendingWrap = document.getElementById("trendingWrap");
 
     const params = new URLSearchParams(window.location.search);
     let currentSearch = (params.get("search") || "").trim();
@@ -917,8 +1144,8 @@
       if (e.key === "Enter") goToSearch();
     });
 
-    trendingWrap.addEventListener("click", function(e) {
-      const chip = e.target.closest(".trendChip");
+    document.addEventListener("click", function(e) {
+      const chip = e.target.closest("[data-search]");
       if (!chip) return;
       runSearch(chip.dataset.search || "");
     });
@@ -982,7 +1209,7 @@
 
       wrapper.innerHTML = `
         <div>
-          <h3>Need help choosing the right MBA college?</h3>
+          <h3>Need help choosing the right college?</h3>
           <p>
             Get free expert guidance for shortlisting, admissions, fees, placements, and
             profile matching from the Swadeshi Shiksha team.
