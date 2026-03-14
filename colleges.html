@@ -13,6 +13,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Inter, Arial, sans-serif;
@@ -22,6 +26,91 @@
 
     a {
       text-decoration: none;
+    }
+
+    .siteHeader {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e8edf7;
+    }
+
+    .siteHeaderInner {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brandLogo {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #1f36c7 0%, #3258f2 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+      box-shadow: 0 10px 22px rgba(31,54,199,0.2);
+      overflow: hidden;
+    }
+
+    .brandLogo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brandText strong {
+      display: block;
+      font-size: 18px;
+      color: #101828;
+      line-height: 1.1;
+    }
+
+    .brandText span {
+      display: block;
+      font-size: 13px;
+      color: #667085;
+      margin-top: 2px;
+    }
+
+    .headerActions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .headerBtn {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      border: 1px solid #d9e3f7;
+      background: #fff;
+      color: #1f36c7;
+      cursor: pointer;
+    }
+
+    .headerBtn.primary {
+      background: linear-gradient(135deg, #1f36c7 0%, #3258f2 100%);
+      color: white;
+      border: none;
+      box-shadow: 0 10px 20px rgba(31,54,199,0.2);
     }
 
     .page {
@@ -127,6 +216,13 @@
       font-size: 14px;
       font-weight: 700;
       backdrop-filter: blur(8px);
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .miniStat:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.16);
     }
 
     .searchWrap {
@@ -180,14 +276,41 @@
       transform: translateY(-1px);
     }
 
+    .trendingSection,
+    .featuredSection {
+      margin-bottom: 26px;
+    }
+
+    .sectionTitle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .sectionTitle h2 {
+      margin: 0;
+      font-size: 24px;
+      color: #101828;
+    }
+
+    .sectionTitle p {
+      margin: 0;
+      color: #667085;
+      font-size: 14px;
+    }
+
+    .trendingWrap,
     .topStrip {
-      margin: 0 0 24px;
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
       align-items: center;
     }
 
+    .trendChip,
     .topChip {
       background: white;
       border: 1px solid #e4ebf7;
@@ -197,6 +320,21 @@
       font-size: 14px;
       font-weight: 800;
       box-shadow: 0 8px 16px rgba(0,0,0,0.04);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .trendChip:hover,
+    .topChip:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.07);
+    }
+
+    .featuredGrid,
+    .resultsGrid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
     }
 
     .resultsHeader {
@@ -205,7 +343,7 @@
       align-items: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
+      margin: 12px 0 20px;
     }
 
     .resultsInfo {
@@ -225,12 +363,6 @@
       border-radius: 999px;
       font-size: 14px;
       font-weight: 800;
-    }
-
-    .resultsGrid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
     }
 
     .collegeCard {
@@ -284,6 +416,19 @@
       padding: 8px 12px;
       border-radius: 999px;
       box-shadow: 0 8px 20px rgba(255, 140, 0, 0.25);
+    }
+
+    .verifiedTag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(17,24,39,0.75);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 12px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
     }
 
     .cardBody {
@@ -382,6 +527,63 @@
       box-shadow: 0 10px 24px rgba(31, 54, 199, 0.22);
     }
 
+    .leadCtaCard {
+      background: linear-gradient(135deg, #101828 0%, #1f36c7 100%);
+      color: white;
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 38px rgba(16, 24, 40, 0.18);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .leadCtaCard h3 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      line-height: 1.15;
+    }
+
+    .leadCtaCard p {
+      margin: 0 0 18px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .leadCtaPoints {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .leadPoint {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .leadCtaBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #ffb703 0%, #ff8c00 100%);
+      color: #111827;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      min-width: 180px;
+    }
+
     .emptyState {
       grid-column: 1 / -1;
       background: white;
@@ -425,7 +627,82 @@
       opacity: 0.92;
     }
 
+    .popupOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 5000;
+      padding: 18px;
+    }
+
+    .popupCard {
+      width: 100%;
+      max-width: 460px;
+      background: #fff;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 24px 60px rgba(15,23,42,0.24);
+      position: relative;
+    }
+
+    .popupClose {
+      position: absolute;
+      right: 16px;
+      top: 14px;
+      border: none;
+      background: transparent;
+      font-size: 24px;
+      cursor: pointer;
+      color: #667085;
+    }
+
+    .popupCard h3 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      color: #101828;
+    }
+
+    .popupCard p {
+      margin: 0 0 18px;
+      color: #667085;
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    .popupCard input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid #d7e0f0;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .popupSubmit {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #1f36c7 0%, #3258f2 100%);
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 15px;
+      box-shadow: 0 10px 24px rgba(31,54,199,0.22);
+    }
+
+    .popupNote {
+      margin-top: 10px;
+      text-align: center;
+      color: #667085;
+      font-size: 12px;
+    }
+
     @media (max-width: 900px) {
+      .featuredGrid,
       .resultsGrid {
         grid-template-columns: 1fr;
       }
@@ -459,11 +736,38 @@
       .cardImageWrap {
         height: 190px;
       }
+
+      .headerActions {
+        width: 100%;
+      }
+
+      .headerBtn {
+        flex: 1;
+        text-align: center;
+      }
     }
   </style>
 </head>
 
 <body>
+  <header class="siteHeader">
+    <div class="siteHeaderInner">
+      <div class="brand">
+        <div class="brandLogo" id="brandLogo">SS</div>
+        <div class="brandText">
+          <strong>Swadeshi Shiksha</strong>
+          <span>Search. Compare. Decide.</span>
+        </div>
+      </div>
+
+      <div class="headerActions">
+        <button class="headerBtn" onclick="window.location.href='/'">Home</button>
+        <button class="headerBtn" onclick="document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'})">Search Results</button>
+        <button class="headerBtn primary" onclick="openLeadPopup('Free Counselling Support')">Free Counselling</button>
+      </div>
+    </div>
+  </header>
+
   <div class="page">
     <section class="hero">
       <div class="heroTop">
@@ -478,9 +782,9 @@
       </div>
 
       <div class="miniStats">
-        <div class="miniStat">🎓 Verified Profiles</div>
-        <div class="miniStat">🔥 Trending Searches</div>
-        <div class="miniStat">📞 Free Counselling Support</div>
+        <div class="miniStat" onclick="document.getElementById('featuredSection').scrollIntoView({behavior:'smooth'})">🎓 Verified Profiles</div>
+        <div class="miniStat" onclick="document.getElementById('trendingSection').scrollIntoView({behavior:'smooth'})">🔥 Trending Searches</div>
+        <div class="miniStat" onclick="openLeadPopup('Free Counselling Support')">📞 Free Counselling Support</div>
       </div>
 
       <div class="searchWrap">
@@ -492,22 +796,62 @@
       </div>
     </section>
 
+    <section class="trendingSection" id="trendingSection">
+      <div class="sectionTitle">
+        <h2>Trending Searches</h2>
+        <p>Click any search below to instantly update results on this page</p>
+      </div>
+
+      <div class="trendingWrap" id="trendingWrap">
+        <button class="trendChip" data-search="Amity University">Amity University</button>
+        <button class="trendChip" data-search="Example University">Example University</button>
+        <button class="trendChip" data-search="MBA colleges in Bangalore">MBA colleges in Bangalore</button>
+        <button class="trendChip" data-search="MBA colleges in Delhi NCR">MBA colleges in Delhi NCR</button>
+      </div>
+    </section>
+
     <div class="topStrip">
-      <div class="topChip">Top college search</div>
-      <div class="topChip">Instant profile access</div>
-      <div class="topChip">MBA admissions guidance</div>
+      <button class="topChip" onclick="document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'})">Top college search</button>
+      <button class="topChip" onclick="document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'})">Instant profile access</button>
+      <button class="topChip" onclick="openLeadPopup('MBA admissions guidance')">MBA admissions guidance</button>
     </div>
 
-    <div class="resultsHeader">
-      <div id="searchInfo" class="resultsInfo"></div>
-      <div id="resultsCount" class="resultsCount">0 colleges</div>
-    </div>
+    <section class="featuredSection" id="featuredSection">
+      <div class="sectionTitle">
+        <h2>Verified College Profiles</h2>
+        <p>Profiles curated for students exploring admissions, fees, and placements</p>
+      </div>
 
-    <div id="collegeList" class="resultsGrid"></div>
+      <div id="featuredList" class="featuredGrid"></div>
+    </section>
+
+    <section id="resultsSection">
+      <div class="resultsHeader">
+        <div id="searchInfo" class="resultsInfo"></div>
+        <div id="resultsCount" class="resultsCount">0 colleges</div>
+      </div>
+
+      <div id="collegeList" class="resultsGrid"></div>
+    </section>
 
     <div class="helpBox">
       <strong>Didn’t find your college?</strong>
       <span>Get free counselling support and personalised college guidance from Swadeshi Shiksha.</span>
+    </div>
+  </div>
+
+  <div class="popupOverlay" id="leadPopup">
+    <div class="popupCard">
+      <button class="popupClose" onclick="closeLeadPopup()">×</button>
+      <h3>Get Free Counselling</h3>
+      <p id="popupReason">Fill in your details and our team will help you with college shortlisting, admissions, and guidance.</p>
+
+      <input id="popupName" type="text" placeholder="Your Name">
+      <input id="popupPhone" type="tel" placeholder="Phone Number" maxlength="10">
+      <input id="popupCity" type="text" placeholder="City">
+
+      <button class="popupSubmit" id="popupSubmitBtn">Submit</button>
+      <div class="popupNote">100% Free • No Spam</div>
     </div>
   </div>
 
@@ -523,21 +867,49 @@
     }
 
     const db = firebase.firestore();
+
     const list = document.getElementById("collegeList");
+    const featuredList = document.getElementById("featuredList");
     const searchInfo = document.getElementById("searchInfo");
     const resultsCount = document.getElementById("resultsCount");
     const searchInput = document.getElementById("searchInput");
     const searchBtn = document.getElementById("searchBtn");
+    const trendingWrap = document.getElementById("trendingWrap");
 
     const params = new URLSearchParams(window.location.search);
-    const rawSearch = params.get("search") || "";
-    const searchQuery = rawSearch.trim().toLowerCase();
+    let currentSearch = (params.get("search") || "").trim();
 
-    searchInput.value = rawSearch;
+    searchInput.value = currentSearch;
+
+    let allColleges = [];
+
+    function getInitials(name) {
+      if (!name) return "C";
+      return name
+        .split(" ")
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(w => w[0].toUpperCase())
+        .join("");
+    }
+
+    function updateUrl(query) {
+      const newUrl = query
+        ? "colleges.html?search=" + encodeURIComponent(query)
+        : "colleges.html";
+      window.history.replaceState({}, "", newUrl);
+    }
+
+    function runSearch(query) {
+      currentSearch = query.trim();
+      searchInput.value = currentSearch;
+      updateUrl(currentSearch);
+      renderPage();
+      document.getElementById("resultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
 
     function goToSearch() {
-      const query = searchInput.value.trim();
-      window.location.href = query ? "colleges.html?search=" + encodeURIComponent(query) : "colleges.html";
+      runSearch(searchInput.value);
     }
 
     searchBtn.addEventListener("click", goToSearch);
@@ -545,109 +917,243 @@
       if (e.key === "Enter") goToSearch();
     });
 
-    function getInitials(name) {
-      if (!name) return "C";
-      return name.split(" ").filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join("");
+    trendingWrap.addEventListener("click", function(e) {
+      const chip = e.target.closest(".trendChip");
+      if (!chip) return;
+      runSearch(chip.dataset.search || "");
+    });
+
+    function createCollegeCard(college) {
+      const locationText = [college.city, college.state].filter(Boolean).join(", ");
+      const badges = [
+        college.type,
+        college.course,
+        college.approvedBy ? "Approved by " + college.approvedBy : "",
+        college.established ? "Est. " + college.established : ""
+      ].filter(Boolean).slice(0, 4);
+
+      const card = document.createElement("div");
+      card.className = "collegeCard";
+
+      card.innerHTML = `
+        <div class="cardImageWrap">
+          ${college.featured ? `<div class="featuredTag">Top Pick</div>` : ""}
+          <div class="verifiedTag">Verified</div>
+          ${college.image
+            ? `<img src="${college.image}" alt="${college.name}">`
+            : `<div class="imageFallback">${getInitials(college.name)}</div>`}
+        </div>
+
+        <div class="cardBody">
+          <div class="titleRow">
+            <h3 class="collegeName">${college.name}</h3>
+            <div class="logoMini">
+              ${college.logo
+                ? `<img src="${college.logo}" alt="${college.name} logo">`
+                : getInitials(college.name)}
+            </div>
+          </div>
+
+          <div class="collegeMeta">
+            ${locationText || "Explore college details, admission guidance, and profile information."}
+          </div>
+
+          <div class="badgeRow">
+            ${badges.length
+              ? badges.map(b => `<span class="badge">${b}</span>`).join("")
+              : `<span class="badge">Admissions</span><span class="badge">College Profile</span>`}
+          </div>
+
+          <div class="cardFooter">
+            <div class="smallText">View full profile, admission details and counselling support</div>
+            <a class="viewBtn" href="college.html?slug=${encodeURIComponent(college.id)}" target="_blank" rel="noopener noreferrer">
+              View College
+            </a>
+          </div>
+        </div>
+      `;
+
+      return card;
     }
+
+    function createLeadCard() {
+      const wrapper = document.createElement("div");
+      wrapper.className = "leadCtaCard";
+
+      wrapper.innerHTML = `
+        <div>
+          <h3>Need help choosing the right MBA college?</h3>
+          <p>
+            Get free expert guidance for shortlisting, admissions, fees, placements, and
+            profile matching from the Swadeshi Shiksha team.
+          </p>
+
+          <div class="leadCtaPoints">
+            <span class="leadPoint">Free Counselling</span>
+            <span class="leadPoint">College Shortlisting</span>
+            <span class="leadPoint">Admission Guidance</span>
+          </div>
+        </div>
+
+        <button class="leadCtaBtn" type="button">Get Free Counselling</button>
+      `;
+
+      wrapper.querySelector(".leadCtaBtn").addEventListener("click", function() {
+        openLeadPopup("Results Page Counselling CTA");
+      });
+
+      return wrapper;
+    }
+
+    function renderFeatured() {
+      featuredList.innerHTML = "";
+
+      const featuredColleges = allColleges
+        .filter(college => college.featured)
+        .slice(0, 2);
+
+      if (!featuredColleges.length) {
+        featuredList.innerHTML = `
+          <div class="emptyState">
+            <h3>No featured colleges yet</h3>
+            <p>Mark colleges as featured in your CMS to highlight them here.</p>
+          </div>
+        `;
+        return;
+      }
+
+      featuredColleges.forEach(college => {
+        featuredList.appendChild(createCollegeCard(college));
+      });
+    }
+
+    function renderPage() {
+      list.innerHTML = "";
+
+      const query = currentSearch.toLowerCase();
+
+      const results = allColleges.filter(college => {
+        if (!query) return true;
+
+        const haystack = [
+          college.name,
+          college.city,
+          college.state,
+          college.approvedBy,
+          college.course,
+          college.type
+        ].join(" ").toLowerCase();
+
+        return haystack.includes(query);
+      });
+
+      searchInfo.innerHTML = currentSearch
+        ? `Showing results for <strong>${currentSearch}</strong>`
+        : `Showing all available colleges`;
+
+      resultsCount.textContent = `${results.length} college${results.length === 1 ? "" : "s"}`;
+
+      if (!results.length) {
+        list.innerHTML = `
+          <div class="emptyState">
+            <h3>No college found</h3>
+            <p>We couldn’t find any college matching <strong>${currentSearch}</strong>. Try a different search or get free counselling.</p>
+          </div>
+        `;
+        return;
+      }
+
+      results.forEach((college, index) => {
+        list.appendChild(createCollegeCard(college));
+
+        if (index === 1) {
+          list.appendChild(createLeadCard());
+        }
+      });
+    }
+
+    function openLeadPopup(reason) {
+      document.getElementById("leadPopup").style.display = "flex";
+      document.getElementById("popupReason").textContent =
+        `You clicked on ${reason}. Fill in your details and our team will help you with admissions, shortlisting, and counselling support.`;
+    }
+
+    function closeLeadPopup() {
+      document.getElementById("leadPopup").style.display = "none";
+    }
+
+    document.getElementById("leadPopup").addEventListener("click", function(e) {
+      if (e.target.id === "leadPopup") closeLeadPopup();
+    });
+
+    document.getElementById("popupSubmitBtn").addEventListener("click", function() {
+      const name = document.getElementById("popupName").value.trim();
+      const phone = document.getElementById("popupPhone").value.trim();
+      const city = document.getElementById("popupCity").value.trim();
+
+      if (name.length < 2) {
+        alert("Please enter a valid name");
+        return;
+      }
+
+      if (!/^[0-9]{10}$/.test(phone)) {
+        alert("Please enter a valid 10 digit phone number");
+        return;
+      }
+
+      db.collection("leads").add({
+        name: name,
+        phone: phone,
+        city: city,
+        college: currentSearch || "results-page",
+        source: "colleges-results-page",
+        date: new Date()
+      }).then(() => {
+        alert("Thank you! Our team will contact you soon.");
+        document.getElementById("popupName").value = "";
+        document.getElementById("popupPhone").value = "";
+        document.getElementById("popupCity").value = "";
+        closeLeadPopup();
+      }).catch(() => {
+        alert("There was an issue submitting the form. Please try again.");
+      });
+    });
 
     db.collection("colleges")
       .where("status", "==", "published")
       .get()
       .then(snapshot => {
-        list.innerHTML = "";
-        const results = [];
+        allColleges = [];
 
         snapshot.forEach(doc => {
           const d = doc.data();
-          const collegeName = (d.name || "").toLowerCase();
 
-          if (!searchQuery || collegeName.includes(searchQuery)) {
-            results.push({
-              id: doc.id,
-              name: d.name || "Unnamed College",
-              city: d.city || "",
-              state: d.state || "",
-              approvedBy: d.approvedBy || d.approval || "",
-              established: d.established || "",
-              course: d.course || d.program || "",
-              type: d.type || "",
-              logo: d.logo || d.logoUrl || "",
-              image: d.image || d.banner || d.coverImage || "",
-              featured: d.featured === true
-            });
-          }
+          allColleges.push({
+            id: doc.id,
+            name: d.name || "Unnamed College",
+            city: d.city || "",
+            state: d.state || "",
+            approvedBy: d.approvedBy || d.approval || "",
+            established: d.established || "",
+            course: d.course || d.program || "",
+            type: d.type || "",
+            logo: d.logo || d.logoUrl || "",
+            image: d.image || d.banner || d.coverImage || "",
+            featured: d.featured === true
+          });
         });
 
-        searchInfo.innerHTML = searchQuery
-          ? `Showing results for <strong>${rawSearch}</strong>`
-          : `Showing all available colleges`;
-
-        resultsCount.textContent = `${results.length} college${results.length === 1 ? "" : "s"}`;
-
-        if (results.length === 0) {
-          list.innerHTML = `
-            <div class="emptyState">
-              <h3>No college found</h3>
-              <p>We couldn’t find any college matching <strong>${rawSearch}</strong>. Try a different search.</p>
-            </div>
-          `;
-          return;
-        }
-
-        results.forEach(college => {
-          const locationText = [college.city, college.state].filter(Boolean).join(", ");
-          const badges = [
-            college.type,
-            college.course,
-            college.approvedBy ? "Approved by " + college.approvedBy : "",
-            college.established ? "Est. " + college.established : ""
-          ].filter(Boolean).slice(0, 4);
-
-          const card = document.createElement("div");
-          card.className = "collegeCard";
-
-          card.innerHTML = `
-            <div class="cardImageWrap">
-              ${college.featured ? `<div class="featuredTag">Top Pick</div>` : ""}
-              ${college.image
-                ? `<img src="${college.image}" alt="${college.name}">`
-                : `<div class="imageFallback">${getInitials(college.name)}</div>`}
-            </div>
-
-            <div class="cardBody">
-              <div class="titleRow">
-                <h3 class="collegeName">${college.name}</h3>
-                <div class="logoMini">
-                  ${college.logo
-                    ? `<img src="${college.logo}" alt="${college.name} logo">`
-                    : getInitials(college.name)}
-                </div>
-              </div>
-
-              <div class="collegeMeta">
-                ${locationText || "Explore college details, admission guidance, and profile information."}
-              </div>
-
-              <div class="badgeRow">
-                ${badges.length
-                  ? badges.map(b => `<span class="badge">${b}</span>`).join("")
-                  : `<span class="badge">Admissions</span><span class="badge">College Profile</span>`}
-              </div>
-
-              <div class="cardFooter">
-                <div class="smallText">View full profile, admission details and counselling support</div>
-                <a class="viewBtn" href="college.html?slug=${encodeURIComponent(college.id)}" target="_blank" rel="noopener noreferrer">
-                  View College
-                </a>
-              </div>
-            </div>
-          `;
-
-          list.appendChild(card);
-        });
+        renderFeatured();
+        renderPage();
       })
       .catch(() => {
         resultsCount.textContent = "0 colleges";
+        featuredList.innerHTML = `
+          <div class="emptyState">
+            <h3>Error loading featured colleges</h3>
+            <p>Please refresh and try again.</p>
+          </div>
+        `;
         list.innerHTML = `
           <div class="emptyState">
             <h3>Error loading colleges</h3>
