@@ -16,8 +16,7 @@
     body {
       margin: 0;
       font-family: Inter, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, #eef4ff 0%, #f7f9fc 35%, #f5f7fb 100%);
+      background: #f3f6fb;
       color: #111827;
     }
 
@@ -26,19 +25,19 @@
     }
 
     .page {
-      max-width: 1180px;
+      max-width: 1220px;
       margin: 0 auto;
-      padding: 32px 18px 70px;
+      padding: 24px 18px 70px;
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      border-radius: 30px;
-      padding: 36px 28px 28px;
-      background: linear-gradient(135deg, #ffffff 0%, #f6f9ff 100%);
-      border: 1px solid rgba(31, 54, 199, 0.08);
-      box-shadow: 0 24px 60px rgba(22, 34, 78, 0.08);
+      border-radius: 32px;
+      padding: 42px 28px 30px;
+      background: linear-gradient(135deg, #091540 0%, #132c7a 55%, #1f36c7 100%);
+      color: white;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
       margin-bottom: 28px;
     }
 
@@ -51,19 +50,21 @@
     }
 
     .hero::before {
-      width: 260px;
-      height: 260px;
-      background: rgba(49, 91, 255, 0.10);
-      top: -100px;
-      right: -80px;
+      width: 280px;
+      height: 280px;
+      background: rgba(255,255,255,0.08);
+      top: -120px;
+      right: -60px;
+      filter: blur(6px);
     }
 
     .hero::after {
-      width: 180px;
-      height: 180px;
-      background: rgba(0, 195, 255, 0.10);
-      bottom: -70px;
-      left: -40px;
+      width: 220px;
+      height: 220px;
+      background: rgba(0, 229, 255, 0.12);
+      bottom: -90px;
+      left: -60px;
+      filter: blur(10px);
     }
 
     .heroTop {
@@ -71,90 +72,85 @@
       z-index: 1;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
       gap: 20px;
-      margin-bottom: 20px;
       flex-wrap: wrap;
+      align-items: flex-start;
+      margin-bottom: 22px;
     }
 
     .heroText h1 {
-      margin: 0 0 10px;
-      font-size: 44px;
-      line-height: 1.05;
+      margin: 0 0 12px;
+      font-size: 48px;
+      line-height: 1.02;
       letter-spacing: -0.03em;
-      color: #0f172a;
+      color: #ffffff;
     }
 
-    .gradientText {
-      background: linear-gradient(135deg, #1f36c7 0%, #4a78ff 55%, #00a6ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .heroText .accent {
+      color: #ffd54a;
     }
 
     .heroText p {
       margin: 0;
+      max-width: 760px;
       font-size: 17px;
-      line-height: 1.6;
-      color: #52607a;
-      max-width: 700px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.86);
     }
 
     .heroBadge {
-      background: linear-gradient(135deg, #eef3ff 0%, #f5f8ff 100%);
-      color: #1f36c7;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #ffffff;
       padding: 11px 16px;
       border-radius: 999px;
       font-size: 14px;
       font-weight: 800;
-      white-space: nowrap;
-      border: 1px solid #dce6ff;
+      backdrop-filter: blur(8px);
     }
 
     .miniStats {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin: 18px 0 22px;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 24px;
     }
 
     .miniStat {
-      background: rgba(255,255,255,0.8);
-      border: 1px solid #e4ebf8;
-      color: #23304d;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #fff;
       padding: 10px 14px;
       border-radius: 999px;
       font-size: 14px;
       font-weight: 700;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+      backdrop-filter: blur(8px);
     }
 
     .searchWrap {
       position: relative;
       z-index: 1;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(8px);
-      border: 1px solid #e5ebf7;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
       border-radius: 24px;
       padding: 14px;
-      box-shadow: 0 12px 30px rgba(31, 54, 199, 0.08);
+      backdrop-filter: blur(10px);
     }
 
     .searchBar {
       display: flex;
       align-items: center;
       gap: 12px;
-      background: #ffffff;
-      border: 1px solid #dbe3f2;
+      background: white;
       border-radius: 18px;
       padding: 10px 10px 10px 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
     }
 
     .searchIcon {
-      font-size: 21px;
-      opacity: 0.75;
+      font-size: 22px;
     }
 
     .searchInput {
@@ -170,44 +166,65 @@
     .searchBtn {
       border: none;
       cursor: pointer;
-      background: linear-gradient(135deg, #1f36c7 0%, #3258f2 100%);
-      color: #fff;
+      background: linear-gradient(135deg, #ffb703 0%, #ff8c00 100%);
+      color: #111827;
       border-radius: 14px;
       padding: 14px 22px;
       font-size: 15px;
       font-weight: 800;
-      box-shadow: 0 10px 24px rgba(31, 54, 199, 0.25);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 10px 24px rgba(255, 167, 38, 0.28);
+      transition: transform 0.15s ease;
     }
 
     .searchBtn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(31, 54, 199, 0.28);
     }
 
-    .statsRow {
+    .topStrip {
+      margin: 0 0 24px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 22px;
+      align-items: center;
     }
 
-    .resultsInfo {
-      font-size: 17px;
-      color: #49556c;
-    }
-
-    .resultsCount {
-      background: #ffffff;
-      border: 1px solid #e7edf8;
+    .topChip {
+      background: white;
+      border: 1px solid #e4ebf7;
       color: #1f36c7;
       padding: 10px 14px;
       border-radius: 999px;
       font-size: 14px;
       font-weight: 800;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.04);
+    }
+
+    .resultsHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .resultsInfo {
+      font-size: 18px;
+      color: #475467;
+    }
+
+    .resultsInfo strong {
+      color: #101828;
+    }
+
+    .resultsCount {
+      background: linear-gradient(135deg, #eef3ff 0%, #ffffff 100%);
+      color: #1f36c7;
+      border: 1px solid #dbe5ff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
     }
 
     .resultsGrid {
@@ -217,32 +234,51 @@
     }
 
     .collegeCard {
-      position: relative;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid #e8eef8;
-      border-radius: 26px;
-      padding: 22px;
-      box-shadow: 0 14px 34px rgba(16, 24, 40, 0.06);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      min-height: 270px;
+      background: white;
+      border-radius: 28px;
+      border: 1px solid #e7edf8;
+      box-shadow: 0 16px 36px rgba(16, 24, 40, 0.07);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
     .collegeCard:hover {
       transform: translateY(-6px);
-      border-color: #d9e5ff;
-      box-shadow: 0 24px 48px rgba(31, 54, 199, 0.12);
+      box-shadow: 0 26px 48px rgba(31, 54, 199, 0.12);
+    }
+
+    .cardImageWrap {
+      position: relative;
+      height: 210px;
+      background: linear-gradient(135deg, #dbe8ff 0%, #f4f8ff 100%);
+      overflow: hidden;
+    }
+
+    .cardImageWrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .imageFallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 800;
+      color: #1f36c7;
+      background: linear-gradient(135deg, #dce7ff 0%, #eef4ff 100%);
     }
 
     .featuredTag {
       position: absolute;
       top: 16px;
-      right: 16px;
+      left: 16px;
       background: linear-gradient(135deg, #ffb703 0%, #ff8c00 100%);
-      color: #fff;
+      color: white;
       font-size: 12px;
       font-weight: 800;
       padding: 8px 12px;
@@ -250,60 +286,61 @@
       box-shadow: 0 8px 20px rgba(255, 140, 0, 0.25);
     }
 
-    .topRow {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
+    .cardBody {
+      padding: 22px;
     }
 
-    .logoBox {
-      width: 78px;
-      height: 78px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #eaf0ff 0%, #f7f9ff 100%);
-      border: 1px solid #e1e8f7;
+    .titleRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .collegeName {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.15;
+      font-weight: 800;
+      color: #0f172a;
+      text-transform: capitalize;
+    }
+
+    .logoMini {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      border: 1px solid #e4ebf8;
+      background: #f8fbff;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
       flex-shrink: 0;
-      font-size: 24px;
+      font-size: 16px;
       font-weight: 800;
       color: #1f36c7;
-      overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
     }
 
-    .logoBox img {
+    .logoMini img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .collegeMain {
-      min-width: 0;
-      flex: 1;
-    }
-
-    .collegeName {
-      margin: 0 0 10px;
-      font-size: 26px;
-      line-height: 1.18;
-      color: #0f172a;
-      font-weight: 800;
-      text-transform: capitalize;
-      padding-right: 80px;
-    }
-
     .collegeMeta {
-      color: #667085;
       font-size: 15px;
+      color: #667085;
       line-height: 1.7;
+      margin-bottom: 16px;
     }
 
     .badgeRow {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-bottom: 18px;
     }
 
     .badge {
@@ -319,11 +356,10 @@
     }
 
     .cardFooter {
-      margin-top: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
@@ -336,50 +372,57 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      min-width: 150px;
       border-radius: 14px;
-      padding: 13px 20px;
+      padding: 14px 20px;
       background: linear-gradient(135deg, #1f36c7 0%, #3258f2 100%);
-      color: #ffffff;
+      color: white;
       font-size: 15px;
       font-weight: 800;
-      min-width: 145px;
       box-shadow: 0 10px 24px rgba(31, 54, 199, 0.22);
-      transition: transform 0.15s ease;
-    }
-
-    .viewBtn:hover {
-      transform: translateY(-1px);
     }
 
     .emptyState {
-      background: #ffffff;
-      border: 1px solid #e7edf8;
-      border-radius: 24px;
-      padding: 42px 24px;
-      text-align: center;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
       grid-column: 1 / -1;
+      background: white;
+      border-radius: 28px;
+      border: 1px solid #e7edf8;
+      padding: 48px 24px;
+      text-align: center;
+      box-shadow: 0 16px 36px rgba(16, 24, 40, 0.06);
+    }
+
+    .emptyState h3 {
+      margin: 0 0 10px;
+      font-size: 28px;
+    }
+
+    .emptyState p {
+      margin: 0;
+      color: #667085;
+      font-size: 16px;
+      line-height: 1.7;
     }
 
     .helpBox {
       margin-top: 28px;
-      border-radius: 22px;
-      padding: 22px 20px;
-      background: linear-gradient(135deg, #1f36c7 0%, #2948df 100%);
-      color: #ffffff;
+      border-radius: 24px;
+      padding: 24px 20px;
+      background: linear-gradient(135deg, #101828 0%, #1f36c7 100%);
+      color: white;
       text-align: center;
-      box-shadow: 0 18px 38px rgba(31, 54, 199, 0.20);
+      box-shadow: 0 20px 38px rgba(16, 24, 40, 0.18);
     }
 
     .helpBox strong {
       display: block;
-      margin-bottom: 6px;
-      font-size: 19px;
+      margin-bottom: 8px;
+      font-size: 20px;
     }
 
     .helpBox span {
-      opacity: 0.95;
       font-size: 15px;
+      opacity: 0.92;
     }
 
     @media (max-width: 900px) {
@@ -390,7 +433,7 @@
 
     @media (max-width: 700px) {
       .heroText h1 {
-        font-size: 32px;
+        font-size: 34px;
       }
 
       .searchBar {
@@ -402,8 +445,7 @@
       }
 
       .collegeName {
-        font-size: 22px;
-        padding-right: 0;
+        font-size: 24px;
       }
 
       .viewBtn {
@@ -414,9 +456,8 @@
         align-items: stretch;
       }
 
-      .featuredTag {
-        position: static;
-        width: fit-content;
+      .cardImageWrap {
+        height: 190px;
       }
     }
   </style>
@@ -427,19 +468,19 @@
     <section class="hero">
       <div class="heroTop">
         <div class="heroText">
-          <h1>Find Your <span class="gradientText">Dream College</span></h1>
+          <h1>Explore Your <span class="accent">Best-Fit College</span></h1>
           <p>
-            Search verified colleges, compare options, and open full college profiles
-            with admission details, recognition, and counselling support.
+            Search verified colleges, compare options, and discover admission-focused
+            profiles with counselling support from Swadeshi Shiksha.
           </p>
         </div>
-        <div class="heroBadge">Swadeshi Shiksha Search</div>
+        <div class="heroBadge">Admissions Search Portal</div>
       </div>
 
       <div class="miniStats">
-        <div class="miniStat">🎓 Verified Colleges</div>
-        <div class="miniStat">📍 Search by Name</div>
-        <div class="miniStat">🧭 Free Counselling Support</div>
+        <div class="miniStat">🎓 Verified Profiles</div>
+        <div class="miniStat">🔥 Trending Searches</div>
+        <div class="miniStat">📞 Free Counselling Support</div>
       </div>
 
       <div class="searchWrap">
@@ -451,7 +492,13 @@
       </div>
     </section>
 
-    <div class="statsRow">
+    <div class="topStrip">
+      <div class="topChip">Top college search</div>
+      <div class="topChip">Instant profile access</div>
+      <div class="topChip">MBA admissions guidance</div>
+    </div>
+
+    <div class="resultsHeader">
       <div id="searchInfo" class="resultsInfo"></div>
       <div id="resultsCount" class="resultsCount">0 colleges</div>
     </div>
@@ -524,7 +571,8 @@
               established: d.established || "",
               course: d.course || d.program || "",
               type: d.type || "",
-              logo: d.logo || d.logoUrl || d.image || "",
+              logo: d.logo || d.logoUrl || "",
+              image: d.image || d.banner || d.coverImage || "",
               featured: d.featured === true
             });
           }
@@ -559,30 +607,39 @@
           card.className = "collegeCard";
 
           card.innerHTML = `
-            ${college.featured ? `<div class="featuredTag">Featured</div>` : ""}
-            <div class="topRow">
-              <div class="logoBox">
-                ${college.logo ? `<img src="${college.logo}" alt="${college.name}">` : getInitials(college.name)}
-              </div>
-              <div class="collegeMain">
+            <div class="cardImageWrap">
+              ${college.featured ? `<div class="featuredTag">Top Pick</div>` : ""}
+              ${college.image
+                ? `<img src="${college.image}" alt="${college.name}">`
+                : `<div class="imageFallback">${getInitials(college.name)}</div>`}
+            </div>
+
+            <div class="cardBody">
+              <div class="titleRow">
                 <h3 class="collegeName">${college.name}</h3>
-                <div class="collegeMeta">
-                  ${locationText || "Explore college details, admission guidance, and profile information."}
+                <div class="logoMini">
+                  ${college.logo
+                    ? `<img src="${college.logo}" alt="${college.name} logo">`
+                    : getInitials(college.name)}
                 </div>
               </div>
-            </div>
 
-            <div class="badgeRow">
-              ${badges.length
-                ? badges.map(b => `<span class="badge">${b}</span>`).join("")
-                : `<span class="badge">Admissions</span><span class="badge">College Profile</span>`}
-            </div>
+              <div class="collegeMeta">
+                ${locationText || "Explore college details, admission guidance, and profile information."}
+              </div>
 
-            <div class="cardFooter">
-              <div class="smallText">View full profile, admission details and counselling support</div>
-              <a class="viewBtn" href="college.html?slug=${encodeURIComponent(college.id)}" target="_blank" rel="noopener noreferrer">
-                View College
-              </a>
+              <div class="badgeRow">
+                ${badges.length
+                  ? badges.map(b => `<span class="badge">${b}</span>`).join("")
+                  : `<span class="badge">Admissions</span><span class="badge">College Profile</span>`}
+              </div>
+
+              <div class="cardFooter">
+                <div class="smallText">View full profile, admission details and counselling support</div>
+                <a class="viewBtn" href="college.html?slug=${encodeURIComponent(college.id)}" target="_blank" rel="noopener noreferrer">
+                  View College
+                </a>
+              </div>
             </div>
           `;
 
@@ -591,7 +648,12 @@
       })
       .catch(() => {
         resultsCount.textContent = "0 colleges";
-        list.innerHTML = `<div class="emptyState"><h3>Error loading colleges</h3><p>Please refresh and try again.</p></div>`;
+        list.innerHTML = `
+          <div class="emptyState">
+            <h3>Error loading colleges</h3>
+            <p>Please refresh and try again.</p>
+          </div>
+        `;
       });
   </script>
 </body>
