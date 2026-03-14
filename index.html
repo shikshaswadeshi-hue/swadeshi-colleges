@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SS Admin CMS</title>
+
+<!-- Firebase compat -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+body{margin:0;font-family:Quicksand;background:#f4f6fb}
+.layout{display:flex}
+.sidebar{width:260px;background:#1e1e2f;color:#fff;min-height:100vh;padding:20px;position:sticky;top:0}
+.sidebar button{width:100%;margin-bottom:10px;padding:10px;border:none;border-radius:6px;cursor:pointer}
+.main{flex:1;padding:30px}
+.card{background:#fff;padding:20px;border-radius:10px;margin-bottom:20px}
+input,textarea,select{width:100%;padding:10px;margin:8px 0;border:1px solid #ddd;border-radius:6px}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+td,th{border:1px solid #eee;padding:8px}
+.addBtn{margin-top:8px;padding:6px 12px;cursor:pointer}
+.login{display:flex;height:100vh;align-items:center;justify-content:center}
+.loginBox{background:#fff;padding:30px;border-radius:12px;width:320px}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="login">
+ <div class="loginBox">
+  <h3>Admin Login</h3>
+  <input id="email" placeholder="Email">
+  <input id="pass" type="password" placeholder="Password">
+  <button id="loginBtn">Login</button>
+ </div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin" style="display:none">
+<div class="layout">
+
+<div class="sidebar">
+ <h2>SS CMS</h2>
+<button onclick="openPublished()">📚 Published</button>
+<button onclick="openDraft()">📝 Drafts</button>
+<button onclick="openNewCollege()">➕ New College</button>
+<button onclick="logout()">Logout</button>
+</div>
+
+<div class="main">
+
+<div id="editorPage">
+
+<div class="card">
+<h3>Basic Info</h3>
+<input id="name" placeholder="College Name">
+<input id="slug" placeholder="Slug">
+<input id="logo" placeholder="Logo URL">
+<input id="title" placeholder="H1 Title">
+<input id="established" placeholder="Established Year">
+<input id="approval" placeholder="Approval (NAAC / AICTE etc)">
+<input id="ranking" placeholder="Ranking">
+<input id="campusSize" placeholder="Campus Size">
+<input id="highestPackage" placeholder="Highest Package">
+<input id="averagePackage" placeholder="Average Package">
+</div>
+
+<div class="card"><h3>Overview</h3><div id="overview"></div><button class="addBtn" onclick="addBullet('overview')">+ Bullet</button></div>
+<div class="card"><h3>Courses</h3><table id="courses"><tr><th>Course</th><th>Duration</th><th>Exam</th></tr></table><button class="addBtn" onclick="addCourse()">+ Row</button></div>
+<div class="card"><h3>Eligibility</h3><div id="eligibility"></div><button class="addBtn" onclick="addBullet('eligibility')">+ Bullet</button></div>
+<div class="card"><h3>Application</h3><div id="application"></div><button class="addBtn" onclick="addBullet('application')">+ Bullet</button></div>
+<div class="card"><h3>Admission Steps</h3><div id="admission"></div><button class="addBtn" onclick="addBullet('admission')">+ Step</button></div>
+<div class="card"><h3>Fees</h3><table id="fees"><tr><th>Course</th><th>Total Fees</th></tr></table><button class="addBtn" onclick="addFee()">+ Row</button></div>
+<div class="card"><h3>Cutoff</h3><table id="cutoffs"><tr><th>Exam</th><th>Percentile</th></tr></table><button class="addBtn" onclick="addCutoff()">+ Row</button></div>
+<div class="card"><h3>Placements</h3><div id="placements"></div><button class="addBtn" onclick="addBullet('placements')">+ Bullet</button></div>
+<div class="card"><h3>Scholarships</h3><div id="scholarships"></div><button class="addBtn" onclick="addBullet('scholarships')">+ Bullet</button></div>
+<div class="card"><h3>Why Choose</h3><div id="whyChoose"></div><button class="addBtn" onclick="addBullet('whyChoose')">+ Bullet</button></div>
+<div class="card">
+<h3>Facilities</h3>
+<div id="facilities"></div>
+<button class="addBtn" onclick="addBullet('facilities')">+ Bullet</button>
+</div>
+<div class="card">
+<h3>Top Recruiters</h3>
+<div id="recruiters"></div>
+<button class="addBtn" onclick="addBullet('recruiters')">+ Recruiter</button>
+</div>
+<div class="card">
+<h3>FAQ</h3>
+<table id="faq">
+<tr><th>Question</th><th>Answer</th></tr>
+</table>
+<button class="addBtn" onclick="addFAQ()">+ FAQ</button>
+</div>
+
+<br><br>
+
+<div class="card">
+
+<button type="button"
+onclick="saveCollege('draft')"
+style="background:#999;color:white;padding:12px 20px;border:none;border-radius:6px;margin-right:10px;">
+Save Draft
+</button>
+
+<button type="button"
+onclick="saveCollege('published')"
+style="background:#2ecc71;color:white;padding:12px 20px;border:none;border-radius:6px;">
+Publish College
+</button>
+
+</div>
+
+</div>
+
+<div id="listPage" style="display:none">
+  <div id="publishedList" class="card"></div>
+</div>
+</div>
+</div>
+
+<script>
+const firebaseConfig={
+  apiKey:"AIzaSyCQNocdvSpqjm7ZMcrVYW0Fc-iMycGQO94",
+  authDomain:"swadeshi-shiksha.firebaseapp.com",
+  projectId:"swadeshi-shiksha"
+};
+firebase.initializeApp(firebaseConfig);
+const db=firebase.firestore();
+let currentCollegeId = null;
+let currentListType = "published";
+const loginPage = document.getElementById("loginPage");
+const admin = document.getElementById("admin");
+const email = document.getElementById("email");
+const pass = document.getElementById("pass");
+const editorPage = document.getElementById("editorPage");
+const listPage = document.getElementById("listPage");
+
+const overview = document.getElementById("overview");
+const eligibility = document.getElementById("eligibility");
+const application = document.getElementById("application");
+const admission = document.getElementById("admission");
+const placements = document.getElementById("placements");
+const scholarships = document.getElementById("scholarships");
+const whyChoose = document.getElementById("whyChoose");
+const facilities = document.getElementById("facilities");
+const recruiters = document.getElementById("recruiters");
+
+const courses = document.getElementById("courses");
+const fees = document.getElementById("fees");
+const cutoffs = document.getElementById("cutoffs");
+const faq = document.getElementById("faq");
+const name = document.getElementById("name");
+const slug = document.getElementById("slug");
+const logo = document.getElementById("logo");
+const title = document.getElementById("title");
+const established = document.getElementById("established");
+const approval = document.getElementById("approval");
+const ranking = document.getElementById("ranking");
+const campusSize = document.getElementById("campusSize");
+const highestPackage = document.getElementById("highestPackage");
+const averagePackage = document.getElementById("averagePackage");
+const publishedList = document.getElementById("publishedList");
+
+
+document.addEventListener("DOMContentLoaded", ()=>{
+
+document.getElementById("loginBtn").addEventListener("click", login);
+ name.addEventListener("input", ()=>{
+   slug.value = name.value
+     .toLowerCase()
+     .replace(/[^a-z0-9 ]/g,"")
+     .replace(/\s+/g,"-");
+ });
+
+});
+
+firebase.auth().onAuthStateChanged(u=>{
+ loginPage.style.display=u?"none":"flex";
+ admin.style.display=u?"block":"none";
+});
+
+function login(){
+  firebase.auth()
+    .signInWithEmailAndPassword(email.value.trim(), pass.value.trim())
+    .then(()=>{
+      console.log("Login success");
+    })
+    .catch(error=>{
+      console.error(error);
+      alert(error.message);
+    });
+}
+
+function openPublished(){
+  currentListType = "published";
+  showList();
+  loadColleges("published");
+}
+
+function openDraft(){
+  currentListType = "draft";
+  showList();
+  loadColleges("draft");
+}
+
+function openNewCollege(){
+  showEditor();
+  clearForm();
+}
+
+function addBullet(id){
+ const input=document.createElement("input");
+ document.getElementById(id).appendChild(input);
+}
+
+function addCourse(){
+ const tr=document.createElement("tr");
+ tr.innerHTML="<td><input></td><td><input></td><td><input></td>";
+ courses.appendChild(tr);
+}
+function addFee(){
+ const tr=document.createElement("tr");
+ tr.innerHTML="<td><input></td><td><input></td>";
+ fees.appendChild(tr);
+}
+function addCutoff(){
+ const tr=document.createElement("tr");
+ tr.innerHTML="<td><input></td><td><input></td>";
+ cutoffs.appendChild(tr);
+}
+
+function getBullets(id){
+ return [...document.getElementById(id).querySelectorAll("input")].map(i=>i.value).filter(v=>v);
+}
+
+function getTable(tableId){
+
+ const table = document.getElementById(tableId);
+ const rows = table.querySelectorAll("tr");
+ const data = [];
+
+ rows.forEach((row,i)=>{
+
+  if(i === 0) return;
+
+  const inputs = row.querySelectorAll("input");
+
+  if(inputs.length === 0) return;
+
+  const rowData = {};
+
+  inputs.forEach((input,index)=>{
+   rowData["col"+index] = input.value.trim();
+  });
+
+  data.push(rowData);
+
+ });
+
+ return data;
+}
+
+function addFAQ(){
+ const tr=document.createElement("tr");
+ tr.innerHTML="<td><input></td><td><input></td>";
+ faq.appendChild(tr);
+}
+
+function editCollege(id){
+
+ currentCollegeId = id;
+
+ db.collection("colleges").doc(id).get().then(doc=>{
+
+   const d = doc.data();
+
+   clearForm();
+   showEditor();
+
+   name.value = d.name || "";
+   slug.value = d.slug || "";
+   logo.value = d.logo || "";
+   title.value = d.title || "";
+
+   established.value = d.established || "";
+   approval.value = d.approval || "";
+   ranking.value = d.ranking || "";
+   campusSize.value = d.campusSize || "";
+   highestPackage.value = d.highestPackage || "";
+   averagePackage.value = d.averagePackage || "";
+
+
+
+   // BULLET SECTIONS
+   function loadBullets(id,data){
+     if(!data) return;
+     data.forEach(item=>{
+       const input=document.createElement("input");
+       input.value=item;
+       document.getElementById(id).appendChild(input);
+     });
+   }
+
+   loadBullets("overview",d.overview);
+   loadBullets("eligibility",d.eligibility);
+   loadBullets("application",d.application);
+   loadBullets("admission",d.admission);
+   loadBullets("placements",d.placements);
+   loadBullets("scholarships",d.scholarships);
+   loadBullets("whyChoose",d.whyChoose);
+   loadBullets("facilities",d.facilities);
+   loadBullets("recruiters",d.recruiters);
+
+
+   // COURSES TABLE
+   if(d.courses){
+ d.courses.forEach(row=>{
+   const tr=document.createElement("tr");
+   tr.innerHTML=`
+   <td><input value="${row.col0||""}"></td>
+   <td><input value="${row.col1||""}"></td>
+   <td><input value="${row.col2||""}"></td>`;
+   courses.appendChild(tr);
+ });
+}
+
+
+   // FEES TABLE
+   if(d.fees){
+ d.fees.forEach(row=>{
+   const tr=document.createElement("tr");
+   tr.innerHTML=`
+   <td><input value="${row.col0||""}"></td>
+   <td><input value="${row.col1||""}"></td>`;
+   fees.appendChild(tr);
+ });
+}
+
+
+   // CUTOFF TABLE
+   if(d.cutoffs){
+ d.cutoffs.forEach(row=>{
+   const tr=document.createElement("tr");
+   tr.innerHTML=`
+   <td><input value="${row.col0||""}"></td>
+   <td><input value="${row.col1||""}"></td>`;
+   cutoffs.appendChild(tr);
+ });
+}
+
+
+   // FAQ TABLE
+   if(d.faq){
+ d.faq.forEach(row=>{
+   const tr=document.createElement("tr");
+   tr.innerHTML=`
+   <td><input value="${row.col0||""}"></td>
+   <td><input value="${row.col1||""}"></td>`;
+   faq.appendChild(tr);
+ });
+}
+
+   alert("College loaded for editing");
+
+ });
+}
+
+function deleteCollege(id){
+
+ if(confirm("Delete this college?")){
+   db.collection("colleges").doc(id).delete()
+     .then(()=>{
+       alert("Deleted");
+       loadColleges(currentListType);
+     });
+ }
+
+}
+
+function clearForm(){
+ document.querySelectorAll(".main input").forEach(i=>i.value="");
+
+ overview.innerHTML="";
+ eligibility.innerHTML="";
+ application.innerHTML="";
+ admission.innerHTML="";
+ placements.innerHTML="";
+ scholarships.innerHTML="";
+ whyChoose.innerHTML="";
+ facilities.innerHTML="";
+ recruiters.innerHTML="";
+
+ document.getElementById("courses").innerHTML="<tr><th>Course</th><th>Duration</th><th>Exam</th></tr>";
+ document.getElementById("fees").innerHTML="<tr><th>Course</th><th>Total Fees</th></tr>";
+ document.getElementById("cutoffs").innerHTML="<tr><th>Exam</th><th>Percentile</th></tr>";
+ document.getElementById("faq").innerHTML="<tr><th>Question</th><th>Answer</th></tr>";
+}
+
+function saveCollege(type){
+
+ const nameInput = document.getElementById("name");
+ const slugInput = document.getElementById("slug");
+ const logoInput = document.getElementById("logo");
+ const titleInput = document.getElementById("title");
+ const establishedInput = document.getElementById("established");
+ const approvalInput = document.getElementById("approval");
+ const rankingInput = document.getElementById("ranking");
+ const campusSizeInput = document.getElementById("campusSize");
+ const highestPackageInput = document.getElementById("highestPackage");
+ const averagePackageInput = document.getElementById("averagePackage");
+
+ const slugVal = slugInput.value.trim();
+
+ if(!nameInput.value.trim()) return alert("College Name required");
+ if(!slugVal) return alert("Slug required");
+
+ const safe = v => v || "";
+
+ const docId = currentCollegeId || slugVal;
+
+ db.collection("colleges").doc(docId).set({
+
+  name: safe(nameInput.value),
+  slug: slugVal,
+  logo: safe(logoInput.value),
+  title: safe(titleInput.value),
+
+  established: safe(establishedInput.value),
+  approval: safe(approvalInput.value),
+  ranking: safe(rankingInput.value),
+  campusSize: safe(campusSizeInput.value),
+  highestPackage: safe(highestPackageInput.value),
+  averagePackage: safe(averagePackageInput.value),
+
+  overview: getBullets("overview"),
+  courses: getTable("courses"),
+  eligibility: getBullets("eligibility"),
+  application: getBullets("application"),
+  admission: getBullets("admission"),
+  fees: getTable("fees"),
+  cutoffs: getTable("cutoffs"),
+  placements: getBullets("placements"),
+  scholarships: getBullets("scholarships"),
+  whyChoose: getBullets("whyChoose"),
+  facilities: getBullets("facilities"),
+  recruiters: getBullets("recruiters"),
+  faq: getTable("faq"),
+
+  status: type,
+
+  publishedAt: firebase.firestore.FieldValue.serverTimestamp()
+
+}).then(()=>{
+
+   if(type === "draft"){
+     alert("Draft Saved ✅");
+   } else {
+     alert("College Published 🚀");
+   }
+
+   clearForm();
+   currentCollegeId = null;
+
+}).catch(error=>{
+   console.error("Save error:", error);
+   alert("Error saving college. Check console.");
+});
+
+}
+
+function showEditor(){
+  editorPage.style.display="block";
+  listPage.style.display="none";
+}
+
+function showList(){
+  editorPage.style.display="none";
+  listPage.style.display="block";
+}
+
+function loadColleges(type){
+
+ db.collection("colleges")
+  .where("status","==",type)
+  .orderBy("publishedAt","desc")
+  .get()
+  .then(snapshot=>{
+
+   if(snapshot.empty){
+     publishedList.innerHTML=`<h3>No ${type} colleges yet</h3>`;
+     return;
+   }
+
+   publishedList.innerHTML=`<h3>${type.toUpperCase()} COLLEGES</h3>`;
+
+   snapshot.forEach(doc=>{
+     const d=doc.data();
+
+     publishedList.innerHTML+=`
+       <div style="padding:10px;border-bottom:1px solid #eee;">
+         <b>${d.name}</b><br>
+         <button onclick="editCollege('${doc.id}')">Edit</button>
+         <button onclick="deleteCollege('${doc.id}')">Delete</button>
+       </div>
+     `;
+   });
+
+  })
+  .catch(error=>{
+    console.error(error);
+    alert("Error loading colleges");
+  });
+}
+
+function logout(){
+  firebase.auth().signOut()
+    .then(()=>{
+      alert("Logged out successfully");
+    })
+    .catch(error=>{
+      console.error(error);
+      alert(error.message);
+    });
+}
+
+
+</script>
+
+</body>
+</html>
