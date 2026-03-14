@@ -35,6 +35,26 @@ margin:auto;
 padding:20px;
 }
 
+/* COLLEGE BANNER IMAGE */
+
+.collegeBanner{
+width:100%;
+height:320px;
+border-radius:14px;
+overflow:hidden;
+background:linear-gradient(135deg,#dfe7ff,#eef3ff);
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
+margin-bottom:20px;
+display:none;
+}
+
+.collegeBanner img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
 /* COLLEGE HEADER */
 
 .collegeHero{
@@ -54,6 +74,7 @@ height:80px;
 object-fit:contain;
 border-radius:8px;
 background:#fff;
+display:none;
 }
 
 .heroText h1{
@@ -198,6 +219,10 @@ padding:15px;
 
 .section{
 padding:20px;
+}
+
+.collegeBanner{
+height:220px;
 }
 
 }
@@ -365,8 +390,12 @@ object-fit:contain;
 
 <div class="contentArea">
 
-<!-- HERO -->
+<!-- HERO IMAGE -->
+<div class="collegeBanner" id="collegeBanner">
+  <img id="collegeImage" src="" alt="College Image">
+</div>
 
+<!-- HERO -->
 <div class="collegeHero">
 
 <img id="collegeLogo" src="" alt="College Logo">
@@ -564,19 +593,29 @@ return;
 
 const d=doc.data();
 
-if(d.logo){
-document.getElementById("collegeLogo").src = d.logo;
+/* HERO IMAGE */
+if(d.image){
+  document.getElementById("collegeImage").src = d.image;
+  document.getElementById("collegeBanner").style.display = "block";
 }
-document.getElementById("collegeName").innerText=d.name;
-document.getElementById("collegeLocation").innerText = d.location;
+
+/* LOGO */
+if(d.logo){
+  document.getElementById("collegeLogo").src = d.logo;
+  document.getElementById("collegeLogo").style.display = "block";
+}
+
+/* TITLE + LOCATION */
+document.getElementById("collegeName").innerText = d.title || d.name || "";
+document.getElementById("collegeLocation").innerText = d.location || "";
 
 document.getElementById("established").innerText = d.established || "";
 document.getElementById("approval").innerText = d.approval || "";
 document.getElementById("campusSize").innerText = d.campusSize || "";
 document.getElementById("highestPackage").innerText = d.highestPackage || "";
 document.getElementById("averagePackage").innerText = d.averagePackage || "";
-/* OVERVIEW */
 
+/* OVERVIEW */
 if(d.overview){
 d.overview.forEach(item=>{
 const li=document.createElement("li");
@@ -584,7 +623,6 @@ li.innerText=item;
 document.getElementById("overview").appendChild(li);
 });
 }
-
 
 ["eligibility","application","admission","scholarships","whyChoose"]
 .forEach(section=>{
@@ -604,9 +642,7 @@ document.getElementById(section).appendChild(li);
 
 });
 
-
 /* COURSES */
-
 document.getElementById("courses").innerHTML=`
 <tr>
 <th>Course</th>
@@ -628,7 +664,6 @@ document.getElementById("courses").appendChild(tr);
 }
 
 /* FEES */
-
 document.getElementById("fees").innerHTML=`
 <tr>
 <th>Course</th>
@@ -646,7 +681,6 @@ tr.innerHTML=`
 document.getElementById("fees").appendChild(tr);
 });
 }
-
 
 document.getElementById("cutoffs").innerHTML=`
 <tr>
@@ -672,11 +706,7 @@ document.getElementById("cutoffs").appendChild(tr);
 
 }
 
-
 /* LIST SECTIONS */
-
-/* LIST SECTIONS */
-
 ["placements","facilities"].forEach(section=>{
 
 if(d[section]){
@@ -691,10 +721,7 @@ document.getElementById(section).appendChild(li);
 
 });
 
-/* RECRUITERS GRID */
-
 /* RECRUITERS */
-
 if(d.recruiters){
 
 d.recruiters.forEach(company=>{
@@ -709,7 +736,6 @@ document.getElementById("recruiters").appendChild(li);
 }
 
 /* FAQ ACCORDION */
-
 const faqContainer = document.getElementById("faqContainer");
 
 if(d.faq){
@@ -764,9 +790,7 @@ icon.textContent="−";
 
 });  // closes the Firestore .then()
 
-
 /* LEAD FORM SUBMIT */
-
 document.getElementById("leadBtn").addEventListener("click",function(){
 
 const name = document.getElementById("leadName").value.trim();
@@ -774,14 +798,12 @@ const phone = document.getElementById("leadPhone").value.trim();
 const city = document.getElementById("leadCity").value.trim();
 
 /* NAME VALIDATION */
-
 if(name.length < 2){
 alert("Please enter a valid name");
 return;
 }
 
 /* PHONE VALIDATION */
-
 const phoneRegex = /^[0-9]{10}$/;
 
 if(!phoneRegex.test(phone)){
@@ -821,7 +843,6 @@ document.getElementById("leadCity").value="";
 });
 
 });
-
 
 </script>
 
