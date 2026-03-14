@@ -1,57 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>All Colleges</title>
+  <meta charset="UTF-8">
+  <title>All Colleges</title>
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 </head>
 
-<body>
+<body style="font-family: Arial, sans-serif; margin: 30px;">
 
-<h1>All Colleges</h1>
+  <h1>All Colleges</h1>
+  <div id="searchInfo" style="margin-bottom:20px; color:#555;"></div>
+  <div id="collegeList"></div>
 
-<div id="collegeList"></div>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCQNocdvSpqjm7ZMcrVYW0Fc-iMycGQO94",
+      authDomain: "swadeshi-shiksha.firebaseapp.com",
+      projectId: "swadeshi-shiksha"
+    };
 
-<script>
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
 
-const firebaseConfig={
- apiKey:"AIzaSyCQNocdvSpqjm7ZMcrVYW0Fc-iMycGQO94",
- authDomain:"swadeshi-shiksha.firebaseapp.com",
- projectId:"swadeshi-shiksha"
-};
+    const db = firebase.firestore();
+    const list = document.getElementById("collegeList");
+    const searchInfo = document.getElementById("searchInfo");
 
-firebase.initializeApp(firebaseConfig);
-const db=firebase.firestore();
+    const params = new URLSearchParams(window.location.search);
+    const searchQuery = (params.get("search") || "").trim().toLowerCase();
 
-const list=document.getElementById("collegeList");
+    db.collection("colleges")
+      .where("status", "==", "published")
+      .get()
+      .then(snapshot => {
+        list.innerHTML = "";
 
-db.collection("colleges")
-.where("status","==","published")
-.get()
-.then(snapshot=>{
+        let results = [];
 
- snapshot.forEach(doc=>{
+        snapshot.forEach(doc => {
+          const d = doc.data();
+          const collegeName = (d.name || "").toLowerCase();
 
-  const d=doc.data();
+          if (!searchQuery || collegeName.includes(searchQuery)) {
+            results.push({
+              id: doc.id,
+              name: d.name || "Unnamed College"
+            });
+          }
+        });
 
-  const div=document.createElement("div");
+        if (searchQuery) {
+          searchInfo.innerHTML = `Showing results for: <strong>${searchQuery}</strong>`;
+        } else {
+          searchInfo.innerHTML = `Showing all colleges`;
+        }
 
-  div.innerHTML=`
-    <h3>${d.name}</h3>
-    <a href="college.html?slug=${doc.id}">View College</a>
-    <hr>
-  `;
+        if (results.length === 0) {
+          list.innerHTML = "<p>No college found.</p>";
+          return;
+        }
 
-  list.appendChild(div);
+        results.forEach(college => {
+          const div = document.createElement("div");
 
- });
+          div.innerHTML = `
+            <h3>${college.name}</h3>
+            <a href="college.html?slug=${college.id}">View College</a>
+            <hr>
+          `;
 
-});
-
-</script>
+          list.appendChild(div);
+        });
+      })
+      .catch(error => {
+        console.error("Error loading colleges:", error);
+        list.innerHTML = "<p>Error loading colleges.</p>";
+      });
+  </script>
 
 </body>
 </html>
