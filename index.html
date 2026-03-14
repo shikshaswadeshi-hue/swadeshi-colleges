@@ -60,6 +60,7 @@ td,th{border:1px solid #eee;padding:8px}
 <input id="name" placeholder="College Name">
 <input id="slug" placeholder="Slug">
 <input id="logo" placeholder="Logo URL">
+<input id="image" placeholder="College Image URL">
 <input id="title" placeholder="H1 Title">
 <input id="established" placeholder="Established Year">
 <input id="approval" placeholder="Approval (NAAC / AICTE etc)">
@@ -157,6 +158,7 @@ const faq = document.getElementById("faq");
 const name = document.getElementById("name");
 const slug = document.getElementById("slug");
 const logo = document.getElementById("logo");
+const image = document.getElementById("image");
 const title = document.getElementById("title");
 const established = document.getElementById("established");
 const approval = document.getElementById("approval");
@@ -285,6 +287,7 @@ function editCollege(id){
    name.value = d.name || "";
    slug.value = d.slug || "";
    logo.value = d.logo || "";
+   image.value = d.image || "";
    title.value = d.title || "";
 
    established.value = d.established || "";
@@ -406,6 +409,7 @@ function saveCollege(type){
  const nameInput = document.getElementById("name");
  const slugInput = document.getElementById("slug");
  const logoInput = document.getElementById("logo");
+ const imageInput = document.getElementById("image");
  const titleInput = document.getElementById("title");
  const establishedInput = document.getElementById("established");
  const approvalInput = document.getElementById("approval");
@@ -428,6 +432,7 @@ function saveCollege(type){
   name: safe(nameInput.value),
   slug: slugVal,
   logo: safe(logoInput.value),
+  image: safe(imageInput.value),
   title: safe(titleInput.value),
 
   established: safe(establishedInput.value),
