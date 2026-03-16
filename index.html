@@ -48,13 +48,15 @@ td,th{border:1px solid #eee;padding:8px}
 <button onclick="openPublished()">📚 Published</button>
 <button onclick="openDraft()">📝 Drafts</button>
 <button onclick="openNewCollege()">➕ New College</button>
+<button onclick="openNewContentPage()">📄 New Content Page</button>
 <button onclick="logout()">Logout</button>
 </div>
 
 <div class="main">
 
 <div id="editorPage">
-
+<div id="collegeEditor"> 
+ 
 <div class="card">
 <h3>Basic Info</h3>
 <input id="name" placeholder="College Name">
@@ -117,6 +119,50 @@ Publish College
 </div>
 
 </div>
+<div id="contentPageEditor" style="display:none;">
+
+  <div class="card">
+    <h3>Content Page Basic Info</h3>
+    <input id="pageTitle" placeholder="Page Title">
+    <input id="pageSlug" placeholder="Slug">
+    <select id="pageType">
+      <option value="">Select Page Type</option>
+      <option value="exam">Exam</option>
+      <option value="course">Course</option>
+      <option value="city">City</option>
+      <option value="guide">Guide</option>
+    </select>
+    <input id="pageHeroImage" placeholder="Hero Image URL">
+    <textarea id="pageIntroText" placeholder="Intro Text"></textarea>
+  </div>
+
+  <div class="card">
+    <h3>Content Sections</h3>
+    <div id="contentSections"></div>
+
+    <button class="addBtn" onclick="addTextSection()">+ Text Section</button>
+    <button class="addBtn" onclick="addListSection()">+ List Section</button>
+    <button class="addBtn" onclick="addTableSection()">+ Table Section</button>
+    <button class="addBtn" onclick="addLinksSection()">+ Related Links Section</button>
+  </div>
+
+  <div class="card">
+    <button type="button"
+      onclick="saveContentPage('draft')"
+      style="background:#999;color:white;padding:12px 20px;border:none;border-radius:6px;margin-right:10px;">
+      Save Draft
+    </button>
+
+    <button type="button"
+      onclick="saveContentPage('published')"
+      style="background:#2ecc71;color:white;padding:12px 20px;border:none;border-radius:6px;">
+      Publish Content Page
+    </button>
+  </div>
+
+</div> 
+
+</div>
 
 <div id="listPage" style="display:none">
   <div id="publishedList" class="card"></div>
@@ -167,17 +213,38 @@ const campusSize = document.getElementById("campusSize");
 const highestPackage = document.getElementById("highestPackage");
 const averagePackage = document.getElementById("averagePackage");
 const publishedList = document.getElementById("publishedList");
+ 
+ let currentEditorType = "college";
+let currentContentPageId = null;
+
+const collegeEditor = document.getElementById("collegeEditor");
+const contentPageEditor = document.getElementById("contentPageEditor");
+
+const pageTitle = document.getElementById("pageTitle");
+const pageSlug = document.getElementById("pageSlug");
+const pageType = document.getElementById("pageType");
+const pageHeroImage = document.getElementById("pageHeroImage");
+const pageIntroText = document.getElementById("pageIntroText");
+const contentSections = document.getElementById("contentSections");
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
 
-document.getElementById("loginBtn").addEventListener("click", login);
- name.addEventListener("input", ()=>{
-   slug.value = name.value
-     .toLowerCase()
-     .replace(/[^a-z0-9 ]/g,"")
-     .replace(/\s+/g,"-");
- });
+  document.getElementById("loginBtn").addEventListener("click", login);
+
+  name.addEventListener("input", ()=>{
+    slug.value = name.value
+      .toLowerCase()
+      .replace(/[^a-z0-9 ]/g,"")
+      .replace(/\s+/g,"-");
+  });
+
+  pageTitle.addEventListener("input", ()=>{
+    pageSlug.value = pageTitle.value
+      .toLowerCase()
+      .replace(/[^a-z0-9 ]/g,"")
+      .replace(/\s+/g,"-");
+  });
 
 });
 
@@ -201,18 +268,22 @@ function login(){
 function openPublished(){
   currentListType = "published";
   showList();
-  loadColleges("published");
+  loadItems("published");
 }
 
 function openDraft(){
   currentListType = "draft";
   showList();
-  loadColleges("draft");
+  loadItems("draft");
 }
 
 function openNewCollege(){
+  currentEditorType = "college";
+  currentCollegeId = null;
   showEditor();
   clearForm();
+  collegeEditor.style.display = "block";
+  contentPageEditor.style.display = "none";
 }
 
 function addBullet(id){
@@ -283,6 +354,8 @@ function editCollege(id){
 
    clearForm();
    showEditor();
+   collegeEditor.style.display = "block";
+   contentPageEditor.style.display = "none";
 
    name.value = d.name || "";
    slug.value = d.slug || "";
@@ -379,14 +452,14 @@ function deleteCollege(id){
    db.collection("colleges").doc(id).delete()
      .then(()=>{
        alert("Deleted");
-       loadColleges(currentListType);
+       loadItems(currentListType);
      });
  }
 
 }
 
 function clearForm(){
- document.querySelectorAll(".main input").forEach(i=>i.value="");
+ collegeEditor.querySelectorAll("input").forEach(i=>i.value="");
 
  overview.innerHTML="";
  eligibility.innerHTML="";
@@ -488,39 +561,291 @@ function showList(){
   listPage.style.display="block";
 }
 
-function loadColleges(type){
+function loadItems(type){
 
- db.collection("colleges")
-  .where("status","==",type)
-  .orderBy("publishedAt","desc")
-  .get()
-  .then(snapshot=>{
+  publishedList.innerHTML = `<h3>Loading...</h3>`;
 
-   if(snapshot.empty){
-     publishedList.innerHTML=`<h3>No ${type} colleges yet</h3>`;
-     return;
-   }
+  Promise.all([
+    db.collection("colleges")
+      .where("status","==",type)
+      .orderBy("publishedAt","desc")
+      .get(),
 
-   publishedList.innerHTML=`<h3>${type.toUpperCase()} COLLEGES</h3>`;
+    db.collection("contentPages")
+      .where("status","==",type)
+      .orderBy("publishedAt","desc")
+      .get()
+  ])
+  .then(([collegeSnapshot, contentSnapshot])=>{
 
-   snapshot.forEach(doc=>{
-     const d=doc.data();
+    let html = `<h3>${type.toUpperCase()} ITEMS</h3>`;
 
-     publishedList.innerHTML+=`
-       <div style="padding:10px;border-bottom:1px solid #eee;">
-         <b>${d.name}</b><br>
-         <button onclick="editCollege('${doc.id}')">Edit</button>
-         <button onclick="deleteCollege('${doc.id}')">Delete</button>
-       </div>
-     `;
-   });
+    if(collegeSnapshot.empty && contentSnapshot.empty){
+      publishedList.innerHTML = `<h3>No ${type} items yet</h3>`;
+      return;
+    }
+
+    if(!collegeSnapshot.empty){
+      html += `<h4>Colleges</h4>`;
+      collegeSnapshot.forEach(doc=>{
+        const d = doc.data();
+        html += `
+          <div style="padding:10px;border-bottom:1px solid #eee;">
+            <b>${d.name || "Untitled College"}</b><br>
+            <small>Slug: ${d.slug || ""}</small><br>
+            <button onclick="editCollege('${doc.id}')">Edit</button>
+            <button onclick="deleteCollege('${doc.id}')">Delete</button>
+          </div>
+        `;
+      });
+    }
+
+    if(!contentSnapshot.empty){
+      html += `<h4 style="margin-top:20px;">Content Pages</h4>`;
+      contentSnapshot.forEach(doc=>{
+        const d = doc.data();
+        html += `
+          <div style="padding:10px;border-bottom:1px solid #eee;">
+            <b>${d.title || "Untitled Page"}</b><br>
+            <small>Type: ${d.pageType || ""}</small><br>
+            <small>Slug: ${d.slug || ""}</small><br>
+            <button onclick="editContentPage('${doc.id}')">Edit</button>
+            <button onclick="deleteContentPage('${doc.id}')">Delete</button>
+          </div>
+        `;
+      });
+    }
+
+    publishedList.innerHTML = html;
 
   })
   .catch(error=>{
     console.error(error);
-    alert("Error loading colleges");
+    alert("Error loading items");
   });
 }
+
+
+function openNewContentPage(){
+  currentEditorType = "content";
+  currentContentPageId = null;
+  showEditor();
+  clearContentPageForm();
+  collegeEditor.style.display = "none";
+  contentPageEditor.style.display = "block";
+}
+
+function clearContentPageForm(){
+  pageTitle.value = "";
+  pageSlug.value = "";
+  pageType.value = "";
+  pageHeroImage.value = "";
+  pageIntroText.value = "";
+  contentSections.innerHTML = "";
+}
+
+function addTextSection(){
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerHTML = `
+    <input class="sectionHeading" placeholder="Section Heading">
+    <textarea class="sectionText" placeholder="Section Text"></textarea>
+  `;
+  contentSections.appendChild(div);
+}
+
+function addListSection(){
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerHTML = `
+    <input class="sectionHeading" placeholder="List Heading">
+    <textarea class="sectionList" placeholder="One point per line"></textarea>
+  `;
+  contentSections.appendChild(div);
+}
+
+function addTableSection(){
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerHTML = `
+    <input class="sectionHeading" placeholder="Table Heading">
+    <textarea class="sectionTable" placeholder="Write rows like this:\nCollege | Percentile | Notes"></textarea>
+  `;
+  contentSections.appendChild(div);
+}
+
+function addLinksSection(){
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerHTML = `
+    <input class="sectionHeading" placeholder="Links Section Heading">
+    <textarea class="sectionLinks" placeholder="Write like this:\nIILM Greater Noida | /college/iilm-greater-noida\nISBR Bangalore | /college/isbr-bangalore"></textarea>
+  `;
+  contentSections.appendChild(div);
+}
+
+function getContentSectionsData(){
+  const sections = [];
+  const boxes = contentSections.querySelectorAll(".card");
+
+  boxes.forEach(box => {
+    const heading = box.querySelector(".sectionHeading")?.value.trim() || "";
+
+    if(box.querySelector(".sectionText")){
+      sections.push({
+        type: "text",
+        heading: heading,
+        text: box.querySelector(".sectionText").value.trim()
+      });
+    }
+
+    else if(box.querySelector(".sectionList")){
+      sections.push({
+        type: "list",
+        heading: heading,
+        items: box.querySelector(".sectionList").value
+          .split("\n")
+          .map(x => x.trim())
+          .filter(x => x)
+      });
+    }
+
+    else if(box.querySelector(".sectionTable")){
+      sections.push({
+        type: "table",
+        heading: heading,
+        rows: box.querySelector(".sectionTable").value
+          .split("\n")
+          .map(x => x.trim())
+          .filter(x => x)
+      });
+    }
+
+    else if(box.querySelector(".sectionLinks")){
+      sections.push({
+        type: "links",
+        heading: heading,
+        links: box.querySelector(".sectionLinks").value
+          .split("\n")
+          .map(x => x.trim())
+          .filter(x => x)
+      });
+    }
+  });
+
+  return sections;
+}
+
+function saveContentPage(status){
+  const titleVal = pageTitle.value.trim();
+  const slugVal = pageSlug.value.trim();
+
+  if(!titleVal) return alert("Page Title required");
+  if(!slugVal) return alert("Page Slug required");
+  if(!pageType.value) return alert("Please select page type");
+
+  const docId = currentContentPageId || slugVal;
+
+  db.collection("contentPages").doc(docId).set({
+    title: titleVal,
+    slug: slugVal,
+    pageType: pageType.value,
+    heroImage: pageHeroImage.value.trim(),
+    introText: pageIntroText.value.trim(),
+    sections: getContentSectionsData(),
+    status: status,
+    publishedAt: firebase.firestore.FieldValue.serverTimestamp()
+  }).then(() => {
+    alert(status === "draft" ? "Content Page Draft Saved ✅" : "Content Page Published 🚀");
+    clearContentPageForm();
+    currentContentPageId = null;
+  }).catch(error => {
+    console.error(error);
+    alert("Error saving content page");
+  });
+} 
+
+
+function deleteContentPage(id){
+  if(confirm("Delete this content page?")){
+    db.collection("contentPages").doc(id).delete()
+      .then(()=>{
+        alert("Content page deleted");
+        loadItems(currentListType);
+      })
+      .catch(error=>{
+        console.error(error);
+        alert("Error deleting content page");
+      });
+  }
+}
+
+function editContentPage(id){
+  currentContentPageId = id;
+  currentEditorType = "content";
+
+  db.collection("contentPages").doc(id).get().then(doc=>{
+
+    const d = doc.data();
+    if(!d) return alert("Content page not found");
+
+    showEditor();
+    clearContentPageForm();
+    collegeEditor.style.display = "none";
+    contentPageEditor.style.display = "block";
+
+    pageTitle.value = d.title || "";
+    pageSlug.value = d.slug || "";
+    pageType.value = d.pageType || "";
+    pageHeroImage.value = d.heroImage || "";
+    pageIntroText.value = d.introText || "";
+
+    if(d.sections){
+      d.sections.forEach(section=>{
+
+        const div = document.createElement("div");
+        div.className = "card";
+
+        if(section.type === "text"){
+          div.innerHTML = `
+            <input class="sectionHeading" placeholder="Section Heading" value="${section.heading || ""}">
+            <textarea class="sectionText" placeholder="Section Text">${section.text || ""}</textarea>
+          `;
+        }
+
+        if(section.type === "list"){
+          div.innerHTML = `
+            <input class="sectionHeading" placeholder="List Heading" value="${section.heading || ""}">
+            <textarea class="sectionList" placeholder="One point per line">${(section.items || []).join("\n")}</textarea>
+          `;
+        }
+
+        if(section.type === "table"){
+          div.innerHTML = `
+            <input class="sectionHeading" placeholder="Table Heading" value="${section.heading || ""}">
+            <textarea class="sectionTable" placeholder="Write rows like this:\nCollege | Percentile | Notes">${(section.rows || []).join("\n")}</textarea>
+          `;
+        }
+
+        if(section.type === "links"){
+          div.innerHTML = `
+            <input class="sectionHeading" placeholder="Links Section Heading" value="${section.heading || ""}">
+            <textarea class="sectionLinks" placeholder="Write like this:\nIILM Greater Noida | /college/iilm-greater-noida">${(section.links || []).join("\n")}</textarea>
+          `;
+        }
+
+        contentSections.appendChild(div);
+
+      });
+    }
+
+    alert("Content page loaded for editing");
+
+  }).catch(error=>{
+    console.error(error);
+    alert("Error loading content page");
+  });
+} 
 
 function logout(){
   firebase.auth().signOut()
