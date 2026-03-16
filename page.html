@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Content Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f8f7f2;
+  color:#16202f;
+}
+
+a{
+  text-decoration:none;
+  color:#1d63c6;
+}
+
+.page{
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px 18px 60px;
+}
+
+.topBar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:22px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brandLogo{
+  width:58px;
+  height:58px;
+  border-radius:16px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  box-shadow:0 10px 20px rgba(22,32,47,0.08);
+  padding:6px;
+}
+
+.brandLogo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.brandText strong{
+  display:block;
+  font-size:20px;
+}
+
+.brandText span{
+  display:block;
+  font-size:13px;
+  color:#667085;
+  margin-top:3px;
+}
+
+.homeBtn{
+  background:linear-gradient(135deg,#ff6a00 0%,#ff8f1f 100%);
+  color:white;
+  border:none;
+  border-radius:999px;
+  padding:12px 18px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.hero{
+  background:linear-gradient(135deg,#fff8ef 0%,#fff3e6 38%,#eef8ea 100%);
+  border:1px solid #f1e4d3;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 20px 45px rgba(22,32,47,0.08);
+  margin-bottom:26px;
+}
+
+.heroImageWrap{
+  width:100%;
+  height:320px;
+  background:linear-gradient(135deg,#e3ecff 0%,#f8fbff 100%);
+  display:none;
+}
+
+.heroImageWrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.heroContent{
+  padding:28px;
+}
+
+.heroBadge{
+  display:inline-block;
+  padding:9px 14px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid #eadfce;
+  color:#168b10;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+.heroContent h1{
+  margin:0 0 14px;
+  font-size:42px;
+  line-height:1.1;
+  color:#16202f;
+}
+
+.heroIntro{
+  font-size:17px;
+  line-height:1.8;
+  color:#4f5b67;
+}
+
+.section{
+  background:#fff;
+  border:1px solid #ece3d8;
+  border-radius:24px;
+  padding:24px;
+  margin-bottom:22px;
+  box-shadow:0 12px 28px rgba(16,24,40,0.05);
+}
+
+.section h2{
+  margin:0 0 12px;
+  font-size:28px;
+  color:#16202f;
+}
+
+.section p{
+  margin:0;
+  line-height:1.8;
+  color:#4f5b67;
+  white-space:pre-line;
+}
+
+.sectionIntro{
+  margin-bottom:14px;
+  color:#667085;
+  line-height:1.75;
+}
+
+ul{
+  margin:0;
+  padding-left:20px;
+}
+
+li{
+  margin-bottom:10px;
+  line-height:1.75;
+  color:#344054;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+th,td{
+  border:1px solid #ece3d8;
+  padding:12px;
+  text-align:left;
+  vertical-align:top;
+}
+
+th{
+  background:#fff6ec;
+  color:#16202f;
+}
+
+.relatedLinks{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.relatedLink{
+  display:block;
+  padding:14px 16px;
+  border-radius:14px;
+  background:#fffaf4;
+  border:1px solid #efe4d8;
+  font-weight:600;
+}
+
+.ctaBox{
+  background:linear-gradient(135deg,#16202f 0%,#1d63c6 100%);
+  color:white;
+  border-radius:24px;
+  padding:28px 22px;
+  text-align:center;
+  box-shadow:0 18px 38px rgba(16,24,40,0.18);
+}
+
+.ctaBox h3{
+  margin:0 0 10px;
+  font-size:28px;
+}
+
+.ctaBox p{
+  margin:0 0 16px;
+  line-height:1.75;
+  color:rgba(255,255,255,0.9);
+}
+
+.ctaBtn{
+  border:none;
+  background:linear-gradient(135deg,#ff6a00 0%,#ff8f1f 100%);
+  color:white;
+  border-radius:999px;
+  padding:13px 20px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.emptyState{
+  background:#fff;
+  border:1px solid #ece3d8;
+  border-radius:24px;
+  padding:40px 24px;
+  text-align:center;
+  box-shadow:0 12px 28px rgba(16,24,40,0.05);
+}
+
+@media (max-width:768px){
+  .heroImageWrap{
+    height:220px;
+  }
+
+  .heroContent h1{
+    font-size:30px;
+  }
+
+  .section{
+    padding:20px;
+  }
+
+  .section h2{
+    font-size:24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="topBar">
+    <div class="brand">
+      <div class="brandLogo">
+        <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+      </div>
+      <div class="brandText">
+        <strong>Swadeshi Shiksha</strong>
+        <span>Aaj Select Karo, Kal Shine Karo</span>
+      </div>
+    </div>
+
+    <button class="homeBtn" onclick="window.location.href='https://www.swadeshi-shiksha.com'">
+      Back to Home
+    </button>
+  </div>
+
+  <div id="pageContent">
+    <div class="emptyState">Loading page...</div>
+  </div>
+
+</div>
+
+<script>
+const firebaseConfig = {
+  apiKey:"AIzaSyCQNocdvSpqjm7ZMcrVYW0Fc-iMycGQO94",
+  authDomain:"swadeshi-shiksha.firebaseapp.com",
+  projectId:"swadeshi-shiksha"
+};
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+const db = firebase.firestore();
+const pageContent = document.getElementById("pageContent");
+
+const params = new URLSearchParams(window.location.search);
+const slug = params.get("slug");
+
+if(!slug){
+  pageContent.innerHTML = `
+    <div class="emptyState">
+      <h2>Page not found</h2>
+      <p>Missing page slug.</p>
+    </div>
+  `;
+} else {
+  db.collection("contentPages").doc(slug).get().then(doc => {
+    if(!doc.exists){
+      pageContent.innerHTML = `
+        <div class="emptyState">
+          <h2>Page not found</h2>
+          <p>No content page found for this slug.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const d = doc.data();
+    renderContentPage(d);
+  }).catch(error => {
+    console.error(error);
+    pageContent.innerHTML = `
+      <div class="emptyState">
+        <h2>Error loading page</h2>
+        <p>Please refresh and try again.</p>
+      </div>
+    `;
+  });
+}
+
+function parseTableRows(rows){
+  return (rows || []).map(row => row.split("|").map(x => x.trim()));
+}
+
+function parseLinks(lines){
+  return (lines || []).map(line => {
+    const parts = line.split("|");
+    return {
+      label: (parts[0] || "").trim(),
+      url: (parts[1] || "").trim()
+    };
+  }).filter(link => link.label && link.url);
+}
+
+function renderContentPage(data){
+  let html = `
+    <div class="hero">
+      <div class="heroImageWrap" id="heroImageWrap" style="${data.heroImage ? 'display:block;' : 'display:none;'}">
+        <img src="${data.heroImage || ''}" alt="${data.title || ''}">
+      </div>
+
+      <div class="heroContent">
+        <div class="heroBadge">${data.pageType || "Guide"}</div>
+        <h1>${data.title || ""}</h1>
+        <div class="heroIntro">${data.introText || ""}</div>
+      </div>
+    </div>
+  `;
+
+  if(data.sections && data.sections.length){
+    data.sections.forEach(section => {
+
+      if(section.type === "text"){
+        html += `
+          <div class="section">
+            <h2>${section.heading || ""}</h2>
+            <p>${section.text || ""}</p>
+          </div>
+        `;
+      }
+
+      if(section.type === "list"){
+        const items = (section.items || []).map(item => `<li>${item}</li>`).join("");
+        html += `
+          <div class="section">
+            <h2>${section.heading || ""}</h2>
+            <ul>${items}</ul>
+          </div>
+        `;
+      }
+
+      if(section.type === "table"){
+        const parsedRows = parseTableRows(section.rows || []);
+        let tableHtml = "";
+
+        if(parsedRows.length){
+          const firstRow = parsedRows[0];
+          const remainingRows = parsedRows.slice(1);
+
+          tableHtml += "<table>";
+          tableHtml += "<tr>" + firstRow.map(col => `<th>${col}</th>`).join("") + "</tr>";
+
+          remainingRows.forEach(row => {
+            tableHtml += "<tr>" + row.map(col => `<td>${col}</td>`).join("") + "</tr>";
+          });
+
+          tableHtml += "</table>";
+        }
+
+        html += `
+          <div class="section">
+            <h2>${section.heading || ""}</h2>
+            ${tableHtml}
+          </div>
+        `;
+      }
+
+      if(section.type === "links"){
+        const links = parseLinks(section.links || []);
+        const linksHtml = links.map(link => `
+          <a class="relatedLink" href="${link.url}" target="_blank" rel="noopener noreferrer">
+            ${link.label}
+          </a>
+        `).join("");
+
+        html += `
+          <div class="section">
+            <h2>${section.heading || ""}</h2>
+            <div class="relatedLinks">${linksHtml}</div>
+          </div>
+        `;
+      }
+
+    });
+  }
+
+  html += `
+    <div class="ctaBox">
+      <h3>Need help with admissions?</h3>
+      <p>
+        Get free counselling support from Swadeshi Shiksha for college shortlisting,
+        admission guidance, and profile clarity.
+      </p>
+      <button class="ctaBtn" onclick="window.location.href='https://YOUR-HOMEPAGE-URL-HERE'">
+        Get Free Counselling
+      </button>
+    </div>
+  `;
+
+  pageContent.innerHTML = html;
+}
+</script>
+
+</body>
+</html>
