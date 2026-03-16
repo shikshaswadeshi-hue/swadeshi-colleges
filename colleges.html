@@ -369,6 +369,13 @@
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
+    .browseChip,
+    .trendChip,
+    .topChip{
+  display:inline-block;
+  text-decoration:none;
+}
+
     .browseChip:hover,
     .trendChip:hover,
     .topChip:hover {
@@ -928,19 +935,19 @@
     </section>
 
     <section class="sectionBlock" id="browseExamSection">
-      <div class="sectionTitle">
-        <h2>Browse by Exam</h2>
-        <p>Inspired by your current exam-led discovery flow</p>
-      </div>
-      <div class="browseWrap">
-        <button class="browseChip" data-search="CAT">CAT</button>
-        <button class="browseChip" data-search="XAT">XAT</button>
-        <button class="browseChip" data-search="NMAT">NMAT</button>
-        <button class="browseChip" data-search="CMAT">CMAT</button>
-        <button class="browseChip" data-search="SNAP">SNAP</button>
-        <button class="browseChip" data-search="MH-CET">MH-CET</button>
-      </div>
-    </section>
+  <div class="sectionTitle">
+    <h2>Browse by Exam</h2>
+    <p>Explore exam-specific guides and accepting colleges</p>
+  </div>
+  <div class="browseWrap">
+    <a class="browseChip" href="page.html?slug=colleges-accepting-cat-2026-scores">CAT</a>
+    <a class="browseChip" href="page.html?slug=colleges-accepting-xat-2026-scores">XAT</a>
+    <a class="browseChip" href="page.html?slug=colleges-accepting-nmat-2026-scores">NMAT</a>
+    <a class="browseChip" href="page.html?slug=colleges-accepting-cmat-2026-scores">CMAT</a>
+    <a class="browseChip" href="page.html?slug=colleges-accepting-snap-2026-scores">SNAP</a>
+    <a class="browseChip" href="page.html?slug=colleges-accepting-mh-cet-2026-scores">MH-CET</a>
+  </div>
+</section>
 
     <section class="sectionBlock" id="browseCitySection">
       <div class="sectionTitle">
