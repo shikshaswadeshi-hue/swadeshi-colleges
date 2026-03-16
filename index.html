@@ -19,6 +19,13 @@ body{margin:0;font-family:Quicksand;background:#f4f6fb}
 .main{flex:1;padding:30px}
 .card{background:#fff;padding:20px;border-radius:10px;margin-bottom:20px}
 input,textarea,select{width:100%;padding:10px;margin:8px 0;border:1px solid #ddd;border-radius:6px}
+
+ textarea{
+  min-height:120px;
+  resize:vertical;
+  line-height:1.5;
+} 
+ 
 table{width:100%;border-collapse:collapse;margin-top:10px}
 td,th{border:1px solid #eee;padding:8px}
 .addBtn{margin-top:8px;padding:6px 12px;cursor:pointer}
@@ -648,8 +655,12 @@ function addTextSection(){
   const div = document.createElement("div");
   div.className = "card";
   div.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+      <h4 style="margin:0;">Text Section</h4>
+      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
+    </div>
     <input class="sectionHeading" placeholder="Section Heading">
-    <textarea class="sectionText" placeholder="Section Text"></textarea>
+    <textarea class="sectionText" placeholder="Write full section text here..." rows="6"></textarea>
   `;
   contentSections.appendChild(div);
 }
@@ -658,8 +669,12 @@ function addListSection(){
   const div = document.createElement("div");
   div.className = "card";
   div.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+      <h4 style="margin:0;">List Section</h4>
+      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
+    </div>
     <input class="sectionHeading" placeholder="List Heading">
-    <textarea class="sectionList" placeholder="One point per line"></textarea>
+    <textarea class="sectionList" placeholder="Write one point per line..." rows="8"></textarea>
   `;
   contentSections.appendChild(div);
 }
@@ -668,8 +683,15 @@ function addTableSection(){
   const div = document.createElement("div");
   div.className = "card";
   div.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+      <h4 style="margin:0;">Table Section</h4>
+      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
+    </div>
     <input class="sectionHeading" placeholder="Table Heading">
-    <textarea class="sectionTable" placeholder="Write rows like this:\nCollege | Percentile | Notes"></textarea>
+    <textarea class="sectionTable" placeholder="Write rows like this:
+XAT Percentile | College Type
+95-99+ | XLRI, SPJIMR, XIM
+85-95 | IMT, TAPMI, GIM" rows="8"></textarea>
   `;
   contentSections.appendChild(div);
 }
@@ -678,8 +700,14 @@ function addLinksSection(){
   const div = document.createElement("div");
   div.className = "card";
   div.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+      <h4 style="margin:0;">Related Links Section</h4>
+      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
+    </div>
     <input class="sectionHeading" placeholder="Links Section Heading">
-    <textarea class="sectionLinks" placeholder="Write like this:\nIILM Greater Noida | /college/iilm-greater-noida\nISBR Bangalore | /college/isbr-bangalore"></textarea>
+    <textarea class="sectionLinks" placeholder="Write like this:
+XLRI Jamshedpur | college.html?slug=xlri-jamshedpur
+CAT Exam | page.html?slug=cat-exam" rows="8"></textarea>
   `;
   contentSections.appendChild(div);
 }
@@ -807,32 +835,51 @@ function editContentPage(id){
         div.className = "card";
 
         if(section.type === "text"){
-          div.innerHTML = `
-            <input class="sectionHeading" placeholder="Section Heading" value="${section.heading || ""}">
-            <textarea class="sectionText" placeholder="Section Text">${section.text || ""}</textarea>
-          `;
-        }
+  div.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+      <h4 style="margin:0;">Text Section</h4>
+      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
+    </div>
+    <input class="sectionHeading" placeholder="Section Heading" value="${section.heading || ""}">
+    <textarea class="sectionText" placeholder="Section Text" rows="6">${section.text || ""}</textarea>
+  `;
+}
 
         if(section.type === "list"){
-          div.innerHTML = `
-            <input class="sectionHeading" placeholder="List Heading" value="${section.heading || ""}">
-            <textarea class="sectionList" placeholder="One point per line">${(section.items || []).join("\n")}</textarea>
-          `;
-        }
+  div.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+      <h4 style="margin:0;">List Section</h4>
+      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
+    </div>
+    <input class="sectionHeading" placeholder="List Heading" value="${section.heading || ""}">
+    <textarea class="sectionList" placeholder="One point per line" rows="8">${(section.items || []).join("\n")}</textarea>
+  `;
+}
 
         if(section.type === "table"){
-          div.innerHTML = `
-            <input class="sectionHeading" placeholder="Table Heading" value="${section.heading || ""}">
-            <textarea class="sectionTable" placeholder="Write rows like this:\nCollege | Percentile | Notes">${(section.rows || []).join("\n")}</textarea>
-          `;
-        }
+  div.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+      <h4 style="margin:0;">Table Section</h4>
+      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
+    </div>
+    <input class="sectionHeading" placeholder="Table Heading" value="${section.heading || ""}">
+    <textarea class="sectionTable" placeholder="Write rows like this:
+XAT Percentile | College Type
+95-99+ | XLRI, SPJIMR, XIM" rows="8">${(section.rows || []).join("\n")}</textarea>
+  `;
+}
 
         if(section.type === "links"){
-          div.innerHTML = `
-            <input class="sectionHeading" placeholder="Links Section Heading" value="${section.heading || ""}">
-            <textarea class="sectionLinks" placeholder="Write like this:\nIILM Greater Noida | /college/iilm-greater-noida">${(section.links || []).join("\n")}</textarea>
-          `;
-        }
+  div.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+      <h4 style="margin:0;">Related Links Section</h4>
+      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
+    </div>
+    <input class="sectionHeading" placeholder="Links Section Heading" value="${section.heading || ""}">
+    <textarea class="sectionLinks" placeholder="Write like this:
+IILM Greater Noida | college.html?slug=iilm-greater-noida" rows="8">${(section.links || []).join("\n")}</textarea>
+  `;
+}
 
         contentSections.appendChild(div);
 
