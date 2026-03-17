@@ -346,13 +346,17 @@
     }
 
     .browseWrap,
-    .trendingWrap,
-    .topStrip {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
+.trendingWrap,
+.topStrip {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.topStrip{
+  margin: 10px 0 34px;
+}
 
     .browseChip,
     .trendChip,
@@ -383,34 +387,49 @@
       box-shadow: 0 12px 20px rgba(0,0,0,0.07);
     }
 
-    .whyGrid,
-    .featuredGrid,
-    .resultsGrid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
+    .whyCarousel{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:8px;
+  scrollbar-width:none;
+}
 
-    .whyCard {
-      background: linear-gradient(135deg, #ffffff 0%, #fffdf9 100%);
-      border: 1px solid #eee3d6;
-      border-radius: 24px;
-      padding: 22px;
-      box-shadow: 0 12px 28px rgba(16,24,40,0.05);
-    }
+.whyCarousel::-webkit-scrollbar{
+  display:none;
+}
 
-    .whyCard h3 {
-      margin: 0 0 10px;
-      font-size: 22px;
-      color: #16202f;
-    }
+.whyCard{
+  min-width:320px;
+  max-width:320px;
+  flex:0 0 320px;
+  scroll-snap-align:start;
+  background:linear-gradient(135deg, #ffffff 0%, #fffdf9 100%);
+  border:1px solid #eee3d6;
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 12px 28px rgba(16,24,40,0.05);
+  transition:transform 0.18s ease, box-shadow 0.18s ease;
+}
 
-    .whyCard p {
-      margin: 0;
-      color: #667085;
-      line-height: 1.75;
-      font-size: 15px;
-    }
+.whyCard:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 34px rgba(16,24,40,0.08);
+}
+
+.whyCard h3{
+  margin:0 0 10px;
+  font-size:22px;
+  color:#16202f;
+}
+
+.whyCard p{
+  margin:0;
+  color:#667085;
+  line-height:1.75;
+  font-size:15px;
+}
 
     .resultsHeader {
       display: flex;
@@ -894,12 +913,11 @@
 }
 
     @media (max-width: 980px) {
-      .whyGrid,
       .featuredGrid,
-      .resultsGrid,
-      .footerGrid {
-        grid-template-columns: 1fr;
-      }
+.resultsGrid,
+.footerGrid {
+  grid-template-columns: 1fr;
+}
 
       .guidesGrid{
   grid-template-columns:1fr;
@@ -946,6 +964,12 @@
 
       .heroTrustGrid{
   grid-template-columns:1fr;
+}
+
+      .whyCard{
+  min-width: 86%;
+  max-width: 86%;
+  flex: 0 0 86%;
 }
     }
   </style>
@@ -1124,30 +1148,33 @@
     </div>
 
     <section class="sectionBlock" id="whySection">
-      <div class="sectionTitle">
-        <h2>Why Swadeshi Shiksha</h2>
-        <p>Built around guidance, clarity, and student-first discovery</p>
-      </div>
+  <div class="sectionTitle">
+    <h2>Why Swadeshi Shiksha</h2>
+    <p>Built around guidance, clarity, and student-first discovery</p>
+  </div>
 
-      <div class="whyGrid">
-        <div class="whyCard">
-          <h3>Verified College Profiles</h3>
-          <p>Explore admission-focused college pages with key details like approvals, fees, placements, and basic profile data.</p>
-        </div>
-        <div class="whyCard">
-          <h3>Free Counselling Support</h3>
-          <p>Students can get help with shortlisting, admissions, eligibility clarity, and confusion around exams or direct admission routes.</p>
-        </div>
-        <div class="whyCard">
-          <h3>Search. Compare. Decide.</h3>
-          <p>Use this page to discover colleges by exam, course, city, or name without jumping around multiple pages again and again.</p>
-        </div>
-        <div class="whyCard">
-          <h3>Future-Ready Discovery Portal</h3>
-          <p>This page is designed to evolve into a stronger Swadeshi Shiksha homepage-style experience with search, trust, and lead conversion together.</p>
-        </div>
-      </div>
-    </section>
+  <div class="whyCarousel">
+    <div class="whyCard">
+      <h3>Verified College Profiles</h3>
+      <p>Explore admission-focused college pages with key details like approvals, fees, placements, and basic profile data.</p>
+    </div>
+
+    <div class="whyCard">
+      <h3>Free Counselling Support</h3>
+      <p>Students can get help with shortlisting, admissions, eligibility clarity, and confusion around exams or direct admission routes.</p>
+    </div>
+
+    <div class="whyCard">
+      <h3>Search. Compare. Decide.</h3>
+      <p>Use this page to discover colleges by exam, course, city, or name without jumping around multiple pages again and again.</p>
+    </div>
+
+    <div class="whyCard">
+      <h3>Future-Ready Discovery Portal</h3>
+      <p>This page is designed to evolve into a stronger Swadeshi Shiksha homepage-style experience with search, trust, and lead conversion together.</p>
+    </div>
+  </div>
+</section>
 
     <section class="sectionBlock" id="featuredSection">
       <div class="sectionTitle">
