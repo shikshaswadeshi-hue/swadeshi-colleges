@@ -492,9 +492,10 @@
 
     .featuredGrid,
 .resultsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 22px !important;
+  align-items: start;
 }
 
     .resultsHeader {
@@ -533,6 +534,11 @@
       box-shadow: 0 16px 36px rgba(16, 24, 40, 0.07);
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
+
+    .collegeCard{
+  width: 100%;
+  min-width: 0;
+}
 
     .collegeCard:hover {
       transform: translateY(-6px);
@@ -1000,16 +1006,16 @@
 }
 
     @media (max-width: 980px) {
-      .featuredGrid,
-.resultsGrid,
-.footerGrid {
-  grid-template-columns: 1fr;
-}
+  .featuredGrid,
+  .resultsGrid,
+  .footerGrid {
+    grid-template-columns: 1fr !important;
+  }
 
-      .guidesGrid{
-  grid-template-columns:1fr;
+  .guidesGrid{
+    grid-template-columns:1fr;
+  }
 }
-    }
 
     @media (max-width: 700px) {
       .heroText h1 {
@@ -1378,6 +1384,13 @@
 
     const list = document.getElementById("collegeList");
     const featuredList = document.getElementById("featuredList");
+    list.style.display = "grid";
+list.style.gridTemplateColumns = "repeat(2, minmax(0, 1fr))";
+list.style.gap = "22px";
+
+featuredList.style.display = "grid";
+featuredList.style.gridTemplateColumns = "repeat(2, minmax(0, 1fr))";
+featuredList.style.gap = "22px";
     const searchInfo = document.getElementById("searchInfo");
     const resultsCount = document.getElementById("resultsCount");
     const searchInput = document.getElementById("searchInput");
