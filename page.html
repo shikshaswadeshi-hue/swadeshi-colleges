@@ -436,6 +436,14 @@ a{
   .section h2{
     font-size:24px;
   }
+
+  .heroMeta{
+  grid-template-columns:1fr;
+}
+
+.heroContent{
+  padding:24px;
+}
 }
 
   /* ===== RESTORE BASE UI STYLING ===== */
@@ -569,7 +577,76 @@ tr:hover td{
   display:flex;
   flex-direction:column;
   gap:10px;
-}  
+}
+
+  .breadcrumb{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  margin-bottom:18px;
+  color:#667085;
+}
+
+.breadcrumb a{
+  color:#1d63c6;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.breadcrumb span{
+  color:#667085;
+}
+
+  .heroContent{
+  position:relative;
+  z-index:2;
+  padding:34px;
+}
+
+.heroActions{
+  margin-top:22px;
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUpPop .9s ease .72s forwards;
+}
+
+.heroMeta{
+  margin-top:24px;
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:14px;
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUpPop .9s ease .82s forwards;
+}
+
+.heroMetaItem{
+  background:rgba(255,255,255,0.72);
+  border:1px solid #eadfce;
+  border-radius:18px;
+  padding:14px;
+  backdrop-filter:blur(8px);
+  box-shadow:0 8px 18px rgba(16,24,40,0.05);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.heroMetaItem:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 24px rgba(16,24,40,0.08);
+}
+
+.heroMetaItem strong{
+  display:block;
+  font-size:13px;
+  color:#16202f;
+  margin-bottom:4px;
+}
+
+.heroMetaItem span{
+  font-size:14px;
+  color:#667085;
+}
 </style>
 </head>
 
@@ -665,17 +742,44 @@ function parseLinks(lines){
 
 function renderContentPage(data){
   let html = `
-    <div class="hero">
-      <div class="heroImageWrap" id="heroImageWrap" style="${data.heroImage ? 'display:block;' : 'display:none;'}">
-        <img src="${data.heroImage || ''}" alt="${data.title || ''}">
-      </div>
+  <div class="breadcrumb">
+    <a href="https://www.swadeshi-shiksha.com">Home</a>
+    <span>/</span>
+    <span>${data.title || "Page"}</span>
+  </div>
 
-      <div class="heroContent">
-        <div class="heroBadge">${data.pageType || "Guide"}</div>
-        <h1>${data.title || ""}</h1>
-        <div class="heroIntro">${data.introText || ""}</div>
+  <div class="hero">
+  <div class="heroImageWrap" id="heroImageWrap" style="${data.heroImage ? 'display:block;' : 'display:none;'}">
+    <img src="${data.heroImage || ''}" alt="${data.title || ''}">
+  </div>
+
+  <div class="heroContent">
+    <div class="heroBadge">${data.pageType || "Guide"}</div>
+    <h1>${data.title || ""}</h1>
+    <div class="heroIntro">${data.introText || ""}</div>
+
+    <div class="heroActions">
+      <button class="ctaBtn" onclick="window.location.href='https://www.swadeshi-shiksha.com'">
+        Get Free Counselling
+      </button>
+    </div>
+
+    <div class="heroMeta">
+      <div class="heroMetaItem">
+        <strong>Updated</strong>
+        <span>${data.updatedLabel || "Latest info"}</span>
+      </div>
+      <div class="heroMetaItem">
+        <strong>Category</strong>
+        <span>${data.pageType || "Guide"}</span>
+      </div>
+      <div class="heroMetaItem">
+        <strong>Support</strong>
+        <span>Free counselling available</span>
       </div>
     </div>
+  </div>
+</div>
   `;
 
   if(data.sections && data.sections.length){
