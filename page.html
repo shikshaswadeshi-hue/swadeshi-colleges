@@ -250,6 +250,82 @@ th{
   box-shadow:0 12px 28px rgba(16,24,40,0.05);
 }
 
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softZoom {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animatePage {
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero {
+  animation: fadeUp 0.7s ease both;
+}
+
+.heroImageWrap img {
+  animation: softZoom 0.9s ease both;
+}
+
+.section,
+.relatedPagesBox,
+.ctaBox {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.section.show,
+.relatedPagesBox.show,
+.ctaBox.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.relatedPageCard,
+.relatedLink,
+.ctaBtn,
+.homeBtn {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.relatedPageCard:hover,
+.relatedLink:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(16,24,40,0.08);
+}
+
+.ctaBtn:hover,
+.homeBtn:hover {
+  transform: translateY(-2px);
+}
+
+.heroMetaItem {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.heroMetaItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(16,24,40,0.06);
+}  
+
 @media (max-width:768px){
   .heroImageWrap{
     height:220px;
@@ -272,7 +348,7 @@ th{
 
 <body>
 
-<div class="page">
+<div class="page animatePage">
 
   <div class="topBar">
     <div class="brand">
@@ -440,6 +516,7 @@ function renderContentPage(data){
 
     });
   }
+  
 
   html += `
     <div class="ctaBox">
@@ -455,7 +532,27 @@ function renderContentPage(data){
   `;
 
   pageContent.innerHTML = html;
+  initRevealAnimations();
 }
+
+ function initRevealAnimations(){
+  const items = document.querySelectorAll(".section, .relatedPagesBox, .ctaBox");
+
+  if(!items.length) return;
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  items.forEach(item => observer.observe(item));
+}
+  
 </script>
 
 </body>
