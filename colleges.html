@@ -387,12 +387,19 @@
       box-shadow: 0 12px 20px rgba(0,0,0,0.07);
     }
 
-    .whyCarousel{
+    .whyCarouselWrap{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+}
+
+.whyCarousel{
   display:flex;
-  gap:18px;
+  gap:20px;
   overflow-x:auto;
+  scroll-behavior:smooth;
   scroll-snap-type:x mandatory;
-  padding-bottom:8px;
+  padding:8px 4px 10px;
   scrollbar-width:none;
 }
 
@@ -401,33 +408,85 @@
 }
 
 .whyCard{
-  min-width:320px;
-  max-width:320px;
-  flex:0 0 320px;
+  position:relative;
+  min-width:340px;
+  max-width:340px;
+  flex:0 0 340px;
   scroll-snap-align:start;
-  background:linear-gradient(135deg, #ffffff 0%, #fffdf9 100%);
-  border:1px solid #eee3d6;
-  border-radius:24px;
+  border-radius:28px;
   padding:22px;
-  box-shadow:0 12px 28px rgba(16,24,40,0.05);
-  transition:transform 0.18s ease, box-shadow 0.18s ease;
+  background:
+    radial-gradient(circle at top right, rgba(255,143,31,0.18), transparent 35%),
+    radial-gradient(circle at bottom left, rgba(29,99,198,0.14), transparent 35%),
+    linear-gradient(135deg, #ffffff 0%, #fff8f1 100%);
+  border:1px solid #efe1d3;
+  box-shadow:0 14px 34px rgba(16,24,40,0.07);
+  overflow:hidden;
+  transition:transform 0.22s ease, box-shadow 0.22s ease;
+  will-change: transform;
+}
+
+.whyCard::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:5px;
+  background:linear-gradient(90deg,#ff6a00,#ff8f1f,#1d63c6);
 }
 
 .whyCard:hover{
-  transform:translateY(-4px);
-  box-shadow:0 18px 34px rgba(16,24,40,0.08);
+  transform:translateY(-6px) scale(1.01);
+  box-shadow:0 22px 42px rgba(16,24,40,0.11);
+}
+
+.whyCardTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.whyIcon{
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  background:linear-gradient(135deg,#fff2e5 0%,#ffffff 100%);
+  border:1px solid #f0dfcf;
+  box-shadow:0 10px 20px rgba(255,106,0,0.08);
+}
+
+.whyTag{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:9px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  background:#ffffff;
+  color:#168b10;
+  border:1px solid #e5ebdf;
+  box-shadow:0 8px 16px rgba(22,139,16,0.06);
 }
 
 .whyCard h3{
   margin:0 0 10px;
-  font-size:22px;
+  font-size:24px;
+  line-height:1.2;
   color:#16202f;
 }
 
 .whyCard p{
   margin:0;
   color:#667085;
-  line-height:1.75;
+  line-height:1.8;
   font-size:15px;
 }
 
@@ -912,6 +971,27 @@
   flex-shrink:0;
 }
 
+    .whyCarouselWrap::before,
+.whyCarouselWrap::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:36px;
+  z-index:2;
+  pointer-events:none;
+}
+
+.whyCarouselWrap::before{
+  left:0;
+  background:linear-gradient(90deg, #faf8f2 0%, rgba(250,248,242,0) 100%);
+}
+
+.whyCarouselWrap::after{
+  right:0;
+  background:linear-gradient(270deg, #faf8f2 0%, rgba(250,248,242,0) 100%);
+}
+
     @media (max-width: 980px) {
       .featuredGrid,
 .resultsGrid,
@@ -967,9 +1047,9 @@
 }
 
       .whyCard{
-  min-width: 86%;
-  max-width: 86%;
-  flex: 0 0 86%;
+  min-width:86%;
+  max-width:86%;
+  flex:0 0 86%;
 }
     }
   </style>
@@ -1153,25 +1233,43 @@
     <p>Built around guidance, clarity, and student-first discovery</p>
   </div>
 
-  <div class="whyCarousel">
-    <div class="whyCard">
-      <h3>Verified College Profiles</h3>
-      <p>Explore admission-focused college pages with key details like approvals, fees, placements, and basic profile data.</p>
-    </div>
+  <div class="whyCarouselWrap">
+    <div class="whyCarousel" id="whyCarousel">
+      <div class="whyCard">
+        <div class="whyCardTop">
+          <div class="whyIcon">🎓</div>
+          <span class="whyTag">Verified</span>
+        </div>
+        <h3>Verified College Profiles</h3>
+        <p>Explore admission-focused college pages with key details like approvals, fees, placements, and profile data in one place.</p>
+      </div>
 
-    <div class="whyCard">
-      <h3>Free Counselling Support</h3>
-      <p>Students can get help with shortlisting, admissions, eligibility clarity, and confusion around exams or direct admission routes.</p>
-    </div>
+      <div class="whyCard">
+        <div class="whyCardTop">
+          <div class="whyIcon">📞</div>
+          <span class="whyTag">Support</span>
+        </div>
+        <h3>Free Counselling Support</h3>
+        <p>Get help with shortlisting, admissions, eligibility clarity, and confusion around exams or direct admission routes.</p>
+      </div>
 
-    <div class="whyCard">
-      <h3>Search. Compare. Decide.</h3>
-      <p>Use this page to discover colleges by exam, course, city, or name without jumping around multiple pages again and again.</p>
-    </div>
+      <div class="whyCard">
+        <div class="whyCardTop">
+          <div class="whyIcon">🔎</div>
+          <span class="whyTag">Discovery</span>
+        </div>
+        <h3>Search. Compare. Decide.</h3>
+        <p>Discover colleges by exam, course, city, or name without opening many pages again and again.</p>
+      </div>
 
-    <div class="whyCard">
-      <h3>Future-Ready Discovery Portal</h3>
-      <p>This page is designed to evolve into a stronger Swadeshi Shiksha homepage-style experience with search, trust, and lead conversion together.</p>
+      <div class="whyCard">
+        <div class="whyCardTop">
+          <div class="whyIcon">🚀</div>
+          <span class="whyTag">Future Ready</span>
+        </div>
+        <h3>Future-Ready Discovery Portal</h3>
+        <p>This platform is designed to become a stronger homepage experience with search, trust, and lead conversion together.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1563,6 +1661,50 @@
           </div>
         `;
       });
+
+    let whyCarouselAutoSlide;
+
+function startWhyCarouselAutoSlide() {
+  const carousel = document.getElementById("whyCarousel");
+  if (!carousel) return;
+
+  stopWhyCarouselAutoSlide();
+
+  whyCarouselAutoSlide = setInterval(() => {
+    const firstCard = carousel.querySelector(".whyCard");
+    if (!firstCard) return;
+
+    const cardWidth = firstCard.offsetWidth + 20;
+
+    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+
+    if (carousel.scrollLeft + cardWidth >= maxScrollLeft - 10) {
+      carousel.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      carousel.scrollBy({ left: cardWidth, behavior: "smooth" });
+    }
+  }, 2800);
+}
+
+function stopWhyCarouselAutoSlide() {
+  if (whyCarouselAutoSlide) {
+    clearInterval(whyCarouselAutoSlide);
+  }
+}
+
+window.addEventListener("load", function() {
+  const carousel = document.getElementById("whyCarousel");
+  if (!carousel) return;
+
+  startWhyCarouselAutoSlide();
+
+  carousel.addEventListener("mouseenter", stopWhyCarouselAutoSlide);
+  carousel.addEventListener("mouseleave", startWhyCarouselAutoSlide);
+  carousel.addEventListener("touchstart", stopWhyCarouselAutoSlide, { passive: true });
+  carousel.addEventListener("touchend", () => {
+  setTimeout(startWhyCarouselAutoSlide, 1200);
+});
+});
   </script>
 </body>
 </html>
