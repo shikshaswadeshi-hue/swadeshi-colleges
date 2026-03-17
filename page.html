@@ -85,6 +85,12 @@ a{
   padding:12px 18px;
   font-weight:700;
   cursor:pointer;
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.homeBtn:hover{
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:0 12px 24px rgba(255,106,0,0.22);
 }
 
 .hero{
@@ -94,6 +100,9 @@ a{
   overflow:hidden;
   box-shadow:0 20px 45px rgba(22,32,47,0.08);
   margin-bottom:26px;
+  opacity:0;
+  transform:translateY(40px) scale(0.98);
+  animation:heroReveal 1s ease forwards;
 }
 
 .heroImageWrap{
@@ -101,6 +110,7 @@ a{
   height:320px;
   background:linear-gradient(135deg,#e3ecff 0%,#f8fbff 100%);
   display:none;
+  overflow:hidden;
 }
 
 .heroImageWrap img{
@@ -108,6 +118,7 @@ a{
   height:100%;
   object-fit:cover;
   display:block;
+  animation:softZoom 1.4s ease forwards;
 }
 
 .heroContent{
@@ -124,6 +135,9 @@ a{
   font-size:13px;
   font-weight:700;
   margin-bottom:14px;
+  opacity:0;
+  animation:fadeUpStrong 0.7s ease forwards;
+  animation-delay:0.25s;
 }
 
 .heroContent h1{
@@ -131,12 +145,18 @@ a{
   font-size:42px;
   line-height:1.1;
   color:#16202f;
+  opacity:0;
+  animation:fadeUpStrong 0.8s ease forwards;
+  animation-delay:0.4s;
 }
 
 .heroIntro{
   font-size:17px;
   line-height:1.8;
   color:#4f5b67;
+  opacity:0;
+  animation:fadeUpStrong 0.8s ease forwards;
+  animation-delay:0.55s;
 }
 
 .section{
@@ -146,6 +166,19 @@ a{
   padding:24px;
   margin-bottom:22px;
   box-shadow:0 12px 28px rgba(16,24,40,0.05);
+  opacity:0;
+  transform:translateY(50px);
+  transition:opacity 0.85s ease, transform 0.85s ease, box-shadow 0.25s ease;
+}
+
+.section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 34px rgba(16,24,40,0.08);
 }
 
 .section h2{
@@ -209,6 +242,13 @@ th{
   background:#fffaf4;
   border:1px solid #efe4d8;
   font-weight:600;
+  transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.relatedLink:hover{
+  transform:translateY(-4px) scale(1.01);
+  box-shadow:0 12px 22px rgba(16,24,40,0.08);
+  background:#fff4e8;
 }
 
 .ctaBox{
@@ -218,6 +258,14 @@ th{
   padding:28px 22px;
   text-align:center;
   box-shadow:0 18px 38px rgba(16,24,40,0.18);
+  opacity:0;
+  transform:translateY(50px);
+  transition:opacity 0.9s ease, transform 0.9s ease;
+}
+
+.ctaBox.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .ctaBox h3{
@@ -239,6 +287,12 @@ th{
   padding:13px 20px;
   font-weight:700;
   cursor:pointer;
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ctaBtn:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 14px 28px rgba(255,106,0,0.28);
 }
 
 .emptyState{
@@ -250,81 +304,38 @@ th{
   box-shadow:0 12px 28px rgba(16,24,40,0.05);
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
+@keyframes fadeUpStrong{
+  from{
+    opacity:0;
+    transform:translateY(30px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes softZoom {
-  from {
-    opacity: 0;
-    transform: scale(1.04);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 }
 
-.animatePage {
-  animation: fadeUp 0.7s ease both;
+@keyframes heroReveal{
+  from{
+    opacity:0;
+    transform:translateY(40px) scale(0.98);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
 }
 
-.hero {
-  animation: fadeUp 0.7s ease both;
+@keyframes softZoom{
+  from{
+    opacity:0;
+    transform:scale(1.12);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
 }
-
-.heroImageWrap img {
-  animation: softZoom 0.9s ease both;
-}
-
-.section,
-.relatedPagesBox,
-.ctaBox {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.section.show,
-.relatedPagesBox.show,
-.ctaBox.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.relatedPageCard,
-.relatedLink,
-.ctaBtn,
-.homeBtn {
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-}
-
-.relatedPageCard:hover,
-.relatedLink:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(16,24,40,0.08);
-}
-
-.ctaBtn:hover,
-.homeBtn:hover {
-  transform: translateY(-2px);
-}
-
-.heroMetaItem {
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-
-.heroMetaItem:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(16,24,40,0.06);
-}  
 
 @media (max-width:768px){
   .heroImageWrap{
@@ -535,23 +546,30 @@ function renderContentPage(data){
   initRevealAnimations();
 }
 
- function initRevealAnimations(){
-  const items = document.querySelectorAll(".section, .relatedPagesBox, .ctaBox");
+ <script>
+function initRevealAnimations(){
+  const items = document.querySelectorAll(".section, .ctaBox");
 
   if(!items.length) return;
 
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
+  items.forEach((item, index) => {
+    item.style.transitionDelay = (index * 0.12) + "s";
+  });
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
       if(entry.isIntersecting){
         entry.target.classList.add("show");
+        observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.12
+    threshold: 0.15
   });
 
   items.forEach(item => observer.observe(item));
 }
+</script>
   
 </script>
 
