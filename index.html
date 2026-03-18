@@ -444,18 +444,15 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .deadline-pill.open{
-  background: #e8fff0;
-  color: #198754;
+  background:#e9fff1;
+  color:#15803d;
+  border:1px solid #b7efc7;
 }
 
 .deadline-pill.closed{
-  background: #fff0f0;
-  color: #c53b3b;
-}
-
-.deadline-pill.info{
-  background: #eef2ff;
-  color: #4d2fb2;
+  background:#fff1f1;
+  color:#dc2626;
+  border:1px solid #f3c2c2;
 }
 
 .app-modern-right{
@@ -1370,32 +1367,32 @@ const applicationColleges = [
     name: "IILM Greater Noida",
     logo: "iilm.png",
     meta: "Admissions 2026",
-    status: "info",
-    statusText: "Official Portal",
+    status: "open",
+    statusText: "Applications Open",
     applyUrl: "https://admissions.iilm.edu/"
   },
   {
     name: "ISBR Bangalore",
     logo: "isbr.png",
     meta: "Admissions 2026",
-    status: "info",
-    statusText: "Official Portal",
+    status: "open",
+    statusText: "Applications Open",
     applyUrl: "https://apply.isbr.in/"
   },
   {
     name: "GIBS Bangalore",
     logo: "gibs.png",
     meta: "Admissions 2026",
-    status: "info",
-    statusText: "Official Portal",
+    status: "open",
+    statusText: "Applications Open",
     applyUrl: "https://admission.gibsbschool.com/"
   },
   {
     name: "D Y Patil University Pune",
     logo: "dypatil.png",
     meta: "Admissions 2026",
-    status: "info",
-    statusText: "Official Portal",
+    status: "open",
+    statusText: "Applications Open",
     applyUrl: "https://dypatiluniversitypune.edu.in/applicationNew.php"
   },
   {
@@ -1403,7 +1400,7 @@ const applicationColleges = [
     logo: "pibm.png",
     meta: "Admissions guidance available",
     status: "closed",
-    statusText: "Counselling",
+    statusText: "Applications Closed",
     applyUrl: "https://www.pibm.in/mba-and-pgdm-admissions.html"
   },
   {
@@ -1411,27 +1408,27 @@ const applicationColleges = [
     logo: "bmu.png",
     meta: "Admissions guidance available",
     status: "closed",
-    statusText: "Counselling",
+    statusText: "Applications Closed",
     applyUrl: "https://www.bmu.edu.in/apply/"
   },
   {
     name: "IIBS Bangalore",
     logo: "iibs.png",
     meta: "Admissions 2026",
-    status: "info",
-    statusText: "Official Portal",
+    status: "open",
+    statusText: "Applications Open",
     applyUrl: "https://admissions.iibs.edu.in/"
   },
   {
     name: "JAGSoM",
     logo: "jagsom.png",
     meta: "Admissions 2026",
-    status: "info",
-    statusText: "Official Portal",
+    status: "open",
+    statusText: "Applications Open",
     applyUrl: "https://admissions.jagsom.edu.in/"
   }
 ];
-
+  
 const appGrid = document.getElementById("appGrid");
 const viewMoreBtn = document.getElementById("viewMoreBtn");
 const counsellingOverlay = document.getElementById("counsellingOverlay");
@@ -1466,14 +1463,12 @@ function renderApplicationCards() {
         </div>
 
         <div class="app-modern-right">
-          <a class="apply-link-btn" href="${college.applyUrl}" target="_blank" rel="noopener noreferrer">
-            Apply Now
-          </a>
-          <button class="counselling-link-btn" type="button" data-college="${college.name}">
-            Get Counselling
-          </button>
-        </div>
-      </div>
+  ${
+    college.status === "open"
+      ? `<a class="apply-link-btn" href="${college.applyUrl}" target="_blank" rel="noopener noreferrer">Apply Now</a>`
+      : `<button class="counselling-link-btn" type="button" data-college="${college.name}">Get Counselling</button>`
+  }
+</div>
     `;
   }).join("");
 
