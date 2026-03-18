@@ -24,68 +24,70 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   z-index:999;
 }
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:700;
-}
-
-.logo img{
-  height:48px;
-}
-
-.nav{
-  display:flex;
-  gap:28px;
-  font-size:15px;
-  color:#444;
-}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:48px}
 
 .cta{
   background:#4d2fb2;
   color:#fff;
-  padding:10px 20px;
+  padding:10px 22px;
   border-radius:25px;
-  font-size:14px;
+  font-weight:600;
 }
 
 /* HERO */
 .hero{
-  padding:100px 20px 70px;
-  text-align:center;
   position:relative;
+  padding:120px 20px 100px;
+  text-align:center;
+  overflow:hidden;
 }
 
+/* Gradient background */
 .hero::before{
   content:"";
   position:absolute;
-  top:-120px;
+  inset:0;
+  background:linear-gradient(135deg,#4d2fb2,#7a5cff);
+  opacity:0.08;
+  z-index:-2;
+}
+
+/* Floating glow circles */
+.hero::after{
+  content:"";
+  position:absolute;
+  width:800px;
+  height:800px;
+  background:radial-gradient(circle,#4d2fb2 0%,transparent 70%);
+  opacity:0.12;
+  top:-200px;
   left:50%;
   transform:translateX(-50%);
-  width:700px;
-  height:700px;
-  background:radial-gradient(circle, rgba(77,47,178,0.15), transparent 70%);
   z-index:-1;
 }
 
 .hero h1{
-  font-size:48px;
+  font-size:56px;
   font-weight:800;
-  line-height:1.2;
-  max-width:850px;
+  line-height:1.15;
+  max-width:900px;
   margin:auto;
+}
+
+.hero span{
+  color:#4d2fb2;
 }
 
 .hero p{
   margin-top:18px;
-  font-size:17px;
+  font-size:18px;
   color:#555;
 }
 
 /* SEARCH */
 .search{
-  margin-top:35px;
+  margin-top:45px;
   display:flex;
   justify-content:center;
 }
@@ -93,47 +95,74 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 .search-box{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
   background:#fff;
-  padding:14px 18px;
-  border-radius:50px;
-  width:720px;
+  padding:16px 18px;
+  border-radius:60px;
+  width:760px;
   max-width:92%;
-  box-shadow:0 18px 40px rgba(0,0,0,0.08);
+  box-shadow:0 25px 60px rgba(0,0,0,0.12);
+  transform:translateY(0);
+  transition:0.3s ease;
+}
+
+.search-box:hover{
+  transform:translateY(-4px);
+  box-shadow:0 35px 80px rgba(0,0,0,0.15);
 }
 
 .search-box input{
   flex:1;
   border:none;
   outline:none;
-  font-size:16px;
+  font-size:17px;
 }
 
 .search-box button{
   background:#4d2fb2;
   color:#fff;
   border:none;
-  border-radius:30px;
-  padding:12px 22px;
+  border-radius:40px;
+  padding:14px 26px;
+  font-weight:600;
   cursor:pointer;
+}
+
+/* FLOATING CARDS */
+.card{
+  position:absolute;
+  background:#fff;
+  padding:14px 18px;
+  border-radius:14px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.12);
+  font-size:14px;
+  animation:float 6s ease-in-out infinite;
+}
+
+.card1{top:120px;left:12%}
+.card2{top:200px;right:12%;animation-delay:1s}
+.card3{bottom:80px;left:18%;animation-delay:2s}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
 }
 
 /* TRUST */
 .trust{
-  margin-top:45px;
+  margin-top:60px;
   display:flex;
   justify-content:center;
   gap:30px;
   flex-wrap:wrap;
-  font-size:14px;
-  color:#444;
 }
 
 .trust div{
   background:#fff;
-  padding:10px 18px;
+  padding:12px 20px;
   border-radius:20px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  font-size:14px;
 }
 
 </style>
@@ -144,22 +173,19 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 <div class="header">
   <div class="logo">
     <img src="https://www.swadeshi-shiksha.com/_next/image?url=%2Flogo.png&w=256&q=75">
-    <span>Swadeshi Shiksha</span>
   </div>
-
-  <div class="nav">
-    <a href="#">Colleges</a>
-    <a href="#">Exams</a>
-    <a href="#">Courses</a>
-    <a href="#">About</a>
-  </div>
-
   <div class="cta">Free Counselling</div>
 </div>
 
 <div class="hero">
-  <h1>Find the Right MBA College Without the Confusion</h1>
-  <p>Search, compare and get expert counselling for top MBA colleges in India</p>
+
+  <!-- floating elements -->
+  <div class="card card1">🎯 Best Colleges</div>
+  <div class="card card2">💰 Scholarships</div>
+  <div class="card card3">📊 Compare Colleges</div>
+
+  <h1>Find Your Perfect <span>MBA College</span></h1>
+  <p>Search, compare and get expert guidance for top MBA colleges in India</p>
 
   <div class="search">
     <div class="search-box">
@@ -174,6 +200,7 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
     <div>✔ Free Counselling</div>
     <div>✔ Trusted by Students</div>
   </div>
+
 </div>
 
 <script>
