@@ -315,120 +315,251 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   color:#777;
 }
 
-  /* CTA SECTION */
+  /* SECTION 5 : PREMIUM CTA */
 
-.cta-section{
+.premium-cta{
   padding:100px 20px;
-  background:linear-gradient(135deg,#4d2fb2,#6a4cff);
-  text-align:center;
+  background:linear-gradient(180deg,#faf8f2 0%, #f3ecff 100%);
 }
 
-.cta-box{
-  background:#fff;
-  padding:50px 30px;
-  border-radius:20px;
-  max-width:700px;
+.premium-cta-wrap{
+  max-width:1180px;
   margin:auto;
-  box-shadow:0 25px 60px rgba(0,0,0,0.15);
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:40px;
+  align-items:center;
+  background:linear-gradient(135deg,#4d2fb2 0%, #6e46dd 100%);
+  border-radius:32px;
+  padding:50px;
+  box-shadow:0 25px 70px rgba(77,47,178,0.18);
+  overflow:hidden;
+  position:relative;
 }
 
-.cta-box h2{
-  font-size:28px;
-  margin-bottom:15px;
+.premium-cta-wrap::before{
+  content:"";
+  position:absolute;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.08);
+  top:-80px;
+  right:-80px;
 }
 
-.cta-box p{
-  color:#555;
-  margin-bottom:30px;
+.premium-cta-left{
+  position:relative;
+  z-index:1;
+  color:#fff;
 }
 
-.cta-box button{
+.premium-tag{
+  display:inline-block;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.18);
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.premium-cta-left h2{
+  font-size:38px;
+  line-height:1.2;
+  margin-bottom:16px;
+  max-width:560px;
+}
+
+.premium-cta-left p{
+  font-size:16px;
+  line-height:1.8;
+  color:rgba(255,255,255,0.88);
+  max-width:540px;
+}
+
+.premium-points{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-top:28px;
+}
+
+.premium-points div{
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.14);
+  border-radius:16px;
+  padding:14px 16px;
+  font-size:14px;
+}
+
+.premium-cta-right{
+  position:relative;
+  z-index:1;
+}
+
+.lead-card{
+  background:#fff;
+  border-radius:24px;
+  padding:30px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.16);
+}
+
+.lead-card h3{
+  font-size:24px;
+  margin-bottom:8px;
+  color:#16202f;
+}
+
+.lead-card p{
+  color:#666;
+  margin-bottom:18px;
+  font-size:14px;
+}
+
+.lead-card input,
+.lead-card select{
+  width:100%;
+  height:52px;
+  border:1px solid #e6e1f5;
+  border-radius:14px;
+  padding:0 15px;
+  margin-bottom:14px;
+  font-size:15px;
+  outline:none;
+}
+
+.lead-card button{
+  width:100%;
+  height:54px;
+  border:none;
+  border-radius:14px;
   background:#ff6b00;
   color:#fff;
-  border:none;
-  padding:14px 30px;
-  border-radius:30px;
   font-size:16px;
   font-weight:600;
   cursor:pointer;
-  transition:0.3s ease;
-}
-
-.cta-box button:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
-
-  /* FOOTER */
-
-.footer{
-  background:#16202f;
-  color:#fff;
-  padding:70px 20px 25px;
-}
-
-.footer-top{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:40px;
-}
-
-.footer-brand img{
-  height:52px;
-  margin-bottom:14px;
-}
-
-.footer-brand h3{
-  font-size:22px;
-  margin-bottom:10px;
-}
-
-.footer-brand p{
-  color:rgba(255,255,255,0.75);
-  line-height:1.7;
-  max-width:320px;
-}
-
-.footer-links h4{
-  margin-bottom:16px;
-  font-size:16px;
-}
-
-.footer-links a{
-  display:block;
-  color:rgba(255,255,255,0.75);
-  text-decoration:none;
-  margin-bottom:10px;
-  font-size:14px;
-}
-
-.footer-links a:hover{
-  color:#fff;
-}
-
-.footer-bottom{
-  max-width:1200px;
-  margin:35px auto 0;
-  padding-top:20px;
-  border-top:1px solid rgba(255,255,255,0.1);
-  text-align:center;
-}
-
-.footer-bottom p{
-  color:rgba(255,255,255,0.7);
-  font-size:14px;
+  box-shadow:0 12px 24px rgba(255,107,0,0.22);
 }
 
 @media(max-width:900px){
-  .footer-top{
+  .premium-cta-wrap{
+    grid-template-columns:1fr;
+    padding:30px;
+  }
+
+  .premium-cta-left h2{
+    font-size:30px;
+  }
+
+  .premium-points{
+    grid-template-columns:1fr;
+  }
+}
+
+/* SECTION 6 : PREMIUM FOOTER */
+
+.premium-footer{
+  background:#111827;
+  color:#fff;
+  margin-top:0;
+}
+
+.footer-main{
+  max-width:1200px;
+  margin:auto;
+  padding:75px 20px 40px;
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer-brand-block{
+  max-width:380px;
+}
+
+.footer-logo-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:18px;
+}
+
+.footer-logo-row img{
+  height:54px;
+  width:auto;
+}
+
+.footer-logo-row h3{
+  font-size:22px;
+  margin-bottom:4px;
+}
+
+.footer-logo-row span{
+  font-size:13px;
+  color:rgba(255,255,255,0.7);
+}
+
+.footer-brand-block p{
+  color:rgba(255,255,255,0.72);
+  line-height:1.8;
+  font-size:14px;
+  margin-bottom:22px;
+}
+
+.footer-socials{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.footer-socials a{
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:13px;
+}
+
+.footer-col h4{
+  font-size:16px;
+  margin-bottom:18px;
+}
+
+.footer-col a{
+  display:block;
+  text-decoration:none;
+  color:rgba(255,255,255,0.72);
+  margin-bottom:12px;
+  font-size:14px;
+}
+
+.footer-col a:hover,
+.footer-socials a:hover{
+  color:#fff;
+}
+
+.footer-strip{
+  border-top:1px solid rgba(255,255,255,0.08);
+  text-align:center;
+  padding:18px 20px;
+}
+
+.footer-strip p{
+  font-size:13px;
+  color:rgba(255,255,255,0.62);
+}
+
+@media(max-width:950px){
+  .footer-main{
     grid-template-columns:1fr 1fr;
   }
 }
 
-@media(max-width:600px){
-  .footer-top{
+@media(max-width:620px){
+  .footer-main{
     grid-template-columns:1fr;
   }
 }
@@ -578,47 +709,88 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 
   </div>
 
-  <!-- FINAL CTA -->
-<section class="cta-section">
+ <!-- SECTION 5 : PREMIUM CTA -->
+<section class="premium-cta">
+  <div class="premium-cta-wrap">
 
-  <div class="cta-box">
+    <div class="premium-cta-left">
+      <span class="premium-tag">Free MBA Guidance</span>
+      <h2>Get Personalised College Suggestions Based on Your Profile</h2>
+      <p>
+        From shortlist to final decision, Swadeshi Shiksha helps you explore the right MBA and PGDM colleges with clarity.
+      </p>
 
-    <h2>Still Confused About Your MBA College?</h2>
-    <p>Get expert guidance and personalized college recommendations — completely free</p>
+      <div class="premium-points">
+        <div>✔ Profile-based suggestions</div>
+        <div>✔ Fees and placement clarity</div>
+        <div>✔ Scholarship guidance</div>
+        <div>✔ Free counselling support</div>
+      </div>
+    </div>
 
-    <div class="cta-actions">
-      <button onclick="openCounselling()">Get Free Counselling</button>
+    <div class="premium-cta-right">
+      <div class="lead-card">
+        <h3>Start Your Free Counselling</h3>
+        <p>Enter your details and get expert guidance.</p>
+
+        <input type="text" placeholder="Your Full Name">
+        <input type="tel" placeholder="Phone Number">
+        <select>
+          <option>Select Exam</option>
+          <option>CAT</option>
+          <option>XAT</option>
+          <option>CMAT</option>
+          <option>MAT</option>
+          <option>Direct Admission</option>
+        </select>
+
+        <button onclick="openCounselling()">Get Started</button>
+      </div>
     </div>
 
   </div>
 
-  <!-- FOOTER -->
-<footer class="footer">
+  <!-- SECTION 6 : PREMIUM FOOTER -->
+<footer class="premium-footer">
 
-  <div class="footer-top">
-    <div class="footer-brand">
-      <img src="swadeshi-logo.png" alt="Swadeshi Shiksha logo">
-      <h3>Swadeshi Shiksha</h3>
-      <p>Search, compare and choose the right MBA and PGDM college with confidence.</p>
+  <div class="footer-main">
+    <div class="footer-brand-block">
+      <div class="footer-logo-row">
+        <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+        <div>
+          <h3>Swadeshi Shiksha</h3>
+          <span>Search • Compare • Decide</span>
+        </div>
+      </div>
+
+      <p>
+        Helping students discover the right MBA and PGDM colleges with better information, smarter comparison and expert support.
+      </p>
+
+      <div class="footer-socials">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">YouTube</a>
+      </div>
     </div>
 
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <a href="#">Home</a>
-      <a href="#">Colleges</a>
-      <a href="#">Exams</a>
-      <a href="#">Courses</a>
-    </div>
-
-    <div class="footer-links">
-      <h4>Resources</h4>
-      <a href="#">MBA Colleges</a>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#">Top MBA Colleges</a>
       <a href="#">PGDM Colleges</a>
-      <a href="#">Admission Guidance</a>
-      <a href="#">Free Counselling</a>
+      <a href="#">Cities</a>
+      <a href="#">Exams</a>
     </div>
 
-    <div class="footer-links">
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Free Counselling</a>
+      <a href="#">Compare Colleges</a>
+      <a href="#">Admissions Help</a>
+      <a href="#">Contact Us</a>
+    </div>
+
+    <div class="footer-col">
       <h4>Contact</h4>
       <a href="tel:+919643686800">+91 96436 86800</a>
       <a href="mailto:info@swadeshi-shiksha.com">info@swadeshi-shiksha.com</a>
@@ -626,19 +798,13 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
     </div>
   </div>
 
-  <div class="footer-bottom">
+  <div class="footer-strip">
     <p>© 2026 Swadeshi Shiksha. All rights reserved.</p>
   </div>
 
 </footer>
 
-</section>
-
-</section>
-
-</section>
-
-</section>
+  
 
 <script>
 const input = document.getElementById("collegeSearch");
