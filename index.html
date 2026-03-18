@@ -3,75 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Swadeshi Shiksha | Search, Compare & Decide</title>
+<title>Swadeshi Shiksha</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f6f4ff;color:#121212}
 
 /* HEADER */
 .header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 40px;
-  background:#fff;
-  box-shadow:0 4px 20px rgba(0,0,0,0.05);
+  padding:20px 50px;
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(12px);
   position:sticky;
   top:0;
-  z-index:999;
 }
 
-.logo{display:flex;align-items:center;gap:10px;font-weight:600}
-.logo img{height:42px}
+.logo{font-weight:700;font-size:18px}
 
-.nav{display:flex;gap:28px;font-size:15px;color:#444}
-.nav a{color:#444}
-
-.cta-btn{
-  background:#4d2fb2;
+.cta{
+  background:#5b3df5;
   color:#fff;
-  padding:10px 18px;
-  border-radius:25px;
-  border:none;
-  cursor:pointer;
+  padding:10px 20px;
+  border-radius:30px;
 }
 
 /* HERO */
 .hero{
+  padding:120px 20px 80px;
   text-align:center;
-  padding:70px 20px 40px;
+  position:relative;
+}
+
+/* Background glow */
+.hero::before{
+  content:"";
+  position:absolute;
+  top:-100px;
+  left:50%;
+  transform:translateX(-50%);
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(91,61,245,0.2), transparent 70%);
+  z-index:-1;
 }
 
 .hero h1{
-  font-size:40px;
-  font-weight:700;
-  margin-bottom:16px;
+  font-size:52px;
+  font-weight:800;
+  line-height:1.2;
+  max-width:900px;
+  margin:auto;
 }
 
 .hero p{
-  font-size:17px;
+  margin-top:20px;
+  font-size:18px;
   color:#555;
-  margin-bottom:30px;
 }
 
-/* SEARCH BAR (your code styled) */
-.search-wrapper{
-  max-width:760px;
-  margin:30px auto;
+/* SEARCH */
+.search{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
 }
 
 .search-box{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
   background:#fff;
-  border:1px solid #e5e5e5;
+  padding:14px 16px;
   border-radius:50px;
-  padding:12px 16px;
-  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+  width:700px;
+  max-width:90%;
+  box-shadow:0 20px 40px rgba(0,0,0,0.08);
 }
 
 .search-box input{
@@ -82,77 +93,58 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .search-box button{
-  background:#4d2fb2;
+  background:#5b3df5;
   color:#fff;
   border:none;
   border-radius:30px;
-  padding:10px 20px;
+  padding:12px 20px;
   cursor:pointer;
 }
 
-/* STATS */
-.stats{
+/* TRUST */
+.trust{
+  margin-top:50px;
   display:flex;
   justify-content:center;
-  gap:50px;
-  margin-top:50px;
+  gap:40px;
   flex-wrap:wrap;
+  font-size:14px;
+  color:#444;
 }
 
-.stat{text-align:center}
-.stat h2{font-size:26px;color:#4d2fb2}
-.stat p{color:#666;font-size:14px}
+.trust div{
+  background:#fff;
+  padding:10px 16px;
+  border-radius:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+}
 
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
-  <div class="logo">
-    <img src="swadeshi-logo.png">
-    <span>Swadeshi Shiksha</span>
-  </div>
-
-  <div class="nav">
-    <a href="#">Colleges</a>
-    <a href="#">Exams</a>
-    <a href="#">Courses</a>
-    <a href="#">About</a>
-  </div>
-
-  <button class="cta-btn">Free Counselling</button>
+  <div class="logo">Swadeshi Shiksha</div>
+  <div class="cta">Free Counselling</div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-  <h1>Find the Right MBA College for You</h1>
-  <p>Search, compare and apply to top MBA/PGDM colleges in India</p>
+  <h1>Find the Right MBA College Without the Confusion</h1>
+  <p>Search, compare and get expert counselling for top MBA colleges in India</p>
 
-  <!-- SEARCH -->
-  <div class="search-wrapper">
+  <div class="search">
     <div class="search-box">
-      <span style="font-size:20px;color:#777">🔍</span>
+      <span>🔍</span>
       <input type="text" id="collegeSearch" placeholder="Search your college here...">
       <button id="searchBtn">Search</button>
     </div>
   </div>
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat">
-      <h2>500+</h2>
-      <p>Colleges</p>
-    </div>
-    <div class="stat">
-      <h2>50K+</h2>
-      <p>Students Guided</p>
-    </div>
-    <div class="stat">
-      <h2>100%</h2>
-      <p>Free Counselling</p>
-    </div>
+  <div class="trust">
+    <div>✔ 500+ Colleges</div>
+    <div>✔ Free Counselling</div>
+    <div>✔ Trusted by Students</div>
   </div>
 </div>
 
