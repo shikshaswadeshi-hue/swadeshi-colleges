@@ -315,6 +315,172 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   color:#777;
 }
 
+  .app-window-section{
+  padding: 95px 20px;
+  background: #fff;
+}
+
+.section-head{
+  max-width: 760px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.section-tag{
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #f3ecff;
+  color: #4d2fb2;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.section-head h2{
+  font-size: 34px;
+  color: #16202f;
+  margin-bottom: 12px;
+}
+
+.section-head p{
+  font-size: 15px;
+  color: #666;
+  line-height: 1.7;
+}
+
+.app-window-grid{
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.app-card{
+  background: #faf8f2;
+  border: 1px solid rgba(22,32,47,0.06);
+  border-radius: 22px;
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.05);
+  transition: 0.25s ease;
+}
+
+.app-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(0,0,0,0.08);
+}
+
+.app-card-left{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.app-logo{
+  width: 66px;
+  height: 66px;
+  border-radius: 16px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.app-logo img{
+  max-width: 44px;
+  max-height: 44px;
+}
+
+.app-info h3{
+  font-size: 18px;
+  color: #16202f;
+  margin-bottom: 6px;
+}
+
+.app-info p{
+  font-size: 14px;
+  color: #666;
+}
+
+.app-card-right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.status-pill{
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.status-pill.open{
+  background: #e8fff0;
+  color: #1d8f4d;
+}
+
+.status-pill.closed{
+  background: #ffe9e9;
+  color: #d63b3b;
+}
+
+.app-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  min-width: 126px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: #ff6b00;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.app-btn.muted{
+  background: #dfe3eb;
+  color: #394150;
+}
+
+@media(max-width: 900px){
+  .app-window-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 620px){
+  .app-card{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-card-right{
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .app-btn{
+    width: 100%;
+  }
+
+  .section-head h2{
+    font-size: 28px;
+  }
+}
+
   /* SECTION 5 */
 .premium-cta{
   padding: 80px 20px 0;
@@ -864,6 +1030,114 @@ br {
 
   </div>
   </section>
+
+  <section class="app-window-section">
+  <div class="section-head">
+    <span class="section-tag">Admissions 2026</span>
+    <h2>MBA Application Window</h2>
+    <p>Track important deadlines and explore colleges currently open for applications.</p>
+  </div>
+
+  <div class="app-window-grid">
+
+    <div class="app-card">
+      <div class="app-card-left">
+        <div class="app-logo">
+          <img src="iim-ahmedabad.png" alt="IIM Ahmedabad">
+        </div>
+        <div class="app-info">
+          <h3>IIM Ahmedabad</h3>
+          <p>Deadline: 10 Jan 2026</p>
+        </div>
+      </div>
+      <div class="app-card-right">
+        <span class="status-pill open">Open</span>
+        <a href="#" class="app-btn">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-card-left">
+        <div class="app-logo">
+          <img src="xlri.png" alt="XLRI Jamshedpur">
+        </div>
+        <div class="app-info">
+          <h3>XLRI Jamshedpur</h3>
+          <p>Deadline: 18 Dec 2025</p>
+        </div>
+      </div>
+      <div class="app-card-right">
+        <span class="status-pill closed">Closed</span>
+        <a href="#" class="app-btn muted">Get Counselling</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-card-left">
+        <div class="app-logo">
+          <img src="spjimr.png" alt="SPJIMR Mumbai">
+        </div>
+        <div class="app-info">
+          <h3>SPJIMR Mumbai</h3>
+          <p>Deadline: 22 Nov 2025</p>
+        </div>
+      </div>
+      <div class="app-card-right">
+        <span class="status-pill closed">Closed</span>
+        <a href="#" class="app-btn muted">Get Counselling</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-card-left">
+        <div class="app-logo">
+          <img src="nmims.png" alt="NMIMS">
+        </div>
+        <div class="app-info">
+          <h3>NMIMS</h3>
+          <p>Deadline: 05 Jan 2026</p>
+        </div>
+      </div>
+      <div class="app-card-right">
+        <span class="status-pill open">Open</span>
+        <a href="#" class="app-btn">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-card-left">
+        <div class="app-logo">
+          <img src="imt-ghaziabad.png" alt="IMT Ghaziabad">
+        </div>
+        <div class="app-info">
+          <h3>IMT Ghaziabad</h3>
+          <p>Deadline: 31 Jan 2026</p>
+        </div>
+      </div>
+      <div class="app-card-right">
+        <span class="status-pill open">Open</span>
+        <a href="#" class="app-btn">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-card-left">
+        <div class="app-logo">
+          <img src="great-lakes.png" alt="Great Lakes">
+        </div>
+        <div class="app-info">
+          <h3>Great Lakes</h3>
+          <p>Deadline: 14 Jan 2026</p>
+        </div>
+      </div>
+      <div class="app-card-right">
+        <span class="status-pill open">Open</span>
+        <a href="#" class="app-btn">Apply Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
  <section class="premium-cta">
   <div class="premium-cta-wrap">
