@@ -16,80 +16,84 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 50px;
+  padding:18px 60px;
   background:#fff;
-  box-shadow:0 6px 25px rgba(0,0,0,0.06);
+  box-shadow:0 6px 30px rgba(0,0,0,0.06);
   position:sticky;
   top:0;
   z-index:999;
 }
 
-.logo{display:flex;align-items:center;gap:12px}
-.logo img{height:48px}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+}
+.logo img{height:46px}
+.logo span{font-size:16px}
+
+.nav{
+  display:flex;
+  gap:30px;
+  font-size:14px;
+  color:#333;
+}
+
+.nav a{position:relative}
+
+.nav a:hover{
+  color:#4d2fb2;
+}
 
 .cta{
   background:#4d2fb2;
   color:#fff;
-  padding:10px 22px;
+  padding:10px 20px;
   border-radius:25px;
   font-weight:600;
 }
 
 /* HERO */
 .hero{
-  position:relative;
-  padding:120px 20px 100px;
+  padding:100px 20px 80px;
   text-align:center;
-  overflow:hidden;
+  position:relative;
 }
 
-/* Gradient background */
+/* premium gradient layer */
 .hero::before{
   content:"";
   position:absolute;
-  inset:0;
-  background:linear-gradient(135deg,#4d2fb2,#7a5cff);
-  opacity:0.08;
-  z-index:-2;
-}
-
-/* Floating glow circles */
-.hero::after{
-  content:"";
-  position:absolute;
-  width:800px;
-  height:800px;
-  background:radial-gradient(circle,#4d2fb2 0%,transparent 70%);
-  opacity:0.12;
   top:-200px;
   left:50%;
   transform:translateX(-50%);
+  width:900px;
+  height:900px;
+  background:radial-gradient(circle,#4d2fb2 0%,transparent 70%);
+  opacity:0.12;
   z-index:-1;
 }
 
 .hero h1{
-  font-size:56px;
+  font-size:52px;
   font-weight:800;
-  line-height:1.15;
+  line-height:1.2;
   max-width:900px;
   margin:auto;
 }
 
-.hero span{
-  color:#4d2fb2;
-}
+.hero h1 span{color:#4d2fb2}
 
 .hero p{
   margin-top:18px;
-  font-size:18px;
+  font-size:17px;
   color:#555;
 }
 
 /* SEARCH */
 .search{
-  margin-top:45px;
-  display:flex;
-  justify-content:center;
+  margin-top:40px;
 }
 
 .search-box{
@@ -98,59 +102,47 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   gap:12px;
   background:#fff;
   padding:16px 18px;
-  border-radius:60px;
-  width:760px;
-  max-width:92%;
+  border-radius:50px;
+  max-width:760px;
+  margin:auto;
   box-shadow:0 25px 60px rgba(0,0,0,0.12);
-  transform:translateY(0);
-  transition:0.3s ease;
-}
-
-.search-box:hover{
-  transform:translateY(-4px);
-  box-shadow:0 35px 80px rgba(0,0,0,0.15);
 }
 
 .search-box input{
   flex:1;
   border:none;
   outline:none;
-  font-size:17px;
+  font-size:16px;
 }
 
 .search-box button{
   background:#4d2fb2;
   color:#fff;
   border:none;
-  border-radius:40px;
-  padding:14px 26px;
-  font-weight:600;
+  border-radius:30px;
+  padding:12px 24px;
   cursor:pointer;
 }
 
-/* FLOATING CARDS */
+/* FLOATING COLLEGE CARDS */
 .card{
   position:absolute;
   background:#fff;
-  padding:14px 18px;
-  border-radius:14px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.12);
-  font-size:14px;
-  animation:float 6s ease-in-out infinite;
+  padding:10px 14px;
+  border-radius:12px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.12);
+  font-size:13px;
 }
 
-.card1{top:120px;left:12%}
-.card2{top:200px;right:12%;animation-delay:1s}
-.card3{bottom:80px;left:18%;animation-delay:2s}
+.card img{height:30px}
 
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-15px)}
-}
+.card1{top:120px;left:8%}
+.card2{top:200px;right:10%}
+.card3{bottom:100px;left:15%}
 
 /* TRUST */
 .trust{
-  margin-top:60px;
+  margin-top:50px;
   display:flex;
   justify-content:center;
   gap:30px;
@@ -159,10 +151,9 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 
 .trust div{
   background:#fff;
-  padding:12px 20px;
+  padding:12px 18px;
   border-radius:20px;
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  font-size:14px;
 }
 
 </style>
@@ -170,22 +161,33 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
   <div class="logo">
     <img src="https://www.swadeshi-shiksha.com/_next/image?url=%2Flogo.png&w=256&q=75">
+    <span>Swadeshi Shiksha</span>
   </div>
+
+  <div class="nav">
+    <a href="#">Colleges</a>
+    <a href="#">Exams</a>
+    <a href="#">Courses</a>
+    <a href="#">Resources</a>
+  </div>
+
   <div class="cta">Free Counselling</div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
 
-  <!-- floating elements -->
-  <div class="card card1">🎯 Best Colleges</div>
-  <div class="card card2">💰 Scholarships</div>
-  <div class="card card3">📊 Compare Colleges</div>
+  <!-- floating cards with logos -->
+  <div class="card card1"><img src="https://upload.wikimedia.org/wikipedia/en/4/44/IIM_Ahmedabad_Logo.svg"></div>
+  <div class="card card2"><img src="https://upload.wikimedia.org/wikipedia/en/5/5a/XLRI_logo.png"></div>
+  <div class="card card3"><img src="https://upload.wikimedia.org/wikipedia/en/3/3e/SPJIMR_logo.png"></div>
 
   <h1>Find Your Perfect <span>MBA College</span></h1>
-  <p>Search, compare and get expert guidance for top MBA colleges in India</p>
+  <p>Compare colleges, explore options and get expert counselling</p>
 
   <div class="search">
     <div class="search-box">
