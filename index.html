@@ -259,6 +259,62 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   color:#555;
 }
 
+  /* REVIEW SECTION */
+
+.review-section{
+  padding:90px 20px;
+  text-align:center;
+  background:#fff;
+}
+
+.review-section h2{
+  font-size:28px;
+  margin-bottom:40px;
+}
+
+.review-slider{
+  display:flex;
+  gap:25px;
+  overflow-x:auto;
+  padding:10px 20px;
+}
+
+.review-slider::-webkit-scrollbar{
+  display:none;
+}
+
+.review-card{
+  min-width:280px;
+  background:#faf8f2;
+  padding:25px;
+  border-radius:16px;
+  text-align:left;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  transition:0.3s ease;
+}
+
+.review-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.12);
+}
+
+.stars{
+  color:#ffb400;
+  font-size:16px;
+  margin-bottom:10px;
+}
+
+.review-card p{
+  font-size:14px;
+  color:#444;
+  margin-bottom:12px;
+}
+
+.review-card h4{
+  font-size:13px;
+  color:#777;
+}
+
 </style>
 </head>
 
@@ -370,6 +426,41 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
     </div>
 
   </div>
+
+<!-- SOCIAL PROOF -->
+<section class="review-section">
+
+  <h2>What Students Are Saying</h2>
+
+  <div class="review-slider">
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Found my college within 2 days. The comparison feature is amazing."</p>
+      <h4>— Aman Verma</h4>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Counselling team helped me choose the right college. Very helpful."</p>
+      <h4>— Sneha Sharma</h4>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★☆</div>
+      <p>"Simple and easy to use. No confusion like other websites."</p>
+      <h4>— Rohan Mehta</h4>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Saved a lot of time. Everything is in one place."</p>
+      <h4>— Priya Singh</h4>
+    </div>
+
+  </div>
+
+</section>
 
 </section>
 
