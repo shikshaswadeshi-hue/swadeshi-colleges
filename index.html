@@ -1,912 +1,626 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>SS Admin CMS</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swadeshi Shiksha | MBA & PGDM Admissions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f7fb;
+      --surface:#ffffff;
+      --text:#171a2a;
+      --muted:#6c7285;
+      --line:rgba(22,27,45,0.08);
+      --primary:#3f35d8;
+      --primary-dark:#261fb0;
+      --primary-soft:#ecebff;
+      --accent:#7b61ff;
+      --shadow:0 20px 60px rgba(31, 35, 70, 0.12);
+      --radius-xl:28px;
+      --radius-lg:22px;
+      --max:1240px;
+    }
 
-<!-- Firebase compat -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(123,97,255,0.08), transparent 28%),
+        radial-gradient(circle at top right, rgba(63,53,216,0.06), transparent 24%),
+        var(--bg);
+      color:var(--text);
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%;display:block;}
+    button,input{font:inherit;}
 
-<style>
-body{margin:0;font-family:Quicksand;background:#f4f6fb}
-.layout{display:flex}
-.sidebar{width:260px;background:#1e1e2f;color:#fff;min-height:100vh;padding:20px;position:sticky;top:0}
-.sidebar button{width:100%;margin-bottom:10px;padding:10px;border:none;border-radius:6px;cursor:pointer}
-.main{flex:1;padding:30px}
-.card{background:#fff;padding:20px;border-radius:10px;margin-bottom:20px}
-input,textarea,select{width:100%;padding:10px;margin:8px 0;border:1px solid #ddd;border-radius:6px}
+    .container{
+      width:min(calc(100% - 32px), var(--max));
+      margin:0 auto;
+    }
 
- textarea{
-  min-height:120px;
-  resize:vertical;
-  line-height:1.5;
-} 
- 
-table{width:100%;border-collapse:collapse;margin-top:10px}
-td,th{border:1px solid #eee;padding:8px}
-.addBtn{margin-top:8px;padding:6px 12px;cursor:pointer}
-.login{display:flex;height:100vh;align-items:center;justify-content:center}
-.loginBox{background:#fff;padding:30px;border-radius:12px;width:320px}
-</style>
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(18px);
+      background:rgba(247,247,251,0.82);
+      border-bottom:1px solid rgba(22,27,45,0.06);
+    }
+
+    .nav-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      padding:16px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-shrink:0;
+    }
+
+    .brand-mark{
+      width:68px;
+      height:68px;
+      border-radius:20px;
+      background:#fff;
+      border:1px solid rgba(22,27,45,0.06);
+      box-shadow:0 8px 24px rgba(31,35,70,0.08);
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      padding:8px;
+    }
+
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+
+    .brand-text strong{
+      font-size:1rem;
+      letter-spacing:0.01em;
+    }
+
+    .brand-text span{
+      font-size:.85rem;
+      color:var(--muted);
+    }
+
+    .nav-center{
+      display:flex;
+      align-items:center;
+      gap:34px;
+      flex:1;
+      justify-content:center;
+    }
+
+    .nav-link{
+      font-size:1.02rem;
+      font-weight:600;
+      color:#23263a;
+      position:relative;
+      padding:10px 0;
+    }
+
+    .nav-link.active::after,
+    .nav-link:hover::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:100%;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-shrink:0;
+    }
+
+    .socials{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .social-icon{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:#fff;
+      border:1px solid rgba(22,27,45,0.08);
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      color:#1d2340;
+      transition:.25s ease;
+    }
+
+    .social-icon:hover{
+      transform:translateY(-2px);
+      border-color:rgba(63,53,216,0.28);
+      box-shadow:0 12px 24px rgba(63,53,216,0.15);
+    }
+
+    .call-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:150px;
+      height:50px;
+      padding:0 24px;
+      border:none;
+      border-radius:999px;
+      font-weight:700;
+      color:#fff;
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      box-shadow:0 16px 30px rgba(63,53,216,0.25);
+      transition:.25s ease;
+    }
+
+    .call-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 20px 36px rgba(63,53,216,0.32);
+    }
+
+    .hero{
+      padding:42px 0 46px;
+    }
+
+    .search-shell{
+      margin:0 auto 24px;
+      width:min(920px,100%);
+      background:rgba(255,255,255,0.9);
+      border:1px solid rgba(22,27,45,0.08);
+      box-shadow:var(--shadow);
+      border-radius:999px;
+      padding:10px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .search-icon{
+      width:52px;
+      height:52px;
+      border-radius:50%;
+      background:var(--primary-soft);
+      color:var(--primary);
+      display:grid;
+      place-items:center;
+      font-size:1.2rem;
+      flex-shrink:0;
+    }
+
+    .search-shell input{
+      flex:1;
+      border:none;
+      outline:none;
+      background:transparent;
+      font-size:1.05rem;
+      color:var(--text);
+    }
+
+    .search-shell input::placeholder{color:#9aa1b6;}
+
+    .search-btn{
+      border:none;
+      height:52px;
+      padding:0 28px;
+      border-radius:999px;
+      font-weight:700;
+      color:#fff;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:36px;
+      background:
+        linear-gradient(135deg, rgba(18,20,56,0.78), rgba(63,53,216,0.78)),
+        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80') center/cover;
+      min-height:610px;
+      box-shadow:0 28px 70px rgba(27,33,72,0.22);
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
+      gap:28px;
+      padding:54px;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:auto auto -120px -80px;
+      width:280px;
+      height:280px;
+      background:rgba(255,255,255,0.08);
+      filter:blur(20px);
+      border-radius:50%;
+    }
+
+    .hero-copy,
+    .hero-form-wrap{position:relative;z-index:1;}
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:#e7e6ff;
+      background:rgba(255,255,255,0.1);
+      border:1px solid rgba(255,255,255,0.18);
+      border-radius:999px;
+      padding:9px 16px;
+      font-size:.9rem;
+      font-weight:600;
+      margin-bottom:20px;
+    }
+
+    .hero-copy h1{
+      margin:0 0 18px;
+      color:#fff;
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.5rem, 5vw, 4.5rem);
+      line-height:1.05;
+      letter-spacing:-0.02em;
+      max-width:650px;
+    }
+
+    .hero-copy p{
+      margin:0 0 28px;
+      max-width:600px;
+      font-size:1.08rem;
+      line-height:1.75;
+      color:rgba(255,255,255,0.88);
+    }
+
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin:0 0 34px;
+      padding:0;
+      list-style:none;
+      max-width:640px;
+    }
+
+    .hero-points li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      color:#fff;
+      font-weight:500;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+      padding:14px 16px;
+      border-radius:18px;
+    }
+
+    .hero-actions{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:28px;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:180px;
+      height:54px;
+      padding:0 24px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.25s ease;
+    }
+
+    .btn-primary{
+      color:#fff;
+      background:#ffffff;
+      color:var(--primary-dark);
+      box-shadow:0 16px 34px rgba(255,255,255,0.18);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.22);
+      color:#fff;
+      background:rgba(255,255,255,0.08);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover{transform:translateY(-2px);}
+
+    .trust-row{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      flex-wrap:wrap;
+      color:#fff;
+    }
+
+    .rating-pill,
+    .mini-proof{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:rgba(255,255,255,0.1);
+      border:1px solid rgba(255,255,255,0.14);
+      padding:12px 16px;
+      border-radius:16px;
+    }
+
+    .hero-form{
+      background:rgba(255,255,255,0.96);
+      border:1px solid rgba(255,255,255,0.6);
+      border-radius:28px;
+      padding:26px;
+      box-shadow:0 22px 45px rgba(17,23,62,0.14);
+      max-width:460px;
+      margin-left:auto;
+    }
+
+    .hero-form h3{
+      margin:0 0 8px;
+      font-size:1.7rem;
+      color:#151935;
+    }
+
+    .hero-form p{
+      margin:0 0 20px;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .field{
+      margin-bottom:14px;
+    }
+
+    .field label{
+      display:block;
+      margin-bottom:8px;
+      font-size:.95rem;
+      font-weight:600;
+      color:#23263a;
+    }
+
+    .field input,
+    .field select{
+      width:100%;
+      height:54px;
+      border-radius:16px;
+      border:1px solid rgba(22,27,45,0.1);
+      background:#fff;
+      padding:0 16px;
+      outline:none;
+      transition:.2s ease;
+    }
+
+    .field input:focus,
+    .field select:focus{
+      border-color:rgba(63,53,216,0.45);
+      box-shadow:0 0 0 4px rgba(63,53,216,0.09);
+    }
+
+    .hero-form button{
+      width:100%;
+      height:56px;
+      border:none;
+      border-radius:18px;
+      font-weight:800;
+      color:#fff;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      cursor:pointer;
+      margin-top:6px;
+      box-shadow:0 18px 34px rgba(63,53,216,0.22);
+    }
+
+    .disclaimer{
+      margin-top:12px;
+      font-size:.82rem;
+      color:#8388a0;
+      line-height:1.55;
+      text-align:center;
+    }
+
+    .stats-band{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .stat-box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:0 12px 28px rgba(31,35,70,0.06);
+    }
+
+    .stat-box strong{
+      display:block;
+      font-size:1.8rem;
+      color:var(--primary-dark);
+      margin-bottom:6px;
+    }
+
+    .stat-box span{
+      color:var(--muted);
+      font-size:.96rem;
+      line-height:1.55;
+    }
+
+    @media (max-width: 1100px){
+      .nav-center{display:none;}
+      .hero-card{grid-template-columns:1fr; padding:34px; min-height:auto;}
+      .hero-form{max-width:100%; margin-left:0;}
+      .stats-band{grid-template-columns:repeat(2,minmax(0,1fr));}
+    }
+
+    @media (max-width: 740px){
+      .nav-wrap{padding:14px 0;}
+      .brand-text{display:none;}
+      .socials{display:none;}
+      .call-btn{min-width:120px;height:46px;padding:0 18px;}
+      .hero{padding:24px 0 30px;}
+      .search-shell{padding:8px; gap:10px;}
+      .search-icon{width:46px;height:46px;}
+      .search-btn{height:46px; padding:0 18px;}
+      .hero-card{padding:24px; border-radius:26px;}
+      .hero-copy h1{font-size:2.35rem;}
+      .hero-points{grid-template-columns:1fr;}
+      .hero-actions{flex-direction:column; align-items:stretch;}
+      .btn-primary,.btn-secondary{width:100%;}
+      .stats-band{grid-template-columns:1fr;}
+    }
+  </style>
 </head>
-
 <body>
-
-<!-- LOGIN -->
-<div id="loginPage" class="login">
- <div class="loginBox">
-  <h3>Admin Login</h3>
-  <input id="email" placeholder="Email">
-  <input id="pass" type="password" placeholder="Password">
-  <button id="loginBtn">Login</button>
- </div>
-</div>
-
-<!-- ADMIN -->
-<div id="admin" style="display:none">
-<div class="layout">
-
-<div class="sidebar">
- <h2>SS CMS</h2>
-<button onclick="openPublished()">📚 Published</button>
-<button onclick="openDraft()">📝 Drafts</button>
-<button onclick="openNewCollege()">➕ New College</button>
-<button onclick="openNewContentPage()">📄 New Content Page</button>
-<button onclick="logout()">Logout</button>
-</div>
-
-<div class="main">
-
-<div id="editorPage">
-<div id="collegeEditor"> 
- 
-<div class="card">
-<h3>Basic Info</h3>
-<input id="name" placeholder="College Name">
-<input id="slug" placeholder="Slug">
-<input id="logo" placeholder="Logo URL">
-<input id="image" placeholder="College Image URL">
-<input id="title" placeholder="H1 Title">
-<input id="established" placeholder="Established Year">
-<input id="approval" placeholder="Approval (NAAC / AICTE etc)">
-<input id="ranking" placeholder="Ranking">
-<input id="campusSize" placeholder="Campus Size">
-<input id="highestPackage" placeholder="Highest Package">
-<input id="averagePackage" placeholder="Average Package">
-</div>
-
-<div class="card"><h3>Overview</h3><div id="overview"></div><button class="addBtn" onclick="addBullet('overview')">+ Bullet</button></div>
-<div class="card"><h3>Courses</h3><table id="courses"><tr><th>Course</th><th>Duration</th><th>Exam</th></tr></table><button class="addBtn" onclick="addCourse()">+ Row</button></div>
-<div class="card"><h3>Eligibility</h3><div id="eligibility"></div><button class="addBtn" onclick="addBullet('eligibility')">+ Bullet</button></div>
-<div class="card"><h3>Application</h3><div id="application"></div><button class="addBtn" onclick="addBullet('application')">+ Bullet</button></div>
-<div class="card"><h3>Admission Steps</h3><div id="admission"></div><button class="addBtn" onclick="addBullet('admission')">+ Step</button></div>
-<div class="card"><h3>Fees</h3><table id="fees"><tr><th>Course</th><th>Total Fees</th></tr></table><button class="addBtn" onclick="addFee()">+ Row</button></div>
-<div class="card"><h3>Cutoff</h3><table id="cutoffs"><tr><th>Exam</th><th>Percentile</th></tr></table><button class="addBtn" onclick="addCutoff()">+ Row</button></div>
-<div class="card"><h3>Placements</h3><div id="placements"></div><button class="addBtn" onclick="addBullet('placements')">+ Bullet</button></div>
-<div class="card"><h3>Scholarships</h3><div id="scholarships"></div><button class="addBtn" onclick="addBullet('scholarships')">+ Bullet</button></div>
-<div class="card"><h3>Why Choose</h3><div id="whyChoose"></div><button class="addBtn" onclick="addBullet('whyChoose')">+ Bullet</button></div>
-<div class="card">
-<h3>Facilities</h3>
-<div id="facilities"></div>
-<button class="addBtn" onclick="addBullet('facilities')">+ Bullet</button>
-</div>
-<div class="card">
-<h3>Top Recruiters</h3>
-<div id="recruiters"></div>
-<button class="addBtn" onclick="addBullet('recruiters')">+ Recruiter</button>
-</div>
-<div class="card">
-<h3>FAQ</h3>
-<table id="faq">
-<tr><th>Question</th><th>Answer</th></tr>
-</table>
-<button class="addBtn" onclick="addFAQ()">+ FAQ</button>
-</div>
-
-<br><br>
-
-<div class="card">
-
-<button type="button"
-onclick="saveCollege('draft')"
-style="background:#999;color:white;padding:12px 20px;border:none;border-radius:6px;margin-right:10px;">
-Save Draft
-</button>
-
-<button type="button"
-onclick="saveCollege('published')"
-style="background:#2ecc71;color:white;padding:12px 20px;border:none;border-radius:6px;">
-Publish College
-</button>
-
-</div>
-
-</div>
-<div id="contentPageEditor" style="display:none;">
-
-  <div class="card">
-    <h3>Content Page Basic Info</h3>
-    <input id="pageTitle" placeholder="Page Title">
-    <input id="pageSlug" placeholder="Slug">
-    <select id="pageType">
-      <option value="">Select Page Type</option>
-      <option value="exam">Exam</option>
-      <option value="course">Course</option>
-      <option value="city">City</option>
-      <option value="guide">Guide</option>
-    </select>
-    <input id="pageHeroImage" placeholder="Hero Image URL">
-    <textarea id="pageIntroText" placeholder="Intro Text"></textarea>
-  </div>
-
-  <div class="card">
-    <h3>Content Sections</h3>
-    <div id="contentSections"></div>
-
-    <button class="addBtn" onclick="addTextSection()">+ Text Section</button>
-    <button class="addBtn" onclick="addListSection()">+ List Section</button>
-    <button class="addBtn" onclick="addTableSection()">+ Table Section</button>
-    <button class="addBtn" onclick="addLinksSection()">+ Related Links Section</button>
-  </div>
-
-  <div class="card">
-    <button type="button"
-      onclick="saveContentPage('draft')"
-      style="background:#999;color:white;padding:12px 20px;border:none;border-radius:6px;margin-right:10px;">
-      Save Draft
-    </button>
-
-    <button type="button"
-      onclick="saveContentPage('published')"
-      style="background:#2ecc71;color:white;padding:12px 20px;border:none;border-radius:6px;">
-      Publish Content Page
-    </button>
-  </div>
-
-</div> 
-
-</div>
-
-<div id="listPage" style="display:none">
-  <div id="publishedList" class="card"></div>
-</div>
-</div>
-</div>
-
-<script>
-const firebaseConfig={
-  apiKey:"AIzaSyCQNocdvSpqjm7ZMcrVYW0Fc-iMycGQO94",
-  authDomain:"swadeshi-shiksha.firebaseapp.com",
-  projectId:"swadeshi-shiksha"
-};
-firebase.initializeApp(firebaseConfig);
-const db=firebase.firestore();
-let currentCollegeId = null;
-let currentListType = "published";
-const loginPage = document.getElementById("loginPage");
-const admin = document.getElementById("admin");
-const email = document.getElementById("email");
-const pass = document.getElementById("pass");
-const editorPage = document.getElementById("editorPage");
-const listPage = document.getElementById("listPage");
-
-const overview = document.getElementById("overview");
-const eligibility = document.getElementById("eligibility");
-const application = document.getElementById("application");
-const admission = document.getElementById("admission");
-const placements = document.getElementById("placements");
-const scholarships = document.getElementById("scholarships");
-const whyChoose = document.getElementById("whyChoose");
-const facilities = document.getElementById("facilities");
-const recruiters = document.getElementById("recruiters");
-
-const courses = document.getElementById("courses");
-const fees = document.getElementById("fees");
-const cutoffs = document.getElementById("cutoffs");
-const faq = document.getElementById("faq");
-const name = document.getElementById("name");
-const slug = document.getElementById("slug");
-const logo = document.getElementById("logo");
-const image = document.getElementById("image");
-const title = document.getElementById("title");
-const established = document.getElementById("established");
-const approval = document.getElementById("approval");
-const ranking = document.getElementById("ranking");
-const campusSize = document.getElementById("campusSize");
-const highestPackage = document.getElementById("highestPackage");
-const averagePackage = document.getElementById("averagePackage");
-const publishedList = document.getElementById("publishedList");
- 
- let currentEditorType = "college";
-let currentContentPageId = null;
-
-const collegeEditor = document.getElementById("collegeEditor");
-const contentPageEditor = document.getElementById("contentPageEditor");
-
-const pageTitle = document.getElementById("pageTitle");
-const pageSlug = document.getElementById("pageSlug");
-const pageType = document.getElementById("pageType");
-const pageHeroImage = document.getElementById("pageHeroImage");
-const pageIntroText = document.getElementById("pageIntroText");
-const contentSections = document.getElementById("contentSections");
-
-
-document.addEventListener("DOMContentLoaded", ()=>{
-
-  document.getElementById("loginBtn").addEventListener("click", login);
-
-  name.addEventListener("input", ()=>{
-    slug.value = name.value
-      .toLowerCase()
-      .replace(/[^a-z0-9 ]/g,"")
-      .replace(/\s+/g,"-");
-  });
-
-  pageTitle.addEventListener("input", ()=>{
-    pageSlug.value = pageTitle.value
-      .toLowerCase()
-      .replace(/[^a-z0-9 ]/g,"")
-      .replace(/\s+/g,"-");
-  });
-
-});
-
-firebase.auth().onAuthStateChanged(u=>{
- loginPage.style.display=u?"none":"flex";
- admin.style.display=u?"block":"none";
-});
-
-function login(){
-  firebase.auth()
-    .signInWithEmailAndPassword(email.value.trim(), pass.value.trim())
-    .then(()=>{
-      console.log("Login success");
-    })
-    .catch(error=>{
-      console.error(error);
-      alert(error.message);
-    });
-}
-
-function openPublished(){
-  currentListType = "published";
-  showList();
-  loadItems("published");
-}
-
-function openDraft(){
-  currentListType = "draft";
-  showList();
-  loadItems("draft");
-}
-
-function openNewCollege(){
-  currentEditorType = "college";
-  currentCollegeId = null;
-  showEditor();
-  clearForm();
-  collegeEditor.style.display = "block";
-  contentPageEditor.style.display = "none";
-}
-
-function addBullet(id){
- const input=document.createElement("input");
- document.getElementById(id).appendChild(input);
-}
-
-function addCourse(){
- const tr=document.createElement("tr");
- tr.innerHTML="<td><input></td><td><input></td><td><input></td>";
- courses.appendChild(tr);
-}
-function addFee(){
- const tr=document.createElement("tr");
- tr.innerHTML="<td><input></td><td><input></td>";
- fees.appendChild(tr);
-}
-function addCutoff(){
- const tr=document.createElement("tr");
- tr.innerHTML="<td><input></td><td><input></td>";
- cutoffs.appendChild(tr);
-}
-
-function getBullets(id){
- return [...document.getElementById(id).querySelectorAll("input")].map(i=>i.value).filter(v=>v);
-}
-
-function getTable(tableId){
-
- const table = document.getElementById(tableId);
- const rows = table.querySelectorAll("tr");
- const data = [];
-
- rows.forEach((row,i)=>{
-
-  if(i === 0) return;
-
-  const inputs = row.querySelectorAll("input");
-
-  if(inputs.length === 0) return;
-
-  const rowData = {};
-
-  inputs.forEach((input,index)=>{
-   rowData["col"+index] = input.value.trim();
-  });
-
-  data.push(rowData);
-
- });
-
- return data;
-}
-
-function addFAQ(){
- const tr=document.createElement("tr");
- tr.innerHTML="<td><input></td><td><input></td>";
- faq.appendChild(tr);
-}
-
-function editCollege(id){
-
- currentCollegeId = id;
-
- db.collection("colleges").doc(id).get().then(doc=>{
-
-   const d = doc.data();
-
-   clearForm();
-   showEditor();
-   collegeEditor.style.display = "block";
-   contentPageEditor.style.display = "none";
-
-   name.value = d.name || "";
-   slug.value = d.slug || "";
-   logo.value = d.logo || "";
-   image.value = d.image || "";
-   title.value = d.title || "";
-
-   established.value = d.established || "";
-   approval.value = d.approval || "";
-   ranking.value = d.ranking || "";
-   campusSize.value = d.campusSize || "";
-   highestPackage.value = d.highestPackage || "";
-   averagePackage.value = d.averagePackage || "";
-
-
-
-   // BULLET SECTIONS
-   function loadBullets(id,data){
-     if(!data) return;
-     data.forEach(item=>{
-       const input=document.createElement("input");
-       input.value=item;
-       document.getElementById(id).appendChild(input);
-     });
-   }
-
-   loadBullets("overview",d.overview);
-   loadBullets("eligibility",d.eligibility);
-   loadBullets("application",d.application);
-   loadBullets("admission",d.admission);
-   loadBullets("placements",d.placements);
-   loadBullets("scholarships",d.scholarships);
-   loadBullets("whyChoose",d.whyChoose);
-   loadBullets("facilities",d.facilities);
-   loadBullets("recruiters",d.recruiters);
-
-
-   // COURSES TABLE
-   if(d.courses){
- d.courses.forEach(row=>{
-   const tr=document.createElement("tr");
-   tr.innerHTML=`
-   <td><input value="${row.col0||""}"></td>
-   <td><input value="${row.col1||""}"></td>
-   <td><input value="${row.col2||""}"></td>`;
-   courses.appendChild(tr);
- });
-}
-
-
-   // FEES TABLE
-   if(d.fees){
- d.fees.forEach(row=>{
-   const tr=document.createElement("tr");
-   tr.innerHTML=`
-   <td><input value="${row.col0||""}"></td>
-   <td><input value="${row.col1||""}"></td>`;
-   fees.appendChild(tr);
- });
-}
-
-
-   // CUTOFF TABLE
-   if(d.cutoffs){
- d.cutoffs.forEach(row=>{
-   const tr=document.createElement("tr");
-   tr.innerHTML=`
-   <td><input value="${row.col0||""}"></td>
-   <td><input value="${row.col1||""}"></td>`;
-   cutoffs.appendChild(tr);
- });
-}
-
-
-   // FAQ TABLE
-   if(d.faq){
- d.faq.forEach(row=>{
-   const tr=document.createElement("tr");
-   tr.innerHTML=`
-   <td><input value="${row.col0||""}"></td>
-   <td><input value="${row.col1||""}"></td>`;
-   faq.appendChild(tr);
- });
-}
-
-   alert("College loaded for editing");
-
- });
-}
-
-function deleteCollege(id){
-
- if(confirm("Delete this college?")){
-   db.collection("colleges").doc(id).delete()
-     .then(()=>{
-       alert("Deleted");
-       loadItems(currentListType);
-     });
- }
-
-}
-
-function clearForm(){
- collegeEditor.querySelectorAll("input").forEach(i=>i.value="");
-
- overview.innerHTML="";
- eligibility.innerHTML="";
- application.innerHTML="";
- admission.innerHTML="";
- placements.innerHTML="";
- scholarships.innerHTML="";
- whyChoose.innerHTML="";
- facilities.innerHTML="";
- recruiters.innerHTML="";
-
- document.getElementById("courses").innerHTML="<tr><th>Course</th><th>Duration</th><th>Exam</th></tr>";
- document.getElementById("fees").innerHTML="<tr><th>Course</th><th>Total Fees</th></tr>";
- document.getElementById("cutoffs").innerHTML="<tr><th>Exam</th><th>Percentile</th></tr>";
- document.getElementById("faq").innerHTML="<tr><th>Question</th><th>Answer</th></tr>";
-}
-
-function saveCollege(type){
-
- const nameInput = document.getElementById("name");
- const slugInput = document.getElementById("slug");
- const logoInput = document.getElementById("logo");
- const imageInput = document.getElementById("image");
- const titleInput = document.getElementById("title");
- const establishedInput = document.getElementById("established");
- const approvalInput = document.getElementById("approval");
- const rankingInput = document.getElementById("ranking");
- const campusSizeInput = document.getElementById("campusSize");
- const highestPackageInput = document.getElementById("highestPackage");
- const averagePackageInput = document.getElementById("averagePackage");
-
- const slugVal = slugInput.value.trim();
-
- if(!nameInput.value.trim()) return alert("College Name required");
- if(!slugVal) return alert("Slug required");
-
- const safe = v => v || "";
-
- const docId = currentCollegeId || slugVal;
-
- db.collection("colleges").doc(docId).set({
-
-  name: safe(nameInput.value),
-  slug: slugVal,
-  logo: safe(logoInput.value),
-  image: safe(imageInput.value),
-  title: safe(titleInput.value),
-
-  established: safe(establishedInput.value),
-  approval: safe(approvalInput.value),
-  ranking: safe(rankingInput.value),
-  campusSize: safe(campusSizeInput.value),
-  highestPackage: safe(highestPackageInput.value),
-  averagePackage: safe(averagePackageInput.value),
-
-  overview: getBullets("overview"),
-  courses: getTable("courses"),
-  eligibility: getBullets("eligibility"),
-  application: getBullets("application"),
-  admission: getBullets("admission"),
-  fees: getTable("fees"),
-  cutoffs: getTable("cutoffs"),
-  placements: getBullets("placements"),
-  scholarships: getBullets("scholarships"),
-  whyChoose: getBullets("whyChoose"),
-  facilities: getBullets("facilities"),
-  recruiters: getBullets("recruiters"),
-  faq: getTable("faq"),
-
-  status: type,
-
-  publishedAt: firebase.firestore.FieldValue.serverTimestamp()
-
-}).then(()=>{
-
-   if(type === "draft"){
-     alert("Draft Saved ✅");
-   } else {
-     alert("College Published 🚀");
-   }
-
-   clearForm();
-   currentCollegeId = null;
-
-}).catch(error=>{
-   console.error("Save error:", error);
-   alert("Error saving college. Check console.");
-});
-
-}
-
-function showEditor(){
-  editorPage.style.display="block";
-  listPage.style.display="none";
-}
-
-function showList(){
-  editorPage.style.display="none";
-  listPage.style.display="block";
-}
-
-function loadItems(type){
-
-  publishedList.innerHTML = `<h3>Loading...</h3>`;
-
-  Promise.all([
-    db.collection("colleges")
-      .where("status","==",type)
-      .orderBy("publishedAt","desc")
-      .get(),
-
-    db.collection("contentPages")
-      .where("status","==",type)
-      .orderBy("publishedAt","desc")
-      .get()
-  ])
-  .then(([collegeSnapshot, contentSnapshot])=>{
-
-    let html = `<h3>${type.toUpperCase()} ITEMS</h3>`;
-
-    if(collegeSnapshot.empty && contentSnapshot.empty){
-      publishedList.innerHTML = `<h3>No ${type} items yet</h3>`;
-      return;
-    }
-
-    if(!collegeSnapshot.empty){
-      html += `<h4>Colleges</h4>`;
-      collegeSnapshot.forEach(doc=>{
-        const d = doc.data();
-        html += `
-          <div style="padding:10px;border-bottom:1px solid #eee;">
-            <b>${d.name || "Untitled College"}</b><br>
-            <small>Slug: ${d.slug || ""}</small><br>
-            <button onclick="editCollege('${doc.id}')">Edit</button>
-            <button onclick="deleteCollege('${doc.id}')">Delete</button>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <div class="brand-mark">
+          <img src="https://www.swadeshi-shiksha.com/_next/image?url=%2Flogo.png&w=256&q=75" alt="Swadeshi Shiksha logo">
+        </div>
+        <div class="brand-text">
+          <strong>Swadeshi Shiksha</strong>
+          <span>MBA & PGDM Admissions</span>
+        </div>
+      </a>
+
+      <nav class="nav-center">
+        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link" href="#counselling">Apply College Counselling</a>
+        <a class="nav-link" href="#blogs">Blog</a>
+        <a class="nav-link" href="#partners">Top Colleges</a>
+      </nav>
+
+      <div class="nav-right">
+        <div class="socials">
+          <a href="#" class="social-icon">f</a>
+          <a href="#" class="social-icon">◎</a>
+          <a href="#" class="social-icon">X</a>
+        </div>
+        <a href="tel:+919643686800" class="call-btn">Call Now</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <form class="search-shell">
+          <div class="search-icon">🔎</div>
+          <input type="text" placeholder="Search colleges, exams, cities or counselling support...">
+          <button class="search-btn" type="submit">Search</button>
+        </form>
+
+        <div class="hero-card">
+          <div class="hero-copy">
+            <div class="eyebrow">🎓 2026 Admissions Now Open</div>
+            <h1>Find the Right MBA & PGDM College Without the Confusion.</h1>
+            <p>
+              Premium counselling experience for students looking for MBA, PGDM and direct admission options across top private and recognised colleges in India.
+            </p>
+
+            <ul class="hero-points">
+              <li>✔ Expert one-to-one counselling support</li>
+              <li>✔ Colleges matched to your score and profile</li>
+              <li>✔ Transparent admission guidance</li>
+              <li>✔ Scholarship and application support</li>
+            </ul>
+
+            <div class="hero-actions">
+              <a href="#counselling" class="btn-primary">Apply for Free Counselling</a>
+              <a href="#partners" class="btn-secondary">Explore Top Colleges</a>
+            </div>
+
+            <div class="trust-row">
+              <div class="rating-pill">⭐ 4.8/5 student support rating</div>
+              <div class="mini-proof">🏫 Trusted by students across leading B-schools</div>
+            </div>
           </div>
-        `;
-      });
-    }
 
-    if(!contentSnapshot.empty){
-      html += `<h4 style="margin-top:20px;">Content Pages</h4>`;
-      contentSnapshot.forEach(doc=>{
-        const d = doc.data();
-        html += `
-          <div style="padding:10px;border-bottom:1px solid #eee;">
-            <b>${d.title || "Untitled Page"}</b><br>
-            <small>Type: ${d.pageType || ""}</small><br>
-            <small>Slug: ${d.slug || ""}</small><br>
-            <button onclick="editContentPage('${doc.id}')">Edit</button>
-            <button onclick="deleteContentPage('${doc.id}')">Delete</button>
+          <div class="hero-form-wrap">
+            <form class="hero-form" id="counselling">
+              <h3>Get Free Expert Guidance</h3>
+              <p>Share your details and our admission counsellors will help you shortlist the right colleges.</p>
+
+              <div class="field">
+                <label for="studentName">Full Name</label>
+                <input id="studentName" type="text" placeholder="Enter your full name">
+              </div>
+
+              <div class="field">
+                <label for="studentPhone">Phone Number</label>
+                <input id="studentPhone" type="tel" placeholder="Enter your phone number">
+              </div>
+
+              <div class="field">
+                <label for="studentExam">Preferred Exam</label>
+                <select id="studentExam">
+                  <option>CAT</option>
+                  <option>XAT</option>
+                  <option>CMAT</option>
+                  <option>MAT</option>
+                  <option>NMAT</option>
+                  <option>Direct Admission</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="studentCity">Preferred City</label>
+                <input id="studentCity" type="text" placeholder="Delhi, Bangalore, Pune, Mumbai...">
+              </div>
+
+              <button type="submit">Get My Free Counselling</button>
+              <div class="disclaimer">No spam. Only expert counselling and admission support.</div>
+            </form>
           </div>
-        `;
-      });
-    }
+        </div>
 
-    publishedList.innerHTML = html;
-
-  })
-  .catch(error=>{
-    console.error(error);
-    alert("Error loading items");
-  });
-}
-
-
-function openNewContentPage(){
-  currentEditorType = "content";
-  currentContentPageId = null;
-  showEditor();
-  clearContentPageForm();
-  collegeEditor.style.display = "none";
-  contentPageEditor.style.display = "block";
-}
-
-function clearContentPageForm(){
-  pageTitle.value = "";
-  pageSlug.value = "";
-  pageType.value = "";
-  pageHeroImage.value = "";
-  pageIntroText.value = "";
-  contentSections.innerHTML = "";
-}
-
-function addTextSection(){
-  const div = document.createElement("div");
-  div.className = "card";
-  div.innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-      <h4 style="margin:0;">Text Section</h4>
-      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
-    </div>
-    <input class="sectionHeading" placeholder="Section Heading">
-    <textarea class="sectionText" placeholder="Write full section text here..." rows="6"></textarea>
-  `;
-  contentSections.appendChild(div);
-}
-
-function addListSection(){
-  const div = document.createElement("div");
-  div.className = "card";
-  div.innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-      <h4 style="margin:0;">List Section</h4>
-      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
-    </div>
-    <input class="sectionHeading" placeholder="List Heading">
-    <textarea class="sectionList" placeholder="Write one point per line..." rows="8"></textarea>
-  `;
-  contentSections.appendChild(div);
-}
-
-function addTableSection(){
-  const div = document.createElement("div");
-  div.className = "card";
-  div.innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-      <h4 style="margin:0;">Table Section</h4>
-      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
-    </div>
-    <input class="sectionHeading" placeholder="Table Heading">
-    <textarea class="sectionTable" placeholder="Write rows like this:
-XAT Percentile | College Type
-95-99+ | XLRI, SPJIMR, XIM
-85-95 | IMT, TAPMI, GIM" rows="8"></textarea>
-  `;
-  contentSections.appendChild(div);
-}
-
-function addLinksSection(){
-  const div = document.createElement("div");
-  div.className = "card";
-  div.innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-      <h4 style="margin:0;">Related Links Section</h4>
-      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
-    </div>
-    <input class="sectionHeading" placeholder="Links Section Heading">
-    <textarea class="sectionLinks" placeholder="Write like this:
-XLRI Jamshedpur | college.html?slug=xlri-jamshedpur
-CAT Exam | page.html?slug=cat-exam" rows="8"></textarea>
-  `;
-  contentSections.appendChild(div);
-}
-
-function getContentSectionsData(){
-  const sections = [];
-  const boxes = contentSections.querySelectorAll(".card");
-
-  boxes.forEach(box => {
-    const heading = box.querySelector(".sectionHeading")?.value.trim() || "";
-
-    if(box.querySelector(".sectionText")){
-      sections.push({
-        type: "text",
-        heading: heading,
-        text: box.querySelector(".sectionText").value.trim()
-      });
-    }
-
-    else if(box.querySelector(".sectionList")){
-      sections.push({
-        type: "list",
-        heading: heading,
-        items: box.querySelector(".sectionList").value
-          .split("\n")
-          .map(x => x.trim())
-          .filter(x => x)
-      });
-    }
-
-    else if(box.querySelector(".sectionTable")){
-      sections.push({
-        type: "table",
-        heading: heading,
-        rows: box.querySelector(".sectionTable").value
-          .split("\n")
-          .map(x => x.trim())
-          .filter(x => x)
-      });
-    }
-
-    else if(box.querySelector(".sectionLinks")){
-      sections.push({
-        type: "links",
-        heading: heading,
-        links: box.querySelector(".sectionLinks").value
-          .split("\n")
-          .map(x => x.trim())
-          .filter(x => x)
-      });
-    }
-  });
-
-  return sections;
-}
-
-function saveContentPage(status){
-  const titleVal = pageTitle.value.trim();
-  const slugVal = pageSlug.value.trim();
-
-  if(!titleVal) return alert("Page Title required");
-  if(!slugVal) return alert("Page Slug required");
-  if(!pageType.value) return alert("Please select page type");
-
-  const docId = currentContentPageId || slugVal;
-
-  db.collection("contentPages").doc(docId).set({
-    title: titleVal,
-    slug: slugVal,
-    pageType: pageType.value,
-    heroImage: pageHeroImage.value.trim(),
-    introText: pageIntroText.value.trim(),
-    sections: getContentSectionsData(),
-    status: status,
-    publishedAt: firebase.firestore.FieldValue.serverTimestamp()
-  }).then(() => {
-    alert(status === "draft" ? "Content Page Draft Saved ✅" : "Content Page Published 🚀");
-    clearContentPageForm();
-    currentContentPageId = null;
-  }).catch(error => {
-    console.error(error);
-    alert("Error saving content page");
-  });
-} 
-
-
-function deleteContentPage(id){
-  if(confirm("Delete this content page?")){
-    db.collection("contentPages").doc(id).delete()
-      .then(()=>{
-        alert("Content page deleted");
-        loadItems(currentListType);
-      })
-      .catch(error=>{
-        console.error(error);
-        alert("Error deleting content page");
-      });
-  }
-}
-
-function editContentPage(id){
-  currentContentPageId = id;
-  currentEditorType = "content";
-
-  db.collection("contentPages").doc(id).get().then(doc=>{
-
-    const d = doc.data();
-    if(!d) return alert("Content page not found");
-
-    showEditor();
-    clearContentPageForm();
-    collegeEditor.style.display = "none";
-    contentPageEditor.style.display = "block";
-
-    pageTitle.value = d.title || "";
-    pageSlug.value = d.slug || "";
-    pageType.value = d.pageType || "";
-    pageHeroImage.value = d.heroImage || "";
-    pageIntroText.value = d.introText || "";
-
-    if(d.sections){
-      d.sections.forEach(section=>{
-
-        const div = document.createElement("div");
-        div.className = "card";
-
-        if(section.type === "text"){
-  div.innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-      <h4 style="margin:0;">Text Section</h4>
-      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
-    </div>
-    <input class="sectionHeading" placeholder="Section Heading" value="${section.heading || ""}">
-    <textarea class="sectionText" placeholder="Section Text" rows="6">${section.text || ""}</textarea>
-  `;
-}
-
-        if(section.type === "list"){
-  div.innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-      <h4 style="margin:0;">List Section</h4>
-      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
-    </div>
-    <input class="sectionHeading" placeholder="List Heading" value="${section.heading || ""}">
-    <textarea class="sectionList" placeholder="One point per line" rows="8">${(section.items || []).join("\n")}</textarea>
-  `;
-}
-
-        if(section.type === "table"){
-  div.innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-      <h4 style="margin:0;">Table Section</h4>
-      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
-    </div>
-    <input class="sectionHeading" placeholder="Table Heading" value="${section.heading || ""}">
-    <textarea class="sectionTable" placeholder="Write rows like this:
-XAT Percentile | College Type
-95-99+ | XLRI, SPJIMR, XIM" rows="8">${(section.rows || []).join("\n")}</textarea>
-  `;
-}
-
-        if(section.type === "links"){
-  div.innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
-      <h4 style="margin:0;">Related Links Section</h4>
-      <button type="button" class="addBtn" onclick="this.closest('.card').remove()">Remove Section</button>
-    </div>
-    <input class="sectionHeading" placeholder="Links Section Heading" value="${section.heading || ""}">
-    <textarea class="sectionLinks" placeholder="Write like this:
-IILM Greater Noida | college.html?slug=iilm-greater-noida" rows="8">${(section.links || []).join("\n")}</textarea>
-  `;
-}
-
-        contentSections.appendChild(div);
-
-      });
-    }
-
-    alert("Content page loaded for editing");
-
-  }).catch(error=>{
-    console.error(error);
-    alert("Error loading content page");
-  });
-} 
-
-function logout(){
-  firebase.auth().signOut()
-    .then(()=>{
-      alert("Logged out successfully");
-    })
-    .catch(error=>{
-      console.error(error);
-      alert(error.message);
-    });
-}
-
-
-</script>
-
+        <div class="stats-band">
+          <div class="stat-box">
+            <strong>50+</strong>
+            <span>Partner colleges across major MBA cities.</span>
+          </div>
+          <div class="stat-box">
+            <strong>1:1</strong>
+            <span>Personalised counselling based on student profile.</span>
+          </div>
+          <div class="stat-box">
+            <strong>2026</strong>
+            <span>Admission-focused support for current intake.</span>
+          </div>
+          <div class="stat-box">
+            <strong>Fast</strong>
+            <span>Quick lead capture and direct call-back experience.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
