@@ -1225,8 +1225,7 @@ br {
   </div>
 </section>
 
-<!-- Counselling Modal -->
-<div class="counselling-overlay" id="counsellingOverlay">
+  <div class="counselling-overlay" id="counsellingOverlay">
   <div class="counselling-modal">
     <button class="close-modal-btn" id="closeCounsellingModal" type="button">×</button>
     <h3>Get Free Counselling</h3>
@@ -1259,6 +1258,7 @@ br {
     </form>
   </div>
 </div>
+
 
  <section class="premium-cta">
   <div class="premium-cta-wrap">
@@ -1340,15 +1340,14 @@ br {
     <p>© 2026 Swadeshi Shiksha. All rights reserved.</p>
   </div>
 </footer>
-  </section>
 
 <script>
 const input = document.getElementById("collegeSearch");
 const btn = document.getElementById("searchBtn");
 
-function goToSearchPage(){
+function goToSearchPage() {
   const query = input.value.trim();
-  if(!query) return;
+  if (!query) return;
 
   window.open(
     "https://swadeshi-colleges.vercel.app/colleges.html?search=" + encodeURIComponent(query),
@@ -1356,11 +1355,194 @@ function goToSearchPage(){
   );
 }
 
-btn.addEventListener("click", goToSearchPage);
-input.addEventListener("keydown", e=>{
-  if(e.key === "Enter") goToSearchPage();
-});
-</script>
+if (btn) {
+  btn.addEventListener("click", goToSearchPage);
+}
 
+if (input) {
+  input.addEventListener("keydown", e => {
+    if (e.key === "Enter") goToSearchPage();
+  });
+}
+
+const applicationColleges = [
+  {
+    name: "IILM Greater Noida",
+    logo: "iilm.png",
+    meta: "Admissions 2026",
+    status: "info",
+    statusText: "Official Portal",
+    applyUrl: "https://admissions.iilm.edu/"
+  },
+  {
+    name: "ISBR Bangalore",
+    logo: "isbr.png",
+    meta: "Admissions 2026",
+    status: "info",
+    statusText: "Official Portal",
+    applyUrl: "https://apply.isbr.in/"
+  },
+  {
+    name: "GIBS Bangalore",
+    logo: "gibs.png",
+    meta: "Admissions 2026",
+    status: "info",
+    statusText: "Official Portal",
+    applyUrl: "https://admission.gibsbschool.com/"
+  },
+  {
+    name: "D Y Patil University Pune",
+    logo: "dypatil.png",
+    meta: "Admissions 2026",
+    status: "info",
+    statusText: "Official Portal",
+    applyUrl: "https://dypatiluniversitypune.edu.in/applicationNew.php"
+  },
+  {
+    name: "PIBM Pune",
+    logo: "pibm.png",
+    meta: "Admissions guidance available",
+    status: "closed",
+    statusText: "Counselling",
+    applyUrl: "https://www.pibm.in/mba-and-pgdm-admissions.html"
+  },
+  {
+    name: "BML Munjal University",
+    logo: "bmu.png",
+    meta: "Admissions guidance available",
+    status: "closed",
+    statusText: "Counselling",
+    applyUrl: "https://www.bmu.edu.in/apply/"
+  },
+  {
+    name: "IIBS Bangalore",
+    logo: "iibs.png",
+    meta: "Admissions 2026",
+    status: "info",
+    statusText: "Official Portal",
+    applyUrl: "https://admissions.iibs.edu.in/"
+  },
+  {
+    name: "JAGSoM",
+    logo: "jagsom.png",
+    meta: "Admissions 2026",
+    status: "info",
+    statusText: "Official Portal",
+    applyUrl: "https://admissions.jagsom.edu.in/"
+  }
+];
+
+const appGrid = document.getElementById("appGrid");
+const viewMoreBtn = document.getElementById("viewMoreBtn");
+const counsellingOverlay = document.getElementById("counsellingOverlay");
+const closeCounsellingModal = document.getElementById("closeCounsellingModal");
+const selectedCollege = document.getElementById("selectedCollege");
+const cCollegeDisplay = document.getElementById("cCollegeDisplay");
+const counsellingForm = document.getElementById("counsellingForm");
+
+let showAllColleges = false;
+
+function renderApplicationCards() {
+  if (!appGrid) return;
+
+  const visibleItems = showAllColleges
+    ? applicationColleges
+    : applicationColleges.slice(0, 4);
+
+  appGrid.innerHTML = visibleItems.map(function(college) {
+    return `
+      <div class="app-modern-card">
+        <div class="app-modern-left">
+          <div class="app-modern-logo">
+            <img src="${college.logo}" alt="${college.name}">
+          </div>
+          <div class="app-modern-info">
+            <h3>${college.name}</h3>
+            <div class="app-subline">
+              <span class="app-meta">${college.meta}</span>
+              <span class="deadline-pill ${college.status}">${college.statusText}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="app-modern-right">
+          <a class="apply-link-btn" href="${college.applyUrl}" target="_blank" rel="noopener noreferrer">
+            Apply Now
+          </a>
+          <button class="counselling-link-btn" type="button" data-college="${college.name}">
+            Get Counselling
+          </button>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  const counsellingButtons = document.querySelectorAll(".counselling-link-btn");
+  counsellingButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      openCounsellingModal(button.getAttribute("data-college"));
+    });
+  });
+
+  if (viewMoreBtn) {
+    viewMoreBtn.textContent = showAllColleges ? "Show Less" : "View More Colleges";
+  }
+}
+
+function openCounsellingModal(collegeName) {
+  if (!counsellingOverlay || !selectedCollege || !cCollegeDisplay) return;
+  selectedCollege.value = collegeName;
+  cCollegeDisplay.value = collegeName;
+  counsellingOverlay.classList.add("active");
+}
+
+function closeCounselling() {
+  if (!counsellingOverlay) return;
+  counsellingOverlay.classList.remove("active");
+}
+
+if (viewMoreBtn) {
+  viewMoreBtn.addEventListener("click", function() {
+    showAllColleges = !showAllColleges;
+    renderApplicationCards();
+  });
+}
+
+if (closeCounsellingModal) {
+  closeCounsellingModal.addEventListener("click", closeCounselling);
+}
+
+if (counsellingOverlay) {
+  counsellingOverlay.addEventListener("click", function(e) {
+    if (e.target === counsellingOverlay) {
+      closeCounselling();
+    }
+  });
+}
+
+if (counsellingForm) {
+  counsellingForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formData = {
+      college: selectedCollege ? selectedCollege.value : "",
+      name: document.getElementById("cName") ? document.getElementById("cName").value.trim() : "",
+      phone: document.getElementById("cPhone") ? document.getElementById("cPhone").value.trim() : "",
+      city: document.getElementById("cCity") ? document.getElementById("cCity").value.trim() : ""
+    };
+
+    console.log("Counselling form data:", formData);
+    alert("Details submitted successfully.");
+
+    counsellingForm.reset();
+    if (selectedCollege) selectedCollege.value = "";
+    if (cCollegeDisplay) cCollegeDisplay.value = "";
+    closeCounselling();
+  });
+}
+
+renderApplicationCards();
+</script>
+  
 </body>
 </html>
