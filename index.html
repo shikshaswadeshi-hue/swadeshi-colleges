@@ -63,101 +63,424 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   font-weight:600;
 }
 
-/* HERO */
-.hero{
+/* NEW HERO CAROUSEL */
+.ss-hero{
   position:relative;
-  padding:110px 20px 90px;
-  text-align:center;
+  padding:18px 18px 0;
+  background:linear-gradient(180deg,#faf8f2 0%,#f5f1e8 100%);
+}
+
+.ss-hero-slider{
+  position:relative;
+  max-width:1320px;
+  margin:0 auto;
+  min-height:720px;
+  border-radius:34px;
   overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.10);
 }
 
-/* Background image + overlay */
-.hero::before{
-  content:"";
+.ss-slide{
   position:absolute;
   inset:0;
-  background:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') center/cover;
-  opacity:0.08;
-  z-index:-2;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .7s ease, transform .7s ease;
+  transform:scale(1.03);
+  background-size:cover;
+  background-position:center;
 }
 
-.hero::after{
-  content:"";
+.ss-slide.active{
+  opacity:1;
+  visibility:visible;
+  transform:scale(1);
+}
+
+.ss-overlay{
   position:absolute;
   inset:0;
-  background:radial-gradient(circle at top, rgba(77,47,178,0.15), transparent 70%);
-  z-index:-1;
+  background:linear-gradient(90deg, rgba(10,16,30,.72) 0%, rgba(10,16,30,.48) 38%, rgba(10,16,30,.18) 100%);
 }
 
-.hero h1{
-  font-size:54px;
+.ss-slide-content{
+  position:relative;
+  z-index:2;
+  max-width:640px;
+  padding:90px 60px 240px;
+  color:#fff;
+}
+
+.ss-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.22);
+  backdrop-filter:blur(8px);
+  padding:10px 16px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.2px;
+  margin-bottom:20px;
+}
+
+.ss-slide-content h1{
+  font-size:56px;
+  line-height:1.06;
   font-weight:800;
-  line-height:1.15;
-  max-width:900px;
-  margin:auto;
+  margin:0 0 18px;
+  letter-spacing:-1.5px;
 }
 
-.hero h1 span{
-  color:#ff6b00;
-}
-
-.hero p{
-  margin-top:18px;
+.ss-slide-content p{
   font-size:18px;
-  color:#555;
+  line-height:1.7;
+  max-width:560px;
+  color:rgba(255,255,255,0.90);
+  margin:0 0 28px;
 }
 
-/* SEARCH */
-.search{
-  margin-top:45px;
+.ss-slide-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#ff8a1d,#ff6b00);
+  color:#fff;
+  padding:14px 24px;
+  border-radius:16px;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 12px 30px rgba(255,107,0,.30);
+  transition:transform .25s ease, box-shadow .25s ease;
 }
 
-.search-box{
+.ss-slide-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 36px rgba(255,107,0,.35);
+}
+
+.ss-search-wrap{
+  position:absolute;
+  left:50%;
+  bottom:34px;
+  transform:translateX(-50%);
+  width:calc(100% - 56px);
+  max-width:1080px;
+  z-index:5;
+}
+
+.ss-search-card{
+  background:rgba(255,255,255,0.82);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.35);
+  border-radius:28px;
+  padding:22px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.12);
+}
+
+.ss-search-label{
+  font-size:14px;
+  font-weight:700;
+  color:#4d2fb2;
+  margin:0 0 14px;
+  text-align:left;
+}
+
+.ss-search-bar{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:14px;
   background:#fff;
-  padding:16px 18px;
-  border-radius:60px;
-  max-width:760px;
-  margin:auto;
-  box-shadow:0 25px 60px rgba(0,0,0,0.15);
+  border-radius:22px;
+  padding:10px 10px 10px 18px;
+  box-shadow:0 10px 30px rgba(20,20,20,0.08);
 }
 
-.search-box input{
+.ss-search-icon{
+  font-size:24px;
+  color:#7e7e8a;
+  flex-shrink:0;
+}
+
+.ss-search-bar input{
   flex:1;
   border:none;
   outline:none;
+  background:transparent;
   font-size:17px;
+  color:#16202f;
+  padding:12px 4px;
+  font-family:inherit;
 }
 
-.search-box button{
-  background:#ff6b00;
-  color:#fff;
+.ss-search-bar input::placeholder{
+  color:#8b8e98;
+}
+
+.ss-search-bar button{
   border:none;
-  border-radius:40px;
-  padding:14px 26px;
-  font-weight:600;
+  outline:none;
+  background:linear-gradient(135deg,#4d2fb2,#6b4de6);
+  color:#fff;
+  font-weight:700;
+  font-size:15px;
+  padding:16px 24px;
+  border-radius:18px;
   cursor:pointer;
+  font-family:inherit;
+  transition:transform .2s ease, box-shadow .2s ease;
+  box-shadow:0 10px 22px rgba(77,47,178,0.24);
 }
 
-/* TRUST */
-.trust{
-  margin-top:55px;
+.ss-search-bar button:hover{
+  transform:translateY(-1px);
+}
+
+.ss-search-chips{
   display:flex;
-  justify-content:center;
-  gap:30px;
   flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
 }
 
-.trust div{
-  background:#fff;
-  padding:12px 20px;
-  border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+.ss-search-chips a{
+  text-decoration:none;
+  color:#243248;
   font-size:14px;
+  font-weight:600;
+  background:#f4f6fb;
+  padding:10px 14px;
+  border-radius:999px;
+  transition:all .2s ease;
+  border:1px solid rgba(0,0,0,0.04);
 }
 
+.ss-search-chips a:hover{
+  background:#ede8ff;
+  color:#4d2fb2;
+  transform:translateY(-1px);
+}
+
+.ss-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:52px;
+  height:52px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,0.18);
+  color:#fff;
+  backdrop-filter:blur(8px);
+  cursor:pointer;
+  font-size:22px;
+  z-index:6;
+  transition:all .25s ease;
+}
+
+.ss-arrow:hover{
+  background:rgba(255,255,255,0.28);
+}
+
+.ss-prev{ left:22px; }
+.ss-next{ right:22px; }
+
+.ss-dots{
+  position:absolute;
+  left:50%;
+  bottom:180px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:10px;
+  z-index:6;
+}
+
+.ss-dot{
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.45);
+  cursor:pointer;
+  transition:all .25s ease;
+}
+
+.ss-dot.active{
+  width:28px;
+  border-radius:999px;
+  background:#fff;
+}
+
+.ss-trust-strip{
+  max-width:1320px;
+  margin:20px auto 0;
+  padding:0 6px 10px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.ss-trust-item{
+  background:#fff;
+  border-radius:22px;
+  padding:22px 18px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.ss-trust-item strong{
+  display:block;
+  font-size:24px;
+  color:#16202f;
+  margin-bottom:6px;
+}
+
+.ss-trust-item span{
+  color:#677284;
+  font-size:14px;
+  font-weight:500;
+}
+
+@media (max-width: 1100px){
+  .ss-slide-content{
+    padding:70px 36px 240px;
+    max-width:560px;
+  }
+
+  .ss-slide-content h1{
+    font-size:46px;
+  }
+
+  .ss-search-wrap{
+    width:calc(100% - 34px);
+  }
+}
+
+@media (max-width: 768px){
+  .ss-hero{
+    padding:12px 12px 0;
+  }
+
+  .ss-hero-slider{
+    min-height:700px;
+    border-radius:24px;
+  }
+
+  .ss-slide-content{
+    padding:34px 22px 270px;
+    max-width:100%;
+  }
+
+  .ss-slide-content h1{
+    font-size:34px;
+    line-height:1.12;
+    letter-spacing:-1px;
+  }
+
+  .ss-slide-content p{
+    font-size:15px;
+    line-height:1.6;
+  }
+
+  .ss-badge{
+    font-size:12px;
+    padding:8px 13px;
+  }
+
+  .ss-search-wrap{
+    width:calc(100% - 20px);
+    bottom:20px;
+  }
+
+  .ss-search-card{
+    border-radius:22px;
+    padding:16px;
+  }
+
+  .ss-search-label{
+    font-size:13px;
+    margin-bottom:10px;
+  }
+
+  .ss-search-bar{
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    border-radius:18px;
+    padding:12px;
+  }
+
+  .ss-search-icon{
+    display:none;
+  }
+
+  .ss-search-bar input{
+    padding:12px 4px;
+    font-size:15px;
+  }
+
+  .ss-search-bar button{
+    width:100%;
+    padding:14px 18px;
+    border-radius:14px;
+  }
+
+  .ss-search-chips{
+    gap:8px;
+    margin-top:12px;
+  }
+
+  .ss-search-chips a{
+    font-size:13px;
+    padding:9px 12px;
+  }
+
+  .ss-arrow{
+    display:none;
+  }
+
+  .ss-dots{
+    bottom:195px;
+  }
+
+  .ss-trust-strip{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:14px;
+  }
+
+  .ss-trust-item{
+    padding:18px 12px;
+    border-radius:18px;
+  }
+
+  .ss-trust-item strong{
+    font-size:20px;
+  }
+
+  .ss-trust-item span{
+    font-size:13px;
+  }
+}
+
+@media (max-width: 480px){
+  .ss-hero-slider{
+    min-height:680px;
+  }
+
+  .ss-slide-content h1{
+    font-size:30px;
+  }
+
+  .ss-dots{
+    bottom:188px;
+  }
+
+  .ss-trust-strip{
+    grid-template-columns:1fr;
+  }
+}
 
 /* TRUSTED SECTION */
 
@@ -2180,27 +2503,89 @@ select{
   <a href="#application-window" class="cta">Free Counselling</a>
 </div>
 
-<!-- HERO -->
-<div class="hero">
+<!-- NEW HERO -->
+<section class="ss-hero">
+  <div class="ss-hero-slider">
 
-  <h1>Choose Right Today, <span>Shine Tomorrow</span></h1>
-  <p>Search, compare and get expert guidance for MBA colleges across India</p>
+    <div class="ss-slide active" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80');">
+      <div class="ss-overlay"></div>
+      <div class="ss-slide-content">
+        <span class="ss-badge">MBA Admissions 2026</span>
+        <h1>Find the Right MBA College Without the Confusion</h1>
+        <p>Search, compare and explore fees, placements, eligibility and admission details in one place.</p>
+        <a href="#application-window" class="ss-slide-btn">Explore Now</a>
+      </div>
+    </div>
 
-  <div class="search">
-    <div class="search-box">
-      <span>🔍</span>
-      <input type="text" id="collegeSearch" placeholder="Search your college here...">
-      <button id="searchBtn">Search</button>
+    <div class="ss-slide" style="background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80');">
+      <div class="ss-overlay"></div>
+      <div class="ss-slide-content">
+        <span class="ss-badge">Free Counselling</span>
+        <h1>Get Expert Guidance for MBA & PGDM Admissions</h1>
+        <p>Shortlist better colleges based on your profile, budget, exam score and career goals.</p>
+        <a href="#application-window" class="ss-slide-btn">Get Free Help</a>
+      </div>
+    </div>
+
+    <div class="ss-slide" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80');">
+      <div class="ss-overlay"></div>
+      <div class="ss-slide-content">
+        <span class="ss-badge">Compare Smarter</span>
+        <h1>Compare Colleges by Fees, ROI, Exams & Placements</h1>
+        <p>Make better admission decisions with useful data that students actually care about.</p>
+        <a href="#application-window" class="ss-slide-btn">Start Comparing</a>
+      </div>
+    </div>
+
+    <div class="ss-search-wrap">
+      <div class="ss-search-card">
+        <p class="ss-search-label">Search smarter with Swadeshi Shiksha</p>
+
+        <div class="ss-search-bar">
+          <span class="ss-search-icon">⌕</span>
+          <input type="text" id="collegeSearch" placeholder="Search colleges, exams, cities or courses">
+          <button id="searchBtn" type="button">Search</button>
+        </div>
+
+        <div class="ss-search-chips">
+          <a href="colleges.html?search=CAT">CAT Colleges</a>
+          <a href="colleges.html?search=CMAT">CMAT Colleges</a>
+          <a href="colleges.html?search=Bangalore">Bangalore</a>
+          <a href="colleges.html?search=Pune">Pune</a>
+          <a href="#application-window">Free Counselling</a>
+        </div>
+      </div>
+    </div>
+
+    <button class="ss-arrow ss-prev" aria-label="Previous slide">&#10094;</button>
+    <button class="ss-arrow ss-next" aria-label="Next slide">&#10095;</button>
+
+    <div class="ss-dots">
+      <span class="ss-dot active"></span>
+      <span class="ss-dot"></span>
+      <span class="ss-dot"></span>
     </div>
   </div>
+</section>
 
-  <div class="trust">
-    <div>✔ 500+ Colleges</div>
-    <div>✔ Free Counselling</div>
-    <div>✔ Trusted by Students</div>
+<section class="ss-trust-strip">
+  <div class="ss-trust-item">
+    <strong>500+</strong>
+    <span>Colleges to Explore</span>
   </div>
-
-</div>
+  <div class="ss-trust-item">
+    <strong>Free</strong>
+    <span>Counselling Support</span>
+  </div>
+  <div class="ss-trust-item">
+    <strong>Compare</strong>
+    <span>Fees, ROI & Placements</span>
+  </div>
+  <div class="ss-trust-item">
+    <strong>Student First</strong>
+    <span>Simple & Clear Discovery</span>
+  </div>
+</section>
 
   <!-- TRUSTED COLLEGES -->
 <section class="trusted-section">
@@ -2786,6 +3171,75 @@ if (premiumTabButtons.length) {
 }
 
 renderPremiumExplore("exam");
+
+const heroSlides = document.querySelectorAll(".ss-slide");
+const heroDots = document.querySelectorAll(".ss-dot");
+const heroPrev = document.querySelector(".ss-prev");
+const heroNext = document.querySelector(".ss-next");
+
+let heroCurrent = 0;
+let heroInterval;
+
+function showHeroSlide(index) {
+  heroSlides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+  });
+
+  heroDots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
+
+  heroCurrent = index;
+}
+
+function nextHeroSlide() {
+  let next = heroCurrent + 1;
+  if (next >= heroSlides.length) next = 0;
+  showHeroSlide(next);
+}
+
+function prevHeroSlide() {
+  let prev = heroCurrent - 1;
+  if (prev < 0) prev = heroSlides.length - 1;
+  showHeroSlide(prev);
+}
+
+function startHeroAutoSlide() {
+  heroInterval = setInterval(nextHeroSlide, 4500);
+}
+
+function stopHeroAutoSlide() {
+  clearInterval(heroInterval);
+}
+
+if (heroNext) {
+  heroNext.addEventListener("click", function() {
+    stopHeroAutoSlide();
+    nextHeroSlide();
+    startHeroAutoSlide();
+  });
+}
+
+if (heroPrev) {
+  heroPrev.addEventListener("click", function() {
+    stopHeroAutoSlide();
+    prevHeroSlide();
+    startHeroAutoSlide();
+  });
+}
+
+heroDots.forEach((dot, index) => {
+  dot.addEventListener("click", function() {
+    stopHeroAutoSlide();
+    showHeroSlide(index);
+    startHeroAutoSlide();
+  });
+});
+
+if (heroSlides.length) {
+  showHeroSlide(0);
+  startHeroAutoSlide();
+}
 </script>
   
 </body>
