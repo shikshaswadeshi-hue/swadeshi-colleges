@@ -360,11 +360,14 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
 .app-modern-card{
-  background: rgba(255,255,255,.9);
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: rgba(255,255,255,.95);
   border: 1px solid rgba(22,32,47,.08);
   border-radius: 22px;
   padding: 16px 18px;
@@ -387,11 +390,13 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   align-items: center;
   gap: 14px;
   min-width: 0;
+  flex: 1;
 }
 
 .app-modern-logo{
   width: 56px;
   height: 56px;
+  min-width: 56px;
   border-radius: 16px;
   background: #fff;
   display: flex;
@@ -403,13 +408,14 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .app-modern-logo img{
-  max-width: 40px;
-  max-height: 40px;
+  width: 38px;
+  height: 38px;
   object-fit: contain;
 }
 
 .app-modern-info{
   min-width: 0;
+  flex: 1;
 }
 
 .app-modern-info h3{
@@ -473,6 +479,7 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 .apply-link-btn,
 .counselling-link-btn{
   height: 40px;
+  min-width: 128px;
   padding: 0 16px;
   border-radius: 999px;
   border: none;
@@ -483,6 +490,7 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 }
 
 .apply-link-btn{
@@ -527,6 +535,34 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   transform: translateY(-2px);
   border-color: rgba(77,47,178,.18);
   color: #4d2fb2;
+}
+
+@media(max-width: 900px){
+  .app-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 640px){
+  .app-modern-card{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-modern-right{
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .apply-link-btn,
+  .counselling-link-btn{
+    width: 100%;
+  }
+
+  .app-window-head h2{
+    font-size: 28px;
+  }
 }
 
 /* Modal */
