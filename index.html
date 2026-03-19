@@ -1483,12 +1483,13 @@ function renderApplicationCards() {
         </div>
 
         <div class="app-modern-right">
-  ${
-    college.status === "open"
-      ? `<a class="apply-link-btn" href="${college.applyUrl}" target="_blank" rel="noopener noreferrer">Apply Now</a>`
-      : `<button class="counselling-link-btn" type="button" data-college="${college.name}">Get Counselling</button>`
-  }
-</div>
+          ${
+            college.status === "open"
+              ? `<a class="apply-link-btn" href="${college.applyUrl}" target="_blank" rel="noopener noreferrer">Apply Now</a>`
+              : `<button class="counselling-link-btn" type="button" data-college="${college.name}">Get Counselling</button>`
+          }
+        </div>
+      </div>
     `;
   }).join("");
 
