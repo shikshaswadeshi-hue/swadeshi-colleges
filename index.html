@@ -234,6 +234,10 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   box-shadow:0 10px 30px rgba(20,20,20,0.08);
 }
 
+.ss-search-bar:focus-within{
+  box-shadow:0 0 0 4px rgba(77,47,178,0.12);
+}
+  
 .ss-search-icon{
   font-size:24px;
   color:#7e7e8a;
@@ -268,6 +272,10 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   font-family:inherit;
   transition:transform .2s ease, box-shadow .2s ease;
   box-shadow:0 10px 22px rgba(77,47,178,0.24);
+}
+
+  .ss-search-bar button:active{
+  transform:scale(0.97);
 }
 
 .ss-search-bar button:hover{
@@ -1409,7 +1417,8 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .explore-premium-card:hover{
-  transform: translateY(-5px);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.12);
 }
 
 .explore-premium-card.large{
@@ -2578,6 +2587,34 @@ select{
   }
 }
 
+  .sticky-cta{
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: none;
+}
+
+.sticky-cta a{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:52px;
+  background:linear-gradient(135deg,#ff7a1a,#ff5a00);
+  color:#fff;
+  border-radius:14px;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 12px 24px rgba(255,107,0,0.25);
+}
+
+@media(max-width:768px){
+  .sticky-cta{
+    display:block;
+  }
+}
+
 </style>
 </head>
 
@@ -2596,7 +2633,7 @@ select{
   <a href="page.html">Resources</a>
 </div>
 
-  <a href="#application-window" class="cta">Free Counselling</a>
+  <a href="#application-window" class="cta">Get Free MBA Guidance</a>
 </div>
 
 <!-- NEW HERO -->
@@ -2651,6 +2688,9 @@ select{
           <a href="#application-window">Free Counselling</a>
         </div>
       </div>
+      <p style="margin-top:10px;font-size:13px;color:#6b7280;">
+  🎓 Trusted by 5,000+ MBA aspirants
+</p>
     </div>
 
     <button class="ss-arrow ss-prev" aria-label="Previous slide">&#10094;</button>
@@ -3019,6 +3059,7 @@ select{
   </div>
 </footer>
 
+
 <script>
 const input = document.getElementById("collegeSearch");
 const btn = document.getElementById("searchBtn");
@@ -3240,10 +3281,10 @@ renderApplicationCards();
   college: [
     { title: "IILM", desc: "View IILM Greater Noida details.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=iilm-greater-noida", tone: "light", large: true, mini: "Featured College" },
 { title: "ISBR", desc: "Explore ISBR Bangalore.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=isbr-bangalore", tone: "dark", large: true, mini: "Featured College" },
-{ title: "GIBS", desc: "Explore GIBS Bangalore.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=gibs-bangalore", tone: "soft", mini: "Popular College" },
-{ title: "D Y Patil", desc: "See D Y Patil Pune details.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=d-y-patil-pune", tone: "warm", mini: "Popular College" },
-{ title: "PIBM", desc: "Explore PIBM Pune.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=pibm-pune", tone: "light", mini: "Popular College" },
-{ title: "IIBS", desc: "Explore IIBS Bangalore.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=iibs-bangalore", tone: "soft", mini: "Popular College" }
+{ title: "GIBS", desc: "Explore GIBS Bangalore.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=gibs-bangalore", tone: "soft", mini: "🔥 Trending College" },
+{ title: "D Y Patil", desc: "See D Y Patil Pune details.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=d-y-patil-pune", tone: "warm", mini: "🔥 Trending College" },
+{ title: "PIBM", desc: "Explore PIBM Pune.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=pibm-pune", tone: "light", mini: "🔥 Trending College" },
+{ title: "IIBS", desc: "Explore IIBS Bangalore.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=iibs-bangalore", tone: "soft", mini: "🔥 Trending College" }
   ]
 };
 
@@ -3343,6 +3384,19 @@ if (heroSlides.length) {
   showHeroSlide(0);
   startHeroAutoSlide();
 }
+
+  <div class="sticky-cta">
+  <a href="#application-window">🎯 Get Free Counselling</a>
+</div>
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click',function(e){
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior:'smooth'
+    });
+  });
+});
 </script>
   
 </body>
