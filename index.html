@@ -1778,6 +1778,386 @@ body{
   }
 }
 
+
+/* FINAL MOBILE + SPACING CLEANUP */
+
+/* Global section rhythm */
+.hero,
+.trusted-section,
+.why-section,
+.review-section,
+.app-window-v2,
+.explore-premium-section,
+.guides-section{
+  position: relative;
+  z-index: 1;
+}
+
+.hero{ padding: 110px 20px 90px; }
+.trusted-section,
+.why-section,
+.review-section,
+.app-window-v2,
+.explore-premium-section,
+.guides-section{
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+/* Unified headings */
+.trusted-section h2,
+.why-section h2,
+.review-section h2,
+.app-window-head h2,
+.guides-head h2{
+  letter-spacing: -0.02em;
+}
+
+.explore-premium-copy h2,
+.cta-polish-copy h2{
+  letter-spacing: -0.03em;
+}
+
+/* Prevent media overflow */
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+a,
+button,
+input,
+select{
+  font: inherit;
+}
+
+/* Better button consistency */
+.cta,
+.search-box button,
+.apply-link-btn,
+.counselling-link-btn,
+.view-more-btn,
+.guides-view-all,
+.cta-polish-form button,
+.footer-contact-col button{
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease, color .22s ease, border-color .22s ease;
+}
+
+.cta:hover,
+.search-box button:hover,
+.guides-view-all:hover,
+.view-more-btn:hover{
+  transform: translateY(-2px);
+}
+
+/* Search bar refinement */
+.search-box{
+  width: 100%;
+}
+
+.search-box input{
+  min-width: 0;
+}
+
+/* Card spacing consistency */
+.why-card,
+.review-card,
+.app-modern-card,
+.guide-side-card,
+.cta-polish-card{
+  border-radius: 22px;
+}
+
+/* Better content width */
+.hero h1,
+.hero p,
+.app-window-head,
+.guides-head > div,
+.cta-polish-copy{
+  text-wrap: balance;
+}
+
+/* Tablet */
+@media (max-width: 1024px){
+  .header{
+    padding: 16px 24px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .nav{
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero h1{
+    font-size: 46px;
+  }
+
+  .hero p{
+    font-size: 17px;
+  }
+
+  .trusted-section,
+  .why-section,
+  .review-section,
+  .app-window-v2,
+  .explore-premium-section,
+  .guides-section{
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+/* Mobile large */
+@media (max-width: 768px){
+  .header{
+    padding: 14px 16px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .logo{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav{
+    width: 100%;
+    justify-content: center;
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  .cta{
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .hero{
+    padding: 86px 16px 72px;
+  }
+
+  .hero h1{
+    font-size: 36px;
+    line-height: 1.14;
+  }
+
+  .hero p{
+    font-size: 16px;
+    margin-top: 14px;
+  }
+
+  .search{
+    margin-top: 32px;
+  }
+
+  .search-box{
+    padding: 12px 12px;
+    border-radius: 22px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .search-box span{
+    display: none;
+  }
+
+  .search-box input{
+    width: 100%;
+    font-size: 16px;
+    min-height: 46px;
+  }
+
+  .search-box button{
+    width: 100%;
+    height: 48px;
+    border-radius: 14px;
+    padding: 0 18px;
+  }
+
+  .trust{
+    margin-top: 30px;
+    gap: 12px;
+  }
+
+  .trust div{
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+  }
+
+  .trusted-section h2,
+  .why-section h2,
+  .review-section h2,
+  .app-window-head h2,
+  .guides-head h2{
+    font-size: 28px;
+    line-height: 1.15;
+  }
+
+  .review-card{
+    min-width: 240px;
+  }
+
+  .college-card{
+    min-width: 135px;
+    height: 86px;
+  }
+
+  .college-card img{
+    max-height: 42px;
+    max-width: 100px;
+  }
+
+  .guides-head{
+    margin-bottom: 26px;
+  }
+
+  .guides-view-all{
+    width: 100%;
+  }
+
+  .guide-side-text{
+    max-width: 100%;
+  }
+
+  .guide-side-card{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .guide-side-arrow{
+    margin-top: 6px;
+  }
+}
+
+/* Mobile small */
+@media (max-width: 480px){
+  body{
+    overflow-x: hidden;
+  }
+
+  .logo img{
+    height: 42px;
+  }
+
+  .logo span{
+    font-size: 15px;
+  }
+
+  .nav{
+    gap: 10px 14px;
+  }
+
+  .hero h1{
+    font-size: 31px;
+  }
+
+  .hero p{
+    font-size: 15px;
+  }
+
+  .why-grid{
+    gap: 18px;
+  }
+
+  .why-card{
+    padding: 24px 18px;
+  }
+
+  .review-slider{
+    padding: 6px 4px;
+  }
+
+  .review-card{
+    min-width: 220px;
+    padding: 20px;
+  }
+
+  .app-window-v2{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .app-modern-card{
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .app-modern-logo{
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+  }
+
+  .app-modern-logo img{
+    width: 34px;
+    height: 34px;
+  }
+
+  .app-modern-info h3{
+    font-size: 16px;
+  }
+
+  .app-meta{
+    font-size: 12px;
+  }
+
+  .explore-premium-copy h2{
+    font-size: 27px;
+  }
+
+  .guides-head h2{
+    font-size: 27px;
+  }
+
+  .guide-content h3{
+    font-size: 24px;
+  }
+
+  .cta-polish-copy h2{
+    font-size: 26px;
+  }
+
+  .cta-polish-card h3{
+    font-size: 22px;
+  }
+}
+
+  .footer-book-btn{
+  margin-top: 16px;
+  width: fit-content;
+  height: 42px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7a1a, #ff5a00);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(255,107,0,0.18);
+  transition: all .22s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.footer-book-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(255,107,0,0.24);
+}
+
+@media(max-width: 640px){
+  .footer-book-btn{
+    width: 100%;
+  }
+}
+
 </style>
 </head>
 
@@ -1797,7 +2177,7 @@ body{
     <a href="#">Resources</a>
   </div>
 
-  <div class="cta">Free Counselling</div>
+  <a href="#application-window" class="cta">Free Counselling</a>
 </div>
 
 <!-- HERO -->
@@ -2002,7 +2382,7 @@ body{
       <p>Fresh insights, exam guidance and college-focused articles for students planning their next step.</p>
     </div>
 
-    <a href="#" class="guides-view-all">View All Guides</a>
+    <a href="page.html" class="guides-view-all">View All Guides</a>
   </div>
 
   <div class="guides-layout">
@@ -2139,7 +2519,7 @@ body{
         <a href="tel:+919643686800">+91 96436 86800</a>
         <a href="mailto:info@swadeshi-shiksha.com">info@swadeshi-shiksha.com</a>
         <span>Greater Noida, India</span>
-        <button type="button">Book Free Counselling</button>
+        <a href="#application-window" class="footer-book-btn">Book Free Counselling</a>
       </div>
 
     </div>
