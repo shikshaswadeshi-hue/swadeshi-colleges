@@ -315,6 +315,8 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   color:#777;
 }
 
+/* APPLICATION WINDOW */
+
 .app-window-v2{
   padding: 88px 20px;
   background: linear-gradient(180deg, #ffffff 0%, #faf8f2 100%);
@@ -366,23 +368,16 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 .app-modern-card{
   width: 100%;
   min-width: 0;
-  overflow: hidden;
-  background: rgba(255,255,255,.95);
-  border: 1px solid rgba(22,32,47,.08);
-  border-radius: 22px;
+  background: #ffffff;
+  border: 1px solid rgba(22,32,47,0.08);
+  border-radius: 20px;
   padding: 16px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  box-shadow: 0 12px 28px rgba(0,0,0,.05);
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-}
-
-.app-modern-card:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 18px 38px rgba(0,0,0,.08);
-  border-color: rgba(77,47,178,.14);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+  overflow: hidden;
 }
 
 .app-modern-left{
@@ -397,20 +392,20 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   width: 56px;
   height: 56px;
   min-width: 56px;
-  border-radius: 16px;
-  background: #fff;
+  border-radius: 14px;
+  background: #f8f8fb;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 8px 18px rgba(0,0,0,.05);
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .app-modern-logo img{
   width: 38px;
   height: 38px;
   object-fit: contain;
+  display: block;
 }
 
 .app-modern-info{
@@ -419,9 +414,9 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .app-modern-info h3{
-  font-size: 17px;
-  line-height: 1.25;
+  font-size: 18px;
   color: #16202f;
+  line-height: 1.2;
   margin-bottom: 6px;
   white-space: nowrap;
   overflow: hidden;
@@ -430,14 +425,14 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 
 .app-subline{
   display: flex;
-  align-items: center;
-  gap: 8px;
   flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }
 
 .app-meta{
   font-size: 13px;
-  color: #707788;
+  color: #6d7484;
 }
 
 .deadline-pill{
@@ -450,15 +445,15 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .deadline-pill.open{
-  background:#e9fff1;
-  color:#15803d;
-  border:1px solid #b7efc7;
+  background: #e9fff1;
+  color: #15803d;
+  border: 1px solid #b7efc7;
 }
 
 .deadline-pill.closed{
-  background:#fff1f1;
-  color:#dc2626;
-  border:1px solid #f3c2c2;
+  background: #fff1f1;
+  color: #dc2626;
+  border: 1px solid #f3c2c2;
 }
 
 .app-modern-right{
@@ -466,14 +461,6 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
-}
-
-.apply-link-btn,
-.counselling-link-btn,
-.view-more-btn,
-.submit-counselling-btn,
-.close-modal-btn{
-  transition: all .22s ease;
 }
 
 .apply-link-btn,
@@ -491,6 +478,7 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+  transition: all .22s ease;
 }
 
 .apply-link-btn{
@@ -551,7 +539,6 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 
   .app-modern-right{
     width: 100%;
-    justify-content: flex-start;
     flex-wrap: wrap;
   }
 
@@ -559,11 +546,8 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   .counselling-link-btn{
     width: 100%;
   }
-
-  .app-window-head h2{
-    font-size: 28px;
-  }
 }
+
 
 /* Modal */
 .counselling-overlay{
