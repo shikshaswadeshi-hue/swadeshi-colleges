@@ -11,58 +11,90 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 
-/* HEADER */
+/* PREMIUM HEADER */
 .header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 60px;
-  background:#fff;
-  box-shadow:0 6px 30px rgba(0,0,0,0.06);
-  position:sticky;
-  top:0;
-  z-index:999;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 22px;
+  padding: 14px 28px;
+  margin: 14px 18px 0;
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 34px rgba(17,24,39,0.08);
+  border-radius: 22px;
 }
 
 .logo{
   display:flex;
   align-items:center;
   gap:12px;
+  text-decoration:none;
+  min-width: fit-content;
 }
 
 .logo img{
-  height:50px;
+  height:48px;
+  width:auto;
+  display:block;
 }
 
 .logo span{
-  font-weight:700;
+  font-weight:800;
   font-size:16px;
+  color:#16202f;
+  letter-spacing:-0.02em;
 }
 
 .nav{
   display:flex;
-  gap:30px;
-  font-size:14px;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex:1;
+  flex-wrap:wrap;
 }
 
 .nav a{
   text-decoration:none;
-  color:#333;
-  font-weight:500;
+  color:#425066;
+  font-weight:600;
+  font-size:14px;
+  padding:10px 14px;
+  border-radius:999px;
+  transition:all .22s ease;
 }
 
 .nav a:hover{
   color:#4d2fb2;
+  background:#f4efff;
 }
 
 .cta{
-  background:#ff6b00;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  background:linear-gradient(135deg,#ff7a1a,#ff5a00);
   color:#fff;
-  padding:10px 22px;
-  border-radius:25px;
-  font-weight:600;
+  padding:12px 20px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:14px;
+  box-shadow:0 12px 24px rgba(255,107,0,0.20);
+  transition:transform .22s ease, box-shadow .22s ease;
+  white-space:nowrap;
 }
 
+.cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 28px rgba(255,107,0,0.28);
+}
+  
 /* NEW HERO CAROUSEL */
 .ss-hero{
   position:relative;
@@ -482,23 +514,56 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   }
 }
 
-/* TRUSTED SECTION */
-
+/* PREMIUM TRUSTED SECTION */
 .trusted-section{
-  padding:80px 20px;
-  text-align:center;
+  padding: 92px 20px;
+  background: linear-gradient(180deg, #faf8f2 0%, #fffdf8 100%);
 }
 
-.trusted-section h2{
-  font-size:28px;
-  margin-bottom:40px;
+.trusted-shell{
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.trusted-head{
+  max-width: 760px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.trusted-tag{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #f4ebff;
+  color: #4d2fb2;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  margin-bottom: 14px;
+}
+
+.trusted-head h2{
+  font-size: 34px;
+  line-height: 1.12;
+  color: #16202f;
+  margin-bottom: 12px;
+  letter-spacing: -0.03em;
+}
+
+.trusted-head p{
+  font-size: 15px;
+  line-height: 1.75;
+  color: #6a6f7c;
 }
 
 .college-slider{
   display:flex;
-  gap:30px;
+  gap:18px;
   overflow-x:auto;
-  padding:10px 20px;
+  padding:8px 2px 8px;
   scroll-behavior:smooth;
 }
 
@@ -507,99 +572,196 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .college-card{
-  min-width:160px;
-  height:100px;
-  background:#fff;
-  border-radius:16px;
+  min-width: 170px;
+  height: 110px;
+  background: linear-gradient(135deg, #ffffff, #fbf8ff);
+  border: 1px solid rgba(22,32,47,0.06);
+  border-radius: 22px;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  transition:0.3s ease;
-}
-
-.college-card img{
-  max-height:50px;
-  max-width:120px;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.06);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  padding: 18px;
 }
 
 .college-card:hover{
-  transform:translateY(-6px) scale(1.03);
-  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 22px 42px rgba(0,0,0,0.10);
+  border-color: rgba(77,47,178,0.10);
+}
+
+.college-card img{
+  max-height: 52px;
+  max-width: 120px;
+  object-fit: contain;
+  filter: saturate(.95) contrast(1.03);
 }
 
 
-  /* WHY SECTION */
-
+/* PREMIUM WHY SECTION */
 .why-section{
-  padding:90px 20px;
+  padding: 96px 20px;
+  background:
+    radial-gradient(circle at top left, rgba(77,47,178,0.08), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(255,107,0,0.08), transparent 22%),
+    linear-gradient(180deg, #fffdf8 0%, #f7f2ff 100%);
   text-align:center;
 }
 
+.why-head{
+  max-width: 760px;
+  margin: 0 auto 42px;
+}
+
+.why-tag{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #f4ebff;
+  color: #4d2fb2;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  margin-bottom: 14px;
+}
+
 .why-section h2{
-  font-size:30px;
-  margin-bottom:10px;
+  font-size: 36px;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.03em;
+  color: #16202f;
 }
 
 .why-sub{
-  color:#666;
-  margin-bottom:50px;
+  color:#667085;
+  font-size:15px;
+  line-height:1.75;
+  margin-bottom:0;
 }
 
 .why-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-  gap:30px;
-  max-width:1000px;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:20px;
+  max-width:1180px;
   margin:auto;
 }
 
+  @media (max-width: 1024px){
+  .why-grid{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 640px){
+  .why-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .trusted-head h2,
+  .why-section h2,
+  .review-section h2{
+    font-size: 28px;
+  }
+
+  .review-card{
+    min-width: 260px;
+    max-width: 260px;
+  }
+}
+
 .why-card{
-  background:#fff;
-  padding:30px 20px;
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  transition:0.3s ease;
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px);
+  padding:28px 22px;
+  border-radius:26px;
+  box-shadow:0 18px 40px rgba(17,24,39,0.08);
+  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+  text-align:left;
 }
 
 .why-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.12);
+  transform:translateY(-7px);
+  box-shadow:0 24px 48px rgba(17,24,39,0.12);
+  border-color: rgba(77,47,178,0.14);
 }
 
 .icon{
-  font-size:28px;
-  margin-bottom:15px;
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  margin-bottom:18px;
+  background: linear-gradient(135deg, #fff2e8, #f3ebff);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
 }
 
 .why-card h3{
   margin-bottom:10px;
-  font-size:18px;
+  font-size:19px;
+  line-height:1.2;
+  color:#16202f;
 }
 
 .why-card p{
   font-size:14px;
-  color:#555;
+  line-height:1.7;
+  color:#5f6b7a;
 }
 
-  /* REVIEW SECTION */
-
+  /* PREMIUM REVIEW SECTION */
 .review-section{
-  padding:90px 20px;
+  padding: 96px 20px;
   text-align:center;
-  background:#fff;
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f2 100%);
+}
+
+.review-head{
+  max-width: 760px;
+  margin: 0 auto 38px;
+}
+
+.review-tag{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff3e9;
+  color: #ff6b00;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  margin-bottom: 14px;
 }
 
 .review-section h2{
-  font-size:28px;
-  margin-bottom:40px;
+  font-size: 34px;
+  line-height: 1.12;
+  margin-bottom: 12px;
+  color: #16202f;
+  letter-spacing: -0.03em;
+}
+
+.review-sub{
+  font-size:15px;
+  line-height:1.75;
+  color:#6a6f7c;
 }
 
 .review-slider{
   display:flex;
-  gap:25px;
+  gap:18px;
   overflow-x:auto;
-  padding:10px 20px;
+  padding:8px 2px;
 }
 
 .review-slider::-webkit-scrollbar{
@@ -607,35 +769,72 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .review-card{
-  min-width:280px;
-  background:#faf8f2;
-  padding:25px;
-  border-radius:16px;
+  min-width: 300px;
+  max-width: 300px;
+  background: linear-gradient(135deg, #ffffff, #fffaf5);
+  border: 1px solid rgba(22,32,47,0.06);
+  padding:24px;
+  border-radius:24px;
   text-align:left;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  transition:0.3s ease;
+  box-shadow:0 16px 34px rgba(0,0,0,0.06);
+  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
 }
 
 .review-card:hover{
   transform:translateY(-6px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.12);
+  box-shadow:0 24px 44px rgba(0,0,0,0.10);
+  border-color: rgba(255,107,0,0.10);
+}
+
+.review-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.review-avatar{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(135deg, #f4ebff, #fff2e8);
+  color:#4d2fb2;
+  font-weight:800;
+  font-size:15px;
+  flex-shrink:0;
+}
+
+.review-person{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.review-person strong{
+  font-size:14px;
+  color:#16202f;
+}
+
+.review-person span{
+  font-size:12px;
+  color:#7a8393;
 }
 
 .stars{
   color:#ffb400;
-  font-size:16px;
-  margin-bottom:10px;
+  font-size:15px;
+  letter-spacing:1px;
+  margin-bottom:12px;
 }
 
 .review-card p{
   font-size:14px;
-  color:#444;
-  margin-bottom:12px;
-}
-
-.review-card h4{
-  font-size:13px;
-  color:#777;
+  line-height:1.75;
+  color:#4f5b6c;
+  margin-bottom:0;
 }
 
 /* APPLICATION WINDOW */
@@ -2104,29 +2303,6 @@ body{
 
 /* FINAL MOBILE + SPACING CLEANUP */
 
-/* Global section rhythm */
-.hero,
-.trusted-section,
-.why-section,
-.review-section,
-.app-window-v2,
-.explore-premium-section,
-.guides-section{
-  position: relative;
-  z-index: 1;
-}
-
-.hero{ padding: 110px 20px 90px; }
-.trusted-section,
-.why-section,
-.review-section,
-.app-window-v2,
-.explore-premium-section,
-.guides-section{
-  padding-top: 90px;
-  padding-bottom: 90px;
-}
-
 /* Unified headings */
 .trusted-section h2,
 .why-section h2,
@@ -2156,7 +2332,6 @@ select{
 
 /* Better button consistency */
 .cta,
-.search-box button,
 .apply-link-btn,
 .counselling-link-btn,
 .view-more-btn,
@@ -2167,20 +2342,11 @@ select{
 }
 
 .cta:hover,
-.search-box button:hover,
 .guides-view-all:hover,
 .view-more-btn:hover{
   transform: translateY(-2px);
 }
 
-/* Search bar refinement */
-.search-box{
-  width: 100%;
-}
-
-.search-box input{
-  min-width: 0;
-}
 
 /* Card spacing consistency */
 .why-card,
@@ -2189,15 +2355,6 @@ select{
 .guide-side-card,
 .cta-polish-card{
   border-radius: 22px;
-}
-
-/* Better content width */
-.hero h1,
-.hero p,
-.app-window-head,
-.guides-head > div,
-.cta-polish-copy{
-  text-wrap: balance;
 }
 
 /* Tablet */
@@ -2212,14 +2369,6 @@ select{
     gap: 18px;
     flex-wrap: wrap;
     justify-content: center;
-  }
-
-  .hero h1{
-    font-size: 46px;
-  }
-
-  .hero p{
-    font-size: 17px;
   }
 
   .trusted-section,
@@ -2257,59 +2406,6 @@ select{
     width: 100%;
     text-align: center;
     justify-content: center;
-  }
-
-  .hero{
-    padding: 86px 16px 72px;
-  }
-
-  .hero h1{
-    font-size: 36px;
-    line-height: 1.14;
-  }
-
-  .hero p{
-    font-size: 16px;
-    margin-top: 14px;
-  }
-
-  .search{
-    margin-top: 32px;
-  }
-
-  .search-box{
-    padding: 12px 12px;
-    border-radius: 22px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .search-box span{
-    display: none;
-  }
-
-  .search-box input{
-    width: 100%;
-    font-size: 16px;
-    min-height: 46px;
-  }
-
-  .search-box button{
-    width: 100%;
-    height: 48px;
-    border-radius: 14px;
-    padding: 0 18px;
-  }
-
-  .trust{
-    margin-top: 30px;
-    gap: 12px;
-  }
-
-  .trust div{
-    width: 100%;
-    max-width: 320px;
-    text-align: center;
   }
 
   .trusted-section h2,
@@ -2373,14 +2469,6 @@ select{
 
   .nav{
     gap: 10px 14px;
-  }
-
-  .hero h1{
-    font-size: 31px;
-  }
-
-  .hero p{
-    font-size: 15px;
   }
 
   .why-grid{
@@ -2488,11 +2576,12 @@ select{
 
 <!-- HEADER -->
 <div class="header">
-  <div class="logo">
+  <a href="/" class="logo"> 
     <img src="swadeshi-logo.png">
     <span>Swadeshi Shiksha</span>
-  </div>
-
+  </a>
+</div>
+  
   <div class="nav">
     <a href="#">Colleges</a>
     <a href="#">Exams</a>
@@ -2548,10 +2637,10 @@ select{
         </div>
 
         <div class="ss-search-chips">
-          <a href="colleges.html?search=CAT">CAT Colleges</a>
-          <a href="colleges.html?search=CMAT">CMAT Colleges</a>
-          <a href="colleges.html?search=Bangalore">Bangalore</a>
-          <a href="colleges.html?search=Pune">Pune</a>
+          <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=CAT">CAT Colleges</a>
+          <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=CMAT">CMAT Colleges</a>
+          <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=Bangalore">Bangalore</a>
+          <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=Pune">Pune</a>
           <a href="#application-window">Free Counselling</a>
         </div>
       </div>
@@ -2587,109 +2676,117 @@ select{
   </div>
 </section>
 
-  <!-- TRUSTED COLLEGES -->
-<section class="trusted-section">
-
-  <h2>Trusted by Students Across Top Colleges</h2>
-
-  <div class="college-slider">
-
-    <div class="college-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/4/44/IIM_Ahmedabad_Logo.svg">
+ <section class="trusted-section">
+  <div class="trusted-shell">
+    <div class="trusted-head">
+      <span class="trusted-tag">Student Trust</span>
+      <h2>Trusted by Students Exploring India’s Top B-Schools</h2>
+      <p>From well-known institutes to rising MBA brands, students use Swadeshi Shiksha to compare smarter and decide faster.</p>
     </div>
 
-    <div class="college-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/5/5a/XLRI_logo.png">
+    <div class="college-slider">
+      <div class="college-card"><img src="https://upload.wikimedia.org/wikipedia/en/4/44/IIM_Ahmedabad_Logo.svg"></div>
+      <div class="college-card"><img src="https://upload.wikimedia.org/wikipedia/en/5/5a/XLRI_logo.png"></div>
+      <div class="college-card"><img src="https://upload.wikimedia.org/wikipedia/en/3/3e/SPJIMR_logo.png"></div>
+      <div class="college-card"><img src="https://upload.wikimedia.org/wikipedia/en/e/e5/NMIMS_logo.png"></div>
+      <div class="college-card"><img src="https://upload.wikimedia.org/wikipedia/en/2/2e/IMT_Ghaziabad_logo.png"></div>
+      <div class="college-card"><img src="https://upload.wikimedia.org/wikipedia/en/0/0b/Great_Lakes_Institute_of_Management_logo.png"></div>
     </div>
-
-    <div class="college-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/3/3e/SPJIMR_logo.png">
-    </div>
-
-    <div class="college-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/e/e5/NMIMS_logo.png">
-    </div>
-
-    <div class="college-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/2/2e/IMT_Ghaziabad_logo.png">
-    </div>
-
-    <div class="college-card">
-      <img src="https://upload.wikimedia.org/wikipedia/en/0/0b/Great_Lakes_Institute_of_Management_logo.png">
-    </div>
-
   </div>
-  </section>
+</section>
 
 
-<!-- WHY CHOOSE US -->
 <section class="why-section">
-
-  <h2>Why Choose Swadeshi Shiksha?</h2>
-  <p class="why-sub">Everything you need to make the right MBA decision</p>
+  <div class="why-head">
+    <span class="why-tag">Why Swadeshi Shiksha</span>
+    <h2>Everything You Need to Make a Smarter MBA Decision</h2>
+    <p class="why-sub">Built for students who want less confusion, faster discovery and clearer college comparisons.</p>
+  </div>
 
   <div class="why-grid">
-
     <div class="why-card">
       <div class="icon">🎯</div>
       <h3>Smart College Search</h3>
-      <p>Find colleges based on your profile, exams and budget</p>
+      <p>Search colleges based on exam, city, course or preference without wasting time on cluttered pages.</p>
     </div>
 
     <div class="why-card">
       <div class="icon">📊</div>
-      <h3>Compare Colleges</h3>
-      <p>Compare fees, placements, ROI and more in one place</p>
+      <h3>Compare Better</h3>
+      <p>Understand fees, placements, ROI and admission fit in a much more practical way.</p>
     </div>
 
     <div class="why-card">
       <div class="icon">💬</div>
-      <h3>Free Counselling</h3>
-      <p>Get expert guidance to choose the right college</p>
+      <h3>Free Guidance</h3>
+      <p>Get expert counselling support when you feel stuck between multiple colleges.</p>
     </div>
 
     <div class="why-card">
       <div class="icon">⚡</div>
-      <h3>Fast & Simple</h3>
-      <p>No confusion, no clutter — just clear information</p>
+      <h3>Fast & Clear</h3>
+      <p>No unnecessary overload — just useful MBA admission information students actually care about.</p>
     </div>
-
   </div>
-  </section>
+</section>
 
-<!-- SOCIAL PROOF -->
 <section class="review-section">
-
-  <h2>What Students Are Saying</h2>
+  <div class="review-head">
+    <span class="review-tag">Student Voices</span>
+    <h2>What Students Are Saying</h2>
+    <p class="review-sub">Real feedback from students who explored colleges, compared options and used guidance from Swadeshi Shiksha.</p>
+  </div>
 
   <div class="review-slider">
-
     <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">AV</div>
+        <div class="review-person">
+          <strong>Aman Verma</strong>
+          <span>MBA Aspirant</span>
+        </div>
+      </div>
       <div class="stars">★★★★★</div>
-      <p>"Found my college within 2 days. The comparison feature is amazing."</p>
-      <h4>— Aman Verma</h4>
+      <p>Found my college shortlist within 2 days. The comparison side of the platform is actually useful and easy to understand.</p>
     </div>
 
     <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">SS</div>
+        <div class="review-person">
+          <strong>Sneha Sharma</strong>
+          <span>PGDM Aspirant</span>
+        </div>
+      </div>
       <div class="stars">★★★★★</div>
-      <p>"Counselling team helped me choose the right college. Very helpful."</p>
-      <h4>— Sneha Sharma</h4>
+      <p>The counselling support helped me narrow down the right fit instead of randomly applying to too many colleges.</p>
     </div>
 
     <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">RM</div>
+        <div class="review-person">
+          <strong>Rohan Mehta</strong>
+          <span>MBA Aspirant</span>
+        </div>
+      </div>
       <div class="stars">★★★★☆</div>
-      <p>"Simple and easy to use. No confusion like other websites."</p>
-      <h4>— Rohan Mehta</h4>
+      <p>Simple, clean and much easier to use than most admission websites. It saves time and feels more student-focused.</p>
     </div>
 
     <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">PS</div>
+        <div class="review-person">
+          <strong>Priya Singh</strong>
+          <span>Management Applicant</span>
+        </div>
+      </div>
       <div class="stars">★★★★★</div>
-      <p>"Saved a lot of time. Everything is in one place."</p>
-      <h4>— Priya Singh</h4>
+      <p>I liked that everything felt clear. I could search, compare and understand my options without getting overwhelmed.</p>
     </div>
-
   </div>
-  </section>
+</section>
 
   <section class="app-window-v2" id="application-window">
   <div class="app-window-head">
@@ -2892,11 +2989,10 @@ select{
 
       <div class="footer-links-col">
         <h4>Browse</h4>
-        <a href="colleges.html?search=CAT">CAT Colleges</a>
-        <a href="colleges.html?search=XAT">XAT Colleges</a>
-        <a href="colleges.html?search=CMAT">CMAT Colleges</a>
-        <a href="colleges.html?search=Bangalore">Bangalore Colleges</a>
-        <a href="colleges.html?search=Pune">Pune Colleges</a>
+        <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=CAT">CAT Colleges</a>
+        <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=CMAT">CMAT Colleges</a>
+        <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=Bangalore">Bangalore</a>
+        <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=Pune">Pune</a>
       </div>
 
       <div class="footer-contact-col">
@@ -3119,28 +3215,28 @@ renderApplicationCards();
 
   const explorePremiumData = {
   exam: [
-    { title: "CAT", desc: "Explore top MBA colleges accepting CAT score.", icon: "📘", link: "colleges.html?search=CAT", tone: "light", large: true, mini: "Most Popular" },
-    { title: "XAT", desc: "Discover colleges and PGDM institutes through XAT.", icon: "📝", link: "colleges.html?search=XAT", tone: "dark", large: true, mini: "Top Entrance" },
-    { title: "CMAT", desc: "Find colleges for CMAT-based admissions.", icon: "📗", link: "colleges.html?search=CMAT", tone: "soft", mini: "Exam Route" },
-    { title: "MAT", desc: "Browse colleges accepting MAT score.", icon: "📙", link: "colleges.html?search=MAT", tone: "warm", mini: "Exam Route" },
-    { title: "NMAT", desc: "See NMAT-linked college options.", icon: "📕", link: "colleges.html?search=NMAT", tone: "light", mini: "Exam Route" },
-    { title: "SNAP", desc: "Explore colleges through SNAP.", icon: "📓", link: "colleges.html?search=SNAP", tone: "soft", mini: "Exam Route" }
+    { title: "CAT", desc: "Explore top MBA colleges accepting CAT score.", icon: "📘", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=CAT", tone: "light", large: true, mini: "Most Popular" },
+    { title: "XAT", desc: "Discover colleges and PGDM institutes through XAT.", icon: "📝", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=XAT", tone: "dark", large: true, mini: "Top Entrance" },
+    { title: "CMAT", desc: "Find colleges for CMAT-based admissions.", icon: "📗", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=CMAT", tone: "soft", mini: "Exam Route" },
+    { title: "MAT", desc: "Browse colleges accepting MAT score.", icon: "📙", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=MAT", tone: "warm", mini: "Exam Route" },
+    { title: "NMAT", desc: "See NMAT-linked college options.", icon: "📕", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=NMAT", tone: "light", mini: "Exam Route" },
+    { title: "SNAP", desc: "Explore colleges through SNAP.", icon: "📓", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=SNAP", tone: "soft", mini: "Exam Route" }
   ],
   city: [
-    { title: "Bangalore", desc: "Explore MBA colleges in Bangalore.", icon: "📍", link: "colleges.html?search=Bangalore", tone: "light", large: true, mini: "Top City" },
-    { title: "Pune", desc: "Discover strong MBA options in Pune.", icon: "📍", link: "colleges.html?search=Pune", tone: "warm", large: true, mini: "Top City" },
-    { title: "Delhi NCR", desc: "Browse colleges across Delhi NCR.", icon: "📍", link: "colleges.html?search=Delhi NCR", tone: "dark", mini: "Popular Region" },
-    { title: "Mumbai", desc: "See MBA and PGDM colleges in Mumbai.", icon: "📍", link: "colleges.html?search=Mumbai", tone: "soft", mini: "Popular Region" },
-    { title: "Chennai", desc: "Explore colleges in Chennai.", icon: "📍", link: "colleges.html?search=Chennai", tone: "light", mini: "City Search" },
-    { title: "Greater Noida", desc: "Find colleges near Greater Noida.", icon: "📍", link: "colleges.html?search=Greater Noida", tone: "warm", mini: "City Search" }
+    { title: "Bangalore", desc: "Explore MBA colleges in Bangalore.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Bangalore", tone: "light", large: true, mini: "Top City" },
+    { title: "Pune", desc: "Discover strong MBA options in Pune.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Pune", tone: "warm", large: true, mini: "Top City" },
+    { title: "Delhi NCR", desc: "Browse colleges across Delhi NCR.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Delhi NCR", tone: "dark", mini: "Popular Region" },
+    { title: "Mumbai", desc: "See MBA and PGDM colleges in Mumbai.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Mumbai", tone: "soft", mini: "Popular Region" },
+    { title: "Chennai", desc: "Explore colleges in Chennai.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Chennai", tone: "light", mini: "City Search" },
+    { title: "Greater Noida", desc: "Find colleges near Greater Noida.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Greater Noida", tone: "warm", mini: "City Search" }
   ],
   college: [
-    { title: "IILM", desc: "View IILM Greater Noida details.", icon: "🏫", link: "college.html?slug=iilm-greater-noida", tone: "light", large: true, mini: "Featured College" },
-    { title: "ISBR", desc: "Explore ISBR Bangalore.", icon: "🏫", link: "college.html?slug=isbr-bangalore", tone: "dark", large: true, mini: "Featured College" },
-    { title: "GIBS", desc: "Explore GIBS Bangalore.", icon: "🏫", link: "college.html?slug=gibs-bangalore", tone: "soft", mini: "Popular College" },
-    { title: "D Y Patil", desc: "See D Y Patil Pune details.", icon: "🏫", link: "college.html?slug=d-y-patil-pune", tone: "warm", mini: "Popular College" },
-    { title: "PIBM", desc: "Explore PIBM Pune.", icon: "🏫", link: "college.html?slug=pibm-pune", tone: "light", mini: "Popular College" },
-    { title: "IIBS", desc: "Explore IIBS Bangalore.", icon: "🏫", link: "college.html?slug=iibs-bangalore", tone: "soft", mini: "Popular College" }
+    { title: "IILM", desc: "View IILM Greater Noida details.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=iilm-greater-noida", tone: "light", large: true, mini: "Featured College" },
+{ title: "ISBR", desc: "Explore ISBR Bangalore.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=isbr-bangalore", tone: "dark", large: true, mini: "Featured College" },
+{ title: "GIBS", desc: "Explore GIBS Bangalore.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=gibs-bangalore", tone: "soft", mini: "Popular College" },
+{ title: "D Y Patil", desc: "See D Y Patil Pune details.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=d-y-patil-pune", tone: "warm", mini: "Popular College" },
+{ title: "PIBM", desc: "Explore PIBM Pune.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=pibm-pune", tone: "light", mini: "Popular College" },
+{ title: "IIBS", desc: "Explore IIBS Bangalore.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=iibs-bangalore", tone: "soft", mini: "Popular College" }
   ]
 };
 
