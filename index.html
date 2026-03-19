@@ -678,6 +678,182 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
     font-size: 28px;
   }
 }
+
+/* EXPLORE SECTION */
+
+.explore-section{
+  padding: 95px 20px;
+  background:
+    radial-gradient(circle at top left, rgba(77,47,178,0.10), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(255,107,0,0.10), transparent 24%),
+    linear-gradient(180deg, #faf8f2 0%, #ffffff 100%);
+}
+
+.explore-head{
+  max-width: 760px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.explore-tag{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #f4ebff;
+  color: #4d2fb2;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  margin-bottom: 14px;
+}
+
+.explore-head h2{
+  font-size: 34px;
+  line-height: 1.15;
+  color: #16202f;
+  margin-bottom: 12px;
+}
+
+.explore-head p{
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #6a6f7c;
+}
+
+.explore-grid{
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.explore-card{
+  position: relative;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(22,32,47,0.08);
+  border-radius: 28px;
+  padding: 26px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.explore-card::before{
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  top: -70px;
+  right: -70px;
+  background: radial-gradient(circle, rgba(77,47,178,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.explore-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.10);
+  border-color: rgba(77,47,178,0.14);
+}
+
+.explore-card-top{
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.explore-icon{
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background: linear-gradient(135deg, #fff6ef, #f4ebff);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+.explore-card h3{
+  font-size: 22px;
+  line-height: 1.2;
+  color: #16202f;
+  margin-bottom: 6px;
+}
+
+.explore-card p{
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6b7280;
+}
+
+.explore-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.explore-chip{
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #16202f;
+  border: 1px solid rgba(22,32,47,0.08);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+  font-size: 13px;
+  font-weight: 700;
+  transition: all .22s ease;
+}
+
+.explore-chip:hover{
+  transform: translateY(-2px);
+  color: #4d2fb2;
+  border-color: rgba(77,47,178,0.16);
+  box-shadow: 0 12px 22px rgba(77,47,178,0.08);
+}
+
+@media(max-width: 980px){
+  .explore-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 640px){
+  .explore-section{
+    padding: 80px 16px;
+  }
+
+  .explore-head h2{
+    font-size: 28px;
+  }
+
+  .explore-card{
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .explore-card h3{
+    font-size: 20px;
+  }
+}
+  
   /* SECTION 5 */
 .premium-cta{
   padding: 80px 20px 0;
@@ -1275,6 +1451,80 @@ br {
     </form>
   </div>
 </div>
+
+<section class="explore-section">
+  <div class="explore-head">
+    <span class="explore-tag">Explore Smarter</span>
+    <h2>Browse by Exam, City & Top Colleges</h2>
+    <p>Find colleges the way students actually search — by entrance exam, preferred city, or popular B-schools.</p>
+  </div>
+
+  <div class="explore-grid">
+
+    <!-- Exams -->
+    <div class="explore-card">
+      <div class="explore-card-top">
+        <div class="explore-icon">📘</div>
+        <div>
+          <h3>Browse by Exam</h3>
+          <p>Explore colleges based on the exam you have taken.</p>
+        </div>
+      </div>
+
+      <div class="explore-chips">
+        <a href="colleges.html?search=CAT" class="explore-chip">CAT</a>
+        <a href="colleges.html?search=XAT" class="explore-chip">XAT</a>
+        <a href="colleges.html?search=CMAT" class="explore-chip">CMAT</a>
+        <a href="colleges.html?search=MAT" class="explore-chip">MAT</a>
+        <a href="colleges.html?search=NMAT" class="explore-chip">NMAT</a>
+        <a href="colleges.html?search=SNAP" class="explore-chip">SNAP</a>
+      </div>
+    </div>
+
+    <!-- Cities -->
+    <div class="explore-card">
+      <div class="explore-card-top">
+        <div class="explore-icon">📍</div>
+        <div>
+          <h3>Browse by City</h3>
+          <p>Discover MBA colleges in your preferred location.</p>
+        </div>
+      </div>
+
+      <div class="explore-chips">
+        <a href="colleges.html?search=Bangalore" class="explore-chip">Bangalore</a>
+        <a href="colleges.html?search=Pune" class="explore-chip">Pune</a>
+        <a href="colleges.html?search=Delhi NCR" class="explore-chip">Delhi NCR</a>
+        <a href="colleges.html?search=Mumbai" class="explore-chip">Mumbai</a>
+        <a href="colleges.html?search=Chennai" class="explore-chip">Chennai</a>
+        <a href="colleges.html?search=Greater Noida" class="explore-chip">Greater Noida</a>
+      </div>
+    </div>
+
+    <!-- Popular Colleges -->
+    <div class="explore-card">
+      <div class="explore-card-top">
+        <div class="explore-icon">🏫</div>
+        <div>
+          <h3>Popular Colleges</h3>
+          <p>Quick access to the colleges students search the most.</p>
+        </div>
+      </div>
+
+      <div class="explore-chips">
+        <a href="college.html?slug=iilm-greater-noida" class="explore-chip">IILM</a>
+        <a href="college.html?slug=isbr-bangalore" class="explore-chip">ISBR</a>
+        <a href="college.html?slug=gibs-bangalore" class="explore-chip">GIBS</a>
+        <a href="college.html?slug=d-y-patil-pune" class="explore-chip">D Y Patil</a>
+        <a href="college.html?slug=pibm-pune" class="explore-chip">PIBM</a>
+        <a href="college.html?slug=iibs-bangalore" class="explore-chip">IIBS</a>
+        <a href="college.html?slug=jagsom" class="explore-chip">JAGSoM</a>
+        <a href="college.html?slug=bml-munjal-university" class="explore-chip">BML Munjal</a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
  <section class="premium-cta">
