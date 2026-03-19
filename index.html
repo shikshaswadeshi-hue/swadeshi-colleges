@@ -1608,146 +1608,174 @@ body{
   }
 }
   
-/* SECTION 6 : PREMIUM FOOTER */
+/* FOOTER POLISH */
 
-.premium-footer{
-  background:#111827;
-  color:#fff;
-  margin-top:0;
+.footer-polish{
+  background: linear-gradient(180deg, #24183f 0%, #161022 100%);
+  color: #fff;
+  padding: 0 20px;
 }
 
-.footer-main{
-  max-width:1200px;
-  margin:auto;
-  padding:75px 20px 40px;
-  display:grid;
-  grid-template-columns:1.6fr 1fr 1fr 1fr;
-  gap:40px;
+.footer-polish-shell{
+  max-width: 1180px;
+  margin: 0 auto;
 }
 
-.footer-brand-block{
-  max-width:380px;
+.footer-polish-top{
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 34px;
+  padding: 56px 0 30px;
 }
 
-.footer-logo-row{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:18px;
+.footer-brand{
+  max-width: 380px;
 }
 
-.footer-logo-row img{
-  height:54px;
-  width:auto;
+.footer-brand-row{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
 }
 
-.footer-logo-row h3{
-  font-size:22px;
-  margin-bottom:4px;
+.footer-brand-row img{
+  width: 60px;
+  height: auto;
+  display: block;
 }
 
-.footer-logo-row span{
-  font-size:13px;
-  color:rgba(255,255,255,0.7);
+.footer-brand-row h3{
+  font-size: 24px;
+  line-height: 1.1;
+  margin-bottom: 4px;
+  color: #fff;
 }
 
-.footer-brand-block p{
-  color:rgba(255,255,255,0.72);
-  line-height:1.8;
-  font-size:14px;
-  margin-bottom:22px;
+.footer-brand-row span{
+  font-size: 13px;
+  color: rgba(255,255,255,0.68);
+}
+
+.footer-brand p{
+  font-size: 14px;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.74);
+  margin-bottom: 20px;
 }
 
 .footer-socials{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .footer-socials a{
-  text-decoration:none;
-  color:#fff;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.08);
-  padding:10px 14px;
-  border-radius:999px;
-  font-size:13px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all .22s ease;
 }
 
-.footer-col h4{
-  font-size:16px;
-  margin-bottom:18px;
-}
-
-.footer-col a{
-  display:block;
-  text-decoration:none;
-  color:rgba(255,255,255,0.72);
-  margin-bottom:12px;
-  font-size:14px;
-}
-
-.footer-col a:hover,
 .footer-socials a:hover{
-  color:#fff;
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.12);
 }
 
-.footer-strip{
-  border-top:1px solid rgba(255,255,255,0.08);
-  text-align:center;
-  padding:18px 20px;
+.footer-links-col,
+.footer-contact-col{
+  display: flex;
+  flex-direction: column;
 }
 
-.footer-strip p{
-  font-size:13px;
-  color:rgba(255,255,255,0.62);
+.footer-links-col h4,
+.footer-contact-col h4{
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 18px;
 }
 
-@media(max-width:950px){
-  .footer-main{
-    grid-template-columns:1fr 1fr;
+.footer-links-col a,
+.footer-contact-col a,
+.footer-contact-col span{
+  font-size: 14px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  margin-bottom: 4px;
+  transition: color .2s ease;
+}
+
+.footer-links-col a:hover,
+.footer-contact-col a:hover{
+  color: #fff;
+}
+
+.footer-contact-col button{
+  margin-top: 16px;
+  width: fit-content;
+  height: 42px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7a1a, #ff5a00);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(255,107,0,0.18);
+  transition: all .22s ease;
+}
+
+.footer-contact-col button:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(255,107,0,0.24);
+}
+
+.footer-polish-bottom{
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 18px 0 24px;
+  text-align: center;
+}
+
+.footer-polish-bottom p{
+  font-size: 13px;
+  color: rgba(255,255,255,0.58);
+}
+
+@media(max-width: 980px){
+  .footer-polish-top{
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media(max-width:620px){
-  .footer-main{
-    grid-template-columns:1fr;
+@media(max-width: 640px){
+  .footer-polish{
+    padding: 0 16px;
   }
-}
 
-  html, body {
-  margin: 0;
-  padding: 0;
-  background: #faf8f2;
-}
+  .footer-polish-top{
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 40px 0 24px;
+  }
 
-body * {
-  box-sizing: border-box;
-}
+  .footer-brand{
+    max-width: none;
+  }
 
-main, section, footer, div {
-  margin-bottom: 0;
-}
-
-.premium-footer {
-  margin: 0 !important;
-  padding: 0 !important;
-  background: #111827 !important;
-  display: block;
-  width: 100%;
-}
-
-.footer-main {
-  margin: 0 auto !important;
-  padding: 50px 20px 24px !important;
-}
-
-.footer-strip {
-  margin: 0 !important;
-}
-
-br {
-  display: none;
+  .footer-contact-col button{
+    width: 100%;
+  }
 }
 
 </style>
@@ -2064,50 +2092,62 @@ br {
   </div>
 </section>
 
-<footer class="premium-footer">
-  <div class="footer-main">
-    <div class="footer-brand-block">
-      <div class="footer-logo-row">
-        <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
-        <div>
-          <h3>Swadeshi Shiksha</h3>
-          <span>Search • Compare • Decide</span>
+<footer class="footer-polish">
+  <div class="footer-polish-shell">
+
+    <div class="footer-polish-top">
+
+      <div class="footer-brand">
+        <div class="footer-brand-row">
+          <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+          <div>
+            <h3>Swadeshi Shiksha</h3>
+            <span>Search • Compare • Decide</span>
+          </div>
+        </div>
+
+        <p>
+          Helping students discover the right MBA and PGDM colleges with clear information, trusted comparisons and expert guidance.
+        </p>
+
+        <div class="footer-socials">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">YouTube</a>
         </div>
       </div>
-      <p>Helping students choose the right MBA and PGDM colleges with better information and expert support.</p>
-      <div class="footer-socials">
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">YouTube</a>
+
+      <div class="footer-links-col">
+        <h4>Explore</h4>
+        <a href="#">Top MBA Colleges</a>
+        <a href="#">Compare Colleges</a>
+        <a href="#application-window">Application Window</a>
+        <a href="#">Free Counselling</a>
       </div>
+
+      <div class="footer-links-col">
+        <h4>Browse</h4>
+        <a href="colleges.html?search=CAT">CAT Colleges</a>
+        <a href="colleges.html?search=XAT">XAT Colleges</a>
+        <a href="colleges.html?search=CMAT">CMAT Colleges</a>
+        <a href="colleges.html?search=Bangalore">Bangalore Colleges</a>
+        <a href="colleges.html?search=Pune">Pune Colleges</a>
+      </div>
+
+      <div class="footer-contact-col">
+        <h4>Get in Touch</h4>
+        <a href="tel:+919643686800">+91 96436 86800</a>
+        <a href="mailto:info@swadeshi-shiksha.com">info@swadeshi-shiksha.com</a>
+        <span>Greater Noida, India</span>
+        <button type="button">Book Free Counselling</button>
+      </div>
+
     </div>
 
-    <div class="footer-col">
-      <h4>Explore</h4>
-      <a href="#">Top MBA Colleges</a>
-      <a href="#">PGDM Colleges</a>
-      <a href="#">Exams</a>
-      <a href="#">Cities</a>
+    <div class="footer-polish-bottom">
+      <p>© 2026 Swadeshi Shiksha. All rights reserved.</p>
     </div>
 
-    <div class="footer-col">
-      <h4>Support</h4>
-      <a href="#">Free Counselling</a>
-      <a href="#">Compare Colleges</a>
-      <a href="#">Admissions Help</a>
-      <a href="#">Contact</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <a href="tel:+919643686800">+91 96436 86800</a>
-      <a href="mailto:info@swadeshi-shiksha.com">info@swadeshi-shiksha.com</a>
-      <a href="#">Greater Noida, India</a>
-    </div>
-  </div>
-
-  <div class="footer-strip">
-    <p>© 2026 Swadeshi Shiksha. All rights reserved.</p>
   </div>
 </footer>
 
