@@ -17,16 +17,17 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   top: 0;
   z-index: 9999;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 22px;
-  padding: 14px 28px;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 26px;
   margin: 14px 18px 0;
   background: rgba(255,255,255,0.78);
   border: 1px solid rgba(255,255,255,0.55);
   backdrop-filter: blur(16px);
   box-shadow: 0 12px 34px rgba(17,24,39,0.08);
   border-radius: 22px;
+  max-width: calc(100% - 36px);
 }
 
 .logo{
@@ -54,9 +55,9 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
+  gap:6px;
   flex:1;
-  flex-wrap:wrap;
+  min-width:0;
 }
 
 .nav a{
@@ -64,9 +65,10 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   color:#425066;
   font-weight:600;
   font-size:14px;
-  padding:10px 14px;
+  padding:10px 12px;
   border-radius:999px;
   transition:all .22s ease;
+  white-space:nowrap;
 }
 
 .nav a:hover{
@@ -2359,17 +2361,19 @@ select{
 
 /* Tablet */
 @media (max-width: 1024px){
-  .header{
-    padding: 16px 24px;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
+ .header{
+  padding: 14px 18px;
+  gap: 12px;
+}
 
-  .nav{
-    gap: 18px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+.nav{
+  gap: 2px;
+}
+
+.nav a{
+  font-size: 13px;
+  padding: 9px 10px;
+}
 
   .trusted-section,
   .why-section,
@@ -2385,28 +2389,31 @@ select{
 /* Mobile large */
 @media (max-width: 768px){
   .header{
-    padding: 14px 16px;
-    justify-content: center;
-    text-align: center;
-  }
+  flex-direction: column;
+  align-items: stretch;
+  padding: 14px 16px;
+  gap: 12px;
+}
 
-  .logo{
-    width: 100%;
-    justify-content: center;
-  }
+.logo{
+  justify-content: center;
+}
 
-  .nav{
-    width: 100%;
-    justify-content: center;
-    gap: 14px;
-    font-size: 13px;
-  }
+.nav{
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 
-  .cta{
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
+.nav a{
+  font-size: 13px;
+  padding: 9px 12px;
+}
+
+.cta{
+  width: 100%;
+  justify-content: center;
+}
 
   .trusted-section h2,
   .why-section h2,
