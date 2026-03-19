@@ -1271,130 +1271,220 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   }
 }
   
-  /* SECTION 5 */
-.premium-cta{
-  padding: 80px 20px 0;
-  background: linear-gradient(180deg,#faf8f2 0%, #f3ecff 100%);
-  margin: 0;
+  /* CTA POLISH */
+
+.cta-polish-section{
+  padding: 90px 20px 0;
+  background:
+    radial-gradient(circle at top left, rgba(77,47,178,0.14), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(255,107,0,0.12), transparent 24%),
+    linear-gradient(180deg, #faf8f2 0%, #f5efff 100%);
 }
 
-.premium-cta-wrap{
+.cta-polish-shell{
   max-width: 1180px;
   margin: 0 auto;
+  background: linear-gradient(135deg, #201735 0%, #3d267f 55%, #5b35a8 100%);
+  border-radius: 34px 34px 0 0;
+  padding: 42px;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
-  align-items: center;
-  background: linear-gradient(135deg,#4d2fb2 0%, #6e46dd 100%);
-  border-radius: 32px 32px 0 0;
-  padding: 50px;
-  box-shadow: 0 25px 70px rgba(77,47,178,0.18);
-  overflow: hidden;
+  gap: 28px;
+  box-shadow: 0 28px 70px rgba(38, 22, 78, 0.26);
   position: relative;
+  overflow: hidden;
 }
 
-.premium-cta-wrap::before{
-  content:"";
-  position:absolute;
-  width:320px;
-  height:320px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.08);
-  top:-80px;
-  right:-80px;
+.cta-polish-shell::before{
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  right: -90px;
+  top: -90px;
+  background: radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
 }
 
-.premium-cta-left,
-.premium-cta-right{
+.cta-polish-shell::after{
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  left: -70px;
+  bottom: -100px;
+  background: radial-gradient(circle, rgba(255,107,0,0.18), transparent 70%);
+}
+
+.cta-polish-copy,
+.cta-polish-card{
   position: relative;
   z-index: 1;
 }
 
-.premium-cta-left{
-  color:#fff;
+.cta-polish-copy{
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.premium-tag{
-  display:inline-block;
-  background:rgba(255,255,255,0.12);
-  border:1px solid rgba(255,255,255,0.18);
-  padding:8px 14px;
-  border-radius:999px;
-  font-size:13px;
-  margin-bottom:18px;
+.cta-polish-tag{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: #f7ebff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  margin-bottom: 18px;
 }
 
-.premium-cta-left h2{
-  font-size:38px;
-  line-height:1.2;
-  margin-bottom:16px;
-  max-width:560px;
+.cta-polish-copy h2{
+  font-size: 40px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  max-width: 620px;
 }
 
-.premium-cta-left p{
-  font-size:16px;
-  line-height:1.8;
-  color:rgba(255,255,255,0.88);
-  max-width:540px;
+.cta-polish-copy p{
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.82);
+  max-width: 560px;
 }
 
-.premium-points{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:14px;
-  margin-top:28px;
+.cta-polish-points{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
 }
 
-.premium-points div{
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.14);
-  border-radius:16px;
-  padding:14px 16px;
-  font-size:14px;
+.cta-point{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 14px;
+  width: fit-content;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: 10px 14px;
+  border-radius: 16px;
 }
 
-.lead-card{
-  background:#fff;
-  border-radius:24px;
-  padding:30px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.16);
+.cta-point-icon{
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
 }
 
-.lead-card h3{
-  font-size:24px;
-  margin-bottom:8px;
-  color:#16202f;
+.cta-polish-card{
+  background: rgba(255,255,255,0.98);
+  border-radius: 26px;
+  padding: 28px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.16);
 }
 
-.lead-card p{
-  color:#666;
-  margin-bottom:18px;
-  font-size:14px;
+.cta-polish-card h3{
+  font-size: 26px;
+  color: #16202f;
+  margin-bottom: 8px;
 }
 
-.lead-card input,
-.lead-card select{
-  width:100%;
-  height:52px;
-  border:1px solid #e6e1f5;
-  border-radius:14px;
-  padding:0 15px;
-  margin-bottom:14px;
-  font-size:15px;
-  outline:none;
+.cta-polish-card p{
+  font-size: 14px;
+  color: #677084;
+  line-height: 1.7;
+  margin-bottom: 18px;
 }
 
-.lead-card button{
-  width:100%;
-  height:54px;
-  border:none;
-  border-radius:14px;
-  background:#ff6b00;
-  color:#fff;
-  font-size:16px;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow:0 12px 24px rgba(255,107,0,0.22);
+.cta-polish-form input,
+.cta-polish-form select{
+  width: 100%;
+  height: 52px;
+  border-radius: 14px;
+  border: 1px solid #e4e7f0;
+  background: #fff;
+  padding: 0 14px;
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 14px;
+  transition: all .2s ease;
+}
+
+.cta-polish-form input:focus,
+.cta-polish-form select:focus{
+  border-color: #cdbdff;
+  box-shadow: 0 0 0 4px rgba(77,47,178,0.08);
+}
+
+.cta-polish-form button{
+  width: 100%;
+  height: 54px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff7a1a, #ff5a00);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 14px 26px rgba(255,107,0,0.22);
+  transition: all .22s ease;
+}
+
+.cta-polish-form button:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px rgba(255,107,0,0.28);
+}
+
+@media(max-width: 900px){
+  .cta-polish-shell{
+    grid-template-columns: 1fr;
+    border-radius: 26px 26px 0 0;
+    padding: 28px;
+  }
+
+  .cta-polish-copy h2{
+    font-size: 31px;
+  }
+}
+
+@media(max-width: 640px){
+  .cta-polish-section{
+    padding: 75px 16px 0;
+  }
+
+  .cta-polish-shell{
+    padding: 22px;
+  }
+
+  .cta-polish-copy h2{
+    font-size: 28px;
+  }
+
+  .cta-polish-card{
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  .cta-point{
+    width: 100%;
+  }
 }
 
 /* FOOTER */
@@ -1955,22 +2045,52 @@ br {
       </div>
     </div>
 
-    <div class="premium-cta-right">
-      <div class="lead-card">
-        <h3>Start Your Free Counselling</h3>
-        <p>Enter your details and get expert guidance.</p>
+    <section class="cta-polish-section">
+  <div class="cta-polish-shell">
+
+    <div class="cta-polish-copy">
+      <span class="cta-polish-tag">Free Expert Guidance</span>
+      <h2>Still Confused About Which MBA College to Choose?</h2>
+      <p>
+        Get personalised suggestions based on your profile, budget, exam score and preferred city. Simple, fast and student-focused.
+      </p>
+
+      <div class="cta-polish-points">
+        <div class="cta-point">
+          <span class="cta-point-icon">✔</span>
+          <span>Shortlist colleges faster</span>
+        </div>
+        <div class="cta-point">
+          <span class="cta-point-icon">✔</span>
+          <span>Get guidance on fees and ROI</span>
+        </div>
+        <div class="cta-point">
+          <span class="cta-point-icon">✔</span>
+          <span>Free counselling support</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-polish-card">
+      <h3>Start Your Free Counselling</h3>
+      <p>Share your details and we’ll help you find the right fit.</p>
+
+      <form class="cta-polish-form">
         <input type="text" placeholder="Your Full Name">
         <input type="tel" placeholder="Phone Number">
         <select>
-          <option>Select Exam</option>
-          <option>CAT</option>
-          <option>XAT</option>
-          <option>CMAT</option>
-          <option>MAT</option>
+          <option>Select Preferred City</option>
+          <option>Bangalore</option>
+          <option>Pune</option>
+          <option>Delhi NCR</option>
+          <option>Mumbai</option>
+          <option>Chennai</option>
+          <option>Greater Noida</option>
         </select>
-        <button>Get Started</button>
-      </div>
+        <button type="button">Get Free Guidance</button>
+      </form>
     </div>
+
   </div>
 </section>
 
