@@ -754,21 +754,23 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   color:#5f6b7a;
 }
 
-/* REVIEW SECTION - COMPACT PREMIUM */
+/* REVIEW SECTION - SPLIT QUOTE LAYOUT */
 .review-section{
-  padding: 78px 20px;
+  padding: 88px 20px;
   background:
-    radial-gradient(circle at top left, rgba(255,122,26,0.08), transparent 20%),
-    radial-gradient(circle at bottom right, rgba(77,47,178,0.08), transparent 22%),
-    linear-gradient(180deg, #fffaf6 0%, #f7f2ff 100%);
-  color: #16202f;
-  overflow: hidden;
-  position: relative;
+    radial-gradient(circle at top left, rgba(255,122,26,0.06), transparent 20%),
+    radial-gradient(circle at bottom right, rgba(77,47,178,0.07), transparent 24%),
+    linear-gradient(180deg, #fffaf6 0%, #f6f1ff 100%);
+}
+
+.review-shell{
+  max-width: 1180px;
+  margin: 0 auto;
 }
 
 .review-head{
   max-width: 760px;
-  margin: 0 auto 30px;
+  margin: 0 auto 34px;
   text-align: center;
 }
 
@@ -787,7 +789,7 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .review-section h2{
-  font-size: 36px;
+  font-size: 38px;
   line-height: 1.1;
   margin-bottom: 12px;
   color: #16202f;
@@ -798,100 +800,39 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   font-size: 15px;
   line-height: 1.75;
   color: #6a7280;
-  max-width: 720px;
-  margin: 0 auto;
 }
 
-.review-shell{
-  max-width: 980px;
-  margin: 0 auto;
-  position: relative;
-  min-height: 300px;
+.review-split{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  align-items: stretch;
 }
 
-.review-avatar-float{
-  position: absolute;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #fff, #f5edff);
-  border: 1px solid rgba(77,47,178,0.08);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #4d2fb2;
-  font-weight: 800;
-  font-size: 18px;
-  animation: reviewFloat 4.5s ease-in-out infinite;
-}
-
-.review-avatar-float.a1{ top: 20px; left: 70px; animation-delay: 0s; }
-.review-avatar-float.a2{ top: 28px; right: 90px; animation-delay: .8s; }
-.review-avatar-float.a3{ bottom: 34px; left: 120px; animation-delay: 1.5s; }
-.review-avatar-float.a4{ bottom: 24px; right: 120px; animation-delay: 2.1s; }
-
-@keyframes reviewFloat{
-  0%,100%{ transform: translateY(0); }
-  50%{ transform: translateY(-7px); }
-}
-
-.review-switch-card{
-  max-width: 700px;
-  margin: 0 auto;
-  background: rgba(255,255,255,0.82);
+.review-quote-panel{
+  background: rgba(255,255,255,0.62);
   border: 1px solid rgba(22,32,47,0.06);
-  border-radius: 28px;
-  padding: 28px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  border-radius: 30px;
+  padding: 38px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.06);
   backdrop-filter: blur(10px);
-  position: relative;
-  z-index: 2;
-}
-
-.review-switch-top{
+  min-height: 360px;
   display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.review-main-avatar{
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #f4ebff, #fff2e8);
+.review-quote-mark{
+  font-size: 64px;
+  line-height: 1;
   color: #4d2fb2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 800;
-  flex-shrink: 0;
+  opacity: .18;
+  margin-bottom: 10px;
 }
 
-.review-main-meta strong{
-  display: block;
-  font-size: 17px;
-  color: #16202f;
-  margin-bottom: 4px;
-}
-
-.review-main-meta span{
-  font-size: 13px;
-  color: #7b8494;
-}
-
-.review-stars{
-  color: #ffb400;
-  font-size: 16px;
-  letter-spacing: 1px;
-  margin-bottom: 14px;
-}
-
-.review-switcher{
+.review-quote-wrap{
   position: relative;
-  min-height: 92px;
+  min-height: 170px;
 }
 
 .review-slide{
@@ -908,36 +849,141 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .review-quote-text{
-  font-size: 21px;
-  line-height: 1.7;
-  color: #455164;
+  font-size: 28px;
+  line-height: 1.65;
+  color: #223046;
+  letter-spacing: -0.02em;
 }
 
-.review-bottom{
-  margin-top: 18px;
+.review-quote-footer{
   display: flex;
-  justify-content: center;
-}
-
-.review-dots{
-  display: flex;
-  gap: 10px;
+  justify-content: space-between;
   align-items: center;
+  gap: 18px;
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(22,32,47,0.08);
 }
 
-.review-dot{
-  width: 10px;
-  height: 10px;
+.review-person{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.review-avatar{
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
-  background: rgba(77,47,178,0.20);
-  cursor: pointer;
-  transition: all .25s ease;
+  background: linear-gradient(135deg, #f4ebff, #fff2e8);
+  color: #4d2fb2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  flex-shrink: 0;
 }
 
-.review-dot.active{
-  width: 28px;
-  border-radius: 999px;
-  background: #4d2fb2;
+.review-person strong{
+  display: block;
+  font-size: 17px;
+  color: #16202f;
+  margin-bottom: 4px;
+}
+
+.review-person span{
+  font-size: 13px;
+  color: #7b8494;
+}
+
+.review-stars{
+  color: #ffb400;
+  font-size: 16px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.review-list-panel{
+  background: rgba(255,255,255,0.38);
+  border: 1px solid rgba(22,32,47,0.05);
+  border-radius: 30px;
+  padding: 18px;
+  backdrop-filter: blur(8px);
+}
+
+.review-list-title{
+  font-size: 14px;
+  font-weight: 700;
+  color: #4d2fb2;
+  margin: 6px 10px 14px;
+}
+
+.review-switch-item{
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 16px 14px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all .22s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.review-switch-item:hover{
+  background: rgba(77,47,178,0.06);
+}
+
+.review-switch-item.active{
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+}
+
+.review-switch-left{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-switch-mini{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f4ebff, #fff2e8);
+  color: #4d2fb2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.review-switch-text strong{
+  display: block;
+  font-size: 15px;
+  color: #16202f;
+  margin-bottom: 3px;
+}
+
+.review-switch-text span{
+  font-size: 12px;
+  color: #7b8494;
+}
+
+.review-switch-arrow{
+  color: #b2b8c3;
+  font-size: 18px;
+  transition: transform .22s ease, color .22s ease;
+}
+
+.review-switch-item.active .review-switch-arrow{
+  color: #4d2fb2;
+  transform: translateX(2px);
 }
 
 .review-mini-stats{
@@ -945,7 +991,7 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 22px;
+  margin-top: 24px;
 }
 
 .review-stat{
@@ -962,26 +1008,42 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   color: #16202f;
 }
 
-@media (max-width: 768px){
-  .review-section{
-    padding: 68px 16px;
-  }
-
-  .review-section h2{
-    font-size: 29px;
-  }
-
-  .review-avatar-float{
-    display: none;
-  }
-
-  .review-switch-card{
-    padding: 22px;
-    border-radius: 22px;
+@media (max-width: 980px){
+  .review-split{
+    grid-template-columns: 1fr;
   }
 
   .review-quote-text{
-    font-size: 18px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px){
+  .review-section{
+    padding: 72px 16px;
+  }
+
+  .review-section h2{
+    font-size: 30px;
+  }
+
+  .review-quote-panel,
+  .review-list-panel{
+    border-radius: 22px;
+  }
+
+  .review-quote-panel{
+    padding: 24px;
+    min-height: 320px;
+  }
+
+  .review-quote-text{
+    font-size: 20px;
+  }
+
+  .review-quote-footer{
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
   
@@ -2936,61 +2998,103 @@ select{
 </section>
 
 <section class="review-section">
-  <div class="review-head">
-    <span class="review-tag">Student Voices</span>
-    <h2>What Students Are Saying</h2>
-    <p class="review-sub">Real feedback from students who explored colleges, compared options and used guidance from Swadeshi Shiksha.</p>
-  </div>
-
   <div class="review-shell">
-    <div class="review-avatar-float a1">AV</div>
-    <div class="review-avatar-float a2">SS</div>
-    <div class="review-avatar-float a3">RM</div>
-    <div class="review-avatar-float a4">PS</div>
+    <div class="review-head">
+      <span class="review-tag">Student Voices</span>
+      <h2>What Students Are Saying</h2>
+      <p class="review-sub">Real feedback from students who explored colleges, compared options and used guidance from Swadeshi Shiksha.</p>
+    </div>
 
-    <div class="review-switch-card">
-      <div class="review-switch-top" id="reviewMeta">
-        <div class="review-main-avatar">AV</div>
-        <div class="review-main-meta">
-          <strong>Aman Verma</strong>
-          <span>MBA Aspirant</span>
+    <div class="review-split">
+      <div class="review-quote-panel">
+        <div>
+          <div class="review-quote-mark">“</div>
+
+          <div class="review-quote-wrap">
+            <div class="review-slide active">
+              <div class="review-quote-text">Found my college shortlist within 2 days. The comparison side of the platform is actually useful and easy to understand.</div>
+            </div>
+
+            <div class="review-slide">
+              <div class="review-quote-text">The counselling support helped me narrow down the right fit instead of randomly applying to too many colleges.</div>
+            </div>
+
+            <div class="review-slide">
+              <div class="review-quote-text">Simple, clean and much easier to use than most admission websites. It saves time and feels more student-focused.</div>
+            </div>
+
+            <div class="review-slide">
+              <div class="review-quote-text">I liked that everything felt clear. I could search, compare and understand my options without getting overwhelmed.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-quote-footer">
+          <div class="review-person" id="reviewMeta">
+            <div class="review-avatar">AV</div>
+            <div>
+              <strong>Aman Verma</strong>
+              <span>MBA Aspirant</span>
+            </div>
+          </div>
+
+          <div class="review-stars" id="reviewStars">★★★★★</div>
         </div>
       </div>
 
-      <div class="review-stars">★★★★★</div>
+      <div class="review-list-panel">
+        <div class="review-list-title">Student reviews</div>
 
-      <div class="review-switcher">
-        <div class="review-slide active">
-          <div class="review-quote-text">Found my college shortlist within 2 days. The comparison side of the platform is actually useful and easy to understand.</div>
-        </div>
+        <button class="review-switch-item active" data-review="0" type="button">
+          <div class="review-switch-left">
+            <div class="review-switch-mini">AV</div>
+            <div class="review-switch-text">
+              <strong>Aman Verma</strong>
+              <span>MBA Aspirant</span>
+            </div>
+          </div>
+          <div class="review-switch-arrow">↗</div>
+        </button>
 
-        <div class="review-slide">
-          <div class="review-quote-text">The counselling support helped me narrow down the right fit instead of randomly applying to too many colleges.</div>
-        </div>
+        <button class="review-switch-item" data-review="1" type="button">
+          <div class="review-switch-left">
+            <div class="review-switch-mini">SS</div>
+            <div class="review-switch-text">
+              <strong>Sneha Sharma</strong>
+              <span>PGDM Aspirant</span>
+            </div>
+          </div>
+          <div class="review-switch-arrow">↗</div>
+        </button>
 
-        <div class="review-slide">
-          <div class="review-quote-text">Simple, clean and much easier to use than most admission websites. It saves time and feels more student-focused.</div>
-        </div>
+        <button class="review-switch-item" data-review="2" type="button">
+          <div class="review-switch-left">
+            <div class="review-switch-mini">RM</div>
+            <div class="review-switch-text">
+              <strong>Rohan Mehta</strong>
+              <span>MBA Aspirant</span>
+            </div>
+          </div>
+          <div class="review-switch-arrow">↗</div>
+        </button>
 
-        <div class="review-slide">
-          <div class="review-quote-text">I liked that everything felt clear. I could search, compare and understand my options without getting overwhelmed.</div>
-        </div>
-      </div>
-
-      <div class="review-bottom">
-        <div class="review-dots">
-          <span class="review-dot active"></span>
-          <span class="review-dot"></span>
-          <span class="review-dot"></span>
-          <span class="review-dot"></span>
-        </div>
+        <button class="review-switch-item" data-review="3" type="button">
+          <div class="review-switch-left">
+            <div class="review-switch-mini">PS</div>
+            <div class="review-switch-text">
+              <strong>Priya Singh</strong>
+              <span>Management Applicant</span>
+            </div>
+          </div>
+          <div class="review-switch-arrow">↗</div>
+        </button>
       </div>
     </div>
 
     <div class="review-mini-stats">
       <div class="review-stat"><strong>4.8/5</strong> student satisfaction</div>
       <div class="review-stat"><strong>5,000+</strong> MBA aspirants</div>
-      <div class="review-stat"><strong>Student-first</strong> experience</div>
+      <div class="review-stat"><strong>Student-first</strong> discovery experience</div>
     </div>
   </div>
 </section>
@@ -3546,11 +3650,11 @@ if (heroSlides.length) {
 }
 
   const reviewSlides = document.querySelectorAll(".review-slide");
-const reviewDots = document.querySelectorAll(".review-dot");
+const reviewSwitchItems = document.querySelectorAll(".review-switch-item");
 const reviewMeta = document.getElementById("reviewMeta");
-const reviewStars = document.querySelector(".review-stars");
+const reviewStars = document.getElementById("reviewStars");
 
-const reviewPeople = [
+const reviewData = [
   { initials: "AV", name: "Aman Verma", role: "MBA Aspirant", stars: "★★★★★" },
   { initials: "SS", name: "Sneha Sharma", role: "PGDM Aspirant", stars: "★★★★★" },
   { initials: "RM", name: "Rohan Mehta", role: "MBA Aspirant", stars: "★★★★☆" },
@@ -3565,22 +3669,22 @@ function showReview(index){
     slide.classList.toggle("active", i === index);
   });
 
-  reviewDots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
+  reviewSwitchItems.forEach((item, i) => {
+    item.classList.toggle("active", i === index);
   });
 
-  if (reviewMeta && reviewPeople[index]) {
+  if (reviewMeta && reviewData[index]) {
     reviewMeta.innerHTML = `
-      <div class="review-main-avatar">${reviewPeople[index].initials}</div>
-      <div class="review-main-meta">
-        <strong>${reviewPeople[index].name}</strong>
-        <span>${reviewPeople[index].role}</span>
+      <div class="review-avatar">${reviewData[index].initials}</div>
+      <div>
+        <strong>${reviewData[index].name}</strong>
+        <span>${reviewData[index].role}</span>
       </div>
     `;
   }
 
-  if (reviewStars && reviewPeople[index]) {
-    reviewStars.textContent = reviewPeople[index].stars;
+  if (reviewStars && reviewData[index]) {
+    reviewStars.textContent = reviewData[index].stars;
   }
 
   reviewCurrent = index;
@@ -3600,8 +3704,8 @@ function stopReviewAuto(){
   clearInterval(reviewInterval);
 }
 
-reviewDots.forEach((dot, index) => {
-  dot.addEventListener("click", function(){
+reviewSwitchItems.forEach((item, index) => {
+  item.addEventListener("click", function(){
     stopReviewAuto();
     showReview(index);
     startReviewAuto();
