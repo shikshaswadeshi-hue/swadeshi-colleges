@@ -754,124 +754,292 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   color:#5f6b7a;
 }
 
-  /* PREMIUM REVIEW SECTION */
+  /* PREMIUM REVIEW SECTION - REWORKED */
 .review-section{
-  padding: 96px 20px;
-  text-align:center;
-  background: linear-gradient(180deg, #ffffff 0%, #faf8f2 100%);
+  padding: 110px 20px;
+  background:
+    radial-gradient(circle at top left, rgba(255,122,26,0.16), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(77,47,178,0.20), transparent 24%),
+    linear-gradient(135deg, #1c1630 0%, #261b45 50%, #33215e 100%);
+  color: #fff;
+  overflow: hidden;
 }
 
 .review-head{
-  max-width: 760px;
-  margin: 0 auto 38px;
+  max-width: 820px;
+  margin: 0 auto 42px;
+  text-align: center;
 }
 
 .review-tag{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 14px;
+  padding: 9px 16px;
   border-radius: 999px;
-  background: #fff3e9;
-  color: #ff6b00;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #ffd9bf;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: .03em;
-  margin-bottom: 14px;
+  letter-spacing: .04em;
+  margin-bottom: 16px;
 }
 
 .review-section h2{
-  font-size: 34px;
-  line-height: 1.12;
-  margin-bottom: 12px;
-  color: #16202f;
-  letter-spacing: -0.03em;
+  font-size: 44px;
+  line-height: 1.08;
+  margin-bottom: 14px;
+  color: #fff;
+  letter-spacing: -0.04em;
 }
 
 .review-sub{
-  font-size:15px;
-  line-height:1.75;
-  color:#6a6f7c;
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.76);
+  max-width: 780px;
+  margin: 0 auto;
 }
 
-.review-slider{
-  display:flex;
-  gap:18px;
-  overflow-x:auto;
-  padding:8px 2px;
+.review-spotlight{
+  max-width: 1180px;
+  margin: 0 auto 26px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 22px;
+  align-items: stretch;
 }
 
-.review-slider::-webkit-scrollbar{
-  display:none;
+.review-feature-card{
+  background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.08));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 30px;
+  padding: 34px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.18);
 }
 
-.review-card{
-  min-width: 300px;
-  max-width: 300px;
-  background: linear-gradient(135deg, #ffffff, #fffaf5);
-  border: 1px solid rgba(22,32,47,0.06);
-  padding:24px;
-  border-radius:24px;
-  text-align:left;
-  box-shadow:0 16px 34px rgba(0,0,0,0.06);
-  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+.review-feature-top{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
 }
 
-.review-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 24px 44px rgba(0,0,0,0.10);
-  border-color: rgba(255,107,0,0.10);
+.review-feature-avatar{
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffe9db, #efe5ff);
+  color: #4d2fb2;
+  font-weight: 800;
+  font-size: 24px;
+  flex-shrink: 0;
 }
 
-.review-top{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:14px;
+.review-feature-person strong{
+  display: block;
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 4px;
 }
 
-.review-avatar{
-  width:46px;
-  height:46px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: linear-gradient(135deg, #f4ebff, #fff2e8);
-  color:#4d2fb2;
-  font-weight:800;
-  font-size:15px;
-  flex-shrink:0;
+.review-feature-person span{
+  font-size: 14px;
+  color: rgba(255,255,255,0.68);
 }
 
-.review-person{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
+.review-feature-stars{
+  color: #ffb400;
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin: 12px 0 18px;
 }
 
-.review-person strong{
-  font-size:14px;
-  color:#16202f;
+.review-feature-text{
+  font-size: 24px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.94);
+  letter-spacing: -0.02em;
 }
 
-.review-person span{
-  font-size:12px;
-  color:#7a8393;
+.review-side-note{
+  background: linear-gradient(135deg, #ffeddc, #f5edff);
+  border-radius: 30px;
+  padding: 30px;
+  color: #16202f;
+  box-shadow: 0 24px 50px rgba(0,0,0,0.14);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.stars{
-  color:#ffb400;
-  font-size:15px;
-  letter-spacing:1px;
-  margin-bottom:12px;
+.review-side-note .mini-label{
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(77,47,178,0.08);
+  color: #4d2fb2;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 16px;
 }
 
-.review-card p{
-  font-size:14px;
-  line-height:1.75;
-  color:#4f5b6c;
-  margin-bottom:0;
+.review-side-note h3{
+  font-size: 30px;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  color: #16202f;
+}
+
+.review-side-note p{
+  font-size: 15px;
+  line-height: 1.8;
+  color: #5d6675;
+  margin-bottom: 20px;
+}
+
+.review-metrics{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.review-metric{
+  min-width: 120px;
+  background: rgba(255,255,255,0.75);
+  border-radius: 18px;
+  padding: 14px 16px;
+}
+
+.review-metric strong{
+  display: block;
+  font-size: 22px;
+  color: #16202f;
+  margin-bottom: 4px;
+}
+
+.review-metric span{
+  font-size: 12px;
+  color: #677284;
+}
+
+.review-marquee{
+  max-width: 1180px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.review-track{
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: reviewMarquee 34s linear infinite;
+}
+
+.review-marquee:hover .review-track{
+  animation-play-state: paused;
+}
+
+.review-quote{
+  width: 320px;
+  min-width: 320px;
+  border-radius: 22px;
+  padding: 22px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.review-quote .quote-stars{
+  color: #ffb400;
+  font-size: 15px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.review-quote p{
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.86);
+  margin-bottom: 14px;
+}
+
+.review-quote strong{
+  display: block;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.review-quote span{
+  font-size: 12px;
+  color: rgba(255,255,255,0.62);
+}
+
+@keyframes reviewMarquee{
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 980px){
+  .review-spotlight{
+    grid-template-columns: 1fr;
+  }
+
+  .review-section h2{
+    font-size: 36px;
+  }
+
+  .review-feature-text{
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 768px){
+  .review-section{
+    padding: 88px 16px;
+  }
+
+  .review-section h2{
+    font-size: 30px;
+  }
+
+  .review-sub{
+    font-size: 15px;
+  }
+
+  .review-feature-card,
+  .review-side-note{
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  .review-feature-text{
+    font-size: 19px;
+  }
+
+  .review-side-note h3{
+    font-size: 24px;
+  }
+
+  .review-quote{
+    width: 260px;
+    min-width: 260px;
+    padding: 18px;
+  }
 }
 
 /* APPLICATION WINDOW */
@@ -2831,53 +2999,101 @@ select{
     <p class="review-sub">Real feedback from students who explored colleges, compared options and used guidance from Swadeshi Shiksha.</p>
   </div>
 
-  <div class="review-slider">
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar">AV</div>
-        <div class="review-person">
+  <div class="review-spotlight">
+    <div class="review-feature-card">
+      <div class="review-feature-top">
+        <div class="review-feature-avatar">AV</div>
+        <div class="review-feature-person">
           <strong>Aman Verma</strong>
           <span>MBA Aspirant</span>
         </div>
       </div>
-      <div class="stars">★★★★★</div>
-      <p>Found my college shortlist within 2 days. The comparison side of the platform is actually useful and easy to understand.</p>
+
+      <div class="review-feature-stars">★★★★★</div>
+      <div class="review-feature-text">
+        “Found my college shortlist within 2 days. The comparison side of the platform is actually useful and easy to understand.”
+      </div>
     </div>
 
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar">SS</div>
-        <div class="review-person">
-          <strong>Sneha Sharma</strong>
-          <span>PGDM Aspirant</span>
-        </div>
-      </div>
-      <div class="stars">★★★★★</div>
-      <p>The counselling support helped me narrow down the right fit instead of randomly applying to too many colleges.</p>
-    </div>
+    <div class="review-side-note">
+      <span class="mini-label">Why students like it</span>
+      <h3>Less confusion. Better decisions.</h3>
+      <p>Instead of another crowded admission website, make this section feel like proof that your platform genuinely helps students move faster and feel more confident.</p>
 
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar">RM</div>
-        <div class="review-person">
-          <strong>Rohan Mehta</strong>
-          <span>MBA Aspirant</span>
+      <div class="review-metrics">
+        <div class="review-metric">
+          <strong>4.8/5</strong>
+          <span>Student satisfaction</span>
+        </div>
+        <div class="review-metric">
+          <strong>5k+</strong>
+          <span>MBA aspirants reached</span>
+        </div>
+        <div class="review-metric">
+          <strong>Fast</strong>
+          <span>Simple experience</span>
         </div>
       </div>
-      <div class="stars">★★★★☆</div>
-      <p>Simple, clean and much easier to use than most admission websites. It saves time and feels more student-focused.</p>
     </div>
+  </div>
 
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar">PS</div>
-        <div class="review-person">
-          <strong>Priya Singh</strong>
-          <span>Management Applicant</span>
-        </div>
+  <div class="review-marquee">
+    <div class="review-track">
+      <div class="review-quote">
+        <div class="quote-stars">★★★★★</div>
+        <p>The counselling support helped me narrow down the right fit instead of randomly applying to too many colleges.</p>
+        <strong>Sneha Sharma</strong>
+        <span>PGDM Aspirant</span>
       </div>
-      <div class="stars">★★★★★</div>
-      <p>I liked that everything felt clear. I could search, compare and understand my options without getting overwhelmed.</p>
+
+      <div class="review-quote">
+        <div class="quote-stars">★★★★☆</div>
+        <p>Simple, clean and much easier to use than most admission websites. It saves time and feels more student-focused.</p>
+        <strong>Rohan Mehta</strong>
+        <span>MBA Aspirant</span>
+      </div>
+
+      <div class="review-quote">
+        <div class="quote-stars">★★★★★</div>
+        <p>I liked that everything felt clear. I could search, compare and understand my options without getting overwhelmed.</p>
+        <strong>Priya Singh</strong>
+        <span>Management Applicant</span>
+      </div>
+
+      <div class="review-quote">
+        <div class="quote-stars">★★★★★</div>
+        <p>The comparison flow made shortlisting feel much easier than on other college websites I checked.</p>
+        <strong>Karan Malhotra</strong>
+        <span>MBA Aspirant</span>
+      </div>
+
+      <div class="review-quote">
+        <div class="quote-stars">★★★★★</div>
+        <p>The counselling support helped me narrow down the right fit instead of randomly applying to too many colleges.</p>
+        <strong>Sneha Sharma</strong>
+        <span>PGDM Aspirant</span>
+      </div>
+
+      <div class="review-quote">
+        <div class="quote-stars">★★★★☆</div>
+        <p>Simple, clean and much easier to use than most admission websites. It saves time and feels more student-focused.</p>
+        <strong>Rohan Mehta</strong>
+        <span>MBA Aspirant</span>
+      </div>
+
+      <div class="review-quote">
+        <div class="quote-stars">★★★★★</div>
+        <p>I liked that everything felt clear. I could search, compare and understand my options without getting overwhelmed.</p>
+        <strong>Priya Singh</strong>
+        <span>Management Applicant</span>
+      </div>
+
+      <div class="review-quote">
+        <div class="quote-stars">★★★★★</div>
+        <p>The comparison flow made shortlisting feel much easier than on other college websites I checked.</p>
+        <strong>Karan Malhotra</strong>
+        <span>MBA Aspirant</span>
+      </div>
     </div>
   </div>
 </section>
