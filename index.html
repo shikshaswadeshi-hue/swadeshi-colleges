@@ -754,23 +754,20 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   color:#5f6b7a;
 }
 
-/* REVIEW SECTION - SPLIT QUOTE LAYOUT */
+/* REVIEW SECTION - COMPACT STRIP */
 .review-section{
-  padding: 64px 20px;
-  background:
-    radial-gradient(circle at top left, rgba(255,122,26,0.06), transparent 20%),
-    radial-gradient(circle at bottom right, rgba(77,47,178,0.07), transparent 24%),
-    linear-gradient(180deg, #fffaf6 0%, #f6f1ff 100%);
+  padding: 54px 20px;
+  background: linear-gradient(180deg, #fffaf6 0%, #f8f4ff 100%);
 }
 
 .review-shell{
-  max-width: 1180px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
 .review-head{
-  max-width: 760px;
-  margin: 0 auto 34px;
+  max-width: 700px;
+  margin: 0 auto 22px;
   text-align: center;
 }
 
@@ -778,69 +775,60 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 14px;
+  padding: 7px 12px;
   border-radius: 999px;
   background: #fff1e7;
   color: #ff6b00;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .03em;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .review-section h2{
-  font-size: 38px;
-  line-height: 1.1;
-  margin-bottom: 12px;
+  font-size: 30px;
+  line-height: 1.12;
+  margin-bottom: 10px;
   color: #16202f;
   letter-spacing: -0.03em;
 }
 
 .review-sub{
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 14px;
+  line-height: 1.7;
   color: #6a7280;
 }
 
-.review-split{
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 28px;
-  align-items: stretch;
-}
-
-.review-quote-panel{
-  background: rgba(255,255,255,0.55);
+.review-strip{
+  background: rgba(255,255,255,0.62);
   border: 1px solid rgba(22,32,47,0.05);
   border-radius: 22px;
   padding: 22px;
   box-shadow: 0 12px 28px rgba(0,0,0,0.05);
   backdrop-filter: blur(8px);
-  min-height: 240px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
-.review-quote-mark{
-  font-size: 38px;
-  line-height: 1;
-  color: #4d2fb2;
-  opacity: .12;
-  margin-bottom: 10px;
+.review-stars{
+  text-align: center;
+  color: #ffb400;
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
 }
 
 .review-quote-wrap{
   position: relative;
-  min-height: 170px;
+  min-height: 72px;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .review-slide{
   position: absolute;
   inset: 0;
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity .35s ease, transform .35s ease;
+  transform: translateY(6px);
+  transition: opacity .3s ease, transform .3s ease;
 }
 
 .review-slide.active{
@@ -849,201 +837,112 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .review-quote-text{
-  font-size: 20px;
-  line-height: 1.65;
-  color: #223046;
-  letter-spacing: -0.02em;
-}
-
-.review-quote-footer{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(22,32,47,0.08);
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #334155;
 }
 
 .review-person{
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.review-avatar{
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #f4ebff, #fff2e8);
-  color: #4d2fb2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 800;
-  flex-shrink: 0;
+  margin-top: 14px;
+  text-align: center;
 }
 
 .review-person strong{
-  display: block;
-  font-size: 17px;
-  color: #16202f;
-  margin-bottom: 4px;
-}
-
-.review-person span{
-  font-size: 13px;
-  color: #7b8494;
-}
-
-.review-stars{
-  color: #ffb400;
-  font-size: 16px;
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
-
-.review-list-panel{
-  background: rgba(255,255,255,0.38);
-  border: 1px solid rgba(22,32,47,0.05);
-  border-radius: 20px;
-  padding: 12px;
-  backdrop-filter: blur(8px);
-}
-
-.review-list-title{
-  font-size: 14px;
-  font-weight: 700;
-  color: #4d2fb2;
-  margin: 6px 10px 14px;
-}
-
-.review-switch-item{
-  width: 100%;
-  border: none;
-  background: transparent;
-  text-align: left;
-  padding: 12px 12px;
-  border-radius: 18px;
-  cursor: pointer;
-  transition: all .22s ease;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-}
-
-.review-switch-item:hover{
-  background: rgba(77,47,178,0.06);
-}
-
-.review-switch-item.active{
-  background: #ffffff;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.05);
-}
-
-.review-switch-left{
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.review-switch-mini{
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #f4ebff, #fff2e8);
-  color: #4d2fb2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-
-.review-switch-text strong{
   display: block;
   font-size: 15px;
   color: #16202f;
   margin-bottom: 3px;
 }
 
-.review-switch-text span{
+.review-person span{
   font-size: 12px;
   color: #7b8494;
 }
 
-.review-switch-arrow{
-  color: #b2b8c3;
-  font-size: 18px;
-  transition: transform .22s ease, color .22s ease;
+.review-tabs{
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.review-switch-item.active .review-switch-arrow{
-  color: #4d2fb2;
-  transform: translateX(2px);
+.review-tab{
+  border: none;
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(22,32,47,0.06);
+  color: #5b6473;
+  border-radius: 999px;
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .22s ease;
+}
+
+.review-tab:hover{
+  border-color: rgba(77,47,178,0.14);
+  color: #16202f;
+}
+
+.review-tab.active{
+  background: #4d2fb2;
+  color: #fff;
+  border-color: #4d2fb2;
+  box-shadow: 0 10px 20px rgba(77,47,178,0.18);
 }
 
 .review-mini-stats{
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-top: 24px;
+  margin-top: 16px;
 }
 
 .review-stat{
-  background: rgba(255,255,255,0.72);
-  border: 1px solid rgba(22,32,47,0.05);
+  font-size: 12px;
   color: #5f6b7a;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(22,32,47,0.05);
   border-radius: 999px;
-  padding: 10px 14px;
-  font-size: 13px;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+  padding: 8px 12px;
 }
 
 .review-stat strong{
   color: #16202f;
 }
 
-@media (max-width: 980px){
-  .review-split{
-    grid-template-columns: 1fr;
-  }
-
-  .review-quote-text{
-    font-size: 24px;
-  }
-}
-
 @media (max-width: 768px){
   .review-section{
-    padding: 72px 16px;
+    padding: 46px 16px;
   }
 
   .review-section h2{
-    font-size: 30px;
+    font-size: 26px;
   }
 
-  .review-quote-panel,
-  .review-list-panel{
-    border-radius: 22px;
+  .review-strip{
+    padding: 18px;
+    border-radius: 18px;
   }
 
-  .review-quote-panel{
-    padding: 24px;
-    min-height: 320px;
+  .review-quote-wrap{
+    min-height: 96px;
   }
 
   .review-quote-text{
-    font-size: 20px;
+    font-size: 16px;
   }
 
-  .review-quote-footer{
-    flex-direction: column;
-    align-items: flex-start;
+  .review-tabs{
+    gap: 8px;
+  }
+
+  .review-tab{
+    font-size: 11px;
+    padding: 8px 10px;
   }
 }
   
@@ -3005,96 +2904,44 @@ select{
       <p class="review-sub">Real feedback from students who explored colleges, compared options and used guidance from Swadeshi Shiksha.</p>
     </div>
 
-    <div class="review-split">
-      <div class="review-quote-panel">
-        <div>
-          <div class="review-quote-mark">“</div>
+    <div class="review-strip">
+      <div class="review-stars" id="reviewStars">★★★★★</div>
 
-          <div class="review-quote-wrap">
-            <div class="review-slide active">
-              <div class="review-quote-text">Found my college shortlist within 2 days. The comparison side of the platform is actually useful and easy to understand.</div>
-            </div>
-
-            <div class="review-slide">
-              <div class="review-quote-text">The counselling support helped me narrow down the right fit instead of randomly applying to too many colleges.</div>
-            </div>
-
-            <div class="review-slide">
-              <div class="review-quote-text">Simple, clean and much easier to use than most admission websites. It saves time and feels more student-focused.</div>
-            </div>
-
-            <div class="review-slide">
-              <div class="review-quote-text">I liked that everything felt clear. I could search, compare and understand my options without getting overwhelmed.</div>
-            </div>
-          </div>
+      <div class="review-quote-wrap">
+        <div class="review-slide active">
+          <div class="review-quote-text">Found my college shortlist within 2 days. The comparison side of the platform is actually useful and easy to understand.</div>
         </div>
 
-        <div class="review-quote-footer">
-          <div class="review-person" id="reviewMeta">
-            <div class="review-avatar">AV</div>
-            <div>
-              <strong>Aman Verma</strong>
-              <span>MBA Aspirant</span>
-            </div>
-          </div>
+        <div class="review-slide">
+          <div class="review-quote-text">The counselling support helped me narrow down the right fit instead of randomly applying to too many colleges.</div>
+        </div>
 
-          <div class="review-stars" id="reviewStars">★★★★★</div>
+        <div class="review-slide">
+          <div class="review-quote-text">Simple, clean and much easier to use than most admission websites. It saves time and feels more student-focused.</div>
+        </div>
+
+        <div class="review-slide">
+          <div class="review-quote-text">I liked that everything felt clear. I could search, compare and understand my options without getting overwhelmed.</div>
         </div>
       </div>
 
-      <div class="review-list-panel">
-        <div class="review-list-title">Student reviews</div>
+      <div class="review-person" id="reviewMeta">
+        <strong>Aman Verma</strong>
+        <span>MBA Aspirant</span>
+      </div>
 
-        <button class="review-switch-item active" data-review="0" type="button">
-          <div class="review-switch-left">
-            <div class="review-switch-mini">AV</div>
-            <div class="review-switch-text">
-              <strong>Aman Verma</strong>
-              <span>MBA Aspirant</span>
-            </div>
-          </div>
-          <div class="review-switch-arrow">↗</div>
-        </button>
-
-        <button class="review-switch-item" data-review="1" type="button">
-          <div class="review-switch-left">
-            <div class="review-switch-mini">SS</div>
-            <div class="review-switch-text">
-              <strong>Sneha Sharma</strong>
-              <span>PGDM Aspirant</span>
-            </div>
-          </div>
-          <div class="review-switch-arrow">↗</div>
-        </button>
-
-        <button class="review-switch-item" data-review="2" type="button">
-          <div class="review-switch-left">
-            <div class="review-switch-mini">RM</div>
-            <div class="review-switch-text">
-              <strong>Rohan Mehta</strong>
-              <span>MBA Aspirant</span>
-            </div>
-          </div>
-          <div class="review-switch-arrow">↗</div>
-        </button>
-
-        <button class="review-switch-item" data-review="3" type="button">
-          <div class="review-switch-left">
-            <div class="review-switch-mini">PS</div>
-            <div class="review-switch-text">
-              <strong>Priya Singh</strong>
-              <span>Management Applicant</span>
-            </div>
-          </div>
-          <div class="review-switch-arrow">↗</div>
-        </button>
+      <div class="review-tabs">
+        <button class="review-tab active" data-review="0" type="button">Aman Verma</button>
+        <button class="review-tab" data-review="1" type="button">Sneha Sharma</button>
+        <button class="review-tab" data-review="2" type="button">Rohan Mehta</button>
+        <button class="review-tab" data-review="3" type="button">Priya Singh</button>
       </div>
     </div>
 
     <div class="review-mini-stats">
       <div class="review-stat"><strong>4.8/5</strong> student satisfaction</div>
       <div class="review-stat"><strong>5,000+</strong> MBA aspirants</div>
-      <div class="review-stat"><strong>Student-first</strong> discovery experience</div>
+      <div class="review-stat"><strong>Student-first</strong> experience</div>
     </div>
   </div>
 </section>
@@ -3650,15 +3497,15 @@ if (heroSlides.length) {
 }
 
   const reviewSlides = document.querySelectorAll(".review-slide");
-const reviewSwitchItems = document.querySelectorAll(".review-switch-item");
+const reviewTabs = document.querySelectorAll(".review-tab");
 const reviewMeta = document.getElementById("reviewMeta");
 const reviewStars = document.getElementById("reviewStars");
 
 const reviewData = [
-  { initials: "AV", name: "Aman Verma", role: "MBA Aspirant", stars: "★★★★★" },
-  { initials: "SS", name: "Sneha Sharma", role: "PGDM Aspirant", stars: "★★★★★" },
-  { initials: "RM", name: "Rohan Mehta", role: "MBA Aspirant", stars: "★★★★☆" },
-  { initials: "PS", name: "Priya Singh", role: "Management Applicant", stars: "★★★★★" }
+  { name: "Aman Verma", role: "MBA Aspirant", stars: "★★★★★" },
+  { name: "Sneha Sharma", role: "PGDM Aspirant", stars: "★★★★★" },
+  { name: "Rohan Mehta", role: "MBA Aspirant", stars: "★★★★☆" },
+  { name: "Priya Singh", role: "Management Applicant", stars: "★★★★★" }
 ];
 
 let reviewCurrent = 0;
@@ -3669,17 +3516,14 @@ function showReview(index){
     slide.classList.toggle("active", i === index);
   });
 
-  reviewSwitchItems.forEach((item, i) => {
-    item.classList.toggle("active", i === index);
+  reviewTabs.forEach((tab, i) => {
+    tab.classList.toggle("active", i === index);
   });
 
   if (reviewMeta && reviewData[index]) {
     reviewMeta.innerHTML = `
-      <div class="review-avatar">${reviewData[index].initials}</div>
-      <div>
-        <strong>${reviewData[index].name}</strong>
-        <span>${reviewData[index].role}</span>
-      </div>
+      <strong>${reviewData[index].name}</strong>
+      <span>${reviewData[index].role}</span>
     `;
   }
 
@@ -3704,8 +3548,8 @@ function stopReviewAuto(){
   clearInterval(reviewInterval);
 }
 
-reviewSwitchItems.forEach((item, index) => {
-  item.addEventListener("click", function(){
+reviewTabs.forEach((tab, index) => {
+  tab.addEventListener("click", function(){
     stopReviewAuto();
     showReview(index);
     startReviewAuto();
