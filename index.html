@@ -754,107 +754,321 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   color:#5f6b7a;
 }
 
-/* REVIEW SECTION - MINIMAL PINTEREST STYLE */
+/* REVIEW SECTION - TESTIMONIAL SLIDER STYLE */
 .review-section{
-  padding: 48px 20px;
-  background: linear-gradient(180deg, #fffaf6 0%, #f8f4ff 100%);
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #fffaf6 0%, #f6f1ff 100%);
+  overflow: hidden;
 }
 
 .review-shell{
-  max-width: 720px;
+  max-width: 1180px;
   margin: 0 auto;
+}
+
+.review-head{
   text-align: center;
+  max-width: 760px;
+  margin: 0 auto 34px;
 }
 
 .review-tag{
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  color: #ff6b00;
-  background: #fff1e7;
-  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
   border-radius: 999px;
-  margin-bottom: 12px;
+  background: #fff1e7;
+  color: #ff6b00;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  margin-bottom: 14px;
 }
 
-.review-section h2{
-  font-size: 26px;
-  margin-bottom: 20px;
+.review-head h2{
+  font-size: 36px;
+  line-height: 1.1;
   color: #16202f;
+  margin-bottom: 12px;
+  letter-spacing: -0.03em;
 }
 
-.review-quote-wrap{
+.review-head p{
+  font-size: 15px;
+  line-height: 1.75;
+  color: #6a7280;
+}
+
+.review-stage{
   position: relative;
-  min-height: 70px;
+  background: #fcfbff;
+  border: 1px solid rgba(77,47,178,0.08);
+  box-shadow: 0 20px 60px rgba(77,47,178,0.08);
+  border-radius: 34px;
+  padding: 34px 20px 28px;
+  overflow: hidden;
 }
 
-.review-slide{
+.review-slider{
+  position: relative;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-card{
   position: absolute;
-  inset: 0;
+  width: 320px;
+  max-width: 84vw;
+  background: #ffffff;
+  border: 1px solid rgba(22,32,47,0.06);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+  border-radius: 28px;
+  padding: 26px 24px;
+  transition: transform .45s ease, opacity .45s ease, box-shadow .45s ease, border-color .45s ease;
+  transform-origin: center center;
   opacity: 0;
-  transform: translateY(6px);
-  transition: all .3s ease;
+  pointer-events: none;
 }
 
-.review-slide.active{
+.testimonial-card.active{
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0) scale(1);
+  z-index: 3;
+  border-color: rgba(77,47,178,0.25);
+  box-shadow: 0 20px 50px rgba(77,47,178,0.15);
+  pointer-events: auto;
 }
 
-.review-quote-text{
-  font-size: 17px;
-  line-height: 1.6;
-  color: #4a5568;
+.testimonial-card.prev{
+  opacity: 0.62;
+  transform: translateX(-290px) scale(0.9);
+  z-index: 2;
 }
 
-.review-user{
-  margin-top: 16px;
+.testimonial-card.next{
+  opacity: 0.62;
+  transform: translateX(290px) scale(0.9);
+  z-index: 2;
 }
 
-.review-avatar{
-  width: 42px;
-  height: 42px;
+.testimonial-card.far-prev{
+  opacity: 0.18;
+  transform: translateX(-520px) scale(0.78);
+  z-index: 1;
+}
+
+.testimonial-card.far-next{
+  opacity: 0.18;
+  transform: translateX(520px) scale(0.78);
+  z-index: 1;
+}
+
+.testimonial-top{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.testimonial-avatar{
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  margin: 0 auto 8px;
   background: linear-gradient(135deg, #f4ebff, #fff2e8);
   color: #4d2fb2;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 17px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.testimonial-meta{
+  min-width: 0;
+}
+
+.testimonial-name{
+  font-size: 16px;
   font-weight: 700;
-  font-size: 14px;
-}
-
-.review-user strong{
-  display: block;
-  font-size: 14px;
   color: #16202f;
+  margin-bottom: 3px;
 }
 
-.review-user span{
-  font-size: 12px;
+.testimonial-role{
+  font-size: 13px;
   color: #7b8494;
 }
 
-.review-dots{
-  margin-top: 14px;
+.testimonial-stars{
+  color: #ffb400;
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.testimonial-text{
+  font-size: 15px;
+  line-height: 1.8;
+  color: #223046;
+}
+
+.review-controls{
   display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.review-arrow{
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #4d2fb2;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.review-arrow:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+  background: #f7f1ff;
+}
+
+.review-dots{
+  display: flex;
+  align-items: center;
   gap: 8px;
 }
 
-.review-dot{
-  width: 8px;
-  height: 8px;
+.slider-dot{
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: rgba(77,47,178,0.2);
   cursor: pointer;
   transition: all .25s ease;
 }
 
-.review-dot.active{
+.slider-dot.active{
+  width: 28px;
+  border-radius: 999px;
   background: #4d2fb2;
-  transform: scale(1.2);
+}
+
+.review-mini-stats{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.review-stat{
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(22,32,47,0.05);
+  color: #5f6b7a;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 13px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+}
+
+.review-stat strong{
+  color: #16202f;
+}
+
+@media (max-width: 1024px){
+  .testimonial-card{
+    width: 300px;
+  }
+
+  .testimonial-card.prev{
+    transform: translateX(-220px) scale(0.88);
+  }
+
+  .testimonial-card.next{
+    transform: translateX(220px) scale(0.88);
+  }
+
+  .testimonial-card.far-prev,
+  .testimonial-card.far-next{
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px){
+  .review-section{
+    padding: 64px 16px;
+  }
+
+  .review-head h2{
+    font-size: 28px;
+  }
+
+  .review-stage{
+    padding: 22px 14px 20px;
+    border-radius: 24px;
+  }
+
+  .review-slider{
+    height: 290px;
+  }
+
+  .testimonial-card{
+    width: min(100%, 320px);
+    padding: 22px 18px;
+  }
+
+  .testimonial-card.prev,
+  .testimonial-card.next{
+    opacity: 0.22;
+  }
+
+  .testimonial-card.prev{
+    transform: translateX(-120px) scale(0.86);
+  }
+
+  .testimonial-card.next{
+    transform: translateX(120px) scale(0.86);
+  }
+
+  .review-arrow{
+    width: 38px;
+    height: 38px;
+  }
+
+  .review-mini-stats{
+    gap: 10px;
+  }
+}
+
+@media (max-width: 520px){
+  .review-slider{
+    height: 270px;
+  }
+
+  .testimonial-card{
+    width: 88%;
+  }
+
+  .testimonial-card.prev,
+  .testimonial-card.next{
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .testimonial-text{
+    font-size: 14px;
+  }
 }
   
 /* APPLICATION WINDOW */
@@ -2809,50 +3023,98 @@ select{
 
 <section class="review-section">
   <div class="review-shell">
-    <span class="review-tag">Student Reviews</span>
-    <h2>What Students Say</h2>
+    <div class="review-head">
+      <span class="review-tag">Student Voices</span>
+      <h2>What Students Are Saying</h2>
+      <p>Real feedback from students who explored colleges, compared options and used guidance from Swadeshi Shiksha.</p>
+    </div>
 
-    <div class="review-quote-wrap">
-      <div class="review-slide active">
-        <div class="review-quote-text">
-          Found my college shortlist within 2 days. The comparison side is actually useful.
+    <div class="review-stage">
+      <div class="review-slider" id="reviewSlider">
+        <div class="testimonial-card active">
+          <div class="testimonial-top">
+            <div class="testimonial-avatar">AV</div>
+            <div class="testimonial-meta">
+              <div class="testimonial-name">Aman Verma</div>
+              <div class="testimonial-role">MBA Aspirant</div>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">Found my college shortlist within 2 days. The comparison side of the platform is actually useful and easy to understand.</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-top">
+            <div class="testimonial-avatar">SS</div>
+            <div class="testimonial-meta">
+              <div class="testimonial-name">Sneha Sharma</div>
+              <div class="testimonial-role">PGDM Aspirant</div>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">The counselling support helped me narrow down the right fit instead of randomly applying to too many colleges.</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-top">
+            <div class="testimonial-avatar">RM</div>
+            <div class="testimonial-meta">
+              <div class="testimonial-name">Rohan Mehta</div>
+              <div class="testimonial-role">MBA Aspirant</div>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★☆</div>
+          <div class="testimonial-text">Simple, clean and much easier to use than most admission websites. It saves time and feels more student-focused.</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-top">
+            <div class="testimonial-avatar">PS</div>
+            <div class="testimonial-meta">
+              <div class="testimonial-name">Priya Singh</div>
+              <div class="testimonial-role">Management Applicant</div>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">I liked that everything felt clear. I could search, compare and understand my options without getting overwhelmed.</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-top">
+            <div class="testimonial-avatar">KM</div>
+            <div class="testimonial-meta">
+              <div class="testimonial-name">Karan Malhotra</div>
+              <div class="testimonial-role">MBA Aspirant</div>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-text">The platform feels much more student-first than most admission websites. Shortlisting became easier and faster.</div>
         </div>
       </div>
 
-      <div class="review-slide">
-        <div class="review-quote-text">
-          Counselling support helped me choose better instead of randomly applying.
-        </div>
-      </div>
+      <div class="review-controls">
+        <button class="review-arrow" id="reviewPrev" type="button" aria-label="Previous review">&#10094;</button>
 
-      <div class="review-slide">
-        <div class="review-quote-text">
-          Simple, clean and much easier than other admission websites.
+        <div class="review-dots" id="reviewDots">
+          <span class="slider-dot active"></span>
+          <span class="slider-dot"></span>
+          <span class="slider-dot"></span>
+          <span class="slider-dot"></span>
+          <span class="slider-dot"></span>
         </div>
-      </div>
 
-      <div class="review-slide">
-        <div class="review-quote-text">
-          Everything felt clear. I could compare and decide without confusion.
-        </div>
+        <button class="review-arrow" id="reviewNext" type="button" aria-label="Next review">&#10095;</button>
       </div>
     </div>
 
-    <div class="review-user" id="reviewUser">
-      <div class="review-avatar">AV</div>
-      <strong>Aman Verma</strong>
-      <span>MBA Aspirant</span>
-    </div>
-
-    <div class="review-dots">
-      <span class="review-dot active"></span>
-      <span class="review-dot"></span>
-      <span class="review-dot"></span>
-      <span class="review-dot"></span>
+    <div class="review-mini-stats">
+      <div class="review-stat"><strong>4.8/5</strong> student satisfaction</div>
+      <div class="review-stat"><strong>5,000+</strong> MBA aspirants</div>
+      <div class="review-stat"><strong>Student-first</strong> experience</div>
     </div>
   </div>
 </section>
-
+  
   <section class="app-window-v2" id="application-window">
   <div class="app-window-head">
     <span class="app-window-tag">Admissions</span>
@@ -3334,109 +3596,88 @@ if (premiumTabButtons.length) {
 
 renderPremiumExplore("exam");
 
-const heroSlides = document.querySelectorAll(".ss-slide");
-const heroDots = document.querySelectorAll(".ss-dot");
-const heroPrev = document.querySelector(".ss-prev");
-const heroNext = document.querySelector(".ss-next");
+const reviewCards = document.querySelectorAll(".testimonial-card");
+const reviewDots = document.querySelectorAll(".slider-dot");
+const reviewPrev = document.getElementById("reviewPrev");
+const reviewNext = document.getElementById("reviewNext");
 
-let heroCurrent = 0;
-let heroInterval;
+let reviewIndex = 0;
+let reviewTimer;
 
-function showHeroSlide(index) {
-  heroSlides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
+function setReviewClasses() {
+  const total = reviewCards.length;
+
+  reviewCards.forEach((card, i) => {
+    card.classList.remove("active", "prev", "next", "far-prev", "far-next");
+
+    const prevIndex = (reviewIndex - 1 + total) % total;
+    const nextIndex = (reviewIndex + 1) % total;
+    const farPrevIndex = (reviewIndex - 2 + total) % total;
+    const farNextIndex = (reviewIndex + 2) % total;
+
+    if (i === reviewIndex) card.classList.add("active");
+    else if (i === prevIndex) card.classList.add("prev");
+    else if (i === nextIndex) card.classList.add("next");
+    else if (i === farPrevIndex) card.classList.add("far-prev");
+    else if (i === farNextIndex) card.classList.add("far-next");
   });
 
-  heroDots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
-  });
-
-  heroCurrent = index;
-}
-
-function nextHeroSlide() {
-  let next = heroCurrent + 1;
-  if (next >= heroSlides.length) next = 0;
-  showHeroSlide(next);
-}
-
-function prevHeroSlide() {
-  let prev = heroCurrent - 1;
-  if (prev < 0) prev = heroSlides.length - 1;
-  showHeroSlide(prev);
-}
-
-function startHeroAutoSlide() {
-  heroInterval = setInterval(nextHeroSlide, 4500);
-}
-
-function stopHeroAutoSlide() {
-  clearInterval(heroInterval);
-}
-
-if (heroNext) {
-  heroNext.addEventListener("click", function() {
-    stopHeroAutoSlide();
-    nextHeroSlide();
-    startHeroAutoSlide();
+  reviewDots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === reviewIndex);
   });
 }
 
-if (heroPrev) {
-  heroPrev.addEventListener("click", function() {
-    stopHeroAutoSlide();
-    prevHeroSlide();
-    startHeroAutoSlide();
+function goToReview(index) {
+  reviewIndex = index;
+  setReviewClasses();
+}
+
+function nextReviewCard() {
+  reviewIndex = (reviewIndex + 1) % reviewCards.length;
+  setReviewClasses();
+}
+
+function prevReviewCard() {
+  reviewIndex = (reviewIndex - 1 + reviewCards.length) % reviewCards.length;
+  setReviewClasses();
+}
+
+function startReviewAuto() {
+  reviewTimer = setInterval(nextReviewCard, 3500);
+}
+
+function stopReviewAuto() {
+  clearInterval(reviewTimer);
+}
+
+if (reviewNext) {
+  reviewNext.addEventListener("click", function () {
+    stopReviewAuto();
+    nextReviewCard();
+    startReviewAuto();
   });
 }
 
-heroDots.forEach((dot, index) => {
-  dot.addEventListener("click", function() {
-    stopHeroAutoSlide();
-    showHeroSlide(index);
-    startHeroAutoSlide();
+if (reviewPrev) {
+  reviewPrev.addEventListener("click", function () {
+    stopReviewAuto();
+    prevReviewCard();
+    startReviewAuto();
+  });
+}
+
+reviewDots.forEach((dot, index) => {
+  dot.addEventListener("click", function () {
+    stopReviewAuto();
+    goToReview(index);
+    startReviewAuto();
   });
 });
 
-if (heroSlides.length) {
-  showHeroSlide(0);
-  startHeroAutoSlide();
+if (reviewCards.length) {
+  setReviewClasses();
+  startReviewAuto();
 }
-
-  const slides = document.querySelectorAll(".review-slide");
-const dots = document.querySelectorAll(".review-dot");
-const userBox = document.getElementById("reviewUser");
-
-const users = [
-  { i:"AV", n:"Aman Verma", r:"MBA Aspirant" },
-  { i:"SS", n:"Sneha Sharma", r:"PGDM Aspirant" },
-  { i:"RM", n:"Rohan Mehta", r:"MBA Aspirant" },
-  { i:"PS", n:"Priya Singh", r:"Applicant" }
-];
-
-let current = 0;
-
-function show(index){
-  slides.forEach((s,i)=>s.classList.toggle("active", i===index));
-  dots.forEach((d,i)=>d.classList.toggle("active", i===index));
-
-  userBox.innerHTML = `
-    <div class="review-avatar">${users[index].i}</div>
-    <strong>${users[index].n}</strong>
-    <span>${users[index].r}</span>
-  `;
-
-  current = index;
-}
-
-dots.forEach((d,i)=>{
-  d.onclick = ()=>show(i);
-});
-
-setInterval(()=>{
-  let next = (current+1)%slides.length;
-  show(next);
-}, 3500);
 
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
