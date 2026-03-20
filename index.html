@@ -754,73 +754,38 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   color:#5f6b7a;
 }
 
-/* REVIEW SECTION - COMPACT STRIP */
+/* REVIEW SECTION - MINIMAL PINTEREST STYLE */
 .review-section{
-  padding: 54px 20px;
+  padding: 48px 20px;
   background: linear-gradient(180deg, #fffaf6 0%, #f8f4ff 100%);
 }
 
 .review-shell{
-  max-width: 980px;
+  max-width: 720px;
   margin: 0 auto;
-}
-
-.review-head{
-  max-width: 700px;
-  margin: 0 auto 22px;
   text-align: center;
 }
 
 .review-tag{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: #fff1e7;
-  color: #ff6b00;
+  display: inline-block;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: .03em;
+  color: #ff6b00;
+  background: #fff1e7;
+  padding: 6px 10px;
+  border-radius: 999px;
   margin-bottom: 12px;
 }
 
 .review-section h2{
-  font-size: 30px;
-  line-height: 1.12;
-  margin-bottom: 10px;
+  font-size: 26px;
+  margin-bottom: 20px;
   color: #16202f;
-  letter-spacing: -0.03em;
-}
-
-.review-sub{
-  font-size: 14px;
-  line-height: 1.7;
-  color: #6a7280;
-}
-
-.review-strip{
-  background: rgba(255,255,255,0.62);
-  border: 1px solid rgba(22,32,47,0.05);
-  border-radius: 22px;
-  padding: 22px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.05);
-  backdrop-filter: blur(8px);
-}
-
-.review-stars{
-  text-align: center;
-  color: #ffb400;
-  font-size: 15px;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
 }
 
 .review-quote-wrap{
   position: relative;
-  min-height: 72px;
-  max-width: 760px;
-  margin: 0 auto;
+  min-height: 70px;
 }
 
 .review-slide{
@@ -828,7 +793,7 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   inset: 0;
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity .3s ease, transform .3s ease;
+  transition: all .3s ease;
 }
 
 .review-slide.active{
@@ -837,113 +802,59 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .review-quote-text{
-  text-align: center;
-  font-size: 18px;
-  line-height: 1.7;
-  color: #334155;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #4a5568;
 }
 
-.review-person{
-  margin-top: 14px;
-  text-align: center;
+.review-user{
+  margin-top: 16px;
 }
 
-.review-person strong{
+.review-avatar{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  margin: 0 auto 8px;
+  background: linear-gradient(135deg, #f4ebff, #fff2e8);
+  color: #4d2fb2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.review-user strong{
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   color: #16202f;
-  margin-bottom: 3px;
 }
 
-.review-person span{
+.review-user span{
   font-size: 12px;
   color: #7b8494;
 }
 
-.review-tabs{
-  margin-top: 18px;
+.review-dots{
+  margin-top: 14px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
-.review-tab{
-  border: none;
-  background: rgba(255,255,255,0.82);
-  border: 1px solid rgba(22,32,47,0.06);
-  color: #5b6473;
-  border-radius: 999px;
-  padding: 9px 12px;
-  font-size: 12px;
-  font-weight: 600;
+.review-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(77,47,178,0.2);
   cursor: pointer;
-  transition: all .22s ease;
+  transition: all .25s ease;
 }
 
-.review-tab:hover{
-  border-color: rgba(77,47,178,0.14);
-  color: #16202f;
-}
-
-.review-tab.active{
+.review-dot.active{
   background: #4d2fb2;
-  color: #fff;
-  border-color: #4d2fb2;
-  box-shadow: 0 10px 20px rgba(77,47,178,0.18);
-}
-
-.review-mini-stats{
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 16px;
-}
-
-.review-stat{
-  font-size: 12px;
-  color: #5f6b7a;
-  background: rgba(255,255,255,0.7);
-  border: 1px solid rgba(22,32,47,0.05);
-  border-radius: 999px;
-  padding: 8px 12px;
-}
-
-.review-stat strong{
-  color: #16202f;
-}
-
-@media (max-width: 768px){
-  .review-section{
-    padding: 46px 16px;
-  }
-
-  .review-section h2{
-    font-size: 26px;
-  }
-
-  .review-strip{
-    padding: 18px;
-    border-radius: 18px;
-  }
-
-  .review-quote-wrap{
-    min-height: 96px;
-  }
-
-  .review-quote-text{
-    font-size: 16px;
-  }
-
-  .review-tabs{
-    gap: 8px;
-  }
-
-  .review-tab{
-    font-size: 11px;
-    padding: 8px 10px;
-  }
+  transform: scale(1.2);
 }
   
 /* APPLICATION WINDOW */
@@ -2898,50 +2809,46 @@ select{
 
 <section class="review-section">
   <div class="review-shell">
-    <div class="review-head">
-      <span class="review-tag">Student Voices</span>
-      <h2>What Students Are Saying</h2>
-      <p class="review-sub">Real feedback from students who explored colleges, compared options and used guidance from Swadeshi Shiksha.</p>
-    </div>
+    <span class="review-tag">Student Reviews</span>
+    <h2>What Students Say</h2>
 
-    <div class="review-strip">
-      <div class="review-stars" id="reviewStars">★★★★★</div>
-
-      <div class="review-quote-wrap">
-        <div class="review-slide active">
-          <div class="review-quote-text">Found my college shortlist within 2 days. The comparison side of the platform is actually useful and easy to understand.</div>
-        </div>
-
-        <div class="review-slide">
-          <div class="review-quote-text">The counselling support helped me narrow down the right fit instead of randomly applying to too many colleges.</div>
-        </div>
-
-        <div class="review-slide">
-          <div class="review-quote-text">Simple, clean and much easier to use than most admission websites. It saves time and feels more student-focused.</div>
-        </div>
-
-        <div class="review-slide">
-          <div class="review-quote-text">I liked that everything felt clear. I could search, compare and understand my options without getting overwhelmed.</div>
+    <div class="review-quote-wrap">
+      <div class="review-slide active">
+        <div class="review-quote-text">
+          Found my college shortlist within 2 days. The comparison side is actually useful.
         </div>
       </div>
 
-      <div class="review-person" id="reviewMeta">
-        <strong>Aman Verma</strong>
-        <span>MBA Aspirant</span>
+      <div class="review-slide">
+        <div class="review-quote-text">
+          Counselling support helped me choose better instead of randomly applying.
+        </div>
       </div>
 
-      <div class="review-tabs">
-        <button class="review-tab active" data-review="0" type="button">Aman Verma</button>
-        <button class="review-tab" data-review="1" type="button">Sneha Sharma</button>
-        <button class="review-tab" data-review="2" type="button">Rohan Mehta</button>
-        <button class="review-tab" data-review="3" type="button">Priya Singh</button>
+      <div class="review-slide">
+        <div class="review-quote-text">
+          Simple, clean and much easier than other admission websites.
+        </div>
+      </div>
+
+      <div class="review-slide">
+        <div class="review-quote-text">
+          Everything felt clear. I could compare and decide without confusion.
+        </div>
       </div>
     </div>
 
-    <div class="review-mini-stats">
-      <div class="review-stat"><strong>4.8/5</strong> student satisfaction</div>
-      <div class="review-stat"><strong>5,000+</strong> MBA aspirants</div>
-      <div class="review-stat"><strong>Student-first</strong> experience</div>
+    <div class="review-user" id="reviewUser">
+      <div class="review-avatar">AV</div>
+      <strong>Aman Verma</strong>
+      <span>MBA Aspirant</span>
+    </div>
+
+    <div class="review-dots">
+      <span class="review-dot active"></span>
+      <span class="review-dot"></span>
+      <span class="review-dot"></span>
+      <span class="review-dot"></span>
     </div>
   </div>
 </section>
@@ -3496,70 +3403,40 @@ if (heroSlides.length) {
   startHeroAutoSlide();
 }
 
-  const reviewSlides = document.querySelectorAll(".review-slide");
-const reviewTabs = document.querySelectorAll(".review-tab");
-const reviewMeta = document.getElementById("reviewMeta");
-const reviewStars = document.getElementById("reviewStars");
+  const slides = document.querySelectorAll(".review-slide");
+const dots = document.querySelectorAll(".review-dot");
+const userBox = document.getElementById("reviewUser");
 
-const reviewData = [
-  { name: "Aman Verma", role: "MBA Aspirant", stars: "★★★★★" },
-  { name: "Sneha Sharma", role: "PGDM Aspirant", stars: "★★★★★" },
-  { name: "Rohan Mehta", role: "MBA Aspirant", stars: "★★★★☆" },
-  { name: "Priya Singh", role: "Management Applicant", stars: "★★★★★" }
+const users = [
+  { i:"AV", n:"Aman Verma", r:"MBA Aspirant" },
+  { i:"SS", n:"Sneha Sharma", r:"PGDM Aspirant" },
+  { i:"RM", n:"Rohan Mehta", r:"MBA Aspirant" },
+  { i:"PS", n:"Priya Singh", r:"Applicant" }
 ];
 
-let reviewCurrent = 0;
-let reviewInterval;
+let current = 0;
 
-function showReview(index){
-  reviewSlides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
-  });
+function show(index){
+  slides.forEach((s,i)=>s.classList.toggle("active", i===index));
+  dots.forEach((d,i)=>d.classList.toggle("active", i===index));
 
-  reviewTabs.forEach((tab, i) => {
-    tab.classList.toggle("active", i === index);
-  });
+  userBox.innerHTML = `
+    <div class="review-avatar">${users[index].i}</div>
+    <strong>${users[index].n}</strong>
+    <span>${users[index].r}</span>
+  `;
 
-  if (reviewMeta && reviewData[index]) {
-    reviewMeta.innerHTML = `
-      <strong>${reviewData[index].name}</strong>
-      <span>${reviewData[index].role}</span>
-    `;
-  }
-
-  if (reviewStars && reviewData[index]) {
-    reviewStars.textContent = reviewData[index].stars;
-  }
-
-  reviewCurrent = index;
+  current = index;
 }
 
-function nextReview(){
-  let next = reviewCurrent + 1;
-  if (next >= reviewSlides.length) next = 0;
-  showReview(next);
-}
-
-function startReviewAuto(){
-  reviewInterval = setInterval(nextReview, 3500);
-}
-
-function stopReviewAuto(){
-  clearInterval(reviewInterval);
-}
-
-reviewTabs.forEach((tab, index) => {
-  tab.addEventListener("click", function(){
-    stopReviewAuto();
-    showReview(index);
-    startReviewAuto();
-  });
+dots.forEach((d,i)=>{
+  d.onclick = ()=>show(i);
 });
 
-if (reviewSlides.length) {
-  showReview(0);
-  startReviewAuto();
-}
+setInterval(()=>{
+  let next = (current+1)%slides.length;
+  show(next);
+}, 3500);
 
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
