@@ -99,52 +99,51 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   box-shadow:0 16px 28px rgba(255,107,0,0.28);
 }
   
-/* NEW HERO CAROUSEL */
 .ss-hero{
-  position:relative;
-  padding:18px 18px 0;
-  background:linear-gradient(180deg,#faf8f2 0%,#f5f1e8 100%);
+  position: relative;
+  padding: 18px 18px 0;
+  background: linear-gradient(180deg,#faf8f2 0%,#f5f1e8 100%);
 }
 
 .ss-hero-slider{
-  position:relative;
-  max-width:1320px;
-  margin:0 auto;
-  min-height:560px;
-  border-radius:34px;
-  overflow:hidden;
-  box-shadow:0 20px 60px rgba(0,0,0,0.10);
+  position: relative;
+  max-width: 1320px;
+  margin: 0 auto;
+  min-height: 560px;
+  border-radius: 34px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.10);
 }
 
 .ss-slide{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  visibility:hidden;
-  transition:opacity .7s ease, transform .7s ease;
-  transform:scale(1.03);
-  background-size:cover;
-  background-position:center;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .7s ease, transform .7s ease;
+  transform: scale(1.03);
+  background-size: cover;
+  background-position: center;
 }
 
 .ss-slide.active{
-  opacity:1;
-  visibility:visible;
-  transform:scale(1);
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
 }
 
 .ss-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg, rgba(10,16,30,.72) 0%, rgba(10,16,30,.48) 38%, rgba(10,16,30,.18) 100%);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10,16,30,.72) 0%, rgba(10,16,30,.48) 38%, rgba(10,16,30,.18) 100%);
 }
 
 .ss-slide-content{
-  position:relative;
-  z-index:2;
-  max-width:560px;
-  padding:56px 60px 150px;
-  color:#fff;
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  padding: 56px 60px 110px;
+  color: #fff;
 }
 
 .ss-badge{
@@ -163,19 +162,19 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .ss-slide-content h1{
-  font-size:46px;
-  line-height:1.08;
-  font-weight:800;
-  margin:0 0 16px;
-  letter-spacing:-1.2px;
+  font-size: 46px;
+  line-height: 1.08;
+  font-weight: 800;
+  margin: 0 0 16px;
+  letter-spacing: -1.2px;
 }
 
 .ss-slide-content p{
-  font-size:17px;
-  line-height:1.65;
-  max-width:500px;
-  color:rgba(255,255,255,0.90);
-  margin:0 0 28px;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 500px;
+  color: rgba(255,255,255,0.90);
+  margin: 0 0 28px;
 }
 
 .ss-slide-btn{
@@ -193,35 +192,34 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .ss-slide-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 18px 36px rgba(255,107,0,.35);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(255,107,0,.35);
 }
 
+/* SEARCH CARD NOW SITS BELOW THE SLIDER */
 .ss-search-wrap{
-  position:absolute;
-  left:50%;
-  bottom:24px;
-  transform:translateX(-50%);
-  width:calc(100% - 110px);
-  max-width:940px;
-  z-index:5;
+  position: relative;
+  max-width: 940px;
+  margin: -88px auto 0;
+  z-index: 10;
+  padding: 0 14px;
 }
 
 .ss-search-card{
-  background:rgba(255,255,255,0.72);
-  backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,0.28);
-  border-radius:22px;
-  padding:16px;
-  box-shadow:0 12px 30px rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
 }
 
 .ss-search-label{
-  font-size:14px;
-  font-weight:700;
-  color:#4d2fb2;
-  margin:0 0 14px;
-  text-align:left;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4d2fb2;
+  margin: 0 0 14px;
+  text-align: left;
 }
 
 .ss-search-bar{
@@ -237,7 +235,7 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 .ss-search-bar:focus-within{
   box-shadow:0 0 0 4px rgba(77,47,178,0.12);
 }
-  
+
 .ss-search-icon{
   font-size:24px;
   color:#7e7e8a;
@@ -274,12 +272,12 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   box-shadow:0 10px 22px rgba(77,47,178,0.24);
 }
 
-  .ss-search-bar button:active{
-  transform:scale(0.97);
+.ss-search-bar button:hover{
+  transform: translateY(-1px);
 }
 
-.ss-search-bar button:hover{
-  transform:translateY(-1px);
+.ss-search-bar button:active{
+  transform: scale(0.97);
 }
 
 .ss-search-chips{
@@ -334,7 +332,7 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 .ss-dots{
   position:absolute;
   left:50%;
-  bottom:180px;
+  bottom:28px;
   transform:translateX(-50%);
   display:flex;
   gap:10px;
@@ -356,75 +354,46 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   background:#fff;
 }
 
-.ss-trust-strip{
-  max-width:1320px;
-  margin:20px auto 0;
-  padding:0 6px 10px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-}
-
-.ss-trust-item{
-  background:#fff;
-  border-radius:22px;
-  padding:22px 18px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,0.05);
-}
-
-.ss-trust-item strong{
-  display:block;
-  font-size:24px;
-  color:#16202f;
-  margin-bottom:6px;
-}
-
-.ss-trust-item span{
-  color:#677284;
-  font-size:14px;
-  font-weight:500;
-}
-
-@media (max-width: 1100px){
+  @media (max-width: 1100px){
   .ss-slide-content{
-    padding:70px 36px 240px;
-    max-width:560px;
+    padding: 60px 36px 100px;
+    max-width: 560px;
   }
 
   .ss-slide-content h1{
-    font-size:46px;
+    font-size: 42px;
   }
 
   .ss-search-wrap{
-    width:calc(100% - 34px);
+    max-width: 920px;
+    margin-top: -78px;
   }
 }
 
 @media (max-width: 768px){
   .ss-hero{
-    padding:12px 12px 0;
+    padding: 12px 12px 0;
   }
 
   .ss-hero-slider{
-  min-height:620px;
-  border-radius:24px;
-}
+    min-height: 560px;
+    border-radius: 24px;
+  }
 
-.ss-slide-content{
-  padding:34px 22px 220px;
-  max-width:100%;
-}
-  
+  .ss-slide-content{
+    padding: 34px 22px 90px;
+    max-width: 100%;
+  }
+
   .ss-slide-content h1{
-    font-size:34px;
-    line-height:1.12;
-    letter-spacing:-1px;
+    font-size: 32px;
+    line-height: 1.12;
+    letter-spacing: -1px;
   }
 
   .ss-slide-content p{
-    font-size:15px;
-    line-height:1.6;
+    font-size: 15px;
+    line-height: 1.6;
   }
 
   .ss-badge{
@@ -433,26 +402,26 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   }
 
   .ss-search-wrap{
-    width:calc(100% - 20px);
-    bottom:20px;
+    margin-top: -42px;
+    padding: 0 8px;
   }
 
   .ss-search-card{
-    border-radius:22px;
-    padding:16px;
+    border-radius: 20px;
+    padding: 14px;
   }
 
   .ss-search-label{
-    font-size:13px;
-    margin-bottom:10px;
+    font-size: 13px;
+    margin-bottom: 10px;
   }
 
   .ss-search-bar{
-    flex-direction:column;
-    align-items:stretch;
-    gap:10px;
-    border-radius:18px;
-    padding:12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    border-radius: 18px;
+    padding: 12px;
   }
 
   .ss-search-icon{
@@ -485,47 +454,34 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   }
 
   .ss-dots{
-    bottom:150px;
+    bottom: 20px;
   }
 
   .ss-trust-strip{
     grid-template-columns:repeat(2,1fr);
     gap:12px;
-    margin-top:14px;
-  }
-
-  .ss-trust-item{
-    padding:18px 12px;
-    border-radius:18px;
-  }
-
-  .ss-trust-item strong{
-    font-size:20px;
-  }
-
-  .ss-trust-item span{
-    font-size:13px;
+    margin-top:18px;
   }
 }
 
 @media (max-width: 480px){
   .ss-hero-slider{
-    min-height:600px;
+    min-height: 520px;
   }
 
   .ss-slide-content h1{
-    font-size:28px;
+    font-size: 28px;
   }
 
-  .ss-dots{
-    bottom:140px;
+  .ss-search-wrap{
+    margin-top: -34px;
   }
 
   .ss-trust-strip{
     grid-template-columns:1fr;
   }
 }
-
+  
 /* PREMIUM TRUSTED SECTION */
 .trusted-section{
   padding: 92px 20px;
@@ -2670,7 +2626,18 @@ select{
       </div>
     </div>
 
-    <div class="ss-search-wrap">
+<button class="ss-arrow ss-prev" aria-label="Previous slide">&#10094;</button>
+<button class="ss-arrow ss-next" aria-label="Next slide">&#10095;</button>
+
+<div class="ss-dots">
+  <span class="ss-dot active"></span>
+  <span class="ss-dot"></span>
+  <span class="ss-dot"></span>
+</div>
+
+  </div>
+
+  <div class="ss-search-wrap">
   <div class="ss-search-card">
     <p class="ss-search-label">Search smarter with Swadeshi Shiksha</p>
 
@@ -2693,17 +2660,6 @@ select{
     </p>
   </div>
 </div>
-
-<button class="ss-arrow ss-prev" aria-label="Previous slide">&#10094;</button>
-<button class="ss-arrow ss-next" aria-label="Next slide">&#10095;</button>
-
-<div class="ss-dots">
-  <span class="ss-dot active"></span>
-  <span class="ss-dot"></span>
-  <span class="ss-dot"></span>
-</div>
-
-  </div>
 </section>
 
 <section class="ss-trust-strip">
