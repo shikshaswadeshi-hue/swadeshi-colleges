@@ -481,6 +481,36 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
     grid-template-columns:1fr;
   }
 }
+
+  .ss-trust-strip{
+  max-width:1320px;
+  margin:28px auto 0;
+  padding:0 6px 10px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.ss-trust-item{
+  background:#fff;
+  border-radius:22px;
+  padding:22px 18px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.ss-trust-item strong{
+  display:block;
+  font-size:24px;
+  color:#16202f;
+  margin-bottom:6px;
+}
+
+.ss-trust-item span{
+  color:#677284;
+  font-size:14px;
+  font-weight:500;
+}
   
 /* PREMIUM TRUSTED SECTION */
 .trusted-section{
@@ -2427,6 +2457,25 @@ select{
   }
 }
 
+  .ss-trust-strip{
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+
+.ss-trust-item{
+  padding:18px 12px;
+  border-radius:18px;
+}
+
+.ss-trust-item strong{
+  font-size:20px;
+}
+
+.ss-trust-item span{
+  font-size:13px;
+}
+
 /* Mobile small */
 @media (max-width: 480px){
   body{
@@ -2510,6 +2559,10 @@ select{
   .cta-polish-card h3{
     font-size: 22px;
   }
+
+  .ss-trust-strip{
+  grid-template-columns:1fr;
+}
 }
 
   .footer-book-btn{
