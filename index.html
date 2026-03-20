@@ -396,6 +396,25 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
     line-height: 1.6;
   }
 
+    .ss-trust-strip{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:18px;
+  }
+
+  .ss-trust-item{
+    padding:18px 12px;
+    border-radius:18px;
+  }
+
+  .ss-trust-item strong{
+    font-size:20px;
+  }
+
+  .ss-trust-item span{
+    font-size:13px;
+  }
+
   .ss-badge{
     font-size:12px;
     padding:8px 13px;
@@ -558,20 +577,28 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .college-slider{
-  display:flex;
-  gap:18px;
-  overflow-x:auto;
-  padding:8px 2px 8px;
-  scroll-behavior:smooth;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 10px 0;
 }
 
-.college-slider::-webkit-scrollbar{
-  display:none;
+.college-slider-track{
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: max-content;
+  animation: ssLogoMarquee 32s linear infinite;
+}
+
+.college-slider:hover .college-slider-track{
+  animation-play-state: paused;
 }
 
 .college-card{
-  min-width: 170px;
-  height: 110px;
+  min-width: 220px;
+  width: 220px;
+  height: 150px;
   background: linear-gradient(135deg, #ffffff, #fbf8ff);
   border: 1px solid rgba(22,32,47,0.06);
   border-radius: 22px;
@@ -580,7 +607,8 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   justify-content:center;
   box-shadow: 0 14px 32px rgba(0,0,0,0.06);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-  padding: 18px;
+  padding: 20px;
+  flex-shrink: 0;
 }
 
 .college-card:hover{
@@ -590,10 +618,21 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .college-card img{
-  max-height: 52px;
-  max-width: 120px;
+  max-height: 92px;
+  max-width: 165px;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  filter: saturate(.95) contrast(1.03);
+  filter: saturate(.98) contrast(1.04);
+}
+
+@keyframes ssLogoMarquee{
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-50%);
+  }
 }
 
 
@@ -2425,14 +2464,16 @@ select{
     min-width: 240px;
   }
 
-  .college-card{
-    min-width: 135px;
-    height: 86px;
+    .college-card{
+    min-width: 170px;
+    width: 170px;
+    height: 112px;
+    padding: 16px;
   }
 
   .college-card img{
-    max-height: 42px;
-    max-width: 100px;
+    max-height: 64px;
+    max-width: 130px;
   }
 
   .guides-head{
@@ -2457,24 +2498,6 @@ select{
   }
 }
 
-  .ss-trust-strip{
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:18px;
-}
-
-.ss-trust-item{
-  padding:18px 12px;
-  border-radius:18px;
-}
-
-.ss-trust-item strong{
-  font-size:20px;
-}
-
-.ss-trust-item span{
-  font-size:13px;
-}
 
 /* Mobile small */
 @media (max-width: 480px){
@@ -2743,15 +2766,26 @@ select{
     </div>
 
     <div class="college-slider">
-      <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-BFJR52oG8QtjxRxL.jpg"></div>
-      <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=250,fit=crop/ix9hiMuysgYYl7hE/iilm-25YbjSFON1qC3QIm.jpg"></div>
-      <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=250,fit=crop/ix9hiMuysgYYl7hE/pibm-logo-5ZZWQPNyHQrqrKxG.jpg"></div>
-      <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=356,fit=crop/ix9hiMuysgYYl7hE/dy-patil-5ihPomGeIcVxZiIF.png"></div>
-      <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/gibs-logo-YSvKlH38JHkKThES.jpg"></div>
-      <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/iibs-logo-9CxeU1C36jDNT4qS.png"></div>
-      <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bml-munjal-kIZcRe9FY91QHy2V.webp"></div>
-      <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg"></div>
-    </div>
+  <div class="college-slider-track">
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-BFJR52oG8QtjxRxL.jpg" alt="ISBR"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=250,fit=crop/ix9hiMuysgYYl7hE/iilm-25YbjSFON1qC3QIm.jpg" alt="IILM"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=250,fit=crop/ix9hiMuysgYYl7hE/pibm-logo-5ZZWQPNyHQrqrKxG.jpg" alt="PIBM"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=356,fit=crop/ix9hiMuysgYYl7hE/dy-patil-5ihPomGeIcVxZiIF.png" alt="D Y Patil"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/gibs-logo-YSvKlH38JHkKThES.jpg" alt="GIBS"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/iibs-logo-9CxeU1C36jDNT4qS.png" alt="IIBS"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bml-munjal-kIZcRe9FY91QHy2V.webp" alt="BML Munjal"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg" alt="Bennett University"></div>
+
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-BFJR52oG8QtjxRxL.jpg" alt="ISBR"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=250,fit=crop/ix9hiMuysgYYl7hE/iilm-25YbjSFON1qC3QIm.jpg" alt="IILM"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=250,fit=crop/ix9hiMuysgYYl7hE/pibm-logo-5ZZWQPNyHQrqrKxG.jpg" alt="PIBM"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=356,fit=crop/ix9hiMuysgYYl7hE/dy-patil-5ihPomGeIcVxZiIF.png" alt="D Y Patil"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/gibs-logo-YSvKlH38JHkKThES.jpg" alt="GIBS"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/iibs-logo-9CxeU1C36jDNT4qS.png" alt="IIBS"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bml-munjal-kIZcRe9FY91QHy2V.webp" alt="BML Munjal"></div>
+    <div class="college-card"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg" alt="Bennett University"></div>
+  </div>
+</div>
   </div>
 </section>
 
