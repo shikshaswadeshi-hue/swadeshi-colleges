@@ -753,15 +753,6 @@
         height: 190px;
       }
 
-      .headerNav {
-        width: 100%;
-      }
-
-      .navBtn {
-        flex: 1;
-        text-align: center;
-      }
-
       .whyCard{
   min-width:86%;
   max-width:86%;
@@ -769,295 +760,248 @@
 }
     }
 
-    /* ===== MODERN HEADER + HERO UPGRADE ===== */
-
-:root{
-  --bg-main:#f7f4ee;
-  --card:#ffffff;
-  --text:#112033;
-  --muted:#617086;
-  --line:#e9dfd2;
-  --orange1:#ff6a00;
-  --orange2:#ff9a2f;
-  --green:#138a36;
-  --blue:#1d63c6;
-  --shadow:0 20px 50px rgba(17, 32, 51, 0.08);
-}
-
-body{
-  background:
-    radial-gradient(circle at top left, rgba(255,157,54,0.08), transparent 22%),
-    radial-gradient(circle at top right, rgba(29,99,198,0.06), transparent 20%),
-    linear-gradient(180deg, #fcfaf6 0%, #f7f4ee 100%);
-  color:var(--text);
-}
-
-/* Header */
-.siteHeader{
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 60px;
+  background:#fff;
+  box-shadow:0 6px 30px rgba(0,0,0,0.06);
   position:sticky;
   top:0;
   z-index:999;
-  background:rgba(255,255,255,0.74);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(233,223,210,0.8);
-  box-shadow:0 10px 30px rgba(17,32,51,0.04);
 }
 
-.siteHeaderInner{
-  max-width:1240px;
-  margin:0 auto;
-  padding:14px 18px;
+.logo{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-.brandLink{
+  gap:12px;
   text-decoration:none;
 }
 
-.brand{
+.logo img{
+  height:50px;
+  width:auto;
+  display:block;
+}
+
+.logoText{
   display:flex;
-  align-items:center;
-  gap:14px;
+  flex-direction:column;
+  line-height:1.1;
 }
 
-.brandLogo{
-  width:62px;
-  height:62px;
-  border-radius:18px;
-  background:linear-gradient(135deg, #ffffff 0%, #fff7ef 100%);
-  border:1px solid #efe3d5;
-  box-shadow:0 14px 30px rgba(17,32,51,0.08);
-  padding:8px;
-  position:relative;
-}
-
-    .brandLogo img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-}
-
-.brandLogo::after{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  border-radius:18px;
-  padding:1px;
-  background:linear-gradient(135deg, rgba(255,106,0,0.25), rgba(29,99,198,0.15));
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-  pointer-events:none;
-}
-
-.brandText strong{
-  display:block;
-  font-size:24px;
-  line-height:1.05;
-  font-weight:900;
-  letter-spacing:-0.03em;
-  color:#122033;
-}
-
-.brandText span{
-  display:block;
-  margin-top:4px;
-  font-size:13px;
-  color:var(--muted);
-  font-weight:600;
-}
-
-.headerNav{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.navBtn{
-  border:none;
-  background:rgba(255,255,255,0.88);
-  color:#18314f;
-  font-size:14px;
+.logoText strong{
+  font-size:22px;
   font-weight:800;
-  padding:12px 16px;
-  border-radius:999px;
-  cursor:pointer;
-  border:1px solid #ece2d6;
-  box-shadow:0 8px 18px rgba(17,32,51,0.04);
-  transition:all 0.25s ease;
+  color:#16202f;
 }
 
-.navBtn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 14px 24px rgba(17,32,51,0.08);
+.logoText small{
+  font-size:13px;
+  font-weight:700;
+  color:#667085;
+  margin-top:4px;
 }
 
-.navBtn.primary{
-  background:linear-gradient(135deg, var(--orange1) 0%, var(--orange2) 100%);
-  color:#fff;
-  border:none;
-  box-shadow:0 14px 28px rgba(255,106,0,0.24);
-}
-
-/* Hero */
-.heroModern{
-  position:relative;
-  overflow:hidden;
-  border-radius:36px;
-  padding:34px;
-  margin-bottom:34px;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,248,239,0.95) 48%, rgba(241,248,239,0.95) 100%);
-  border:1px solid rgba(236,226,214,0.95);
-  box-shadow:0 30px 70px rgba(17,32,51,0.10);
-  min-height:620px;
-}
-
-.heroContent{
-  position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-  gap:26px;
+.nav{
+  display:flex;
   align-items:center;
+  gap:34px;
 }
 
-.heroLeft{
-  max-width:720px;
+.nav a{
+  font-size:16px;
+  font-weight:600;
+  color:#39465a;
+  text-decoration:none;
+  transition:0.3s ease;
 }
 
-.heroTopline{
+.nav a:hover{
+  color:#ff6a00;
+}
+
+.cta{
   display:inline-flex;
   align-items:center;
-  gap:10px;
-  padding:10px 14px;
-  border-radius:999px;
-  background:rgba(255,255,255,0.75);
-  border:1px solid #eadfd3;
-  color:#1d63c6;
-  font-size:13px;
-  font-weight:800;
-  margin-bottom:18px;
-  box-shadow:0 10px 18px rgba(17,32,51,0.04);
-}
-
-.heroToplineDot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:linear-gradient(135deg, var(--orange1), var(--orange2));
-  box-shadow:0 0 0 6px rgba(255,106,0,0.10);
-}
-
-.heroModern h1{
-  margin:0 0 16px;
-  font-size:68px;
-  line-height:0.95;
-  letter-spacing:-0.045em;
-  font-weight:900;
-  color:#112033;
-}
-
-.accentText{
-  background:linear-gradient(135deg, #ff6a00 0%, #ff8f1f 45%, #ffad42 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-
-.heroSubtext{
-  margin:0 0 24px;
-  max-width:640px;
-  font-size:18px;
-  line-height:1.8;
-  color:var(--muted);
-}
-
-.heroActions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  margin-bottom:20px;
-}
-
-.heroActionBtn{
-  border:none;
-  border-radius:16px;
-  padding:15px 22px;
-  font-size:15px;
-  font-weight:900;
-  cursor:pointer;
-  transition:all 0.25s ease;
-}
-
-.heroActionBtn.primary{
-  background:linear-gradient(135deg, var(--orange1) 0%, var(--orange2) 100%);
+  justify-content:center;
+  background:linear-gradient(135deg,#ff6a00,#ff8f1f);
   color:#fff;
-  box-shadow:0 16px 34px rgba(255,106,0,0.24);
-}
-
-.heroActionBtn.primary:hover{
-  transform:translateY(-3px);
-}
-
-.heroActionBtn.secondary{
-  background:rgba(255,255,255,0.9);
-  color:#163154;
-  border:1px solid #e8ddd0;
-  box-shadow:0 10px 20px rgba(17,32,51,0.04);
-}
-
-.heroActionBtn.secondary:hover{
-  transform:translateY(-3px);
-}
-
-.heroMiniPoints{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:22px;
-}
-
-.heroMiniPoint{
-  padding:10px 14px;
+  font-weight:700;
+  font-size:16px;
+  padding:15px 26px;
   border-radius:999px;
-  background:rgba(255,255,255,0.84);
-  border:1px solid #eadfd2;
-  font-size:13px;
-  font-weight:800;
-  color:#166534;
-  box-shadow:0 8px 18px rgba(17,32,51,0.04);
+  text-decoration:none;
+  box-shadow:0 10px 24px rgba(255,106,0,0.24);
+  transition:0.3s ease;
 }
 
-.heroSearch{
-  max-width:760px;
-  background:rgba(255,255,255,0.45);
-  border:1px solid rgba(236,222,209,0.95);
-  border-radius:24px;
-  padding:14px;
-  backdrop-filter:blur(14px);
-  box-shadow:0 14px 30px rgba(17,32,51,0.05);
+.cta:hover{
+  transform:translateY(-2px);
+}
+
+.ss-hero{
+  position:relative;
+  padding:26px 20px 0;
+}
+
+.ss-hero-slider{
+  position:relative;
+  min-height:670px;
+  border-radius:42px;
+  overflow:hidden;
+  background:#d9d9d9;
+}
+
+.ss-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.6s ease;
+  background-size:cover;
+  background-position:center;
+}
+
+.ss-slide.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.ss-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(22,32,47,0.68) 0%, rgba(22,32,47,0.38) 35%, rgba(22,32,47,0.10) 100%);
+}
+
+.ss-slide-content{
+  position:relative;
+  z-index:2;
+  max-width:700px;
+  padding:82px 86px;
+  color:#fff;
+}
+
+.ss-badge{
+  display:inline-block;
+  padding:14px 22px;
+  border-radius:999px;
+  font-size:18px;
+  font-weight:700;
+  color:#fff;
+  background:rgba(255,255,255,0.16);
+  border:1px solid rgba(255,255,255,0.24);
+  backdrop-filter:blur(8px);
+  margin-bottom:26px;
+}
+
+.ss-slide-content h1{
+  margin:0 0 18px;
+  font-size:72px;
+  line-height:0.98;
+  font-weight:800;
+  letter-spacing:-0.03em;
+}
+
+.ss-slide-content p{
+  margin:0 0 32px;
+  font-size:20px;
+  line-height:1.8;
+  color:rgba(255,255,255,0.92);
+  max-width:620px;
+}
+
+.ss-slide-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#ff6a00,#ff8f1f);
+  color:#fff;
+  padding:18px 34px;
+  border-radius:22px;
+  font-size:18px;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 12px 26px rgba(255,106,0,0.24);
+}
+
+.ss-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:74px;
+  height:74px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,0.14);
+  color:#fff;
+  font-size:40px;
+  cursor:pointer;
+  z-index:3;
+  backdrop-filter:blur(8px);
+}
+
+.ss-prev{ left:30px; }
+.ss-next{ right:30px; }
+
+.ss-dots{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:26px;
+  display:flex;
+  gap:10px;
+  z-index:3;
+}
+
+.ss-dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.4);
+  cursor:pointer;
+}
+
+.ss-dot.active{
+  background:#fff;
+}
+
+.ss-search-wrap{
+  position:relative;
+  margin-top:-54px;
+  z-index:5;
+  padding:0 40px;
+}
+
+.ss-search-card{
+  max-width:900px;
+  margin:0 auto;
+  background:#fff;
+  border-radius:28px;
+  box-shadow:0 18px 40px rgba(0,0,0,0.10);
+  padding:22px;
+  border:1px solid #eee3d7;
+}
+
+.ss-search-label{
+  font-size:18px;
+  font-weight:700;
+  color:#16202f;
+  margin-bottom:14px;
 }
 
 .searchBar{
   display:flex;
   align-items:center;
   gap:12px;
-  background:rgba(255,255,255,0.98);
+  background:#fff;
+  border:1px solid #eadfce;
   border-radius:18px;
   padding:10px 10px 10px 16px;
-  box-shadow:0 12px 26px rgba(17,32,51,0.08);
 }
 
-    .searchIcon{
+.searchIcon{
   font-size:20px;
   line-height:1;
   display:flex;
@@ -1077,391 +1021,195 @@ body{
 .searchBtn{
   border:none;
   cursor:pointer;
-  background:linear-gradient(135deg, var(--orange1) 0%, var(--orange2) 100%);
+  background:linear-gradient(135deg,#ff6a00 0%,#ff8f1f 100%);
   color:#fff;
   border-radius:14px;
   padding:14px 22px;
   font-size:15px;
-  font-weight:900;
-  box-shadow:0 12px 24px rgba(255,106,0,0.20);
-  transition:transform 0.25s ease;
+  font-weight:800;
+  box-shadow:0 10px 24px rgba(255,106,0,0.20);
 }
 
-.searchBtn:hover{
-  transform:translateY(-2px);
-}
-
-.heroRight{
-  position:relative;
-  min-height:470px;
-}
-
-.heroInfoCard{
-  position:absolute;
-  width:100%;
-  max-width:320px;
-  background:rgba(255,255,255,0.82);
-  border:1px solid rgba(233,223,210,0.95);
-  border-radius:26px;
-  padding:22px;
-  box-shadow:0 20px 40px rgba(17,32,51,0.10);
-  backdrop-filter:blur(16px);
-}
-
-.heroInfoCard h3{
-  margin:0 0 8px;
-  font-size:26px;
-  line-height:1.1;
-  color:#112033;
-}
-
-.heroInfoCard p{
-  margin:0;
-  font-size:14px;
-  line-height:1.7;
-  color:var(--muted);
-}
-
-.heroInfoLabel{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:14px;
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:900;
-  color:#fff;
-  background:linear-gradient(135deg, var(--orange1), var(--orange2));
-}
-
-.heroInfoLabel.green{
-  background:linear-gradient(135deg, #159947, #27b05a);
-}
-
-.cardOne{
-  top:30px;
-  right:20px;
-}
-
-.cardTwo{
-  top:190px;
-  left:10px;
-}
-
-.heroStatsGrid{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  display:grid;
-  grid-template-columns:repeat(2, minmax(0,1fr));
-  gap:14px;
-}
-
-.heroStatBox{
-  background:rgba(255,255,255,0.82);
-  border:1px solid rgba(233,223,210,0.95);
-  border-radius:22px;
-  padding:18px;
-  box-shadow:0 14px 28px rgba(17,32,51,0.08);
-  backdrop-filter:blur(16px);
-}
-
-.heroStatBox strong{
-  display:block;
-  font-size:18px;
-  margin-bottom:6px;
-  color:#122033;
-}
-
-.heroStatBox span{
-  display:block;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.6;
-}
-
-.heroGlow{
-  position:absolute;
-  border-radius:50%;
-  filter:blur(18px);
-  pointer-events:none;
-  z-index:0;
-  animation:floatGlow 8s ease-in-out infinite;
-}
-
-.heroGlowOne{
-  width:300px;
-  height:300px;
-  background:rgba(255,106,0,0.14);
-  top:-80px;
-  right:-40px;
-}
-
-.heroGlowTwo{
-  width:260px;
-  height:260px;
-  background:rgba(29,99,198,0.10);
-  bottom:-70px;
-  left:-60px;
-  animation-delay:1.5s;
-}
-
-.heroGridPattern{
-  position:absolute;
-  inset:0;
-  z-index:0;
-  opacity:0.22;
-  background-image:
-    linear-gradient(rgba(17,32,51,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(17,32,51,0.06) 1px, transparent 1px);
-  background-size:32px 32px;
-  mask-image:linear-gradient(135deg, rgba(0,0,0,0.35), transparent 65%);
-  pointer-events:none;
-}
-
-.floatingCard{
-  animation:floatCard 5.5s ease-in-out infinite;
-}
-
-.cardTwo{
-  animation-delay:1.4s;
-}
-
-.revealUp{
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity 0.7s ease, transform 0.7s ease;
-}
-
-.revealUp.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.delay-1{
-  transition-delay:0.15s;
-}
-
-.delay-2{
-  transition-delay:0.28s;
-}
-
-@keyframes floatCard{
-  0%,100%{ transform:translateY(0px); }
-  50%{ transform:translateY(-10px); }
-}
-
-@keyframes floatGlow{
-  0%,100%{ transform:translate3d(0,0,0) scale(1); }
-  50%{ transform:translate3d(0,-10px,0) scale(1.05); }
-}
-
-/* Better mobile layout */
 @media (max-width: 1100px){
-  .heroContent{
-    grid-template-columns:1fr;
+  .header{
+    padding:16px 24px;
+    gap:18px;
+    flex-wrap:wrap;
   }
 
-  .heroRight{
-    min-height:auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
+  .nav{
+    gap:18px;
+    flex-wrap:wrap;
   }
 
-  .heroInfoCard,
-  .heroStatsGrid{
-    position:relative;
-    max-width:none;
-    top:auto;
-    left:auto;
-    right:auto;
-    bottom:auto;
+  .ss-slide-content{
+    padding:64px 44px;
   }
 
-  .heroStatsGrid{
-    grid-column:1 / -1;
+  .ss-slide-content h1{
+    font-size:56px;
   }
 }
 
 @media (max-width: 700px){
-  .siteHeaderInner{
-    padding:12px 14px;
+  .header{
+    padding:14px 16px;
   }
 
-  .brandLogo{
-    width:54px;
-    height:54px;
+  .logo span{
+    font-size:18px;
   }
 
-  .brandText strong{
-    font-size:20px;
+  .nav{
+    width:100%;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
   }
 
-  .heroModern{
-    padding:24px 18px;
+  .nav a{
+    font-size:14px;
+  }
+
+  .cta{
+    width:100%;
+  }
+
+  .ss-hero{
+    padding:18px 14px 0;
+  }
+
+  .ss-hero-slider{
+    min-height:560px;
     border-radius:28px;
-    min-height:auto;
   }
 
-  .heroModern h1{
+  .ss-slide-content{
+    padding:42px 22px 34px;
+  }
+
+  .ss-badge{
+    font-size:14px;
+    padding:10px 14px;
+  }
+
+  .ss-slide-content h1{
     font-size:42px;
-    line-height:1.02;
+    line-height:1.04;
   }
 
-  .heroSubtext{
+  .ss-slide-content p{
     font-size:16px;
     line-height:1.7;
   }
 
-  .headerNav{
-    width:100%;
+  .ss-arrow{
+    width:52px;
+    height:52px;
+    font-size:28px;
   }
 
-  .navBtn{
-    flex:1 1 calc(50% - 10px);
-    text-align:center;
+  .ss-prev{ left:12px; }
+  .ss-next{ right:12px; }
+
+  .ss-search-wrap{
+    margin-top:-36px;
+    padding:0 14px;
   }
 
-  .heroRight{
-    grid-template-columns:1fr;
-  }
-
-  .heroStatsGrid{
-    grid-template-columns:1fr;
-  }
-
-  .heroActions{
-    flex-direction:column;
-  }
-
-  .heroActionBtn,
-  .searchBtn{
-    width:100%;
-  }
-
-  .searchBar{
-    flex-wrap:wrap;
-  }
-
-  .heroMiniPoints{
-    gap:8px;
+  .ss-search-card{
+    padding:16px;
+    border-radius:22px;
   }
 }
+
+    
   </style>
 </head>
 
 <body>
-  <header class="siteHeader">
-  <div class="siteHeaderInner">
-    <a class="brand brandLink" href="https://swadeshi-shiksha.com">
-      <div class="brandLogo">
-        <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
-      </div>
-      <div class="brandText">
-        <strong>Swadeshi Shiksha</strong>
-        <span>Aaj Select Karo, Kal Shine Karo</span>
-      </div>
-    </a>
-
-    <nav class="headerNav">
-      <button class="navBtn" onclick="window.location.href='https://swadeshi-shiksha.com'">Home</button>
-      <button class="navBtn" onclick="document.getElementById('featuredSection').scrollIntoView({behavior:'smooth'})">Colleges</button>
-      <button class="navBtn" onclick="document.getElementById('browseCourseSection').scrollIntoView({behavior:'smooth'})">Courses</button>
-      <button class="navBtn" onclick="document.getElementById('browseExamSection').scrollIntoView({behavior:'smooth'})">Exams</button>
-      <button class="navBtn primary" onclick="openLeadPopup('Header Free Counselling CTA')">Free Counselling</button>
-    </nav>
+  <div class="header">
+  <a href="https://swadeshi-shiksha.com" class="logo">
+  <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+  <div class="logoText">
+    <strong>Swadeshi Shiksha</strong>
+    <small>Aaj Select Karo, Kal Shine Karo</small>
   </div>
-</header>
+</a>
 
-<div class="page">
-  <section class="heroModern">
-    <div class="heroGlow heroGlowOne"></div>
-    <div class="heroGlow heroGlowTwo"></div>
-    <div class="heroGridPattern"></div>
+  <div class="nav">
+    <a href="https://swadeshi-colleges.vercel.app/colleges.html">Colleges</a>
+    <a href="#browseExamSection">Exams</a>
+    <a href="#browseCourseSection">Courses</a>
+    <a href="#guidesSection">Resources</a>
+  </div>
 
-    <div class="heroContent">
-      <div class="heroLeft revealUp">
-        <div class="heroTopline">
-          <span class="heroToplineDot"></span>
-          Trusted MBA / PGDM Discovery Platform
-        </div>
+  <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">
+    Get Free MBA Guidance
+  </a>
+</div>
 
-        <h1>
-          Find Your <span class="accentText">Best-Fit College</span>
-          with Confidence
-        </h1>
+<section class="ss-hero">
+  <div class="ss-hero-slider" id="heroSlider">
 
-        <p class="heroSubtext">
-          Search verified college profiles, compare options, explore exams, and get
-          free admission guidance from Swadeshi Shiksha — all in one place.
-        </p>
-
-        <div class="heroActions">
-          <button class="heroActionBtn primary" onclick="openLeadPopup('Hero Free Counselling CTA')">
-            Get Free Counselling
-          </button>
-          <button class="heroActionBtn secondary" onclick="document.getElementById('resultsSection').scrollIntoView({behavior:'smooth'})">
-            Explore Colleges
-          </button>
-        </div>
-
-        <div class="heroMiniPoints">
-          <div class="heroMiniPoint">✔ Verified Profiles</div>
-          <div class="heroMiniPoint">✔ Student-First Guidance</div>
-          <div class="heroMiniPoint">✔ Fast College Discovery</div>
-        </div>
-
-        <div class="searchWrap heroSearch revealUp delay-1">
-          <div class="searchBar">
-            <span class="searchIcon">🔍</span>
-            <input
-              type="text"
-              id="searchInput"
-              class="searchInput"
-              placeholder="Search college, city, exam, or course..."
-            />
-            <button id="searchBtn" class="searchBtn">Search</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="heroRight revealUp delay-2">
-        <div class="heroInfoCard floatingCard cardOne">
-          <div class="heroInfoLabel">Trending</div>
-          <h3>MBA Admissions 2026</h3>
-          <p>Explore top colleges by exam, city, fees, and admission route.</p>
-        </div>
-
-        <div class="heroInfoCard floatingCard cardTwo">
-          <div class="heroInfoLabel green">Free Support</div>
-          <h3>Shortlisting Help</h3>
-          <p>Talk to our team for profile-based college suggestions and guidance.</p>
-        </div>
-
-        <div class="heroStatsGrid">
-          <div class="heroStatBox">
-            <strong>Verified</strong>
-            <span>Profiles & details</span>
-          </div>
-          <div class="heroStatBox">
-            <strong>Search</strong>
-            <span>By course, exam, city</span>
-          </div>
-          <div class="heroStatBox">
-            <strong>Compare</strong>
-            <span>Faster decision making</span>
-          </div>
-          <div class="heroStatBox">
-            <strong>Guidance</strong>
-            <span>Free counselling support</span>
-          </div>
-        </div>
+    <div class="ss-slide active" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80');">
+      <div class="ss-overlay"></div>
+      <div class="ss-slide-content">
+        <span class="ss-badge">MBA Admissions 2026</span>
+        <h1>Find the Right MBA College Without the Confusion</h1>
+        <p>Search, compare and explore fees, placements, eligibility and admission details in one place.</p>
+        <a href="#resultsSection" class="ss-slide-btn">Explore Now</a>
       </div>
     </div>
-  </section>
+
+    <div class="ss-slide" style="background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80');">
+      <div class="ss-overlay"></div>
+      <div class="ss-slide-content">
+        <span class="ss-badge">Verified Colleges</span>
+        <h1>Explore Verified MBA & PGDM College Profiles</h1>
+        <p>Discover colleges by city, exam, course, approvals and admission route with a cleaner student-first experience.</p>
+        <a href="#featuredSection" class="ss-slide-btn">View Colleges</a>
+      </div>
+    </div>
+
+    <div class="ss-slide" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80');">
+      <div class="ss-overlay"></div>
+      <div class="ss-slide-content">
+        <span class="ss-badge">Free Guidance</span>
+        <h1>Get Free Counselling for Shortlisting & Admissions</h1>
+        <p>Talk to Swadeshi Shiksha for profile-based guidance, shortlisting help, and admission support.</p>
+        <a href="javascript:void(0)" onclick="openLeadPopup('Hero Free Counselling CTA')" class="ss-slide-btn">Get Free Help</a>
+      </div>
+    </div>
+
+    <button class="ss-arrow ss-prev" id="prevSlide" aria-label="Previous slide">&#10094;</button>
+    <button class="ss-arrow ss-next" id="nextSlide" aria-label="Next slide">&#10095;</button>
+
+    <div class="ss-dots" id="heroDots">
+      <span class="ss-dot active"></span>
+      <span class="ss-dot"></span>
+      <span class="ss-dot"></span>
+    </div>
+  </div>
+
+  <div class="ss-search-wrap">
+    <div class="ss-search-card">
+      <div class="ss-search-label">Search Colleges</div>
+      <div class="searchBar">
+        <span class="searchIcon">🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          class="searchInput"
+          placeholder="Search college, city, exam, or course..."
+        />
+        <button id="searchBtn" class="searchBtn">Search</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page">
 
     <section class="sectionBlock" id="browseCourseSection">
   <div class="sectionTitle">
@@ -1640,7 +1388,7 @@ body{
     <div class="helpBox">
       <strong>Still confused about college admissions?</strong>
       <span>Get free personalised counselling for shortlisting, admissions, fees, and profile matching.</span>
-      <button class="heroActionBtn primary" onclick="openLeadPopup('Bottom Help Box CTA')">Talk to a Counsellor</button>
+      <button class="leadCtaBtn" onclick="openLeadPopup('Bottom Help Box CTA')">Talk to a Counsellor</button>
     </div>
 
     <footer class="footer">
@@ -2077,26 +1825,65 @@ function updateWhyDots() {
   });
 }
 
-    /* ===== HERO REVEAL ANIMATION ===== */
-window.addEventListener("load", function () {
-  document.querySelectorAll(".revealUp").forEach(function (el) {
-    el.classList.add("show");
-  });
-});
+   const slides = document.querySelectorAll(".ss-slide");
+const dots = document.querySelectorAll(".ss-dot");
+const prevBtn = document.getElementById("prevSlide");
+const nextBtn = document.getElementById("nextSlide");
 
-/* ===== OPTIONAL SCROLL REVEAL FOR OTHER SECTIONS ===== */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, { threshold: 0.14 });
+let currentSlide = 0;
+let autoSlide;
 
-document.querySelectorAll(".sectionBlock, .helpBox, .footer").forEach((el) => {
-  el.classList.add("revealUp");
-  observer.observe(el);
-});
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === index);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
+
+  currentSlide = index;
+}
+
+function nextSlide() {
+  const next = (currentSlide + 1) % slides.length;
+  showSlide(next);
+}
+
+function prevSlide() {
+  const prev = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(prev);
+}
+
+function startAutoSlide() {
+  stopAutoSlide();
+  autoSlide = setInterval(nextSlide, 4500);
+}
+
+function stopAutoSlide() {
+  if (autoSlide) clearInterval(autoSlide);
+}
+
+if (prevBtn && nextBtn && slides.length) {
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    startAutoSlide();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    startAutoSlide();
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      showSlide(index);
+      startAutoSlide();
+    });
+  });
+
+  startAutoSlide();
+}
   </script>
 </body>
 </html>
