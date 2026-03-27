@@ -763,77 +763,67 @@
 .header{
   position: sticky;
   top: 0;
-  z-index: 999;
-  margin: 16px 22px 0;
-  padding: 14px 18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:18px;
-  background:rgba(255,255,255,0.92);
-  border:1px solid rgba(232,223,210,0.9);
-  border-radius:34px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.05);
-  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 26px;
+  margin: 14px 18px 0;
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 34px rgba(17,24,39,0.08);
+  border-radius: 22px;
+  max-width: calc(100% - 36px);
+  transition: all .25s ease;
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:12px;
   text-decoration:none;
-  min-width:0;
+  min-width: fit-content;
 }
 
 .logo img{
-  width:58px;
-  height:58px;
-  object-fit:contain;
+  height:48px;
+  width:auto;
   display:block;
-  border-radius:18px;
-  background:#fff;
 }
 
-.logoText{
-  display:flex;
-  flex-direction:column;
-  line-height:1.08;
-}
-
-.logoText strong{
-  font-size:22px;
+.logo span{
   font-weight:800;
+  font-size:16px;
   color:#16202f;
-}
-
-.logoText small{
-  font-size:13px;
-  font-weight:700;
-  color:#667085;
-  margin-top:4px;
+  letter-spacing:-0.02em;
 }
 
 .nav{
   display:flex;
   align-items:center;
-  gap:18px;
-  flex-wrap:wrap;
   justify-content:center;
+  gap:6px;
+  flex:1;
+  min-width:0;
 }
 
 .nav a{
   text-decoration:none;
-  color:#39465a;
-  font-size:16px;
-  font-weight:700;
+  color:#425066;
+  font-weight:600;
+  font-size:14px;
   padding:10px 12px;
   border-radius:999px;
-  transition:0.25s ease;
+  transition:all .22s ease;
+  white-space:nowrap;
 }
 
 .nav a:hover{
-  color:#ff6a00;
-  background:rgba(255,106,0,0.06);
+  color:#4d2fb2;
+  background:#f4efff;
+  transform:translateY(-1px);
 }
 
 .cta{
@@ -841,18 +831,20 @@
   align-items:center;
   justify-content:center;
   text-decoration:none;
-  background:linear-gradient(135deg,#ff6a00,#ff8f1f);
+  background:linear-gradient(135deg,#ff7a1a,#ff5a00);
   color:#fff;
-  font-size:16px;
-  font-weight:800;
-  padding:15px 26px;
+  padding:12px 20px;
   border-radius:999px;
-  box-shadow:0 12px 24px rgba(255,106,0,0.18);
+  font-weight:700;
+  font-size:14px;
+  box-shadow:0 12px 24px rgba(255,107,0,0.20);
+  transition:transform .22s ease, box-shadow .22s ease;
   white-space:nowrap;
 }
 
 .cta:hover{
   transform:translateY(-2px);
+  box-shadow:0 16px 28px rgba(255,107,0,0.28);
 }
 
 .searchHeroMini{
@@ -1143,21 +1135,6 @@
   box-shadow:0 10px 24px rgba(255,106,0,0.20);
 }
 
-@media (max-width: 1024px){
-  .header{
-    flex-wrap:wrap;
-    justify-content:center;
-    margin: 14px 14px 0;
-    border-radius:28px;
-  }
-}
-
-@media (max-width: 700px){
-  .header{
-    padding:14px;
-    gap:14px;
-  }
-
   .logo{
     width:100%;
     justify-content:center;
@@ -1197,24 +1174,19 @@
 
 <body>
   <div class="header">
-  <a href="https://swadeshi-shiksha.com" class="logo">
-  <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
-  <div class="logoText">
-    <strong>Swadeshi Shiksha</strong>
-    <small>Aaj Select Karo, Kal Shine Karo</small>
-  </div>
-</a>
+  <a href="/" class="logo">
+    <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+    <span>Swadeshi Shiksha</span>
+  </a>
 
   <div class="nav">
     <a href="https://swadeshi-colleges.vercel.app/colleges.html">Colleges</a>
-    <a href="#browseExamSection">Exams</a>
-    <a href="#browseCourseSection">Courses</a>
-    <a href="#guidesSection">Resources</a>
+    <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=CAT">Exams</a>
+    <a href="https://swadeshi-colleges.vercel.app/colleges.html">Courses</a>
+    <a href="page.html">Resources</a>
   </div>
 
-  <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">
-    Get Free MBA Guidance
-  </a>
+  <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">Get Free MBA Guidance</a>
 </div>
 
 <section class="searchHeroMini">
