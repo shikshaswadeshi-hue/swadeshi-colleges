@@ -761,34 +761,43 @@
     }
 
 .header{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  margin: 16px 22px 0;
+  padding: 14px 18px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 60px;
-  background:#fff;
-  box-shadow:0 6px 30px rgba(0,0,0,0.06);
-  position:sticky;
-  top:0;
-  z-index:999;
+  gap:18px;
+  background:rgba(255,255,255,0.92);
+  border:1px solid rgba(232,223,210,0.9);
+  border-radius:34px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  backdrop-filter: blur(10px);
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:14px;
   text-decoration:none;
+  min-width:0;
 }
 
 .logo img{
-  height:50px;
-  width:auto;
+  width:58px;
+  height:58px;
+  object-fit:contain;
   display:block;
+  border-radius:18px;
+  background:#fff;
 }
 
 .logoText{
   display:flex;
   flex-direction:column;
-  line-height:1.1;
+  line-height:1.08;
 }
 
 .logoText strong{
@@ -807,188 +816,292 @@
 .nav{
   display:flex;
   align-items:center;
-  gap:34px;
+  gap:18px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
 .nav a{
-  font-size:16px;
-  font-weight:600;
-  color:#39465a;
   text-decoration:none;
-  transition:0.3s ease;
+  color:#39465a;
+  font-size:16px;
+  font-weight:700;
+  padding:10px 12px;
+  border-radius:999px;
+  transition:0.25s ease;
 }
 
 .nav a:hover{
   color:#ff6a00;
+  background:rgba(255,106,0,0.06);
 }
 
 .cta{
   display:inline-flex;
   align-items:center;
   justify-content:center;
+  text-decoration:none;
   background:linear-gradient(135deg,#ff6a00,#ff8f1f);
   color:#fff;
-  font-weight:700;
   font-size:16px;
+  font-weight:800;
   padding:15px 26px;
   border-radius:999px;
-  text-decoration:none;
-  box-shadow:0 10px 24px rgba(255,106,0,0.24);
-  transition:0.3s ease;
+  box-shadow:0 12px 24px rgba(255,106,0,0.18);
+  white-space:nowrap;
 }
 
 .cta:hover{
   transform:translateY(-2px);
 }
 
-.ss-hero{
-  position:relative;
-  padding:26px 20px 0;
+.searchHeroMini{
+  padding:18px 22px 0;
 }
 
-.ss-hero-slider{
-  position:relative;
-  min-height:670px;
-  border-radius:42px;
-  overflow:hidden;
-  background:#d9d9d9;
+.searchHeroInner{
+  background:linear-gradient(180deg,#f9f6f0 0%, #f5efe5 100%);
+  border:1px solid #eadfce;
+  border-radius:40px;
+  padding:34px 30px 28px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.04);
 }
 
-.ss-slide{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.6s ease;
-  background-size:cover;
-  background-position:center;
+.searchHeroText{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 24px;
 }
 
-.ss-slide.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.ss-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg, rgba(22,32,47,0.68) 0%, rgba(22,32,47,0.38) 35%, rgba(22,32,47,0.10) 100%);
-}
-
-.ss-slide-content{
-  position:relative;
-  z-index:2;
-  max-width:700px;
-  padding:82px 86px;
-  color:#fff;
-}
-
-.ss-badge{
-  display:inline-block;
-  padding:14px 22px;
-  border-radius:999px;
-  font-size:18px;
-  font-weight:700;
-  color:#fff;
-  background:rgba(255,255,255,0.16);
-  border:1px solid rgba(255,255,255,0.24);
-  backdrop-filter:blur(8px);
-  margin-bottom:26px;
-}
-
-.ss-slide-content h1{
-  margin:0 0 18px;
-  font-size:72px;
-  line-height:0.98;
-  font-weight:800;
-  letter-spacing:-0.03em;
-}
-
-.ss-slide-content p{
-  margin:0 0 32px;
-  font-size:20px;
-  line-height:1.8;
-  color:rgba(255,255,255,0.92);
-  max-width:620px;
-}
-
-.ss-slide-btn{
+.searchHeroBadge{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#ff6a00,#ff8f1f);
-  color:#fff;
-  padding:18px 34px;
-  border-radius:22px;
+  padding:10px 18px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid #eadfce;
+  font-size:14px;
+  font-weight:800;
+  color:#4d2fb2;
+  margin-bottom:14px;
+}
+
+.searchHeroText h1{
+  margin:0;
+  font-size:48px;
+  line-height:1.02;
+  font-weight:800;
+  color:#16202f;
+}
+
+.searchHeroText p{
+  margin:14px auto 0;
   font-size:18px;
-  font-weight:700;
-  text-decoration:none;
-  box-shadow:0 12px 26px rgba(255,106,0,0.24);
+  line-height:1.7;
+  color:#5f6b7a;
+  max-width:700px;
 }
 
-.ss-arrow{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:74px;
-  height:74px;
-  border:none;
-  border-radius:50%;
-  background:rgba(255,255,255,0.14);
-  color:#fff;
-  font-size:40px;
-  cursor:pointer;
-  z-index:3;
-  backdrop-filter:blur(8px);
+.searchHeroBar{
+  max-width:980px;
+  margin:0 auto 24px;
 }
 
-.ss-prev{ left:30px; }
-.ss-next{ right:30px; }
+.searchBarLarge{
+  background:#fff;
+  border:1px solid #eadfce;
+  border-radius:20px;
+  padding:10px 10px 10px 16px;
+  box-shadow:0 12px 26px rgba(0,0,0,0.05);
+}
 
-.ss-dots{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:26px;
+.miniCollegeCarouselWrap{
+  margin-top:10px;
+}
+
+.miniCarouselHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.miniCarouselHead h3{
+  margin:0;
+  font-size:22px;
+  font-weight:800;
+  color:#16202f;
+}
+
+.miniCarouselNav{
   display:flex;
   gap:10px;
-  z-index:3;
 }
 
-.ss-dot{
-  width:12px;
-  height:12px;
+.miniCarouselNav button{
+  width:44px;
+  height:44px;
+  border:none;
   border-radius:50%;
-  background:rgba(255,255,255,0.4);
-  cursor:pointer;
-}
-
-.ss-dot.active{
   background:#fff;
-}
-
-.ss-search-wrap{
-  position:relative;
-  margin-top:-54px;
-  z-index:5;
-  padding:0 40px;
-}
-
-.ss-search-card{
-  max-width:900px;
-  margin:0 auto;
-  background:#fff;
-  border-radius:28px;
-  box-shadow:0 18px 40px rgba(0,0,0,0.10);
-  padding:22px;
-  border:1px solid #eee3d7;
-}
-
-.ss-search-label{
-  font-size:18px;
-  font-weight:700;
   color:#16202f;
-  margin-bottom:14px;
+  font-size:28px;
+  cursor:pointer;
+  box-shadow:0 10px 24px rgba(0,0,0,0.06);
+}
+
+.miniCollegeTrack{
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:calc(25% - 14px);
+  gap:18px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+}
+
+.miniCollegeTrack::-webkit-scrollbar{
+  height:8px;
+}
+
+.miniCollegeTrack::-webkit-scrollbar-thumb{
+  background:rgba(22,32,47,0.16);
+  border-radius:999px;
+}
+
+.miniCollegeCard{
+  background:#fff;
+  border:1px solid #eadfce;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,0.05);
+  scroll-snap-align:start;
+  min-width:0;
+}
+
+.miniCollegeImage{
+  height:180px;
+  background:#f8f8f8;
+}
+
+.miniCollegeImage img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.miniCollegeBody{
+  padding:18px;
+}
+
+.miniCollegeBody h4{
+  margin:0 0 6px;
+  font-size:20px;
+  line-height:1.2;
+  color:#16202f;
+}
+
+.miniMeta{
+  margin:0 0 12px;
+  color:#667085;
+  font-size:14px;
+  font-weight:600;
+}
+
+.miniPlacementRow{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:16px;
+}
+
+.miniPlacementRow span{
+  background:#f8f4ee;
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:14px;
+  font-weight:700;
+  color:#39465a;
+}
+
+.miniViewBtn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:46px;
+  border-radius:14px;
+  text-decoration:none;
+  background:linear-gradient(135deg,#ff6a00,#ff8f1f);
+  color:#fff;
+  font-size:15px;
+  font-weight:800;
+  box-shadow:0 10px 22px rgba(255,106,0,0.18);
+}
+
+@media (max-width: 1200px){
+  .miniCollegeTrack{
+    grid-auto-columns:calc(33.333% - 12px);
+  }
+}
+
+@media (max-width: 900px){
+  .searchHeroInner{
+    border-radius:30px;
+    padding:24px 18px 22px;
+  }
+
+  .searchHeroText h1{
+    font-size:38px;
+  }
+
+  .miniCollegeTrack{
+    grid-auto-columns:calc(50% - 10px);
+  }
+}
+
+@media (max-width: 640px){
+  .searchHeroMini{
+    padding:14px 14px 0;
+  }
+
+  .searchHeroInner{
+    border-radius:24px;
+    padding:18px 14px;
+  }
+
+  .searchHeroText h1{
+    font-size:30px;
+  }
+
+  .searchHeroText p{
+    font-size:15px;
+  }
+
+  .searchBar{
+    flex-wrap:wrap;
+  }
+
+  .searchBtn{
+    width:100%;
+  }
+
+  .miniCarouselHead{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .miniCollegeTrack{
+    grid-auto-columns:85%;
+  }
+
+  .miniCollegeImage{
+    height:160px;
+  }
 }
 
 .searchBar{
@@ -1030,96 +1143,51 @@
   box-shadow:0 10px 24px rgba(255,106,0,0.20);
 }
 
-@media (max-width: 1100px){
+@media (max-width: 1024px){
   .header{
-    padding:16px 24px;
-    gap:18px;
     flex-wrap:wrap;
-  }
-
-  .nav{
-    gap:18px;
-    flex-wrap:wrap;
-  }
-
-  .ss-slide-content{
-    padding:64px 44px;
-  }
-
-  .ss-slide-content h1{
-    font-size:56px;
+    justify-content:center;
+    margin: 14px 14px 0;
+    border-radius:28px;
   }
 }
 
 @media (max-width: 700px){
   .header{
-    padding:14px 16px;
+    padding:14px;
+    gap:14px;
   }
 
-  .logo span{
+  .logo{
+    width:100%;
+    justify-content:center;
+  }
+
+  .logo img{
+    width:52px;
+    height:52px;
+  }
+
+  .logoText strong{
     font-size:18px;
+  }
+
+  .logoText small{
+    font-size:12px;
   }
 
   .nav{
     width:100%;
-    justify-content:center;
-    gap:14px;
-    flex-wrap:wrap;
+    gap:10px;
   }
 
   .nav a{
     font-size:14px;
+    padding:8px 10px;
   }
 
   .cta{
     width:100%;
-  }
-
-  .ss-hero{
-    padding:18px 14px 0;
-  }
-
-  .ss-hero-slider{
-    min-height:560px;
-    border-radius:28px;
-  }
-
-  .ss-slide-content{
-    padding:42px 22px 34px;
-  }
-
-  .ss-badge{
-    font-size:14px;
-    padding:10px 14px;
-  }
-
-  .ss-slide-content h1{
-    font-size:42px;
-    line-height:1.04;
-  }
-
-  .ss-slide-content p{
-    font-size:16px;
-    line-height:1.7;
-  }
-
-  .ss-arrow{
-    width:52px;
-    height:52px;
-    font-size:28px;
-  }
-
-  .ss-prev{ left:12px; }
-  .ss-next{ right:12px; }
-
-  .ss-search-wrap{
-    margin-top:-36px;
-    padding:0 14px;
-  }
-
-  .ss-search-card{
-    padding:16px;
-    border-radius:22px;
   }
 }
 
@@ -1149,53 +1217,16 @@
   </a>
 </div>
 
-<section class="ss-hero">
-  <div class="ss-hero-slider" id="heroSlider">
-
-    <div class="ss-slide active" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80');">
-      <div class="ss-overlay"></div>
-      <div class="ss-slide-content">
-        <span class="ss-badge">MBA Admissions 2026</span>
-        <h1>Find the Right MBA College Without the Confusion</h1>
-        <p>Search, compare and explore fees, placements, eligibility and admission details in one place.</p>
-        <a href="#resultsSection" class="ss-slide-btn">Explore Now</a>
-      </div>
+<section class="searchHeroMini">
+  <div class="searchHeroInner">
+    <div class="searchHeroText">
+      <span class="searchHeroBadge">MBA Admissions 2026</span>
+      <h1>Search MBA Colleges Smarter</h1>
+      <p>Compare verified colleges, placements, fees, and location details in one place.</p>
     </div>
 
-    <div class="ss-slide" style="background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80');">
-      <div class="ss-overlay"></div>
-      <div class="ss-slide-content">
-        <span class="ss-badge">Verified Colleges</span>
-        <h1>Explore Verified MBA & PGDM College Profiles</h1>
-        <p>Discover colleges by city, exam, course, approvals and admission route with a cleaner student-first experience.</p>
-        <a href="#featuredSection" class="ss-slide-btn">View Colleges</a>
-      </div>
-    </div>
-
-    <div class="ss-slide" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80');">
-      <div class="ss-overlay"></div>
-      <div class="ss-slide-content">
-        <span class="ss-badge">Free Guidance</span>
-        <h1>Get Free Counselling for Shortlisting & Admissions</h1>
-        <p>Talk to Swadeshi Shiksha for profile-based guidance, shortlisting help, and admission support.</p>
-        <a href="javascript:void(0)" onclick="openLeadPopup('Hero Free Counselling CTA')" class="ss-slide-btn">Get Free Help</a>
-      </div>
-    </div>
-
-    <button class="ss-arrow ss-prev" id="prevSlide" aria-label="Previous slide">&#10094;</button>
-    <button class="ss-arrow ss-next" id="nextSlide" aria-label="Next slide">&#10095;</button>
-
-    <div class="ss-dots" id="heroDots">
-      <span class="ss-dot active"></span>
-      <span class="ss-dot"></span>
-      <span class="ss-dot"></span>
-    </div>
-  </div>
-
-  <div class="ss-search-wrap">
-    <div class="ss-search-card">
-      <div class="ss-search-label">Search Colleges</div>
-      <div class="searchBar">
+    <div class="searchHeroBar">
+      <div class="searchBar searchBarLarge">
         <span class="searchIcon">🔍</span>
         <input
           type="text"
@@ -1204,6 +1235,93 @@
           placeholder="Search college, city, exam, or course..."
         />
         <button id="searchBtn" class="searchBtn">Search</button>
+      </div>
+    </div>
+
+    <div class="miniCollegeCarouselWrap">
+      <div class="miniCarouselHead">
+        <h3>Popular Colleges</h3>
+        <div class="miniCarouselNav">
+          <button type="button" id="miniPrev">‹</button>
+          <button type="button" id="miniNext">›</button>
+        </div>
+      </div>
+
+      <div class="miniCollegeTrack" id="miniCollegeTrack">
+        <div class="miniCollegeCard">
+          <div class="miniCollegeImage">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/iibs-logo-9CxeU1C36jDNT4qS.png" alt="IIBS Bangalore">
+          </div>
+          <div class="miniCollegeBody">
+            <h4>IIBS Bangalore</h4>
+            <p class="miniMeta">Bangalore</p>
+            <div class="miniPlacementRow">
+              <span>Highest: ₹48 LPA</span>
+              <span>Average: ₹8.6 LPA</span>
+            </div>
+            <a href="college.html?slug=iibs-bangalore" class="miniViewBtn">View College</a>
+          </div>
+        </div>
+
+        <div class="miniCollegeCard">
+          <div class="miniCollegeImage">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bml-munjal-kIZcRe9FY91QHy2V.webp" alt="BML Munjal University">
+          </div>
+          <div class="miniCollegeBody">
+            <h4>BML Munjal University</h4>
+            <p class="miniMeta">Gurugram</p>
+            <div class="miniPlacementRow">
+              <span>Highest: ₹32 LPA</span>
+              <span>Average: ₹8.5 LPA</span>
+            </div>
+            <a href="college.html?slug=bml-munjal-university" class="miniViewBtn">View College</a>
+          </div>
+        </div>
+
+        <div class="miniCollegeCard">
+          <div class="miniCollegeImage">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg" alt="Bennett University">
+          </div>
+          <div class="miniCollegeBody">
+            <h4>Bennett University</h4>
+            <p class="miniMeta">Greater Noida</p>
+            <div class="miniPlacementRow">
+              <span>Highest: ₹26 LPA</span>
+              <span>Average: ₹7.2 LPA</span>
+            </div>
+            <a href="college.html?slug=bennett-university" class="miniViewBtn">View College</a>
+          </div>
+        </div>
+
+        <div class="miniCollegeCard">
+          <div class="miniCollegeImage">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/jagsom-logo-A1aJb9Kj5xU0gL2n.png" alt="JAGSoM">
+          </div>
+          <div class="miniCollegeBody">
+            <h4>JAGSoM</h4>
+            <p class="miniMeta">Bangalore</p>
+            <div class="miniPlacementRow">
+              <span>Highest: ₹43 LPA</span>
+              <span>Average: ₹13.3 LPA</span>
+            </div>
+            <a href="college.html?slug=jagsom-bangalore" class="miniViewBtn">View College</a>
+          </div>
+        </div>
+
+        <div class="miniCollegeCard">
+          <div class="miniCollegeImage">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-m2W78zZN6NfP20oW.png" alt="ISBR Bangalore">
+          </div>
+          <div class="miniCollegeBody">
+            <h4>ISBR Bangalore</h4>
+            <p class="miniMeta">Bangalore</p>
+            <div class="miniPlacementRow">
+              <span>Highest: ₹16 LPA</span>
+              <span>Average: ₹8 LPA</span>
+            </div>
+            <a href="college.html?slug=isbr-bangalore" class="miniViewBtn">View College</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1825,64 +1943,26 @@ function updateWhyDots() {
   });
 }
 
-   const slides = document.querySelectorAll(".ss-slide");
-const dots = document.querySelectorAll(".ss-dot");
-const prevBtn = document.getElementById("prevSlide");
-const nextBtn = document.getElementById("nextSlide");
+   const miniCollegeTrack = document.getElementById("miniCollegeTrack");
+const miniPrev = document.getElementById("miniPrev");
+const miniNext = document.getElementById("miniNext");
 
-let currentSlide = 0;
-let autoSlide;
+if (miniCollegeTrack && miniPrev && miniNext) {
+  const getScrollAmount = () => {
+    const firstCard = miniCollegeTrack.querySelector(".miniCollegeCard");
+    if (!firstCard) return 320;
+    const style = window.getComputedStyle(miniCollegeTrack);
+    const gap = parseInt(style.columnGap || style.gap || 18, 10);
+    return firstCard.offsetWidth + gap;
+  };
 
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
+  miniPrev.addEventListener("click", function () {
+    miniCollegeTrack.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
   });
 
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
+  miniNext.addEventListener("click", function () {
+    miniCollegeTrack.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
   });
-
-  currentSlide = index;
-}
-
-function nextSlide() {
-  const next = (currentSlide + 1) % slides.length;
-  showSlide(next);
-}
-
-function prevSlide() {
-  const prev = (currentSlide - 1 + slides.length) % slides.length;
-  showSlide(prev);
-}
-
-function startAutoSlide() {
-  stopAutoSlide();
-  autoSlide = setInterval(nextSlide, 4500);
-}
-
-function stopAutoSlide() {
-  if (autoSlide) clearInterval(autoSlide);
-}
-
-if (prevBtn && nextBtn && slides.length) {
-  prevBtn.addEventListener("click", () => {
-    prevSlide();
-    startAutoSlide();
-  });
-
-  nextBtn.addEventListener("click", () => {
-    nextSlide();
-    startAutoSlide();
-  });
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      showSlide(index);
-      startAutoSlide();
-    });
-  });
-
-  startAutoSlide();
 }
   </script>
 </body>
