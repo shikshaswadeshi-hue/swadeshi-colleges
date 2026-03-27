@@ -35,13 +35,13 @@
 
 
     .page {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 24px 18px 70px;
-    }
-
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 16px 56px;
+}
+    
     .sectionBlock {
-      margin-bottom: 28px;
+      margin-bottom: 22px;
     }
 
     .sectionTitle {
@@ -55,14 +55,14 @@
 
     .sectionTitle h2 {
       margin: 0;
-      font-size: 26px;
+      font-size: 22px;
       color: #16202f;
     }
 
     .sectionTitle p {
       margin: 0;
       color: #667085;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .browseWrap,
@@ -75,7 +75,7 @@
 }
 
 .topStrip{
-  margin: 10px 0 34px;
+  margin: 6px 0 24px;
 }
 
     .browseChip,
@@ -247,13 +247,13 @@
     }
 
     .collegeCard {
-      overflow: hidden;
-      background: white;
-      border-radius: 28px;
-      border: 1px solid #ece3d8;
-      box-shadow: 0 16px 36px rgba(16, 24, 40, 0.07);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
+  overflow: hidden;
+  background: white;
+  border-radius: 22px;
+  border: 1px solid #ece3d8;
+  box-shadow: 0 12px 26px rgba(16, 24, 40, 0.07);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
 
     .collegeCard{
   width: 100%;
@@ -267,7 +267,7 @@
 
     .cardImageWrap {
       position: relative;
-      height: 190px;
+      height: 170px;
       background: linear-gradient(135deg, #e6eefc 0%, #f7fbff 100%);
       overflow: hidden;
     }
@@ -317,7 +317,7 @@
     }
 
     .cardBody {
-      padding: 18px;
+      padding: 16px;
     }
 
     .titleRow {
@@ -329,13 +329,13 @@
     }
 
     .collegeName {
-      margin: 0;
-      font-size: 24px;
-      line-height: 1.15;
-      font-weight: 800;
-      color: #16202f;
-      text-transform: capitalize;
-    }
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.15;
+  font-weight: 800;
+  color: #16202f;
+  text-transform: capitalize;
+}
 
     .logoMini {
       width: 52px;
@@ -360,11 +360,11 @@
     }
 
     .collegeMeta {
-      font-size: 15px;
-      color: #667085;
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
+  font-size: 14px;
+  color: #667085;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
 
     .badgeRow {
       display: flex;
@@ -399,18 +399,18 @@
     }
 
     .viewBtn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 132px;
-      border-radius: 14px;
-      padding: 12px 16px;
-      background: linear-gradient(135deg, #1d63c6 0%, #4684dd 100%);
-      color: white;
-      font-size: 15px;
-      font-weight: 800;
-      box-shadow: 0 10px 24px rgba(29, 99, 198, 0.18);
-    }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 118px;
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #1d63c6 0%, #4684dd 100%);
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(29, 99, 198, 0.16);
+}
 
     .leadCtaCard {
       background: linear-gradient(135deg, #16202f 0%, #1d63c6 100%);
@@ -426,8 +426,8 @@
     }
 
     .leadCtaCard h3 {
-      margin: 0 0 12px;
-      font-size: 28px;
+      margin: 0 0 10px;
+      font-size: 22px;
       line-height: 1.15;
     }
 
@@ -492,20 +492,20 @@
     }
 
     .helpBox {
-      margin-top: 28px;
-      border-radius: 24px;
-      padding: 26px 22px;
-      background: linear-gradient(135deg, #fff2e5 0%, #eef8ea 100%);
-      color: #16202f;
-      text-align: center;
-      box-shadow: 0 16px 28px rgba(16, 24, 40, 0.08);
-      border: 1px solid #efe1d2;
-    }
+  margin-top: 22px;
+  border-radius: 20px;
+  padding: 20px 18px;
+  background: linear-gradient(135deg, #fff2e5 0%, #eef8ea 100%);
+  color: #16202f;
+  text-align: center;
+  box-shadow: 0 12px 22px rgba(16, 24, 40, 0.08);
+  border: 1px solid #efe1d2;
+}
 
     .helpBox strong {
       display: block;
       margin-bottom: 8px;
-      font-size: 22px;
+      font-size: 18px;
     }
 
     .helpBox span {
@@ -840,6 +840,8 @@
   box-shadow:0 12px 24px rgba(255,107,0,0.20);
   transition:transform .22s ease, box-shadow .22s ease;
   white-space:nowrap;
+  width:auto;
+  flex-shrink:0;
 }
 
 .cta:hover{
@@ -847,57 +849,81 @@
   box-shadow:0 16px 28px rgba(255,107,0,0.28);
 }
 
+    @media (max-width: 900px){
+  .header{
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:14px 16px;
+    margin:14px 14px 0;
+  }
+
+  .logo{
+    width:100%;
+    justify-content:center;
+  }
+
+  .nav{
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  .cta{
+    width:100%;
+  }
+}
+
 .searchHeroMini{
-  padding:18px 22px 0;
+  padding:14px 18px 0;
 }
 
 .searchHeroInner{
   background:linear-gradient(180deg,#f9f6f0 0%, #f5efe5 100%);
   border:1px solid #eadfce;
-  border-radius:40px;
-  padding:34px 30px 28px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.04);
+  border-radius:28px;
+  padding:22px 20px 20px;
+  box-shadow:0 14px 28px rgba(0,0,0,0.04);
 }
 
 .searchHeroText{
   text-align:center;
   max-width:760px;
-  margin:0 auto 24px;
+  margin:0 auto 18px;
 }
 
 .searchHeroBadge{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:10px 18px;
+  padding:8px 14px;
   border-radius:999px;
   background:#fff;
   border:1px solid #eadfce;
-  font-size:14px;
+  font-size:12px;
   font-weight:800;
   color:#4d2fb2;
-  margin-bottom:14px;
+  margin-bottom:10px;
 }
 
 .searchHeroText h1{
   margin:0;
-  font-size:48px;
-  line-height:1.02;
+  font-size:34px;
+  line-height:1.05;
   font-weight:800;
   color:#16202f;
 }
 
 .searchHeroText p{
-  margin:14px auto 0;
-  font-size:18px;
-  line-height:1.7;
+  margin:10px auto 0;
+  font-size:15px;
+  line-height:1.6;
   color:#5f6b7a;
   max-width:700px;
 }
 
 .searchHeroBar{
-  max-width:980px;
-  margin:0 auto 24px;
+  max-width:920px;
+  margin:0 auto 18px;
 }
 
 .searchBarLarge{
@@ -922,7 +948,7 @@
 
 .miniCarouselHead h3{
   margin:0;
-  font-size:22px;
+  font-size:18px;
   font-weight:800;
   color:#16202f;
 }
@@ -967,15 +993,15 @@
 .miniCollegeCard{
   background:#fff;
   border:1px solid #eadfce;
-  border-radius:24px;
+  border-radius:18px;
   overflow:hidden;
-  box-shadow:0 12px 30px rgba(0,0,0,0.05);
+  box-shadow:0 10px 22px rgba(0,0,0,0.05);
   scroll-snap-align:start;
   min-width:0;
 }
 
 .miniCollegeImage{
-  height:180px;
+  height:150px;
   background:#f8f8f8;
 }
 
@@ -987,12 +1013,12 @@
 }
 
 .miniCollegeBody{
-  padding:18px;
+  padding:14px;
 }
 
 .miniCollegeBody h4{
   margin:0 0 6px;
-  font-size:20px;
+  font-size:17px;
   line-height:1.2;
   color:#16202f;
 }
@@ -1099,11 +1125,11 @@
 .searchBar{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
   background:#fff;
   border:1px solid #eadfce;
-  border-radius:18px;
-  padding:10px 10px 10px 16px;
+  border-radius:16px;
+  padding:8px 8px 8px 14px;
 }
 
 .searchIcon{
@@ -1119,7 +1145,7 @@
   border:none;
   outline:none;
   background:transparent;
-  font-size:16px;
+  font-size:15px;
   color:#112033;
 }
 
@@ -1128,46 +1154,12 @@
   cursor:pointer;
   background:linear-gradient(135deg,#ff6a00 0%,#ff8f1f 100%);
   color:#fff;
-  border-radius:14px;
-  padding:14px 22px;
-  font-size:15px;
+  border-radius:12px;
+  padding:12px 18px;
+  font-size:14px;
   font-weight:800;
-  box-shadow:0 10px 24px rgba(255,106,0,0.20);
+  box-shadow:0 8px 18px rgba(255,106,0,0.18);
 }
-
-  .logo{
-    width:100%;
-    justify-content:center;
-  }
-
-  .logo img{
-    width:52px;
-    height:52px;
-  }
-
-  .logoText strong{
-    font-size:18px;
-  }
-
-  .logoText small{
-    font-size:12px;
-  }
-
-  .nav{
-    width:100%;
-    gap:10px;
-  }
-
-  .nav a{
-    font-size:14px;
-    padding:8px 10px;
-  }
-
-  .cta{
-    width:100%;
-  }
-}
-
     
   </style>
 </head>
@@ -1556,11 +1548,11 @@
     const featuredList = document.getElementById("featuredList");
     list.style.display = "grid";
 list.style.gridTemplateColumns = "repeat(2, minmax(0, 1fr))";
-list.style.gap = "22px";
+list.style.gap = "18px";
 
 featuredList.style.display = "grid";
 featuredList.style.gridTemplateColumns = "repeat(2, minmax(0, 1fr))";
-featuredList.style.gap = "22px";
+featuredList.style.gap = "18px";
     const searchInfo = document.getElementById("searchInfo");
     const resultsCount = document.getElementById("resultsCount");
     const searchInput = document.getElementById("searchInput");
