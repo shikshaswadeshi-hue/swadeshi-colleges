@@ -992,59 +992,51 @@
 }
 
     .miniCollegeCard{
-  background:linear-gradient(180deg,#ffffff 0%, #fffdf9 100%);
-  border:1px solid #e9ddcf;
-  border-radius:22px;
-  overflow:hidden;
-  box-shadow:0 12px 28px rgba(16,24,40,0.06);
+  background:#ffffff;
+  border:1px solid #e9dfd2;
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 10px 24px rgba(16,24,40,0.06);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   scroll-snap-align:start;
   min-width:0;
-  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  display:flex;
+  flex-direction:column;
+  height:100%;
 }
 
 .miniCollegeCard:hover{
   transform:translateY(-4px);
-  box-shadow:0 18px 36px rgba(16,24,40,0.10);
-  border-color:#e2cfb8;
-}
-
-.miniCollegeImage{
-  height:118px;
-  background:linear-gradient(135deg,#f7f4ef 0%, #f2ede5 100%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:14px;
-  border-bottom:1px solid #f0e7dc;
-}
-
-.miniCollegeImage img{
-  max-width:100%;
-  max-height:82px;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-  display:block;
-}
-
-.miniCollegeBody{
-  padding:16px;
+  box-shadow:0 18px 34px rgba(16,24,40,0.10);
+  border-color:#e2d4c2;
 }
 
 .miniCollegeTop{
   display:flex;
-  align-items:flex-start;
   justify-content:space-between;
-  gap:10px;
-  margin-bottom:10px;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:12px;
 }
 
-.miniCollegeBody h4{
-  margin:0;
-  font-size:18px;
-  line-height:1.2;
-  color:#16202f;
-  font-weight:800;
+.miniCollegeLogo{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:#f8f5ef;
+  border:1px solid #eee4d7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.miniCollegeLogo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:6px;
 }
 
 .miniStatus{
@@ -1052,15 +1044,16 @@
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:7px 10px;
+  padding:5px 10px;
   border-radius:999px;
-  font-size:11px;
+  font-size:10px;
   font-weight:800;
-  border:1px solid #e6e0d6;
+  border:1px solid transparent;
+  line-height:1;
 }
 
 .miniStatus.open{
-  background:#eef9f0;
+  background:#edf8f0;
   color:#16803c;
   border-color:#cfe8d5;
 }
@@ -1071,84 +1064,74 @@
   border-color:#f2d1b6;
 }
 
+.miniCollegeName{
+  margin:0 0 4px;
+  font-size:15px;
+  line-height:1.18;
+  font-weight:800;
+  color:#16202f;
+  letter-spacing:-0.02em;
+}
+
 .miniMeta{
-  margin:0 0 14px;
+  margin:0 0 12px;
   color:#667085;
-  font-size:14px;
-  font-weight:700;
+  font-size:13px;
+  font-weight:600;
 }
 
-.miniHighlights{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-bottom:14px;
+.miniStats{
+  margin:0 0 14px;
+  font-size:12.5px;
+  line-height:1.5;
+  color:#667085;
+  padding-bottom:12px;
+  border-bottom:1px solid #efe5d8;
 }
 
-.miniHighlight{
-  background:#f8f4ee;
-  border:1px solid #efe5d9;
-  border-radius:14px;
-  padding:10px 12px;
-}
-
-.miniHighlightLabel{
-  display:block;
-  font-size:11px;
+.miniStats span{
+  color:#16202f;
   font-weight:800;
-  color:#8a6f54;
-  text-transform:uppercase;
-  letter-spacing:.03em;
-  margin-bottom:4px;
-}
-
-.miniHighlightValue{
-  display:block;
-  font-size:14px;
-  font-weight:800;
-  color:#243245;
-  line-height:1.35;
 }
 
 .miniExamRow{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
-  margin-bottom:16px;
+  margin-bottom:14px;
 }
 
 .miniExamTag{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:8px 10px;
+  padding:6px 10px;
   border-radius:999px;
   background:#f4efff;
   color:#4d2fb2;
   border:1px solid #e4d9ff;
-  font-size:12px;
+  font-size:11px;
   font-weight:800;
 }
 
 .miniViewBtn{
-  display:inline-flex;
+  display:flex;
   align-items:center;
-  justify-content:center;
+  justify-content:space-between;
   width:100%;
-  height:44px;
-  border-radius:14px;
   text-decoration:none;
-  background:linear-gradient(135deg,#ff6a00,#ff8f1f);
-  color:#fff;
-  font-size:15px;
+  color:#ff6a00;
+  font-size:14px;
   font-weight:800;
-  box-shadow:0 10px 22px rgba(255,106,0,0.16);
-  transition:transform .18s ease, box-shadow .18s ease;
+  padding-top:12px;
+  margin-top:2px;
+  border-top:1px solid #f0e5d8;
+  transition:color .18s ease, transform .18s ease;
 }
 
 .miniViewBtn:hover{
-  transform:translateY(-1px);
-  box-shadow:0 14px 26px rgba(255,106,0,0.22);
+  color:#e85f00;
+  transform:translateX(1px);
 }
 
     
@@ -1206,14 +1189,6 @@
 
   .miniCollegeTrack{
     grid-auto-columns:88%;
-  }
-
-  .miniCollegeImage{
-    height:108px;
-  }
-
-  .miniHighlights{
-    grid-template-columns:1fr;
   }
 }
 
@@ -1308,26 +1283,19 @@
 
       <div class="miniCollegeTrack" id="miniCollegeTrack">
        <div class="miniCollegeCard">
-  <div class="miniCollegeImage">
-    <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/iibs-logo-9CxeU1C36jDNT4qS.png" alt="IIBS Bangalore">
-  </div>
   <div class="miniCollegeBody">
     <div class="miniCollegeTop">
-      <h4>IIBS Bangalore</h4>
+      <div class="miniCollegeLogo">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/iibs-logo-9CxeU1C36jDNT4qS.png" alt="IIBS Bangalore">
+      </div>
       <span class="miniStatus open">Open</span>
     </div>
 
+    <h4 class="miniCollegeName">IIBS Bangalore</h4>
     <p class="miniMeta">Bangalore</p>
 
-    <div class="miniHighlights">
-      <div class="miniHighlight">
-        <span class="miniHighlightLabel">Avg Package</span>
-        <span class="miniHighlightValue">₹8.6 LPA</span>
-      </div>
-      <div class="miniHighlight">
-        <span class="miniHighlightLabel">Fees</span>
-        <span class="miniHighlightValue">₹9 Lakhs</span>
-      </div>
+    <div class="miniStats">
+      Avg <span>₹8.6 LPA</span> &nbsp; • &nbsp; Fees <span>₹9 Lakhs</span>
     </div>
 
     <div class="miniExamRow">
@@ -1336,31 +1304,27 @@
       <span class="miniExamTag">CMAT</span>
     </div>
 
-    <a href="college.html?slug=iibs-bangalore" class="miniViewBtn">View College</a>
+    <a href="college.html?slug=iibs-bangalore" class="miniViewBtn">
+      <span>View College</span>
+      <span>→</span>
+    </a>
   </div>
 </div>
 
         <div class="miniCollegeCard">
-  <div class="miniCollegeImage">
-    <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bml-munjal-kIZcRe9FY91QHy2V.webp" alt="BML Munjal University">
-  </div>
   <div class="miniCollegeBody">
     <div class="miniCollegeTop">
-      <h4>BML Munjal University</h4>
+      <div class="miniCollegeLogo">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bml-munjal-kIZcRe9FY91QHy2V.webp" alt="BML Munjal University">
+      </div>
       <span class="miniStatus open">Open</span>
     </div>
 
+    <h4 class="miniCollegeName">BML Munjal University</h4>
     <p class="miniMeta">Gurugram</p>
 
-    <div class="miniHighlights">
-      <div class="miniHighlight">
-        <span class="miniHighlightLabel">Avg Package</span>
-        <span class="miniHighlightValue">₹8.5 LPA</span>
-      </div>
-      <div class="miniHighlight">
-        <span class="miniHighlightLabel">Fees</span>
-        <span class="miniHighlightValue">₹13 Lakhs</span>
-      </div>
+    <div class="miniStats">
+      Avg <span>₹8.5 LPA</span> &nbsp; • &nbsp; Fees <span>₹13 Lakhs</span>
     </div>
 
     <div class="miniExamRow">
@@ -1369,31 +1333,27 @@
       <span class="miniExamTag">MAT</span>
     </div>
 
-    <a href="college.html?slug=bml-munjal-university" class="miniViewBtn">View College</a>
+    <a href="college.html?slug=bml-munjal-university" class="miniViewBtn">
+      <span>View College</span>
+      <span>→</span>
+    </a>
   </div>
 </div>
 
         <div class="miniCollegeCard">
-  <div class="miniCollegeImage">
-    <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg" alt="Bennett University">
-  </div>
   <div class="miniCollegeBody">
     <div class="miniCollegeTop">
-      <h4>Bennett University</h4>
+      <div class="miniCollegeLogo">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg" alt="Bennett University">
+      </div>
       <span class="miniStatus closing">Closing Soon</span>
     </div>
 
+    <h4 class="miniCollegeName">Bennett University</h4>
     <p class="miniMeta">Greater Noida</p>
 
-    <div class="miniHighlights">
-      <div class="miniHighlight">
-        <span class="miniHighlightLabel">Avg Package</span>
-        <span class="miniHighlightValue">₹7.2 LPA</span>
-      </div>
-      <div class="miniHighlight">
-        <span class="miniHighlightLabel">Fees</span>
-        <span class="miniHighlightValue">₹12 Lakhs</span>
-      </div>
+    <div class="miniStats">
+      Avg <span>₹7.2 LPA</span> &nbsp; • &nbsp; Fees <span>₹12 Lakhs</span>
     </div>
 
     <div class="miniExamRow">
@@ -1402,31 +1362,27 @@
       <span class="miniExamTag">CMAT</span>
     </div>
 
-    <a href="college.html?slug=bennett-university" class="miniViewBtn">View College</a>
+    <a href="college.html?slug=bennett-university" class="miniViewBtn">
+      <span>View College</span>
+      <span>→</span>
+    </a>
   </div>
 </div>
 
         <div class="miniCollegeCard">
-  <div class="miniCollegeImage">
-    <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/jagsom-logo-A1aJb9Kj5xU0gL2n.png" alt="JAGSoM">
-  </div>
   <div class="miniCollegeBody">
     <div class="miniCollegeTop">
-      <h4>JAGSoM</h4>
+      <div class="miniCollegeLogo">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/jagsom-logo-A1aJb9Kj5xU0gL2n.png" alt="JAGSoM">
+      </div>
       <span class="miniStatus open">Open</span>
     </div>
 
+    <h4 class="miniCollegeName">JAGSoM</h4>
     <p class="miniMeta">Bangalore</p>
 
-    <div class="miniHighlights">
-      <div class="miniHighlight">
-        <span class="miniHighlightLabel">Avg Package</span>
-        <span class="miniHighlightValue">₹13.3 LPA</span>
-      </div>
-      <div class="miniHighlight">
-        <span class="miniHighlightLabel">Fees</span>
-        <span class="miniHighlightValue">₹15 Lakhs</span>
-      </div>
+    <div class="miniStats">
+      Avg <span>₹13.3 LPA</span> &nbsp; • &nbsp; Fees <span>₹15 Lakhs</span>
     </div>
 
     <div class="miniExamRow">
@@ -1435,31 +1391,27 @@
       <span class="miniExamTag">GMAT</span>
     </div>
 
-    <a href="college.html?slug=jagsom-bangalore" class="miniViewBtn">View College</a>
+    <a href="college.html?slug=jagsom-bangalore" class="miniViewBtn">
+      <span>View College</span>
+      <span>→</span>
+    </a>
   </div>
 </div>
 
         <div class="miniCollegeCard">
-  <div class="miniCollegeImage">
-    <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-m2W78zZN6NfP20oW.png" alt="ISBR Bangalore">
-  </div>
   <div class="miniCollegeBody">
     <div class="miniCollegeTop">
-      <h4>ISBR Bangalore</h4>
+      <div class="miniCollegeLogo">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-m2W78zZN6NfP20oW.png" alt="ISBR Bangalore">
+      </div>
       <span class="miniStatus open">Open</span>
     </div>
 
+    <h4 class="miniCollegeName">ISBR Bangalore</h4>
     <p class="miniMeta">Bangalore</p>
 
-    <div class="miniHighlights">
-      <div class="miniHighlight">
-        <span class="miniHighlightLabel">Avg Package</span>
-        <span class="miniHighlightValue">₹8 LPA</span>
-      </div>
-      <div class="miniHighlight">
-        <span class="miniHighlightLabel">Fees</span>
-        <span class="miniHighlightValue">₹11 Lakhs</span>
-      </div>
+    <div class="miniStats">
+      Avg <span>₹8 LPA</span> &nbsp; • &nbsp; Fees <span>₹11 Lakhs</span>
     </div>
 
     <div class="miniExamRow">
@@ -1468,7 +1420,10 @@
       <span class="miniExamTag">CMAT</span>
     </div>
 
-    <a href="college.html?slug=isbr-bangalore" class="miniViewBtn">View College</a>
+    <a href="college.html?slug=isbr-bangalore" class="miniViewBtn">
+      <span>View College</span>
+      <span>→</span>
+    </a>
   </div>
 </div>
       </div>
