@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MBA Entrance Exams 2026 | Swadeshi Shiksha</title>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:#faf8f2;
+      color:#16202f;
+    }
+    a{text-decoration:none;color:inherit}
+    button{font-family:inherit}
+
+    /* SAME HEADER UI */
+    .header{
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 26px;
+      margin: 14px 18px 0;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(255,255,255,0.55);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 12px 34px rgba(17,24,39,0.08);
+      border-radius: 22px;
+      max-width: calc(100% - 36px);
+      transition: all .25s ease;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      min-width: fit-content;
+    }
+
+    .logo img{
+      height:48px;
+      width:auto;
+      display:block;
+    }
+
+    .logo span{
+      font-weight:800;
+      font-size:16px;
+      color:#16202f;
+      letter-spacing:-0.02em;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      flex:1;
+      min-width:0;
+    }
+
+    .nav a{
+      text-decoration:none;
+      color:#425066;
+      font-weight:600;
+      font-size:14px;
+      padding:10px 12px;
+      border-radius:999px;
+      transition:all .22s ease;
+      white-space:nowrap;
+    }
+
+    .nav a:hover{
+      color:#4d2fb2;
+      background:#f4efff;
+      transform:translateY(-1px);
+    }
+
+    .nav a.active{
+      color:#4d2fb2;
+      background:#f4efff;
+    }
+
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      background:linear-gradient(135deg,#ff7a1a,#ff5a00);
+      color:#fff;
+      padding:12px 20px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:14px;
+      box-shadow:0 12px 24px rgba(255,107,0,0.20);
+      transition:transform .22s ease, box-shadow .22s ease;
+      white-space:nowrap;
+      width:auto;
+      flex-shrink:0;
+    }
+
+    .cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 28px rgba(255,107,0,0.28);
+    }
+
+    @media (max-width: 900px){
+      .header{
+        flex-wrap:wrap;
+        justify-content:center;
+        padding:14px 16px;
+        margin:14px 14px 0;
+      }
+
+      .logo{
+        width:100%;
+        justify-content:center;
+      }
+
+      .nav{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+      }
+
+      .cta{
+        width:100%;
+      }
+    }
+
+    /* PAGE */
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      padding:14px 16px 70px;
+    }
+
+    /* HERO */
+    .hero{
+      margin-top:18px;
+      background:
+        radial-gradient(circle at top right, rgba(77,47,178,0.10), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(255,106,0,0.10), transparent 24%),
+        linear-gradient(180deg,#f9f6f0 0%, #f5efe5 100%);
+      border:1px solid #eadfce;
+      border-radius:30px;
+      padding:34px 26px 28px;
+      box-shadow:0 14px 30px rgba(0,0,0,0.04);
+    }
+
+    .heroBadge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:9px 16px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #eadfce;
+      font-size:12px;
+      font-weight:800;
+      color:#4d2fb2;
+      margin-bottom:14px;
+    }
+
+    .hero h1{
+      margin:0 0 10px;
+      font-size:46px;
+      line-height:1.04;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      color:#16202f;
+      max-width:760px;
+    }
+
+    .hero p{
+      margin:0;
+      max-width:760px;
+      color:#5f6b7a;
+      font-size:16px;
+      line-height:1.75;
+    }
+
+    .heroQuickLinks{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:22px;
+    }
+
+    .heroQuickLinks a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #eadfce;
+      color:#243248;
+      font-size:13px;
+      font-weight:700;
+      transition:all .2s ease;
+    }
+
+    .heroQuickLinks a:hover{
+      transform:translateY(-1px);
+      color:#4d2fb2;
+      background:#f4efff;
+      border-color:#e2d7ff;
+    }
+
+    /* SECTION */
+    .section{
+      margin-top:28px;
+    }
+
+    .sectionHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+
+    .sectionHead h2{
+      margin:0;
+      font-size:28px;
+      line-height:1.15;
+      color:#16202f;
+      letter-spacing:-0.02em;
+    }
+
+    .sectionHead p{
+      margin:6px 0 0;
+      color:#667085;
+      font-size:14px;
+      line-height:1.7;
+      max-width:700px;
+    }
+
+    /* EXAM GRID */
+    .examGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .examCard{
+      background:linear-gradient(135deg,#ffffff 0%,#fffaf4 100%);
+      border:1px solid #ece3d8;
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 12px 28px rgba(16,24,40,0.05);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .examCard:hover{
+      transform:translateY(-5px);
+      box-shadow:0 20px 38px rgba(16,24,40,0.09);
+      border-color:#e7d7c4;
+    }
+
+    .examTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:16px;
+    }
+
+    .examIcon{
+      width:56px;
+      height:56px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      background:linear-gradient(135deg,#fff2e5 0%,#f4efff 100%);
+      border:1px solid #efe2d4;
+    }
+
+    .examYear{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:7px 11px;
+      border-radius:999px;
+      background:#f4efff;
+      color:#4d2fb2;
+      border:1px solid #e5d9ff;
+      font-size:11px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .examCard h3{
+      margin:0 0 8px;
+      font-size:24px;
+      line-height:1.1;
+      color:#16202f;
+    }
+
+    .examDesc{
+      margin:0 0 16px;
+      font-size:14px;
+      line-height:1.75;
+      color:#667085;
+    }
+
+    .examMeta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:16px;
+    }
+
+    .examMeta span{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 10px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #eee4d8;
+      color:#495566;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .examLinks{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .primaryBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#ff7a1a,#ff5a00);
+      color:#fff;
+      font-size:14px;
+      font-weight:800;
+      box-shadow:0 10px 20px rgba(255,107,0,0.18);
+      transition:all .2s ease;
+    }
+
+    .primaryBtn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 28px rgba(255,107,0,0.24);
+    }
+
+    .secondaryBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:12px;
+      background:#fff;
+      color:#4d2fb2;
+      border:1px solid #e3d7ff;
+      font-size:14px;
+      font-weight:800;
+      transition:all .2s ease;
+    }
+
+    .secondaryBtn:hover{
+      background:#f4efff;
+      transform:translateY(-1px);
+    }
+
+    /* GUIDES STRIP */
+    .guideGrid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .guideCard{
+      background:linear-gradient(135deg,#ffffff 0%,#fffdf9 100%);
+      border:1px solid #ece3d8;
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 12px 28px rgba(16,24,40,0.05);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .guideCard:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 34px rgba(16,24,40,0.08);
+    }
+
+    .guideLabel{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:7px 11px;
+      border-radius:999px;
+      background:#fff4e8;
+      color:#d96b00;
+      border:1px solid #f1d8bf;
+      font-size:11px;
+      font-weight:800;
+      margin-bottom:12px;
+    }
+
+    .guideCard h3{
+      margin:0 0 8px;
+      font-size:22px;
+      line-height:1.16;
+      color:#16202f;
+    }
+
+    .guideCard p{
+      margin:0 0 16px;
+      font-size:14px;
+      line-height:1.75;
+      color:#667085;
+    }
+
+    /* CTA BLOCK */
+    .ctaSection{
+      margin-top:30px;
+      background:linear-gradient(135deg,#1c1630 0%,#4d2fb2 55%,#6d4be7 100%);
+      border-radius:30px;
+      padding:28px 24px;
+      color:#fff;
+      display:grid;
+      grid-template-columns:1.2fr 0.8fr;
+      gap:20px;
+      box-shadow:0 22px 50px rgba(54,32,116,0.25);
+    }
+
+    .ctaSection h2{
+      margin:0 0 10px;
+      font-size:34px;
+      line-height:1.1;
+      letter-spacing:-0.02em;
+    }
+
+    .ctaSection p{
+      margin:0;
+      color:rgba(255,255,255,0.84);
+      font-size:15px;
+      line-height:1.8;
+      max-width:620px;
+    }
+
+    .ctaPoints{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .ctaPoints span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 13px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.12);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .ctaBox{
+      background:rgba(255,255,255,0.96);
+      border-radius:22px;
+      padding:20px;
+      color:#16202f;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .ctaBox h3{
+      margin:0 0 8px;
+      font-size:22px;
+      color:#16202f;
+    }
+
+    .ctaBox p{
+      margin:0 0 16px;
+      color:#667085;
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .ctaBox .primaryBtn{
+      width:100%;
+    }
+
+    /* FOOTER */
+    .footer{
+      margin-top:30px;
+      background:#16202f;
+      color:#fff;
+      border-radius:28px;
+      padding:28px 22px;
+    }
+
+    .footerGrid{
+      display:grid;
+      grid-template-columns:1.2fr 1fr 1fr 1fr;
+      gap:22px;
+    }
+
+    .footer h3,.footer h4{
+      margin:0 0 12px;
+    }
+
+    .footer p,.footer li{
+      color:rgba(255,255,255,0.76);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    .footer ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .footer li{
+      margin-bottom:8px;
+    }
+
+    /* POPUP */
+    .popupOverlay{
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,0.65);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:5000;
+      padding:18px;
+    }
+
+    .popupCard{
+      width:100%;
+      max-width:460px;
+      background:#fff;
+      border-radius:24px;
+      padding:24px;
+      box-shadow:0 24px 60px rgba(15,23,42,0.24);
+      position:relative;
+    }
+
+    .popupClose{
+      position:absolute;
+      right:16px;
+      top:14px;
+      border:none;
+      background:transparent;
+      font-size:24px;
+      cursor:pointer;
+      color:#667085;
+    }
+
+    .popupCard h3{
+      margin:0 0 8px;
+      font-size:28px;
+      color:#101828;
+    }
+
+    .popupCard p{
+      margin:0 0 18px;
+      color:#667085;
+      line-height:1.65;
+      font-size:15px;
+    }
+
+    .popupCard input{
+      width:100%;
+      padding:14px;
+      border-radius:14px;
+      border:1px solid #d7e0f0;
+      margin-bottom:12px;
+      font-size:14px;
+    }
+
+    .popupSubmit{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(135deg,#ff6a00 0%,#ff8f1f 100%);
+      color:white;
+      font-weight:800;
+      cursor:pointer;
+      font-size:15px;
+      box-shadow:0 10px 24px rgba(255,106,0,0.22);
+    }
+
+    .popupNote{
+      margin-top:10px;
+      text-align:center;
+      color:#667085;
+      font-size:12px;
+    }
+
+    @media (max-width: 1024px){
+      .examGrid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .ctaSection{
+        grid-template-columns:1fr;
+      }
+
+      .footerGrid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px){
+      .page{
+        padding:14px 14px 60px;
+      }
+
+      .hero{
+        padding:24px 16px 20px;
+        border-radius:24px;
+      }
+
+      .hero h1{
+        font-size:32px;
+      }
+
+      .hero p{
+        font-size:15px;
+      }
+
+      .examGrid,
+      .guideGrid,
+      .footerGrid{
+        grid-template-columns:1fr;
+      }
+
+      .sectionHead h2{
+        font-size:24px;
+      }
+
+      .ctaSection{
+        border-radius:24px;
+        padding:22px 16px;
+      }
+
+      .ctaSection h2{
+        font-size:28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="/" class="logo">
+      <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+      <span>Swadeshi Shiksha</span>
+    </a>
+
+    <div class="nav">
+      <a href="colleges.html">Colleges</a>
+      <a href="exams.html" class="active">Exams</a>
+      <a href="courses.html">Courses</a>
+      <a href="resources.html">Resources</a>
+    </div>
+
+    <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">Get Free MBA Guidance</a>
+  </div>
+
+  <div class="page">
+
+    <section class="hero">
+      <span class="heroBadge">MBA Entrance Exams 2026</span>
+      <h1>Explore MBA Entrance Exams with Clarity</h1>
+      <p>
+        Compare major MBA entrance exams, understand accepted colleges, shortlist your best options, and move faster toward the right admission path with Swadeshi Shiksha.
+      </p>
+
+      <div class="heroQuickLinks">
+        <a href="#topExams">Top Exams</a>
+        <a href="#examGuides">Exam Guides</a>
+        <a href="resources.html">Preparation Resources</a>
+        <a href="colleges.html">Browse Colleges</a>
+      </div>
+    </section>
+
+    <section class="section" id="topExams">
+      <div class="sectionHead">
+        <div>
+          <h2>Top MBA Exams to Explore</h2>
+          <p>Start with the exams students search most while planning MBA/PGDM admissions.</p>
+        </div>
+      </div>
+
+      <div class="examGrid">
+
+        <div class="examCard">
+          <div class="examTop">
+            <div class="examIcon">📘</div>
+            <span class="examYear">CAT 2026</span>
+          </div>
+          <h3>CAT</h3>
+          <p class="examDesc">Best for IIMs, top B-schools, and a wide range of MBA/PGDM colleges across India.</p>
+          <div class="examMeta">
+            <span>IIMs</span>
+            <span>Top B-Schools</span>
+            <span>High Competition</span>
+          </div>
+          <div class="examLinks">
+            <a href="page.html?slug=cat-exam-2026" class="primaryBtn">View CAT Guide</a>
+            <a href="colleges.html?search=CAT" class="secondaryBtn">CAT Colleges</a>
+          </div>
+        </div>
+
+        <div class="examCard">
+          <div class="examTop">
+            <div class="examIcon">🧠</div>
+            <span class="examYear">XAT 2026</span>
+          </div>
+          <h3>XAT</h3>
+          <p class="examDesc">Popular for XLRI and many strong private MBA institutions accepting XAT scores.</p>
+          <div class="examMeta">
+            <span>XLRI</span>
+            <span>Essay + GK</span>
+            <span>Private B-Schools</span>
+          </div>
+          <div class="examLinks">
+            <a href="page.html?slug=xat-exam-2026" class="primaryBtn">View XAT Guide</a>
+            <a href="colleges.html?search=XAT" class="secondaryBtn">XAT Colleges</a>
+          </div>
+        </div>
+
+        <div class="examCard">
+          <div class="examTop">
+            <div class="examIcon">🎯</div>
+            <span class="examYear">NMAT 2026</span>
+          </div>
+          <h3>NMAT</h3>
+          <p class="examDesc">Good option for students targeting NMIMS and other colleges accepting NMAT scores.</p>
+          <div class="examMeta">
+            <span>NMIMS</span>
+            <span>Flexible Attempts</span>
+            <span>Speed Based</span>
+          </div>
+          <div class="examLinks">
+            <a href="page.html?slug=nmat-exam-2026" class="primaryBtn">View NMAT Guide</a>
+            <a href="colleges.html?search=NMAT" class="secondaryBtn">NMAT Colleges</a>
+          </div>
+        </div>
+
+        <div class="examCard">
+          <div class="examTop">
+            <div class="examIcon">🚀</div>
+            <span class="examYear">SNAP 2026</span>
+          </div>
+          <h3>SNAP</h3>
+          <p class="examDesc">Mainly for Symbiosis institutes and students targeting premium SNAP-accepting colleges.</p>
+          <div class="examMeta">
+            <span>Symbiosis</span>
+            <span>Short Format</span>
+            <span>High Demand</span>
+          </div>
+          <div class="examLinks">
+            <a href="page.html?slug=snap-exam-2026" class="primaryBtn">View SNAP Guide</a>
+            <a href="colleges.html?search=SNAP" class="secondaryBtn">SNAP Colleges</a>
+          </div>
+        </div>
+
+        <div class="examCard">
+          <div class="examTop">
+            <div class="examIcon">📈</div>
+            <span class="examYear">CMAT 2026</span>
+          </div>
+          <h3>CMAT</h3>
+          <p class="examDesc">Useful for many AICTE-approved MBA/PGDM colleges and practical admission pathways.</p>
+          <div class="examMeta">
+            <span>AICTE Colleges</span>
+            <span>Affordable Options</span>
+            <span>Wide Acceptance</span>
+          </div>
+          <div class="examLinks">
+            <a href="page.html?slug=cmat-exam-2026" class="primaryBtn">View CMAT Guide</a>
+            <a href="colleges.html?search=CMAT" class="secondaryBtn">CMAT Colleges</a>
+          </div>
+        </div>
+
+        <div class="examCard">
+          <div class="examTop">
+            <div class="examIcon">📝</div>
+            <span class="examYear">MAT 2026</span>
+          </div>
+          <h3>MAT</h3>
+          <p class="examDesc">A flexible option with broad college acceptance and multiple test windows in a year.</p>
+          <div class="examMeta">
+            <span>Multiple Sessions</span>
+            <span>Broad Reach</span>
+            <span>Good Backup</span>
+          </div>
+          <div class="examLinks">
+            <a href="page.html?slug=mat-exam-2026" class="primaryBtn">View MAT Guide</a>
+            <a href="colleges.html?search=MAT" class="secondaryBtn">MAT Colleges</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="examGuides">
+      <div class="sectionHead">
+        <div>
+          <h2>Useful Exam Guide Blocks</h2>
+          <p>These are the next exam-based pages you should create in your CMS/content flow.</p>
+        </div>
+      </div>
+
+      <div class="guideGrid">
+        <div class="guideCard">
+          <span class="guideLabel">High Intent Page</span>
+          <h3>Exam Syllabus & Pattern Pages</h3>
+          <p>Create pages for CAT syllabus, XAT syllabus, SNAP pattern, NMAT pattern, and similar student search intent pages.</p>
+          <a href="resources.html" class="secondaryBtn">Go to Resources</a>
+        </div>
+
+        <div class="guideCard">
+          <span class="guideLabel">SEO Page</span>
+          <h3>Percentile-Wise College Lists</h3>
+          <p>Build pages like CAT 80-90 percentile colleges, XAT 85-95 colleges, SNAP score-based colleges, and more.</p>
+          <a href="colleges.html" class="secondaryBtn">Explore Colleges</a>
+        </div>
+
+        <div class="guideCard">
+          <span class="guideLabel">Conversion Page</span>
+          <h3>Exam Accepted Colleges</h3>
+          <p>Students often search by exam first. This page should guide them directly to colleges matching their score path.</p>
+          <a href="colleges.html" class="secondaryBtn">See College Results</a>
+        </div>
+
+        <div class="guideCard">
+          <span class="guideLabel">Counselling Page</span>
+          <h3>Which Exam Should You Target?</h3>
+          <p>A guidance page or tool can help students choose the most suitable exam based on profile, goals, and target colleges.</p>
+          <a href="javascript:void(0)" onclick="openLeadPopup('Exam Guidance Section')" class="primaryBtn">Get Free Guidance</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ctaSection">
+      <div>
+        <h2>Confused About Which MBA Exam Fits You Best?</h2>
+        <p>
+          Get free counselling for exam selection, college shortlisting, direct admission support, scholarships, and admission strategy.
+        </p>
+        <div class="ctaPoints">
+          <span>Free Counselling</span>
+          <span>College Shortlisting</span>
+          <span>Scholarship Support</span>
+          <span>Direct Admission Guidance</span>
+        </div>
+      </div>
+
+      <div class="ctaBox">
+        <h3>Talk to Swadeshi Shiksha</h3>
+        <p>Get help choosing the right exam and the right MBA/PGDM college.</p>
+        <a href="javascript:void(0)" onclick="openLeadPopup('Exams Page Bottom CTA')" class="primaryBtn">Get Free MBA Guidance</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footerGrid">
+        <div>
+          <h3>Swadeshi Shiksha</h3>
+          <p>Search, compare and choose the right MBA/PGDM college with trusted guidance and student-first counselling support.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="colleges.html">Colleges</a></li>
+            <li><a href="exams.html">Exams</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="resources.html">Resources</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Popular Exams</h4>
+          <ul>
+            <li><a href="colleges.html?search=CAT">CAT Colleges</a></li>
+            <li><a href="colleges.html?search=XAT">XAT Colleges</a></li>
+            <li><a href="colleges.html?search=NMAT">NMAT Colleges</a></li>
+            <li><a href="colleges.html?search=SNAP">SNAP Colleges</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="openLeadPopup('Footer CTA')">Free Counselling</a></li>
+            <li><a href="page.html?slug=privacy-policy">Privacy Policy</a></li>
+            <li><a href="page.html?slug=contact-us">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <div class="popupOverlay" id="leadPopup">
+    <div class="popupCard">
+      <button class="popupClose" onclick="closeLeadPopup()">×</button>
+      <h3>Get Free MBA Guidance</h3>
+      <p>Fill in your details and our team will connect with you for counselling support.</p>
+
+      <input type="text" id="leadName" placeholder="Your Name">
+      <input type="tel" id="leadPhone" placeholder="Phone Number">
+      <input type="text" id="leadCourse" placeholder="Interested Course / Exam">
+
+      <button class="popupSubmit" onclick="submitLead()">Submit</button>
+      <div class="popupNote">Free counselling • Fast response • Trusted support</div>
+    </div>
+  </div>
+
+  <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCQNocdvSpqjm7ZMcrVYW0Fc-iMycGQO94",
+    authDomain: "swadeshi-shiksha.firebaseapp.com",
+    projectId: "swadeshi-shiksha"
+  };
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+</script>
+
+  <script>
+    let leadSource = "Exams Page";
+
+    function openLeadPopup(source){
+      leadSource = source || "Exams Page";
+      document.getElementById("leadPopup").style.display = "flex";
+    }
+
+    function closeLeadPopup(){
+      document.getElementById("leadPopup").style.display = "none";
+    }
+
+    async function submitLead(){
+      const name = document.getElementById("leadName").value.trim();
+      const phone = document.getElementById("leadPhone").value.trim();
+      const course = document.getElementById("leadCourse").value.trim();
+
+      if(!name || !phone){
+        alert("Please enter your name and phone number.");
+        return;
+      }
+
+      try{
+        if (window.firebase && firebase.apps.length) {
+          const db = firebase.firestore();
+          await db.collection("leads").add({
+            name,
+            phone,
+            courseOrExam: course,
+            source: leadSource,
+            page: "exams.html",
+            createdAt: new Date()
+          });
+        }
+
+        alert("Thank you! Our team will contact you soon.");
+        closeLeadPopup();
+        document.getElementById("leadName").value = "";
+        document.getElementById("leadPhone").value = "";
+        document.getElementById("leadCourse").value = "";
+      }catch(error){
+        console.error(error);
+        alert("Lead saved issue. Please check Firebase connection.");
+      }
+    }
+
+    window.addEventListener("click", function(e){
+      const popup = document.getElementById("leadPopup");
+      if(e.target === popup){
+        closeLeadPopup();
+      }
+    });
+  </script>
+
+</body>
+</html>
