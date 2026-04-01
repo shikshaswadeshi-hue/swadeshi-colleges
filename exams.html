@@ -8,60 +8,84 @@
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
+    *{
+      box-sizing:border-box;
       margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
       font-family:'Inter',sans-serif;
-      background:#faf8f2;
+      background:
+        radial-gradient(circle at top left, rgba(124,77,255,0.06), transparent 22%),
+        radial-gradient(circle at top right, rgba(255,122,26,0.05), transparent 20%),
+        #fcfafefc;
       color:#16202f;
     }
 
-    a{text-decoration:none;color:inherit}
-    button,input{font:inherit}
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-    /* SAME HEADER */
+    button,input{
+      font:inherit;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .page{
+      max-width:1220px;
+      margin:0 auto;
+      padding:0 18px 80px;
+    }
+
+    /* HEADER */
     .header{
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 14px 26px;
-      margin: 14px 18px 0;
-      background: rgba(255,255,255,0.78);
-      border: 1px solid rgba(255,255,255,0.55);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 12px 34px rgba(17,24,39,0.08);
-      border-radius: 22px;
-      max-width: calc(100% - 36px);
-      transition: all .25s ease;
+      position:sticky;
+      top:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 24px;
+      margin:14px auto 0;
+      background:rgba(255,255,255,0.82);
+      border:1px solid rgba(181,163,226,0.26);
+      backdrop-filter:blur(16px);
+      box-shadow:0 12px 34px rgba(39,32,79,0.08);
+      border-radius:24px;
+      max-width:calc(1220px - 36px);
     }
 
     .logo{
       display:flex;
       align-items:center;
       gap:12px;
-      text-decoration:none;
-      min-width: fit-content;
+      min-width:fit-content;
     }
 
     .logo img{
-      height:48px;
+      height:46px;
       width:auto;
-      display:block;
     }
 
     .logo span{
       font-weight:800;
       font-size:16px;
-      color:#16202f;
       letter-spacing:-0.02em;
+      color:#16202f;
     }
 
     .nav{
@@ -74,137 +98,150 @@
     }
 
     .nav a{
-      text-decoration:none;
-      color:#425066;
-      font-weight:600;
       font-size:14px;
-      padding:10px 12px;
+      font-weight:600;
+      color:#5f6980;
+      padding:10px 13px;
       border-radius:999px;
       transition:all .22s ease;
       white-space:nowrap;
     }
 
-    .nav a:hover{
-      color:#4d2fb2;
-      background:#f4efff;
-      transform:translateY(-1px);
-    }
-
+    .nav a:hover,
     .nav a.active{
-      color:#4d2fb2;
-      background:#f4efff;
+      color:#6a45d8;
+      background:#f3efff;
     }
 
     .cta{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      text-decoration:none;
-      background:linear-gradient(135deg,#ff7a1a,#ff5a00);
+      white-space:nowrap;
+      background:linear-gradient(135deg,#7a55e7,#5c33cf);
       color:#fff;
       padding:12px 20px;
       border-radius:999px;
-      font-weight:700;
       font-size:14px;
-      box-shadow:0 12px 24px rgba(255,107,0,0.20);
-      transition:transform .22s ease, box-shadow .22s ease;
-      white-space:nowrap;
-      width:auto;
+      font-weight:700;
+      box-shadow:0 14px 28px rgba(92,51,207,0.22);
+      transition:all .22s ease;
       flex-shrink:0;
     }
 
     .cta:hover{
       transform:translateY(-2px);
-      box-shadow:0 16px 28px rgba(255,107,0,0.28);
-    }
-
-    .page{
-      max-width:1200px;
-      margin:0 auto;
-      padding:16px 16px 72px;
+      box-shadow:0 18px 32px rgba(92,51,207,0.28);
     }
 
     /* HERO */
     .hero{
       position:relative;
-      overflow:hidden;
-      margin-top:18px;
-      border-radius:34px;
-      padding:40px 34px 28px;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255,122,26,0.18), transparent 24%),
-        radial-gradient(circle at 85% 15%, rgba(120,83,255,0.22), transparent 26%),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.06), transparent 24%),
-        linear-gradient(135deg, #171226 0%, #24183f 45%, #3f2782 100%);
-      box-shadow:0 26px 70px rgba(24,18,45,0.30);
-      border:1px solid rgba(255,255,255,0.08);
+      margin-top:24px;
+      padding:34px 18px 14px;
     }
 
-    .hero::before{
+    .heroFrame{
+      position:relative;
+      border:4px solid #d9cbff;
+      border-radius:34px;
+      background:linear-gradient(180deg,#fcfbff 0%,#f8f5ff 100%);
+      min-height:500px;
+      overflow:hidden;
+      padding:46px 48px 30px;
+      box-shadow:0 24px 60px rgba(91,68,168,0.08);
+    }
+
+    .heroFrame::before{
       content:"";
       position:absolute;
-      width:320px;
-      height:320px;
+      width:180px;
+      height:180px;
+      right:-46px;
+      top:-36px;
+      background:#dac8ff;
+      border-radius:0 0 0 140px;
+      opacity:.85;
+    }
+
+    .heroFrame::after{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      right:58px;
+      top:138px;
+      border:3px solid #d9cbff;
+      border-color:#d9cbff transparent transparent transparent;
       border-radius:50%;
-      top:-120px;
-      right:-120px;
-      background:radial-gradient(circle, rgba(255,255,255,0.14), transparent 70%);
-      pointer-events:none;
+      transform:rotate(18deg);
+      opacity:.7;
     }
 
-    .heroTop{
+    .heroInner{
       position:relative;
-      z-index:1;
-      display:grid;
-      grid-template-columns:1.15fr 0.85fr;
-      gap:26px;
-      align-items:center;
+      z-index:2;
+      text-align:center;
+      max-width:920px;
+      margin:0 auto;
     }
 
-    .heroBadge{
+    .heroLabel{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:9px 15px;
+      gap:8px;
+      padding:10px 16px;
+      background:#f2ebff;
+      color:#6a45d8;
+      border:1px solid #e3d8ff;
       border-radius:999px;
-      background:rgba(255,255,255,0.10);
-      border:1px solid rgba(255,255,255,0.14);
-      color:#fff4eb;
       font-size:12px;
       font-weight:800;
-      letter-spacing:.03em;
-      margin-bottom:16px;
+      letter-spacing:.02em;
+      margin-bottom:18px;
     }
 
-    .hero h1{
-      margin:0 0 12px;
-      font-size:52px;
-      line-height:1.02;
+    .heroTitle{
+      font-family:'Playfair Display',serif;
+      font-size:66px;
+      line-height:1.03;
       letter-spacing:-0.04em;
-      color:#fff;
-      max-width:720px;
+      color:#17332b;
+      max-width:900px;
+      margin:0 auto 18px;
     }
 
-    .hero p{
-      margin:0;
-      max-width:680px;
-      color:rgba(255,255,255,0.80);
+    .heroTitle .accentOrange{
+      color:#ff8b2a;
+    }
+
+    .heroTitle .accentPurple{
+      color:#7651e6;
+    }
+
+    .heroSub{
+      max-width:760px;
+      margin:0 auto;
       font-size:16px;
-      line-height:1.85;
+      line-height:1.9;
+      color:#667085;
     }
 
     .heroActions{
       display:flex;
+      justify-content:center;
       flex-wrap:wrap;
-      gap:12px;
-      margin-top:24px;
+      gap:14px;
+      margin-top:26px;
     }
 
-    .heroPrimaryBtn,
-    .heroGhostBtn{
-      height:48px;
-      padding:0 18px;
-      border-radius:14px;
+    .heroBtnPrimary,
+    .heroBtnSecondary{
+      min-width:200px;
+      height:50px;
+      padding:0 22px;
+      border-radius:999px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -213,136 +250,129 @@
       transition:all .22s ease;
     }
 
-    .heroPrimaryBtn{
-      background:linear-gradient(135deg,#ff7a1a,#ff5a00);
+    .heroBtnPrimary{
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
       color:#fff;
-      box-shadow:0 14px 26px rgba(255,107,0,0.24);
+      box-shadow:0 16px 30px rgba(255,122,26,0.22);
     }
 
-    .heroPrimaryBtn:hover{
+    .heroBtnPrimary:hover{
       transform:translateY(-2px);
-      box-shadow:0 18px 34px rgba(255,107,0,0.30);
+      box-shadow:0 20px 34px rgba(255,122,26,0.28);
     }
 
-    .heroGhostBtn{
+    .heroBtnSecondary{
+      background:linear-gradient(135deg,#7b59e9,#6037d4);
       color:#fff;
-      border:1px solid rgba(255,255,255,0.16);
-      background:rgba(255,255,255,0.06);
+      box-shadow:0 16px 30px rgba(96,55,212,0.22);
     }
 
-    .heroGhostBtn:hover{
+    .heroBtnSecondary:hover{
       transform:translateY(-2px);
-      background:rgba(255,255,255,0.10);
+      box-shadow:0 20px 34px rgba(96,55,212,0.28);
     }
 
-    .heroPanel{
-      position:relative;
-      z-index:1;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.12);
-      border-radius:24px;
-      padding:20px;
-      backdrop-filter:blur(14px);
-      box-shadow:0 18px 40px rgba(8,8,18,0.20);
+    .heroAvatar{
+      position:absolute;
+      bottom:78px;
+      width:112px;
+      z-index:3;
+      text-align:center;
     }
 
-    .heroPanel h3{
-      margin:0 0 14px;
-      color:#fff;
-      font-size:22px;
-      line-height:1.15;
+    .heroAvatar.left{
+      left:34px;
     }
 
-    .heroMiniList{
-      display:grid;
-      gap:12px;
+    .heroAvatar.right{
+      right:34px;
     }
 
-    .heroMiniItem{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding:12px 14px;
-      border-radius:16px;
-      background:rgba(255,255,255,0.08);
-    }
-
-    .heroMiniLeft{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:0;
-    }
-
-    .heroMiniIcon{
-      width:42px;
-      height:42px;
-      border-radius:14px;
+    .heroAvatarCircle{
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      overflow:hidden;
+      background:linear-gradient(135deg,#ffffff,#f4efff);
+      box-shadow:0 18px 34px rgba(34,22,83,0.12);
+      border:5px solid #fff;
+      margin:0 auto;
       display:flex;
       align-items:center;
       justify-content:center;
-      background:linear-gradient(135deg,#fff3ea,#efe7ff);
-      font-size:18px;
-      flex-shrink:0;
     }
 
-    .heroMiniText strong{
-      display:block;
-      color:#fff;
-      font-size:14px;
-      margin-bottom:3px;
+    .heroAvatarCircle img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
     }
 
-    .heroMiniText span{
-      color:rgba(255,255,255,0.68);
-      font-size:12px;
+    .heroArrow{
+      position:absolute;
+      top:50%;
+      width:120px;
+      height:2px;
+      background:#c7b7f8;
+      transform:translateY(-50%);
     }
 
-    .heroMiniTag{
-      flex-shrink:0;
-      padding:7px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.10);
-      color:#fff4e8;
-      font-size:11px;
-      font-weight:800;
-      border:1px solid rgba(255,255,255,0.10);
+    .heroArrow::after{
+      content:"";
+      position:absolute;
+      right:-1px;
+      top:50%;
+      width:16px;
+      height:16px;
+      border-top:2px solid #c7b7f8;
+      border-right:2px solid #c7b7f8;
+      transform:translateY(-50%) rotate(45deg);
+      background:transparent;
     }
 
-    .heroBottom{
-      position:relative;
-      z-index:1;
-      margin-top:28px;
+    .heroAvatar.left .heroArrow{
+      left:108px;
+    }
+
+    .heroAvatar.right .heroArrow{
+      right:108px;
+      transform:translateY(-50%) scaleX(-1);
+    }
+
+    .logoStrip{
+      margin-top:26px;
       display:grid;
-      grid-template-columns:repeat(4,1fr);
+      grid-template-columns:repeat(6,1fr);
       gap:14px;
+      align-items:center;
     }
 
-    .heroStat{
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.10);
-      border-radius:20px;
-      padding:18px 16px;
-      backdrop-filter:blur(10px);
-    }
-
-    .heroStat strong{
-      display:block;
-      color:#fff;
-      font-size:24px;
-      margin-bottom:6px;
-    }
-
-    .heroStat span{
-      color:rgba(255,255,255,0.70);
-      font-size:13px;
-      line-height:1.6;
+    .logoPill{
+      height:54px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.72);
+      border:1px solid #eee8fb;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#a4a0b6;
+      font-weight:800;
+      font-size:22px;
+      letter-spacing:-0.03em;
+      box-shadow:0 10px 24px rgba(40,25,93,0.04);
     }
 
     /* SECTION COMMON */
     .section{
-      margin-top:34px;
+      margin-top:42px;
+    }
+
+    .sectionWrap{
+      background:linear-gradient(180deg,#fbf9ff 0%,#f7f4fd 100%);
+      border:1px solid #eee8fb;
+      border-radius:38px;
+      padding:34px 30px 32px;
+      box-shadow:0 18px 44px rgba(42,29,89,0.05);
     }
 
     .sectionHead{
@@ -351,237 +381,472 @@
       align-items:flex-end;
       gap:18px;
       flex-wrap:wrap;
-      margin-bottom:18px;
+      margin-bottom:24px;
     }
 
     .sectionHead h2{
-      margin:0;
-      font-size:34px;
-      line-height:1.08;
+      font-family:'Playfair Display',serif;
+      font-size:42px;
+      line-height:1.06;
       letter-spacing:-0.03em;
-      color:#16202f;
+      color:#17332b;
+      margin:0;
+    }
+
+    .sectionHead h2 span{
+      color:#7a55e7;
     }
 
     .sectionHead p{
-      margin:8px 0 0;
-      color:#667085;
+      margin-top:10px;
+      color:#6b7280;
       font-size:15px;
-      line-height:1.8;
+      line-height:1.85;
       max-width:720px;
     }
 
-    /* EXAM CARDS */
+    .sectionLink{
+      font-size:14px;
+      font-weight:700;
+      color:#7050df;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    /* EXAM GRID */
     .examGrid{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:18px;
+      gap:20px;
     }
 
     .examCard{
-      position:relative;
+      background:#fff;
+      border:1px solid #eee7fb;
+      border-radius:24px;
       overflow:hidden;
-      background:linear-gradient(135deg,#ffffff 0%,#fff8f2 100%);
-      border:1px solid #ece2d6;
-      border-radius:28px;
-      padding:22px;
-      box-shadow:0 14px 34px rgba(16,24,40,0.06);
-      transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+      box-shadow:0 14px 34px rgba(38,26,76,0.05);
+      transition:all .24s ease;
     }
 
     .examCard:hover{
       transform:translateY(-6px);
-      box-shadow:0 24px 48px rgba(16,24,40,0.10);
-      border-color:#e2d2c1;
-    }
-
-    .examCard::before{
-      content:"";
-      position:absolute;
-      inset:0 auto auto 0;
-      width:100%;
-      height:5px;
-      background:linear-gradient(90deg,#ff7a1a,#ff5a00,#6c4ddf);
+      box-shadow:0 20px 46px rgba(38,26,76,0.10);
     }
 
     .examCardTop{
+      height:165px;
+      padding:18px;
+      position:relative;
+      overflow:hidden;
       display:flex;
-      justify-content:space-between;
       align-items:flex-start;
-      gap:12px;
-      margin-bottom:16px;
+      justify-content:space-between;
     }
 
-    .examCardIcon{
-      width:60px;
-      height:60px;
-      border-radius:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#fff1e7 0%,#f3ecff 100%);
-      border:1px solid #efe2d8;
-      font-size:24px;
-      box-shadow:0 10px 22px rgba(0,0,0,0.04);
+    .examCard.cat .examCardTop{
+      background:linear-gradient(135deg,#2f1737 0%,#563bba 58%,#9b90ff 100%);
     }
 
-    .examYear{
+    .examCard.xat .examCardTop{
+      background:linear-gradient(135deg,#efe9ff 0%,#dcd0ff 100%);
+    }
+
+    .examCard.nmat .examCardTop{
+      background:linear-gradient(135deg,#a68dff 0%,#7c58ee 100%);
+    }
+
+    .examCard.snap .examCardTop{
+      background:linear-gradient(135deg,#b9a1ff 0%,#f3c4df 100%);
+    }
+
+    .examCard.cmat .examCardTop{
+      background:linear-gradient(135deg,#c2b2ff 0%,#7c5ff0 100%);
+    }
+
+    .examCard.mat .examCardTop{
+      background:linear-gradient(135deg,#f0c7dc 0%,#f8dfe9 100%);
+    }
+
+    .examCardTop::before{
+      content:"";
+      position:absolute;
+      width:140px;
+      height:140px;
+      border-radius:26px;
+      right:22px;
+      top:24px;
+      background:rgba(255,255,255,0.15);
+      transform:rotate(18deg);
+    }
+
+    .examCardTop::after{
+      content:"";
+      position:absolute;
+      width:74px;
+      height:74px;
+      border-radius:20px;
+      right:84px;
+      bottom:18px;
+      background:rgba(255,255,255,0.18);
+      transform:rotate(18deg);
+    }
+
+    .examBadge{
+      position:relative;
+      z-index:2;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:8px 12px;
+      padding:7px 11px;
       border-radius:999px;
+      background:rgba(255,255,255,0.92);
+      color:#6f4fe0;
       font-size:11px;
       font-weight:800;
-      color:#4d2fb2;
-      background:#f4efff;
-      border:1px solid #e5d9ff;
-      white-space:nowrap;
+      letter-spacing:.02em;
+      box-shadow:0 8px 18px rgba(0,0,0,0.06);
     }
 
-    .examCard h3{
-      margin:0 0 8px;
+    .examStars{
+      position:relative;
+      z-index:2;
+      color:#ffd24d;
+      font-size:14px;
+      letter-spacing:1px;
+      font-weight:700;
+    }
+
+    .examVisual{
+      position:absolute;
+      left:22px;
+      bottom:18px;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .examIcon{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.92);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      box-shadow:0 12px 22px rgba(0,0,0,0.08);
+    }
+
+    .examMini{
+      padding:8px 11px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.20);
+      border:1px solid rgba(255,255,255,0.30);
+      color:#fff;
+      font-size:12px;
+      font-weight:700;
+      backdrop-filter:blur(10px);
+    }
+
+    .examCardBody{
+      padding:18px 18px 18px;
+    }
+
+    .examMetaRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+
+    .lessonTag{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      font-size:12px;
+      font-weight:700;
+      color:#697386;
+    }
+
+    .lessonDot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:#6e4be1;
+      display:inline-block;
+    }
+
+    .examName{
       font-size:26px;
       line-height:1.08;
+      font-weight:800;
       color:#16202f;
+      margin-bottom:10px;
+      letter-spacing:-0.03em;
     }
 
-    .examSub{
-      margin:0 0 16px;
-      font-size:14px;
-      line-height:1.75;
+    .examDesc{
       color:#667085;
+      font-size:14px;
+      line-height:1.8;
       min-height:74px;
+      margin-bottom:14px;
     }
 
-    .examMeta{
+    .examTags{
       display:flex;
       flex-wrap:wrap;
       gap:8px;
       margin-bottom:16px;
     }
 
-    .examMeta span{
-      display:inline-flex;
-      align-items:center;
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:800;
-      border:1px solid #efe4d7;
-      background:#fffaf4;
-      color:#4c596b;
-    }
-
-    .examBottom{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .primaryBtn,
-    .secondaryBtn{
-      height:44px;
-      padding:0 14px;
-      border-radius:12px;
+    .examTags span{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      font-size:13px;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:11px;
       font-weight:800;
+      color:#67607d;
+      background:#faf7ff;
+      border:1px solid #ece4fb;
+    }
+
+    .examFooter{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .examTeacher{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+
+    .teacherAvatar{
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#f0e8ff,#ffe8d6);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:15px;
+      flex-shrink:0;
+    }
+
+    .teacherText{
+      min-width:0;
+    }
+
+    .teacherText strong{
+      display:block;
+      font-size:12px;
+      line-height:1.2;
+      color:#212a3a;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:150px;
+    }
+
+    .teacherText span{
+      display:block;
+      font-size:11px;
+      color:#8a91a2;
+      margin-top:2px;
+    }
+
+    .examAction{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:9px 14px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      color:#fff;
+      background:linear-gradient(135deg,#7a55e7,#6037d4);
+      box-shadow:0 10px 18px rgba(96,55,212,0.18);
       transition:all .22s ease;
+      white-space:nowrap;
     }
 
-    .primaryBtn{
-      background:linear-gradient(135deg,#ff7a1a,#ff5a00);
-      color:#fff;
-      box-shadow:0 10px 20px rgba(255,107,0,0.18);
-    }
-
-    .primaryBtn:hover{
+    .examAction:hover{
       transform:translateY(-2px);
-      box-shadow:0 14px 28px rgba(255,107,0,0.24);
     }
 
-    .secondaryBtn{
-      background:#fff;
-      color:#4d2fb2;
-      border:1px solid #e4d9ff;
+    .examAction.orange{
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
+      box-shadow:0 10px 18px rgba(255,122,26,0.18);
     }
 
-    .secondaryBtn:hover{
-      background:#f4efff;
-      transform:translateY(-1px);
+    /* JOURNEY */
+    .journeySection{
+      margin-top:40px;
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:22px;
     }
 
-    /* DARK STRIP */
-    .examJourney{
-      margin-top:34px;
-      border-radius:30px;
-      padding:30px 26px;
-      background:
-        radial-gradient(circle at top right, rgba(255,122,26,0.16), transparent 22%),
-        linear-gradient(135deg,#181327 0%,#251941 52%,#34245d 100%);
-      box-shadow:0 22px 56px rgba(20,15,38,0.22);
+    .journeyLeft,
+    .journeyRight{
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:0 18px 42px rgba(42,29,89,0.06);
+    }
+
+    .journeyLeft{
+      background:linear-gradient(135deg,#7b59e9 0%,#5c34d0 100%);
       color:#fff;
+      padding:28px;
+      position:relative;
     }
 
-    .examJourneyHead h2{
-      margin:0 0 10px;
-      font-size:34px;
+    .journeyLeft::before{
+      content:"";
+      position:absolute;
+      width:170px;
+      height:170px;
+      right:-40px;
+      top:-50px;
+      background:rgba(255,255,255,0.12);
+      border-radius:40px;
+      transform:rotate(28deg);
+    }
+
+    .journeyLeft h2{
+      position:relative;
+      z-index:2;
+      font-family:'Playfair Display',serif;
+      font-size:38px;
       line-height:1.08;
+      margin-bottom:12px;
       letter-spacing:-0.03em;
     }
 
-    .examJourneyHead p{
-      margin:0;
-      max-width:760px;
-      color:rgba(255,255,255,0.78);
-      line-height:1.85;
+    .journeyLeft p{
+      position:relative;
+      z-index:2;
+      color:rgba(255,255,255,0.86);
       font-size:15px;
+      line-height:1.85;
+      max-width:560px;
     }
 
-    .journeyGrid{
-      margin-top:20px;
+    .journeySteps{
+      position:relative;
+      z-index:2;
+      margin-top:22px;
       display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
     }
 
-    .journeyCard{
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.10);
+    .journeyStep{
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.18);
       border-radius:22px;
-      padding:18px;
-      backdrop-filter:blur(10px);
+      padding:16px;
+      backdrop-filter:blur(12px);
     }
 
     .journeyNo{
-      width:34px;
-      height:34px;
+      width:36px;
+      height:36px;
       border-radius:50%;
       display:flex;
       align-items:center;
       justify-content:center;
-      background:linear-gradient(135deg,#ff7a1a,#ff5a00);
-      color:#fff;
+      background:#fff;
+      color:#6a43dd;
       font-size:13px;
       font-weight:800;
-      margin-bottom:14px;
-      box-shadow:0 10px 20px rgba(255,107,0,0.24);
+      margin-bottom:12px;
     }
 
-    .journeyCard h3{
-      margin:0 0 8px;
+    .journeyStep h3{
+      font-size:16px;
+      line-height:1.3;
+      margin-bottom:7px;
       color:#fff;
-      font-size:18px;
-      line-height:1.2;
     }
 
-    .journeyCard p{
-      margin:0;
-      color:rgba(255,255,255,0.72);
+    .journeyStep p{
+      font-size:13px;
+      line-height:1.75;
+      color:rgba(255,255,255,0.78);
+    }
+
+    .journeyRight{
+      background:linear-gradient(180deg,#fff 0%,#fbf8ff 100%);
+      border:1px solid #efe8fb;
+      padding:26px;
+    }
+
+    .journeyRight h3{
+      font-family:'Playfair Display',serif;
+      font-size:30px;
+      line-height:1.08;
+      color:#17332b;
+      margin-bottom:10px;
+    }
+
+    .journeyRight p{
+      color:#667085;
       font-size:14px;
-      line-height:1.7;
+      line-height:1.85;
+      margin-bottom:18px;
+    }
+
+    .quickList{
+      display:grid;
+      gap:12px;
+    }
+
+    .quickItem{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px;
+      border-radius:18px;
+      background:#faf7ff;
+      border:1px solid #ece3fb;
+    }
+
+    .quickIcon{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,#fff4ea,#ede5ff);
+      font-size:20px;
+      flex-shrink:0;
+    }
+
+    .quickText strong{
+      display:block;
+      font-size:14px;
+      color:#20293a;
+      margin-bottom:3px;
+    }
+
+    .quickText span{
+      font-size:12px;
+      color:#7a8396;
+      line-height:1.6;
     }
 
     /* GUIDE BLOCKS */
@@ -589,132 +854,147 @@
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
       gap:18px;
+      margin-top:8px;
     }
 
     .guideCard{
-      background:linear-gradient(135deg,#ffffff 0%,#fffaf5 100%);
-      border:1px solid #ece3d8;
-      border-radius:26px;
+      background:#fff;
+      border:1px solid #eee7fb;
+      border-radius:24px;
       padding:22px;
-      box-shadow:0 12px 30px rgba(16,24,40,0.05);
-      transition:transform .22s ease, box-shadow .22s ease;
+      box-shadow:0 14px 30px rgba(42,29,89,0.04);
+      transition:all .22s ease;
     }
 
     .guideCard:hover{
       transform:translateY(-4px);
-      box-shadow:0 20px 40px rgba(16,24,40,0.08);
+      box-shadow:0 18px 38px rgba(42,29,89,0.08);
     }
 
     .guideTag{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:7px 11px;
+      padding:8px 12px;
       border-radius:999px;
-      background:#fff2e8;
-      border:1px solid #f3d8c1;
-      color:#d96b00;
+      background:#f3ecff;
+      color:#6a45d8;
+      border:1px solid #e6dbff;
       font-size:11px;
       font-weight:800;
       margin-bottom:12px;
     }
 
     .guideCard h3{
-      margin:0 0 8px;
-      font-size:23px;
-      line-height:1.16;
+      font-size:24px;
+      line-height:1.18;
       color:#16202f;
+      margin-bottom:10px;
+      letter-spacing:-0.02em;
     }
 
     .guideCard p{
-      margin:0 0 16px;
       color:#667085;
       font-size:14px;
-      line-height:1.8;
+      line-height:1.85;
+      margin-bottom:16px;
+    }
+
+    .guideBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 16px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      color:#fff;
+      background:linear-gradient(135deg,#7a55e7,#6037d4);
+      box-shadow:0 10px 18px rgba(96,55,212,0.16);
+    }
+
+    .guideBtn.orange{
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
+      box-shadow:0 10px 18px rgba(255,122,26,0.16);
     }
 
     /* CTA */
     .ctaSection{
-      margin-top:34px;
+      margin-top:40px;
+      border-radius:36px;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 18%),
-        radial-gradient(circle at bottom right, rgba(255,122,26,0.22), transparent 20%),
-        linear-gradient(135deg,#201735 0%,#3d267f 55%,#5b35a8 100%);
-      border-radius:32px;
-      padding:30px;
+        radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 18%),
+        radial-gradient(circle at bottom right, rgba(255,169,93,0.18), transparent 24%),
+        linear-gradient(135deg,#7b59e9 0%,#5b34cf 100%);
+      padding:32px;
       display:grid;
-      grid-template-columns:1.15fr 0.85fr;
+      grid-template-columns:1.08fr .92fr;
       gap:24px;
       color:#fff;
-      box-shadow:0 26px 60px rgba(38,22,78,0.26);
+      box-shadow:0 26px 58px rgba(69,43,161,0.18);
     }
 
-    .ctaSection h2{
-      margin:0 0 12px;
-      font-size:38px;
-      line-height:1.08;
+    .ctaText h2{
+      font-family:'Playfair Display',serif;
+      font-size:42px;
+      line-height:1.06;
+      margin-bottom:12px;
       letter-spacing:-0.03em;
     }
 
-    .ctaSection p{
-      margin:0;
-      max-width:640px;
-      color:rgba(255,255,255,0.80);
+    .ctaText p{
       font-size:15px;
       line-height:1.85;
+      color:rgba(255,255,255,0.86);
+      max-width:620px;
     }
 
     .ctaPoints{
+      margin-top:20px;
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin-top:20px;
     }
 
     .ctaPoints span{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
       padding:10px 13px;
       border-radius:999px;
-      background:rgba(255,255,255,0.10);
-      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.16);
       font-size:13px;
       font-weight:700;
     }
 
-    .ctaFormBox{
+    .ctaBox{
       background:rgba(255,255,255,0.97);
-      border-radius:24px;
-      padding:22px;
-      box-shadow:0 20px 48px rgba(0,0,0,0.14);
+      border-radius:28px;
+      padding:24px;
+      color:#16202f;
+      box-shadow:0 18px 40px rgba(25,15,69,0.16);
+      align-self:center;
+    }
+
+    .ctaBox h3{
+      font-size:28px;
+      line-height:1.12;
+      margin-bottom:10px;
       color:#16202f;
     }
 
-    .ctaFormBox h3{
-      margin:0 0 8px;
-      font-size:24px;
-      color:#16202f;
-    }
-
-    .ctaFormBox p{
-      margin:0 0 16px;
+    .ctaBox p{
       color:#667085;
       font-size:14px;
-      line-height:1.7;
-    }
-
-    .ctaFormBox .primaryBtn{
-      width:100%;
+      line-height:1.8;
+      margin-bottom:16px;
     }
 
     /* FOOTER */
     .footer{
-      margin-top:32px;
-      background:#16202f;
+      margin-top:34px;
+      background:#161f2f;
       color:#fff;
-      border-radius:28px;
-      padding:28px 22px;
+      border-radius:30px;
+      padding:30px 24px;
     }
 
     .footerGrid{
@@ -723,29 +1003,31 @@
       gap:22px;
     }
 
-    .footer h3,.footer h4{
-      margin:0 0 12px;
+    .footer h3,
+    .footer h4{
+      margin-bottom:12px;
     }
 
-    .footer p,.footer li{
-      color:rgba(255,255,255,0.76);
-      line-height:1.7;
+    .footer p,
+    .footer li{
+      color:rgba(255,255,255,0.75);
+      line-height:1.75;
       font-size:14px;
     }
 
     .footer ul{
       list-style:none;
-      padding:0;
-      margin:0;
     }
 
-    .footer li{margin-bottom:8px}
+    .footer li{
+      margin-bottom:8px;
+    }
 
     /* POPUP */
     .popupOverlay{
       position:fixed;
       inset:0;
-      background:rgba(15,23,42,0.65);
+      background:rgba(15,23,42,0.68);
       display:none;
       align-items:center;
       justify-content:center;
@@ -755,12 +1037,12 @@
 
     .popupCard{
       width:100%;
-      max-width:460px;
+      max-width:470px;
       background:#fff;
-      border-radius:24px;
-      padding:24px;
-      box-shadow:0 24px 60px rgba(15,23,42,0.24);
+      border-radius:28px;
+      padding:26px;
       position:relative;
+      box-shadow:0 28px 70px rgba(15,23,42,0.24);
     }
 
     .popupClose{
@@ -769,75 +1051,88 @@
       top:14px;
       border:none;
       background:transparent;
-      font-size:24px;
+      font-size:26px;
+      color:#6b7280;
       cursor:pointer;
-      color:#667085;
     }
 
     .popupCard h3{
-      margin:0 0 8px;
-      font-size:28px;
-      color:#101828;
+      font-size:30px;
+      line-height:1.08;
+      margin-bottom:10px;
+      color:#172030;
+      letter-spacing:-0.03em;
     }
 
     .popupCard p{
-      margin:0 0 18px;
       color:#667085;
-      line-height:1.65;
+      line-height:1.75;
       font-size:15px;
+      margin-bottom:18px;
     }
 
     .popupCard input{
       width:100%;
-      padding:14px;
-      border-radius:14px;
-      border:1px solid #d7e0f0;
+      padding:15px 14px;
+      border-radius:16px;
+      border:1px solid #dddff0;
+      outline:none;
       margin-bottom:12px;
       font-size:14px;
+      transition:border-color .2s ease, box-shadow .2s ease;
+      background:#fcfcff;
+    }
+
+    .popupCard input:focus{
+      border-color:#7b59e9;
+      box-shadow:0 0 0 4px rgba(123,89,233,0.10);
     }
 
     .popupSubmit{
       width:100%;
-      padding:14px;
       border:none;
-      border-radius:14px;
-      background:linear-gradient(135deg,#ff6a00 0%,#ff8f1f 100%);
+      padding:15px;
+      border-radius:16px;
+      background:linear-gradient(135deg,#7a55e7,#6037d4);
       color:#fff;
+      font-size:15px;
       font-weight:800;
       cursor:pointer;
-      font-size:15px;
-      box-shadow:0 10px 24px rgba(255,106,0,0.22);
+      box-shadow:0 14px 28px rgba(96,55,212,0.18);
     }
 
     .popupNote{
       margin-top:10px;
-      text-align:center;
-      color:#667085;
       font-size:12px;
+      color:#7b8396;
+      text-align:center;
     }
 
     /* RESPONSIVE */
-    @media (max-width: 1024px){
-      .heroTop,
-      .ctaSection{
-        grid-template-columns:1fr;
-      }
-
-      .heroBottom,
-      .journeyGrid{
-        grid-template-columns:repeat(2,1fr);
+    @media (max-width:1100px){
+      .heroTitle{
+        font-size:56px;
       }
 
       .examGrid{
         grid-template-columns:repeat(2,minmax(0,1fr));
       }
 
+      .journeySection,
+      .ctaSection{
+        grid-template-columns:1fr;
+      }
+
       .footerGrid{
         grid-template-columns:1fr 1fr;
       }
+
+      .logoStrip{
+        grid-template-columns:repeat(3,1fr);
+      }
     }
 
-    @media (max-width: 900px){
+    @media (max-width:920px){
       .header{
         flex-wrap:wrap;
         justify-content:center;
@@ -845,46 +1140,118 @@
         margin:14px 14px 0;
       }
 
-      .logo{width:100%;justify-content:center}
-      .nav{width:100%;justify-content:center;flex-wrap:wrap}
-      .cta{width:100%}
-    }
-
-    @media (max-width: 700px){
-      .page{padding:14px 14px 60px}
-
-      .hero{
-        border-radius:26px;
-        padding:26px 16px 20px;
+      .logo{
+        width:100%;
+        justify-content:center;
       }
 
-      .hero h1{
+      .nav{
+        width:100%;
+        flex-wrap:wrap;
+      }
+
+      .cta{
+        width:100%;
+      }
+
+      .heroFrame{
+        padding:34px 20px 26px;
+      }
+
+      .heroTitle{
+        font-size:46px;
+      }
+
+      .heroAvatar{
+        position:static;
+        display:inline-block;
+        margin:22px 10px 0;
+      }
+
+      .heroArrow{
+        display:none;
+      }
+
+      .journeySteps{
+        grid-template-columns:1fr;
+      }
+
+      .guideGrid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:680px){
+      .page{
+        padding:0 14px 60px;
+      }
+
+      .hero{
+        padding:18px 0 0;
+      }
+
+      .heroFrame{
+        border-radius:26px;
+        min-height:auto;
+        padding:28px 14px 22px;
+      }
+
+      .heroTitle{
         font-size:34px;
       }
 
-      .hero p{
-        font-size:15px;
+      .heroSub{
+        font-size:14px;
+        line-height:1.8;
       }
 
-      .heroBottom,
+      .heroActions{
+        gap:10px;
+      }
+
+      .heroBtnPrimary,
+      .heroBtnSecondary{
+        width:100%;
+        min-width:unset;
+      }
+
+      .logoStrip{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+      }
+
+      .logoPill{
+        font-size:18px;
+        height:48px;
+      }
+
+      .sectionWrap{
+        border-radius:28px;
+        padding:24px 16px;
+      }
+
+      .sectionHead h2,
+      .journeyLeft h2,
+      .ctaText h2{
+        font-size:30px;
+      }
+
       .examGrid,
-      .journeyGrid,
-      .guideGrid,
       .footerGrid{
         grid-template-columns:1fr;
       }
 
-      .sectionHead h2,
-      .examJourneyHead h2{
-        font-size:28px;
+      .ctaSection{
+        padding:24px 18px;
+        border-radius:28px;
       }
 
-      .ctaSection h2{
-        font-size:30px;
+      .ctaBox{
+        padding:20px;
       }
 
-      .heroMiniItem{
-        padding:11px 12px;
+      .examDesc{
+        min-height:auto;
       }
     }
   </style>
@@ -910,287 +1277,408 @@
   <div class="page">
 
     <section class="hero">
-      <div class="heroTop">
-        <div>
-          <span class="heroBadge">MBA Entrance Exams 2026</span>
-          <h1>Choose the Right MBA Exam with More Confidence</h1>
-          <p>
-            Explore CAT, XAT, NMAT, SNAP, CMAT, and MAT through a sharper, easier, and more premium exam discovery experience built for MBA aspirants.
+      <div class="heroFrame">
+        <div class="heroInner">
+          <div class="heroLabel">MBA Entrance Exams 2026</div>
+
+          <h1 class="heroTitle">
+            Choosing the right
+            <span class="accentOrange">MBA exam</span>
+            today helps you build
+            the <span class="accentPurple">right future</span>
+          </h1>
+
+          <p class="heroSub">
+            Explore CAT, XAT, NMAT, SNAP, CMAT, and MAT with a cleaner, friendlier, and more premium exam experience designed for MBA/PGDM aspirants across India.
           </p>
 
           <div class="heroActions">
-            <a href="#topExams" class="heroPrimaryBtn">Explore Top Exams</a>
-            <a href="javascript:void(0)" onclick="openLeadPopup('Hero Exam Guidance CTA')" class="heroGhostBtn">Get Free Guidance</a>
+            <a href="#topExams" class="heroBtnPrimary">Explore Top Exams</a>
+            <a href="javascript:void(0)" onclick="openLeadPopup('Hero Exam Guidance CTA')" class="heroBtnSecondary">Get Free Guidance</a>
           </div>
         </div>
 
-        <div class="heroPanel">
-          <h3>Top Exams Students Usually Start With</h3>
-
-          <div class="heroMiniList">
-            <div class="heroMiniItem">
-              <div class="heroMiniLeft">
-                <div class="heroMiniIcon">📘</div>
-                <div class="heroMiniText">
-                  <strong>CAT</strong>
-                  <span>IIMs & top B-schools</span>
-                </div>
-              </div>
-              <span class="heroMiniTag">High Value</span>
-            </div>
-
-            <div class="heroMiniItem">
-              <div class="heroMiniLeft">
-                <div class="heroMiniIcon">🧠</div>
-                <div class="heroMiniText">
-                  <strong>XAT</strong>
-                  <span>XLRI & private B-schools</span>
-                </div>
-              </div>
-              <span class="heroMiniTag">Premium</span>
-            </div>
-
-            <div class="heroMiniItem">
-              <div class="heroMiniLeft">
-                <div class="heroMiniIcon">🎯</div>
-                <div class="heroMiniText">
-                  <strong>NMAT</strong>
-                  <span>NMIMS & select colleges</span>
-                </div>
-              </div>
-              <span class="heroMiniTag">Flexible</span>
-            </div>
-
-            <div class="heroMiniItem">
-              <div class="heroMiniLeft">
-                <div class="heroMiniIcon">🚀</div>
-                <div class="heroMiniText">
-                  <strong>SNAP</strong>
-                  <span>Symbiosis institutes</span>
-                </div>
-              </div>
-              <span class="heroMiniTag">Focused</span>
-            </div>
+        <div class="heroAvatar left">
+          <div class="heroAvatarCircle">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="MBA aspirant">
           </div>
+          <div class="heroArrow"></div>
+        </div>
+
+        <div class="heroAvatar right">
+          <div class="heroAvatarCircle">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" alt="MBA aspirant">
+          </div>
+          <div class="heroArrow"></div>
         </div>
       </div>
 
-      <div class="heroBottom">
-        <div class="heroStat">
-          <strong>6+</strong>
-          <span>Major MBA entrance exams covered for faster student discovery.</span>
-        </div>
-        <div class="heroStat">
-          <strong>Exam First</strong>
-          <span>Find colleges based on the exam path you want to target.</span>
-        </div>
-        <div class="heroStat">
-          <strong>Better Fit</strong>
-          <span>Compare premium, backup, and practical exam options.</span>
-        </div>
-        <div class="heroStat">
-          <strong>Free Help</strong>
-          <span>Get counselling if you’re confused about which exam suits you.</span>
-        </div>
+      <div class="logoStrip">
+        <div class="logoPill">CAT</div>
+        <div class="logoPill">XAT</div>
+        <div class="logoPill">NMAT</div>
+        <div class="logoPill">SNAP</div>
+        <div class="logoPill">CMAT</div>
+        <div class="logoPill">MAT</div>
       </div>
     </section>
 
     <section class="section" id="topExams">
-      <div class="sectionHead">
-        <div>
-          <h2>Top MBA Exams to Explore</h2>
-          <p>These are the main exam routes students use for MBA/PGDM admissions across India.</p>
-        </div>
-      </div>
-
-      <div class="examGrid">
-
-        <div class="examCard">
-          <div class="examCardTop">
-            <div class="examCardIcon">📘</div>
-            <span class="examYear">CAT 2026</span>
+      <div class="sectionWrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Our Most <span>Popular Exams</span></h2>
+            <p>Start with the main MBA entrance exams students usually target for top, premium, practical, and backup-friendly admission routes.</p>
           </div>
-          <h3>CAT</h3>
-          <p class="examSub">The most searched MBA exam for IIMs and a wide range of top management institutes.</p>
-          <div class="examMeta">
-            <span>IIMs</span>
-            <span>Top B-Schools</span>
-            <span>High Competition</span>
-          </div>
-          <div class="examBottom">
-            <a href="page.html?slug=cat-exam-2026" class="primaryBtn">View CAT Guide</a>
-            <a href="colleges.html?search=CAT" class="secondaryBtn">CAT Colleges</a>
-          </div>
+          <a href="javascript:void(0)" onclick="openLeadPopup('Popular Exams Explore CTA')" class="sectionLink">Need help choosing? ↗</a>
         </div>
 
-        <div class="examCard">
-          <div class="examCardTop">
-            <div class="examCardIcon">🧠</div>
-            <span class="examYear">XAT 2026</span>
-          </div>
-          <h3>XAT</h3>
-          <p class="examSub">A premium exam route popular for XLRI and many respected private MBA institutions.</p>
-          <div class="examMeta">
-            <span>XLRI</span>
-            <span>Essay + GK</span>
-            <span>Private B-Schools</span>
-          </div>
-          <div class="examBottom">
-            <a href="page.html?slug=xat-exam-2026" class="primaryBtn">View XAT Guide</a>
-            <a href="colleges.html?search=XAT" class="secondaryBtn">XAT Colleges</a>
-          </div>
-        </div>
+        <div class="examGrid">
 
-        <div class="examCard">
-          <div class="examCardTop">
-            <div class="examCardIcon">🎯</div>
-            <span class="examYear">NMAT 2026</span>
+          <div class="examCard cat">
+            <div class="examCardTop">
+              <span class="examBadge">CAT 2026</span>
+              <div class="examStars">★★★★★</div>
+              <div class="examVisual">
+                <div class="examIcon">📘</div>
+                <div class="examMini">IIM Route</div>
+              </div>
+            </div>
+            <div class="examCardBody">
+              <div class="examMetaRow">
+                <div class="lessonTag"><span class="lessonDot"></span> 1st Priority Exam</div>
+                <div class="examStars">★★★★★</div>
+              </div>
+              <div class="examName">CAT</div>
+              <p class="examDesc">The strongest MBA entrance exam for IIMs and many top-tier B-schools across India.</p>
+              <div class="examTags">
+                <span>IIMs</span>
+                <span>Top B-Schools</span>
+                <span>High Competition</span>
+              </div>
+              <div class="examFooter">
+                <div class="examTeacher">
+                  <div class="teacherAvatar">🎯</div>
+                  <div class="teacherText">
+                    <strong>Best for ambitious students</strong>
+                    <span>Premium target route</span>
+                  </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <a href="page.html?slug=cat-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=CAT" class="examAction">Colleges</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3>NMAT</h3>
-          <p class="examSub">Great for students targeting NMIMS and those who prefer flexible attempt planning.</p>
-          <div class="examMeta">
-            <span>NMIMS</span>
-            <span>Flexible Attempts</span>
-            <span>Speed Based</span>
-          </div>
-          <div class="examBottom">
-            <a href="page.html?slug=nmat-exam-2026" class="primaryBtn">View NMAT Guide</a>
-            <a href="colleges.html?search=NMAT" class="secondaryBtn">NMAT Colleges</a>
-          </div>
-        </div>
 
-        <div class="examCard">
-          <div class="examCardTop">
-            <div class="examCardIcon">🚀</div>
-            <span class="examYear">SNAP 2026</span>
+          <div class="examCard xat">
+            <div class="examCardTop">
+              <span class="examBadge">XAT 2026</span>
+              <div class="examStars">★★★★★</div>
+              <div class="examVisual">
+                <div class="examIcon">🧠</div>
+                <div class="examMini" style="color:#6d4ae0;background:rgba(255,255,255,0.75);">XLRI Route</div>
+              </div>
+            </div>
+            <div class="examCardBody">
+              <div class="examMetaRow">
+                <div class="lessonTag"><span class="lessonDot" style="background:#8f6bff"></span> Premium Path</div>
+                <div class="examStars">★★★★★</div>
+              </div>
+              <div class="examName">XAT</div>
+              <p class="examDesc">A premium exam route known for XLRI and many respected private MBA institutes.</p>
+              <div class="examTags">
+                <span>XLRI</span>
+                <span>Essay + GK</span>
+                <span>Private B-Schools</span>
+              </div>
+              <div class="examFooter">
+                <div class="examTeacher">
+                  <div class="teacherAvatar">📚</div>
+                  <div class="teacherText">
+                    <strong>Strong private school route</strong>
+                    <span>High-value option</span>
+                  </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <a href="page.html?slug=xat-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=XAT" class="examAction">Colleges</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3>SNAP</h3>
-          <p class="examSub">A focused exam path mainly used for Symbiosis institutes and high-intent applicants.</p>
-          <div class="examMeta">
-            <span>Symbiosis</span>
-            <span>Short Format</span>
-            <span>Premium Route</span>
-          </div>
-          <div class="examBottom">
-            <a href="page.html?slug=snap-exam-2026" class="primaryBtn">View SNAP Guide</a>
-            <a href="colleges.html?search=SNAP" class="secondaryBtn">SNAP Colleges</a>
-          </div>
-        </div>
 
-        <div class="examCard">
-          <div class="examCardTop">
-            <div class="examCardIcon">📈</div>
-            <span class="examYear">CMAT 2026</span>
+          <div class="examCard nmat">
+            <div class="examCardTop">
+              <span class="examBadge">NMAT 2026</span>
+              <div class="examStars">★★★★★</div>
+              <div class="examVisual">
+                <div class="examIcon">🎯</div>
+                <div class="examMini">Flexible Attempts</div>
+              </div>
+            </div>
+            <div class="examCardBody">
+              <div class="examMetaRow">
+                <div class="lessonTag"><span class="lessonDot" style="background:#ff8f1f"></span> Flexible Exam</div>
+                <div class="examStars">★★★★★</div>
+              </div>
+              <div class="examName">NMAT</div>
+              <p class="examDesc">Ideal for students targeting NMIMS and those who prefer flexible test planning.</p>
+              <div class="examTags">
+                <span>NMIMS</span>
+                <span>Flexible Attempts</span>
+                <span>Speed Based</span>
+              </div>
+              <div class="examFooter">
+                <div class="examTeacher">
+                  <div class="teacherAvatar">⚡</div>
+                  <div class="teacherText">
+                    <strong>Good for strategic planners</strong>
+                    <span>Comfort-driven choice</span>
+                  </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <a href="page.html?slug=nmat-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=NMAT" class="examAction">Colleges</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3>CMAT</h3>
-          <p class="examSub">A practical and useful option for many AICTE-approved MBA/PGDM colleges.</p>
-          <div class="examMeta">
-            <span>AICTE Colleges</span>
-            <span>Affordable Paths</span>
-            <span>Wide Acceptance</span>
-          </div>
-          <div class="examBottom">
-            <a href="page.html?slug=cmat-exam-2026" class="primaryBtn">View CMAT Guide</a>
-            <a href="colleges.html?search=CMAT" class="secondaryBtn">CMAT Colleges</a>
-          </div>
-        </div>
 
-        <div class="examCard">
-          <div class="examCardTop">
-            <div class="examCardIcon">📝</div>
-            <span class="examYear">MAT 2026</span>
+          <div class="examCard snap">
+            <div class="examCardTop">
+              <span class="examBadge">SNAP 2026</span>
+              <div class="examStars">★★★★★</div>
+              <div class="examVisual">
+                <div class="examIcon">🚀</div>
+                <div class="examMini" style="color:#fff;background:rgba(123,76,224,0.26);">Symbiosis</div>
+              </div>
+            </div>
+            <div class="examCardBody">
+              <div class="examMetaRow">
+                <div class="lessonTag"><span class="lessonDot" style="background:#ff647d"></span> Focused Route</div>
+                <div class="examStars">★★★★★</div>
+              </div>
+              <div class="examName">SNAP</div>
+              <p class="examDesc">A focused path for students aiming at Symbiosis institutes and premium private colleges.</p>
+              <div class="examTags">
+                <span>Symbiosis</span>
+                <span>Short Format</span>
+                <span>Premium Route</span>
+              </div>
+              <div class="examFooter">
+                <div class="examTeacher">
+                  <div class="teacherAvatar">🏆</div>
+                  <div class="teacherText">
+                    <strong>High-intent applicants</strong>
+                    <span>Specialised target path</span>
+                  </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <a href="page.html?slug=snap-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=SNAP" class="examAction">Colleges</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3>MAT</h3>
-          <p class="examSub">A flexible backup-plus-opportunity exam with multiple sessions and broad relevance.</p>
-          <div class="examMeta">
-            <span>Multiple Sessions</span>
-            <span>Broad Reach</span>
-            <span>Strong Backup</span>
-          </div>
-          <div class="examBottom">
-            <a href="page.html?slug=mat-exam-2026" class="primaryBtn">View MAT Guide</a>
-            <a href="colleges.html?search=MAT" class="secondaryBtn">MAT Colleges</a>
-          </div>
-        </div>
 
+          <div class="examCard cmat">
+            <div class="examCardTop">
+              <span class="examBadge">CMAT 2026</span>
+              <div class="examStars">★★★★★</div>
+              <div class="examVisual">
+                <div class="examIcon">📈</div>
+                <div class="examMini">Wide Acceptance</div>
+              </div>
+            </div>
+            <div class="examCardBody">
+              <div class="examMetaRow">
+                <div class="lessonTag"><span class="lessonDot" style="background:#5d39d3"></span> Practical Option</div>
+                <div class="examStars">★★★★★</div>
+              </div>
+              <div class="examName">CMAT</div>
+              <p class="examDesc">A smart practical route for many AICTE-approved MBA and PGDM colleges across India.</p>
+              <div class="examTags">
+                <span>AICTE Colleges</span>
+                <span>Affordable Paths</span>
+                <span>Wide Acceptance</span>
+              </div>
+              <div class="examFooter">
+                <div class="examTeacher">
+                  <div class="teacherAvatar">💼</div>
+                  <div class="teacherText">
+                    <strong>Strong value option</strong>
+                    <span>Great for broader shortlists</span>
+                  </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <a href="page.html?slug=cmat-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=CMAT" class="examAction">Colleges</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="examCard mat">
+            <div class="examCardTop">
+              <span class="examBadge">MAT 2026</span>
+              <div class="examStars">★★★★★</div>
+              <div class="examVisual">
+                <div class="examIcon">📝</div>
+                <div class="examMini" style="color:#7a4f62;background:rgba(255,255,255,0.72);">Multiple Sessions</div>
+              </div>
+            </div>
+            <div class="examCardBody">
+              <div class="examMetaRow">
+                <div class="lessonTag"><span class="lessonDot" style="background:#ff8c37"></span> Backup + Opportunity</div>
+                <div class="examStars">★★★★★</div>
+              </div>
+              <div class="examName">MAT</div>
+              <p class="examDesc">A flexible backup-friendly exam with multiple sessions and broad college relevance.</p>
+              <div class="examTags">
+                <span>Multiple Sessions</span>
+                <span>Broad Reach</span>
+                <span>Strong Backup</span>
+              </div>
+              <div class="examFooter">
+                <div class="examTeacher">
+                  <div class="teacherAvatar">📌</div>
+                  <div class="teacherText">
+                    <strong>Good fallback option</strong>
+                    <span>Useful for extra chances</span>
+                  </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <a href="page.html?slug=mat-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=MAT" class="examAction">Colleges</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <section class="examJourney">
-      <div class="examJourneyHead">
-        <h2>How Students Should Explore Exams on This Page</h2>
-        <p>Instead of randomly jumping between exam names, use a more intentional flow to shortlist the right path.</p>
+    <section class="journeySection">
+      <div class="journeyLeft">
+        <h2>How students should explore exams on this page</h2>
+        <p>
+          Instead of randomly checking exam names, move step by step and choose the route that actually fits your goals, target colleges, and comfort level.
+        </p>
+
+        <div class="journeySteps">
+          <div class="journeyStep">
+            <div class="journeyNo">01</div>
+            <h3>Start with your target level</h3>
+            <p>Decide whether you want top-tier, premium private, practical, or backup-friendly options.</p>
+          </div>
+
+          <div class="journeyStep">
+            <div class="journeyNo">02</div>
+            <h3>Pick the right exam route</h3>
+            <p>Choose CAT, XAT, NMAT, SNAP, CMAT, or MAT based on your goal and exam style comfort.</p>
+          </div>
+
+          <div class="journeyStep">
+            <div class="journeyNo">03</div>
+            <h3>Explore colleges by exam</h3>
+            <p>See where each exam can actually take you and shortlist smarter.</p>
+          </div>
+
+          <div class="journeyStep">
+            <div class="journeyNo">04</div>
+            <h3>Take guidance if confused</h3>
+            <p>Get counselling for exam selection, college shortlisting, and admission support.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="journeyGrid">
-        <div class="journeyCard">
-          <div class="journeyNo">01</div>
-          <h3>Start with your target level</h3>
-          <p>Decide whether you are aiming for premium, practical, or backup-friendly MBA options.</p>
-        </div>
+      <div class="journeyRight">
+        <h3>Quick exam direction</h3>
+        <p>Here’s the easiest way to think about the big exams before you dive deep.</p>
 
-        <div class="journeyCard">
-          <div class="journeyNo">02</div>
-          <h3>Pick the exam route</h3>
-          <p>Choose CAT, XAT, NMAT, SNAP, CMAT, or MAT based on your goal and exam style comfort.</p>
-        </div>
+        <div class="quickList">
+          <div class="quickItem">
+            <div class="quickIcon">🏛️</div>
+            <div class="quickText">
+              <strong>CAT</strong>
+              <span>Best for IIMs and wide top B-school targeting.</span>
+            </div>
+          </div>
 
-        <div class="journeyCard">
-          <div class="journeyNo">03</div>
-          <h3>Explore colleges by exam</h3>
-          <p>Use the college result flow to see where that exam score can actually take you.</p>
-        </div>
+          <div class="quickItem">
+            <div class="quickIcon">🌟</div>
+            <div class="quickText">
+              <strong>XAT / SNAP</strong>
+              <span>Strong premium private-school routes.</span>
+            </div>
+          </div>
 
-        <div class="journeyCard">
-          <div class="journeyNo">04</div>
-          <h3>Take guidance if confused</h3>
-          <p>Get free counselling for shortlist clarity, exam strategy, and admission support.</p>
+          <div class="quickItem">
+            <div class="quickIcon">🎯</div>
+            <div class="quickText">
+              <strong>NMAT</strong>
+              <span>Good for flexible planning and NMIMS targeting.</span>
+            </div>
+          </div>
+
+          <div class="quickItem">
+            <div class="quickIcon">📚</div>
+            <div class="quickText">
+              <strong>CMAT / MAT</strong>
+              <span>Useful for practical, backup, and broader college choices.</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="sectionHead">
-        <div>
-          <h2>High-Intent Exam Guide Blocks</h2>
-          <p>These sections should later become strong SEO and conversion pages inside your CMS/content flow.</p>
-        </div>
-      </div>
-
-      <div class="guideGrid">
-        <div class="guideCard">
-          <span class="guideTag">High Intent</span>
-          <h3>Exam Syllabus & Pattern Pages</h3>
-          <p>Create pages for CAT syllabus, XAT pattern, SNAP pattern, NMAT pattern, and similar student search intent pages.</p>
-          <a href="resources.html" class="secondaryBtn">Go to Resources</a>
+      <div class="sectionWrap">
+        <div class="sectionHead">
+          <div>
+            <h2>High-Intent <span>Exam Guide Blocks</span></h2>
+            <p>These blocks can become strong SEO and conversion pages inside your CMS and content flow.</p>
+          </div>
         </div>
 
-        <div class="guideCard">
-          <span class="guideTag">SEO Strong</span>
-          <h3>Percentile-Wise College Lists</h3>
-          <p>Build pages like CAT 80-90 percentile colleges, XAT 85-95 colleges, SNAP score-based colleges, and more.</p>
-          <a href="colleges.html" class="secondaryBtn">Explore Colleges</a>
-        </div>
+        <div class="guideGrid">
+          <div class="guideCard">
+            <span class="guideTag">High Intent</span>
+            <h3>Exam syllabus & pattern pages</h3>
+            <p>Create focused pages for CAT syllabus, XAT pattern, SNAP pattern, NMAT pattern, and related search-intent pages students actually look for.</p>
+            <a href="resources.html" class="guideBtn">Go to Resources</a>
+          </div>
 
-        <div class="guideCard">
-          <span class="guideTag">Conversion</span>
-          <h3>Exam Accepted Colleges</h3>
-          <p>Students search by exam first. This page should push them directly toward matching colleges and counselling.</p>
-          <a href="colleges.html" class="secondaryBtn">See College Results</a>
-        </div>
+          <div class="guideCard">
+            <span class="guideTag">SEO Strong</span>
+            <h3>Percentile-wise college lists</h3>
+            <p>Build pages like CAT 80–90 percentile colleges, XAT 85–95 colleges, SNAP score-based colleges, and similar highly searchable pages.</p>
+            <a href="colleges.html" class="guideBtn">Explore Colleges</a>
+          </div>
 
-        <div class="guideCard">
-          <span class="guideTag">Guidance</span>
-          <h3>Which Exam Should You Target?</h3>
-          <p>A dedicated guidance page or tool can help students choose the most suitable exam based on their profile.</p>
-          <a href="javascript:void(0)" onclick="openLeadPopup('Exam Guidance Section')" class="primaryBtn">Get Free Guidance</a>
+          <div class="guideCard">
+            <span class="guideTag">Conversion</span>
+            <h3>Exam accepted colleges</h3>
+            <p>Many students search by exam first. This route should move them directly into colleges and counselling support.</p>
+            <a href="colleges.html" class="guideBtn">See College Results</a>
+          </div>
+
+          <div class="guideCard">
+            <span class="guideTag">Guidance</span>
+            <h3>Which exam should you target?</h3>
+            <p>A dedicated guidance page or tool can help students choose the best exam route based on their profile, goals, and comfort.</p>
+            <a href="javascript:void(0)" onclick="openLeadPopup('Exam Guidance Section')" class="guideBtn orange">Get Free Guidance</a>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="ctaSection">
-      <div>
-        <h2>Still Confused About Which MBA Exam to Target?</h2>
+      <div class="ctaText">
+        <h2>Still confused about which MBA exam to target?</h2>
         <p>
           Get free counselling for exam selection, college shortlisting, direct admission support, scholarships, and your overall MBA/PGDM application strategy.
         </p>
@@ -1203,10 +1691,10 @@
         </div>
       </div>
 
-      <div class="ctaFormBox">
+      <div class="ctaBox">
         <h3>Talk to Swadeshi Shiksha</h3>
-        <p>Get guidance on the right exam and the right MBA/PGDM path.</p>
-        <a href="javascript:void(0)" onclick="openLeadPopup('Exams Page Bottom CTA')" class="primaryBtn">Get Free MBA Guidance</a>
+        <p>Get guidance on the right exam and the right MBA/PGDM path with our counsellor support.</p>
+        <a href="javascript:void(0)" onclick="openLeadPopup('Exams Page Bottom CTA')" class="guideBtn orange">Get Free MBA Guidance</a>
       </div>
     </section>
 
