@@ -12,9 +12,29 @@
 
   <style>
     *{
-      box-sizing:border-box;
       margin:0;
       padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --bg:#fcfbff;
+      --text:#172031;
+      --muted:#6d7686;
+      --line:#ece6fb;
+      --purple:#6e49df;
+      --purple-dark:#5732c8;
+      --purple-soft:#f5f0ff;
+      --orange:#ff8b2b;
+      --orange-dark:#ff7411;
+      --card:#ffffff;
+      --shadow:0 14px 34px rgba(39,27,84,0.06);
+      --shadow-hover:0 18px 42px rgba(39,27,84,0.11);
+      --radius-xl:30px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --radius-sm:14px;
+      --container:1180px;
     }
 
     html{
@@ -23,11 +43,11 @@
 
     body{
       font-family:'Inter',sans-serif;
+      color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(122,85,231,0.07), transparent 24%),
-        radial-gradient(circle at top right, rgba(255,122,26,0.06), transparent 20%),
-        #fcfbff;
-      color:#16202f;
+        radial-gradient(circle at top left, rgba(110,73,223,0.06), transparent 24%),
+        radial-gradient(circle at top right, rgba(255,139,43,0.06), transparent 22%),
+        var(--bg);
     }
 
     a{
@@ -35,19 +55,19 @@
       color:inherit;
     }
 
-    button,input{
-      font:inherit;
-    }
-
     img{
       display:block;
       max-width:100%;
     }
 
+    button,input{
+      font:inherit;
+    }
+
     .page{
-      max-width:1220px;
+      max-width:var(--container);
       margin:0 auto;
-      padding:0 18px 84px;
+      padding:0 18px 70px;
     }
 
     /* HEADER */
@@ -55,36 +75,35 @@
       position:sticky;
       top:0;
       z-index:9999;
+      max-width:calc(var(--container) - 36px);
+      margin:14px auto 0;
+      padding:12px 18px;
+      border-radius:22px;
+      background:rgba(255,255,255,0.82);
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(231,224,249,0.95);
+      box-shadow:0 10px 28px rgba(39,27,84,0.07);
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:18px;
-      padding:14px 24px;
-      margin:14px auto 0;
-      background:rgba(255,255,255,0.84);
-      border:1px solid rgba(205,195,239,0.55);
-      backdrop-filter:blur(16px);
-      box-shadow:0 12px 34px rgba(36,29,79,0.08);
-      border-radius:24px;
-      max-width:calc(1220px - 36px);
     }
 
     .logo{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:10px;
       min-width:fit-content;
     }
 
     .logo img{
-      height:46px;
+      height:42px;
       width:auto;
     }
 
     .logo span{
+      font-size:15px;
       font-weight:800;
-      font-size:16px;
-      color:#16202f;
       letter-spacing:-0.02em;
     }
 
@@ -98,82 +117,67 @@
     }
 
     .nav a{
-      font-size:14px;
-      font-weight:600;
-      color:#596377;
-      padding:10px 13px;
+      padding:9px 12px;
       border-radius:999px;
+      font-size:13px;
+      font-weight:600;
+      color:#5e6879;
       white-space:nowrap;
-      transition:all .22s ease;
+      transition:all .2s ease;
     }
 
     .nav a:hover,
     .nav a.active{
-      color:#6948dd;
-      background:#f4efff;
+      color:var(--purple);
+      background:var(--purple-soft);
     }
 
     .cta{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      white-space:nowrap;
-      padding:12px 20px;
+      padding:11px 18px;
       border-radius:999px;
-      background:linear-gradient(135deg,#7b59e9,#5d36d2);
+      font-size:13px;
+      font-weight:800;
       color:#fff;
-      font-size:14px;
-      font-weight:700;
-      box-shadow:0 14px 28px rgba(93,54,210,0.20);
-      transition:all .22s ease;
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      box-shadow:0 12px 24px rgba(87,50,200,0.20);
+      white-space:nowrap;
       flex-shrink:0;
+      transition:all .2s ease;
     }
 
     .cta:hover{
       transform:translateY(-2px);
-      box-shadow:0 18px 34px rgba(93,54,210,0.28);
     }
 
     /* HERO */
     .hero{
       margin-top:22px;
-      position:relative;
     }
 
-    .heroShell{
+    .heroWrap{
       position:relative;
       overflow:hidden;
-      border-radius:38px;
-      background:linear-gradient(135deg,#ffffff 0%,#f8f4ff 55%,#fff8f1 100%);
-      border:1px solid #eee6fb;
-      box-shadow:0 24px 60px rgba(43,30,90,0.07);
-      padding:34px 30px 30px;
+      border-radius:34px;
+      padding:26px;
+      background:linear-gradient(135deg,#ffffff 0%, #f8f4ff 54%, #fff7ef 100%);
+      border:1px solid var(--line);
+      box-shadow:0 20px 52px rgba(41,28,88,0.07);
     }
 
-    .heroShell::before{
+    .heroWrap::before{
       content:"";
       position:absolute;
-      width:250px;
-      height:250px;
-      right:-75px;
-      top:-65px;
-      border-radius:46px;
-      background:linear-gradient(135deg,#d9caff,#c9b7ff);
-      transform:rotate(28deg);
-      opacity:.82;
-    }
-
-    .heroShell::after{
-      content:"";
-      position:absolute;
-      width:130px;
-      height:130px;
-      left:-42px;
-      bottom:40px;
-      border:3px solid #f4d29f;
-      border-radius:30px;
-      transform:rotate(22deg);
-      opacity:.55;
+      width:220px;
+      height:220px;
+      right:-68px;
+      top:-72px;
+      border-radius:42px;
+      background:linear-gradient(135deg,#dacbff,#c7b2ff);
+      opacity:.72;
+      transform:rotate(26deg);
     }
 
     .heroGrid{
@@ -181,488 +185,361 @@
       z-index:2;
       display:grid;
       grid-template-columns:1.05fr .95fr;
-      gap:28px;
+      gap:22px;
       align-items:center;
     }
 
-    .heroLabel{
+    .eyebrow{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:10px 16px;
+      padding:8px 13px;
       border-radius:999px;
       background:#f2ebff;
-      color:#6c49de;
       border:1px solid #e4d8ff;
-      font-size:12px;
+      color:var(--purple);
+      font-size:11px;
       font-weight:800;
-      letter-spacing:.03em;
-      margin-bottom:18px;
+      letter-spacing:.04em;
+      margin-bottom:14px;
     }
 
-    .heroTitle{
+    .hero h1{
       font-family:'Sora',sans-serif;
-      font-size:58px;
-      line-height:1.04;
+      font-size:48px;
+      line-height:1.02;
       letter-spacing:-0.045em;
-      color:#172031;
-      max-width:740px;
-      margin-bottom:16px;
+      max-width:640px;
+      margin-bottom:14px;
     }
 
-    .heroTitle .purple{
-      color:#6f4ae0;
+    .hero h1 .purple{
+      color:var(--purple);
     }
 
-    .heroTitle .orange{
-      color:#ff8b2b;
+    .hero h1 .orange{
+      color:var(--orange);
     }
 
-    .heroSub{
-      max-width:650px;
-      font-size:16px;
-      line-height:1.88;
-      color:#677286;
-      margin-bottom:24px;
+    .hero p{
+      max-width:540px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.75;
+      margin-bottom:20px;
     }
 
     .heroActions{
       display:flex;
       flex-wrap:wrap;
-      gap:12px;
+      gap:10px;
+      margin-bottom:18px;
     }
 
-    .heroBtnPrimary,
-    .heroBtnSecondary{
-      height:50px;
-      padding:0 20px;
+    .btnPrimary,
+    .btnSecondary{
+      height:46px;
+      padding:0 18px;
       border-radius:999px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      font-size:14px;
+      font-size:13px;
       font-weight:800;
-      transition:all .22s ease;
+      transition:all .2s ease;
     }
 
-    .heroBtnPrimary{
-      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
+    .btnPrimary{
+      background:linear-gradient(135deg,var(--orange),var(--orange-dark));
       color:#fff;
-      box-shadow:0 16px 28px rgba(255,122,26,0.22);
+      box-shadow:0 12px 24px rgba(255,116,17,0.18);
     }
 
-    .heroBtnPrimary:hover{
-      transform:translateY(-2px);
-    }
-
-    .heroBtnSecondary{
+    .btnSecondary{
       background:#fff;
-      color:#6948dd;
-      border:1px solid #e6dcff;
-      box-shadow:0 10px 22px rgba(67,49,132,0.05);
+      color:var(--purple);
+      border:1px solid #e7ddff;
+      box-shadow:0 8px 18px rgba(43,30,90,0.05);
     }
 
-    .heroBtnSecondary:hover{
+    .btnPrimary:hover,
+    .btnSecondary:hover{
       transform:translateY(-2px);
-      background:#f7f3ff;
+    }
+
+    .heroChips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .heroChips span{
+      padding:8px 11px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #ece5fb;
+      font-size:12px;
+      font-weight:700;
+      color:#5f6880;
     }
 
     .heroVisual{
       display:grid;
-      gap:14px;
-    }
-
-    .heroTopVisual{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:14px;
-    }
-
-    .heroPanel,
-    .heroMiniPanel,
-    .heroBottomPanel{
-      background:#fff;
-      border:1px solid #eee7fb;
-      box-shadow:0 18px 40px rgba(45,33,89,0.07);
-      border-radius:28px;
-    }
-
-    .heroPanel{
-      padding:22px;
-      min-height:240px;
-      background:linear-gradient(180deg,#ffffff 0%,#fbf8ff 100%);
-    }
-
-    .heroPanel h3{
-      font-family:'Sora',sans-serif;
-      font-size:24px;
-      line-height:1.18;
-      margin-bottom:8px;
-      letter-spacing:-0.03em;
-      color:#172031;
-    }
-
-    .heroPanel p{
-      font-size:14px;
-      line-height:1.72;
-      color:#667085;
-      margin-bottom:16px;
-    }
-
-    .heroMiniList{
-      display:grid;
-      gap:10px;
-    }
-
-    .heroMiniItem{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:11px 12px;
-      border-radius:18px;
-      background:#faf7ff;
-      border:1px solid #eee5ff;
-    }
-
-    .heroMiniLeft{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
-
-    .heroMiniIcon{
-      width:40px;
-      height:40px;
-      border-radius:14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#fff1e6,#efe8ff);
-      font-size:18px;
-      flex-shrink:0;
-    }
-
-    .heroMiniText strong{
-      display:block;
-      font-size:13px;
-      color:#20293a;
-      margin-bottom:2px;
-    }
-
-    .heroMiniText span{
-      display:block;
-      font-size:11px;
-      color:#8891a3;
-      line-height:1.4;
-    }
-
-    .heroMiniTag{
-      padding:7px 10px;
-      border-radius:999px;
-      background:#fff;
-      border:1px solid #ebdefe;
-      color:#6b49de;
-      font-size:11px;
-      font-weight:800;
-      flex-shrink:0;
-    }
-
-    .heroMiniPanel{
-      min-height:240px;
-      overflow:hidden;
-      position:relative;
-      padding:16px;
-      background:linear-gradient(135deg,#7b59e9 0%,#5b34cf 100%);
-      color:#fff;
-    }
-
-    .heroMiniPanel::before{
-      content:"";
-      position:absolute;
-      width:140px;
-      height:140px;
-      right:-32px;
-      top:-28px;
-      border-radius:30px;
-      background:rgba(255,255,255,0.12);
-      transform:rotate(22deg);
-    }
-
-    .heroMiniPanelTop{
-      position:relative;
-      z-index:2;
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      margin-bottom:14px;
-    }
-
-    .heroMiniPanelTop span{
-      padding:8px 11px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.14);
-      border:1px solid rgba(255,255,255,0.18);
-      font-size:11px;
-      font-weight:800;
-    }
-
-    .heroMiniPanelTop b{
-      font-size:13px;
-      font-weight:800;
-      color:#ffe3b8;
-    }
-
-    .heroIllustration{
-      position:relative;
-      z-index:2;
-      margin-top:10px;
-      height:120px;
-      border-radius:22px;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.34), transparent 20%),
-        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.24), transparent 20%),
-        linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
-      border:1px solid rgba(255,255,255,0.12);
-      overflow:hidden;
-    }
-
-    .heroIllustration::before,
-    .heroIllustration::after{
-      content:"";
-      position:absolute;
-      border-radius:18px;
-      background:rgba(255,255,255,0.16);
-      transform:rotate(15deg);
-    }
-
-    .heroIllustration::before{
-      width:110px;
-      height:70px;
-      left:18px;
-      top:28px;
-    }
-
-    .heroIllustration::after{
-      width:80px;
-      height:80px;
-      right:24px;
-      top:20px;
-    }
-
-    .heroBottomPanel{
-      padding:16px;
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
       gap:12px;
-      background:linear-gradient(135deg,#ffffff 0%,#fff8f3 100%);
     }
 
-    .heroStat{
-      padding:14px;
-      border-radius:20px;
-      background:#fff;
-      border:1px solid #f2e8da;
-      min-height:90px;
+    .heroBanner{
+      min-height:255px;
+      border-radius:26px;
+      overflow:hidden;
+      position:relative;
+      background:
+        linear-gradient(135deg, rgba(24,16,44,0.92) 0%, rgba(92,61,208,0.88) 58%, rgba(144,126,255,0.75) 100%),
+        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      box-shadow:var(--shadow);
+    }
+
+    .heroBanner::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.14));
+    }
+
+    .heroBannerContent{
+      position:relative;
+      z-index:2;
+      height:100%;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
+      padding:20px;
+      color:#fff;
     }
 
-    .heroStat strong{
+    .heroBadgeRow{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .heroBadgeRow span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.14);
+      border:1px solid rgba(255,255,255,0.16);
+      font-size:11px;
+      font-weight:800;
+    }
+
+    .heroBannerText h3{
       font-family:'Sora',sans-serif;
-      font-size:20px;
-      color:#1e293b;
+      font-size:26px;
+      line-height:1.05;
+      letter-spacing:-0.03em;
+      max-width:290px;
+      margin-bottom:8px;
+    }
+
+    .heroBannerText p{
+      color:rgba(255,255,255,0.84);
+      font-size:13px;
+      line-height:1.65;
+      max-width:300px;
+      margin:0;
+    }
+
+    .heroMiniStats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+
+    .heroMiniStat{
+      background:#fff;
+      border:1px solid #eee7fb;
+      border-radius:18px;
+      padding:14px;
+      box-shadow:var(--shadow);
+      min-height:84px;
+    }
+
+    .heroMiniStat strong{
+      display:block;
+      font-family:'Sora',sans-serif;
+      font-size:18px;
       line-height:1;
+      margin-bottom:8px;
+      color:var(--text);
     }
 
-    .heroStat span{
+    .heroMiniStat span{
+      display:block;
       font-size:12px;
-      line-height:1.6;
-      color:#7b8495;
+      line-height:1.55;
+      color:#7a8394;
     }
 
-    .examStrip{
-      margin-top:18px;
+    .examTicker{
+      margin-top:16px;
       display:grid;
       grid-template-columns:repeat(6,1fr);
-      gap:12px;
+      gap:10px;
     }
 
-    .examStripItem{
-      height:58px;
-      border-radius:20px;
-      background:rgba(255,255,255,0.82);
+    .examTicker div{
+      height:48px;
+      border-radius:16px;
+      background:rgba(255,255,255,0.78);
       border:1px solid #eee7fb;
       display:flex;
       align-items:center;
       justify-content:center;
       font-family:'Sora',sans-serif;
-      font-size:18px;
+      font-size:15px;
       font-weight:700;
-      color:#9b96ad;
-      box-shadow:0 10px 22px rgba(42,29,89,0.04);
+      color:#8f89a4;
+      box-shadow:0 8px 18px rgba(42,29,89,0.04);
     }
 
-    /* COMMON */
+    /* COMMON SECTIONS */
     .section{
-      margin-top:44px;
+      margin-top:34px;
     }
 
-    .sectionWrap{
-      background:linear-gradient(180deg,#fbf9ff 0%,#f8f5ff 100%);
-      border:1px solid #eee7fb;
-      border-radius:38px;
-      padding:34px 30px;
-      box-shadow:0 16px 40px rgba(42,29,89,0.05);
+    .sectionCard{
+      background:linear-gradient(180deg,#ffffff 0%,#fbf9ff 100%);
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:24px;
+      box-shadow:0 14px 34px rgba(42,29,89,0.05);
     }
 
     .sectionHead{
       display:flex;
-      justify-content:space-between;
       align-items:flex-end;
-      gap:18px;
+      justify-content:space-between;
+      gap:14px;
       flex-wrap:wrap;
-      margin-bottom:24px;
+      margin-bottom:18px;
     }
 
     .sectionHead h2{
       font-family:'Sora',sans-serif;
-      font-size:38px;
+      font-size:30px;
       line-height:1.08;
       letter-spacing:-0.04em;
-      color:#172031;
     }
 
     .sectionHead h2 span{
-      color:#6f4ae0;
+      color:var(--purple);
     }
 
     .sectionHead p{
-      margin-top:10px;
-      font-size:15px;
-      line-height:1.82;
-      color:#6d7586;
-      max-width:720px;
+      margin-top:8px;
+      font-size:14px;
+      line-height:1.7;
+      color:var(--muted);
+      max-width:580px;
     }
 
     .sectionLink{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      color:#6d48df;
-      font-size:14px;
-      font-weight:700;
+      font-size:13px;
+      font-weight:800;
+      color:var(--purple);
+      white-space:nowrap;
     }
 
-    /* EXAM GRID */
+    /* EXAMS GRID */
     .examGrid{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:20px;
+      gap:16px;
     }
 
     .examCard{
-      overflow:hidden;
       background:#fff;
       border:1px solid #eee7fb;
-      border-radius:26px;
-      box-shadow:0 14px 32px rgba(40,28,82,0.05);
-      transition:all .24s ease;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:all .22s ease;
     }
 
     .examCard:hover{
-      transform:translateY(-6px);
-      box-shadow:0 22px 44px rgba(40,28,82,0.10);
+      transform:translateY(-5px);
+      box-shadow:var(--shadow-hover);
     }
 
-    .examCardTop{
+    .examTop{
       position:relative;
-      height:168px;
-      overflow:hidden;
-      padding:18px;
+      height:126px;
+      padding:14px;
       display:flex;
       justify-content:space-between;
       align-items:flex-start;
+      overflow:hidden;
     }
 
-    .examCard.cat .examCardTop{
-      background:linear-gradient(135deg,#21162c 0%,#5e45c5 58%,#9388ff 100%);
-    }
-
-    .examCard.xat .examCardTop{
-      background:linear-gradient(135deg,#f2edff 0%,#e2d7ff 100%);
-    }
-
-    .examCard.nmat .examCardTop{
-      background:linear-gradient(135deg,#b094ff 0%,#7d58ef 100%);
-    }
-
-    .examCard.snap .examCardTop{
-      background:linear-gradient(135deg,#a987ff 0%,#f0bfdc 100%);
-    }
-
-    .examCard.cmat .examCardTop{
-      background:linear-gradient(135deg,#d1c2ff 0%,#7755e8 100%);
-    }
-
-    .examCard.mat .examCardTop{
-      background:linear-gradient(135deg,#f3d4e2 0%,#f9e5ee 100%);
-    }
-
-    .examCardTop::before{
+    .examTop::before{
       content:"";
       position:absolute;
-      width:150px;
-      height:150px;
+      width:120px;
+      height:120px;
       right:16px;
-      top:18px;
-      border-radius:28px;
+      top:12px;
+      border-radius:26px;
       background:rgba(255,255,255,0.14);
       transform:rotate(22deg);
     }
 
-    .examCardTop::after{
-      content:"";
-      position:absolute;
-      width:76px;
-      height:76px;
-      right:78px;
-      bottom:14px;
-      border-radius:20px;
-      background:rgba(255,255,255,0.16);
-      transform:rotate(24deg);
+    .examCard.cat .examTop{
+      background:linear-gradient(135deg,#241632 0%,#5f46c8 65%,#968cff 100%);
+      color:#fff;
     }
 
-    .examBadge{
+    .examCard.xat .examTop{
+      background:linear-gradient(135deg,#ece3ff 0%,#d7c8ff 100%);
+    }
+
+    .examCard.nmat .examTop{
+      background:linear-gradient(135deg,#9b7dff 0%,#6b45dd 100%);
+      color:#fff;
+    }
+
+    .examCard.snap .examTop{
+      background:linear-gradient(135deg,#b18aff 0%,#f0c1db 100%);
+    }
+
+    .examCard.cmat .examTop{
+      background:linear-gradient(135deg,#d9cdff 0%,#7a58eb 100%);
+      color:#fff;
+    }
+
+    .examCard.mat .examTop{
+      background:linear-gradient(135deg,#f6dce7 0%,#fdeef4 100%);
+    }
+
+    .examTopBadge{
       position:relative;
       z-index:2;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:7px 11px;
+      padding:7px 10px;
       border-radius:999px;
-      background:rgba(255,255,255,0.95);
-      color:#6e4be0;
-      font-size:11px;
+      background:rgba(255,255,255,0.92);
+      font-size:10px;
       font-weight:800;
-      letter-spacing:.02em;
+      color:var(--purple);
+      letter-spacing:.04em;
     }
 
-    .examStars{
-      position:relative;
-      z-index:2;
-      color:#ffd65a;
-      font-size:14px;
-      letter-spacing:1px;
-      font-weight:700;
-    }
-
-    .examVisual{
+    .examTopIcon{
       position:absolute;
-      left:18px;
-      bottom:18px;
+      left:14px;
+      bottom:14px;
       z-index:2;
       display:flex;
       align-items:center;
@@ -670,200 +547,154 @@
     }
 
     .examIcon{
-      width:54px;
-      height:54px;
-      border-radius:18px;
+      width:46px;
+      height:46px;
+      border-radius:16px;
       background:rgba(255,255,255,0.92);
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:24px;
-      box-shadow:0 12px 22px rgba(0,0,0,0.08);
+      font-size:22px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
     }
 
-    .examMini{
-      padding:8px 11px;
+    .examMiniTag{
+      padding:8px 10px;
       border-radius:999px;
-      background:rgba(255,255,255,0.22);
-      border:1px solid rgba(255,255,255,0.32);
-      color:#fff;
-      font-size:12px;
-      font-weight:700;
+      background:rgba(255,255,255,0.18);
+      border:1px solid rgba(255,255,255,0.22);
+      font-size:11px;
+      font-weight:800;
       backdrop-filter:blur(8px);
     }
 
-    .examCardBody{
-      padding:18px;
+    .examBody{
+      padding:16px;
     }
 
-    .examMetaRow{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:12px;
-    }
-
-    .lessonTag{
-      display:inline-flex;
-      align-items:center;
-      gap:7px;
-      font-size:12px;
-      font-weight:700;
-      color:#697386;
-    }
-
-    .lessonDot{
-      width:9px;
-      height:9px;
-      border-radius:50%;
-      background:#6d4ae0;
-      display:inline-block;
-    }
-
-    .examName{
+    .examBody h3{
       font-family:'Sora',sans-serif;
-      font-size:24px;
+      font-size:22px;
       line-height:1.08;
       letter-spacing:-0.03em;
-      color:#16202f;
-      margin-bottom:10px;
+      margin-bottom:8px;
     }
 
-    .examDesc{
-      font-size:14px;
-      line-height:1.76;
-      color:#667085;
-      min-height:72px;
+    .examBody p{
+      font-size:13px;
+      line-height:1.7;
+      color:var(--muted);
+      margin-bottom:12px;
+      min-height:44px;
+    }
+
+    .tagRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
       margin-bottom:14px;
     }
 
-    .examTags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-bottom:16px;
-    }
-
-    .examTags span{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:7px 10px;
+    .tagRow span{
+      padding:7px 9px;
       border-radius:999px;
-      font-size:11px;
+      background:#faf7ff;
+      border:1px solid #ece5fb;
+      font-size:10.5px;
       font-weight:800;
       color:#696279;
-      background:#faf7ff;
-      border:1px solid #ece4fb;
     }
 
     .examFooter{
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:12px;
+      gap:10px;
       flex-wrap:wrap;
     }
 
-    .examTeacher{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
-
-    .teacherAvatar{
-      width:36px;
-      height:36px;
-      border-radius:50%;
-      background:linear-gradient(135deg,#f1e9ff,#ffe7d2);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:16px;
-      flex-shrink:0;
-    }
-
-    .teacherText strong{
-      display:block;
-      font-size:12px;
-      color:#212a3a;
-      margin-bottom:2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width:148px;
-    }
-
-    .teacherText span{
-      display:block;
+    .examFit{
       font-size:11px;
-      color:#8a92a1;
+      font-weight:700;
+      color:#7d8697;
     }
 
-    .examAction{
+    .examBtns{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .miniBtn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:9px 14px;
+      padding:9px 13px;
       border-radius:999px;
-      font-size:12px;
+      font-size:11px;
       font-weight:800;
-      color:#fff;
-      background:linear-gradient(135deg,#7a55e7,#6037d4);
-      box-shadow:0 10px 18px rgba(96,55,212,0.18);
-      white-space:nowrap;
-      transition:all .22s ease;
+      transition:all .2s ease;
     }
 
-    .examAction:hover{
+    .miniBtn.orange{
+      background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+      color:#fff;
+      box-shadow:0 10px 18px rgba(255,116,17,0.15);
+    }
+
+    .miniBtn.purple{
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      color:#fff;
+      box-shadow:0 10px 18px rgba(87,50,200,0.16);
+    }
+
+    .miniBtn:hover{
       transform:translateY(-2px);
     }
 
-    .examAction.orange{
-      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
-      box-shadow:0 10px 18px rgba(255,122,26,0.18);
-    }
-
-    /* VISUAL BANNER 1 */
-    .visualBanner{
-      margin-top:42px;
+    /* VISUAL BANNERS */
+    .bannerGrid{
+      margin-top:34px;
       display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:18px;
+      grid-template-columns:1.12fr .88fr;
+      gap:16px;
     }
 
-    .bannerCard{
+    .bannerLarge,
+    .bannerSmall{
       position:relative;
       overflow:hidden;
       border-radius:30px;
-      min-height:300px;
-      border:1px solid #eee7fb;
-      box-shadow:0 18px 42px rgba(42,29,89,0.06);
+      min-height:260px;
+      box-shadow:var(--shadow);
     }
 
-    .bannerCard.purpleDark{
-      background:linear-gradient(135deg,#2b1640 0%,#5638ba 60%,#8a7cff 100%);
+    .bannerLarge{
+      background:
+        linear-gradient(135deg, rgba(37,22,65,0.86) 0%, rgba(90,57,199,0.80) 55%, rgba(140,121,255,0.68) 100%),
+        url('https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
       color:#fff;
     }
 
-    .bannerCard.purpleSoft{
-      background:linear-gradient(135deg,#f2edff 0%,#dfd2ff 100%);
-      color:#172031;
+    .bannerSmall{
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.72), rgba(245,238,255,0.82)),
+        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      border:1px solid var(--line);
+      color:var(--text);
     }
 
-    .bannerCard.mix{
-      background:linear-gradient(135deg,#ffffff 0%,#f5f0ff 55%,#fff4ea 100%);
-      color:#172031;
+    .bannerOverlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(255,255,255,0.00),rgba(0,0,0,0.10));
     }
 
-    .bannerInner{
+    .bannerContent{
       position:relative;
       z-index:2;
       height:100%;
-      padding:24px;
+      padding:22px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
@@ -872,402 +703,157 @@
     .bannerTag{
       display:inline-flex;
       width:fit-content;
-      align-items:center;
-      justify-content:center;
-      padding:8px 12px;
+      padding:7px 10px;
       border-radius:999px;
-      font-size:11px;
+      font-size:10px;
       font-weight:800;
-      letter-spacing:.02em;
+      letter-spacing:.04em;
     }
 
-    .purpleDark .bannerTag{
-      background:rgba(255,255,255,0.12);
-      border:1px solid rgba(255,255,255,0.18);
+    .bannerLarge .bannerTag{
+      background:rgba(255,255,255,0.14);
+      border:1px solid rgba(255,255,255,0.16);
       color:#fff;
     }
 
-    .purpleSoft .bannerTag,
-    .mix .bannerTag{
+    .bannerSmall .bannerTag{
       background:#fff;
-      border:1px solid #ece4fb;
-      color:#6e4be0;
+      border:1px solid #ebdefe;
+      color:var(--purple);
     }
 
-    .bannerText h3{
+    .bannerContent h3{
       font-family:'Sora',sans-serif;
-      font-size:30px;
-      line-height:1.1;
+      font-size:28px;
+      line-height:1.06;
       letter-spacing:-0.03em;
-      margin-bottom:10px;
-      max-width:260px;
+      max-width:320px;
+      margin-bottom:8px;
     }
 
-    .bannerText p{
-      font-size:14px;
-      line-height:1.72;
-      max-width:260px;
-      opacity:.92;
+    .bannerContent p{
+      font-size:13px;
+      line-height:1.7;
+      max-width:320px;
+      color:inherit;
+      opacity:.9;
     }
 
-    .bannerScene{
-      position:relative;
-      height:130px;
-      border-radius:24px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,0.12);
-    }
-
-    .purpleDark .bannerScene{
-      background:linear-gradient(135deg,rgba(255,255,255,0.14),rgba(255,255,255,0.06));
-    }
-
-    .purpleSoft .bannerScene{
-      background:linear-gradient(135deg,#ffffff,#f7f3ff);
-      border-color:#e8ddff;
-    }
-
-    .mix .bannerScene{
-      background:linear-gradient(135deg,#ffffff,#fff6ef);
-      border-color:#eee5d9;
-    }
-
-    .screenMock{
-      position:absolute;
-      inset:14px;
-      border-radius:18px;
-      background:#fff;
-      box-shadow:0 12px 28px rgba(42,29,89,0.08);
-      overflow:hidden;
-    }
-
-    .screenTop{
-      height:22px;
-      background:linear-gradient(90deg,#efe8ff,#fff0e3);
-      border-bottom:1px solid #f3ebff;
-    }
-
-    .screenBody{
-      padding:12px;
-      display:grid;
-      gap:10px;
-    }
-
-    .line{
-      height:10px;
-      border-radius:999px;
-      background:#efe9ff;
-    }
-
-    .line.orange{
-      background:#ffe7cf;
-      width:62%;
-    }
-
-    .line.short{
-      width:42%;
-    }
-
-    .thumbGrid{
-      position:absolute;
-      inset:46px 14px 14px 14px;
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
+    .bannerStats{
+      display:flex;
+      flex-wrap:wrap;
       gap:8px;
     }
 
-    .thumb{
-      border-radius:12px;
-      background:linear-gradient(135deg,#ece4ff,#fff0e1);
+    .bannerStats span{
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:700;
     }
 
-    /* JOURNEY VISUAL */
-    .journeySection{
-      margin-top:44px;
-      display:grid;
-      grid-template-columns:.95fr 1.05fr;
-      gap:22px;
-      align-items:stretch;
-    }
-
-    .journeyLeft{
-      position:relative;
-      overflow:hidden;
-      border-radius:34px;
-      background:linear-gradient(135deg,#ffffff 0%,#faf7ff 100%);
-      border:1px solid #eee7fb;
-      box-shadow:0 18px 42px rgba(42,29,89,0.06);
-      padding:28px;
-    }
-
-    .journeyLeft::before{
-      content:"";
-      position:absolute;
-      width:170px;
-      height:170px;
-      right:-40px;
-      top:-42px;
-      border-radius:34px;
-      background:linear-gradient(135deg,#d7c8ff,#ffe4cf);
-      transform:rotate(28deg);
-      opacity:.65;
-    }
-
-    .journeyLeft h2{
-      position:relative;
-      z-index:2;
-      font-family:'Sora',sans-serif;
-      font-size:34px;
-      line-height:1.08;
-      letter-spacing:-0.04em;
-      color:#172031;
-      margin-bottom:12px;
-      max-width:420px;
-    }
-
-    .journeyLeft p{
-      position:relative;
-      z-index:2;
-      font-size:15px;
-      line-height:1.82;
-      color:#667085;
-      margin-bottom:22px;
-      max-width:480px;
-    }
-
-    .journeyMiniCards{
-      position:relative;
-      z-index:2;
-      display:grid;
-      gap:12px;
-    }
-
-    .journeyMiniCard{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      padding:16px;
-      border-radius:22px;
-      background:#fff;
-      border:1px solid #eee7fb;
-      box-shadow:0 10px 24px rgba(42,29,89,0.04);
-    }
-
-    .journeyMiniIcon{
-      width:46px;
-      height:46px;
-      border-radius:16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#efe6ff,#ffe8d4);
-      font-size:20px;
-      flex-shrink:0;
-    }
-
-    .journeyMiniCard strong{
-      display:block;
-      font-size:15px;
-      color:#1f2937;
-      margin-bottom:4px;
-    }
-
-    .journeyMiniCard span{
-      display:block;
-      font-size:13px;
-      line-height:1.7;
-      color:#778092;
-    }
-
-    .journeyRight{
-      position:relative;
-      overflow:hidden;
-      border-radius:34px;
-      background:linear-gradient(135deg,#7a55e7 0%,#5b34cf 100%);
-      box-shadow:0 22px 52px rgba(79,49,185,0.18);
-      padding:28px;
-      color:#fff;
-    }
-
-    .journeyRight::before{
-      content:"";
-      position:absolute;
-      width:200px;
-      height:200px;
-      right:-56px;
-      top:-60px;
-      border-radius:40px;
-      background:rgba(255,255,255,0.12);
-      transform:rotate(26deg);
-    }
-
-    .journeyRight h3{
-      position:relative;
-      z-index:2;
-      font-family:'Sora',sans-serif;
-      font-size:30px;
-      line-height:1.08;
-      letter-spacing:-0.03em;
-      margin-bottom:10px;
-      max-width:420px;
-    }
-
-    .journeyRight p{
-      position:relative;
-      z-index:2;
-      font-size:14px;
-      line-height:1.8;
-      color:rgba(255,255,255,0.84);
-      margin-bottom:20px;
-      max-width:500px;
-    }
-
-    .timelineWrap{
-      position:relative;
-      z-index:2;
-      display:grid;
-      gap:16px;
-    }
-
-    .timelineBar{
-      position:relative;
-      padding:18px 18px 18px 18px;
-      border-radius:24px;
-      background:rgba(255,255,255,0.12);
+    .bannerLarge .bannerStats span{
+      background:rgba(255,255,255,0.14);
       border:1px solid rgba(255,255,255,0.16);
-      backdrop-filter:blur(10px);
     }
 
-    .timelineLine{
-      position:absolute;
-      left:34px;
-      top:28px;
-      bottom:28px;
-      width:2px;
-      background:rgba(255,255,255,0.20);
+    .bannerSmall .bannerStats span{
+      background:#fff;
+      border:1px solid #ede5fb;
+      color:#5d6780;
     }
 
-    .timelineStep{
-      position:relative;
+    /* QUICK DECISION */
+    .decisionGrid{
       display:grid;
-      grid-template-columns:56px 1fr;
+      grid-template-columns:repeat(4,1fr);
       gap:14px;
-      align-items:start;
-      margin-bottom:18px;
     }
 
-    .timelineStep:last-child{
-      margin-bottom:0;
+    .decisionCard{
+      background:#fff;
+      border:1px solid #eee7fb;
+      border-radius:22px;
+      padding:18px;
+      box-shadow:var(--shadow);
+      min-height:150px;
     }
 
-    .stepDot{
-      width:34px;
-      height:34px;
-      border-radius:50%;
+    .decisionIcon{
+      width:44px;
+      height:44px;
+      border-radius:15px;
       display:flex;
       align-items:center;
       justify-content:center;
-      background:#fff;
-      color:#6c49de;
-      font-size:13px;
-      font-weight:800;
-      margin-left:10px;
-      box-shadow:0 10px 18px rgba(0,0,0,0.08);
-      position:relative;
-      z-index:2;
+      background:linear-gradient(135deg,#efe7ff,#ffe9d6);
+      font-size:20px;
+      margin-bottom:12px;
     }
 
-    .stepCard{
-      padding:14px 14px;
-      border-radius:18px;
-      background:rgba(255,255,255,0.10);
-      border:1px solid rgba(255,255,255,0.12);
-    }
-
-    .stepCard strong{
-      display:block;
+    .decisionCard h3{
       font-size:15px;
-      color:#fff;
-      margin-bottom:4px;
+      font-weight:800;
+      margin-bottom:6px;
+      color:var(--text);
     }
 
-    .stepCard span{
-      display:block;
-      font-size:13px;
-      line-height:1.7;
-      color:rgba(255,255,255,0.78);
+    .decisionCard p{
+      font-size:12.5px;
+      line-height:1.68;
+      color:var(--muted);
     }
 
-    /* GUIDE BLOCKS */
+    /* MINI GUIDE BLOCKS */
     .guideGrid{
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:18px;
-      margin-top:8px;
-    }
-
-    .guideCol{
-      display:grid;
-      gap:18px;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
     }
 
     .guideCard{
       background:#fff;
       border:1px solid #eee7fb;
-      border-radius:28px;
-      padding:24px;
-      box-shadow:0 14px 30px rgba(42,29,89,0.04);
-      transition:all .22s ease;
-      min-height:210px;
+      border-radius:24px;
+      padding:20px;
+      box-shadow:var(--shadow);
+      min-height:190px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
-    }
-
-    .guideCard.large{
-      min-height:245px;
+      transition:all .22s ease;
     }
 
     .guideCard:hover{
       transform:translateY(-4px);
-      box-shadow:0 20px 38px rgba(42,29,89,0.08);
-    }
-
-    .guideTop{
-      display:flex;
-      align-items:flex-start;
-      gap:14px;
-      margin-bottom:14px;
+      box-shadow:var(--shadow-hover);
     }
 
     .guideIcon{
-      width:52px;
-      height:52px;
-      border-radius:18px;
+      width:46px;
+      height:46px;
+      border-radius:15px;
       display:flex;
       align-items:center;
       justify-content:center;
-      background:linear-gradient(135deg,#f0e7ff,#ffe9d7);
-      font-size:24px;
-      flex-shrink:0;
+      background:linear-gradient(135deg,#f0e8ff,#ffe8d4);
+      font-size:21px;
+      margin-bottom:14px;
     }
 
     .guideCard h3{
       font-family:'Sora',sans-serif;
-      font-size:26px;
-      line-height:1.14;
+      font-size:20px;
+      line-height:1.1;
       letter-spacing:-0.03em;
-      color:#16202f;
-      margin-bottom:10px;
-      max-width:470px;
+      margin-bottom:8px;
     }
 
     .guideCard p{
-      font-size:14px;
-      line-height:1.8;
-      color:#667085;
-      max-width:540px;
-      margin-bottom:18px;
+      font-size:13px;
+      line-height:1.7;
+      color:var(--muted);
+      margin-bottom:14px;
     }
 
     .guideBtn{
@@ -1275,72 +861,70 @@
       align-items:center;
       justify-content:center;
       width:fit-content;
-      padding:11px 18px;
+      padding:10px 14px;
       border-radius:999px;
-      font-size:13px;
+      font-size:12px;
       font-weight:800;
       color:#fff;
-      background:linear-gradient(135deg,#7a55e7,#6037d4);
-      box-shadow:0 10px 18px rgba(96,55,212,0.16);
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      box-shadow:0 10px 18px rgba(87,50,200,0.14);
     }
 
     .guideBtn.orange{
-      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
-      box-shadow:0 10px 18px rgba(255,122,26,0.16);
+      background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+      box-shadow:0 10px 18px rgba(255,116,17,0.14);
     }
 
-    /* VISUAL SUPPORT BANNER */
-    .supportBanner{
-      margin-top:44px;
+    /* SUPPORT */
+    .supportWrap{
       display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:22px;
+      grid-template-columns:1.05fr .95fr;
+      gap:16px;
       align-items:stretch;
     }
 
     .supportLeft{
       position:relative;
       overflow:hidden;
-      border-radius:36px;
-      padding:34px 30px;
+      border-radius:30px;
+      padding:26px;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 18%),
-        radial-gradient(circle at bottom right, rgba(255,169,93,0.18), transparent 24%),
-        linear-gradient(135deg,#7a55e7 0%,#5b34cf 100%);
+        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 20%),
+        linear-gradient(135deg,#734fe3 0%, #5530c7 100%);
       color:#fff;
-      box-shadow:0 26px 58px rgba(69,43,161,0.18);
+      box-shadow:0 22px 46px rgba(76,49,176,0.17);
     }
 
     .supportLeft::before{
       content:"";
       position:absolute;
-      width:210px;
-      height:210px;
-      right:-56px;
+      width:190px;
+      height:190px;
+      right:-54px;
       top:-56px;
-      border-radius:40px;
+      border-radius:38px;
       background:rgba(255,255,255,0.12);
-      transform:rotate(28deg);
+      transform:rotate(26deg);
     }
 
     .supportLeft h2{
       position:relative;
       z-index:2;
       font-family:'Sora',sans-serif;
-      font-size:40px;
-      line-height:1.08;
+      font-size:34px;
+      line-height:1.05;
       letter-spacing:-0.04em;
+      max-width:500px;
       margin-bottom:12px;
-      max-width:560px;
     }
 
     .supportLeft p{
       position:relative;
       z-index:2;
-      font-size:15px;
-      line-height:1.86;
+      font-size:14px;
+      line-height:1.76;
       color:rgba(255,255,255,0.86);
-      max-width:620px;
+      max-width:560px;
       margin-bottom:18px;
     }
 
@@ -1349,20 +933,17 @@
       z-index:2;
       display:flex;
       flex-wrap:wrap;
-      gap:10px;
-      margin-bottom:20px;
+      gap:8px;
+      margin-bottom:18px;
     }
 
     .supportPoints span{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 13px;
+      padding:9px 11px;
       border-radius:999px;
+      font-size:12px;
+      font-weight:700;
       background:rgba(255,255,255,0.12);
       border:1px solid rgba(255,255,255,0.16);
-      font-size:13px;
-      font-weight:700;
     }
 
     .supportBtn{
@@ -1371,183 +952,88 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:12px 18px;
+      padding:12px 17px;
       border-radius:999px;
-      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
-      color:#fff;
-      font-size:14px;
+      font-size:13px;
       font-weight:800;
-      box-shadow:0 12px 22px rgba(255,122,26,0.18);
+      color:#fff;
+      background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+      box-shadow:0 12px 22px rgba(255,116,17,0.18);
     }
 
     .supportRight{
       position:relative;
       overflow:hidden;
-      border-radius:36px;
-      background:linear-gradient(135deg,#ffffff 0%,#f5f0ff 55%,#fff6ee 100%);
-      border:1px solid #eee7fb;
-      box-shadow:0 18px 42px rgba(42,29,89,0.06);
-      padding:22px;
+      border-radius:30px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.65), rgba(245,239,255,0.80)),
+        url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      min-height:340px;
     }
 
-    .supportMock{
-      height:100%;
-      min-height:330px;
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:14px;
+    .supportRight::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.12));
     }
 
-    .supportMainMock,
-    .supportSideMock{
-      background:#fff;
-      border:1px solid #eee7fb;
-      border-radius:24px;
-      box-shadow:0 12px 28px rgba(42,29,89,0.05);
-      overflow:hidden;
-    }
-
-    .supportMainMock{
+    .supportFloating{
+      position:absolute;
+      right:18px;
+      bottom:18px;
+      z-index:2;
+      width:min(310px, calc(100% - 36px));
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:blur(12px);
+      border:1px solid #ece4fb;
+      border-radius:22px;
       padding:16px;
-      display:grid;
-      gap:12px;
+      box-shadow:0 16px 34px rgba(35,22,78,0.12);
     }
 
-    .mockHero{
-      height:90px;
-      border-radius:18px;
-      background:linear-gradient(135deg,#ede5ff,#ffe9d7);
-    }
-
-    .mockRow{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;
-    }
-
-    .mockCard{
-      height:86px;
-      border-radius:16px;
-      background:#faf7ff;
-      border:1px solid #eee5ff;
-    }
-
-    .supportSideMock{
-      padding:14px;
-      display:grid;
-      gap:10px;
-      align-content:start;
-    }
-
-    .miniPanel{
-      height:62px;
-      border-radius:16px;
-      background:#faf7ff;
-      border:1px solid #eee5ff;
-    }
-
-    .miniPanel.tall{
-      height:110px;
-      background:linear-gradient(135deg,#efe6ff,#fff0e2);
-    }
-
-    /* CTA */
-    .ctaSection{
-      margin-top:42px;
-      border-radius:36px;
-      background:linear-gradient(180deg,#fff 0%,#fbf8ff 100%);
-      border:1px solid #eee7fb;
-      padding:32px;
-      display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:24px;
-      color:#16202f;
-      box-shadow:0 18px 42px rgba(42,29,89,0.06);
-    }
-
-    .ctaText h2{
+    .supportFloating h3{
+      font-size:18px;
       font-family:'Sora',sans-serif;
-      font-size:38px;
       line-height:1.08;
-      letter-spacing:-0.04em;
-      margin-bottom:12px;
-      color:#172031;
-    }
-
-    .ctaText p{
-      font-size:15px;
-      line-height:1.85;
-      color:#667085;
-      max-width:620px;
-    }
-
-    .ctaPoints{
-      margin-top:20px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
-    .ctaPoints span{
-      padding:10px 13px;
-      border-radius:999px;
-      background:#f5f0ff;
-      border:1px solid #e8defd;
-      font-size:13px;
-      font-weight:700;
-      color:#6a49de;
-    }
-
-    .ctaBox{
-      background:linear-gradient(135deg,#7a55e7 0%,#5b34cf 100%);
-      border-radius:28px;
-      padding:24px;
-      color:#fff;
-      box-shadow:0 18px 40px rgba(25,15,69,0.16);
-      align-self:center;
-    }
-
-    .ctaBox h3{
-      font-family:'Sora',sans-serif;
-      font-size:26px;
-      line-height:1.12;
       letter-spacing:-0.03em;
-      margin-bottom:10px;
-      color:#fff;
+      margin-bottom:8px;
     }
 
-    .ctaBox p{
-      color:rgba(255,255,255,0.84);
-      font-size:14px;
-      line-height:1.8;
-      margin-bottom:16px;
+    .supportFloating p{
+      font-size:12.5px;
+      line-height:1.65;
+      color:var(--muted);
+      margin-bottom:12px;
     }
 
     /* FOOTER */
     .footer{
-      margin-top:34px;
+      margin-top:28px;
       background:#16202f;
       color:#fff;
-      border-radius:30px;
-      padding:30px 24px;
+      border-radius:26px;
+      padding:26px 22px;
     }
 
     .footerGrid{
       display:grid;
       grid-template-columns:1.2fr 1fr 1fr 1fr;
-      gap:22px;
+      gap:18px;
     }
 
     .footer h3,
     .footer h4{
-      margin-bottom:12px;
+      margin-bottom:10px;
     }
 
     .footer p,
     .footer li{
-      color:rgba(255,255,255,0.76);
+      font-size:13px;
       line-height:1.75;
-      font-size:14px;
+      color:rgba(255,255,255,0.76);
     }
 
     .footer ul{
@@ -1555,7 +1041,7 @@
     }
 
     .footer li{
-      margin-bottom:8px;
+      margin-bottom:7px;
     }
 
     /* POPUP */
@@ -1572,69 +1058,68 @@
 
     .popupCard{
       width:100%;
-      max-width:470px;
+      max-width:450px;
       background:#fff;
-      border-radius:28px;
-      padding:26px;
+      border-radius:26px;
+      padding:24px;
       position:relative;
-      box-shadow:0 28px 70px rgba(15,23,42,0.24);
+      box-shadow:0 30px 70px rgba(15,23,42,0.24);
     }
 
     .popupClose{
       position:absolute;
-      right:16px;
-      top:14px;
+      right:14px;
+      top:12px;
       border:none;
       background:transparent;
-      font-size:26px;
+      font-size:24px;
       color:#6b7280;
       cursor:pointer;
     }
 
     .popupCard h3{
       font-family:'Sora',sans-serif;
-      font-size:28px;
+      font-size:26px;
       line-height:1.08;
       letter-spacing:-0.03em;
       margin-bottom:10px;
-      color:#172030;
     }
 
     .popupCard p{
-      color:#667085;
-      line-height:1.75;
-      font-size:15px;
-      margin-bottom:18px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+      margin-bottom:16px;
     }
 
     .popupCard input{
       width:100%;
-      padding:15px 14px;
-      border-radius:16px;
+      padding:14px 14px;
+      border-radius:15px;
       border:1px solid #dddff0;
       outline:none;
-      margin-bottom:12px;
+      margin-bottom:11px;
       font-size:14px;
-      transition:border-color .2s ease, box-shadow .2s ease;
       background:#fcfcff;
+      transition:border-color .2s ease, box-shadow .2s ease;
     }
 
     .popupCard input:focus{
-      border-color:#7b59e9;
-      box-shadow:0 0 0 4px rgba(123,89,233,0.10);
+      border-color:var(--purple);
+      box-shadow:0 0 0 4px rgba(110,73,223,0.10);
     }
 
     .popupSubmit{
       width:100%;
       border:none;
-      padding:15px;
-      border-radius:16px;
-      background:linear-gradient(135deg,#7a55e7,#6037d4);
+      padding:14px;
+      border-radius:15px;
+      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
       color:#fff;
-      font-size:15px;
+      font-size:14px;
       font-weight:800;
       cursor:pointer;
-      box-shadow:0 14px 28px rgba(96,55,212,0.18);
+      box-shadow:0 14px 28px rgba(87,50,200,0.18);
     }
 
     .popupNote{
@@ -1647,9 +1132,8 @@
     /* RESPONSIVE */
     @media (max-width:1100px){
       .heroGrid,
-      .journeySection,
-      .supportBanner,
-      .ctaSection{
+      .supportWrap,
+      .bannerGrid{
         grid-template-columns:1fr;
       }
 
@@ -1657,33 +1141,29 @@
         grid-template-columns:repeat(2,minmax(0,1fr));
       }
 
-      .visualBanner{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .visualBanner .bannerCard:last-child{
-        grid-column:1 / -1;
+      .decisionGrid{
+        grid-template-columns:repeat(2,1fr);
       }
 
       .guideGrid{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr 1fr;
       }
 
       .footerGrid{
         grid-template-columns:1fr 1fr;
       }
 
-      .examStrip{
+      .examTicker{
         grid-template-columns:repeat(3,1fr);
       }
     }
 
-    @media (max-width:920px){
+    @media (max-width:900px){
       .header{
         flex-wrap:wrap;
         justify-content:center;
-        padding:14px 16px;
-        margin:14px 14px 0;
+        padding:12px 14px;
+        margin:12px 12px 0;
       }
 
       .logo{
@@ -1700,94 +1180,70 @@
         width:100%;
       }
 
-      .heroTitle{
-        font-size:44px;
+      .hero h1{
+        font-size:38px;
       }
 
-      .heroTopVisual,
-      .heroBottomPanel,
-      .supportMock{
+      .heroMiniStats{
         grid-template-columns:1fr;
-      }
-
-      .examGrid{
-        grid-template-columns:1fr 1fr;
       }
     }
 
     @media (max-width:680px){
       .page{
-        padding:0 14px 60px;
+        padding:0 14px 58px;
       }
 
-      .heroShell,
-      .sectionWrap,
-      .journeyLeft,
-      .journeyRight,
+      .heroWrap,
+      .sectionCard,
       .supportLeft,
-      .supportRight,
-      .ctaSection{
-        padding:24px 16px;
-        border-radius:28px;
+      .footer{
+        padding:20px 16px;
+        border-radius:24px;
       }
 
-      .heroTitle{
-        font-size:34px;
-      }
-
-      .heroSub{
-        font-size:14px;
-        line-height:1.8;
-      }
-
-      .heroActions{
-        gap:10px;
-      }
-
-      .heroBtnPrimary,
-      .heroBtnSecondary{
-        width:100%;
-      }
-
-      .examStrip{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .sectionHead h2,
-      .supportLeft h2,
-      .ctaText h2{
+      .hero h1{
         font-size:30px;
       }
 
-      .journeyLeft h2,
-      .journeyRight h3{
-        font-size:28px;
+      .hero p{
+        font-size:14px;
+      }
+
+      .heroActions{
+        gap:8px;
+      }
+
+      .btnPrimary,
+      .btnSecondary{
+        width:100%;
+      }
+
+      .sectionHead h2,
+      .supportLeft h2{
+        font-size:26px;
       }
 
       .examGrid,
-      .visualBanner,
+      .decisionGrid,
+      .guideGrid,
       .footerGrid{
         grid-template-columns:1fr;
       }
 
-      .visualBanner .bannerCard:last-child{
-        grid-column:auto;
+      .examTicker{
+        grid-template-columns:repeat(2,1fr);
       }
 
-      .timelineStep{
-        grid-template-columns:46px 1fr;
+      .supportRight{
+        min-height:280px;
       }
 
-      .guideCard{
-        min-height:auto;
-      }
-
-      .guideCard h3{
-        font-size:24px;
-      }
-
-      .ctaBox{
-        padding:20px;
+      .supportFloating{
+        position:absolute;
+        left:14px;
+        right:14px;
+        width:auto;
       }
     }
   </style>
@@ -1813,110 +1269,83 @@
   <div class="page">
 
     <section class="hero">
-      <div class="heroShell">
+      <div class="heroWrap">
         <div class="heroGrid">
           <div>
-            <div class="heroLabel">MBA Entrance Exams 2026</div>
+            <div class="eyebrow">MBA Entrance Exams 2026</div>
 
-            <h1 class="heroTitle">
-              Find the <span class="purple">right exam path</span> for your <span class="orange">MBA future</span>
+            <h1>
+              Pick the <span class="purple">right exam</span>, build the <span class="orange">right MBA path</span>
             </h1>
 
-            <p class="heroSub">
-              Explore CAT, XAT, NMAT, SNAP, CMAT, and MAT through a cleaner, more visual, and more premium experience built for MBA and PGDM aspirants across India.
+            <p>
+              No long boring text. Just the major exams, quick direction, and the right next step for your MBA or PGDM plan.
             </p>
 
             <div class="heroActions">
-              <a href="#topExams" class="heroBtnPrimary">Explore Top Exams</a>
-              <a href="javascript:void(0)" onclick="openLeadPopup('Hero Exam Guidance CTA')" class="heroBtnSecondary">Get Free Guidance</a>
+              <a href="#topExams" class="btnPrimary">Explore Top Exams</a>
+              <a href="javascript:void(0)" onclick="openLeadPopup('Hero Exam Guidance CTA')" class="btnSecondary">Get Free Guidance</a>
+            </div>
+
+            <div class="heroChips">
+              <span>CAT</span>
+              <span>XAT</span>
+              <span>NMAT</span>
+              <span>SNAP</span>
+              <span>CMAT</span>
+              <span>MAT</span>
             </div>
           </div>
 
           <div class="heroVisual">
-            <div class="heroTopVisual">
-              <div class="heroPanel">
-                <h3>Top exams students usually start with</h3>
-                <p>Choose the route that matches your target colleges and comfort level.</p>
-
-                <div class="heroMiniList">
-                  <div class="heroMiniItem">
-                    <div class="heroMiniLeft">
-                      <div class="heroMiniIcon">📘</div>
-                      <div class="heroMiniText">
-                        <strong>CAT</strong>
-                        <span>IIMs & top B-schools</span>
-                      </div>
-                    </div>
-                    <span class="heroMiniTag">Premium</span>
-                  </div>
-
-                  <div class="heroMiniItem">
-                    <div class="heroMiniLeft">
-                      <div class="heroMiniIcon">🧠</div>
-                      <div class="heroMiniText">
-                        <strong>XAT</strong>
-                        <span>XLRI & private schools</span>
-                      </div>
-                    </div>
-                    <span class="heroMiniTag">Strong</span>
-                  </div>
-
-                  <div class="heroMiniItem">
-                    <div class="heroMiniLeft">
-                      <div class="heroMiniIcon">🎯</div>
-                      <div class="heroMiniText">
-                        <strong>NMAT</strong>
-                        <span>Flexible attempts</span>
-                      </div>
-                    </div>
-                    <span class="heroMiniTag">Flexible</span>
-                  </div>
+            <div class="heroBanner">
+              <div class="heroBannerContent">
+                <div class="heroBadgeRow">
+                  <span>Visual Exam Guide</span>
+                  <span>6 Major Exams</span>
                 </div>
-              </div>
 
-              <div class="heroMiniPanel">
-                <div class="heroMiniPanelTop">
-                  <span>Visual Guide</span>
-                  <b>6+ exams</b>
+                <div class="heroBannerText">
+                  <h3>Start with the exam that matches your goal</h3>
+                  <p>IIM route, premium private route, or broader college route — choose faster.</p>
                 </div>
-                <div class="heroIllustration"></div>
               </div>
             </div>
 
-            <div class="heroBottomPanel">
-              <div class="heroStat">
+            <div class="heroMiniStats">
+              <div class="heroMiniStat">
                 <strong>6+</strong>
-                <span>Major MBA exams covered</span>
+                <span>Main MBA exams covered in one place</span>
               </div>
-              <div class="heroStat">
-                <strong>Exam First</strong>
-                <span>Pick route before shortlist</span>
+              <div class="heroMiniStat">
+                <strong>Quick</strong>
+                <span>Shorter content, easier scan, better flow</span>
               </div>
-              <div class="heroStat">
+              <div class="heroMiniStat">
                 <strong>Free Help</strong>
-                <span>Get counselling if confused</span>
+                <span>Talk to our counsellors if confused</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="examStrip">
-        <div class="examStripItem">CAT</div>
-        <div class="examStripItem">XAT</div>
-        <div class="examStripItem">NMAT</div>
-        <div class="examStripItem">SNAP</div>
-        <div class="examStripItem">CMAT</div>
-        <div class="examStripItem">MAT</div>
+      <div class="examTicker">
+        <div>CAT</div>
+        <div>XAT</div>
+        <div>NMAT</div>
+        <div>SNAP</div>
+        <div>CMAT</div>
+        <div>MAT</div>
       </div>
     </section>
 
     <section class="section" id="topExams">
-      <div class="sectionWrap">
+      <div class="sectionCard">
         <div class="sectionHead">
           <div>
-            <h2>Our Most <span>Popular Exams</span></h2>
-            <p>These are the main exam routes students use for MBA and PGDM admissions across India.</p>
+            <h2>Top <span>MBA Exams</span></h2>
+            <p>Main exam routes students usually target for MBA and PGDM admissions.</p>
           </div>
           <a href="javascript:void(0)" onclick="openLeadPopup('Popular Exams Section CTA')" class="sectionLink">Need help choosing? ↗</a>
         </div>
@@ -1924,222 +1353,156 @@
         <div class="examGrid">
 
           <div class="examCard cat">
-            <div class="examCardTop">
-              <span class="examBadge">CAT 2026</span>
-              <div class="examStars">★★★★★</div>
-              <div class="examVisual">
+            <div class="examTop">
+              <span class="examTopBadge">CAT 2026</span>
+              <div class="examTopIcon">
                 <div class="examIcon">📘</div>
-                <div class="examMini">IIM Route</div>
+                <div class="examMiniTag">IIM Route</div>
               </div>
             </div>
-            <div class="examCardBody">
-              <div class="examMetaRow">
-                <div class="lessonTag"><span class="lessonDot"></span> Top Priority Exam</div>
-                <div class="examStars">★★★★★</div>
-              </div>
-              <div class="examName">CAT</div>
-              <p class="examDesc">The strongest MBA entrance exam for IIMs and many top-tier B-schools across India.</p>
-              <div class="examTags">
+            <div class="examBody">
+              <h3>CAT</h3>
+              <p>Best fit for IIMs and many top-tier B-schools across India.</p>
+              <div class="tagRow">
                 <span>IIMs</span>
                 <span>Top B-Schools</span>
                 <span>High Competition</span>
               </div>
               <div class="examFooter">
-                <div class="examTeacher">
-                  <div class="teacherAvatar">🎯</div>
-                  <div class="teacherText">
-                    <strong>Best for ambitious students</strong>
-                    <span>Premium target route</span>
-                  </div>
-                </div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                  <a href="page.html?slug=cat-exam-2026" class="examAction orange">View Guide</a>
-                  <a href="colleges.html?search=CAT" class="examAction">Colleges</a>
+                <div class="examFit">Best for ambitious students</div>
+                <div class="examBtns">
+                  <a href="page.html?slug=cat-exam-2026" class="miniBtn orange">View Guide</a>
+                  <a href="colleges.html?search=CAT" class="miniBtn purple">Colleges</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="examCard xat">
-            <div class="examCardTop">
-              <span class="examBadge">XAT 2026</span>
-              <div class="examStars">★★★★★</div>
-              <div class="examVisual">
+            <div class="examTop">
+              <span class="examTopBadge">XAT 2026</span>
+              <div class="examTopIcon">
                 <div class="examIcon">🧠</div>
-                <div class="examMini" style="color:#6d4ae0;background:rgba(255,255,255,0.78);">XLRI Route</div>
+                <div class="examMiniTag" style="color:#6e49df;background:rgba(255,255,255,0.84);border:none;">XLRI Route</div>
               </div>
             </div>
-            <div class="examCardBody">
-              <div class="examMetaRow">
-                <div class="lessonTag"><span class="lessonDot" style="background:#8a65ff"></span> Premium Path</div>
-                <div class="examStars">★★★★★</div>
-              </div>
-              <div class="examName">XAT</div>
-              <p class="examDesc">A premium exam route known for XLRI and many respected private MBA institutes.</p>
-              <div class="examTags">
+            <div class="examBody">
+              <h3>XAT</h3>
+              <p>Strong route for XLRI and respected private MBA colleges.</p>
+              <div class="tagRow">
                 <span>XLRI</span>
-                <span>Essay + GK</span>
                 <span>Private B-Schools</span>
+                <span>Essay + GK</span>
               </div>
               <div class="examFooter">
-                <div class="examTeacher">
-                  <div class="teacherAvatar">📚</div>
-                  <div class="teacherText">
-                    <strong>Strong private-school route</strong>
-                    <span>High-value option</span>
-                  </div>
-                </div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                  <a href="page.html?slug=xat-exam-2026" class="examAction orange">View Guide</a>
-                  <a href="colleges.html?search=XAT" class="examAction">Colleges</a>
+                <div class="examFit">Premium private-school path</div>
+                <div class="examBtns">
+                  <a href="page.html?slug=xat-exam-2026" class="miniBtn orange">View Guide</a>
+                  <a href="colleges.html?search=XAT" class="miniBtn purple">Colleges</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="examCard nmat">
-            <div class="examCardTop">
-              <span class="examBadge">NMAT 2026</span>
-              <div class="examStars">★★★★★</div>
-              <div class="examVisual">
+            <div class="examTop">
+              <span class="examTopBadge">NMAT 2026</span>
+              <div class="examTopIcon">
                 <div class="examIcon">🎯</div>
-                <div class="examMini">Flexible Attempts</div>
+                <div class="examMiniTag">Flexible Attempts</div>
               </div>
             </div>
-            <div class="examCardBody">
-              <div class="examMetaRow">
-                <div class="lessonTag"><span class="lessonDot" style="background:#ff922c"></span> Flexible Exam</div>
-                <div class="examStars">★★★★★</div>
-              </div>
-              <div class="examName">NMAT</div>
-              <p class="examDesc">Ideal for students targeting NMIMS and those who prefer flexible test planning.</p>
-              <div class="examTags">
+            <div class="examBody">
+              <h3>NMAT</h3>
+              <p>Ideal for students who want flexibility and NMIMS-focused options.</p>
+              <div class="tagRow">
                 <span>NMIMS</span>
                 <span>Flexible Attempts</span>
                 <span>Speed Based</span>
               </div>
               <div class="examFooter">
-                <div class="examTeacher">
-                  <div class="teacherAvatar">⚡</div>
-                  <div class="teacherText">
-                    <strong>Good for strategic planners</strong>
-                    <span>Comfort-driven choice</span>
-                  </div>
-                </div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                  <a href="page.html?slug=nmat-exam-2026" class="examAction orange">View Guide</a>
-                  <a href="colleges.html?search=NMAT" class="examAction">Colleges</a>
+                <div class="examFit">Good for strategic planners</div>
+                <div class="examBtns">
+                  <a href="page.html?slug=nmat-exam-2026" class="miniBtn orange">View Guide</a>
+                  <a href="colleges.html?search=NMAT" class="miniBtn purple">Colleges</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="examCard snap">
-            <div class="examCardTop">
-              <span class="examBadge">SNAP 2026</span>
-              <div class="examStars">★★★★★</div>
-              <div class="examVisual">
+            <div class="examTop">
+              <span class="examTopBadge">SNAP 2026</span>
+              <div class="examTopIcon">
                 <div class="examIcon">🚀</div>
-                <div class="examMini" style="background:rgba(123,76,224,0.24);">Symbiosis</div>
+                <div class="examMiniTag" style="color:#5e3bcf;background:rgba(255,255,255,0.82);border:none;">Symbiosis</div>
               </div>
             </div>
-            <div class="examCardBody">
-              <div class="examMetaRow">
-                <div class="lessonTag"><span class="lessonDot" style="background:#ff617f"></span> Focused Route</div>
-                <div class="examStars">★★★★★</div>
-              </div>
-              <div class="examName">SNAP</div>
-              <p class="examDesc">A focused path for students aiming at Symbiosis institutes and premium private colleges.</p>
-              <div class="examTags">
+            <div class="examBody">
+              <h3>SNAP</h3>
+              <p>Focused option for Symbiosis institutes and premium private targets.</p>
+              <div class="tagRow">
                 <span>Symbiosis</span>
                 <span>Short Format</span>
                 <span>Premium Route</span>
               </div>
               <div class="examFooter">
-                <div class="examTeacher">
-                  <div class="teacherAvatar">🏆</div>
-                  <div class="teacherText">
-                    <strong>High-intent applicants</strong>
-                    <span>Specialised target path</span>
-                  </div>
-                </div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                  <a href="page.html?slug=snap-exam-2026" class="examAction orange">View Guide</a>
-                  <a href="colleges.html?search=SNAP" class="examAction">Colleges</a>
+                <div class="examFit">High-intent route</div>
+                <div class="examBtns">
+                  <a href="page.html?slug=snap-exam-2026" class="miniBtn orange">View Guide</a>
+                  <a href="colleges.html?search=SNAP" class="miniBtn purple">Colleges</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="examCard cmat">
-            <div class="examCardTop">
-              <span class="examBadge">CMAT 2026</span>
-              <div class="examStars">★★★★★</div>
-              <div class="examVisual">
+            <div class="examTop">
+              <span class="examTopBadge">CMAT 2026</span>
+              <div class="examTopIcon">
                 <div class="examIcon">📈</div>
-                <div class="examMini">Wide Acceptance</div>
+                <div class="examMiniTag">Wide Acceptance</div>
               </div>
             </div>
-            <div class="examCardBody">
-              <div class="examMetaRow">
-                <div class="lessonTag"><span class="lessonDot" style="background:#613ddb"></span> Practical Option</div>
-                <div class="examStars">★★★★★</div>
-              </div>
-              <div class="examName">CMAT</div>
-              <p class="examDesc">A smart practical route for many AICTE-approved MBA and PGDM colleges across India.</p>
-              <div class="examTags">
+            <div class="examBody">
+              <h3>CMAT</h3>
+              <p>Practical option for many AICTE-approved MBA and PGDM colleges.</p>
+              <div class="tagRow">
                 <span>AICTE Colleges</span>
-                <span>Affordable Paths</span>
+                <span>Value Route</span>
                 <span>Wide Acceptance</span>
               </div>
               <div class="examFooter">
-                <div class="examTeacher">
-                  <div class="teacherAvatar">💼</div>
-                  <div class="teacherText">
-                    <strong>Strong value option</strong>
-                    <span>Great for broader shortlists</span>
-                  </div>
-                </div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                  <a href="page.html?slug=cmat-exam-2026" class="examAction orange">View Guide</a>
-                  <a href="colleges.html?search=CMAT" class="examAction">Colleges</a>
+                <div class="examFit">Strong value option</div>
+                <div class="examBtns">
+                  <a href="page.html?slug=cmat-exam-2026" class="miniBtn orange">View Guide</a>
+                  <a href="colleges.html?search=CMAT" class="miniBtn purple">Colleges</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="examCard mat">
-            <div class="examCardTop">
-              <span class="examBadge">MAT 2026</span>
-              <div class="examStars">★★★★★</div>
-              <div class="examVisual">
+            <div class="examTop">
+              <span class="examTopBadge">MAT 2026</span>
+              <div class="examTopIcon">
                 <div class="examIcon">📝</div>
-                <div class="examMini" style="color:#7b5066;background:rgba(255,255,255,0.78);">Multiple Sessions</div>
+                <div class="examMiniTag" style="color:#7b5066;background:rgba(255,255,255,0.82);border:none;">Multiple Sessions</div>
               </div>
             </div>
-            <div class="examCardBody">
-              <div class="examMetaRow">
-                <div class="lessonTag"><span class="lessonDot" style="background:#ff8e36"></span> Backup + Opportunity</div>
-                <div class="examStars">★★★★★</div>
-              </div>
-              <div class="examName">MAT</div>
-              <p class="examDesc">A flexible backup-friendly exam with multiple sessions and broad college relevance.</p>
-              <div class="examTags">
+            <div class="examBody">
+              <h3>MAT</h3>
+              <p>Flexible backup-friendly exam with multiple sessions and broad reach.</p>
+              <div class="tagRow">
                 <span>Multiple Sessions</span>
                 <span>Broad Reach</span>
-                <span>Strong Backup</span>
+                <span>Backup Route</span>
               </div>
               <div class="examFooter">
-                <div class="examTeacher">
-                  <div class="teacherAvatar">📌</div>
-                  <div class="teacherText">
-                    <strong>Good fallback option</strong>
-                    <span>Useful for extra chances</span>
-                  </div>
-                </div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                  <a href="page.html?slug=mat-exam-2026" class="examAction orange">View Guide</a>
-                  <a href="colleges.html?search=MAT" class="examAction">Colleges</a>
+                <div class="examFit">Useful fallback option</div>
+                <div class="examBtns">
+                  <a href="page.html?slug=mat-exam-2026" class="miniBtn orange">View Guide</a>
+                  <a href="colleges.html?search=MAT" class="miniBtn purple">Colleges</a>
                 </div>
               </div>
             </div>
@@ -2149,273 +1512,142 @@
       </div>
     </section>
 
-    <section class="visualBanner">
-      <div class="bannerCard purpleDark">
-        <div class="bannerInner">
+    <section class="bannerGrid">
+      <div class="bannerLarge">
+        <div class="bannerOverlay"></div>
+        <div class="bannerContent">
+          <span class="bannerTag">Featured Banner</span>
           <div>
-            <span class="bannerTag">Visual Banner</span>
-            <div class="bannerText">
-              <h3>Choose smarter, not random</h3>
-              <p>Pick the exam path that matches your actual target colleges.</p>
-            </div>
+            <h3>Choose smarter, not randomly</h3>
+            <p>Pick the exam route that actually matches your college goals.</p>
           </div>
-          <div class="bannerScene">
-            <div class="screenMock">
-              <div class="screenTop"></div>
-              <div class="screenBody">
-                <div class="line short"></div>
-                <div class="line"></div>
-                <div class="line orange"></div>
-              </div>
-            </div>
+          <div class="bannerStats">
+            <span>IIM Route</span>
+            <span>Private Route</span>
+            <span>Backup Route</span>
           </div>
         </div>
       </div>
 
-      <div class="bannerCard purpleSoft">
-        <div class="bannerInner">
+      <div class="bannerSmall">
+        <div class="bannerOverlay"></div>
+        <div class="bannerContent">
+          <span class="bannerTag">Quick Direction</span>
           <div>
-            <span class="bannerTag">Visual Banner</span>
-            <div class="bannerText">
-              <h3>Confused between CAT, XAT, NMAT?</h3>
-              <p>Get a quicker decision path with short, simple, guided direction.</p>
-            </div>
+            <h3>Confused between CAT, XAT, NMAT?</h3>
+            <p>We simplify the decision so students can move faster.</p>
           </div>
-          <div class="bannerScene">
-            <div class="thumbGrid">
-              <div class="thumb"></div>
-              <div class="thumb"></div>
-              <div class="thumb"></div>
-              <div class="thumb"></div>
-              <div class="thumb"></div>
-              <div class="thumb"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bannerCard mix">
-        <div class="bannerInner">
-          <div>
-            <span class="bannerTag">Visual Banner</span>
-            <div class="bannerText">
-              <h3>From exam choice to college shortlist</h3>
-              <p>Move from selection to guidance to college exploration in one flow.</p>
-            </div>
-          </div>
-          <div class="bannerScene">
-            <div class="screenMock">
-              <div class="screenTop"></div>
-              <div class="screenBody">
-                <div class="line"></div>
-                <div class="line short"></div>
-                <div class="line orange"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="journeySection">
-      <div class="journeyLeft">
-        <h2>How students should use this page</h2>
-        <p>
-          Not like a blog. Not like a wall of text. This should feel like a guided exam decision experience.
-        </p>
-
-        <div class="journeyMiniCards">
-          <div class="journeyMiniCard">
-            <div class="journeyMiniIcon">🏛️</div>
-            <div>
-              <strong>Top college goal</strong>
-              <span>Students aiming at IIMs and top institutes should start with CAT and related routes.</span>
-            </div>
-          </div>
-
-          <div class="journeyMiniCard">
-            <div class="journeyMiniIcon">🌟</div>
-            <div>
-              <strong>Premium private route</strong>
-              <span>XAT, SNAP, and NMAT help students targeting respected private B-schools.</span>
-            </div>
-          </div>
-
-          <div class="journeyMiniCard">
-            <div class="journeyMiniIcon">📚</div>
-            <div>
-              <strong>Broader opportunities</strong>
-              <span>CMAT and MAT work for practical, backup-friendly, and wider shortlists.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="journeyRight">
-        <h3>A simple visual journey for exam decision making</h3>
-        <p>Short. Structured. Easy to scan. This is what was missing earlier.</p>
-
-        <div class="timelineWrap">
-          <div class="timelineBar">
-            <div class="timelineLine"></div>
-
-            <div class="timelineStep">
-              <div class="stepDot">01</div>
-              <div class="stepCard">
-                <strong>Choose your target level</strong>
-                <span>Top-tier, premium private, practical, or backup-friendly MBA options.</span>
-              </div>
-            </div>
-
-            <div class="timelineStep">
-              <div class="stepDot">02</div>
-              <div class="stepCard">
-                <strong>Select the exam route</strong>
-                <span>Shortlist CAT, XAT, NMAT, SNAP, CMAT, or MAT based on fit.</span>
-              </div>
-            </div>
-
-            <div class="timelineStep">
-              <div class="stepDot">03</div>
-              <div class="stepCard">
-                <strong>Explore matching colleges</strong>
-                <span>See where each exam can actually take you before deciding.</span>
-              </div>
-            </div>
-
-            <div class="timelineStep">
-              <div class="stepDot">04</div>
-              <div class="stepCard">
-                <strong>Take free guidance</strong>
-                <span>Get counselling support if still confused about exam and college path.</span>
-              </div>
-            </div>
+          <div class="bannerStats">
+            <span>Shorter Content</span>
+            <span>Cleaner Layout</span>
+            <span>Better Scan</span>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="sectionWrap">
+      <div class="sectionCard">
+        <div class="sectionHead">
+          <div>
+            <h2>Quick <span>Decision Path</span></h2>
+            <p>Simple guidance blocks instead of long paragraphs.</p>
+          </div>
+        </div>
+
+        <div class="decisionGrid">
+          <div class="decisionCard">
+            <div class="decisionIcon">🏛️</div>
+            <h3>Aiming high?</h3>
+            <p>Start with CAT if your target is IIMs or top-level B-schools.</p>
+          </div>
+
+          <div class="decisionCard">
+            <div class="decisionIcon">🌟</div>
+            <h3>Private premium route?</h3>
+            <p>XAT, SNAP, and NMAT are strong options for top private institutes.</p>
+          </div>
+
+          <div class="decisionCard">
+            <div class="decisionIcon">📚</div>
+            <h3>Want more options?</h3>
+            <p>CMAT and MAT work better for broader college shortlists.</p>
+          </div>
+
+          <div class="decisionCard">
+            <div class="decisionIcon">🤝</div>
+            <h3>Still confused?</h3>
+            <p>Take free guidance and choose the most suitable exam path.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionCard">
         <div class="sectionHead">
           <div>
             <h2>Useful <span>Guide Blocks</span></h2>
-            <p>Cleaner cards, more icons, shorter copy, and more breathing room.</p>
+            <p>More visual, more action-driven, less clutter.</p>
           </div>
         </div>
 
         <div class="guideGrid">
-          <div class="guideCol">
-            <div class="guideCard large">
-              <div>
-                <div class="guideTop">
-                  <div class="guideIcon">📘</div>
-                </div>
-                <h3>Exam syllabus and pattern pages</h3>
-                <p>Create focused pages for CAT syllabus, XAT pattern, SNAP pattern, NMAT pattern, and similar student search-intent topics.</p>
-              </div>
-              <a href="resources.html" class="guideBtn">Go to Resources</a>
+          <div class="guideCard">
+            <div>
+              <div class="guideIcon">📘</div>
+              <h3>Exam guides</h3>
+              <p>Pattern, syllabus, attempts, and key direction pages for major exams.</p>
             </div>
-
-            <div class="guideCard">
-              <div>
-                <div class="guideTop">
-                  <div class="guideIcon">🏫</div>
-                </div>
-                <h3>Exam accepted colleges</h3>
-                <p>Push students directly into college discovery through exam-based entry points.</p>
-              </div>
-              <a href="colleges.html" class="guideBtn">See College Results</a>
-            </div>
+            <a href="resources.html" class="guideBtn">Go to Resources</a>
           </div>
 
-          <div class="guideCol">
-            <div class="guideCard large">
-              <div>
-                <div class="guideTop">
-                  <div class="guideIcon">📊</div>
-                </div>
-                <h3>Percentile-wise college lists</h3>
-                <p>Build pages like CAT 80–90 percentile colleges, XAT 85–95 colleges, SNAP score-based colleges, and similar high-search pages.</p>
-              </div>
-              <a href="colleges.html" class="guideBtn">Explore Colleges</a>
+          <div class="guideCard">
+            <div>
+              <div class="guideIcon">🏫</div>
+              <h3>Exam accepted colleges</h3>
+              <p>Move directly from exam selection to relevant college discovery.</p>
             </div>
+            <a href="colleges.html" class="guideBtn">See Colleges</a>
+          </div>
 
-            <div class="guideCard">
-              <div>
-                <div class="guideTop">
-                  <div class="guideIcon">🧭</div>
-                </div>
-                <h3>Which exam should you target?</h3>
-                <p>Use guidance for a more suitable exam decision based on goal and comfort level.</p>
-              </div>
-              <a href="javascript:void(0)" onclick="openLeadPopup('Guide Blocks Section')" class="guideBtn orange">Get Free Guidance</a>
+          <div class="guideCard">
+            <div>
+              <div class="guideIcon">🧭</div>
+              <h3>Need help choosing?</h3>
+              <p>Talk to us for exam clarity, shortlisting support, and admission guidance.</p>
             </div>
+            <a href="javascript:void(0)" onclick="openLeadPopup('Guide Blocks Section')" class="guideBtn orange">Get Free Guidance</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="supportBanner">
-      <div class="supportLeft">
-        <h2>Still confused? Talk to our MBA admission experts</h2>
-        <p>
-          Get help with exam selection, college shortlisting, direct admission guidance, scholarships, and your overall MBA or PGDM strategy.
-        </p>
+    <section class="section">
+      <div class="supportWrap">
+        <div class="supportLeft">
+          <h2>Still confused? Talk to our MBA admission experts</h2>
+          <p>
+            Get help with exam selection, college shortlisting, scholarships, and your MBA/PGDM strategy.
+          </p>
 
-        <div class="supportPoints">
-          <span>Free Counselling</span>
-          <span>Exam Strategy</span>
-          <span>College Shortlisting</span>
-          <span>Scholarship Support</span>
-        </div>
-
-        <a href="javascript:void(0)" onclick="openLeadPopup('Support Banner CTA')" class="supportBtn">Get Free Counselling</a>
-      </div>
-
-      <div class="supportRight">
-        <div class="supportMock">
-          <div class="supportMainMock">
-            <div class="mockHero"></div>
-            <div class="mockRow">
-              <div class="mockCard"></div>
-              <div class="mockCard"></div>
-            </div>
-            <div class="mockRow">
-              <div class="mockCard"></div>
-              <div class="mockCard"></div>
-            </div>
+          <div class="supportPoints">
+            <span>Free Counselling</span>
+            <span>Exam Strategy</span>
+            <span>College Shortlisting</span>
+            <span>Admission Help</span>
           </div>
 
-          <div class="supportSideMock">
-            <div class="miniPanel tall"></div>
-            <div class="miniPanel"></div>
-            <div class="miniPanel"></div>
-            <div class="miniPanel"></div>
+          <a href="javascript:void(0)" onclick="openLeadPopup('Support Banner CTA')" class="supportBtn">Get Free Counselling</a>
+        </div>
+
+        <div class="supportRight">
+          <div class="supportFloating">
+            <h3>Right exam. Right college. Right direction.</h3>
+            <p>Build a better MBA path with quick guidance from Swadeshi Shiksha.</p>
+            <a href="javascript:void(0)" onclick="openLeadPopup('Floating Support CTA')" class="guideBtn orange">Talk to Us</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="ctaSection">
-      <div class="ctaText">
-        <h2>Need help choosing the best MBA exam and college route?</h2>
-        <p>
-          Connect with Swadeshi Shiksha for student-first counselling support and build a more confident MBA/PGDM admission plan.
-        </p>
-
-        <div class="ctaPoints">
-          <span>Free Guidance</span>
-          <span>Exam Clarity</span>
-          <span>Shortlist Support</span>
-          <span>Admission Help</span>
-        </div>
-      </div>
-
-      <div class="ctaBox">
-        <h3>Talk to Swadeshi Shiksha</h3>
-        <p>Get guidance on the right exam and the right MBA/PGDM path with counsellor support.</p>
-        <a href="javascript:void(0)" onclick="openLeadPopup('Exams Page Bottom CTA')" class="guideBtn orange">Get Free MBA Guidance</a>
       </div>
     </section>
 
