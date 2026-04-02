@@ -12,29 +12,23 @@
 
   <style>
     *{
+      box-sizing:border-box;
       margin:0;
       padding:0;
-      box-sizing:border-box;
     }
 
     :root{
       --bg:#fcfbff;
-      --text:#172031;
-      --muted:#6d7686;
-      --line:#ece6fb;
-      --purple:#6e49df;
-      --purple-dark:#5732c8;
+      --text:#16202f;
+      --muted:#667085;
+      --line:#eee7fb;
+      --purple:#6f4ae0;
+      --purple-dark:#5b34cf;
       --purple-soft:#f5f0ff;
-      --orange:#ff8b2b;
-      --orange-dark:#ff7411;
-      --card:#ffffff;
-      --shadow:0 14px 34px rgba(39,27,84,0.06);
-      --shadow-hover:0 18px 42px rgba(39,27,84,0.11);
-      --radius-xl:30px;
-      --radius-lg:24px;
-      --radius-md:18px;
-      --radius-sm:14px;
-      --container:1180px;
+      --orange:#ff9a34;
+      --orange-dark:#ff7a1a;
+      --shadow:0 16px 40px rgba(42,29,89,0.06);
+      --shadow-soft:0 12px 28px rgba(42,29,89,0.05);
     }
 
     html{
@@ -43,11 +37,11 @@
 
     body{
       font-family:'Inter',sans-serif;
-      color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(110,73,223,0.06), transparent 24%),
-        radial-gradient(circle at top right, rgba(255,139,43,0.06), transparent 22%),
-        var(--bg);
+        radial-gradient(circle at top left, rgba(122,85,231,0.07), transparent 24%),
+        radial-gradient(circle at top right, rgba(255,122,26,0.06), transparent 20%),
+        #fcfbff;
+      color:var(--text);
     }
 
     a{
@@ -65,45 +59,46 @@
     }
 
     .page{
-      max-width:var(--container);
+      max-width:1220px;
       margin:0 auto;
-      padding:0 18px 70px;
+      padding:0 18px 84px;
     }
 
-    /* HEADER */
+    /* ORIGINAL HEADER SIZE RESTORED */
     .header{
       position:sticky;
       top:0;
       z-index:9999;
-      max-width:calc(var(--container) - 36px);
-      margin:14px auto 0;
-      padding:12px 18px;
-      border-radius:22px;
-      background:rgba(255,255,255,0.82);
-      backdrop-filter:blur(14px);
-      border:1px solid rgba(231,224,249,0.95);
-      box-shadow:0 10px 28px rgba(39,27,84,0.07);
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:18px;
+      padding:14px 24px;
+      margin:14px auto 0;
+      background:rgba(255,255,255,0.84);
+      border:1px solid rgba(205,195,239,0.55);
+      backdrop-filter:blur(16px);
+      box-shadow:0 12px 34px rgba(36,29,79,0.08);
+      border-radius:24px;
+      max-width:calc(1220px - 36px);
     }
 
     .logo{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:12px;
       min-width:fit-content;
     }
 
     .logo img{
-      height:42px;
+      height:46px;
       width:auto;
     }
 
     .logo span{
-      font-size:15px;
       font-weight:800;
+      font-size:16px;
+      color:#16202f;
       letter-spacing:-0.02em;
     }
 
@@ -117,39 +112,40 @@
     }
 
     .nav a{
-      padding:9px 12px;
-      border-radius:999px;
-      font-size:13px;
+      font-size:14px;
       font-weight:600;
-      color:#5e6879;
+      color:#596377;
+      padding:10px 13px;
+      border-radius:999px;
       white-space:nowrap;
-      transition:all .2s ease;
+      transition:all .22s ease;
     }
 
     .nav a:hover,
     .nav a.active{
-      color:var(--purple);
-      background:var(--purple-soft);
+      color:#6948dd;
+      background:#f4efff;
     }
 
     .cta{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:11px 18px;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:800;
-      color:#fff;
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      box-shadow:0 12px 24px rgba(87,50,200,0.20);
       white-space:nowrap;
+      padding:12px 20px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#7b59e9,#5d36d2);
+      color:#fff;
+      font-size:14px;
+      font-weight:700;
+      box-shadow:0 14px 28px rgba(93,54,210,0.20);
+      transition:all .22s ease;
       flex-shrink:0;
-      transition:all .2s ease;
     }
 
     .cta:hover{
       transform:translateY(-2px);
+      box-shadow:0 18px 34px rgba(93,54,210,0.28);
     }
 
     /* HERO */
@@ -157,244 +153,293 @@
       margin-top:22px;
     }
 
-    .heroWrap{
+    .heroShell{
       position:relative;
       overflow:hidden;
-      border-radius:34px;
-      padding:26px;
-      background:linear-gradient(135deg,#ffffff 0%, #f8f4ff 54%, #fff7ef 100%);
-      border:1px solid var(--line);
-      box-shadow:0 20px 52px rgba(41,28,88,0.07);
+      border-radius:38px;
+      background:linear-gradient(135deg,#ffffff 0%,#f8f4ff 55%,#fff8f1 100%);
+      border:1px solid #eee6fb;
+      box-shadow:0 24px 60px rgba(43,30,90,0.07);
+      padding:38px 34px 28px;
     }
 
-    .heroWrap::before{
+    .heroShell::before{
       content:"";
       position:absolute;
       width:220px;
       height:220px;
-      right:-68px;
-      top:-72px;
+      right:-70px;
+      top:-62px;
       border-radius:42px;
-      background:linear-gradient(135deg,#dacbff,#c7b2ff);
-      opacity:.72;
-      transform:rotate(26deg);
+      background:linear-gradient(135deg,#d9caff,#c9b7ff);
+      transform:rotate(28deg);
+      opacity:.75;
     }
 
     .heroGrid{
       position:relative;
       z-index:2;
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:22px;
+      grid-template-columns:1.02fr .98fr;
+      gap:28px;
       align-items:center;
     }
 
-    .eyebrow{
+    .heroLabel{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:8px 13px;
+      padding:10px 16px;
       border-radius:999px;
       background:#f2ebff;
+      color:#6c49de;
       border:1px solid #e4d8ff;
-      color:var(--purple);
-      font-size:11px;
+      font-size:12px;
       font-weight:800;
-      letter-spacing:.04em;
-      margin-bottom:14px;
+      letter-spacing:.03em;
+      margin-bottom:18px;
     }
 
-    .hero h1{
+    .heroTitle{
       font-family:'Sora',sans-serif;
-      font-size:48px;
-      line-height:1.02;
-      letter-spacing:-0.045em;
-      max-width:640px;
-      margin-bottom:14px;
+      font-size:60px;
+      line-height:1.01;
+      letter-spacing:-0.05em;
+      color:#172031;
+      max-width:660px;
+      margin-bottom:18px;
     }
 
-    .hero h1 .purple{
-      color:var(--purple);
+    .heroTitle .purple{
+      color:#6f4ae0;
     }
 
-    .hero h1 .orange{
-      color:var(--orange);
+    .heroTitle .orange{
+      color:#ff8b2b;
     }
 
-    .hero p{
-      max-width:540px;
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.75;
-      margin-bottom:20px;
+    .heroSub{
+      max-width:620px;
+      font-size:16px;
+      line-height:1.9;
+      color:#677286;
+      margin-bottom:28px;
     }
 
     .heroActions{
       display:flex;
       flex-wrap:wrap;
-      gap:10px;
+      gap:12px;
       margin-bottom:18px;
     }
 
-    .btnPrimary,
-    .btnSecondary{
-      height:46px;
-      padding:0 18px;
+    .heroBtnPrimary,
+    .heroBtnSecondary{
+      height:50px;
+      padding:0 20px;
       border-radius:999px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      font-size:13px;
+      font-size:14px;
       font-weight:800;
-      transition:all .2s ease;
+      transition:all .22s ease;
     }
 
-    .btnPrimary{
-      background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+    .heroBtnPrimary{
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
       color:#fff;
-      box-shadow:0 12px 24px rgba(255,116,17,0.18);
+      box-shadow:0 16px 28px rgba(255,122,26,0.22);
     }
 
-    .btnSecondary{
+    .heroBtnSecondary{
       background:#fff;
-      color:var(--purple);
-      border:1px solid #e7ddff;
-      box-shadow:0 8px 18px rgba(43,30,90,0.05);
+      color:#6948dd;
+      border:1px solid #e6dcff;
+      box-shadow:0 10px 22px rgba(67,49,132,0.05);
     }
 
-    .btnPrimary:hover,
-    .btnSecondary:hover{
+    .heroBtnPrimary:hover,
+    .heroBtnSecondary:hover{
       transform:translateY(-2px);
     }
 
     .heroChips{
       display:flex;
       flex-wrap:wrap;
-      gap:8px;
+      gap:10px;
     }
 
     .heroChips span{
-      padding:8px 11px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:9px 14px;
       border-radius:999px;
-      background:#fff;
-      border:1px solid #ece5fb;
       font-size:12px;
-      font-weight:700;
-      color:#5f6880;
+      font-weight:800;
+      color:#5f6980;
+      background:#fff;
+      border:1px solid #ebe3fb;
+      box-shadow:0 6px 16px rgba(42,29,89,0.04);
     }
 
-    .heroVisual{
+    /* HERO RIGHT - NEW FUNCTIONAL VISUAL */
+    .heroRight{
       display:grid;
-      gap:12px;
+      gap:14px;
     }
 
-    .heroBanner{
-      min-height:255px;
-      border-radius:26px;
+    .examSelectorPanel{
+      position:relative;
       overflow:hidden;
-      position:relative;
+      border-radius:32px;
+      min-height:360px;
       background:
-        linear-gradient(135deg, rgba(24,16,44,0.92) 0%, rgba(92,61,208,0.88) 58%, rgba(144,126,255,0.75) 100%),
+        linear-gradient(135deg, rgba(33,22,60,0.90) 0%, rgba(92,61,208,0.84) 58%, rgba(139,121,255,0.74) 100%),
         url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      box-shadow:var(--shadow);
-    }
-
-    .heroBanner::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.14));
-    }
-
-    .heroBannerContent{
-      position:relative;
-      z-index:2;
-      height:100%;
+      box-shadow:0 22px 54px rgba(59,37,143,0.18);
+      padding:18px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
-      padding:20px;
-      color:#fff;
     }
 
-    .heroBadgeRow{
+    .examSelectorPanel::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.10));
+      pointer-events:none;
+    }
+
+    .examSelectorTop{
+      position:relative;
+      z-index:2;
       display:flex;
       justify-content:space-between;
+      align-items:center;
       gap:10px;
       flex-wrap:wrap;
     }
 
-    .heroBadgeRow span{
+    .examSelectorTop span{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:7px 10px;
+      padding:8px 12px;
       border-radius:999px;
       background:rgba(255,255,255,0.14);
       border:1px solid rgba(255,255,255,0.16);
+      color:#fff;
       font-size:11px;
       font-weight:800;
     }
 
-    .heroBannerText h3{
+    .examSelectorText{
+      position:relative;
+      z-index:2;
+      margin-top:auto;
+      margin-bottom:16px;
+      max-width:360px;
+    }
+
+    .examSelectorText h3{
       font-family:'Sora',sans-serif;
-      font-size:26px;
-      line-height:1.05;
-      letter-spacing:-0.03em;
-      max-width:290px;
-      margin-bottom:8px;
+      font-size:34px;
+      line-height:1.02;
+      letter-spacing:-0.04em;
+      color:#fff;
+      margin-bottom:10px;
     }
 
-    .heroBannerText p{
-      color:rgba(255,255,255,0.84);
-      font-size:13px;
-      line-height:1.65;
-      max-width:300px;
-      margin:0;
+    .examSelectorText p{
+      color:rgba(255,255,255,0.86);
+      font-size:14px;
+      line-height:1.72;
     }
 
-    .heroMiniStats{
+    .examSelectorCards{
+      position:relative;
+      z-index:2;
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:1fr 1fr;
       gap:10px;
     }
 
-    .heroMiniStat{
-      background:#fff;
-      border:1px solid #eee7fb;
+    .examSelectCard{
+      background:rgba(255,255,255,0.14);
+      border:1px solid rgba(255,255,255,0.16);
+      backdrop-filter:blur(10px);
       border-radius:18px;
-      padding:14px;
-      box-shadow:var(--shadow);
-      min-height:84px;
+      padding:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      min-height:70px;
     }
 
-    .heroMiniStat strong{
-      display:block;
-      font-family:'Sora',sans-serif;
+    .examSelectLeft{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+
+    .examSelectIcon{
+      width:40px;
+      height:40px;
+      border-radius:14px;
+      background:rgba(255,255,255,0.92);
+      display:flex;
+      align-items:center;
+      justify-content:center;
       font-size:18px;
-      line-height:1;
-      margin-bottom:8px;
-      color:var(--text);
+      flex-shrink:0;
+      color:#1a2030;
     }
 
-    .heroMiniStat span{
+    .examSelectInfo strong{
       display:block;
-      font-size:12px;
-      line-height:1.55;
-      color:#7a8394;
+      font-size:13px;
+      font-weight:800;
+      color:#fff;
+      margin-bottom:2px;
     }
 
-    .examTicker{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns:repeat(6,1fr);
+    .examSelectInfo span{
+      display:block;
+      font-size:11px;
+      color:rgba(255,255,255,0.78);
+      line-height:1.4;
+    }
+
+    .examSelectTag{
+      font-size:10px;
+      font-weight:800;
+      color:#fff;
+      padding:7px 9px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.14);
+      white-space:nowrap;
+      flex-shrink:0;
+    }
+
+    .heroStrip{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
       gap:10px;
     }
 
-    .examTicker div{
-      height:48px;
-      border-radius:16px;
-      background:rgba(255,255,255,0.78);
+    .heroStrip span{
+      height:52px;
+      min-width:118px;
+      padding:0 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.86);
       border:1px solid #eee7fb;
       display:flex;
       align-items:center;
@@ -403,143 +448,146 @@
       font-size:15px;
       font-weight:700;
       color:#8f89a4;
-      box-shadow:0 8px 18px rgba(42,29,89,0.04);
+      box-shadow:0 10px 22px rgba(42,29,89,0.04);
     }
 
-    /* COMMON SECTIONS */
+    /* COMMON */
     .section{
-      margin-top:34px;
+      margin-top:42px;
     }
 
-    .sectionCard{
-      background:linear-gradient(180deg,#ffffff 0%,#fbf9ff 100%);
-      border:1px solid var(--line);
-      border-radius:32px;
-      padding:24px;
-      box-shadow:0 14px 34px rgba(42,29,89,0.05);
+    .sectionWrap{
+      background:linear-gradient(180deg,#fbf9ff 0%,#f8f5ff 100%);
+      border:1px solid #eee7fb;
+      border-radius:38px;
+      padding:30px 28px;
+      box-shadow:0 16px 40px rgba(42,29,89,0.05);
     }
 
     .sectionHead{
       display:flex;
-      align-items:flex-end;
       justify-content:space-between;
-      gap:14px;
+      align-items:flex-end;
+      gap:18px;
       flex-wrap:wrap;
-      margin-bottom:18px;
+      margin-bottom:22px;
     }
 
     .sectionHead h2{
       font-family:'Sora',sans-serif;
-      font-size:30px;
+      font-size:34px;
       line-height:1.08;
       letter-spacing:-0.04em;
+      color:#172031;
     }
 
     .sectionHead h2 span{
-      color:var(--purple);
+      color:#6f4ae0;
     }
 
     .sectionHead p{
-      margin-top:8px;
-      font-size:14px;
-      line-height:1.7;
-      color:var(--muted);
-      max-width:580px;
+      margin-top:10px;
+      font-size:15px;
+      line-height:1.82;
+      color:#6d7586;
+      max-width:680px;
     }
 
     .sectionLink{
-      font-size:13px;
-      font-weight:800;
-      color:var(--purple);
-      white-space:nowrap;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#6d48df;
+      font-size:14px;
+      font-weight:700;
     }
 
-    /* EXAMS GRID */
+    /* EXAM GRID */
     .examGrid{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
+      gap:18px;
     }
 
     .examCard{
+      overflow:hidden;
       background:#fff;
       border:1px solid #eee7fb;
       border-radius:24px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      transition:all .22s ease;
+      box-shadow:0 14px 32px rgba(40,28,82,0.05);
+      transition:all .24s ease;
     }
 
     .examCard:hover{
-      transform:translateY(-5px);
-      box-shadow:var(--shadow-hover);
+      transform:translateY(-6px);
+      box-shadow:0 22px 44px rgba(40,28,82,0.10);
     }
 
-    .examTop{
+    .examCardTop{
       position:relative;
-      height:126px;
-      padding:14px;
+      height:148px;
+      overflow:hidden;
+      padding:16px;
       display:flex;
       justify-content:space-between;
       align-items:flex-start;
-      overflow:hidden;
     }
 
-    .examTop::before{
+    .examCard.cat .examCardTop{
+      background:linear-gradient(135deg,#21162c 0%,#5e45c5 58%,#9388ff 100%);
+    }
+
+    .examCard.xat .examCardTop{
+      background:linear-gradient(135deg,#f2edff 0%,#e2d7ff 100%);
+    }
+
+    .examCard.nmat .examCardTop{
+      background:linear-gradient(135deg,#b094ff 0%,#7d58ef 100%);
+    }
+
+    .examCard.snap .examCardTop{
+      background:linear-gradient(135deg,#a987ff 0%,#f0bfdc 100%);
+    }
+
+    .examCard.cmat .examCardTop{
+      background:linear-gradient(135deg,#d1c2ff 0%,#7755e8 100%);
+    }
+
+    .examCard.mat .examCardTop{
+      background:linear-gradient(135deg,#f3d4e2 0%,#f9e5ee 100%);
+    }
+
+    .examCardTop::before{
       content:"";
       position:absolute;
-      width:120px;
-      height:120px;
-      right:16px;
-      top:12px;
-      border-radius:26px;
+      width:140px;
+      height:140px;
+      right:12px;
+      top:14px;
+      border-radius:24px;
       background:rgba(255,255,255,0.14);
       transform:rotate(22deg);
     }
 
-    .examCard.cat .examTop{
-      background:linear-gradient(135deg,#241632 0%,#5f46c8 65%,#968cff 100%);
-      color:#fff;
-    }
-
-    .examCard.xat .examTop{
-      background:linear-gradient(135deg,#ece3ff 0%,#d7c8ff 100%);
-    }
-
-    .examCard.nmat .examTop{
-      background:linear-gradient(135deg,#9b7dff 0%,#6b45dd 100%);
-      color:#fff;
-    }
-
-    .examCard.snap .examTop{
-      background:linear-gradient(135deg,#b18aff 0%,#f0c1db 100%);
-    }
-
-    .examCard.cmat .examTop{
-      background:linear-gradient(135deg,#d9cdff 0%,#7a58eb 100%);
-      color:#fff;
-    }
-
-    .examCard.mat .examTop{
-      background:linear-gradient(135deg,#f6dce7 0%,#fdeef4 100%);
-    }
-
-    .examTopBadge{
+    .examBadge{
       position:relative;
       z-index:2;
-      padding:7px 10px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:7px 11px;
       border-radius:999px;
-      background:rgba(255,255,255,0.92);
-      font-size:10px;
+      background:rgba(255,255,255,0.95);
+      color:#6e4be0;
+      font-size:11px;
       font-weight:800;
-      color:var(--purple);
-      letter-spacing:.04em;
+      letter-spacing:.02em;
     }
 
-    .examTopIcon{
+    .examVisual{
       position:absolute;
-      left:14px;
-      bottom:14px;
+      left:16px;
+      bottom:16px;
       z-index:2;
       display:flex;
       align-items:center;
@@ -547,62 +595,67 @@
     }
 
     .examIcon{
-      width:46px;
-      height:46px;
+      width:50px;
+      height:50px;
       border-radius:16px;
       background:rgba(255,255,255,0.92);
       display:flex;
       align-items:center;
       justify-content:center;
       font-size:22px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+      box-shadow:0 12px 22px rgba(0,0,0,0.08);
     }
 
-    .examMiniTag{
-      padding:8px 10px;
+    .examMini{
+      padding:8px 11px;
       border-radius:999px;
-      background:rgba(255,255,255,0.18);
-      border:1px solid rgba(255,255,255,0.22);
+      background:rgba(255,255,255,0.22);
+      border:1px solid rgba(255,255,255,0.32);
+      color:#fff;
       font-size:11px;
-      font-weight:800;
+      font-weight:700;
       backdrop-filter:blur(8px);
     }
 
-    .examBody{
+    .examCardBody{
       padding:16px;
     }
 
-    .examBody h3{
+    .examName{
       font-family:'Sora',sans-serif;
       font-size:22px;
       line-height:1.08;
       letter-spacing:-0.03em;
-      margin-bottom:8px;
+      color:#16202f;
+      margin-bottom:10px;
     }
 
-    .examBody p{
+    .examDesc{
       font-size:13px;
-      line-height:1.7;
-      color:var(--muted);
-      margin-bottom:12px;
-      min-height:44px;
-    }
-
-    .tagRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:7px;
+      line-height:1.74;
+      color:#667085;
+      min-height:46px;
       margin-bottom:14px;
     }
 
-    .tagRow span{
-      padding:7px 9px;
+    .examTags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:16px;
+    }
+
+    .examTags span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:7px 10px;
       border-radius:999px;
-      background:#faf7ff;
-      border:1px solid #ece5fb;
-      font-size:10.5px;
+      font-size:11px;
       font-weight:800;
       color:#696279;
+      background:#faf7ff;
+      border:1px solid #ece4fb;
     }
 
     .examFooter{
@@ -616,7 +669,7 @@
     .examFit{
       font-size:11px;
       font-weight:700;
-      color:#7d8697;
+      color:#818898;
     }
 
     .examBtns{
@@ -625,306 +678,297 @@
       flex-wrap:wrap;
     }
 
-    .miniBtn{
+    .examAction{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:9px 13px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:800;
-      transition:all .2s ease;
-    }
-
-    .miniBtn.orange{
-      background:linear-gradient(135deg,var(--orange),var(--orange-dark));
-      color:#fff;
-      box-shadow:0 10px 18px rgba(255,116,17,0.15);
-    }
-
-    .miniBtn.purple{
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      color:#fff;
-      box-shadow:0 10px 18px rgba(87,50,200,0.16);
-    }
-
-    .miniBtn:hover{
-      transform:translateY(-2px);
-    }
-
-    /* VISUAL BANNERS */
-    .bannerGrid{
-      margin-top:34px;
-      display:grid;
-      grid-template-columns:1.12fr .88fr;
-      gap:16px;
-    }
-
-    .bannerLarge,
-    .bannerSmall{
-      position:relative;
-      overflow:hidden;
-      border-radius:30px;
-      min-height:260px;
-      box-shadow:var(--shadow);
-    }
-
-    .bannerLarge{
-      background:
-        linear-gradient(135deg, rgba(37,22,65,0.86) 0%, rgba(90,57,199,0.80) 55%, rgba(140,121,255,0.68) 100%),
-        url('https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      color:#fff;
-    }
-
-    .bannerSmall{
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.72), rgba(245,238,255,0.82)),
-        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      border:1px solid var(--line);
-      color:var(--text);
-    }
-
-    .bannerOverlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg,rgba(255,255,255,0.00),rgba(0,0,0,0.10));
-    }
-
-    .bannerContent{
-      position:relative;
-      z-index:2;
-      height:100%;
-      padding:22px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-
-    .bannerTag{
-      display:inline-flex;
-      width:fit-content;
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:10px;
-      font-weight:800;
-      letter-spacing:.04em;
-    }
-
-    .bannerLarge .bannerTag{
-      background:rgba(255,255,255,0.14);
-      border:1px solid rgba(255,255,255,0.16);
-      color:#fff;
-    }
-
-    .bannerSmall .bannerTag{
-      background:#fff;
-      border:1px solid #ebdefe;
-      color:var(--purple);
-    }
-
-    .bannerContent h3{
-      font-family:'Sora',sans-serif;
-      font-size:28px;
-      line-height:1.06;
-      letter-spacing:-0.03em;
-      max-width:320px;
-      margin-bottom:8px;
-    }
-
-    .bannerContent p{
-      font-size:13px;
-      line-height:1.7;
-      max-width:320px;
-      color:inherit;
-      opacity:.9;
-    }
-
-    .bannerStats{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    }
-
-    .bannerStats span{
-      padding:8px 10px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:700;
-    }
-
-    .bannerLarge .bannerStats span{
-      background:rgba(255,255,255,0.14);
-      border:1px solid rgba(255,255,255,0.16);
-    }
-
-    .bannerSmall .bannerStats span{
-      background:#fff;
-      border:1px solid #ede5fb;
-      color:#5d6780;
-    }
-
-    /* QUICK DECISION */
-    .decisionGrid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-    }
-
-    .decisionCard{
-      background:#fff;
-      border:1px solid #eee7fb;
-      border-radius:22px;
-      padding:18px;
-      box-shadow:var(--shadow);
-      min-height:150px;
-    }
-
-    .decisionIcon{
-      width:44px;
-      height:44px;
-      border-radius:15px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#efe7ff,#ffe9d6);
-      font-size:20px;
-      margin-bottom:12px;
-    }
-
-    .decisionCard h3{
-      font-size:15px;
-      font-weight:800;
-      margin-bottom:6px;
-      color:var(--text);
-    }
-
-    .decisionCard p{
-      font-size:12.5px;
-      line-height:1.68;
-      color:var(--muted);
-    }
-
-    /* MINI GUIDE BLOCKS */
-    .guideGrid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-
-    .guideCard{
-      background:#fff;
-      border:1px solid #eee7fb;
-      border-radius:24px;
-      padding:20px;
-      box-shadow:var(--shadow);
-      min-height:190px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      transition:all .22s ease;
-    }
-
-    .guideCard:hover{
-      transform:translateY(-4px);
-      box-shadow:var(--shadow-hover);
-    }
-
-    .guideIcon{
-      width:46px;
-      height:46px;
-      border-radius:15px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(135deg,#f0e8ff,#ffe8d4);
-      font-size:21px;
-      margin-bottom:14px;
-    }
-
-    .guideCard h3{
-      font-family:'Sora',sans-serif;
-      font-size:20px;
-      line-height:1.1;
-      letter-spacing:-0.03em;
-      margin-bottom:8px;
-    }
-
-    .guideCard p{
-      font-size:13px;
-      line-height:1.7;
-      color:var(--muted);
-      margin-bottom:14px;
-    }
-
-    .guideBtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:fit-content;
-      padding:10px 14px;
+      padding:9px 14px;
       border-radius:999px;
       font-size:12px;
       font-weight:800;
       color:#fff;
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
-      box-shadow:0 10px 18px rgba(87,50,200,0.14);
+      background:linear-gradient(135deg,#7a55e7,#6037d4);
+      box-shadow:0 10px 18px rgba(96,55,212,0.18);
+      white-space:nowrap;
+      transition:all .22s ease;
     }
 
-    .guideBtn.orange{
-      background:linear-gradient(135deg,var(--orange),var(--orange-dark));
-      box-shadow:0 10px 18px rgba(255,116,17,0.14);
+    .examAction.orange{
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
+      box-shadow:0 10px 18px rgba(255,122,26,0.18);
     }
 
-    /* SUPPORT */
-    .supportWrap{
+    .examAction:hover{
+      transform:translateY(-2px);
+    }
+
+    /* SINGLE PREMIUM VISUAL BANNER */
+    .visualFeature{
+      margin-top:42px;
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:16px;
+      grid-template-columns:1.08fr .92fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .featureLeft{
+      position:relative;
+      overflow:hidden;
+      border-radius:32px;
+      min-height:300px;
+      background:
+        linear-gradient(135deg, rgba(38,21,66,0.88) 0%, rgba(87,56,190,0.82) 60%, rgba(139,126,255,0.70) 100%),
+        url('https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color:#fff;
+      box-shadow:0 22px 50px rgba(42,29,89,0.12);
+    }
+
+    .featureLeft::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.08));
+    }
+
+    .featureInner{
+      position:relative;
+      z-index:2;
+      height:100%;
+      padding:24px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .featureTag{
+      display:inline-flex;
+      width:fit-content;
+      align-items:center;
+      justify-content:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.14);
+      border:1px solid rgba(255,255,255,0.16);
+      font-size:11px;
+      font-weight:800;
+      color:#fff;
+    }
+
+    .featureText h3{
+      font-family:'Sora',sans-serif;
+      font-size:34px;
+      line-height:1.04;
+      letter-spacing:-0.04em;
+      margin-bottom:10px;
+      max-width:420px;
+    }
+
+    .featureText p{
+      font-size:14px;
+      line-height:1.8;
+      color:rgba(255,255,255,0.86);
+      max-width:440px;
+    }
+
+    .featureStats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .featureStats span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.16);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .featureRight{
+      border-radius:32px;
+      background:linear-gradient(135deg,#ffffff 0%,#f6f1ff 100%);
+      border:1px solid #eee7fb;
+      box-shadow:0 16px 40px rgba(42,29,89,0.06);
+      padding:22px;
+      display:grid;
+      gap:12px;
+      align-content:center;
+    }
+
+    .compareMini{
+      background:#fff;
+      border:1px solid #eee7fb;
+      border-radius:18px;
+      padding:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+
+    .compareMiniLeft{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .compareMiniIcon{
+      width:44px;
+      height:44px;
+      border-radius:15px;
+      background:linear-gradient(135deg,#efe6ff,#ffe7d2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      flex-shrink:0;
+    }
+
+    .compareMiniText strong{
+      display:block;
+      font-size:14px;
+      color:#1f2937;
+      margin-bottom:3px;
+    }
+
+    .compareMiniText span{
+      display:block;
+      font-size:12px;
+      color:#7b8495;
+      line-height:1.5;
+    }
+
+    .compareMiniTag{
+      padding:8px 10px;
+      border-radius:999px;
+      background:#faf7ff;
+      border:1px solid #ece5ff;
+      color:#6f4ae0;
+      font-size:11px;
+      font-weight:800;
+      white-space:nowrap;
+      flex-shrink:0;
+    }
+
+    /* QUICK LINKS STRIP */
+    .quickStrip{
+      margin-top:22px;
+      background:linear-gradient(180deg,#fff 0%,#fbf8ff 100%);
+      border:1px solid #eee7fb;
+      border-radius:24px;
+      padding:14px;
+      box-shadow:0 14px 32px rgba(42,29,89,0.05);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .quickStripTitle{
+      font-size:13px;
+      font-weight:800;
+      color:#6f4ae0;
+      padding:10px 12px;
+      border-radius:999px;
+      background:#f4efff;
+      border:1px solid #e8dcff;
+      white-space:nowrap;
+    }
+
+    .quickStripLinks{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      flex:1;
+    }
+
+    .quickLink{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 14px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #ece5fb;
+      font-size:13px;
+      font-weight:700;
+      color:#5f6980;
+      transition:all .2s ease;
+    }
+
+    .quickLink:hover{
+      transform:translateY(-2px);
+      border-color:#dccdff;
+      color:#6f4ae0;
+      background:#faf7ff;
+    }
+
+    .quickLink.ctaLink{
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
+      border:none;
+      color:#fff;
+      box-shadow:0 10px 18px rgba(255,122,26,0.16);
+    }
+
+    /* FINAL SUPPORT */
+    .supportBanner{
+      margin-top:42px;
+      display:grid;
+      grid-template-columns:1.04fr .96fr;
+      gap:18px;
       align-items:stretch;
     }
 
     .supportLeft{
       position:relative;
       overflow:hidden;
-      border-radius:30px;
-      padding:26px;
+      border-radius:34px;
+      padding:30px 26px;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 20%),
-        linear-gradient(135deg,#734fe3 0%, #5530c7 100%);
+        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 18%),
+        radial-gradient(circle at bottom right, rgba(255,169,93,0.18), transparent 24%),
+        linear-gradient(135deg,#7a55e7 0%,#5b34cf 100%);
       color:#fff;
-      box-shadow:0 22px 46px rgba(76,49,176,0.17);
+      box-shadow:0 26px 58px rgba(69,43,161,0.18);
     }
 
     .supportLeft::before{
       content:"";
       position:absolute;
-      width:190px;
-      height:190px;
-      right:-54px;
+      width:210px;
+      height:210px;
+      right:-56px;
       top:-56px;
-      border-radius:38px;
+      border-radius:40px;
       background:rgba(255,255,255,0.12);
-      transform:rotate(26deg);
+      transform:rotate(28deg);
     }
 
     .supportLeft h2{
       position:relative;
       z-index:2;
       font-family:'Sora',sans-serif;
-      font-size:34px;
-      line-height:1.05;
+      font-size:38px;
+      line-height:1.08;
       letter-spacing:-0.04em;
-      max-width:500px;
       margin-bottom:12px;
+      max-width:520px;
     }
 
     .supportLeft p{
       position:relative;
       z-index:2;
-      font-size:14px;
-      line-height:1.76;
+      font-size:15px;
+      line-height:1.84;
       color:rgba(255,255,255,0.86);
-      max-width:560px;
+      max-width:600px;
       margin-bottom:18px;
     }
 
@@ -933,17 +977,20 @@
       z-index:2;
       display:flex;
       flex-wrap:wrap;
-      gap:8px;
-      margin-bottom:18px;
+      gap:10px;
+      margin-bottom:20px;
     }
 
     .supportPoints span{
-      padding:9px 11px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 13px;
       border-radius:999px;
-      font-size:12px;
-      font-weight:700;
       background:rgba(255,255,255,0.12);
       border:1px solid rgba(255,255,255,0.16);
+      font-size:13px;
+      font-weight:700;
     }
 
     .supportBtn{
@@ -952,32 +999,32 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:12px 17px;
+      padding:12px 18px;
       border-radius:999px;
-      font-size:13px;
-      font-weight:800;
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
       color:#fff;
-      background:linear-gradient(135deg,var(--orange),var(--orange-dark));
-      box-shadow:0 12px 22px rgba(255,116,17,0.18);
+      font-size:14px;
+      font-weight:800;
+      box-shadow:0 12px 22px rgba(255,122,26,0.18);
     }
 
     .supportRight{
       position:relative;
       overflow:hidden;
-      border-radius:30px;
+      border-radius:34px;
+      min-height:320px;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.65), rgba(245,239,255,0.80)),
+        linear-gradient(135deg, rgba(255,255,255,0.68), rgba(245,240,255,0.80)),
         url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      border:1px solid var(--line);
-      box-shadow:var(--shadow);
-      min-height:340px;
+      border:1px solid #eee7fb;
+      box-shadow:0 18px 42px rgba(42,29,89,0.06);
     }
 
     .supportRight::after{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.12));
+      background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.10));
     }
 
     .supportFloating{
@@ -985,55 +1032,69 @@
       right:18px;
       bottom:18px;
       z-index:2;
-      width:min(310px, calc(100% - 36px));
+      width:min(320px, calc(100% - 36px));
       background:rgba(255,255,255,0.92);
       backdrop-filter:blur(12px);
       border:1px solid #ece4fb;
       border-radius:22px;
-      padding:16px;
+      padding:18px;
       box-shadow:0 16px 34px rgba(35,22,78,0.12);
     }
 
     .supportFloating h3{
-      font-size:18px;
       font-family:'Sora',sans-serif;
+      font-size:22px;
       line-height:1.08;
       letter-spacing:-0.03em;
       margin-bottom:8px;
+      color:#16202f;
     }
 
     .supportFloating p{
-      font-size:12.5px;
-      line-height:1.65;
-      color:var(--muted);
-      margin-bottom:12px;
+      font-size:13px;
+      line-height:1.68;
+      color:#667085;
+      margin-bottom:14px;
+    }
+
+    .supportMiniBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 15px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      color:#fff;
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
+      box-shadow:0 10px 18px rgba(255,122,26,0.16);
     }
 
     /* FOOTER */
     .footer{
-      margin-top:28px;
+      margin-top:34px;
       background:#16202f;
       color:#fff;
-      border-radius:26px;
-      padding:26px 22px;
+      border-radius:30px;
+      padding:30px 24px;
     }
 
     .footerGrid{
       display:grid;
       grid-template-columns:1.2fr 1fr 1fr 1fr;
-      gap:18px;
+      gap:22px;
     }
 
     .footer h3,
     .footer h4{
-      margin-bottom:10px;
+      margin-bottom:12px;
     }
 
     .footer p,
     .footer li{
-      font-size:13px;
-      line-height:1.75;
       color:rgba(255,255,255,0.76);
+      line-height:1.75;
+      font-size:14px;
     }
 
     .footer ul{
@@ -1041,7 +1102,7 @@
     }
 
     .footer li{
-      margin-bottom:7px;
+      margin-bottom:8px;
     }
 
     /* POPUP */
@@ -1058,68 +1119,69 @@
 
     .popupCard{
       width:100%;
-      max-width:450px;
+      max-width:470px;
       background:#fff;
-      border-radius:26px;
-      padding:24px;
+      border-radius:28px;
+      padding:26px;
       position:relative;
-      box-shadow:0 30px 70px rgba(15,23,42,0.24);
+      box-shadow:0 28px 70px rgba(15,23,42,0.24);
     }
 
     .popupClose{
       position:absolute;
-      right:14px;
-      top:12px;
+      right:16px;
+      top:14px;
       border:none;
       background:transparent;
-      font-size:24px;
+      font-size:26px;
       color:#6b7280;
       cursor:pointer;
     }
 
     .popupCard h3{
       font-family:'Sora',sans-serif;
-      font-size:26px;
+      font-size:28px;
       line-height:1.08;
       letter-spacing:-0.03em;
       margin-bottom:10px;
+      color:#172030;
     }
 
     .popupCard p{
-      color:var(--muted);
-      line-height:1.7;
-      font-size:14px;
-      margin-bottom:16px;
+      color:#667085;
+      line-height:1.75;
+      font-size:15px;
+      margin-bottom:18px;
     }
 
     .popupCard input{
       width:100%;
-      padding:14px 14px;
-      border-radius:15px;
+      padding:15px 14px;
+      border-radius:16px;
       border:1px solid #dddff0;
       outline:none;
-      margin-bottom:11px;
+      margin-bottom:12px;
       font-size:14px;
-      background:#fcfcff;
       transition:border-color .2s ease, box-shadow .2s ease;
+      background:#fcfcff;
     }
 
     .popupCard input:focus{
-      border-color:var(--purple);
-      box-shadow:0 0 0 4px rgba(110,73,223,0.10);
+      border-color:#7b59e9;
+      box-shadow:0 0 0 4px rgba(123,89,233,0.10);
     }
 
     .popupSubmit{
       width:100%;
       border:none;
-      padding:14px;
-      border-radius:15px;
-      background:linear-gradient(135deg,var(--purple),var(--purple-dark));
+      padding:15px;
+      border-radius:16px;
+      background:linear-gradient(135deg,#7a55e7,#6037d4);
       color:#fff;
-      font-size:14px;
+      font-size:15px;
       font-weight:800;
       cursor:pointer;
-      box-shadow:0 14px 28px rgba(87,50,200,0.18);
+      box-shadow:0 14px 28px rgba(96,55,212,0.18);
     }
 
     .popupNote{
@@ -1132,8 +1194,8 @@
     /* RESPONSIVE */
     @media (max-width:1100px){
       .heroGrid,
-      .supportWrap,
-      .bannerGrid{
+      .visualFeature,
+      .supportBanner{
         grid-template-columns:1fr;
       }
 
@@ -1141,29 +1203,17 @@
         grid-template-columns:repeat(2,minmax(0,1fr));
       }
 
-      .decisionGrid{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .guideGrid{
-        grid-template-columns:1fr 1fr;
-      }
-
       .footerGrid{
         grid-template-columns:1fr 1fr;
       }
-
-      .examTicker{
-        grid-template-columns:repeat(3,1fr);
-      }
     }
 
-    @media (max-width:900px){
+    @media (max-width:920px){
       .header{
         flex-wrap:wrap;
         justify-content:center;
-        padding:12px 14px;
-        margin:12px 12px 0;
+        padding:14px 16px;
+        margin:14px 14px 0;
       }
 
       .logo{
@@ -1180,63 +1230,59 @@
         width:100%;
       }
 
-      .hero h1{
-        font-size:38px;
+      .heroTitle{
+        font-size:46px;
       }
 
-      .heroMiniStats{
+      .examSelectorCards{
         grid-template-columns:1fr;
+      }
+
+      .examGrid{
+        grid-template-columns:1fr 1fr;
       }
     }
 
     @media (max-width:680px){
       .page{
-        padding:0 14px 58px;
+        padding:0 14px 60px;
       }
 
-      .heroWrap,
-      .sectionCard,
+      .heroShell,
+      .sectionWrap,
       .supportLeft,
-      .footer{
-        padding:20px 16px;
-        border-radius:24px;
+      .supportRight{
+        padding:24px 16px;
+        border-radius:28px;
       }
 
-      .hero h1{
-        font-size:30px;
+      .heroTitle{
+        font-size:34px;
       }
 
-      .hero p{
+      .heroSub{
         font-size:14px;
+        line-height:1.8;
       }
 
-      .heroActions{
-        gap:8px;
-      }
-
-      .btnPrimary,
-      .btnSecondary{
+      .heroBtnPrimary,
+      .heroBtnSecondary{
         width:100%;
+      }
+
+      .heroStrip span{
+        min-width:calc(50% - 5px);
+        flex:1;
       }
 
       .sectionHead h2,
       .supportLeft h2{
-        font-size:26px;
+        font-size:30px;
       }
 
       .examGrid,
-      .decisionGrid,
-      .guideGrid,
       .footerGrid{
         grid-template-columns:1fr;
-      }
-
-      .examTicker{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .supportRight{
-        min-height:280px;
       }
 
       .supportFloating{
@@ -1244,6 +1290,10 @@
         left:14px;
         right:14px;
         width:auto;
+      }
+
+      .quickStrip{
+        align-items:flex-start;
       }
     }
   </style>
@@ -1269,22 +1319,22 @@
   <div class="page">
 
     <section class="hero">
-      <div class="heroWrap">
+      <div class="heroShell">
         <div class="heroGrid">
           <div>
-            <div class="eyebrow">MBA Entrance Exams 2026</div>
+            <div class="heroLabel">MBA Entrance Exams 2026</div>
 
-            <h1>
+            <h1 class="heroTitle">
               Pick the <span class="purple">right exam</span>, build the <span class="orange">right MBA path</span>
             </h1>
 
-            <p>
+            <p class="heroSub">
               No long boring text. Just the major exams, quick direction, and the right next step for your MBA or PGDM plan.
             </p>
 
             <div class="heroActions">
-              <a href="#topExams" class="btnPrimary">Explore Top Exams</a>
-              <a href="javascript:void(0)" onclick="openLeadPopup('Hero Exam Guidance CTA')" class="btnSecondary">Get Free Guidance</a>
+              <a href="#topExams" class="heroBtnPrimary">Explore Top Exams</a>
+              <a href="javascript:void(0)" onclick="openLeadPopup('Hero Exam Guidance CTA')" class="heroBtnSecondary">Get Free Guidance</a>
             </div>
 
             <div class="heroChips">
@@ -1297,55 +1347,84 @@
             </div>
           </div>
 
-          <div class="heroVisual">
-            <div class="heroBanner">
-              <div class="heroBannerContent">
-                <div class="heroBadgeRow">
-                  <span>Visual Exam Guide</span>
-                  <span>6 Major Exams</span>
+          <div class="heroRight">
+            <div class="examSelectorPanel">
+              <div class="examSelectorTop">
+                <span>Visual Exam Guide</span>
+                <span>6 Major Exams</span>
+              </div>
+
+              <div class="examSelectorText">
+                <h3>Start with the exam that matches your goal</h3>
+                <p>IIM route, premium private route, flexible route, or wider college route — choose faster.</p>
+              </div>
+
+              <div class="examSelectorCards">
+                <div class="examSelectCard">
+                  <div class="examSelectLeft">
+                    <div class="examSelectIcon">📘</div>
+                    <div class="examSelectInfo">
+                      <strong>CAT</strong>
+                      <span>IIMs & top B-schools</span>
+                    </div>
+                  </div>
+                  <span class="examSelectTag">Top-tier</span>
                 </div>
 
-                <div class="heroBannerText">
-                  <h3>Start with the exam that matches your goal</h3>
-                  <p>IIM route, premium private route, or broader college route — choose faster.</p>
+                <div class="examSelectCard">
+                  <div class="examSelectLeft">
+                    <div class="examSelectIcon">🧠</div>
+                    <div class="examSelectInfo">
+                      <strong>XAT</strong>
+                      <span>XLRI & premium private</span>
+                    </div>
+                  </div>
+                  <span class="examSelectTag">Premium</span>
                 </div>
-              </div>
-            </div>
 
-            <div class="heroMiniStats">
-              <div class="heroMiniStat">
-                <strong>6+</strong>
-                <span>Main MBA exams covered in one place</span>
-              </div>
-              <div class="heroMiniStat">
-                <strong>Quick</strong>
-                <span>Shorter content, easier scan, better flow</span>
-              </div>
-              <div class="heroMiniStat">
-                <strong>Free Help</strong>
-                <span>Talk to our counsellors if confused</span>
+                <div class="examSelectCard">
+                  <div class="examSelectLeft">
+                    <div class="examSelectIcon">🎯</div>
+                    <div class="examSelectInfo">
+                      <strong>NMAT</strong>
+                      <span>Flexible planning route</span>
+                    </div>
+                  </div>
+                  <span class="examSelectTag">Flexible</span>
+                </div>
+
+                <div class="examSelectCard">
+                  <div class="examSelectLeft">
+                    <div class="examSelectIcon">🚀</div>
+                    <div class="examSelectInfo">
+                      <strong>SNAP</strong>
+                      <span>Symbiosis route</span>
+                    </div>
+                  </div>
+                  <span class="examSelectTag">Focused</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="examTicker">
-        <div>CAT</div>
-        <div>XAT</div>
-        <div>NMAT</div>
-        <div>SNAP</div>
-        <div>CMAT</div>
-        <div>MAT</div>
+      <div class="heroStrip">
+        <span>CAT</span>
+        <span>XAT</span>
+        <span>NMAT</span>
+        <span>SNAP</span>
+        <span>CMAT</span>
+        <span>MAT</span>
       </div>
     </section>
 
     <section class="section" id="topExams">
-      <div class="sectionCard">
+      <div class="sectionWrap">
         <div class="sectionHead">
           <div>
             <h2>Top <span>MBA Exams</span></h2>
-            <p>Main exam routes students usually target for MBA and PGDM admissions.</p>
+            <p>Explore the main exam routes students use for MBA and PGDM admissions across India.</p>
           </div>
           <a href="javascript:void(0)" onclick="openLeadPopup('Popular Exams Section CTA')" class="sectionLink">Need help choosing? ↗</a>
         </div>
@@ -1353,17 +1432,17 @@
         <div class="examGrid">
 
           <div class="examCard cat">
-            <div class="examTop">
-              <span class="examTopBadge">CAT 2026</span>
-              <div class="examTopIcon">
+            <div class="examCardTop">
+              <span class="examBadge">CAT 2026</span>
+              <div class="examVisual">
                 <div class="examIcon">📘</div>
-                <div class="examMiniTag">IIM Route</div>
+                <div class="examMini">IIM Route</div>
               </div>
             </div>
-            <div class="examBody">
-              <h3>CAT</h3>
-              <p>Best fit for IIMs and many top-tier B-schools across India.</p>
-              <div class="tagRow">
+            <div class="examCardBody">
+              <div class="examName">CAT</div>
+              <p class="examDesc">Best fit for IIMs and many top-tier B-schools across India.</p>
+              <div class="examTags">
                 <span>IIMs</span>
                 <span>Top B-Schools</span>
                 <span>High Competition</span>
@@ -1371,51 +1450,51 @@
               <div class="examFooter">
                 <div class="examFit">Best for ambitious students</div>
                 <div class="examBtns">
-                  <a href="page.html?slug=cat-exam-2026" class="miniBtn orange">View Guide</a>
-                  <a href="colleges.html?search=CAT" class="miniBtn purple">Colleges</a>
+                  <a href="page.html?slug=cat-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=CAT" class="examAction">Colleges</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="examCard xat">
-            <div class="examTop">
-              <span class="examTopBadge">XAT 2026</span>
-              <div class="examTopIcon">
+            <div class="examCardTop">
+              <span class="examBadge">XAT 2026</span>
+              <div class="examVisual">
                 <div class="examIcon">🧠</div>
-                <div class="examMiniTag" style="color:#6e49df;background:rgba(255,255,255,0.84);border:none;">XLRI Route</div>
+                <div class="examMini" style="color:#6d4ae0;background:rgba(255,255,255,0.78);">XLRI Route</div>
               </div>
             </div>
-            <div class="examBody">
-              <h3>XAT</h3>
-              <p>Strong route for XLRI and respected private MBA colleges.</p>
-              <div class="tagRow">
+            <div class="examCardBody">
+              <div class="examName">XAT</div>
+              <p class="examDesc">Strong route for XLRI and respected private MBA colleges.</p>
+              <div class="examTags">
                 <span>XLRI</span>
-                <span>Private B-Schools</span>
                 <span>Essay + GK</span>
+                <span>Private B-Schools</span>
               </div>
               <div class="examFooter">
                 <div class="examFit">Premium private-school path</div>
                 <div class="examBtns">
-                  <a href="page.html?slug=xat-exam-2026" class="miniBtn orange">View Guide</a>
-                  <a href="colleges.html?search=XAT" class="miniBtn purple">Colleges</a>
+                  <a href="page.html?slug=xat-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=XAT" class="examAction">Colleges</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="examCard nmat">
-            <div class="examTop">
-              <span class="examTopBadge">NMAT 2026</span>
-              <div class="examTopIcon">
+            <div class="examCardTop">
+              <span class="examBadge">NMAT 2026</span>
+              <div class="examVisual">
                 <div class="examIcon">🎯</div>
-                <div class="examMiniTag">Flexible Attempts</div>
+                <div class="examMini">Flexible Attempts</div>
               </div>
             </div>
-            <div class="examBody">
-              <h3>NMAT</h3>
-              <p>Ideal for students who want flexibility and NMIMS-focused options.</p>
-              <div class="tagRow">
+            <div class="examCardBody">
+              <div class="examName">NMAT</div>
+              <p class="examDesc">Ideal for students who prefer flexible attempts and strategic planning.</p>
+              <div class="examTags">
                 <span>NMIMS</span>
                 <span>Flexible Attempts</span>
                 <span>Speed Based</span>
@@ -1423,25 +1502,25 @@
               <div class="examFooter">
                 <div class="examFit">Good for strategic planners</div>
                 <div class="examBtns">
-                  <a href="page.html?slug=nmat-exam-2026" class="miniBtn orange">View Guide</a>
-                  <a href="colleges.html?search=NMAT" class="miniBtn purple">Colleges</a>
+                  <a href="page.html?slug=nmat-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=NMAT" class="examAction">Colleges</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="examCard snap">
-            <div class="examTop">
-              <span class="examTopBadge">SNAP 2026</span>
-              <div class="examTopIcon">
+            <div class="examCardTop">
+              <span class="examBadge">SNAP 2026</span>
+              <div class="examVisual">
                 <div class="examIcon">🚀</div>
-                <div class="examMiniTag" style="color:#5e3bcf;background:rgba(255,255,255,0.82);border:none;">Symbiosis</div>
+                <div class="examMini" style="background:rgba(123,76,224,0.24);">Symbiosis</div>
               </div>
             </div>
-            <div class="examBody">
-              <h3>SNAP</h3>
-              <p>Focused option for Symbiosis institutes and premium private targets.</p>
-              <div class="tagRow">
+            <div class="examCardBody">
+              <div class="examName">SNAP</div>
+              <p class="examDesc">Focused option for Symbiosis institutes and premium private targets.</p>
+              <div class="examTags">
                 <span>Symbiosis</span>
                 <span>Short Format</span>
                 <span>Premium Route</span>
@@ -1449,25 +1528,25 @@
               <div class="examFooter">
                 <div class="examFit">High-intent route</div>
                 <div class="examBtns">
-                  <a href="page.html?slug=snap-exam-2026" class="miniBtn orange">View Guide</a>
-                  <a href="colleges.html?search=SNAP" class="miniBtn purple">Colleges</a>
+                  <a href="page.html?slug=snap-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=SNAP" class="examAction">Colleges</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="examCard cmat">
-            <div class="examTop">
-              <span class="examTopBadge">CMAT 2026</span>
-              <div class="examTopIcon">
+            <div class="examCardTop">
+              <span class="examBadge">CMAT 2026</span>
+              <div class="examVisual">
                 <div class="examIcon">📈</div>
-                <div class="examMiniTag">Wide Acceptance</div>
+                <div class="examMini">Wide Acceptance</div>
               </div>
             </div>
-            <div class="examBody">
-              <h3>CMAT</h3>
-              <p>Practical option for many AICTE-approved MBA and PGDM colleges.</p>
-              <div class="tagRow">
+            <div class="examCardBody">
+              <div class="examName">CMAT</div>
+              <p class="examDesc">Practical option for many AICTE-approved MBA and PGDM colleges.</p>
+              <div class="examTags">
                 <span>AICTE Colleges</span>
                 <span>Value Route</span>
                 <span>Wide Acceptance</span>
@@ -1475,25 +1554,25 @@
               <div class="examFooter">
                 <div class="examFit">Strong value option</div>
                 <div class="examBtns">
-                  <a href="page.html?slug=cmat-exam-2026" class="miniBtn orange">View Guide</a>
-                  <a href="colleges.html?search=CMAT" class="miniBtn purple">Colleges</a>
+                  <a href="page.html?slug=cmat-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=CMAT" class="examAction">Colleges</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="examCard mat">
-            <div class="examTop">
-              <span class="examTopBadge">MAT 2026</span>
-              <div class="examTopIcon">
+            <div class="examCardTop">
+              <span class="examBadge">MAT 2026</span>
+              <div class="examVisual">
                 <div class="examIcon">📝</div>
-                <div class="examMiniTag" style="color:#7b5066;background:rgba(255,255,255,0.82);border:none;">Multiple Sessions</div>
+                <div class="examMini" style="color:#7b5066;background:rgba(255,255,255,0.78);">Multiple Sessions</div>
               </div>
             </div>
-            <div class="examBody">
-              <h3>MAT</h3>
-              <p>Flexible backup-friendly exam with multiple sessions and broad reach.</p>
-              <div class="tagRow">
+            <div class="examCardBody">
+              <div class="examName">MAT</div>
+              <p class="examDesc">Flexible backup-friendly exam with multiple sessions and broad reach.</p>
+              <div class="examTags">
                 <span>Multiple Sessions</span>
                 <span>Broad Reach</span>
                 <span>Backup Route</span>
@@ -1501,8 +1580,8 @@
               <div class="examFooter">
                 <div class="examFit">Useful fallback option</div>
                 <div class="examBtns">
-                  <a href="page.html?slug=mat-exam-2026" class="miniBtn orange">View Guide</a>
-                  <a href="colleges.html?search=MAT" class="miniBtn purple">Colleges</a>
+                  <a href="page.html?slug=mat-exam-2026" class="examAction orange">View Guide</a>
+                  <a href="colleges.html?search=MAT" class="examAction">Colleges</a>
                 </div>
               </div>
             </div>
@@ -1512,141 +1591,105 @@
       </div>
     </section>
 
-    <section class="bannerGrid">
-      <div class="bannerLarge">
-        <div class="bannerOverlay"></div>
-        <div class="bannerContent">
-          <span class="bannerTag">Featured Banner</span>
-          <div>
+    <section class="visualFeature">
+      <div class="featureLeft">
+        <div class="featureInner">
+          <span class="featureTag">Premium Visual</span>
+
+          <div class="featureText">
             <h3>Choose smarter, not randomly</h3>
-            <p>Pick the exam route that actually matches your college goals.</p>
+            <p>Pick the exam route that actually matches your college goals instead of applying blindly everywhere.</p>
           </div>
-          <div class="bannerStats">
+
+          <div class="featureStats">
             <span>IIM Route</span>
             <span>Private Route</span>
+            <span>Flexible Route</span>
             <span>Backup Route</span>
           </div>
         </div>
       </div>
 
-      <div class="bannerSmall">
-        <div class="bannerOverlay"></div>
-        <div class="bannerContent">
-          <span class="bannerTag">Quick Direction</span>
-          <div>
-            <h3>Confused between CAT, XAT, NMAT?</h3>
-            <p>We simplify the decision so students can move faster.</p>
+      <div class="featureRight">
+        <div class="compareMini">
+          <div class="compareMiniLeft">
+            <div class="compareMiniIcon">🏛️</div>
+            <div class="compareMiniText">
+              <strong>CAT</strong>
+              <span>Top-tier MBA colleges</span>
+            </div>
           </div>
-          <div class="bannerStats">
-            <span>Shorter Content</span>
-            <span>Cleaner Layout</span>
-            <span>Better Scan</span>
+          <span class="compareMiniTag">IIM Route</span>
+        </div>
+
+        <div class="compareMini">
+          <div class="compareMiniLeft">
+            <div class="compareMiniIcon">🌟</div>
+            <div class="compareMiniText">
+              <strong>XAT / SNAP</strong>
+              <span>Premium private route</span>
+            </div>
           </div>
+          <span class="compareMiniTag">Premium</span>
+        </div>
+
+        <div class="compareMini">
+          <div class="compareMiniLeft">
+            <div class="compareMiniIcon">⚡</div>
+            <div class="compareMiniText">
+              <strong>NMAT</strong>
+              <span>Flexible planning path</span>
+            </div>
+          </div>
+          <span class="compareMiniTag">Flexible</span>
+        </div>
+
+        <div class="compareMini">
+          <div class="compareMiniLeft">
+            <div class="compareMiniIcon">📚</div>
+            <div class="compareMiniText">
+              <strong>CMAT / MAT</strong>
+              <span>Broader options</span>
+            </div>
+          </div>
+          <span class="compareMiniTag">Wider Reach</span>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="sectionCard">
-        <div class="sectionHead">
-          <div>
-            <h2>Quick <span>Decision Path</span></h2>
-            <p>Simple guidance blocks instead of long paragraphs.</p>
-          </div>
-        </div>
+    <section class="quickStrip">
+      <div class="quickStripTitle">Quick Links</div>
 
-        <div class="decisionGrid">
-          <div class="decisionCard">
-            <div class="decisionIcon">🏛️</div>
-            <h3>Aiming high?</h3>
-            <p>Start with CAT if your target is IIMs or top-level B-schools.</p>
-          </div>
-
-          <div class="decisionCard">
-            <div class="decisionIcon">🌟</div>
-            <h3>Private premium route?</h3>
-            <p>XAT, SNAP, and NMAT are strong options for top private institutes.</p>
-          </div>
-
-          <div class="decisionCard">
-            <div class="decisionIcon">📚</div>
-            <h3>Want more options?</h3>
-            <p>CMAT and MAT work better for broader college shortlists.</p>
-          </div>
-
-          <div class="decisionCard">
-            <div class="decisionIcon">🤝</div>
-            <h3>Still confused?</h3>
-            <p>Take free guidance and choose the most suitable exam path.</p>
-          </div>
-        </div>
+      <div class="quickStripLinks">
+        <a href="resources.html" class="quickLink">Exam Guides</a>
+        <a href="colleges.html" class="quickLink">Accepted Colleges</a>
+        <a href="colleges.html?search=CAT" class="quickLink">Compare Routes</a>
+        <a href="javascript:void(0)" onclick="openLeadPopup('Quick Links Strip CTA')" class="quickLink ctaLink">Get Free Guidance</a>
       </div>
     </section>
 
-    <section class="section">
-      <div class="sectionCard">
-        <div class="sectionHead">
-          <div>
-            <h2>Useful <span>Guide Blocks</span></h2>
-            <p>More visual, more action-driven, less clutter.</p>
-          </div>
+    <section class="supportBanner">
+      <div class="supportLeft">
+        <h2>Still confused? Talk to our MBA admission experts</h2>
+        <p>
+          Get help with exam selection, college shortlisting, scholarships, and your complete MBA or PGDM strategy.
+        </p>
+
+        <div class="supportPoints">
+          <span>Free Counselling</span>
+          <span>Exam Strategy</span>
+          <span>College Shortlisting</span>
+          <span>Admission Help</span>
         </div>
 
-        <div class="guideGrid">
-          <div class="guideCard">
-            <div>
-              <div class="guideIcon">📘</div>
-              <h3>Exam guides</h3>
-              <p>Pattern, syllabus, attempts, and key direction pages for major exams.</p>
-            </div>
-            <a href="resources.html" class="guideBtn">Go to Resources</a>
-          </div>
-
-          <div class="guideCard">
-            <div>
-              <div class="guideIcon">🏫</div>
-              <h3>Exam accepted colleges</h3>
-              <p>Move directly from exam selection to relevant college discovery.</p>
-            </div>
-            <a href="colleges.html" class="guideBtn">See Colleges</a>
-          </div>
-
-          <div class="guideCard">
-            <div>
-              <div class="guideIcon">🧭</div>
-              <h3>Need help choosing?</h3>
-              <p>Talk to us for exam clarity, shortlisting support, and admission guidance.</p>
-            </div>
-            <a href="javascript:void(0)" onclick="openLeadPopup('Guide Blocks Section')" class="guideBtn orange">Get Free Guidance</a>
-          </div>
-        </div>
+        <a href="javascript:void(0)" onclick="openLeadPopup('Support Banner CTA')" class="supportBtn">Get Free Counselling</a>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="supportWrap">
-        <div class="supportLeft">
-          <h2>Still confused? Talk to our MBA admission experts</h2>
-          <p>
-            Get help with exam selection, college shortlisting, scholarships, and your MBA/PGDM strategy.
-          </p>
-
-          <div class="supportPoints">
-            <span>Free Counselling</span>
-            <span>Exam Strategy</span>
-            <span>College Shortlisting</span>
-            <span>Admission Help</span>
-          </div>
-
-          <a href="javascript:void(0)" onclick="openLeadPopup('Support Banner CTA')" class="supportBtn">Get Free Counselling</a>
-        </div>
-
-        <div class="supportRight">
-          <div class="supportFloating">
-            <h3>Right exam. Right college. Right direction.</h3>
-            <p>Build a better MBA path with quick guidance from Swadeshi Shiksha.</p>
-            <a href="javascript:void(0)" onclick="openLeadPopup('Floating Support CTA')" class="guideBtn orange">Talk to Us</a>
-          </div>
+      <div class="supportRight">
+        <div class="supportFloating">
+          <h3>Right exam. Right college. Right direction.</h3>
+          <p>Build a better MBA path with quick guidance from Swadeshi Shiksha.</p>
+          <a href="javascript:void(0)" onclick="openLeadPopup('Floating Support CTA')" class="supportMiniBtn">Talk to Us</a>
         </div>
       </div>
     </section>
