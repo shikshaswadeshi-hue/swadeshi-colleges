@@ -134,30 +134,172 @@
       box-shadow:0 18px 34px rgba(93,54,210,0.28);
     }
 
-    /* HERO BANNER */
     .hero{
-      margin-top:22px;
-    }
+  margin-top:22px;
+}
 
-    .heroBannerWrap{
-      width:100%;
-      border-radius:36px;
-      overflow:hidden;
-      border:1px solid #eee7fb;
-      background:#fff;
-      box-shadow:0 18px 44px rgba(42,29,89,0.08);
-    }
+.heroCarousel{
+  position:relative;
+  width:100%;
+  aspect-ratio: 8 / 3;
+  min-height:260px;
+  max-height:520px;
+  overflow:hidden;
+  border-radius:36px;
+  border:1px solid #eee7fb;
+  background:
+    radial-gradient(circle at top left, rgba(122,85,231,0.10), transparent 24%),
+    linear-gradient(135deg,#ffffff 0%, #f8f4ff 100%);
+  box-shadow:0 20px 48px rgba(42,29,89,0.10);
+}
 
-    .heroBannerLink{
-      display:block;
-      width:100%;
-    }
+.heroTrack{
+  position:relative;
+  width:100%;
+  height:100%;
+}
 
-    .heroBannerImg{
-      display:block;
-      width:100%;
-      height:auto;
-    }
+.heroSlide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .55s ease, transform .55s ease;
+  transform:scale(1.02);
+  display:block;
+}
+
+.heroSlide.active{
+  opacity:1;
+  visibility:visible;
+  transform:scale(1);
+  z-index:2;
+}
+
+.heroSlide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+.heroSlide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(22,32,47,0.02),rgba(22,32,47,0.08));
+  pointer-events:none;
+}
+
+.heroArrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+  width:46px;
+  height:46px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,0.88);
+  backdrop-filter:blur(10px);
+  color:#5f36d4;
+  font-size:30px;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 10px 24px rgba(42,29,89,0.14);
+  transition:all .22s ease;
+}
+
+.heroArrow:hover{
+  transform:translateY(-50%) scale(1.06);
+  background:#fff;
+}
+
+.heroArrow.prev{
+  left:16px;
+}
+
+.heroArrow.next{
+  right:16px;
+}
+
+.heroDots{
+  position:absolute;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  z-index:5;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.72);
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 24px rgba(42,29,89,0.10);
+}
+
+.heroDot{
+  width:10px;
+  height:10px;
+  border:none;
+  border-radius:50%;
+  background:#d5c9fb;
+  cursor:pointer;
+  transition:all .22s ease;
+}
+
+.heroDot.active{
+  width:28px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#7a55e7,#ff7a1a);
+}
+
+@media (max-width:920px){
+  .heroCarousel{
+    border-radius:26px;
+    aspect-ratio: 16 / 7;
+  }
+
+  .heroArrow{
+    width:40px;
+    height:40px;
+    font-size:26px;
+  }
+}
+
+@media (max-width:680px){
+  .heroCarousel{
+    border-radius:22px;
+    aspect-ratio: 5 / 4;
+    min-height:220px;
+  }
+
+  .heroSlide img{
+    object-fit:cover;
+    object-position:center;
+  }
+
+  .heroArrow{
+    width:36px;
+    height:36px;
+    font-size:22px;
+  }
+
+  .heroArrow.prev{
+    left:10px;
+  }
+
+  .heroArrow.next{
+    right:10px;
+  }
+
+  .heroDots{
+    bottom:12px;
+    padding:6px 10px;
+  }
+}
 
     /* COMMON */
     .section{
@@ -772,7 +914,7 @@
         padding:0 14px 60px;
       }
 
-      .heroBannerWrap,
+      .heroCarousel,
       .sectionWrap,
       .supportLeft,
       .supportRight{
@@ -819,12 +961,33 @@
   <div class="page">
 
     <section class="hero">
-      <div class="heroBannerWrap">
-        <a href="javascript:void(0)" onclick="openLeadPopup('Hero Banner CTA')" class="heroBannerLink">
-          <img src="assets/exam-banner-1.png" alt="MBA Exam Banner" class="heroBannerImg">
-        </a>
-      </div>
-    </section>
+  <div class="heroCarousel" id="heroCarousel">
+
+    <div class="heroTrack">
+      <a href="javascript:void(0)" onclick="openLeadPopup('Hero Banner 1 CTA')" class="heroSlide active">
+        <img src="assets/exam-banner-1.png" alt="MBA Exam Banner 1">
+      </a>
+
+      <a href="javascript:void(0)" onclick="openLeadPopup('Hero Banner 2 CTA')" class="heroSlide">
+        <img src="assets/exam-banner-1.png" alt="MBA Exam Banner 2">
+      </a>
+
+      <a href="javascript:void(0)" onclick="openLeadPopup('Hero Banner 3 CTA')" class="heroSlide">
+        <img src="assets/exam-banner-1.png" alt="MBA Exam Banner 3">
+      </a>
+    </div>
+
+    <button class="heroArrow prev" aria-label="Previous slide">‹</button>
+    <button class="heroArrow next" aria-label="Next slide">›</button>
+
+    <div class="heroDots">
+      <button class="heroDot active" data-index="0" aria-label="Go to slide 1"></button>
+      <button class="heroDot" data-index="1" aria-label="Go to slide 2"></button>
+      <button class="heroDot" data-index="2" aria-label="Go to slide 3"></button>
+    </div>
+
+  </div>
+</section>
 
     <section class="section" id="topExams">
       <div class="sectionWrap">
@@ -1157,6 +1320,79 @@
       }
     });
   </script>
+
+  <script>
+  (function(){
+    const carousel = document.getElementById("heroCarousel");
+    if(!carousel) return;
+
+    const slides = carousel.querySelectorAll(".heroSlide");
+    const dots = carousel.querySelectorAll(".heroDot");
+    const prevBtn = carousel.querySelector(".heroArrow.prev");
+    const nextBtn = carousel.querySelector(".heroArrow.next");
+
+    let current = 0;
+    let autoSlide;
+
+    function showSlide(index){
+      slides.forEach((slide,i)=>{
+        slide.classList.toggle("active", i === index);
+      });
+
+      dots.forEach((dot,i)=>{
+        dot.classList.toggle("active", i === index);
+      });
+
+      current = index;
+    }
+
+    function nextSlide(){
+      let next = current + 1;
+      if(next >= slides.length) next = 0;
+      showSlide(next);
+    }
+
+    function prevSlideFn(){
+      let prev = current - 1;
+      if(prev < 0) prev = slides.length - 1;
+      showSlide(prev);
+    }
+
+    function startAuto(){
+      autoSlide = setInterval(nextSlide, 4000);
+    }
+
+    function stopAuto(){
+      clearInterval(autoSlide);
+    }
+
+    prevBtn.addEventListener("click", ()=>{
+      stopAuto();
+      prevSlideFn();
+      startAuto();
+    });
+
+    nextBtn.addEventListener("click", ()=>{
+      stopAuto();
+      nextSlide();
+      startAuto();
+    });
+
+    dots.forEach((dot)=>{
+      dot.addEventListener("click", ()=>{
+        stopAuto();
+        showSlide(Number(dot.dataset.index));
+        startAuto();
+      });
+    });
+
+    carousel.addEventListener("mouseenter", stopAuto);
+    carousel.addEventListener("mouseleave", startAuto);
+
+    showSlide(0);
+    startAuto();
+  })();
+</script>
 
 </body>
 </html>
