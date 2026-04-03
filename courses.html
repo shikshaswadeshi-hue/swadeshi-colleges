@@ -40,7 +40,7 @@
       max-width:100%;
     }
 
-    button,input{
+    button,input,select{
       font:inherit;
     }
 
@@ -147,142 +147,170 @@
       box-shadow:0 18px 34px rgba(93,54,210,0.28);
     }
 
-    /* SMALL TOP INTRO */
-    .miniIntro{
-      margin-top:20px;
+    /* TOP STUDENT FORM */
+    .topFormSection{
+      margin-top:22px;
+    }
+
+    .topFormWrap{
       display:grid;
-      grid-template-columns:1.05fr .95fr;
+      grid-template-columns:1.08fr .92fr;
       gap:18px;
       align-items:stretch;
     }
 
-    .miniIntroText{
-      background:linear-gradient(180deg,#fbf9ff 0%,#f8f5ff 100%);
+    .topFormInfo{
+      background:linear-gradient(135deg,#ffffff 0%, #faf7ff 100%);
       border:1px solid #eee7fb;
-      border-radius:30px;
-      padding:24px 24px;
-      box-shadow:0 16px 40px rgba(42,29,89,0.05);
+      border-radius:34px;
+      padding:32px 30px;
+      box-shadow:0 18px 42px rgba(42,29,89,0.06);
     }
 
-    .introBadge{
+    .topFormBadge{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:8px 12px;
+      padding:8px 13px;
       border-radius:999px;
       background:#f2ecff;
       color:#6948dd;
       font-size:12px;
       font-weight:800;
       letter-spacing:.02em;
-      margin-bottom:14px;
+      margin-bottom:16px;
     }
 
-    .miniIntroText h1{
+    .topFormInfo h1{
       font-family:'Sora',sans-serif;
-      font-size:42px;
+      font-size:44px;
       line-height:1.02;
       letter-spacing:-0.05em;
       color:#172031;
-      margin-bottom:12px;
+      margin-bottom:14px;
       max-width:620px;
     }
 
-    .miniIntroText h1 span{
+    .topFormInfo h1 span{
       color:#6f4ae0;
     }
 
-    .miniIntroText p{
+    .topFormInfo p{
       font-size:15px;
-      line-height:1.8;
+      line-height:1.84;
       color:#667085;
-      max-width:680px;
-      margin-bottom:18px;
+      max-width:660px;
+      margin-bottom:22px;
     }
 
-    .introBtns{
+    .topInfoPoints{
       display:flex;
-      gap:10px;
       flex-wrap:wrap;
+      gap:10px;
     }
 
-    .introBtnPrimary,
-    .introBtnGhost{
+    .topInfoPoints span{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:11px 16px;
+      padding:10px 13px;
       border-radius:999px;
+      background:#fff;
+      border:1px solid #ece4fb;
+      color:#5f6980;
       font-size:13px;
+      font-weight:700;
+    }
+
+    .studentFormCard{
+      position:relative;
+      overflow:hidden;
+      border-radius:34px;
+      padding:28px;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.14), transparent 18%),
+        radial-gradient(circle at bottom left, rgba(255,169,93,0.18), transparent 26%),
+        linear-gradient(135deg,#7a55e7 0%,#5b34cf 100%);
+      color:#fff;
+      box-shadow:0 26px 58px rgba(69,43,161,0.18);
+    }
+
+    .studentFormCard::before{
+      content:"";
+      position:absolute;
+      width:220px;
+      height:220px;
+      right:-60px;
+      top:-60px;
+      border-radius:36px;
+      background:rgba(255,255,255,0.10);
+      transform:rotate(26deg);
+    }
+
+    .studentFormInner{
+      position:relative;
+      z-index:2;
+    }
+
+    .studentFormTitle{
+      font-family:'Sora',sans-serif;
+      font-size:30px;
+      line-height:1.06;
+      letter-spacing:-0.04em;
+      margin-bottom:10px;
+      max-width:420px;
+    }
+
+    .studentFormText{
+      font-size:14px;
+      line-height:1.8;
+      color:rgba(255,255,255,0.84);
+      margin-bottom:18px;
+    }
+
+    .studentForm{
+      display:grid;
+      gap:12px;
+    }
+
+    .studentForm input,
+    .studentForm select{
+      width:100%;
+      border:none;
+      outline:none;
+      border-radius:16px;
+      padding:14px 14px;
+      background:rgba(255,255,255,0.94);
+      color:#172031;
+      font-size:14px;
+      box-shadow:0 10px 22px rgba(27,18,65,0.08);
+    }
+
+    .studentForm input::placeholder{
+      color:#7b8396;
+    }
+
+    .studentForm button{
+      border:none;
+      cursor:pointer;
+      border-radius:16px;
+      padding:14px 16px;
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
+      color:#fff;
+      font-size:15px;
       font-weight:800;
+      box-shadow:0 14px 28px rgba(255,122,26,0.20);
       transition:all .22s ease;
     }
 
-    .introBtnPrimary{
-      color:#fff;
-      background:linear-gradient(135deg,#7a55e7,#6037d4);
-      box-shadow:0 12px 22px rgba(96,55,212,0.18);
+    .studentForm button:hover{
+      transform:translateY(-2px);
     }
 
-    .introBtnGhost{
-      color:#6948dd;
-      background:#fff;
-      border:1px solid #ece4fb;
-    }
-
-    .miniIntroVisual{
-      position:relative;
-      overflow:hidden;
-      border-radius:30px;
-      min-height:220px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08)),
-        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      border:1px solid #eee7fb;
-      box-shadow:0 18px 40px rgba(42,29,89,0.08);
-    }
-
-    .miniIntroVisual::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg,rgba(22,32,47,0.08),rgba(22,32,47,0.18));
-    }
-
-    .miniCardFloat{
-      position:absolute;
-      z-index:2;
-      background:rgba(255,255,255,0.92);
-      backdrop-filter:blur(12px);
-      border:1px solid #ece4fb;
-      border-radius:18px;
-      padding:14px 16px;
-      box-shadow:0 16px 34px rgba(35,22,78,0.12);
-    }
-
-    .miniCardFloat.top{
-      top:16px;
-      left:16px;
-    }
-
-    .miniCardFloat.bottom{
-      right:16px;
-      bottom:16px;
-    }
-
-    .miniCardFloat strong{
-      display:block;
-      font-size:13px;
-      font-weight:800;
-      color:#6948dd;
-      margin-bottom:4px;
-    }
-
-    .miniCardFloat span{
-      display:block;
+    .studentFormNote{
+      margin-top:10px;
       font-size:12px;
-      line-height:1.55;
-      color:#667085;
+      color:rgba(255,255,255,0.76);
     }
 
     /* COMMON */
@@ -359,7 +387,7 @@
 
     .courseCardTop{
       position:relative;
-      height:185px;
+      height:180px;
       overflow:hidden;
     }
 
@@ -373,7 +401,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(180deg,rgba(22,32,47,0.06),rgba(22,32,47,0.18));
+      background:linear-gradient(180deg,rgba(22,32,47,0.05),rgba(22,32,47,0.18));
     }
 
     .coursePill{
@@ -491,247 +519,6 @@
 
     .courseAction:hover{
       transform:translateY(-2px);
-    }
-
-    /* SMALL ADVANTAGE STRIP */
-    .advantageStrip{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:14px;
-    }
-
-    .advantageCard{
-      background:#fff;
-      border:1px solid #eee7fb;
-      border-radius:22px;
-      padding:18px 16px;
-      box-shadow:0 14px 32px rgba(42,29,89,0.05);
-      display:flex;
-      align-items:flex-start;
-      gap:12px;
-    }
-
-    .advantageIcon{
-      width:44px;
-      height:44px;
-      min-width:44px;
-      border-radius:14px;
-      background:#f4efff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:20px;
-    }
-
-    .advantageCard h3{
-      font-size:17px;
-      line-height:1.15;
-      color:#172031;
-      margin-bottom:6px;
-    }
-
-    .advantageCard p{
-      font-size:13px;
-      line-height:1.7;
-      color:#667085;
-    }
-
-    /* SIMPLE SINGLE LINE STRIP */
-    .simpleLineStrip{
-      margin-top:22px;
-      background:linear-gradient(180deg,#fff 0%,#fbf8ff 100%);
-      border:1px solid #eee7fb;
-      border-radius:22px;
-      padding:14px 16px;
-      box-shadow:0 14px 32px rgba(42,29,89,0.05);
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .simpleLineTitle{
-      font-size:13px;
-      font-weight:800;
-      color:#6f4ae0;
-      white-space:nowrap;
-    }
-
-    .simpleLineLinks{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      color:#5f6980;
-      font-size:13px;
-      font-weight:700;
-    }
-
-    .simpleLineLinks a{
-      transition:all .2s ease;
-    }
-
-    .simpleLineLinks a:hover{
-      color:#6f4ae0;
-    }
-
-    .simpleDivider{
-      color:#d4c7f8;
-      font-weight:600;
-    }
-
-    /* FINAL SUPPORT */
-    .supportBanner{
-      margin-top:42px;
-      display:grid;
-      grid-template-columns:1.04fr .96fr;
-      gap:18px;
-      align-items:stretch;
-    }
-
-    .supportLeft{
-      position:relative;
-      overflow:hidden;
-      border-radius:34px;
-      padding:30px 26px;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 18%),
-        radial-gradient(circle at bottom right, rgba(255,169,93,0.18), transparent 24%),
-        linear-gradient(135deg,#7a55e7 0%,#5b34cf 100%);
-      color:#fff;
-      box-shadow:0 26px 58px rgba(69,43,161,0.18);
-    }
-
-    .supportLeft::before{
-      content:"";
-      position:absolute;
-      width:210px;
-      height:210px;
-      right:-56px;
-      top:-56px;
-      border-radius:40px;
-      background:rgba(255,255,255,0.12);
-      transform:rotate(28deg);
-    }
-
-    .supportLeft h2{
-      position:relative;
-      z-index:2;
-      font-family:'Sora',sans-serif;
-      font-size:38px;
-      line-height:1.08;
-      letter-spacing:-0.04em;
-      margin-bottom:12px;
-      max-width:520px;
-    }
-
-    .supportLeft p{
-      position:relative;
-      z-index:2;
-      font-size:15px;
-      line-height:1.84;
-      color:rgba(255,255,255,0.86);
-      max-width:600px;
-      margin-bottom:18px;
-    }
-
-    .supportPoints{
-      position:relative;
-      z-index:2;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-bottom:20px;
-    }
-
-    .supportPoints span{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 13px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.12);
-      border:1px solid rgba(255,255,255,0.16);
-      font-size:13px;
-      font-weight:700;
-    }
-
-    .supportBtn{
-      position:relative;
-      z-index:2;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
-      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
-      color:#fff;
-      font-size:14px;
-      font-weight:800;
-      box-shadow:0 12px 22px rgba(255,122,26,0.18);
-    }
-
-    .supportRight{
-      position:relative;
-      overflow:hidden;
-      border-radius:34px;
-      min-height:320px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.68), rgba(245,240,255,0.80)),
-        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      border:1px solid #eee7fb;
-      box-shadow:0 18px 42px rgba(42,29,89,0.06);
-    }
-
-    .supportRight::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.10));
-    }
-
-    .supportFloating{
-      position:absolute;
-      right:18px;
-      bottom:18px;
-      z-index:2;
-      width:min(320px, calc(100% - 36px));
-      background:rgba(255,255,255,0.92);
-      backdrop-filter:blur(12px);
-      border:1px solid #ece4fb;
-      border-radius:22px;
-      padding:18px;
-      box-shadow:0 16px 34px rgba(35,22,78,0.12);
-    }
-
-    .supportFloating h3{
-      font-family:'Sora',sans-serif;
-      font-size:22px;
-      line-height:1.08;
-      letter-spacing:-0.03em;
-      margin-bottom:8px;
-      color:#16202f;
-    }
-
-    .supportFloating p{
-      font-size:13px;
-      line-height:1.68;
-      color:#667085;
-      margin-bottom:14px;
-    }
-
-    .supportMiniBtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 15px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:800;
-      color:#fff;
-      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
-      box-shadow:0 10px 18px rgba(255,122,26,0.16);
     }
 
     /* FOOTER */
@@ -857,8 +644,7 @@
 
     /* RESPONSIVE */
     @media (max-width:1100px){
-      .miniIntro,
-      .supportBanner{
+      .topFormWrap{
         grid-template-columns:1fr;
       }
 
@@ -889,8 +675,7 @@
         width:100%;
       }
 
-      .courseGrid,
-      .advantageStrip{
+      .courseGrid{
         grid-template-columns:1fr;
       }
     }
@@ -900,38 +685,19 @@
         padding:0 14px 60px;
       }
 
-      .miniIntroText,
-      .miniIntroVisual,
-      .sectionWrap,
-      .supportLeft,
-      .supportRight{
+      .topFormInfo,
+      .studentFormCard,
+      .sectionWrap{
         border-radius:22px;
       }
 
-      .miniIntroText h1,
-      .sectionHead h2,
-      .supportLeft h2{
+      .topFormInfo h1,
+      .sectionHead h2{
         font-size:30px;
       }
 
       .footerGrid{
         grid-template-columns:1fr;
-      }
-
-      .supportFloating{
-        position:absolute;
-        left:14px;
-        right:14px;
-        width:auto;
-      }
-
-      .introBtns{
-        flex-direction:column;
-      }
-
-      .introBtnPrimary,
-      .introBtnGhost{
-        width:100%;
       }
     }
   </style>
@@ -959,30 +725,48 @@
 
   <div class="page">
 
-    <section class="miniIntro">
-      <div class="miniIntroText">
-        <span class="introBadge">MBA / PGDM Courses 2026</span>
-        <h1>Choose smarter <span>course paths</span> for your MBA journey</h1>
-        <p>
-          Explore the main management course options, compare what fits your goals,
-          and get direct help with college shortlisting and admissions.
-        </p>
+    <section class="topFormSection">
+      <div class="topFormWrap">
+        <div class="topFormInfo">
+          <span class="topFormBadge">MBA / PGDM Courses 2026</span>
+          <h1>Find the <span>right course</span> before choosing the college</h1>
+          <p>
+            Submit your details and get guidance for MBA / PGDM course selection,
+            college shortlisting, and admissions support.
+          </p>
 
-        <div class="introBtns">
-          <a href="#topCourses" class="introBtnPrimary">Explore Courses</a>
-          <a href="javascript:void(0)" onclick="openLeadPopup('Mini Intro CTA')" class="introBtnGhost">Free Counselling</a>
-        </div>
-      </div>
-
-      <div class="miniIntroVisual">
-        <div class="miniCardFloat top">
-          <strong>Top MBA Paths</strong>
-          <span>MBA, PGDM, Executive MBA, Online MBA</span>
+          <div class="topInfoPoints">
+            <span>Free Counselling</span>
+            <span>Course Selection</span>
+            <span>College Shortlisting</span>
+            <span>Admission Help</span>
+          </div>
         </div>
 
-        <div class="miniCardFloat bottom">
-          <strong>Quick Guidance</strong>
-          <span>Choose the right course before choosing the college</span>
+        <div class="studentFormCard">
+          <div class="studentFormInner">
+            <div class="studentFormTitle">Student Enquiry Form</div>
+            <div class="studentFormText">Fill this quick form and our team will connect with you.</div>
+
+            <form class="studentForm" onsubmit="submitTopForm(event)">
+              <input type="text" id="topLeadName" placeholder="Your Name" required>
+              <input type="tel" id="topLeadPhone" placeholder="Phone Number" required>
+
+              <select id="topLeadCourse">
+                <option value="">Select Interested Course</option>
+                <option value="MBA">MBA</option>
+                <option value="PGDM">PGDM</option>
+                <option value="Executive MBA">Executive MBA</option>
+                <option value="Online MBA">Online MBA</option>
+              </select>
+
+              <input type="text" id="topLeadCity" placeholder="Preferred City / College">
+
+              <button type="submit">Get Free Counselling</button>
+            </form>
+
+            <div class="studentFormNote">Free counselling • Fast response • Trusted support</div>
+          </div>
         </div>
       </div>
     </section>
@@ -992,7 +776,7 @@
         <div class="sectionHead">
           <div>
             <h2>Top <span>Management Courses</span></h2>
-            <p>Only the most useful options, designed in a more premium and visual way.</p>
+            <p>Simple, useful and more premium looking course options only.</p>
           </div>
           <a href="javascript:void(0)" onclick="openLeadPopup('Top Courses Section CTA')" class="sectionLink">Need help choosing? ↗</a>
         </div>
@@ -1096,71 +880,6 @@
           </div>
 
         </div>
-
-        <div class="advantageStrip">
-          <div class="advantageCard">
-            <div class="advantageIcon">🧭</div>
-            <div>
-              <h3>Course Clarity</h3>
-              <p>Understand what actually fits your goals before applying anywhere.</p>
-            </div>
-          </div>
-
-          <div class="advantageCard">
-            <div class="advantageIcon">🏫</div>
-            <div>
-              <h3>College Match</h3>
-              <p>Pick colleges according to the course type you actually want.</p>
-            </div>
-          </div>
-
-          <div class="advantageCard">
-            <div class="advantageIcon">🎯</div>
-            <div>
-              <h3>Admission Support</h3>
-              <p>Get direct help with shortlisting, counselling, and admissions.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="simpleLineStrip">
-      <div class="simpleLineTitle">Quick Links</div>
-      <div class="simpleLineLinks">
-        <a href="resources.html">Course Guides</a>
-        <span class="simpleDivider">•</span>
-        <a href="colleges.html">Top Colleges</a>
-        <span class="simpleDivider">•</span>
-        <a href="exams.html">MBA Exams</a>
-        <span class="simpleDivider">•</span>
-        <a href="javascript:void(0)" onclick="openLeadPopup('Simple Strip CTA')">Get Free Guidance</a>
-      </div>
-    </section>
-
-    <section class="supportBanner">
-      <div class="supportLeft">
-        <h2>Still confused? Talk to our MBA admission experts</h2>
-        <p>
-          Get help with course selection, college shortlisting, scholarships, and your complete MBA or PGDM strategy.
-        </p>
-
-        <div class="supportPoints">
-          <span>Free Counselling</span>
-          <span>Course Selection</span>
-          <span>College Shortlisting</span>
-          <span>Admission Help</span>
-        </div>
-
-        <a href="javascript:void(0)" onclick="openLeadPopup('Support Banner CTA')" class="supportBtn">Get Free Counselling</a>
-      </div>
-
-      <div class="supportRight">
-        <div class="supportFloating">
-          <h3>Right course. Right college. Right direction.</h3>
-          <p>Build a better MBA path with quick guidance from Swadeshi Shiksha.</p>
-          <a href="javascript:void(0)" onclick="openLeadPopup('Floating Support CTA')" class="supportMiniBtn">Talk to Us</a>
-        </div>
       </div>
     </section>
 
@@ -1243,6 +962,13 @@
       document.getElementById("leadPopup").style.display = "none";
     }
 
+    async function saveLead(data){
+      if (window.firebase && firebase.apps.length) {
+        const db = firebase.firestore();
+        await db.collection("leads").add(data);
+      }
+    }
+
     async function submitLead(){
       const name = document.getElementById("leadName").value.trim();
       const phone = document.getElementById("leadPhone").value.trim();
@@ -1254,23 +980,55 @@
       }
 
       try{
-        if (window.firebase && firebase.apps.length) {
-          const db = firebase.firestore();
-          await db.collection("leads").add({
-            name,
-            phone,
-            courseOrExam: course,
-            source: leadSource,
-            page: "courses.html",
-            createdAt: new Date()
-          });
-        }
+        await saveLead({
+          name,
+          phone,
+          courseOrExam: course,
+          source: leadSource,
+          page: "courses.html",
+          createdAt: new Date()
+        });
 
         alert("Thank you! Our team will contact you soon.");
         closeLeadPopup();
         document.getElementById("leadName").value = "";
         document.getElementById("leadPhone").value = "";
         document.getElementById("leadCourse").value = "";
+      }catch(error){
+        console.error(error);
+        alert("Lead saved issue. Please check Firebase connection.");
+      }
+    }
+
+    async function submitTopForm(e){
+      e.preventDefault();
+
+      const name = document.getElementById("topLeadName").value.trim();
+      const phone = document.getElementById("topLeadPhone").value.trim();
+      const course = document.getElementById("topLeadCourse").value.trim();
+      const city = document.getElementById("topLeadCity").value.trim();
+
+      if(!name || !phone){
+        alert("Please enter your name and phone number.");
+        return;
+      }
+
+      try{
+        await saveLead({
+          name,
+          phone,
+          courseOrExam: course,
+          preferredCityOrCollege: city,
+          source: "Top Student Form",
+          page: "courses.html",
+          createdAt: new Date()
+        });
+
+        alert("Thank you! Our team will contact you soon.");
+        document.getElementById("topLeadName").value = "";
+        document.getElementById("topLeadPhone").value = "";
+        document.getElementById("topLeadCourse").value = "";
+        document.getElementById("topLeadCity").value = "";
       }catch(error){
         console.error(error);
         alert("Lead saved issue. Please check Firebase connection.");
