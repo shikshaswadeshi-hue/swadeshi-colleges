@@ -147,175 +147,9 @@
       box-shadow:0 18px 34px rgba(93,54,210,0.28);
     }
 
-    /* TOP STUDENT FORM */
-    .topFormSection{
-      margin-top:22px;
-    }
-
-    .topFormWrap{
-      display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:18px;
-      align-items:stretch;
-    }
-
-    .topFormInfo{
-      background:linear-gradient(135deg,#ffffff 0%, #faf7ff 100%);
-      border:1px solid #eee7fb;
-      border-radius:34px;
-      padding:32px 30px;
-      box-shadow:0 18px 42px rgba(42,29,89,0.06);
-    }
-
-    .topFormBadge{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:8px 13px;
-      border-radius:999px;
-      background:#f2ecff;
-      color:#6948dd;
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.02em;
-      margin-bottom:16px;
-    }
-
-    .topFormInfo h1{
-      font-family:'Sora',sans-serif;
-      font-size:44px;
-      line-height:1.02;
-      letter-spacing:-0.05em;
-      color:#172031;
-      margin-bottom:14px;
-      max-width:620px;
-    }
-
-    .topFormInfo h1 span{
-      color:#6f4ae0;
-    }
-
-    .topFormInfo p{
-      font-size:15px;
-      line-height:1.84;
-      color:#667085;
-      max-width:660px;
-      margin-bottom:22px;
-    }
-
-    .topInfoPoints{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
-    .topInfoPoints span{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 13px;
-      border-radius:999px;
-      background:#fff;
-      border:1px solid #ece4fb;
-      color:#5f6980;
-      font-size:13px;
-      font-weight:700;
-    }
-
-    .studentFormCard{
-      position:relative;
-      overflow:hidden;
-      border-radius:34px;
-      padding:28px;
-      background:
-        radial-gradient(circle at top right, rgba(255,255,255,0.14), transparent 18%),
-        radial-gradient(circle at bottom left, rgba(255,169,93,0.18), transparent 26%),
-        linear-gradient(135deg,#7a55e7 0%,#5b34cf 100%);
-      color:#fff;
-      box-shadow:0 26px 58px rgba(69,43,161,0.18);
-    }
-
-    .studentFormCard::before{
-      content:"";
-      position:absolute;
-      width:220px;
-      height:220px;
-      right:-60px;
-      top:-60px;
-      border-radius:36px;
-      background:rgba(255,255,255,0.10);
-      transform:rotate(26deg);
-    }
-
-    .studentFormInner{
-      position:relative;
-      z-index:2;
-    }
-
-    .studentFormTitle{
-      font-family:'Sora',sans-serif;
-      font-size:30px;
-      line-height:1.06;
-      letter-spacing:-0.04em;
-      margin-bottom:10px;
-      max-width:420px;
-    }
-
-    .studentFormText{
-      font-size:14px;
-      line-height:1.8;
-      color:rgba(255,255,255,0.84);
-      margin-bottom:18px;
-    }
-
-    .studentForm{
-      display:grid;
-      gap:12px;
-    }
-
-    .studentForm input,
-    .studentForm select{
-      width:100%;
-      border:none;
-      outline:none;
-      border-radius:16px;
-      padding:14px 14px;
-      background:rgba(255,255,255,0.94);
-      color:#172031;
-      font-size:14px;
-      box-shadow:0 10px 22px rgba(27,18,65,0.08);
-    }
-
-    .studentForm input::placeholder{
-      color:#7b8396;
-    }
-
-    .studentForm button{
-      border:none;
-      cursor:pointer;
-      border-radius:16px;
-      padding:14px 16px;
-      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
-      color:#fff;
-      font-size:15px;
-      font-weight:800;
-      box-shadow:0 14px 28px rgba(255,122,26,0.20);
-      transition:all .22s ease;
-    }
-
-    .studentForm button:hover{
-      transform:translateY(-2px);
-    }
-
-    .studentFormNote{
-      margin-top:10px;
-      font-size:12px;
-      color:rgba(255,255,255,0.76);
-    }
-
-    /* COMMON */
+    /* COURSES SECTION */
     .section{
-      margin-top:42px;
+      margin-top:26px;
     }
 
     .sectionWrap{
@@ -364,7 +198,6 @@
       font-weight:700;
     }
 
-    /* COURSES GRID */
     .courseGrid{
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
@@ -521,6 +354,181 @@
       transform:translateY(-2px);
     }
 
+    /* FORM SECTION ABOVE FOOTER */
+    .enquirySection{
+      margin-top:32px;
+    }
+
+    .enquiryWrap{
+      position:relative;
+      overflow:hidden;
+      border-radius:36px;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 18%),
+        radial-gradient(circle at bottom right, rgba(255,169,93,0.14), transparent 24%),
+        linear-gradient(135deg,#7a55e7 0%,#5b34cf 58%,#6f4ae0 100%);
+      padding:26px;
+      box-shadow:0 28px 60px rgba(69,43,161,0.18);
+    }
+
+    .enquiryWrap::before{
+      content:"";
+      position:absolute;
+      width:220px;
+      height:220px;
+      right:-60px;
+      top:-60px;
+      border-radius:42px;
+      background:rgba(255,255,255,0.10);
+      transform:rotate(28deg);
+    }
+
+    .enquiryGrid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1fr 440px;
+      gap:22px;
+      align-items:center;
+    }
+
+    .enquiryLeft{
+      color:#fff;
+      padding:8px 4px 8px 6px;
+    }
+
+    .enquiryBadge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 13px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.16);
+      color:#fff;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.02em;
+      margin-bottom:16px;
+    }
+
+    .enquiryLeft h2{
+      font-family:'Sora',sans-serif;
+      font-size:42px;
+      line-height:1.04;
+      letter-spacing:-0.05em;
+      margin-bottom:14px;
+      max-width:580px;
+    }
+
+    .enquiryLeft h2 span{
+      color:#ffd2a8;
+    }
+
+    .enquiryLeft p{
+      font-size:15px;
+      line-height:1.86;
+      color:rgba(255,255,255,0.84);
+      max-width:620px;
+      margin-bottom:18px;
+    }
+
+    .enquiryPoints{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .enquiryPoints span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 13px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.16);
+      color:#fff;
+      font-size:13px;
+      font-weight:700;
+      backdrop-filter:blur(8px);
+    }
+
+    .enquiryFormCard{
+      background:rgba(255,255,255,0.96);
+      border:1px solid rgba(255,255,255,0.82);
+      border-radius:28px;
+      padding:22px;
+      box-shadow:0 20px 44px rgba(31,17,84,0.16);
+      backdrop-filter:blur(14px);
+    }
+
+    .enquiryFormCard h3{
+      font-family:'Sora',sans-serif;
+      font-size:24px;
+      line-height:1.08;
+      letter-spacing:-0.03em;
+      color:#172031;
+      margin-bottom:8px;
+    }
+
+    .enquiryFormCard p{
+      font-size:13px;
+      line-height:1.7;
+      color:#6b7280;
+      margin-bottom:16px;
+    }
+
+    .premiumForm{
+      display:grid;
+      gap:12px;
+    }
+
+    .premiumForm input,
+    .premiumForm select{
+      width:100%;
+      border:1px solid #e7defb;
+      outline:none;
+      border-radius:16px;
+      padding:14px 14px;
+      background:#fcfbff;
+      color:#172031;
+      font-size:14px;
+      transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+
+    .premiumForm input:focus,
+    .premiumForm select:focus{
+      border-color:#7b59e9;
+      box-shadow:0 0 0 4px rgba(123,89,233,0.10);
+      transform:translateY(-1px);
+    }
+
+    .premiumForm button{
+      border:none;
+      cursor:pointer;
+      border-radius:16px;
+      padding:15px 16px;
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
+      color:#fff;
+      font-size:15px;
+      font-weight:800;
+      box-shadow:0 14px 28px rgba(255,122,26,0.18);
+      transition:all .22s ease;
+      margin-top:2px;
+    }
+
+    .premiumForm button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 34px rgba(255,122,26,0.24);
+    }
+
+    .premiumFormNote{
+      margin-top:10px;
+      font-size:12px;
+      color:#7b8396;
+      text-align:center;
+    }
+
     /* FOOTER */
     .footer{
       margin-top:34px;
@@ -644,7 +652,7 @@
 
     /* RESPONSIVE */
     @media (max-width:1100px){
-      .topFormWrap{
+      .enquiryGrid{
         grid-template-columns:1fr;
       }
 
@@ -685,19 +693,23 @@
         padding:0 14px 60px;
       }
 
-      .topFormInfo,
-      .studentFormCard,
-      .sectionWrap{
+      .sectionWrap,
+      .enquiryWrap,
+      .enquiryFormCard{
         border-radius:22px;
       }
 
-      .topFormInfo h1,
-      .sectionHead h2{
+      .sectionHead h2,
+      .enquiryLeft h2{
         font-size:30px;
       }
 
       .footerGrid{
         grid-template-columns:1fr;
+      }
+
+      .enquiryWrap{
+        padding:18px;
       }
     }
   </style>
@@ -724,52 +736,6 @@
   </div>
 
   <div class="page">
-
-    <section class="topFormSection">
-      <div class="topFormWrap">
-        <div class="topFormInfo">
-          <span class="topFormBadge">MBA / PGDM Courses 2026</span>
-          <h1>Find the <span>right course</span> before choosing the college</h1>
-          <p>
-            Submit your details and get guidance for MBA / PGDM course selection,
-            college shortlisting, and admissions support.
-          </p>
-
-          <div class="topInfoPoints">
-            <span>Free Counselling</span>
-            <span>Course Selection</span>
-            <span>College Shortlisting</span>
-            <span>Admission Help</span>
-          </div>
-        </div>
-
-        <div class="studentFormCard">
-          <div class="studentFormInner">
-            <div class="studentFormTitle">Student Enquiry Form</div>
-            <div class="studentFormText">Fill this quick form and our team will connect with you.</div>
-
-            <form class="studentForm" onsubmit="submitTopForm(event)">
-              <input type="text" id="topLeadName" placeholder="Your Name" required>
-              <input type="tel" id="topLeadPhone" placeholder="Phone Number" required>
-
-              <select id="topLeadCourse">
-                <option value="">Select Interested Course</option>
-                <option value="MBA">MBA</option>
-                <option value="PGDM">PGDM</option>
-                <option value="Executive MBA">Executive MBA</option>
-                <option value="Online MBA">Online MBA</option>
-              </select>
-
-              <input type="text" id="topLeadCity" placeholder="Preferred City / College">
-
-              <button type="submit">Get Free Counselling</button>
-            </form>
-
-            <div class="studentFormNote">Free counselling • Fast response • Trusted support</div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="section" id="topCourses">
       <div class="sectionWrap">
@@ -879,6 +845,52 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <section class="enquirySection">
+      <div class="enquiryWrap">
+        <div class="enquiryGrid">
+          <div class="enquiryLeft">
+            <span class="enquiryBadge">Student Enquiry Form</span>
+            <h2>Still confused? Get the <span>right course guidance</span> before admission.</h2>
+            <p>
+              Fill this quick form and get support for course selection, college shortlisting,
+              direct admission guidance, and scholarships.
+            </p>
+
+            <div class="enquiryPoints">
+              <span>Free Counselling</span>
+              <span>Course Selection</span>
+              <span>College Shortlisting</span>
+              <span>Admission Help</span>
+            </div>
+          </div>
+
+          <div class="enquiryFormCard">
+            <h3>Apply for Guidance</h3>
+            <p>Our team will contact you shortly.</p>
+
+            <form class="premiumForm" onsubmit="submitBottomForm(event)">
+              <input type="text" id="bottomLeadName" placeholder="Your Name" required>
+              <input type="tel" id="bottomLeadPhone" placeholder="Phone Number" required>
+
+              <select id="bottomLeadCourse">
+                <option value="">Select Interested Course</option>
+                <option value="MBA">MBA</option>
+                <option value="PGDM">PGDM</option>
+                <option value="Executive MBA">Executive MBA</option>
+                <option value="Online MBA">Online MBA</option>
+              </select>
+
+              <input type="text" id="bottomLeadCity" placeholder="Preferred City / College">
+
+              <button type="submit">Get Free Counselling</button>
+            </form>
+
+            <div class="premiumFormNote">Free counselling • Fast response • Trusted support</div>
+          </div>
         </div>
       </div>
     </section>
@@ -1000,13 +1012,13 @@
       }
     }
 
-    async function submitTopForm(e){
+    async function submitBottomForm(e){
       e.preventDefault();
 
-      const name = document.getElementById("topLeadName").value.trim();
-      const phone = document.getElementById("topLeadPhone").value.trim();
-      const course = document.getElementById("topLeadCourse").value.trim();
-      const city = document.getElementById("topLeadCity").value.trim();
+      const name = document.getElementById("bottomLeadName").value.trim();
+      const phone = document.getElementById("bottomLeadPhone").value.trim();
+      const course = document.getElementById("bottomLeadCourse").value.trim();
+      const city = document.getElementById("bottomLeadCity").value.trim();
 
       if(!name || !phone){
         alert("Please enter your name and phone number.");
@@ -1019,16 +1031,16 @@
           phone,
           courseOrExam: course,
           preferredCityOrCollege: city,
-          source: "Top Student Form",
+          source: "Bottom Enquiry Form",
           page: "courses.html",
           createdAt: new Date()
         });
 
         alert("Thank you! Our team will contact you soon.");
-        document.getElementById("topLeadName").value = "";
-        document.getElementById("topLeadPhone").value = "";
-        document.getElementById("topLeadCourse").value = "";
-        document.getElementById("topLeadCity").value = "";
+        document.getElementById("bottomLeadName").value = "";
+        document.getElementById("bottomLeadPhone").value = "";
+        document.getElementById("bottomLeadCourse").value = "";
+        document.getElementById("bottomLeadCity").value = "";
       }catch(error){
         console.error(error);
         alert("Lead saved issue. Please check Firebase connection.");
