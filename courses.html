@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MBA & PGDM Courses 2026 | Swadeshi Shiksha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(109,78,255,0.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(163,124,255,0.10), transparent 30%),
+        linear-gradient(180deg,#f6f2ff 0%,#ffffff 40%,#fcfbff 100%);
+      color:#1f1438;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button{font-family:inherit}
+
+    :root{
+      --primary:#6f47ff;
+      --primary-dark:#4d2fb2;
+      --primary-soft:#efe9ff;
+      --text:#1f1438;
+      --muted:#665b85;
+      --card:#ffffff;
+      --line:rgba(108,77,255,0.12);
+      --shadow:0 18px 50px rgba(83,47,189,0.10);
+      --shadow-soft:0 10px 30px rgba(83,47,189,0.08);
+      --radius:24px;
+    }
+
+    .container{
+      width:min(1200px, calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    /* HEADER */
+    .header-wrap{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      padding:14px 0 0;
+      backdrop-filter:blur(10px);
+    }
+
+    .header{
+      width:min(1200px, calc(100% - 32px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 18px;
+      border:1px solid rgba(255,255,255,0.65);
+      background:rgba(255,255,255,0.72);
+      backdrop-filter:blur(18px);
+      box-shadow:0 10px 35px rgba(57,29,130,0.08);
+      border-radius:24px;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:fit-content;
+    }
+
+    .logo img{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      object-fit:cover;
+      box-shadow:0 8px 20px rgba(77,47,178,0.15);
+    }
+
+    .logo-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+
+    .logo-text strong{
+      font-size:15px;
+      font-weight:800;
+      color:var(--primary-dark);
+      letter-spacing:0.1px;
+    }
+
+    .logo-text span{
+      font-size:11px;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .nav a{
+      padding:10px 14px;
+      border-radius:999px;
+      color:#453b61;
+      font-weight:600;
+      font-size:14px;
+      transition:.25s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      background:var(--primary-soft);
+      color:var(--primary-dark);
+    }
+
+    .header-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      color:#fff;
+      font-weight:700;
+      font-size:14px;
+      box-shadow:0 12px 30px rgba(92,59,208,0.22);
+      white-space:nowrap;
+    }
+
+    /* HERO */
+    .hero{
+      padding:34px 0 18px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .hero-card{
+      background:linear-gradient(135deg, rgba(111,71,255,0.98), rgba(77,47,178,0.98));
+      color:#fff;
+      border-radius:32px;
+      padding:34px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 22px 60px rgba(76,47,178,0.22);
+      min-height:360px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      width:240px;
+      height:240px;
+      right:-60px;
+      top:-70px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.10);
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      width:160px;
+      height:160px;
+      left:-30px;
+      bottom:-40px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.08);
+    }
+
+    .hero-top{
+      position:relative;
+      z-index:2;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.14);
+      border:1px solid rgba(255,255,255,0.18);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      font-size:clamp(32px, 4vw, 52px);
+      line-height:1.04;
+      letter-spacing:-1.4px;
+      margin-bottom:14px;
+      max-width:680px;
+    }
+
+    .hero p{
+      max-width:620px;
+      font-size:16px;
+      line-height:1.7;
+      color:rgba(255,255,255,0.88);
+      margin-bottom:22px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .btn-primary,
+    .btn-secondary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:14px;
+      transition:.25s ease;
+    }
+
+    .btn-primary{
+      background:#fff;
+      color:var(--primary-dark);
+      box-shadow:0 12px 28px rgba(0,0,0,0.12);
+    }
+
+    .btn-secondary{
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.24);
+      background:rgba(255,255,255,0.09);
+    }
+
+    .hero-stats{
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:26px;
+    }
+
+    .hero-stat{
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius:18px;
+      padding:14px 16px;
+      min-width:140px;
+      backdrop-filter:blur(8px);
+    }
+
+    .hero-stat strong{
+      display:block;
+      font-size:20px;
+      font-weight:800;
+      margin-bottom:4px;
+    }
+
+    .hero-stat span{
+      font-size:12px;
+      color:rgba(255,255,255,0.82);
+      line-height:1.4;
+    }
+
+    .hero-side{
+      display:grid;
+      gap:16px;
+    }
+
+    .glass-card{
+      background:rgba(255,255,255,0.78);
+      border:1px solid rgba(255,255,255,0.75);
+      box-shadow:var(--shadow-soft);
+      border-radius:28px;
+      padding:22px;
+      backdrop-filter:blur(18px);
+    }
+
+    .side-banner{
+      min-height:170px;
+      background:
+        linear-gradient(135deg, rgba(111,71,255,0.12), rgba(255,255,255,0.8)),
+        radial-gradient(circle at top right, rgba(111,71,255,0.12), transparent 35%);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .side-banner small{
+      color:var(--primary-dark);
+      font-weight:800;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+      font-size:11px;
+    }
+
+    .side-banner h3{
+      font-size:24px;
+      line-height:1.15;
+      letter-spacing:-.8px;
+      margin:10px 0 12px;
+      color:var(--text);
+    }
+
+    .side-banner p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .mini-points{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .mini-point{
+      padding:14px;
+      border-radius:18px;
+      background:#fff;
+      border:1px solid var(--line);
+    }
+
+    .mini-point strong{
+      display:block;
+      font-size:14px;
+      color:var(--primary-dark);
+      margin-bottom:4px;
+    }
+
+    .mini-point span{
+      font-size:12px;
+      line-height:1.5;
+      color:var(--muted);
+    }
+
+    /* SECTION HEAD */
+    .section{
+      padding:30px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:18px;
+      margin-bottom:20px;
+    }
+
+    .section-head h2{
+      font-size:clamp(24px, 3vw, 36px);
+      letter-spacing:-1px;
+      color:var(--text);
+      margin-bottom:8px;
+    }
+
+    .section-head p{
+      max-width:700px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .section-link{
+      min-width:fit-content;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--primary-dark);
+      font-weight:700;
+      font-size:14px;
+    }
+
+    /* COURSE GRID */
+    .course-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .course-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(248,244,255,0.92));
+      border:1px solid rgba(111,71,255,0.10);
+      border-radius:28px;
+      padding:22px;
+      box-shadow:var(--shadow-soft);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .course-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 42px rgba(83,47,189,0.14);
+      border-color:rgba(111,71,255,0.18);
+    }
+
+    .course-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:var(--primary-soft);
+      color:var(--primary-dark);
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:16px;
+    }
+
+    .course-card h3{
+      font-size:26px;
+      letter-spacing:-1px;
+      margin-bottom:8px;
+      color:var(--text);
+    }
+
+    .course-tagline{
+      color:var(--primary-dark);
+      font-weight:700;
+      font-size:13px;
+      margin-bottom:12px;
+    }
+
+    .course-card p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+      margin-bottom:16px;
+    }
+
+    .chip-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:16px;
+    }
+
+    .chip{
+      padding:8px 11px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid var(--line);
+      font-size:12px;
+      font-weight:700;
+      color:#5f557e;
+    }
+
+    .course-fit{
+      margin-bottom:18px;
+      padding:14px 14px;
+      border-radius:18px;
+      background:rgba(111,71,255,0.06);
+      border:1px solid rgba(111,71,255,0.08);
+      font-size:13px;
+      color:#4b406b;
+      line-height:1.6;
+    }
+
+    .course-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .small-btn{
+      flex:1 1 140px;
+      text-align:center;
+      padding:12px 14px;
+      border-radius:14px;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .small-btn.primary{
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      color:#fff;
+      box-shadow:0 12px 24px rgba(92,59,208,0.18);
+    }
+
+    .small-btn.ghost{
+      background:#fff;
+      border:1px solid var(--line);
+      color:var(--primary-dark);
+    }
+
+    /* HIGHLIGHT STRIP */
+    .highlight-strip{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:8px;
+    }
+
+    .highlight-box{
+      background:rgba(255,255,255,0.82);
+      border:1px solid rgba(111,71,255,0.10);
+      border-radius:22px;
+      padding:20px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .highlight-box strong{
+      display:block;
+      font-size:22px;
+      color:var(--primary-dark);
+      letter-spacing:-.8px;
+      margin-bottom:6px;
+    }
+
+    .highlight-box span{
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    /* QUICK LINKS */
+    .quick-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .quick-links a{
+      padding:13px 16px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.8);
+      color:#4b406b;
+      font-weight:700;
+      font-size:14px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    /* CTA */
+    .cta-card{
+      background:linear-gradient(135deg, #1d1538, #4d2fb2 68%, #7a57ff);
+      color:#fff;
+      border-radius:34px;
+      padding:34px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 24px 60px rgba(45,24,113,0.24);
+    }
+
+    .cta-card::before{
+      content:"";
+      position:absolute;
+      inset:auto -60px -60px auto;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.08);
+    }
+
+    .cta-card::after{
+      content:"";
+      position:absolute;
+      left:-50px;
+      top:-50px;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.06);
+    }
+
+    .cta-card > *{
+      position:relative;
+      z-index:2;
+    }
+
+    .cta-card h2{
+      font-size:clamp(28px,3vw,42px);
+      line-height:1.08;
+      letter-spacing:-1.2px;
+      max-width:760px;
+      margin-bottom:12px;
+    }
+
+    .cta-card p{
+      max-width:760px;
+      color:rgba(255,255,255,0.82);
+      line-height:1.7;
+      font-size:15px;
+      margin-bottom:20px;
+    }
+
+    .cta-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:22px;
+    }
+
+    .cta-pills span{
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.11);
+      border:1px solid rgba(255,255,255,0.14);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    /* FOOTER */
+    .footer{
+      padding:36px 0 50px;
+    }
+
+    .footer-box{
+      background:rgba(255,255,255,0.82);
+      border:1px solid rgba(111,71,255,0.10);
+      border-radius:30px;
+      padding:28px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .footer-top{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr .8fr;
+      gap:22px;
+    }
+
+    .footer h4{
+      font-size:15px;
+      color:var(--text);
+      margin-bottom:12px;
+    }
+
+    .footer p,
+    .footer li a{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .footer ul{
+      list-style:none;
+      display:grid;
+      gap:8px;
+    }
+
+    .footer-bottom{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid rgba(111,71,255,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1080px){
+      .hero-grid,
+      .footer-top{
+        grid-template-columns:1fr;
+      }
+
+      .course-grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .highlight-strip{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media (max-width: 860px){
+      .header{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .nav{
+        order:3;
+        width:100%;
+      }
+
+      .hero-card{
+        min-height:auto;
+      }
+    }
+
+    @media (max-width: 680px){
+      .container,
+      .header{
+        width:min(100% - 18px, 1200px);
+      }
+
+      .hero{
+        padding-top:20px;
+      }
+
+      .hero-card,
+      .glass-card,
+      .cta-card,
+      .footer-box{
+        padding:22px;
+        border-radius:24px;
+      }
+
+      .course-grid,
+      .highlight-strip,
+      .mini-points{
+        grid-template-columns:1fr;
+      }
+
+      .section-head{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .hero-actions,
+      .course-actions{
+        flex-direction:column;
+      }
+
+      .btn-primary,
+      .btn-secondary,
+      .small-btn{
+        width:100%;
+      }
+
+      .hero h1{
+        letter-spacing:-1px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-wrap">
+    <header class="header">
+      <a href="index.html" class="logo">
+        <img src="https://dummyimage.com/88x88/4d2fb2/ffffff&text=S" alt="Swadeshi Shiksha">
+        <div class="logo-text">
+          <strong>Swadeshi Shiksha</strong>
+          <span>MBA/PGDM Guidance</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="colleges.html">Colleges</a>
+        <a href="exams.html">Exams</a>
+        <a href="courses.html" class="active">Courses</a>
+        <a href="resources.html">Resources</a>
+      </nav>
+
+      <a href="#counselling" class="header-cta">Get Free MBA Guidance</a>
+    </header>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="hero-top">
+            <div class="eyebrow">Top MBA / PGDM Courses 2026</div>
+            <h1>Choose the right MBA or PGDM course for your career path.</h1>
+            <p>
+              Explore full-time, PGDM, executive, online, and integrated management programs
+              with expert guidance for admissions, college shortlisting, and scholarships.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#top-courses" class="btn-primary">Explore Courses</a>
+              <a href="#counselling" class="btn-secondary">Talk to an Expert</a>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>6+</strong>
+              <span>Popular course routes for MBA aspirants</span>
+            </div>
+            <div class="hero-stat">
+              <strong>India-wide</strong>
+              <span>Guidance for colleges across major cities</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Free Help</strong>
+              <span>Shortlisting, exams, scholarships, admissions</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="glass-card side-banner">
+            <div>
+              <small>Course Finder</small>
+              <h3>Not sure which management course is right for you?</h3>
+              <p>Start with your budget, exam plan, work experience, and target colleges.</p>
+            </div>
+            <a href="#counselling" class="section-link">Need help choosing? ↗</a>
+          </div>
+
+          <div class="glass-card">
+            <div class="mini-points">
+              <div class="mini-point">
+                <strong>Full-Time MBA</strong>
+                <span>Best for freshers and career switch aspirants.</span>
+              </div>
+              <div class="mini-point">
+                <strong>PGDM</strong>
+                <span>Popular industry-oriented private B-school route.</span>
+              </div>
+              <div class="mini-point">
+                <strong>Executive MBA</strong>
+                <span>Best fit for working professionals with experience.</span>
+              </div>
+              <div class="mini-point">
+                <strong>Online MBA</strong>
+                <span>Flexible option for learners balancing job and study.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="top-courses">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Top MBA & Management Courses</h2>
+            <p>
+              Explore the main course routes students choose for MBA and PGDM admissions
+              across India.
+            </p>
+          </div>
+          <a href="#counselling" class="section-link">Need help choosing? ↗</a>
+        </div>
+
+        <div class="course-grid">
+
+          <article class="course-card">
+            <div class="course-badge">Most Popular</div>
+            <h3>MBA</h3>
+            <div class="course-tagline">Classic management route</div>
+            <p>
+              Best-known postgraduate management program accepted across universities
+              and many reputed institutions in India.
+            </p>
+            <div class="chip-row">
+              <span class="chip">University Degree</span>
+              <span class="chip">2 Years</span>
+              <span class="chip">Wide Recognition</span>
+            </div>
+            <div class="course-fit">
+              <strong>Best for:</strong> students looking for a widely recognized management degree with broad acceptance.
+            </div>
+            <div class="course-actions">
+              <a href="mba-course.html" class="small-btn primary">View Guide</a>
+              <a href="colleges.html?course=mba" class="small-btn ghost">Colleges</a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-badge">Industry Focused</div>
+            <h3>PGDM</h3>
+            <div class="course-tagline">Private B-school route</div>
+            <p>
+              Strong choice for students targeting autonomous and AICTE-approved
+              institutes with industry-driven curriculum.
+            </p>
+            <div class="chip-row">
+              <span class="chip">AICTE Approved</span>
+              <span class="chip">2 Years</span>
+              <span class="chip">Corporate Focus</span>
+            </div>
+            <div class="course-fit">
+              <strong>Best for:</strong> students who want premium private B-schools and strong placement-oriented learning.
+            </div>
+            <div class="course-actions">
+              <a href="pgdm-course.html" class="small-btn primary">View Guide</a>
+              <a href="colleges.html?course=pgdm" class="small-btn ghost">Colleges</a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-badge">For Professionals</div>
+            <h3>Executive MBA</h3>
+            <div class="course-tagline">Leadership upskilling route</div>
+            <p>
+              Designed for working professionals who want career growth, leadership
+              roles, and strategic business exposure.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Work Experience</span>
+              <span class="chip">Career Growth</span>
+              <span class="chip">Leadership</span>
+            </div>
+            <div class="course-fit">
+              <strong>Best for:</strong> experienced candidates aiming for promotion, transition, or management roles.
+            </div>
+            <div class="course-actions">
+              <a href="executive-mba.html" class="small-btn primary">View Guide</a>
+              <a href="colleges.html?course=executive-mba" class="small-btn ghost">Colleges</a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-badge">Flexible Learning</div>
+            <h3>Online MBA</h3>
+            <div class="course-tagline">Remote + career balance</div>
+            <p>
+              Useful for students and working professionals who need flexibility while
+              continuing their job or other commitments.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Online</span>
+              <span class="chip">Flexible Schedule</span>
+              <span class="chip">Job Friendly</span>
+            </div>
+            <div class="course-fit">
+              <strong>Best for:</strong> learners who want convenience, affordability, and location-independent study.
+            </div>
+            <div class="course-actions">
+              <a href="online-mba.html" class="small-btn primary">View Guide</a>
+              <a href="colleges.html?course=online-mba" class="small-btn ghost">Colleges</a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-badge">Long-Term Route</div>
+            <h3>Integrated MBA</h3>
+            <div class="course-tagline">After 12th option</div>
+            <p>
+              Five-year integrated management course for students who want to begin
+              their management journey right after school.
+            </p>
+            <div class="chip-row">
+              <span class="chip">After 12th</span>
+              <span class="chip">5 Years</span>
+              <span class="chip">Early Start</span>
+            </div>
+            <div class="course-fit">
+              <strong>Best for:</strong> students with early clarity who want a direct long-term business education path.
+            </div>
+            <div class="course-actions">
+              <a href="integrated-mba.html" class="small-btn primary">View Guide</a>
+              <a href="colleges.html?course=integrated-mba" class="small-btn ghost">Colleges</a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-badge">Backup + Flexible</div>
+            <h3>Distance MBA</h3>
+            <div class="course-tagline">Affordable flexible route</div>
+            <p>
+              Suitable for candidates who want a budget-friendly management program
+              with less rigid classroom dependency.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Affordable</span>
+              <span class="chip">Flexible</span>
+              <span class="chip">Distance Mode</span>
+            </div>
+            <div class="course-fit">
+              <strong>Best for:</strong> learners looking for flexible study options with lower cost commitment.
+            </div>
+            <div class="course-actions">
+              <a href="distance-mba.html" class="small-btn primary">View Guide</a>
+              <a href="colleges.html?course=distance-mba" class="small-btn ghost">Colleges</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Why this page works well</h2>
+            <p>
+              Built to help students compare course paths quickly without making the page look too text-heavy.
+            </p>
+          </div>
+        </div>
+
+        <div class="highlight-strip">
+          <div class="highlight-box">
+            <strong>Cleaner cards</strong>
+            <span>Each course has one clear purpose, short explanation, and quick action buttons.</span>
+          </div>
+          <div class="highlight-box">
+            <strong>Same brand feel</strong>
+            <span>Purple-led premium palette inspired by your exams page for visual consistency.</span>
+          </div>
+          <div class="highlight-box">
+            <strong>Conversion-first</strong>
+            <span>“View Guide”, “Colleges”, and counselling CTA keep the user journey simple.</span>
+          </div>
+          <div class="highlight-box">
+            <strong>Mobile friendly</strong>
+            <span>Cards collapse neatly into one-column layout for smaller screens.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Quick Links</h2>
+            <p>Jump faster to the route you want to explore.</p>
+          </div>
+        </div>
+
+        <div class="quick-links">
+          <a href="mba-course.html">MBA Guide</a>
+          <a href="pgdm-course.html">PGDM Guide</a>
+          <a href="executive-mba.html">Executive MBA</a>
+          <a href="online-mba.html">Online MBA</a>
+          <a href="integrated-mba.html">Integrated MBA</a>
+          <a href="colleges.html">Top Colleges</a>
+          <a href="exams.html">MBA Exams</a>
+          <a href="#counselling">Free Guidance</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="counselling">
+      <div class="container">
+        <div class="cta-card">
+          <h2>Still confused? Talk to our MBA admission experts</h2>
+          <p>
+            Get help with course selection, exam planning, college shortlisting, scholarships,
+            and your complete MBA or PGDM admission strategy.
+          </p>
+
+          <div class="cta-pills">
+            <span>Free Counselling</span>
+            <span>Course Selection</span>
+            <span>College Shortlisting</span>
+            <span>Admission Help</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="contact.html" class="btn-primary">Get Free Counselling</a>
+            <a href="https://wa.me/919999999999" class="btn-secondary">Talk to Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-box">
+        <div class="footer-top">
+          <div>
+            <h4>Swadeshi Shiksha</h4>
+            <p>
+              Search, compare and choose the right MBA/PGDM course and college with
+              trusted guidance and student-first counselling support.
+            </p>
+          </div>
+
+          <div>
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="colleges.html">Colleges</a></li>
+              <li><a href="exams.html">Exams</a></li>
+              <li><a href="courses.html">Courses</a></li>
+              <li><a href="resources.html">Resources</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Popular Courses</h4>
+            <ul>
+              <li><a href="mba-course.html">MBA</a></li>
+              <li><a href="pgdm-course.html">PGDM</a></li>
+              <li><a href="online-mba.html">Online MBA</a></li>
+              <li><a href="integrated-mba.html">Integrated MBA</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Support</h4>
+            <ul>
+              <li><a href="contact.html">Free Counselling</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© 2026 Swadeshi Shiksha. All rights reserved.</span>
+          <span>Right course. Right college. Right direction.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
