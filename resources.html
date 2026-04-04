@@ -3,45 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resources | Swadeshi Shiksha</title>
-  <meta
-    name="description"
-    content="Explore useful MBA and PGDM resources by Swadeshi Shiksha including guides, tools, deadlines, scholarships, and admission insights."
-  />
+  <title>MBA Resources 2026 | Swadeshi Shiksha</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#f7f5ff;
-      --bg-soft:#fcfbff;
-      --panel:#ffffff;
-      --text:#19142b;
-      --muted:#6d6785;
-      --line:rgba(92, 57, 191, 0.12);
-      --line-strong:rgba(92, 57, 191, 0.18);
-      --primary:#4d2fb2;
-      --primary-2:#6e4bdf;
-      --primary-soft:#f0ebff;
-      --accent:#ff8c38;
-      --accent-soft:#fff1e7;
-      --shadow:0 12px 40px rgba(77, 47, 178, 0.08);
-      --radius-xl:28px;
-      --radius-lg:22px;
-      --radius-md:18px;
-      --radius-sm:14px;
-      --max:1240px;
-    }
-
     *{
+      box-sizing:border-box;
       margin:0;
       padding:0;
-      box-sizing:border-box;
     }
 
     html{
@@ -49,13 +22,12 @@
     }
 
     body{
-      font-family:"Inter",sans-serif;
+      font-family:'Inter',sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(110,75,223,.09), transparent 28%),
-        radial-gradient(circle at right 15%, rgba(255,140,56,.08), transparent 18%),
-        linear-gradient(180deg, #faf8ff 0%, #f7f5ff 100%);
-      color:var(--text);
-      overflow-x:hidden;
+        radial-gradient(circle at top left, rgba(122,85,231,0.07), transparent 24%),
+        radial-gradient(circle at top right, rgba(255,122,26,0.06), transparent 20%),
+        #fcfbff;
+      color:#16202f;
     }
 
     a{
@@ -64,1331 +36,1638 @@
     }
 
     img{
-      max-width:100%;
       display:block;
+      max-width:100%;
     }
 
-    .container{
-      width:min(100% - 32px, var(--max));
+    button,input{
+      font:inherit;
+    }
+
+    .page{
+      max-width:1220px;
       margin:0 auto;
+      padding:0 18px 84px;
     }
 
-    /* ---------------------------------------------------
-       IMPORTANT:
-       REPLACE THIS WHOLE HEADER BLOCK
-       WITH YOUR EXACT ORIGINAL HEADER FROM HOMEPAGE/EXAMS
-    --------------------------------------------------- */
-    .site-header-wrap{
+    /* ORIGINAL HEADER STYLE FROM EXAMS */
+    .header{
       position:sticky;
       top:0;
-      z-index:1000;
-      padding:16px 0 8px;
-      backdrop-filter:blur(14px);
-      background:linear-gradient(to bottom, rgba(247,245,255,.88), rgba(247,245,255,.5));
-    }
-
-    .site-header{
-      width:min(100% - 32px, var(--max));
-      margin:0 auto;
-      background:rgba(255,255,255,.85);
-      border:1px solid rgba(93,58,192,.10);
-      box-shadow:0 10px 40px rgba(77,47,178,.08);
-      border-radius:999px;
-      padding:12px 16px;
+      z-index:9999;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:18px;
+      padding:14px 24px;
+      margin:14px auto 0;
+      background:rgba(255,255,255,0.84);
+      border:1px solid rgba(205,195,239,0.55);
+      backdrop-filter:blur(16px);
+      box-shadow:0 12px 34px rgba(36,29,79,0.08);
+      border-radius:24px;
+      max-width:calc(1220px - 36px);
     }
 
-    .brand{
+    .logo{
       display:flex;
       align-items:center;
       gap:12px;
       min-width:fit-content;
     }
 
-    .brand-mark{
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      background:linear-gradient(135deg, var(--primary), var(--primary-2));
-      color:#fff;
-      display:grid;
-      place-items:center;
+    .logo img{
+      height:46px;
+      width:auto;
+    }
+
+    .logo span{
       font-weight:800;
-      font-size:15px;
-      box-shadow:0 10px 20px rgba(77,47,178,.20);
+      font-size:16px;
+      color:#16202f;
+      letter-spacing:-0.02em;
     }
 
-    .brand-text{
-      display:flex;
-      flex-direction:column;
-      line-height:1.1;
-    }
-
-    .brand-text strong{
-      font-size:15px;
-      font-weight:800;
-    }
-
-    .brand-text span{
-      font-size:12px;
-      color:var(--muted);
-      font-weight:500;
-    }
-
-    .nav-links{
+    .nav{
       display:flex;
       align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
       justify-content:center;
+      gap:6px;
+      flex:1;
+      min-width:0;
     }
 
-    .nav-links a{
-      padding:10px 14px;
-      border-radius:999px;
+    .nav a{
       font-size:14px;
       font-weight:600;
-      color:#372b63;
-      transition:.25s ease;
+      color:#596377;
+      padding:10px 13px;
+      border-radius:999px;
+      white-space:nowrap;
+      transition:all .22s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active{
-      background:var(--primary-soft);
-      color:var(--primary);
+    .nav a:hover,
+    .nav a.active{
+      color:#6948dd;
+      background:#f4efff;
     }
 
-    .header-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:fit-content;
-    }
-
-    .btn{
+    .cta{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      border:none;
-      cursor:pointer;
-      transition:.25s ease;
-      font-weight:700;
-      font-family:inherit;
-    }
-
-    .btn-outline{
-      padding:12px 16px;
+      white-space:nowrap;
+      padding:12px 20px;
       border-radius:999px;
-      background:#fff;
-      color:var(--primary);
-      border:1px solid rgba(77,47,178,.14);
-    }
-
-    .btn-primary{
-      padding:12px 18px;
-      border-radius:999px;
-      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+      background:linear-gradient(135deg,#7b59e9,#5d36d2);
       color:#fff;
-      box-shadow:0 14px 30px rgba(77,47,178,.18);
+      font-size:14px;
+      font-weight:700;
+      box-shadow:0 14px 28px rgba(93,54,210,0.20);
+      transition:all .22s ease;
+      flex-shrink:0;
     }
 
-    .btn:hover{
-      transform:translateY(-1px);
+    .cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 34px rgba(93,54,210,0.28);
     }
 
-    /* --------------------------------------------------- */
-
-    main{
-      padding:22px 0 42px;
+    /* PAGE INTRO SMALL */
+    .resourceIntro{
+      margin-top:22px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.88), rgba(247,242,255,0.96));
+      border:1px solid #eee7fb;
+      border-radius:34px;
+      padding:28px 28px 24px;
+      box-shadow:0 16px 40px rgba(42,29,89,0.05);
+      position:relative;
+      overflow:hidden;
     }
 
-    .top-strip{
-      margin-top:10px;
-      background:rgba(255,255,255,.78);
-      backdrop-filter:blur(14px);
-      border:1px solid var(--line);
-      border-radius:30px;
-      padding:24px;
-      box-shadow:var(--shadow);
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
+    .resourceIntro::before{
+      content:"";
+      position:absolute;
+      right:-44px;
+      top:-44px;
+      width:190px;
+      height:190px;
+      border-radius:38px;
+      background:rgba(123,89,233,0.07);
+      transform:rotate(28deg);
+    }
+
+    .resourceIntroTop{
+      position:relative;
+      z-index:2;
+      display:flex;
+      justify-content:space-between;
       gap:18px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+
+    .resourceTag{
+      display:inline-flex;
       align-items:center;
+      gap:8px;
+      padding:9px 14px;
+      border-radius:999px;
+      background:#f4efff;
+      color:#6948dd;
+      border:1px solid #e8defd;
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .resourceIntro h1{
+      font-family:'Sora',sans-serif;
+      font-size:42px;
+      line-height:1.05;
+      letter-spacing:-0.05em;
+      max-width:760px;
+      margin-bottom:10px;
+      color:#172031;
+    }
+
+    .resourceIntro p{
+      font-size:15px;
+      line-height:1.82;
+      color:#6d7586;
+      max-width:760px;
+    }
+
+    .resourceMiniStat{
+      min-width:240px;
+      background:rgba(255,255,255,0.8);
+      border:1px solid #eee7fb;
+      border-radius:24px;
+      padding:18px 18px;
+      box-shadow:0 12px 24px rgba(42,29,89,0.04);
+    }
+
+    .resourceMiniStat small{
+      display:block;
+      font-size:11px;
+      font-weight:800;
+      color:#7d73a0;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .resourceMiniStat strong{
+      display:block;
+      font-family:'Sora',sans-serif;
+      font-size:30px;
+      line-height:1;
+      color:#6f4ae0;
+      margin-bottom:8px;
+    }
+
+    .resourceMiniStat span{
+      display:block;
+      font-size:13px;
+      line-height:1.7;
+      color:#667085;
+    }
+
+    /* COMMON */
+    .section{
+      margin-top:34px;
+    }
+
+    .sectionWrap{
+      background:linear-gradient(180deg,#fbf9ff 0%,#f8f5ff 100%);
+      border:1px solid #eee7fb;
+      border-radius:38px;
+      padding:30px 28px;
+      box-shadow:0 16px 40px rgba(42,29,89,0.05);
+    }
+
+    .sectionHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-bottom:22px;
+    }
+
+    .sectionHead h2{
+      font-family:'Sora',sans-serif;
+      font-size:34px;
+      line-height:1.08;
+      letter-spacing:-0.04em;
+      color:#172031;
+    }
+
+    .sectionHead h2 span{
+      color:#6f4ae0;
+    }
+
+    .sectionHead p{
+      margin-top:10px;
+      font-size:15px;
+      line-height:1.82;
+      color:#6d7586;
+      max-width:680px;
+    }
+
+    .sectionLink{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#6d48df;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    /* ARTICLE BLOG STYLE */
+    .blogLayout{
+      display:grid;
+      grid-template-columns:290px minmax(0,1fr);
+      gap:22px;
+      align-items:start;
+    }
+
+    .blogSidebar{
+      position:sticky;
+      top:96px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .sideCard{
+      background:#fff;
+      border:1px solid #eee7fb;
+      border-radius:24px;
+      padding:18px;
+      box-shadow:0 14px 32px rgba(40,28,82,0.05);
+    }
+
+    .sideCard h3{
+      font-family:'Sora',sans-serif;
+      font-size:20px;
+      line-height:1.1;
+      margin-bottom:14px;
+      color:#172031;
+    }
+
+    .searchBox{
+      position:relative;
+    }
+
+    .searchBox input{
+      width:100%;
+      border:1px solid #e8e2f7;
+      background:#fcfbff;
+      border-radius:16px;
+      padding:14px 42px 14px 14px;
+      outline:none;
+      font-size:14px;
+      color:#172031;
+    }
+
+    .searchBox span{
+      position:absolute;
+      right:14px;
+      top:50%;
+      transform:translateY(-50%);
+      color:#7b70a3;
+      font-size:16px;
+    }
+
+    .sideLinks{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .sideLinks a{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      background:#faf7ff;
+      border:1px solid #efe7fd;
+      font-size:14px;
+      font-weight:700;
+      color:#394150;
+      transition:all .22s ease;
+    }
+
+    .sideLinks a:hover{
+      color:#6948dd;
+      transform:translateX(2px);
+      background:#f4efff;
+    }
+
+    .miniPostList{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .miniPost{
+      display:grid;
+      grid-template-columns:34px 1fr;
+      gap:12px;
+      align-items:start;
+    }
+
+    .miniPostNo{
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#f4efff;
+      color:#6948dd;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .miniPost h4{
+      font-size:14px;
+      line-height:1.45;
+      margin-bottom:4px;
+      color:#172031;
+    }
+
+    .miniPost p{
+      font-size:12px;
+      line-height:1.6;
+      color:#7b8396;
+    }
+
+    .blogMain{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .articleCard{
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+      background:#fff;
+      border:1px solid #eee7fb;
+      border-radius:24px;
+      box-shadow:0 14px 32px rgba(40,28,82,0.05);
+      transition:all .24s ease;
+    }
+
+    .articleCard:hover{
+      transform:translateY(-6px);
+      box-shadow:0 22px 44px rgba(40,28,82,0.10);
+    }
+
+    .articleThumb{
+      position:relative;
+      height:210px;
+      overflow:hidden;
+      background:#ede7ff;
+    }
+
+    .articleThumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      transition:transform .35s ease;
+    }
+
+    .articleCard:hover .articleThumb img{
+      transform:scale(1.04);
+    }
+
+    .articleThumb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(20,20,40,0.02), rgba(20,20,40,0.10));
+      pointer-events:none;
+    }
+
+    .articleBody{
+      padding:16px 16px 18px;
+    }
+
+    .articleMeta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:10px;
+      align-items:center;
+    }
+
+    .articleMeta span{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#7e739f;
+    }
+
+    .articleMeta .dot{
+      color:#d4c7f8;
+      font-weight:700;
+    }
+
+    .articleBody h3{
+      font-family:'Sora',sans-serif;
+      font-size:23px;
+      line-height:1.18;
+      letter-spacing:-0.03em;
+      color:#172031;
+      margin-bottom:10px;
+    }
+
+    .articleBody p{
+      font-size:14px;
+      line-height:1.78;
+      color:#6d7586;
+      margin-bottom:14px;
+    }
+
+    .articleRead{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#6d48df;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    /* APPLICATION UPDATES SMALL STRIP STYLE */
+    .updatesWrap{
+      margin-top:22px;
+    }
+
+    .updatesGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+    }
+
+    .updateCard{
+      background:#fff;
+      border:1px solid #eee7fb;
+      border-radius:24px;
+      padding:18px;
+      box-shadow:0 14px 32px rgba(40,28,82,0.05);
+      transition:all .22s ease;
+    }
+
+    .updateCard:hover{
+      transform:translateY(-4px);
+      box-shadow:0 20px 38px rgba(40,28,82,0.08);
+    }
+
+    .updateLabel{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
+    .openTag{
+      background:#ecfaf1;
+      color:#178f49;
+      border:1px solid #cfeeda;
+    }
+
+    .soonTag{
+      background:#fff7e8;
+      color:#b57505;
+      border:1px solid #f3deb0;
+    }
+
+    .hotTag{
+      background:#fff0f0;
+      color:#d94841;
+      border:1px solid #f5d0d0;
+    }
+
+    .updateCard h4{
+      font-family:'Sora',sans-serif;
+      font-size:19px;
+      line-height:1.18;
+      margin-bottom:8px;
+      color:#172031;
+    }
+
+    .updateCard p{
+      font-size:14px;
+      line-height:1.72;
+      color:#6d7586;
+      margin-bottom:12px;
+    }
+
+    .updateLink{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#6d48df;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    /* FUN QUICK TOOLS */
+    .toolWrap{
+      background:linear-gradient(135deg,#faf7ff 0%,#f5f0ff 100%);
+      border:1px solid #eee7fb;
+      border-radius:34px;
+      padding:28px;
+      box-shadow:0 16px 40px rgba(42,29,89,0.05);
       overflow:hidden;
       position:relative;
     }
 
-    .top-strip::before{
+    .toolWrap::before{
+      content:"";
+      position:absolute;
+      width:240px;
+      height:240px;
+      left:-80px;
+      bottom:-90px;
+      border-radius:42px;
+      background:rgba(123,89,233,0.07);
+      transform:rotate(20deg);
+    }
+
+    .toolWrap::after{
       content:"";
       position:absolute;
       width:220px;
       height:220px;
       right:-90px;
-      top:-80px;
-      background:radial-gradient(circle, rgba(110,75,223,.14), transparent 70%);
-      pointer-events:none;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background:var(--primary-soft);
-      color:var(--primary);
-      border:1px solid rgba(77,47,178,.10);
-      border-radius:999px;
-      padding:8px 12px;
-      font-size:12px;
-      font-weight:700;
-      margin-bottom:14px;
-    }
-
-    .top-strip h1{
-      font-size:clamp(28px,3.4vw,44px);
-      line-height:1.05;
-      letter-spacing:-1.3px;
-      margin-bottom:10px;
-    }
-
-    .top-strip p{
-      font-size:15px;
-      line-height:1.7;
-      color:var(--muted);
-      max-width:640px;
-    }
-
-    .mini-stats{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:12px;
-    }
-
-    .stat-pill{
-      background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(247,242,255,.95));
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:16px;
-      min-height:112px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      box-shadow:0 10px 28px rgba(77,47,178,.05);
-    }
-
-    .stat-pill small{
-      color:var(--muted);
-      font-size:12px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .stat-pill strong{
-      font-size:26px;
-      color:var(--primary);
-      font-weight:800;
-      letter-spacing:-.5px;
-    }
-
-    .stat-pill span{
-      font-size:13px;
-      line-height:1.5;
-      color:#4d4767;
-    }
-
-    .section{
-      margin-top:26px;
-    }
-
-    .section-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:18px;
-      margin-bottom:16px;
-    }
-
-    .section-head h2{
-      font-size:clamp(20px,2.5vw,30px);
-      letter-spacing:-0.8px;
-    }
-
-    .section-head p{
-      max-width:560px;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.7;
-    }
-
-    /* Featured editorial layout */
-    .editorial-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:16px;
-    }
-
-    .feature-story{
-      background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(251,249,255,.98));
-      border:1px solid var(--line);
-      border-radius:32px;
-      padding:24px;
-      box-shadow:var(--shadow);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      min-height:420px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .feature-story::after{
-      content:"";
-      position:absolute;
-      right:-60px;
-      bottom:-60px;
-      width:220px;
-      height:220px;
-      background:radial-gradient(circle, rgba(255,140,56,.14), transparent 65%);
-      pointer-events:none;
-    }
-
-    .story-tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      width:fit-content;
-      background:#fff;
-      border:1px solid var(--line);
-      color:var(--primary);
-      border-radius:999px;
-      padding:8px 12px;
-      font-size:12px;
-      font-weight:700;
-      margin-bottom:16px;
-    }
-
-    .feature-story h3{
-      font-size:clamp(28px,3vw,40px);
-      line-height:1.08;
-      letter-spacing:-1.2px;
-      max-width:560px;
-      margin-bottom:12px;
-    }
-
-    .feature-story p{
-      max-width:560px;
-      font-size:15px;
-      line-height:1.7;
-      color:var(--muted);
-      margin-bottom:20px;
-    }
-
-    .feature-actions{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:auto;
-    }
-
-    .mini-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:7px;
-      background:rgba(77,47,178,.06);
-      color:#4c3b8f;
-      border:1px solid rgba(77,47,178,.08);
-      border-radius:999px;
-      padding:10px 13px;
-      font-size:12px;
-      font-weight:700;
-    }
-
-    .editorial-side{
-      display:grid;
-      gap:14px;
-    }
-
-    .story-card{
-      background:rgba(255,255,255,.9);
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:18px;
-      box-shadow:0 10px 28px rgba(77,47,178,.05);
-      transition:.25s ease;
-      display:grid;
-      grid-template-columns:58px 1fr auto;
-      align-items:center;
-      gap:14px;
-    }
-
-    .story-card:hover{
-      transform:translateY(-3px);
-      border-color:rgba(77,47,178,.22);
-    }
-
-    .story-icon{
-      width:58px;
-      height:58px;
-      border-radius:18px;
-      display:grid;
-      place-items:center;
-      font-size:24px;
-      background:linear-gradient(180deg, #f6f2ff, #ffffff);
-      border:1px solid rgba(77,47,178,.10);
-    }
-
-    .story-copy small{
-      display:block;
-      font-size:11px;
-      font-weight:700;
-      color:var(--primary);
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:6px;
-    }
-
-    .story-copy h4{
-      font-size:17px;
-      line-height:1.3;
-      margin-bottom:5px;
-    }
-
-    .story-copy p{
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .story-arrow{
-      width:42px;
-      height:42px;
+      top:-90px;
       border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:var(--primary-soft);
-      color:var(--primary);
-      font-size:18px;
-      font-weight:700;
+      background:rgba(255,122,26,0.06);
     }
 
-    /* Tools strip */
-    .tool-ribbon{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-
-    .tool-chip{
+    .toolHead{
       position:relative;
-      overflow:hidden;
-      background:linear-gradient(180deg, rgba(255,255,255,.94), rgba(245,240,255,.86));
-      border:1px solid var(--line);
-      border-radius:28px;
-      padding:22px;
-      box-shadow:var(--shadow);
-      min-height:210px;
+      z-index:2;
       display:flex;
-      flex-direction:column;
       justify-content:space-between;
-    }
-
-    .tool-chip::before{
-      content:"";
-      position:absolute;
-      inset:auto -40px -40px auto;
-      width:140px;
-      height:140px;
-      background:radial-gradient(circle, rgba(77,47,178,.12), transparent 65%);
-      pointer-events:none;
-    }
-
-    .tool-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:16px;
-    }
-
-    .tool-icon{
-      width:52px;
-      height:52px;
-      border-radius:18px;
-      background:rgba(77,47,178,.08);
-      color:var(--primary);
-      display:grid;
-      place-items:center;
-      font-size:24px;
-      border:1px solid rgba(77,47,178,.08);
-    }
-
-    .live-badge{
-      font-size:11px;
-      font-weight:800;
-      background:#ecfff1;
-      color:#0d8a38;
-      border:1px solid rgba(13,138,56,.10);
-      border-radius:999px;
-      padding:8px 10px;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .tool-chip h3{
-      font-size:20px;
-      letter-spacing:-.4px;
-      margin-bottom:8px;
-    }
-
-    .tool-chip p{
-      font-size:14px;
-      color:var(--muted);
-      line-height:1.7;
+      align-items:flex-end;
+      gap:18px;
+      flex-wrap:wrap;
       margin-bottom:18px;
     }
 
-    .tool-link{
+    .toolHead h2{
+      font-family:'Sora',sans-serif;
+      font-size:34px;
+      line-height:1.06;
+      letter-spacing:-0.04em;
+      color:#172031;
+    }
+
+    .toolHead p{
+      max-width:560px;
+      font-size:15px;
+      line-height:1.78;
+      color:#6d7586;
+    }
+
+    .toolGrid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+    }
+
+    .toolCard{
+      position:relative;
+      min-height:210px;
+      border-radius:24px;
+      padding:16px;
+      overflow:hidden;
+      color:#172031;
+      box-shadow:0 14px 32px rgba(40,28,82,0.08);
+      transition:transform .24s ease, box-shadow .24s ease;
+    }
+
+    .toolCard:hover{
+      transform:translateY(-6px) rotate(-1deg);
+      box-shadow:0 22px 44px rgba(40,28,82,0.13);
+    }
+
+    .toolCard.purple{
+      background:linear-gradient(135deg,#ffffff 0%,#f3eeff 100%);
+      border:1px solid #e9ddff;
+    }
+
+    .toolCard.orange{
+      background:linear-gradient(135deg,#fffaf4 0%,#fff0e1 100%);
+      border:1px solid #ffd9b4;
+    }
+
+    .toolCard.blue{
+      background:linear-gradient(135deg,#f8fcff 0%,#eaf6ff 100%);
+      border:1px solid #d6ebff;
+    }
+
+    .toolTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .toolEmoji{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:27px;
+      background:rgba(255,255,255,0.9);
+      box-shadow:0 12px 24px rgba(40,28,82,0.08);
+    }
+
+    .toolBadge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 11px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .toolBadge.purple{
+      background:#efe8ff;
+      color:#6948dd;
+    }
+
+    .toolBadge.orange{
+      background:#fff0e1;
+      color:#d97410;
+    }
+
+    .toolBadge.blue{
+      background:#e8f4ff;
+      color:#1874c8;
+    }
+
+    .toolCard h3{
+      font-family:'Sora',sans-serif;
+      font-size:21px;
+      line-height:1.14;
+      letter-spacing:-0.03em;
+      margin-bottom:10px;
+      color:#172031;
+    }
+
+    .toolCard p{
+      font-size:14px;
+      line-height:1.72;
+      color:#596377;
+      margin-bottom:16px;
+      max-width:290px;
+    }
+
+    .toolAction{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      color:var(--primary);
       font-size:14px;
       font-weight:800;
     }
 
-    /* split content section */
-    .resource-columns{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
+    .toolCard.purple .toolAction{ color:#6948dd; }
+    .toolCard.orange .toolAction{ color:#d97410; }
+    .toolCard.blue .toolAction{ color:#1874c8; }
 
-    .panel{
-      background:rgba(255,255,255,.92);
-      border:1px solid var(--line);
-      border-radius:30px;
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-
-    .panel h3{
-      font-size:22px;
-      letter-spacing:-.5px;
-      margin-bottom:16px;
-    }
-
-    .list-stack{
-      display:grid;
-      gap:12px;
-    }
-
-    .list-item{
-      background:linear-gradient(180deg, #fff, #fcfbff);
-      border:1px solid rgba(77,47,178,.10);
-      border-radius:20px;
-      padding:16px;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:14px;
-      transition:.22s ease;
-    }
-
-    .list-item:hover{
-      transform:translateY(-2px);
-      border-color:rgba(77,47,178,.18);
-    }
-
-    .item-no{
-      width:38px;
-      height:38px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:var(--primary-soft);
-      color:var(--primary);
-      font-weight:800;
-      font-size:13px;
-    }
-
-    .item-copy b{
-      display:block;
-      font-size:15px;
-      margin-bottom:4px;
-      line-height:1.35;
-    }
-
-    .item-copy span{
-      display:block;
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.55;
-    }
-
-    .item-tag{
-      padding:8px 10px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:800;
-      background:#fff6ef;
-      color:#c36117;
-      border:1px solid rgba(255,140,56,.14);
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .timeline{
-      display:grid;
-      gap:12px;
-    }
-
-    .time-card{
-      background:linear-gradient(180deg, #fff, #fbf9ff);
-      border:1px solid rgba(77,47,178,.10);
-      border-radius:22px;
-      padding:16px;
-      display:grid;
-      grid-template-columns:120px 1fr auto;
-      gap:14px;
-      align-items:center;
-    }
-
-    .time-date{
-      background:var(--primary-soft);
-      color:var(--primary);
-      border-radius:16px;
-      padding:12px 14px;
-      font-size:12px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      text-align:center;
-    }
-
-    .time-copy h4{
-      font-size:16px;
-      margin-bottom:5px;
-    }
-
-    .time-copy p{
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .time-status{
-      padding:10px 12px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      white-space:nowrap;
-      border:1px solid transparent;
-    }
-
-    .status-open{
-      background:#ecfff1;
-      color:#0f8a39;
-      border-color:rgba(15,138,57,.12);
-    }
-
-    .status-soon{
-      background:#fff8eb;
-      color:#a35f00;
-      border-color:rgba(163,95,0,.12);
-    }
-
-    .status-hot{
-      background:#fff0f0;
-      color:#ca3b3b;
-      border-color:rgba(202,59,59,.12);
-    }
-
-    /* Article rail */
-    .article-rail{
-      display:grid;
-      gap:14px;
-    }
-
-    .article-row{
-      background:rgba(255,255,255,.94);
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:18px;
-      box-shadow:0 8px 24px rgba(77,47,178,.04);
-      display:grid;
-      grid-template-columns:120px 1fr auto;
-      gap:16px;
-      align-items:center;
-      transition:.25s ease;
-    }
-
-    .article-row:hover{
-      transform:translateY(-3px);
-      border-color:rgba(77,47,178,.18);
-    }
-
-    .thumb{
-      width:120px;
+    .toolShape{
+      position:absolute;
+      right:-18px;
+      bottom:-18px;
+      width:92px;
       height:92px;
-      border-radius:22px;
-      position:relative;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at 25% 30%, rgba(255,255,255,.65), transparent 18%),
-        linear-gradient(135deg, #6e4bdf, #4d2fb2 55%, #2f1a7c);
-      display:flex;
-      align-items:flex-end;
-      padding:12px;
-    }
-
-    .thumb span{
-      background:rgba(255,255,255,.15);
-      border:1px solid rgba(255,255,255,.20);
-      backdrop-filter:blur(8px);
-      color:#fff;
-      border-radius:999px;
-      padding:7px 10px;
-      font-size:11px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .article-copy small{
-      display:inline-block;
-      margin-bottom:7px;
-      color:var(--primary);
-      font-size:11px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
-
-    .article-copy h4{
-      font-size:18px;
-      margin-bottom:6px;
-      line-height:1.35;
-    }
-
-    .article-copy p{
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.65;
-      max-width:620px;
-    }
-
-    .read-btn{
-      padding:12px 16px;
-      border-radius:999px;
-      background:var(--accent-soft);
-      color:#c36418;
-      border:1px solid rgba(255,140,56,.15);
-      font-size:13px;
-      font-weight:800;
-      white-space:nowrap;
+      border-radius:28px;
+      background:rgba(255,255,255,0.35);
+      transform:rotate(22deg);
     }
 
     /* CTA */
-    .cta-box{
-      margin-top:26px;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255,255,255,.16), transparent 24%),
-        linear-gradient(135deg, #4d2fb2, #5d3ad0 56%, #7c56f3);
-      color:#fff;
-      border-radius:34px;
-      padding:28px;
+    .supportBanner{
+      margin-top:38px;
       display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:16px;
-      align-items:center;
-      box-shadow:0 24px 50px rgba(77,47,178,.20);
-      overflow:hidden;
-      position:relative;
+      grid-template-columns:1.04fr .96fr;
+      gap:18px;
+      align-items:stretch;
     }
 
-    .cta-box::after{
+    .supportLeft{
+      position:relative;
+      overflow:hidden;
+      border-radius:34px;
+      padding:30px 26px;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 18%),
+        radial-gradient(circle at bottom right, rgba(255,169,93,0.18), transparent 24%),
+        linear-gradient(135deg,#7a55e7 0%,#5b34cf 70%);
+      color:#fff;
+      box-shadow:0 26px 58px rgba(69,43,161,0.18);
+    }
+
+    .supportLeft::before{
       content:"";
       position:absolute;
-      right:-60px;
-      top:-60px;
-      width:220px;
-      height:220px;
-      background:radial-gradient(circle, rgba(255,255,255,.18), transparent 60%);
-      pointer-events:none;
+      width:210px;
+      height:210px;
+      right:-56px;
+      top:-56px;
+      border-radius:40px;
+      background:rgba(255,255,255,0.12);
+      transform:rotate(28deg);
     }
 
-    .cta-copy h3{
-      font-size:clamp(24px,3vw,38px);
+    .supportLeft::after{
+      content:"";
+      position:absolute;
+      width:170px;
+      height:170px;
+      left:-40px;
+      bottom:-50px;
+      border-radius:50%;
+      background:rgba(255,122,26,0.18);
+    }
+
+    .supportLeft h2{
+      position:relative;
+      z-index:2;
+      font-family:'Sora',sans-serif;
+      font-size:38px;
       line-height:1.08;
-      letter-spacing:-1px;
-      margin-bottom:10px;
+      letter-spacing:-0.04em;
+      margin-bottom:12px;
+      max-width:520px;
     }
 
-    .cta-copy p{
-      max-width:560px;
-      line-height:1.75;
-      color:rgba(255,255,255,.82);
+    .supportLeft p{
+      position:relative;
+      z-index:2;
       font-size:15px;
+      line-height:1.84;
+      color:rgba(255,255,255,0.88);
+      max-width:600px;
+      margin-bottom:18px;
     }
 
-    .cta-actions{
+    .supportPoints{
+      position:relative;
+      z-index:2;
       display:flex;
       flex-wrap:wrap;
-      gap:12px;
-      justify-content:flex-start;
+      gap:10px;
+      margin-bottom:20px;
     }
 
-    .btn-white{
-      background:#fff;
-      color:var(--primary);
-      padding:13px 18px;
+    .supportPoints span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 13px;
       border-radius:999px;
-      font-weight:800;
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.16);
+      font-size:13px;
+      font-weight:700;
     }
 
-    .btn-glass{
-      background:rgba(255,255,255,.08);
+    .supportBtns{
+      position:relative;
+      z-index:2;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .supportBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
       color:#fff;
-      border:1px solid rgba(255,255,255,.18);
-      padding:13px 18px;
+      font-size:14px;
+      font-weight:800;
+      box-shadow:0 12px 22px rgba(255,122,26,0.18);
+    }
+
+    .supportBtnGhost{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
       border-radius:999px;
+      background:rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.18);
+      color:#fff;
+      font-size:14px;
       font-weight:800;
       backdrop-filter:blur(10px);
     }
 
-    /* ---------------------------------------------------
-       IMPORTANT:
-       REPLACE THIS WHOLE FOOTER BLOCK
-       WITH YOUR EXACT ORIGINAL FOOTER FROM HOMEPAGE/EXAMS
-    --------------------------------------------------- */
-    footer{
-      margin-top:34px;
-      padding-bottom:28px;
+    .supportRight{
+      position:relative;
+      overflow:hidden;
+      border-radius:34px;
+      min-height:320px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08)),
+        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      border:1px solid #eee7fb;
+      box-shadow:0 18px 42px rgba(42,29,89,0.06);
     }
 
-    .site-footer{
-      background:rgba(255,255,255,.82);
-      border:1px solid var(--line);
-      border-radius:30px;
-      padding:26px 22px;
-      box-shadow:var(--shadow);
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:18px;
+    .supportRight::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(24,17,56,0.10),rgba(24,17,56,0.18));
+    }
+
+    .supportFloating{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:2;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:blur(12px);
+      border:1px solid #ece4fb;
+      border-radius:24px;
+      padding:18px;
+      box-shadow:0 16px 34px rgba(35,22,78,0.12);
+    }
+
+    .supportFloatingTop{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:10px;
+    }
+
+    .supportFloating h3{
+      font-family:'Sora',sans-serif;
+      font-size:22px;
+      line-height:1.08;
+      letter-spacing:-0.03em;
+      color:#16202f;
+    }
+
+    .floatingPulse{
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      background:#27c36a;
+      box-shadow:0 0 0 0 rgba(39,195,106,0.45);
+      animation:pulse 1.8s infinite;
+      margin-top:4px;
+      flex-shrink:0;
+    }
+
+    @keyframes pulse{
+      0%{ box-shadow:0 0 0 0 rgba(39,195,106,0.45); }
+      70%{ box-shadow:0 0 0 14px rgba(39,195,106,0); }
+      100%{ box-shadow:0 0 0 0 rgba(39,195,106,0); }
+    }
+
+    .supportFloating p{
+      font-size:13px;
+      line-height:1.68;
+      color:#667085;
+      margin-bottom:14px;
+    }
+
+    .supportMiniRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+
+    .supportMiniRow span{
+      display:inline-flex;
       align-items:center;
+      justify-content:center;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:800;
+      background:#f4efff;
+      color:#6948dd;
+      border:1px solid #e7ddfd;
     }
 
-    .footer-brand strong{
-      display:block;
-      font-size:20px;
+    .supportMiniBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 15px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      color:#fff;
+      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
+      box-shadow:0 10px 18px rgba(255,122,26,0.16);
+    }
+
+    /* FOOTER FROM EXAMS */
+    .footer{
+      margin-top:34px;
+      background:#16202f;
+      color:#fff;
+      border-radius:30px;
+      padding:30px 24px;
+    }
+
+    .footerGrid{
+      display:grid;
+      grid-template-columns:1.2fr 1fr 1fr 1fr;
+      gap:22px;
+    }
+
+    .footer h3,
+    .footer h4{
+      margin-bottom:12px;
+    }
+
+    .footer p,
+    .footer li{
+      color:rgba(255,255,255,0.76);
+      line-height:1.75;
+      font-size:14px;
+    }
+
+    .footer ul{
+      list-style:none;
+    }
+
+    .footer li{
       margin-bottom:8px;
     }
 
-    .footer-brand p{
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.7;
-      max-width:580px;
+    /* POPUP */
+    .popupOverlay{
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,0.68);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:5000;
+      padding:18px;
     }
 
-    .footer-links{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      gap:10px;
-    }
-
-    .footer-links a{
-      padding:10px 14px;
-      border-radius:999px;
+    .popupCard{
+      width:100%;
+      max-width:470px;
       background:#fff;
-      border:1px solid var(--line);
-      font-size:13px;
-      font-weight:700;
-      color:#4c3b8f;
-    }
-    /* --------------------------------------------------- */
-
-    @media (max-width: 1100px){
-      .editorial-grid,
-      .resource-columns,
-      .cta-box,
-      .top-strip{
-        grid-template-columns:1fr;
-      }
-
-      .tool-ribbon{
-        grid-template-columns:1fr;
-      }
-
-      .site-footer{
-        grid-template-columns:1fr;
-      }
-
-      .footer-links{
-        justify-content:flex-start;
-      }
+      border-radius:28px;
+      padding:26px;
+      position:relative;
+      box-shadow:0 28px 70px rgba(15,23,42,0.24);
     }
 
-    @media (max-width: 860px){
-      .site-header{
-        border-radius:28px;
-        padding:14px;
-        flex-direction:column;
-        align-items:stretch;
+    .popupClose{
+      position:absolute;
+      right:16px;
+      top:14px;
+      border:none;
+      background:transparent;
+      font-size:26px;
+      color:#6b7280;
+      cursor:pointer;
+    }
+
+    .popupCard h3{
+      font-family:'Sora',sans-serif;
+      font-size:28px;
+      line-height:1.08;
+      letter-spacing:-0.03em;
+      margin-bottom:10px;
+      color:#172030;
+    }
+
+    .popupCard p{
+      color:#667085;
+      line-height:1.75;
+      font-size:15px;
+      margin-bottom:18px;
+    }
+
+    .popupCard input{
+      width:100%;
+      padding:15px 14px;
+      border-radius:16px;
+      border:1px solid #dddff0;
+      outline:none;
+      margin-bottom:12px;
+      font-size:14px;
+      transition:border-color .2s ease, box-shadow .2s ease;
+      background:#fcfcff;
+    }
+
+    .popupCard input:focus{
+      border-color:#7b59e9;
+      box-shadow:0 0 0 4px rgba(123,89,233,0.10);
+    }
+
+    .popupSubmit{
+      width:100%;
+      border:none;
+      padding:15px;
+      border-radius:16px;
+      background:linear-gradient(135deg,#7a55e7,#6037d4);
+      color:#fff;
+      font-size:15px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 14px 28px rgba(96,55,212,0.18);
+    }
+
+    .popupNote{
+      margin-top:10px;
+      font-size:12px;
+      color:#7b8396;
+      text-align:center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:1100px){
+      .blogLayout{
+        grid-template-columns:1fr;
       }
 
-      .brand{
-        justify-content:space-between;
+      .blogSidebar{
+        position:static;
       }
 
-      .nav-links{
-        justify-content:flex-start;
+      .supportBanner,
+      .footerGrid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
 
-      .header-actions{
-        justify-content:flex-start;
+      .updatesGrid,
+      .toolGrid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width:920px){
+      .header{
+        flex-wrap:wrap;
+        justify-content:center;
+        padding:14px 16px;
+        margin:14px 14px 0;
+      }
+
+      .logo{
+        width:100%;
+        justify-content:center;
+      }
+
+      .nav{
+        width:100%;
         flex-wrap:wrap;
       }
 
-      .story-card,
-      .article-row,
-      .time-card{
-        grid-template-columns:1fr;
-        align-items:flex-start;
-      }
-
-      .story-arrow,
-      .read-btn{
-        width:fit-content;
-      }
-
-      .article-row{
-        gap:14px;
-      }
-
-      .thumb{
+      .cta{
         width:100%;
-        height:160px;
+      }
+
+      .blogMain{
+        grid-template-columns:1fr;
+      }
+
+      .updatesGrid,
+      .toolGrid{
+        grid-template-columns:1fr;
+      }
+
+      .resourceIntro h1{
+        font-size:34px;
       }
     }
 
-    @media (max-width: 560px){
-      .container{
-        width:min(100% - 20px, var(--max));
+    @media (max-width:680px){
+      .page{
+        padding:0 14px 60px;
       }
 
-      .site-header{
-        width:min(100% - 20px, var(--max));
+      .resourceIntro,
+      .sectionWrap,
+      .toolWrap,
+      .supportLeft,
+      .supportRight,
+      .footer{
+        border-radius:22px;
       }
 
-      .top-strip,
-      .panel,
-      .feature-story,
-      .tool-chip,
-      .story-card,
-      .article-row,
-      .cta-box,
-      .site-footer{
-        border-radius:24px;
+      .resourceIntro h1,
+      .sectionHead h2,
+      .toolHead h2,
+      .supportLeft h2{
+        font-size:29px;
       }
 
-      .mini-stats{
+      .footerGrid,
+      .supportBanner{
         grid-template-columns:1fr;
       }
 
-      .feature-actions,
-      .cta-actions{
-        flex-direction:column;
-        align-items:flex-start;
+      .articleThumb{
+        height:190px;
       }
 
-      .btn-primary,
-      .btn-outline,
-      .btn-white,
-      .btn-glass{
-        width:100%;
+      .supportFloating{
+        left:14px;
+        right:14px;
+        bottom:14px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- REPLACE THIS HEADER WITH YOUR EXACT ORIGINAL HEADER -->
-  <div class="site-header-wrap">
-    <header class="site-header">
-      <div class="brand">
-        <a href="index.html" style="display:flex; align-items:center; gap:12px;">
-          <div class="brand-mark">SS</div>
-          <div class="brand-text">
-            <strong>Swadeshi Shiksha</strong>
-            <span>MBA / PGDM Admission Guidance</span>
-          </div>
-        </a>
-      </div>
+  <div class="header">
+    <a href="/" class="logo">
+      <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+      <span>Swadeshi Shiksha</span>
+    </a>
 
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="colleges.html">Colleges</a>
-        <a href="courses.html">Courses</a>
-        <a href="exams.html">Exams</a>
-        <a href="resources.html" class="active">Resources</a>
-      </nav>
+    <div class="nav">
+      <a href="https://swadeshi-colleges.vercel.app/colleges.html">Colleges</a>
+      <a href="https://swadeshi-colleges.vercel.app/exams.html">Exams</a>
+      <a href="https://swadeshi-colleges.vercel.app/courses.html">Courses</a>
+      <a href="https://swadeshi-colleges.vercel.app/resources.html" class="active">Resources</a>
+    </div>
 
-      <div class="header-actions">
-        <a href="apply.html" class="btn btn-outline">Apply Now</a>
-        <a href="#cta" class="btn btn-primary">Free Counselling</a>
-      </div>
-    </header>
+    <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header Resources CTA')">Get Free MBA Guidance</a>
   </div>
 
-  <main>
-    <div class="container">
-      <!-- Small intro strip -->
-      <section class="top-strip">
+  <div class="page">
+
+    <!-- SMALL INTRO, NO HERO -->
+    <section class="resourceIntro">
+      <div class="resourceIntroTop">
         <div>
-          <div class="eyebrow">✨ Smart MBA Resources</div>
-          <h1>Useful resources, tools, and updates — without the clutter.</h1>
+          <div class="resourceTag">✨ Smart MBA Resources</div>
+          <h1>Useful reads, practical updates, and tools for smarter MBA decisions.</h1>
           <p>
-            Explore helpful MBA and PGDM guides by Swadeshi Shiksha — from admission strategy and scholarships
-            to comparisons, tools, and application updates.
+            Explore original Swadeshi Shiksha resources on MBA/PGDM admissions, college shortlisting,
+            scholarships, deadlines, comparisons, and planning tools.
           </p>
         </div>
 
-        <div class="mini-stats">
-          <div class="stat-pill">
-            <small>Guides</small>
-            <strong>20+</strong>
-            <span>Short and practical reads for students planning MBA/PGDM admission.</span>
-          </div>
-          <div class="stat-pill">
-            <small>Tools</small>
-            <strong>03</strong>
-            <span>Quick tools to help students shortlist, compare, and check fit.</span>
-          </div>
-          <div class="stat-pill">
-            <small>Updates</small>
-            <strong>Live</strong>
-            <span>Deadlines, scholarship alerts, and admission timelines in one place.</span>
-          </div>
-          <div class="stat-pill">
-            <small>Support</small>
-            <strong>Free</strong>
-            <span>Guidance designed to help students make better admission decisions.</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Featured editorial -->
-      <section class="section">
-        <div class="section-head">
-          <div>
-            <h2>Featured Resources</h2>
-          </div>
-          <p>
-            A cleaner editorial-style layout so the page feels different from your college, course, and exam pages.
-          </p>
-        </div>
-
-        <div class="editorial-grid">
-          <article class="feature-story">
-            <div>
-              <div class="story-tag">Featured Guide</div>
-              <h3>MBA Admission 2026: what students should check before applying anywhere.</h3>
-              <p>
-                Fees, placements, specialisations, approvals, ROI, location, intake, and admission process —
-                this guide helps students avoid random choices and focus on colleges that actually match their goals.
-              </p>
-            </div>
-
-            <div class="feature-actions">
-              <a href="#" class="btn btn-primary">Read Guide</a>
-              <span class="mini-badge">Updated for 2026</span>
-              <span class="mini-badge">Swadeshi Shiksha Original</span>
-            </div>
-          </article>
-
-          <div class="editorial-side">
-            <a href="#" class="story-card">
-              <div class="story-icon">🎓</div>
-              <div class="story-copy">
-                <small>Scholarships</small>
-                <h4>MBA scholarships students should actually look for</h4>
-                <p>Shortlist scholarship-friendly colleges and reduce overall MBA cost.</p>
-              </div>
-              <div class="story-arrow">→</div>
-            </a>
-
-            <a href="#" class="story-card">
-              <div class="story-icon">⚖️</div>
-              <div class="story-copy">
-                <small>Comparison</small>
-                <h4>MBA vs PGDM: what really matters while choosing</h4>
-                <p>A simple breakdown for students confused between the two options.</p>
-              </div>
-              <div class="story-arrow">→</div>
-            </a>
-
-            <a href="#" class="story-card">
-              <div class="story-icon">📍</div>
-              <div class="story-copy">
-                <small>College List</small>
-                <h4>Top MBA colleges by city, exam, and budget range</h4>
-                <p>Useful when students start with a city like Bangalore, Pune, or Delhi NCR.</p>
-              </div>
-              <div class="story-arrow">→</div>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Tools -->
-      <section class="section">
-        <div class="section-head">
-          <div>
-            <h2>Quick Tools</h2>
-          </div>
-          <p>
-            Keep this section small and useful only. No extra clutter.
-          </p>
-        </div>
-
-        <div class="tool-ribbon">
-          <a href="#" class="tool-chip">
-            <div>
-              <div class="tool-top">
-                <div class="tool-icon">🧠</div>
-                <div class="live-badge">Live Tool</div>
-              </div>
-              <h3>Eligibility Checker</h3>
-              <p>Check which MBA or PGDM options may fit based on exam score, academics, and profile.</p>
-            </div>
-            <span class="tool-link">Open Tool →</span>
-          </a>
-
-          <a href="#" class="tool-chip">
-            <div>
-              <div class="tool-top">
-                <div class="tool-icon">📊</div>
-                <div class="live-badge">Useful</div>
-              </div>
-              <h3>ROI Calculator</h3>
-              <p>Estimate how fee, average placement, and course value compare before taking admission.</p>
-            </div>
-            <span class="tool-link">Try Calculator →</span>
-          </a>
-
-          <a href="#" class="tool-chip">
-            <div>
-              <div class="tool-top">
-                <div class="tool-icon">🏫</div>
-                <div class="live-badge">Shortlist</div>
-              </div>
-              <h3>College Finder</h3>
-              <p>Browse colleges by exam, city, budget, or specialisation in a simpler way.</p>
-            </div>
-            <span class="tool-link">Find Colleges →</span>
-          </a>
-        </div>
-      </section>
-
-      <!-- Two columns -->
-      <section class="section">
-        <div class="resource-columns">
-          <div class="panel">
-            <h3>Popular Reads</h3>
-            <div class="list-stack">
-              <a href="#" class="list-item">
-                <div class="item-no">01</div>
-                <div class="item-copy">
-                  <b>How to choose the right MBA college in 2026</b>
-                  <span>A clean guide for comparing fees, location, placements, and reputation.</span>
-                </div>
-                <div class="item-tag">Guide</div>
-              </a>
-
-              <a href="#" class="list-item">
-                <div class="item-no">02</div>
-                <div class="item-copy">
-                  <b>Top MBA colleges without CAT score</b>
-                  <span>Helpful for students exploring CMAT, MAT, XAT, NMAT, or direct admission options.</span>
-                </div>
-                <div class="item-tag">List</div>
-              </a>
-
-              <a href="#" class="list-item">
-                <div class="item-no">03</div>
-                <div class="item-copy">
-                  <b>MBA colleges under ₹8 lakh fee range</b>
-                  <span>A budget-focused shortlist for students who want value without overspending.</span>
-                </div>
-                <div class="item-tag">Budget</div>
-              </a>
-
-              <a href="#" class="list-item">
-                <div class="item-no">04</div>
-                <div class="item-copy">
-                  <b>Best MBA specialisation for your career goal</b>
-                  <span>Marketing, Finance, HR, Business Analytics, Operations, and more.</span>
-                </div>
-                <div class="item-tag">Career</div>
-              </a>
-            </div>
-          </div>
-
-          <div class="panel">
-            <h3>Application Updates</h3>
-            <div class="timeline">
-              <div class="time-card">
-                <div class="time-date">April 2026</div>
-                <div class="time-copy">
-                  <h4>Applications currently open</h4>
-                  <p>Track colleges where MBA or PGDM admission forms are active right now.</p>
-                </div>
-                <div class="time-status status-open">Open</div>
-              </div>
-
-              <div class="time-card">
-                <div class="time-date">Closing Soon</div>
-                <div class="time-copy">
-                  <h4>Last date reminders</h4>
-                  <p>Useful for students who do not want to miss upcoming application windows.</p>
-                </div>
-                <div class="time-status status-hot">Urgent</div>
-              </div>
-
-              <div class="time-card">
-                <div class="time-date">Scholarships</div>
-                <div class="time-copy">
-                  <h4>Scholarship-backed colleges</h4>
-                  <p>See where tuition support, merit offers, or admission benefits may be available.</p>
-                </div>
-                <div class="time-status status-soon">Useful</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Latest articles -->
-      <section class="section">
-        <div class="section-head">
-          <div>
-            <h2>Latest Helpful Reads</h2>
-          </div>
-          <p>
-            These are article-style rows, so the page does not repeat the same card design used elsewhere.
-          </p>
-        </div>
-
-        <div class="article-rail">
-          <a href="#" class="article-row">
-            <div class="thumb"><span>Admissions</span></div>
-            <div class="article-copy">
-              <small>Admission Strategy</small>
-              <h4>How students should shortlist colleges instead of randomly applying everywhere</h4>
-              <p>Start with exam score, city, budget, placements, and intake — then build a smarter shortlist.</p>
-            </div>
-            <div class="read-btn">Read More</div>
-          </a>
-
-          <a href="#" class="article-row">
-            <div class="thumb"><span>Compare</span></div>
-            <div class="article-copy">
-              <small>College Comparison</small>
-              <h4>GL Bajaj vs Jaipuria vs other similar MBA options: what to compare first</h4>
-              <p>Compare fee structure, average package, location advantage, and intake before deciding.</p>
-            </div>
-            <div class="read-btn">Read More</div>
-          </a>
-
-          <a href="#" class="article-row">
-            <div class="thumb"><span>Exams</span></div>
-            <div class="article-copy">
-              <small>Exam Guide</small>
-              <h4>Which exams open the most MBA options: CAT, XAT, CMAT, NMAT, SNAP?</h4>
-              <p>A simplified breakdown for students trying to understand which exams matter for their target colleges.</p>
-            </div>
-            <div class="read-btn">Read More</div>
-          </a>
-
-          <a href="#" class="article-row">
-            <div class="thumb"><span>Money</span></div>
-            <div class="article-copy">
-              <small>Fees & ROI</small>
-              <h4>When is a higher MBA fee worth it — and when is it not?</h4>
-              <p>Understand how to judge ROI using actual outcomes instead of just a big brand name.</p>
-            </div>
-            <div class="read-btn">Read More</div>
-          </a>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="cta-box" id="cta">
-        <div class="cta-copy">
-          <h3>Need help choosing the right MBA or PGDM option?</h3>
-          <p>
-            Get personalised guidance from Swadeshi Shiksha for college shortlisting, admission guidance,
-            scholarships, and application support.
-          </p>
-        </div>
-
-        <div class="cta-actions">
-          <a href="apply.html" class="btn btn-white">Get Free Counselling</a>
-          <a href="#" class="btn btn-glass">Talk on WhatsApp</a>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <!-- REPLACE THIS FOOTER WITH YOUR EXACT ORIGINAL FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="site-footer">
-        <div class="footer-brand">
-          <strong>Swadeshi Shiksha</strong>
-          <p>
-            Admission guidance, counselling support, college shortlisting, and useful MBA/PGDM resources
-            designed to help students make better decisions.
-          </p>
-        </div>
-
-        <div class="footer-links">
-          <a href="colleges.html">Colleges</a>
-          <a href="courses.html">Courses</a>
-          <a href="exams.html">Exams</a>
-          <a href="resources.html">Resources</a>
-          <a href="apply.html">Apply Now</a>
+        <div class="resourceMiniStat">
+          <small>Resource Hub</small>
+          <strong>20+</strong>
+          <span>Original guides, comparisons, updates, and planning tools for MBA/PGDM aspirants.</span>
         </div>
       </div>
+    </section>
+
+    <!-- ARTICLE SECTION LIKE TEMPLATE -->
+    <section class="section">
+      <div class="sectionWrap">
+        <div class="sectionHead">
+          <div>
+            <h2>Latest <span>Resources</span></h2>
+            <p>Guides, comparisons, and helpful reads designed in a cleaner article-style layout.</p>
+          </div>
+          <a href="javascript:void(0)" onclick="openLeadPopup('Article Section CTA')" class="sectionLink">Need help choosing? ↗</a>
+        </div>
+
+        <div class="blogLayout">
+          <aside class="blogSidebar">
+            <div class="sideCard">
+              <div class="searchBox">
+                <input type="text" placeholder="Search resources...">
+                <span>⌕</span>
+              </div>
+            </div>
+
+            <div class="sideCard">
+              <h3>Browse Topics</h3>
+              <div class="sideLinks">
+                <a href="#">MBA Admission Guides <span>↗</span></a>
+                <a href="#">College Comparisons <span>↗</span></a>
+                <a href="#">Scholarships <span>↗</span></a>
+                <a href="#">Deadlines & Updates <span>↗</span></a>
+                <a href="#">ROI & Shortlisting <span>↗</span></a>
+              </div>
+            </div>
+
+            <div class="sideCard">
+              <h3>Popular Reads</h3>
+              <div class="miniPostList">
+                <div class="miniPost">
+                  <div class="miniPostNo">1</div>
+                  <div>
+                    <h4>How to choose the right MBA college in 2026</h4>
+                    <p>Guide • Updated for current admission cycle</p>
+                  </div>
+                </div>
+
+                <div class="miniPost">
+                  <div class="miniPostNo">2</div>
+                  <div>
+                    <h4>Top MBA colleges without CAT score</h4>
+                    <p>List • Helpful for alternate exam routes</p>
+                  </div>
+                </div>
+
+                <div class="miniPost">
+                  <div class="miniPostNo">3</div>
+                  <div>
+                    <h4>MBA vs PGDM: what matters most</h4>
+                    <p>Comparison • Quick decision support</p>
+                  </div>
+                </div>
+
+                <div class="miniPost">
+                  <div class="miniPostNo">4</div>
+                  <div>
+                    <h4>Scholarship-friendly MBA colleges</h4>
+                    <p>Scholarships • Budget-focused students</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <div class="blogMain">
+            <article class="articleCard">
+              <div class="articleThumb">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80" alt="MBA admission guide">
+              </div>
+              <div class="articleBody">
+                <div class="articleMeta">
+                  <span>Admission Guide</span>
+                  <span class="dot">•</span>
+                  <span>2026</span>
+                </div>
+                <h3>MBA Admission 2026: what students should check before applying anywhere</h3>
+                <p>Fees, placements, location, ROI, approvals, intake, and fit — the real things students should compare first.</p>
+                <a href="#" class="articleRead">Read More →</a>
+              </div>
+            </article>
+
+            <article class="articleCard">
+              <div class="articleThumb">
+                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1200&q=80" alt="Scholarship guide">
+              </div>
+              <div class="articleBody">
+                <div class="articleMeta">
+                  <span>Scholarships</span>
+                  <span class="dot">•</span>
+                  <span>MBA</span>
+                </div>
+                <h3>MBA scholarships students should actually look for</h3>
+                <p>Shortlist scholarship-friendly colleges and understand where tuition support or merit benefits may be available.</p>
+                <a href="#" class="articleRead">Read More →</a>
+              </div>
+            </article>
+
+            <article class="articleCard">
+              <div class="articleThumb">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="MBA vs PGDM">
+              </div>
+              <div class="articleBody">
+                <div class="articleMeta">
+                  <span>Comparison</span>
+                  <span class="dot">•</span>
+                  <span>Decision Help</span>
+                </div>
+                <h3>MBA vs PGDM: what really matters while choosing</h3>
+                <p>A clean comparison for students confused between degree, diploma, value, recognition, and career outcome.</p>
+                <a href="#" class="articleRead">Read More →</a>
+              </div>
+            </article>
+
+            <article class="articleCard">
+              <div class="articleThumb">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="College list">
+              </div>
+              <div class="articleBody">
+                <div class="articleMeta">
+                  <span>College List</span>
+                  <span class="dot">•</span>
+                  <span>By City / Exam</span>
+                </div>
+                <h3>Top MBA colleges by city, exam, and budget range</h3>
+                <p>Useful when students start with city-based intent like Bangalore, Pune, Delhi NCR, or exam-based search.</p>
+                <a href="#" class="articleRead">Read More →</a>
+              </div>
+            </article>
+
+            <article class="articleCard">
+              <div class="articleThumb">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80" alt="Colleges without CAT">
+              </div>
+              <div class="articleBody">
+                <div class="articleMeta">
+                  <span>Alternate Route</span>
+                  <span class="dot">•</span>
+                  <span>Non-CAT</span>
+                </div>
+                <h3>Top MBA colleges without CAT score</h3>
+                <p>Helpful for students exploring CMAT, MAT, XAT, NMAT, direct admission, and alternate shortlist options.</p>
+                <a href="#" class="articleRead">Read More →</a>
+              </div>
+            </article>
+
+            <article class="articleCard">
+              <div class="articleThumb">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80" alt="ROI guide">
+              </div>
+              <div class="articleBody">
+                <div class="articleMeta">
+                  <span>Fees & ROI</span>
+                  <span class="dot">•</span>
+                  <span>Smart Choice</span>
+                </div>
+                <h3>When is a higher MBA fee worth it — and when is it not?</h3>
+                <p>Understand how to judge ROI using placement quality, role quality, brand value, and realistic outcomes.</p>
+                <a href="#" class="articleRead">Read More →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- APPLICATION UPDATES BELOW ARTICLE SECTION -->
+        <div class="updatesWrap">
+          <div class="sectionHead" style="margin-top:26px; margin-bottom:16px;">
+            <div>
+              <h2><span>Application</span> Updates</h2>
+              <p>Keep this section compact and useful only.</p>
+            </div>
+          </div>
+
+          <div class="updatesGrid">
+            <div class="updateCard">
+              <div class="updateLabel openTag">Open Now</div>
+              <h4>Applications currently open</h4>
+              <p>Track colleges where MBA or PGDM admission forms are active right now.</p>
+              <a href="#" class="updateLink">Check Updates →</a>
+            </div>
+
+            <div class="updateCard">
+              <div class="updateLabel soonTag">Closing Soon</div>
+              <h4>Last date reminders</h4>
+              <p>Useful for students who do not want to miss important application deadlines.</p>
+              <a href="#" class="updateLink">See Last Dates →</a>
+            </div>
+
+            <div class="updateCard">
+              <div class="updateLabel hotTag">Scholarships</div>
+              <h4>Scholarship-backed colleges</h4>
+              <p>See where tuition support, merit offers, or admission benefits may be available.</p>
+              <a href="#" class="updateLink">Explore Options →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK TOOLS BELOW ARTICLE SECTION -->
+    <section class="section">
+      <div class="toolWrap">
+        <div class="toolHead">
+          <div>
+            <h2>Quick Tools</h2>
+            <p>Made more playful and lighter so they don’t feel like boring cards.</p>
+          </div>
+        </div>
+
+        <div class="toolGrid">
+          <a href="#" class="toolCard purple">
+            <div class="toolTop">
+              <div class="toolEmoji">🧠</div>
+              <div class="toolBadge purple">Live Tool</div>
+            </div>
+            <h3>Eligibility Checker</h3>
+            <p>See which MBA/PGDM options may fit your score, academics, and profile.</p>
+            <span class="toolAction">Play with Tool →</span>
+            <div class="toolShape"></div>
+          </a>
+
+          <a href="#" class="toolCard orange">
+            <div class="toolTop">
+              <div class="toolEmoji">🎯</div>
+              <div class="toolBadge orange">Smart Pick</div>
+            </div>
+            <h3>College Finder</h3>
+            <p>Browse colleges by exam, city, budget, or specialisation in a simpler way.</p>
+            <span class="toolAction">Find Matches →</span>
+            <div class="toolShape"></div>
+          </a>
+
+          <a href="#" class="toolCard blue">
+            <div class="toolTop">
+              <div class="toolEmoji">📊</div>
+              <div class="toolBadge blue">Useful</div>
+            </div>
+            <h3>ROI Calculator</h3>
+            <p>Estimate how fee and placements compare before taking admission.</p>
+            <span class="toolAction">Try Calculator →</span>
+            <div class="toolShape"></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BETTER CTA -->
+    <section class="supportBanner">
+      <div class="supportLeft">
+        <h2>Still confused? Let’s build your MBA shortlist the smart way.</h2>
+        <p>
+          Get help with exam selection, college shortlisting, scholarships, budget planning,
+          and your complete MBA or PGDM admission strategy.
+        </p>
+
+        <div class="supportPoints">
+          <span>Free Counselling</span>
+          <span>College Shortlisting</span>
+          <span>Scholarship Help</span>
+          <span>Admission Support</span>
+        </div>
+
+        <div class="supportBtns">
+          <a href="javascript:void(0)" onclick="openLeadPopup('Support Banner CTA')" class="supportBtn">Get Free Counselling</a>
+          <a href="javascript:void(0)" onclick="openLeadPopup('WhatsApp Style CTA')" class="supportBtnGhost">Talk to Expert</a>
+        </div>
+      </div>
+
+      <div class="supportRight">
+        <div class="supportFloating">
+          <div class="supportFloatingTop">
+            <h3>Right college. Right budget. Right direction.</h3>
+            <div class="floatingPulse"></div>
+          </div>
+          <p>Connect with Swadeshi Shiksha for practical MBA guidance instead of random guesswork.</p>
+
+          <div class="supportMiniRow">
+            <span>Fast Response</span>
+            <span>Student First</span>
+            <span>Pan India</span>
+          </div>
+
+          <a href="javascript:void(0)" onclick="openLeadPopup('Floating Support CTA')" class="supportMiniBtn">Start Now</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footerGrid">
+        <div>
+          <h3>Swadeshi Shiksha</h3>
+          <p>Search, compare and choose the right MBA/PGDM college with trusted guidance and student-first counselling support.</p>
+        </div>
+
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="colleges.html">Colleges</a></li>
+            <li><a href="exams.html">Exams</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="resources.html">Resources</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Popular Resources</h4>
+          <ul>
+            <li><a href="#">MBA Admission Guide</a></li>
+            <li><a href="#">Scholarships</a></li>
+            <li><a href="#">College Comparison</a></li>
+            <li><a href="#">ROI Tools</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="openLeadPopup('Footer CTA')">Free Counselling</a></li>
+            <li><a href="page.html?slug=privacy-policy">Privacy Policy</a></li>
+            <li><a href="page.html?slug=contact-us">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <div class="popupOverlay" id="leadPopup">
+    <div class="popupCard">
+      <button class="popupClose" onclick="closeLeadPopup()">×</button>
+      <h3>Get Free MBA Guidance</h3>
+      <p>Fill in your details and our team will connect with you for counselling support.</p>
+
+      <input type="text" id="leadName" placeholder="Your Name">
+      <input type="tel" id="leadPhone" placeholder="Phone Number">
+      <input type="text" id="leadCourse" placeholder="Interested Course / Topic">
+
+      <button class="popupSubmit" onclick="submitLead()">Submit</button>
+      <div class="popupNote">Free counselling • Fast response • Trusted support</div>
     </div>
-  </footer>
+  </div>
 
   <script>
-    // Optional tiny interaction for CTA / hover feel
-    document.querySelectorAll('.story-card, .article-row, .tool-chip, .list-item').forEach((item) => {
-      item.addEventListener('mousemove', (e) => {
-        const rect = item.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        item.style.background = `
-          radial-gradient(circle at ${x}px ${y}px, rgba(110,75,223,0.06), transparent 34%),
-          rgba(255,255,255,0.94)
-        `;
-      });
+    const firebaseConfig = {
+      apiKey: "AIzaSyCQNocdvSpqjm7ZMcrVYW0Fc-iMycGQO94",
+      authDomain: "swadeshi-shiksha.firebaseapp.com",
+      projectId: "swadeshi-shiksha"
+    };
 
-      item.addEventListener('mouseleave', () => {
-        item.style.background = '';
-      });
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+  </script>
+
+  <script>
+    let leadSource = "Resources Page";
+
+    function openLeadPopup(source){
+      leadSource = source || "Resources Page";
+      document.getElementById("leadPopup").style.display = "flex";
+    }
+
+    function closeLeadPopup(){
+      document.getElementById("leadPopup").style.display = "none";
+    }
+
+    async function submitLead(){
+      const name = document.getElementById("leadName").value.trim();
+      const phone = document.getElementById("leadPhone").value.trim();
+      const course = document.getElementById("leadCourse").value.trim();
+
+      if(!name || !phone){
+        alert("Please enter your name and phone number.");
+        return;
+      }
+
+      try{
+        if (window.firebase && firebase.apps.length) {
+          const db = firebase.firestore();
+          await db.collection("leads").add({
+            name,
+            phone,
+            courseOrTopic: course,
+            source: leadSource,
+            page: "resources.html",
+            createdAt: new Date()
+          });
+        }
+
+        alert("Thank you! Our team will contact you soon.");
+        closeLeadPopup();
+        document.getElementById("leadName").value = "";
+        document.getElementById("leadPhone").value = "";
+        document.getElementById("leadCourse").value = "";
+      }catch(error){
+        console.error(error);
+        alert("Lead saved issue. Please check Firebase connection.");
+      }
+    }
+
+    window.addEventListener("click", function(e){
+      const popup = document.getElementById("leadPopup");
+      if(e.target === popup){
+        closeLeadPopup();
+      }
     });
   </script>
+
 </body>
 </html>
