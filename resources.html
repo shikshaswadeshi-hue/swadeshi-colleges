@@ -50,7 +50,7 @@
       padding:0 18px 84px;
     }
 
-    /* ORIGINAL HEADER STYLE FROM EXAMS */
+    /* HEADER */
     .header{
       position:sticky;
       top:0;
@@ -134,14 +134,14 @@
       box-shadow:0 18px 34px rgba(93,54,210,0.28);
     }
 
-    /* PAGE INTRO SMALL */
+    /* SMALL INTRO */
     .resourceIntro{
       margin-top:22px;
       background:
         linear-gradient(135deg, rgba(255,255,255,0.88), rgba(247,242,255,0.96));
       border:1px solid #eee7fb;
       border-radius:34px;
-      padding:28px 28px 24px;
+      padding:26px 28px 22px;
       box-shadow:0 16px 40px rgba(42,29,89,0.05);
       position:relative;
       overflow:hidden;
@@ -185,8 +185,8 @@
 
     .resourceIntro h1{
       font-family:'Sora',sans-serif;
-      font-size:42px;
-      line-height:1.05;
+      font-size:38px;
+      line-height:1.06;
       letter-spacing:-0.05em;
       max-width:760px;
       margin-bottom:10px;
@@ -201,11 +201,11 @@
     }
 
     .resourceMiniStat{
-      min-width:240px;
-      background:rgba(255,255,255,0.8);
+      min-width:220px;
+      background:rgba(255,255,255,0.82);
       border:1px solid #eee7fb;
-      border-radius:24px;
-      padding:18px 18px;
+      border-radius:22px;
+      padding:16px 16px;
       box-shadow:0 12px 24px rgba(42,29,89,0.04);
     }
 
@@ -222,7 +222,7 @@
     .resourceMiniStat strong{
       display:block;
       font-family:'Sora',sans-serif;
-      font-size:30px;
+      font-size:28px;
       line-height:1;
       color:#6f4ae0;
       margin-bottom:8px;
@@ -507,92 +507,37 @@
       font-weight:800;
     }
 
-    /* APPLICATION UPDATES SMALL STRIP STYLE */
-    .updatesWrap{
-      margin-top:22px;
+    /* tool-looking article cards mixed inside main */
+    .articleCard.utility{
+      background:linear-gradient(135deg,#fffaf4 0%,#fff 100%);
     }
 
-    .updatesGrid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
+    .articleCard.utility .articleBody h3{
+      font-size:21px;
     }
 
-    .updateCard{
-      background:#fff;
-      border:1px solid #eee7fb;
-      border-radius:24px;
-      padding:18px;
-      box-shadow:0 14px 32px rgba(40,28,82,0.05);
-      transition:all .22s ease;
-    }
-
-    .updateCard:hover{
-      transform:translateY(-4px);
-      box-shadow:0 20px 38px rgba(40,28,82,0.08);
-    }
-
-    .updateLabel{
+    .articleChip{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       padding:8px 12px;
       border-radius:999px;
+      background:#f4efff;
+      color:#6948dd;
+      border:1px solid #e7defc;
       font-size:11px;
       font-weight:800;
       letter-spacing:.08em;
       text-transform:uppercase;
-      margin-bottom:12px;
+      margin-bottom:10px;
     }
 
-    .openTag{
-      background:#ecfaf1;
-      color:#178f49;
-      border:1px solid #cfeeda;
-    }
-
-    .soonTag{
-      background:#fff7e8;
-      color:#b57505;
-      border:1px solid #f3deb0;
-    }
-
-    .hotTag{
-      background:#fff0f0;
-      color:#d94841;
-      border:1px solid #f5d0d0;
-    }
-
-    .updateCard h4{
-      font-family:'Sora',sans-serif;
-      font-size:19px;
-      line-height:1.18;
-      margin-bottom:8px;
-      color:#172031;
-    }
-
-    .updateCard p{
-      font-size:14px;
-      line-height:1.72;
-      color:#6d7586;
-      margin-bottom:12px;
-    }
-
-    .updateLink{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      color:#6d48df;
-      font-size:13px;
-      font-weight:800;
-    }
-
-    /* FUN QUICK TOOLS */
+    /* QUICK TOOLS GAME STYLE */
     .toolWrap{
       background:linear-gradient(135deg,#faf7ff 0%,#f5f0ff 100%);
       border:1px solid #eee7fb;
       border-radius:34px;
-      padding:28px;
+      padding:26px;
       box-shadow:0 16px 40px rgba(42,29,89,0.05);
       overflow:hidden;
       position:relative;
@@ -601,8 +546,8 @@
     .toolWrap::before{
       content:"";
       position:absolute;
-      width:240px;
-      height:240px;
+      width:220px;
+      height:220px;
       left:-80px;
       bottom:-90px;
       border-radius:42px;
@@ -613,10 +558,10 @@
     .toolWrap::after{
       content:"";
       position:absolute;
-      width:220px;
-      height:220px;
-      right:-90px;
-      top:-90px;
+      width:180px;
+      height:180px;
+      right:-70px;
+      top:-70px;
       border-radius:50%;
       background:rgba(255,122,26,0.06);
     }
@@ -629,12 +574,12 @@
       align-items:flex-end;
       gap:18px;
       flex-wrap:wrap;
-      margin-bottom:18px;
+      margin-bottom:16px;
     }
 
     .toolHead h2{
       font-family:'Sora',sans-serif;
-      font-size:34px;
+      font-size:32px;
       line-height:1.06;
       letter-spacing:-0.04em;
       color:#172031;
@@ -642,7 +587,7 @@
 
     .toolHead p{
       max-width:560px;
-      font-size:15px;
+      font-size:14px;
       line-height:1.78;
       color:#6d7586;
     }
@@ -652,356 +597,216 @@
       z-index:2;
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
+      gap:14px;
     }
 
-    .toolCard{
+    .gameCard{
       position:relative;
-      min-height:210px;
-      border-radius:24px;
+      min-height:188px;
+      border:none;
+      border-radius:26px;
       padding:16px;
       overflow:hidden;
-      color:#172031;
-      box-shadow:0 14px 32px rgba(40,28,82,0.08);
-      transition:transform .24s ease, box-shadow .24s ease;
+      cursor:pointer;
+      box-shadow:0 16px 34px rgba(40,28,82,0.10);
+      transition:transform .22s ease, box-shadow .22s ease;
+      text-align:left;
     }
 
-    .toolCard:hover{
-      transform:translateY(-6px) rotate(-1deg);
-      box-shadow:0 22px 44px rgba(40,28,82,0.13);
+    .gameCard:hover{
+      transform:translateY(-6px) rotate(-1.2deg) scale(1.01);
+      box-shadow:0 22px 44px rgba(40,28,82,0.16);
     }
 
-    .toolCard.purple{
-      background:linear-gradient(135deg,#ffffff 0%,#f3eeff 100%);
-      border:1px solid #e9ddff;
+    .gameCard.purple{
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.22), transparent 20%),
+        linear-gradient(135deg,#7e5ff2 0%,#6948dd 55%,#4e2dc0 100%);
+      color:#fff;
     }
 
-    .toolCard.orange{
-      background:linear-gradient(135deg,#fffaf4 0%,#fff0e1 100%);
-      border:1px solid #ffd9b4;
+    .gameCard.orange{
+      background:
+        radial-gradient(circle at 18% 20%, rgba(255,255,255,0.22), transparent 20%),
+        linear-gradient(135deg,#ffb15b 0%,#ff8a1d 55%,#f56c00 100%);
+      color:#fff;
     }
 
-    .toolCard.blue{
-      background:linear-gradient(135deg,#f8fcff 0%,#eaf6ff 100%);
-      border:1px solid #d6ebff;
+    .gameCard.blue{
+      background:
+        radial-gradient(circle at 18% 20%, rgba(255,255,255,0.22), transparent 20%),
+        linear-gradient(135deg,#4db7ff 0%,#228cf0 55%,#0e6ed0 100%);
+      color:#fff;
     }
 
-    .toolTop{
+    .gameTop{
       display:flex;
-      justify-content:space-between;
       align-items:flex-start;
+      justify-content:space-between;
       gap:10px;
-      margin-bottom:14px;
+      margin-bottom:18px;
     }
 
-    .toolEmoji{
-      width:54px;
-      height:54px;
+    .gameEmoji{
+      width:56px;
+      height:56px;
       border-radius:18px;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:27px;
-      background:rgba(255,255,255,0.9);
-      box-shadow:0 12px 24px rgba(40,28,82,0.08);
+      font-size:28px;
+      background:rgba(255,255,255,0.16);
+      border:1px solid rgba(255,255,255,0.22);
+      backdrop-filter:blur(8px);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,0.14);
     }
 
-    .toolBadge{
+    .gameTag{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       padding:8px 11px;
       border-radius:999px;
+      background:rgba(255,255,255,0.16);
+      border:1px solid rgba(255,255,255,0.24);
       font-size:11px;
       font-weight:800;
       text-transform:uppercase;
       letter-spacing:.08em;
+      backdrop-filter:blur(8px);
     }
 
-    .toolBadge.purple{
-      background:#efe8ff;
-      color:#6948dd;
-    }
-
-    .toolBadge.orange{
-      background:#fff0e1;
-      color:#d97410;
-    }
-
-    .toolBadge.blue{
-      background:#e8f4ff;
-      color:#1874c8;
-    }
-
-    .toolCard h3{
-      font-family:'Sora',sans-serif;
-      font-size:21px;
-      line-height:1.14;
-      letter-spacing:-0.03em;
-      margin-bottom:10px;
-      color:#172031;
-    }
-
-    .toolCard p{
-      font-size:14px;
-      line-height:1.72;
-      color:#596377;
-      margin-bottom:16px;
-      max-width:290px;
-    }
-
-    .toolAction{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-size:14px;
-      font-weight:800;
-    }
-
-    .toolCard.purple .toolAction{ color:#6948dd; }
-    .toolCard.orange .toolAction{ color:#d97410; }
-    .toolCard.blue .toolAction{ color:#1874c8; }
-
-    .toolShape{
-      position:absolute;
-      right:-18px;
-      bottom:-18px;
-      width:92px;
-      height:92px;
-      border-radius:28px;
-      background:rgba(255,255,255,0.35);
-      transform:rotate(22deg);
-    }
-
-    /* CTA */
-    .supportBanner{
-      margin-top:38px;
-      display:grid;
-      grid-template-columns:1.04fr .96fr;
-      gap:18px;
-      align-items:stretch;
-    }
-
-    .supportLeft{
-      position:relative;
-      overflow:hidden;
-      border-radius:34px;
-      padding:30px 26px;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 18%),
-        radial-gradient(circle at bottom right, rgba(255,169,93,0.18), transparent 24%),
-        linear-gradient(135deg,#7a55e7 0%,#5b34cf 70%);
-      color:#fff;
-      box-shadow:0 26px 58px rgba(69,43,161,0.18);
-    }
-
-    .supportLeft::before{
-      content:"";
-      position:absolute;
-      width:210px;
-      height:210px;
-      right:-56px;
-      top:-56px;
-      border-radius:40px;
-      background:rgba(255,255,255,0.12);
-      transform:rotate(28deg);
-    }
-
-    .supportLeft::after{
-      content:"";
-      position:absolute;
-      width:170px;
-      height:170px;
-      left:-40px;
-      bottom:-50px;
-      border-radius:50%;
-      background:rgba(255,122,26,0.18);
-    }
-
-    .supportLeft h2{
-      position:relative;
-      z-index:2;
-      font-family:'Sora',sans-serif;
-      font-size:38px;
-      line-height:1.08;
-      letter-spacing:-0.04em;
-      margin-bottom:12px;
-      max-width:520px;
-    }
-
-    .supportLeft p{
-      position:relative;
-      z-index:2;
-      font-size:15px;
-      line-height:1.84;
-      color:rgba(255,255,255,0.88);
-      max-width:600px;
-      margin-bottom:18px;
-    }
-
-    .supportPoints{
-      position:relative;
-      z-index:2;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-bottom:20px;
-    }
-
-    .supportPoints span{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 13px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.12);
-      border:1px solid rgba(255,255,255,0.16);
-      font-size:13px;
-      font-weight:700;
-    }
-
-    .supportBtns{
-      position:relative;
-      z-index:2;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .supportBtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
-      background:linear-gradient(135deg,#ff9a34,#ff7a1a);
-      color:#fff;
-      font-size:14px;
-      font-weight:800;
-      box-shadow:0 12px 22px rgba(255,122,26,0.18);
-    }
-
-    .supportBtnGhost{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.10);
-      border:1px solid rgba(255,255,255,0.18);
-      color:#fff;
-      font-size:14px;
-      font-weight:800;
-      backdrop-filter:blur(10px);
-    }
-
-    .supportRight{
-      position:relative;
-      overflow:hidden;
-      border-radius:34px;
-      min-height:320px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08)),
-        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      border:1px solid #eee7fb;
-      box-shadow:0 18px 42px rgba(42,29,89,0.06);
-    }
-
-    .supportRight::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg,rgba(24,17,56,0.10),rgba(24,17,56,0.18));
-    }
-
-    .supportFloating{
-      position:absolute;
-      left:18px;
-      right:18px;
-      bottom:18px;
-      z-index:2;
-      background:rgba(255,255,255,0.92);
-      backdrop-filter:blur(12px);
-      border:1px solid #ece4fb;
-      border-radius:24px;
-      padding:18px;
-      box-shadow:0 16px 34px rgba(35,22,78,0.12);
-    }
-
-    .supportFloatingTop{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:flex-start;
-      margin-bottom:10px;
-    }
-
-    .supportFloating h3{
+    .gameCard h3{
       font-family:'Sora',sans-serif;
       font-size:22px;
-      line-height:1.08;
+      line-height:1.1;
       letter-spacing:-0.03em;
-      color:#16202f;
+      margin-bottom:8px;
+      max-width:220px;
     }
 
-    .floatingPulse{
-      width:14px;
-      height:14px;
+    .gameCard p{
+      font-size:13px;
+      line-height:1.65;
+      color:rgba(255,255,255,0.86);
+      max-width:250px;
+      margin-bottom:16px;
+    }
+
+    .gameFooter{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:13px;
+      font-weight:800;
+      color:#fff;
+    }
+
+    .gameBar{
+      position:absolute;
+      left:16px;
+      right:16px;
+      bottom:16px;
+      height:10px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.18);
+      overflow:hidden;
+    }
+
+    .gameFill{
+      height:100%;
+      border-radius:999px;
+      background:rgba(255,255,255,0.88);
+      opacity:.95;
+    }
+
+    .gameFill.one{ width:74%; }
+    .gameFill.two{ width:61%; }
+    .gameFill.three{ width:83%; }
+
+    /* SMALL SIMPLE CTA */
+    .supportBanner{
+      margin-top:34px;
+    }
+
+    .supportMini{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      background:linear-gradient(135deg,#ffffff 0%,#f7f2ff 100%);
+      border:1px solid #eee7fb;
+      border-radius:24px;
+      padding:18px 20px;
+      box-shadow:0 14px 30px rgba(42,29,89,0.05);
+    }
+
+    .supportMiniLeft{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .supportDot{
+      width:12px;
+      height:12px;
       border-radius:50%;
       background:#27c36a;
-      box-shadow:0 0 0 0 rgba(39,195,106,0.45);
-      animation:pulse 1.8s infinite;
-      margin-top:4px;
+      box-shadow:0 0 0 6px rgba(39,195,106,0.10);
       flex-shrink:0;
     }
 
-    @keyframes pulse{
-      0%{ box-shadow:0 0 0 0 rgba(39,195,106,0.45); }
-      70%{ box-shadow:0 0 0 14px rgba(39,195,106,0); }
-      100%{ box-shadow:0 0 0 0 rgba(39,195,106,0); }
+    .supportMiniText h3{
+      font-family:'Sora',sans-serif;
+      font-size:21px;
+      line-height:1.1;
+      letter-spacing:-0.03em;
+      color:#172031;
+      margin-bottom:4px;
     }
 
-    .supportFloating p{
-      font-size:13px;
-      line-height:1.68;
+    .supportMiniText p{
+      font-size:14px;
+      line-height:1.65;
       color:#667085;
-      margin-bottom:14px;
     }
 
-    .supportMiniRow{
+    .supportMiniBtns{
       display:flex;
+      align-items:center;
       gap:10px;
       flex-wrap:wrap;
-      margin-bottom:14px;
     }
 
-    .supportMiniRow span{
+    .supportMiniBtnPrimary{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:8px 10px;
+      padding:11px 16px;
       border-radius:999px;
-      font-size:11px;
-      font-weight:800;
-      background:#f4efff;
-      color:#6948dd;
-      border:1px solid #e7ddfd;
-    }
-
-    .supportMiniBtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 15px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:800;
-      color:#fff;
       background:linear-gradient(135deg,#ff9a34,#ff7a1a);
-      box-shadow:0 10px 18px rgba(255,122,26,0.16);
+      color:#fff;
+      font-size:13px;
+      font-weight:800;
+      box-shadow:0 10px 20px rgba(255,122,26,0.16);
     }
 
-    /* FOOTER FROM EXAMS */
+    .supportMiniBtnGhost{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 16px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #e8dffd;
+      color:#6948dd;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    /* FOOTER */
     .footer{
       margin-top:34px;
       background:#16202f;
@@ -1036,7 +841,7 @@
       margin-bottom:8px;
     }
 
-    /* POPUP */
+    /* LEAD POPUP */
     .popupOverlay{
       position:fixed;
       inset:0;
@@ -1122,6 +927,226 @@
       text-align:center;
     }
 
+    /* GAME MODAL */
+    .gameModal{
+      position:fixed;
+      inset:0;
+      z-index:7000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      background:rgba(10,15,28,0.70);
+      backdrop-filter:blur(8px);
+    }
+
+    .gameBox{
+      width:100%;
+      max-width:720px;
+      background:
+        radial-gradient(circle at top left, rgba(122,85,231,0.10), transparent 24%),
+        linear-gradient(180deg,#ffffff 0%,#faf8ff 100%);
+      border:1px solid #ece4fb;
+      border-radius:30px;
+      padding:22px;
+      box-shadow:0 34px 80px rgba(15,23,42,0.28);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .gameBox::before{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      right:-60px;
+      top:-60px;
+      border-radius:40px;
+      background:rgba(123,89,233,0.08);
+      transform:rotate(22deg);
+    }
+
+    .gameClose{
+      position:absolute;
+      right:14px;
+      top:12px;
+      width:40px;
+      height:40px;
+      border:none;
+      border-radius:50%;
+      background:#f3edff;
+      color:#6948dd;
+      font-size:24px;
+      cursor:pointer;
+      z-index:2;
+    }
+
+    .gameContent{
+      position:relative;
+      z-index:2;
+    }
+
+    .gameHead{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      margin-bottom:18px;
+      padding-right:46px;
+    }
+
+    .gameHeadEmoji{
+      width:60px;
+      height:60px;
+      border-radius:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:30px;
+      background:#f4efff;
+      color:#6948dd;
+      flex-shrink:0;
+    }
+
+    .gameHead h3{
+      font-family:'Sora',sans-serif;
+      font-size:30px;
+      line-height:1.05;
+      letter-spacing:-0.04em;
+      color:#172031;
+      margin-bottom:6px;
+    }
+
+    .gameHead p{
+      font-size:14px;
+      line-height:1.75;
+      color:#667085;
+    }
+
+    .miniGameArea{
+      margin-top:8px;
+    }
+
+    .gameQuestion{
+      font-family:'Sora',sans-serif;
+      font-size:21px;
+      line-height:1.16;
+      letter-spacing:-0.03em;
+      color:#172031;
+      margin-bottom:14px;
+    }
+
+    .choiceGrid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .choiceBtn{
+      border:1px solid #e7defc;
+      background:#fff;
+      border-radius:18px;
+      padding:16px 14px;
+      cursor:pointer;
+      text-align:left;
+      transition:all .18s ease;
+      font-size:14px;
+      font-weight:700;
+      color:#2a3142;
+    }
+
+    .choiceBtn:hover{
+      transform:translateY(-2px);
+      border-color:#cdbbf8;
+      background:#faf7ff;
+    }
+
+    .choiceBtn.selected{
+      border-color:#7b59e9;
+      background:#f4efff;
+      color:#6948dd;
+      box-shadow:0 8px 18px rgba(123,89,233,0.12);
+    }
+
+    .gameResult{
+      display:none;
+      margin-top:14px;
+      background:linear-gradient(135deg,#fff 0%,#f8f4ff 100%);
+      border:1px solid #ebe3fd;
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .gameResult h4{
+      font-family:'Sora',sans-serif;
+      font-size:20px;
+      line-height:1.14;
+      margin-bottom:8px;
+      color:#172031;
+    }
+
+    .gameResult p{
+      font-size:14px;
+      line-height:1.75;
+      color:#667085;
+      margin-bottom:12px;
+    }
+
+    .gameResultTags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:14px;
+    }
+
+    .gameResultTags span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 10px;
+      border-radius:999px;
+      background:#f4efff;
+      color:#6948dd;
+      border:1px solid #e7defc;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .gameResultActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .gameActionPrimary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 16px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#7a55e7,#6037d4);
+      color:#fff;
+      font-size:13px;
+      font-weight:800;
+      box-shadow:0 10px 18px rgba(96,55,212,0.18);
+      border:none;
+      cursor:pointer;
+    }
+
+    .gameActionSecondary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 16px;
+      border-radius:999px;
+      background:#fff;
+      color:#6948dd;
+      border:1px solid #e7defc;
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
     /* RESPONSIVE */
     @media (max-width:1100px){
       .blogLayout{
@@ -1132,12 +1157,10 @@
         position:static;
       }
 
-      .supportBanner,
       .footerGrid{
         grid-template-columns:repeat(2,minmax(0,1fr));
       }
 
-      .updatesGrid,
       .toolGrid{
         grid-template-columns:1fr 1fr;
       }
@@ -1165,12 +1188,9 @@
         width:100%;
       }
 
-      .blogMain{
-        grid-template-columns:1fr;
-      }
-
-      .updatesGrid,
-      .toolGrid{
+      .blogMain,
+      .toolGrid,
+      .choiceGrid{
         grid-template-columns:1fr;
       }
 
@@ -1187,21 +1207,19 @@
       .resourceIntro,
       .sectionWrap,
       .toolWrap,
-      .supportLeft,
-      .supportRight,
-      .footer{
+      .supportMini,
+      .footer,
+      .gameBox{
         border-radius:22px;
       }
 
       .resourceIntro h1,
       .sectionHead h2,
-      .toolHead h2,
-      .supportLeft h2{
+      .toolHead h2{
         font-size:29px;
       }
 
-      .footerGrid,
-      .supportBanner{
+      .footerGrid{
         grid-template-columns:1fr;
       }
 
@@ -1209,10 +1227,16 @@
         height:190px;
       }
 
-      .supportFloating{
-        left:14px;
-        right:14px;
-        bottom:14px;
+      .supportMini{
+        align-items:flex-start;
+      }
+
+      .gameHead h3{
+        font-size:26px;
+      }
+
+      .gameQuestion{
+        font-size:18px;
       }
     }
   </style>
@@ -1237,7 +1261,6 @@
 
   <div class="page">
 
-    <!-- SMALL INTRO, NO HERO -->
     <section class="resourceIntro">
       <div class="resourceIntroTop">
         <div>
@@ -1252,20 +1275,18 @@
         <div class="resourceMiniStat">
           <small>Resource Hub</small>
           <strong>20+</strong>
-          <span>Original guides, comparisons, updates, and planning tools for MBA/PGDM aspirants.</span>
+          <span>Original guides, comparisons, updates, and tools for MBA/PGDM aspirants.</span>
         </div>
       </div>
     </section>
 
-    <!-- ARTICLE SECTION LIKE TEMPLATE -->
     <section class="section">
       <div class="sectionWrap">
         <div class="sectionHead">
           <div>
             <h2>Latest <span>Resources</span></h2>
-            <p>Guides, comparisons, and helpful reads designed in a cleaner article-style layout.</p>
+            <p>Guides, comparisons, tools, and useful reads designed in a cleaner article-style layout.</p>
           </div>
-          <a href="javascript:void(0)" onclick="openLeadPopup('Article Section CTA')" class="sectionLink">Need help choosing? ↗</a>
         </div>
 
         <div class="blogLayout">
@@ -1283,8 +1304,8 @@
                 <a href="#">MBA Admission Guides <span>↗</span></a>
                 <a href="#">College Comparisons <span>↗</span></a>
                 <a href="#">Scholarships <span>↗</span></a>
-                <a href="#">Deadlines & Updates <span>↗</span></a>
                 <a href="#">ROI & Shortlisting <span>↗</span></a>
+                <a href="#">Tools & Predictors <span>↗</span></a>
               </div>
             </div>
 
@@ -1391,159 +1412,93 @@
               </div>
             </article>
 
-            <article class="articleCard">
+            <article class="articleCard utility">
               <div class="articleThumb">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80" alt="Colleges without CAT">
+                <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1200&q=80" alt="Open colleges">
               </div>
               <div class="articleBody">
-                <div class="articleMeta">
-                  <span>Alternate Route</span>
-                  <span class="dot">•</span>
-                  <span>Non-CAT</span>
-                </div>
-                <h3>Top MBA colleges without CAT score</h3>
-                <p>Helpful for students exploring CMAT, MAT, XAT, NMAT, direct admission, and alternate shortlist options.</p>
-                <a href="#" class="articleRead">Read More →</a>
+                <div class="articleChip">Open Applications</div>
+                <h3>Applications currently open for MBA and PGDM admissions</h3>
+                <p>Track colleges where forms are active right now and shortlist options before the next deadline slips away.</p>
+                <a href="#" class="articleRead">Explore Now →</a>
               </div>
             </article>
 
-            <article class="articleCard">
+            <article class="articleCard utility">
               <div class="articleThumb">
-                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80" alt="ROI guide">
+                <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1200&q=80" alt="Last date reminders">
               </div>
               <div class="articleBody">
-                <div class="articleMeta">
-                  <span>Fees & ROI</span>
-                  <span class="dot">•</span>
-                  <span>Smart Choice</span>
-                </div>
-                <h3>When is a higher MBA fee worth it — and when is it not?</h3>
-                <p>Understand how to judge ROI using placement quality, role quality, brand value, and realistic outcomes.</p>
-                <a href="#" class="articleRead">Read More →</a>
+                <div class="articleChip">Closing Soon</div>
+                <h3>Last date reminders and scholarship-backed colleges</h3>
+                <p>Check important deadlines, admission windows, and colleges where scholarships or tuition benefits may still be available.</p>
+                <a href="#" class="articleRead">Check Updates →</a>
               </div>
             </article>
-          </div>
-        </div>
-
-        <!-- APPLICATION UPDATES BELOW ARTICLE SECTION -->
-        <div class="updatesWrap">
-          <div class="sectionHead" style="margin-top:26px; margin-bottom:16px;">
-            <div>
-              <h2><span>Application</span> Updates</h2>
-              <p>Keep this section compact and useful only.</p>
-            </div>
-          </div>
-
-          <div class="updatesGrid">
-            <div class="updateCard">
-              <div class="updateLabel openTag">Open Now</div>
-              <h4>Applications currently open</h4>
-              <p>Track colleges where MBA or PGDM admission forms are active right now.</p>
-              <a href="#" class="updateLink">Check Updates →</a>
-            </div>
-
-            <div class="updateCard">
-              <div class="updateLabel soonTag">Closing Soon</div>
-              <h4>Last date reminders</h4>
-              <p>Useful for students who do not want to miss important application deadlines.</p>
-              <a href="#" class="updateLink">See Last Dates →</a>
-            </div>
-
-            <div class="updateCard">
-              <div class="updateLabel hotTag">Scholarships</div>
-              <h4>Scholarship-backed colleges</h4>
-              <p>See where tuition support, merit offers, or admission benefits may be available.</p>
-              <a href="#" class="updateLink">Explore Options →</a>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- QUICK TOOLS BELOW ARTICLE SECTION -->
     <section class="section">
       <div class="toolWrap">
         <div class="toolHead">
           <div>
             <h2>Quick Tools</h2>
-            <p>Made more playful and lighter so they don’t feel like boring cards.</p>
+            <p>Made like mini games so students actually feel like tapping them.</p>
           </div>
         </div>
 
         <div class="toolGrid">
-          <a href="#" class="toolCard purple">
-            <div class="toolTop">
-              <div class="toolEmoji">🧠</div>
-              <div class="toolBadge purple">Live Tool</div>
+          <button class="gameCard purple" onclick="openGame('eligibilityGame')">
+            <div class="gameTop">
+              <div class="gameEmoji">🧠</div>
+              <div class="gameTag">Tap to Play</div>
             </div>
-            <h3>Eligibility Checker</h3>
-            <p>See which MBA/PGDM options may fit your score, academics, and profile.</p>
-            <span class="toolAction">Play with Tool →</span>
-            <div class="toolShape"></div>
-          </a>
+            <h3>Eligibility Quest</h3>
+            <p>Pick your path and instantly see what kind of MBA options may suit you.</p>
+            <div class="gameFooter">Start Game →</div>
+            <div class="gameBar"><div class="gameFill one"></div></div>
+          </button>
 
-          <a href="#" class="toolCard orange">
-            <div class="toolTop">
-              <div class="toolEmoji">🎯</div>
-              <div class="toolBadge orange">Smart Pick</div>
+          <button class="gameCard orange" onclick="openGame('finderGame')">
+            <div class="gameTop">
+              <div class="gameEmoji">🎯</div>
+              <div class="gameTag">Tap to Match</div>
             </div>
-            <h3>College Finder</h3>
-            <p>Browse colleges by exam, city, budget, or specialisation in a simpler way.</p>
-            <span class="toolAction">Find Matches →</span>
-            <div class="toolShape"></div>
-          </a>
+            <h3>College Match</h3>
+            <p>Choose your priority and get a fast direction for how to shortlist colleges.</p>
+            <div class="gameFooter">Play Match →</div>
+            <div class="gameBar"><div class="gameFill two"></div></div>
+          </button>
 
-          <a href="#" class="toolCard blue">
-            <div class="toolTop">
-              <div class="toolEmoji">📊</div>
-              <div class="toolBadge blue">Useful</div>
+          <button class="gameCard blue" onclick="openGame('roiGame')">
+            <div class="gameTop">
+              <div class="gameEmoji">📊</div>
+              <div class="gameTag">Tap to Score</div>
             </div>
-            <h3>ROI Calculator</h3>
-            <p>Estimate how fee and placements compare before taking admission.</p>
-            <span class="toolAction">Try Calculator →</span>
-            <div class="toolShape"></div>
-          </a>
+            <h3>ROI Score</h3>
+            <p>See whether you should focus more on fee, brand, or placements first.</p>
+            <div class="gameFooter">Check Score →</div>
+            <div class="gameBar"><div class="gameFill three"></div></div>
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- BETTER CTA -->
     <section class="supportBanner">
-      <div class="supportLeft">
-        <h2>Still confused? Let’s build your MBA shortlist the smart way.</h2>
-        <p>
-          Get help with exam selection, college shortlisting, scholarships, budget planning,
-          and your complete MBA or PGDM admission strategy.
-        </p>
-
-        <div class="supportPoints">
-          <span>Free Counselling</span>
-          <span>College Shortlisting</span>
-          <span>Scholarship Help</span>
-          <span>Admission Support</span>
+      <div class="supportMini">
+        <div class="supportMiniLeft">
+          <div class="supportDot"></div>
+          <div class="supportMiniText">
+            <h3>Need help with your MBA shortlist?</h3>
+            <p>Get practical guidance on colleges, scholarships, exams, and admissions.</p>
+          </div>
         </div>
 
-        <div class="supportBtns">
-          <a href="javascript:void(0)" onclick="openLeadPopup('Support Banner CTA')" class="supportBtn">Get Free Counselling</a>
-          <a href="javascript:void(0)" onclick="openLeadPopup('WhatsApp Style CTA')" class="supportBtnGhost">Talk to Expert</a>
-        </div>
-      </div>
-
-      <div class="supportRight">
-        <div class="supportFloating">
-          <div class="supportFloatingTop">
-            <h3>Right college. Right budget. Right direction.</h3>
-            <div class="floatingPulse"></div>
-          </div>
-          <p>Connect with Swadeshi Shiksha for practical MBA guidance instead of random guesswork.</p>
-
-          <div class="supportMiniRow">
-            <span>Fast Response</span>
-            <span>Student First</span>
-            <span>Pan India</span>
-          </div>
-
-          <a href="javascript:void(0)" onclick="openLeadPopup('Floating Support CTA')" class="supportMiniBtn">Start Now</a>
+        <div class="supportMiniBtns">
+          <a href="javascript:void(0)" onclick="openLeadPopup('Mini CTA Primary')" class="supportMiniBtnPrimary">Get Free Counselling</a>
+          <a href="javascript:void(0)" onclick="openLeadPopup('Mini CTA Secondary')" class="supportMiniBtnGhost">Talk to Expert</a>
         </div>
       </div>
     </section>
@@ -1585,9 +1540,9 @@
         </div>
       </div>
     </footer>
-
   </div>
 
+  <!-- LEAD POPUP -->
   <div class="popupOverlay" id="leadPopup">
     <div class="popupCard">
       <button class="popupClose" onclick="closeLeadPopup()">×</button>
@@ -1600,6 +1555,93 @@
 
       <button class="popupSubmit" onclick="submitLead()">Submit</button>
       <div class="popupNote">Free counselling • Fast response • Trusted support</div>
+    </div>
+  </div>
+
+  <!-- GAME 1 -->
+  <div class="gameModal" id="eligibilityGame">
+    <div class="gameBox">
+      <button class="gameClose" onclick="closeGame('eligibilityGame')">×</button>
+      <div class="gameContent">
+        <div class="gameHead">
+          <div class="gameHeadEmoji">🧠</div>
+          <div>
+            <h3>Eligibility Quest</h3>
+            <p>Choose the route that feels closest to your current profile.</p>
+          </div>
+        </div>
+
+        <div class="miniGameArea">
+          <div class="gameQuestion">What best matches you right now?</div>
+
+          <div class="choiceGrid" data-game="eligibility">
+            <button class="choiceBtn" onclick="showGameResult('eligibility', this, 'cat')">I am targeting top exams like CAT/XAT</button>
+            <button class="choiceBtn" onclick="showGameResult('eligibility', this, 'direct')">I want practical options with easier entry</button>
+            <button class="choiceBtn" onclick="showGameResult('eligibility', this, 'budget')">My budget matters more than brand name</button>
+            <button class="choiceBtn" onclick="showGameResult('eligibility', this, 'career')">I just want a good placement-focused path</button>
+          </div>
+
+          <div class="gameResult" id="eligibilityResult"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME 2 -->
+  <div class="gameModal" id="finderGame">
+    <div class="gameBox">
+      <button class="gameClose" onclick="closeGame('finderGame')">×</button>
+      <div class="gameContent">
+        <div class="gameHead">
+          <div class="gameHeadEmoji">🎯</div>
+          <div>
+            <h3>College Match</h3>
+            <p>Tap your top priority and get a smarter shortlist direction.</p>
+          </div>
+        </div>
+
+        <div class="miniGameArea">
+          <div class="gameQuestion">What matters most in your shortlist?</div>
+
+          <div class="choiceGrid" data-game="finder">
+            <button class="choiceBtn" onclick="showGameResult('finder', this, 'placement')">Best placements I can get</button>
+            <button class="choiceBtn" onclick="showGameResult('finder', this, 'budget')">Low fee / better ROI</button>
+            <button class="choiceBtn" onclick="showGameResult('finder', this, 'city')">Strong city/location advantage</button>
+            <button class="choiceBtn" onclick="showGameResult('finder', this, 'brand')">Known brand / reputation</button>
+          </div>
+
+          <div class="gameResult" id="finderResult"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME 3 -->
+  <div class="gameModal" id="roiGame">
+    <div class="gameBox">
+      <button class="gameClose" onclick="closeGame('roiGame')">×</button>
+      <div class="gameContent">
+        <div class="gameHead">
+          <div class="gameHeadEmoji">📊</div>
+          <div>
+            <h3>ROI Score</h3>
+            <p>Tap the factor that worries you most before admission.</p>
+          </div>
+        </div>
+
+        <div class="miniGameArea">
+          <div class="gameQuestion">What do you compare first before paying fees?</div>
+
+          <div class="choiceGrid" data-game="roi">
+            <button class="choiceBtn" onclick="showGameResult('roi', this, 'fees')">Total fee looks too high</button>
+            <button class="choiceBtn" onclick="showGameResult('roi', this, 'avg')">Average package matters most</button>
+            <button class="choiceBtn" onclick="showGameResult('roi', this, 'role')">I care about the kind of jobs offered</button>
+            <button class="choiceBtn" onclick="showGameResult('roi', this, 'brand')">Brand value should justify the cost</button>
+          </div>
+
+          <div class="gameResult" id="roiResult"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1665,6 +1707,146 @@
       const popup = document.getElementById("leadPopup");
       if(e.target === popup){
         closeLeadPopup();
+      }
+    });
+  </script>
+
+  <script>
+    function openGame(id){
+      document.getElementById(id).style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeGame(id){
+      document.getElementById(id).style.display = "none";
+      document.body.style.overflow = "";
+    }
+
+    window.addEventListener("click", function(e){
+      document.querySelectorAll('.gameModal').forEach((modal)=>{
+        if(e.target === modal){
+          modal.style.display = "none";
+          document.body.style.overflow = "";
+        }
+      });
+    });
+
+    const gameResponses = {
+      eligibility: {
+        cat: {
+          title: "You should explore exam-driven premium routes.",
+          text: "You may fit better in a shortlist built around CAT, XAT, NMAT, or SNAP-based colleges where exam performance strongly shapes opportunities.",
+          tags: ["CAT/XAT Route", "Premium Options", "Exam-Focused"],
+          primary: "Get My Exam-Based Shortlist"
+        },
+        direct: {
+          title: "You should explore practical and flexible-entry options.",
+          text: "You may be better suited for colleges with direct admission support, alternate exams, or flexible shortlisting based on profile and budget.",
+          tags: ["Flexible Entry", "Direct Support", "Practical Route"],
+          primary: "Show Flexible Options"
+        },
+        budget: {
+          title: "You should start with ROI-first colleges.",
+          text: "Budget-sensitive choices should focus on affordable fee range, realistic placements, and scholarship-friendly options rather than only brand hype.",
+          tags: ["Budget First", "ROI Focus", "Scholarships"],
+          primary: "Find ROI Colleges"
+        },
+        career: {
+          title: "You should shortlist placement-led colleges first.",
+          text: "Start with colleges known for stronger placement outcomes, recruiter mix, and role quality — then compare fees and city advantage.",
+          tags: ["Placement Focus", "Career Route", "Recruiters"],
+          primary: "Show Placement Colleges"
+        }
+      },
+      finder: {
+        placement: {
+          title: "Placement-first shortlist makes sense for you.",
+          text: "Start with colleges where average package, recruiter quality, and internship pipeline are stronger — then compare intake and fee.",
+          tags: ["Placements", "Recruiters", "Role Quality"],
+          primary: "Explore Placement Picks"
+        },
+        budget: {
+          title: "ROI and fee control should drive your shortlist.",
+          text: "You should compare affordable colleges, scholarships, and realistic average package instead of chasing only expensive names.",
+          tags: ["Lower Fee", "Better ROI", "Budget Smart"],
+          primary: "See Budget Picks"
+        },
+        city: {
+          title: "Location advantage should be your filter.",
+          text: "Focus on colleges in cities with stronger business ecosystems, internship access, and local hiring opportunities.",
+          tags: ["City Focus", "Exposure", "Internships"],
+          primary: "Find By City"
+        },
+        brand: {
+          title: "Brand and recognition matter most for you.",
+          text: "Compare colleges with stronger recall, alumni visibility, and reputation — but still cross-check placement reality and fee.",
+          tags: ["Brand Value", "Recognition", "Alumni"],
+          primary: "See Brand Options"
+        }
+      },
+      roi: {
+        fees: {
+          title: "You should judge MBA by cost-to-outcome ratio.",
+          text: "Do not compare only fees. Compare total cost with average package, recruiter quality, and whether the college justifies the spend.",
+          tags: ["Cost Check", "Outcome Match", "ROI"],
+          primary: "Compare Fee vs ROI"
+        },
+        avg: {
+          title: "Average package should stay one of your key filters.",
+          text: "Look at average package with batch size, role quality, and consistency — not just highest package numbers.",
+          tags: ["Average Package", "Batch Size", "Consistency"],
+          primary: "Check Placement ROI"
+        },
+        role: {
+          title: "Role quality matters more than flashy numbers.",
+          text: "Shortlist colleges based on the type of roles offered, functional fit, and growth path — especially if you already know your career goal.",
+          tags: ["Role Quality", "Career Fit", "Growth"],
+          primary: "Find Role-Based Picks"
+        },
+        brand: {
+          title: "Brand should justify the investment.",
+          text: "A higher fee only makes sense if the college gives stronger reputation, network, and long-term opportunity value.",
+          tags: ["Brand ROI", "Network", "Long-Term Value"],
+          primary: "See Brand ROI"
+        }
+      }
+    };
+
+    function showGameResult(game, clickedBtn, option){
+      const container = clickedBtn.closest('[data-game]');
+      container.querySelectorAll('.choiceBtn').forEach(btn => btn.classList.remove('selected'));
+      clickedBtn.classList.add('selected');
+
+      const resultBox = document.getElementById(game + 'Result');
+      const data = gameResponses[game][option];
+
+      resultBox.innerHTML = `
+        <h4>${data.title}</h4>
+        <p>${data.text}</p>
+        <div class="gameResultTags">
+          ${data.tags.map(tag => `<span>${tag}</span>`).join('')}
+        </div>
+        <div class="gameResultActions">
+          <button class="gameActionPrimary" onclick="openLeadPopup('${data.primary}')">${data.primary}</button>
+          <button class="gameActionSecondary" onclick="closeCurrentGame(this)">Close</button>
+        </div>
+      `;
+      resultBox.style.display = "block";
+    }
+
+    function closeCurrentGame(el){
+      const modal = el.closest('.gameModal');
+      if(modal){
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+
+    window.addEventListener("keydown", function(e){
+      if(e.key === "Escape"){
+        closeLeadPopup();
+        document.querySelectorAll('.gameModal').forEach(modal => modal.style.display = 'none');
+        document.body.style.overflow = '';
       }
     });
   </script>
