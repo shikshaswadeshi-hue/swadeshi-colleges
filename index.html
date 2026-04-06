@@ -636,122 +636,507 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 
-/* PREMIUM WHY SECTION */
+  /* ===== HOME PAGE REDESIGN : WHY + APPLICATION WINDOW ===== */
+
 .why-section{
-  padding: 96px 20px;
+  padding:72px 20px 24px;
   background:
-    radial-gradient(circle at top left, rgba(77,47,178,0.08), transparent 24%),
-    radial-gradient(circle at bottom right, rgba(255,107,0,0.08), transparent 22%),
-    linear-gradient(180deg, #fffdf8 0%, #f7f2ff 100%);
-  text-align:center;
+    radial-gradient(circle at top left, rgba(122,85,231,0.10), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(255,122,26,0.08), transparent 20%),
+    linear-gradient(180deg,#fcfbff 0%,#f7f3ff 100%);
+}
+
+.why-shell{
+  max-width:1180px;
+  margin:0 auto;
 }
 
 .why-head{
-  max-width: 760px;
-  margin: 0 auto 42px;
+  max-width:760px;
+  margin:0 auto 26px;
+  text-align:center;
 }
 
 .why-tag{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: #f4ebff;
-  color: #4d2fb2;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .03em;
-  margin-bottom: 14px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 16px;
+  border-radius:999px;
+  background:#efe8ff;
+  color:#5b37cf;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.03em;
+  margin-bottom:14px;
+  border:1px solid rgba(123,89,233,0.10);
 }
 
 .why-section h2{
-  font-size: 36px;
-  line-height: 1.1;
-  margin-bottom: 12px;
-  letter-spacing: -0.03em;
-  color: #16202f;
+  font-size:40px;
+  line-height:1.06;
+  letter-spacing:-0.04em;
+  color:#172031;
+  margin-bottom:12px;
 }
 
 .why-sub{
   color:#667085;
   font-size:15px;
   line-height:1.75;
-  margin-bottom:0;
+  max-width:660px;
+  margin:0 auto;
 }
 
-.why-grid{
+.why-bento{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:20px;
-  max-width:1180px;
-  margin:auto;
+  grid-template-columns:1.1fr 1fr 1fr;
+  gap:18px;
 }
 
-  @media (max-width: 1024px){
-  .why-grid{
-    grid-template-columns: repeat(2, minmax(0,1fr));
-  }
+.why-spotlight{
+  position:relative;
+  min-height:360px;
+  border-radius:30px;
+  overflow:hidden;
+  padding:26px;
+  display:flex;
+  align-items:flex-end;
+  background:
+    linear-gradient(180deg, rgba(20,20,34,0.12) 0%, rgba(20,20,34,0.72) 100%),
+    url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  box-shadow:0 22px 54px rgba(41,25,91,0.12);
+  border:1px solid rgba(255,255,255,0.40);
 }
 
-@media (max-width: 640px){
-  .why-grid{
-    grid-template-columns: 1fr;
-  }
-
-  .trusted-head h2,
-  .why-section h2,
-  .review-section h2{
-    font-size: 28px;
-  }
-
-  .review-card{
-    min-width: 260px;
-    max-width: 260px;
-  }
+.why-spotlight::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(109,74,224,0.06),rgba(18,19,33,0.22));
 }
 
-.why-card{
-  background: rgba(255,255,255,0.82);
-  border: 1px solid rgba(255,255,255,0.55);
-  backdrop-filter: blur(16px);
-  padding:28px 22px;
+.why-spotlight-content{
+  position:relative;
+  z-index:2;
+  color:#fff;
+  max-width:90%;
+}
+
+.why-mini-label{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:7px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.18);
+  backdrop-filter:blur(10px);
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.why-spotlight h3{
+  font-size:28px;
+  line-height:1.08;
+  margin-bottom:10px;
+  letter-spacing:-0.03em;
+}
+
+.why-spotlight p{
+  font-size:14px;
+  line-height:1.7;
+  color:rgba(255,255,255,0.84);
+}
+
+.why-small-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+
+.why-mini-card{
+  position:relative;
+  min-height:171px;
   border-radius:26px;
-  box-shadow:0 18px 40px rgba(17,24,39,0.08);
-  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
-  text-align:left;
+  overflow:hidden;
+  padding:22px;
+  background:rgba(255,255,255,0.84);
+  border:1px solid rgba(205,195,239,0.50);
+  backdrop-filter:blur(16px);
+  box-shadow:0 16px 38px rgba(36,29,79,0.07);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
 
-.why-card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 24px 48px rgba(17,24,39,0.12);
-  border-color: rgba(77,47,178,0.14);
+.why-mini-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 22px 42px rgba(36,29,79,0.11);
+  border-color:rgba(109,74,224,0.18);
 }
 
-.icon{
-  width:58px;
-  height:58px;
+.why-mini-card.purple{
+  background:
+    radial-gradient(circle at top right, rgba(123,89,233,0.12), transparent 34%),
+    linear-gradient(180deg,#ffffff 0%,#f8f4ff 100%);
+}
+
+.why-mini-card.warm{
+  background:
+    radial-gradient(circle at top right, rgba(255,122,26,0.10), transparent 32%),
+    linear-gradient(180deg,#fffdfb 0%,#fff4ec 100%);
+}
+
+.why-mini-card.soft{
+  background:
+    radial-gradient(circle at top right, rgba(170,145,245,0.12), transparent 30%),
+    linear-gradient(180deg,#ffffff 0%,#f7f3ff 100%);
+}
+
+.why-icon-wrap{
+  width:56px;
+  height:56px;
   border-radius:18px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:26px;
-  margin-bottom:18px;
-  background: linear-gradient(135deg, #fff2e8, #f3ebff);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+  margin-bottom:16px;
+  background:linear-gradient(135deg,#fff1e8,#f3ebff);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.75);
+  font-size:24px;
 }
 
-.why-card h3{
-  margin-bottom:10px;
-  font-size:19px;
-  line-height:1.2;
-  color:#16202f;
+.why-mini-card h3{
+  font-size:22px;
+  line-height:1.12;
+  color:#172031;
+  margin-bottom:8px;
+  letter-spacing:-0.03em;
 }
 
-.why-card p{
+.why-mini-card p{
   font-size:14px;
   line-height:1.7;
-  color:#5f6b7a;
+  color:#667085;
+  max-width:92%;
+}
+
+.why-mini-foot{
+  margin-top:14px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.why-mini-foot span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:7px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+  color:#6c667b;
+  background:rgba(255,255,255,0.86);
+  border:1px solid #ece5fb;
+}
+
+/* APPLICATION WINDOW REDESIGN */
+.app-window-v2{
+  padding:34px 20px 82px;
+  background:
+    radial-gradient(circle at top left, rgba(122,85,231,0.08), transparent 24%),
+    linear-gradient(180deg,#f7f3ff 0%,#fcfbff 100%);
+}
+
+.app-window-shell{
+  max-width:1180px;
+  margin:0 auto;
+}
+
+.app-window-head{
+  max-width:720px;
+  margin:0 auto 24px;
+  text-align:center;
+}
+
+.app-window-tag{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 16px;
+  border-radius:999px;
+  background:#efe8ff;
+  color:#5b37cf;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.03em;
+  margin-bottom:14px;
+  border:1px solid rgba(123,89,233,0.10);
+}
+
+.app-window-head h2{
+  font-size:36px;
+  line-height:1.08;
+  letter-spacing:-0.04em;
+  color:#172031;
+  margin-bottom:10px;
+}
+
+.app-window-head p{
+  max-width:620px;
+  margin:0 auto;
+  font-size:15px;
+  line-height:1.75;
+  color:#6a7280;
+}
+
+.app-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+
+.app-modern-card{
+  position:relative;
+  min-height:280px;
+  border-radius:28px;
+  overflow:hidden;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  background:#fff;
+  border:1px solid rgba(205,195,239,0.50);
+  box-shadow:0 18px 42px rgba(36,29,79,0.08);
+  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+}
+
+.app-modern-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 24px 52px rgba(36,29,79,0.13);
+  border-color:rgba(109,74,224,0.18);
+}
+
+.app-card-media{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+
+.app-card-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.app-card-overlay{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:linear-gradient(180deg, rgba(18,18,28,0.06) 0%, rgba(18,18,28,0.72) 100%);
+}
+
+.app-card-top{
+  position:absolute;
+  top:16px;
+  left:16px;
+  right:16px;
+  z-index:3;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.app-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.86);
+  color:#5d36d2;
+  font-size:11px;
+  font-weight:800;
+  backdrop-filter:blur(10px);
+}
+
+.app-badge.open{
+  color:#12804a;
+}
+
+.app-content{
+  position:relative;
+  z-index:3;
+  color:#fff;
+}
+
+.app-modern-info h3{
+  font-size:24px;
+  line-height:1.08;
+  margin-bottom:6px;
+  letter-spacing:-0.03em;
+}
+
+.app-meta{
+  font-size:13px;
+  color:rgba(255,255,255,0.80);
+  margin-bottom:12px;
+}
+
+.app-modern-tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:16px;
+}
+
+.app-modern-tags span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:7px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+  background:rgba(255,255,255,0.16);
+  border:1px solid rgba(255,255,255,0.18);
+  color:#fff;
+  backdrop-filter:blur(10px);
+}
+
+.app-modern-right{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.apply-link-btn,
+.counselling-link-btn{
+  height:42px;
+  padding:0 16px;
+  border-radius:999px;
+  border:none;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
+  transition:all .22s ease;
+}
+
+.apply-link-btn{
+  background:#ffffff;
+  color:#172031;
+  box-shadow:0 10px 18px rgba(0,0,0,0.10);
+}
+
+.apply-link-btn:hover{
+  transform:translateY(-2px);
+}
+
+.counselling-link-btn{
+  background:rgba(255,255,255,0.14);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.18);
+  backdrop-filter:blur(10px);
+}
+
+.counselling-link-btn:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,0.20);
+}
+
+.app-actions-row{
+  text-align:center;
+  margin-top:24px;
+}
+
+.view-more-btn{
+  height:46px;
+  padding:0 22px;
+  border-radius:999px;
+  border:1px solid rgba(22,32,47,.08);
+  background:#fff;
+  color:#172031;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,.04);
+}
+
+.view-more-btn:hover{
+  transform:translateY(-2px);
+  color:#5d36d2;
+  border-color:rgba(93,54,210,.15);
+}
+
+@media(max-width:1100px){
+  .why-bento{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .why-spotlight{
+    min-height:320px;
+    grid-column:1 / -1;
+  }
+
+  .app-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:720px){
+  .why-section{
+    padding:62px 16px 18px;
+  }
+
+  .why-section h2{
+    font-size:30px;
+  }
+
+  .why-bento{
+    grid-template-columns:1fr;
+  }
+
+  .why-spotlight{
+    min-height:290px;
+    border-radius:24px;
+    padding:20px;
+  }
+
+  .why-mini-card{
+    min-height:unset;
+    border-radius:22px;
+    padding:20px;
+  }
+
+  .app-window-v2{
+    padding:22px 16px 72px;
+  }
+
+  .app-window-head h2{
+    font-size:29px;
+  }
+
+  .app-grid{
+    grid-template-columns:1fr;
+  }
+
+  .app-modern-card{
+    min-height:250px;
+    border-radius:24px;
+  }
+
+  .app-modern-info h3{
+    font-size:22px;
+  }
 }
 
 /* REVIEW SECTION - TESTIMONIAL SLIDER STYLE */
@@ -1069,239 +1454,6 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 
   .testimonial-text{
     font-size: 14px;
-  }
-}
-  
-/* APPLICATION WINDOW */
-
-.app-window-v2{
-  padding: 88px 20px;
-  background: linear-gradient(180deg, #ffffff 0%, #faf8f2 100%);
-}
-
-.app-window-head{
-  max-width: 760px;
-  margin: 0 auto 34px;
-  text-align: center;
-}
-
-.app-window-tag{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: #f4ebff;
-  color: #4d2fb2;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .03em;
-  margin-bottom: 14px;
-}
-
-.app-window-head h2{
-  font-size: 34px;
-  line-height: 1.15;
-  color: #16202f;
-  margin-bottom: 12px;
-}
-
-.app-window-head p{
-  max-width: 620px;
-  margin: 0 auto;
-  font-size: 15px;
-  line-height: 1.75;
-  color: #6a6f7c;
-}
-
-.app-grid{
-  max-width: 1180px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.app-modern-card{
-  width: 100%;
-  min-width: 0;
-  background: #ffffff;
-  border: 1px solid rgba(22,32,47,0.08);
-  border-radius: 20px;
-  padding: 16px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.05);
-  overflow: hidden;
-}
-
-.app-modern-left{
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 0;
-  flex: 1;
-}
-
-.app-modern-logo{
-  width: 56px;
-  height: 56px;
-  min-width: 56px;
-  border-radius: 14px;
-  background: #f8f8fb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.app-modern-logo img{
-  width: 38px;
-  height: 38px;
-  object-fit: contain;
-  display: block;
-}
-
-.app-modern-info{
-  min-width: 0;
-  flex: 1;
-}
-
-.app-modern-info h3{
-  font-size: 18px;
-  color: #16202f;
-  line-height: 1.2;
-  margin-bottom: 6px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.app-subline{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-
-.app-meta{
-  font-size: 13px;
-  color: #6d7484;
-}
-
-.deadline-pill{
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.deadline-pill.open{
-  background: #e9fff1;
-  color: #15803d;
-  border: 1px solid #b7efc7;
-}
-
-.deadline-pill.closed{
-  background: #fff1f1;
-  color: #dc2626;
-  border: 1px solid #f3c2c2;
-}
-
-.app-modern-right{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.apply-link-btn,
-.counselling-link-btn{
-  height: 40px;
-  min-width: 128px;
-  padding: 0 16px;
-  border-radius: 999px;
-  border: none;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  transition: all .22s ease;
-}
-
-.apply-link-btn{
-  background: linear-gradient(135deg, #ff7a1a, #ff5a00);
-  color: #fff;
-  box-shadow: 0 10px 20px rgba(255,107,0,.18);
-}
-
-.apply-link-btn:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 14px 26px rgba(255,107,0,.26);
-}
-
-.counselling-link-btn{
-  background: #f2ecff;
-  color: #4d2fb2;
-}
-
-.counselling-link-btn:hover{
-  background: #e8deff;
-  transform: translateY(-2px);
-}
-
-.app-actions-row{
-  text-align: center;
-  margin-top: 28px;
-}
-
-.view-more-btn{
-  height: 46px;
-  padding: 0 22px;
-  border-radius: 999px;
-  border: 1px solid rgba(22,32,47,.1);
-  background: #fff;
-  color: #16202f;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0,0,0,.04);
-}
-
-.view-more-btn:hover{
-  transform: translateY(-2px);
-  border-color: rgba(77,47,178,.18);
-  color: #4d2fb2;
-}
-
-@media(max-width: 900px){
-  .app-grid{
-    grid-template-columns: 1fr;
-  }
-}
-
-@media(max-width: 640px){
-  .app-modern-card{
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .app-modern-right{
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  .apply-link-btn,
-  .counselling-link-btn{
-    width: 100%;
   }
 }
 
@@ -2987,37 +3139,71 @@ select{
   </div>
 </section>
 
-
 <section class="why-section">
-  <div class="why-head">
-    <span class="why-tag">Why Swadeshi Shiksha</span>
-    <h2>Everything You Need to Make a Smarter MBA Decision</h2>
-    <p class="why-sub">Built for students who want less confusion, faster discovery and clearer college comparisons.</p>
-  </div>
-
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="icon">🎯</div>
-      <h3>Smart College Search</h3>
-      <p>Search colleges based on exam, city, course or preference without wasting time on cluttered pages.</p>
+  <div class="why-shell">
+    <div class="why-head">
+      <span class="why-tag">Why Swadeshi Shiksha</span>
+      <h2>Everything You Need to Make a Smarter MBA Decision</h2>
+      <p class="why-sub">
+        Built for students who want less confusion, faster discovery and clearer college comparisons.
+      </p>
     </div>
 
-    <div class="why-card">
-      <div class="icon">📊</div>
-      <h3>Compare Better</h3>
-      <p>Understand fees, placements, ROI and admission fit in a much more practical way.</p>
-    </div>
+    <div class="why-bento">
+      <div class="why-spotlight">
+        <div class="why-spotlight-content">
+          <span class="why-mini-label">Student-first platform</span>
+          <h3>Search, compare and decide with much less confusion</h3>
+          <p>
+            Discover MBA and PGDM colleges faster with clearer information, practical comparison and guidance when needed.
+          </p>
+        </div>
+      </div>
 
-    <div class="why-card">
-      <div class="icon">💬</div>
-      <h3>Free Guidance</h3>
-      <p>Get expert counselling support when you feel stuck between multiple colleges.</p>
-    </div>
+      <div class="why-small-grid">
+        <div class="why-mini-card purple">
+          <div class="why-icon-wrap">🎯</div>
+          <h3>Smart Search</h3>
+          <p>Search by exam, city, fees, college type or preference without wasting time.</p>
+          <div class="why-mini-foot">
+            <span>Exam-wise</span>
+            <span>City-wise</span>
+          </div>
+        </div>
 
-    <div class="why-card">
-      <div class="icon">⚡</div>
-      <h3>Fast & Clear</h3>
-      <p>No unnecessary overload — just useful MBA admission information students actually care about.</p>
+        <div class="why-mini-card warm">
+          <div class="why-icon-wrap">💬</div>
+          <h3>Free Guidance</h3>
+          <p>Talk to experts when you are confused between multiple colleges or choices.</p>
+          <div class="why-mini-foot">
+            <span>Free help</span>
+            <span>Human support</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-small-grid">
+        <div class="why-mini-card soft">
+          <div class="why-icon-wrap">📊</div>
+          <h3>Compare Better</h3>
+          <p>Understand fees, placements, ROI and admission fit in a much more practical way.</p>
+          <div class="why-mini-foot">
+            <span>Fees</span>
+            <span>Placements</span>
+            <span>ROI</span>
+          </div>
+        </div>
+
+        <div class="why-mini-card purple">
+          <div class="why-icon-wrap">⚡</div>
+          <h3>Fast & Clear</h3>
+          <p>No unnecessary overload — just the information students actually care about.</p>
+          <div class="why-mini-foot">
+            <span>Simple UI</span>
+            <span>Quick discovery</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -3117,16 +3303,122 @@ select{
 </section>
   
   <section class="app-window-v2" id="application-window">
-  <div class="app-window-head">
-    <span class="app-window-tag">Admissions</span>
-    <h2>Application Window</h2>
-    <p>Official application links for the colleges you’re featuring, with counselling fallback where deadlines are closed or you want guided help.</p>
-  </div>
+  <div class="app-window-shell">
+    <div class="app-window-head">
+      <span class="app-window-tag">Admissions</span>
+      <h2>Application Window</h2>
+      <p>
+        Official application links for featured colleges, with counselling fallback when you want guided help.
+      </p>
+    </div>
 
-  <div class="app-grid" id="appGrid"></div>
+    <div class="app-grid">
 
-  <div class="app-actions-row">
-    <button class="view-more-btn" id="viewMoreBtn" type="button">View More Colleges</button>
+      <div class="app-modern-card">
+        <div class="app-card-media">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80" alt="IILM Greater Noida">
+        </div>
+        <div class="app-card-overlay"></div>
+        <div class="app-card-top">
+          <span class="app-badge">MBA / PGDM</span>
+          <span class="app-badge open">Open Now</span>
+        </div>
+        <div class="app-content">
+          <div class="app-modern-info">
+            <h3>IILM Greater Noida</h3>
+            <div class="app-meta">Admissions 2026</div>
+            <div class="app-modern-tags">
+              <span>Greater Noida</span>
+              <span>Applications Open</span>
+            </div>
+          </div>
+          <div class="app-modern-right">
+            <a href="#" class="apply-link-btn">Apply Now</a>
+            <button class="counselling-link-btn" onclick="openCounsellingModal()">Need Help?</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-modern-card">
+        <div class="app-card-media">
+          <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=900&q=80" alt="ISBR Bangalore">
+        </div>
+        <div class="app-card-overlay"></div>
+        <div class="app-card-top">
+          <span class="app-badge">MBA / PGDM</span>
+          <span class="app-badge open">Open Now</span>
+        </div>
+        <div class="app-content">
+          <div class="app-modern-info">
+            <h3>ISBR Bangalore</h3>
+            <div class="app-meta">Admissions 2026</div>
+            <div class="app-modern-tags">
+              <span>Bangalore</span>
+              <span>Applications Open</span>
+            </div>
+          </div>
+          <div class="app-modern-right">
+            <a href="#" class="apply-link-btn">Apply Now</a>
+            <button class="counselling-link-btn" onclick="openCounsellingModal()">Need Help?</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-modern-card">
+        <div class="app-card-media">
+          <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=900&q=80" alt="GIBS Bangalore">
+        </div>
+        <div class="app-card-overlay"></div>
+        <div class="app-card-top">
+          <span class="app-badge">MBA / PGDM</span>
+          <span class="app-badge open">Open Now</span>
+        </div>
+        <div class="app-content">
+          <div class="app-modern-info">
+            <h3>GIBS Bangalore</h3>
+            <div class="app-meta">Admissions 2026</div>
+            <div class="app-modern-tags">
+              <span>Bangalore</span>
+              <span>Apply Direct</span>
+            </div>
+          </div>
+          <div class="app-modern-right">
+            <a href="#" class="apply-link-btn">Apply Now</a>
+            <button class="counselling-link-btn" onclick="openCounsellingModal()">Need Help?</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-modern-card">
+        <div class="app-card-media">
+          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=900&q=80" alt="D Y Patil University Pune">
+        </div>
+        <div class="app-card-overlay"></div>
+        <div class="app-card-top">
+          <span class="app-badge">MBA / PGDM</span>
+          <span class="app-badge open">Open Now</span>
+        </div>
+        <div class="app-content">
+          <div class="app-modern-info">
+            <h3>D Y Patil Pune</h3>
+            <div class="app-meta">Admissions 2026</div>
+            <div class="app-modern-tags">
+              <span>Pune</span>
+              <span>Applications Open</span>
+            </div>
+          </div>
+          <div class="app-modern-right">
+            <a href="#" class="apply-link-btn">Apply Now</a>
+            <button class="counselling-link-btn" onclick="openCounsellingModal()">Need Help?</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="app-actions-row">
+      <button class="view-more-btn">View More Colleges</button>
+    </div>
   </div>
 </section>
 
