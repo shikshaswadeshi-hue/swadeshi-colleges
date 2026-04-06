@@ -2913,10 +2913,10 @@ select{
   }
 }
 
-  /* ===== POPULAR COLLEGES SLIDER ===== */
+  /* ===== POPULAR COLLEGES : IMAGE-LED PREMIUM ===== */
 
 .popular-colleges{
-  padding:18px 20px 78px;
+  padding:20px 20px 74px;
   background:
     radial-gradient(circle at top left, rgba(255,122,26,0.05), transparent 20%),
     radial-gradient(circle at bottom right, rgba(122,85,231,0.08), transparent 24%),
@@ -2926,11 +2926,6 @@ select{
 .popular-shell{
   max-width:1240px;
   margin:0 auto;
-  background:linear-gradient(180deg,#f5efe6 0%,#f7f1ea 100%);
-  border:1px solid rgba(220,205,186,0.85);
-  border-radius:34px;
-  padding:28px 28px 24px;
-  box-shadow:0 16px 38px rgba(60,38,12,0.05);
 }
 
 .popular-top{
@@ -2938,11 +2933,11 @@ select{
   align-items:center;
   justify-content:space-between;
   gap:18px;
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
 
 .popular-top h2{
-  font-size:26px;
+  font-size:28px;
   line-height:1.08;
   color:#172031;
   letter-spacing:-0.03em;
@@ -2959,17 +2954,17 @@ select{
   height:52px;
   border:none;
   border-radius:50%;
-  background:#ffffff;
+  background:rgba(255,255,255,0.94);
   color:#172031;
   font-size:24px;
   cursor:pointer;
-  box-shadow:0 10px 22px rgba(26,26,26,0.07);
+  box-shadow:0 10px 24px rgba(26,26,26,0.08);
   transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
 }
 
 .popular-arrow:hover{
   transform:translateY(-2px);
-  box-shadow:0 14px 28px rgba(26,26,26,0.10);
+  box-shadow:0 14px 28px rgba(26,26,26,0.12);
 }
 
 .popular-arrow:disabled{
@@ -2984,35 +2979,72 @@ select{
 .popular-track{
   display:flex;
   gap:18px;
-  transition:transform .55s cubic-bezier(.22,.61,.36,1);
+  transition:transform .58s cubic-bezier(.22,.61,.36,1);
   will-change:transform;
 }
 
 .popular-card{
+  position:relative;
   min-width:calc((100% - 54px) / 4);
   width:calc((100% - 54px) / 4);
-  background:rgba(255,255,255,0.88);
-  border:1px solid rgba(219,204,188,0.85);
-  border-radius:26px;
-  padding:22px;
-  box-shadow:0 14px 30px rgba(44,28,8,0.05);
+  height:390px;
+  border-radius:28px;
+  overflow:hidden;
   flex-shrink:0;
+  background:#ddd;
+  box-shadow:0 22px 46px rgba(43,30,18,0.10);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.popular-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 28px 54px rgba(43,30,18,0.16);
+}
+
+.popular-card-media{
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+
+.popular-card-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.popular-card-overlay{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:
+    linear-gradient(180deg, rgba(18,18,24,0.08) 0%, rgba(18,18,24,0.20) 36%, rgba(18,18,24,0.78) 100%);
+}
+
+.popular-card-inner{
+  position:relative;
+  z-index:3;
+  height:100%;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
 
 .popular-card-top{
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
-  gap:12px;
-  margin-bottom:16px;
+  gap:10px;
 }
 
 .popular-logo{
-  width:58px;
-  height:58px;
+  width:56px;
+  height:56px;
   border-radius:18px;
-  background:#fbf7f2;
-  border:1px solid #e5d9ca;
+  background:rgba(255,255,255,0.16);
+  border:1px solid rgba(255,255,255,0.18);
+  backdrop-filter:blur(10px);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -3020,8 +3052,8 @@ select{
 }
 
 .popular-logo img{
-  width:38px;
-  height:38px;
+  width:36px;
+  height:36px;
   object-fit:contain;
 }
 
@@ -3033,101 +3065,108 @@ select{
   border-radius:999px;
   font-size:12px;
   font-weight:800;
+  backdrop-filter:blur(10px);
 }
 
 .popular-badge.open{
-  background:#e8f6ea;
+  background:rgba(230,248,235,0.92);
   color:#16803c;
-  border:1px solid #c8e7cf;
 }
 
 .popular-badge.soon{
-  background:#fff0e5;
+  background:rgba(255,241,230,0.94);
   color:#d46a00;
-  border:1px solid #f2c79f;
+}
+
+.popular-card-bottom{
+  color:#fff;
 }
 
 .popular-card h3{
   font-size:20px;
-  line-height:1.15;
-  color:#172031;
+  line-height:1.12;
+  color:#fff;
   margin-bottom:6px;
   letter-spacing:-0.03em;
 }
 
 .popular-city{
-  font-size:14px;
-  color:#677084;
-  font-weight:700;
-  margin-bottom:18px;
+  font-size:13px;
+  color:rgba(255,255,255,0.78);
+  margin-bottom:12px;
 }
 
 .popular-meta{
   display:flex;
-  flex-wrap:wrap;
-  gap:8px;
   align-items:center;
-  font-size:14px;
-  color:#697287;
-  margin-bottom:18px;
+  gap:10px;
+  flex-wrap:wrap;
+  font-size:13px;
+  color:rgba(255,255,255,0.86);
+  margin-bottom:14px;
 }
 
 .popular-meta strong{
-  color:#172031;
+  color:#fff;
 }
 
-.popular-divider{
-  height:1px;
-  background:#eadfd3;
-  margin-bottom:18px;
+.popular-mini-stats{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:11px;
+  color:rgba(255,255,255,0.72);
+  margin-bottom:16px;
 }
 
 .popular-tags{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:20px;
+  gap:8px;
+  margin-bottom:16px;
 }
 
 .popular-tags span{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:9px 16px;
+  padding:8px 12px;
   border-radius:999px;
-  background:#efe8ff;
-  color:#5b37cf;
-  border:1px solid #ddd1ff;
-  font-size:12px;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.14);
+  color:#fff;
+  font-size:11px;
   font-weight:800;
+  backdrop-filter:blur(8px);
 }
 
 .popular-btn{
   width:100%;
-  height:54px;
+  height:48px;
   border:none;
-  border-radius:18px;
-  background:#f6e8da;
-  color:#ff6b00;
-  font-size:17px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.94);
+  color:#172031;
+  font-size:15px;
   font-weight:800;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 20px;
+  padding:0 16px;
   text-decoration:none;
-  transition:transform .22s ease, box-shadow .22s ease;
+  transition:transform .22s ease, background .22s ease;
 }
 
 .popular-btn:hover{
   transform:translateY(-2px);
+  background:#fff;
 }
 
 .popular-scrollbar{
-  margin-top:16px;
-  height:12px;
+  margin-top:18px;
+  height:10px;
   border-radius:999px;
-  background:#d9d1c8;
+  background:#ddd4cb;
   overflow:hidden;
 }
 
@@ -3135,8 +3174,8 @@ select{
   height:100%;
   width:35%;
   border-radius:999px;
-  background:#bfb7ad;
-  transition:width .55s cubic-bezier(.22,.61,.36,1), transform .55s cubic-bezier(.22,.61,.36,1);
+  background:#b8aea3;
+  transition:width .58s cubic-bezier(.22,.61,.36,1), transform .58s cubic-bezier(.22,.61,.36,1);
 }
 
 @media(max-width:1180px){
@@ -3148,16 +3187,11 @@ select{
 
 @media(max-width:720px){
   .popular-colleges{
-    padding:14px 16px 60px;
-  }
-
-  .popular-shell{
-    padding:22px 18px 18px;
-    border-radius:26px;
+    padding:14px 16px 58px;
   }
 
   .popular-top h2{
-    font-size:22px;
+    font-size:23px;
   }
 
   .popular-arrow{
@@ -3169,7 +3203,18 @@ select{
   .popular-card{
     min-width:100%;
     width:100%;
-    padding:18px;
+    height:360px;
+    border-radius:24px;
+  }
+
+  .popular-card-inner{
+    padding:16px;
+  }
+
+  .popular-btn{
+    height:46px;
+    border-radius:14px;
+    font-size:14px;
   }
 }
 
@@ -3330,133 +3375,213 @@ select{
       <div class="popular-track" id="popularTrack">
 
         <div class="popular-card">
-          <div class="popular-card-top">
-            <div class="popular-logo">
-              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/iibs-logo-9CxeU1C36jDNT4qS.png" alt="IIBS">
+          <div class="popular-card-media">
+            <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=900&q=80" alt="IIBS Bangalore">
+          </div>
+          <div class="popular-card-overlay"></div>
+          <div class="popular-card-inner">
+            <div class="popular-card-top">
+              <div class="popular-logo">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/iibs-logo-9CxeU1C36jDNT4qS.png" alt="IIBS">
+              </div>
+              <span class="popular-badge open">Open</span>
             </div>
-            <span class="popular-badge open">Open</span>
+
+            <div class="popular-card-bottom">
+              <h3>IIBS Bangalore</h3>
+              <div class="popular-city">Bangalore</div>
+
+              <div class="popular-meta">
+                <span>Avg <strong>₹8.6 LPA</strong></span>
+                <span>•</span>
+                <span>Fees <strong>₹9 Lakhs</strong></span>
+              </div>
+
+              <div class="popular-mini-stats">
+                <span>AICTE Approved</span>
+                <span>Admissions 2026</span>
+              </div>
+
+              <div class="popular-tags">
+                <span>CAT</span>
+                <span>MAT</span>
+                <span>CMAT</span>
+              </div>
+
+              <a href="#" class="popular-btn">
+                <span>View College</span>
+                <span>→</span>
+              </a>
+            </div>
           </div>
-          <h3>IIBS Bangalore</h3>
-          <div class="popular-city">Bangalore</div>
-          <div class="popular-meta">
-            <span>Avg <strong>₹8.6 LPA</strong></span>
-            <span>•</span>
-            <span>Fees <strong>₹9 Lakhs</strong></span>
-          </div>
-          <div class="popular-divider"></div>
-          <div class="popular-tags">
-            <span>CAT</span>
-            <span>MAT</span>
-            <span>CMAT</span>
-          </div>
-          <a href="#" class="popular-btn">
-            <span>View College</span>
-            <span>→</span>
-          </a>
         </div>
 
         <div class="popular-card">
-          <div class="popular-card-top">
-            <div class="popular-logo">
-              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bml-munjal-kIZcRe9FY91QHy2V.webp" alt="BML Munjal">
+          <div class="popular-card-media">
+            <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=900&q=80" alt="BML Munjal University">
+          </div>
+          <div class="popular-card-overlay"></div>
+          <div class="popular-card-inner">
+            <div class="popular-card-top">
+              <div class="popular-logo">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bml-munjal-kIZcRe9FY91QHy2V.webp" alt="BML Munjal">
+              </div>
+              <span class="popular-badge open">Open</span>
             </div>
-            <span class="popular-badge open">Open</span>
+
+            <div class="popular-card-bottom">
+              <h3>BML Munjal University</h3>
+              <div class="popular-city">Gurugram</div>
+
+              <div class="popular-meta">
+                <span>Avg <strong>₹8.5 LPA</strong></span>
+                <span>•</span>
+                <span>Fees <strong>₹13 Lakhs</strong></span>
+              </div>
+
+              <div class="popular-mini-stats">
+                <span>NAAC Linked</span>
+                <span>MBA / PGDM</span>
+              </div>
+
+              <div class="popular-tags">
+                <span>CAT</span>
+                <span>XAT</span>
+                <span>MAT</span>
+              </div>
+
+              <a href="#" class="popular-btn">
+                <span>View College</span>
+                <span>→</span>
+              </a>
+            </div>
           </div>
-          <h3>BML Munjal University</h3>
-          <div class="popular-city">Gurugram</div>
-          <div class="popular-meta">
-            <span>Avg <strong>₹8.5 LPA</strong></span>
-            <span>•</span>
-            <span>Fees <strong>₹13 Lakhs</strong></span>
-          </div>
-          <div class="popular-divider"></div>
-          <div class="popular-tags">
-            <span>CAT</span>
-            <span>XAT</span>
-            <span>MAT</span>
-          </div>
-          <a href="#" class="popular-btn">
-            <span>View College</span>
-            <span>→</span>
-          </a>
         </div>
 
         <div class="popular-card">
-          <div class="popular-card-top">
-            <div class="popular-logo">
-              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg" alt="Bennett">
+          <div class="popular-card-media">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80" alt="Bennett University">
+          </div>
+          <div class="popular-card-overlay"></div>
+          <div class="popular-card-inner">
+            <div class="popular-card-top">
+              <div class="popular-logo">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg" alt="Bennett">
+              </div>
+              <span class="popular-badge soon">Closing Soon</span>
             </div>
-            <span class="popular-badge soon">Closing Soon</span>
+
+            <div class="popular-card-bottom">
+              <h3>Bennett University</h3>
+              <div class="popular-city">Greater Noida</div>
+
+              <div class="popular-meta">
+                <span>Avg <strong>₹7.2 LPA</strong></span>
+                <span>•</span>
+                <span>Fees <strong>₹12 Lakhs</strong></span>
+              </div>
+
+              <div class="popular-mini-stats">
+                <span>Admissions Live</span>
+                <span>Apply Fast</span>
+              </div>
+
+              <div class="popular-tags">
+                <span>CAT</span>
+                <span>MAT</span>
+                <span>CMAT</span>
+              </div>
+
+              <a href="#" class="popular-btn">
+                <span>View College</span>
+                <span>→</span>
+              </a>
+            </div>
           </div>
-          <h3>Bennett University</h3>
-          <div class="popular-city">Greater Noida</div>
-          <div class="popular-meta">
-            <span>Avg <strong>₹7.2 LPA</strong></span>
-            <span>•</span>
-            <span>Fees <strong>₹12 Lakhs</strong></span>
-          </div>
-          <div class="popular-divider"></div>
-          <div class="popular-tags">
-            <span>CAT</span>
-            <span>MAT</span>
-            <span>CMAT</span>
-          </div>
-          <a href="#" class="popular-btn">
-            <span>View College</span>
-            <span>→</span>
-          </a>
         </div>
 
         <div class="popular-card">
-          <div class="popular-card-top">
-            <div class="popular-logo">
-              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-BFJR52oG8QtjxRxL.jpg" alt="JAGSoM">
+          <div class="popular-card-media">
+            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80" alt="JAGSoM">
+          </div>
+          <div class="popular-card-overlay"></div>
+          <div class="popular-card-inner">
+            <div class="popular-card-top">
+              <div class="popular-logo">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-BFJR52oG8QtjxRxL.jpg" alt="JAGSoM">
+              </div>
+              <span class="popular-badge open">Open</span>
             </div>
-            <span class="popular-badge open">Open</span>
+
+            <div class="popular-card-bottom">
+              <h3>JAGSoM</h3>
+              <div class="popular-city">Bangalore</div>
+
+              <div class="popular-meta">
+                <span>Avg <strong>₹13.3 LPA</strong></span>
+                <span>•</span>
+                <span>Fees <strong>₹15 Lakhs</strong></span>
+              </div>
+
+              <div class="popular-mini-stats">
+                <span>Top Recruiters</span>
+                <span>Career Focused</span>
+              </div>
+
+              <div class="popular-tags">
+                <span>CAT</span>
+                <span>XAT</span>
+                <span>GMAT</span>
+              </div>
+
+              <a href="#" class="popular-btn">
+                <span>View College</span>
+                <span>→</span>
+              </a>
+            </div>
           </div>
-          <h3>JAGSoM</h3>
-          <div class="popular-city">Bangalore</div>
-          <div class="popular-meta">
-            <span>Avg <strong>₹13.3 LPA</strong></span>
-            <span>•</span>
-            <span>Fees <strong>₹15 Lakhs</strong></span>
-          </div>
-          <div class="popular-divider"></div>
-          <div class="popular-tags">
-            <span>CAT</span>
-            <span>XAT</span>
-            <span>GMAT</span>
-          </div>
-          <a href="#" class="popular-btn">
-            <span>View College</span>
-            <span>→</span>
-          </a>
         </div>
 
         <div class="popular-card">
-          <div class="popular-card-top">
-            <div class="popular-logo">
-              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=250,fit=crop/ix9hiMuysgYYl7hE/iilm-25YbjSFON1qC3QIm.jpg" alt="IILM">
+          <div class="popular-card-media">
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=900&q=80" alt="IILM Greater Noida">
+          </div>
+          <div class="popular-card-overlay"></div>
+          <div class="popular-card-inner">
+            <div class="popular-card-top">
+              <div class="popular-logo">
+                <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=250,fit=crop/ix9hiMuysgYYl7hE/iilm-25YbjSFON1qC3QIm.jpg" alt="IILM">
+              </div>
+              <span class="popular-badge open">Open</span>
             </div>
-            <span class="popular-badge open">Open</span>
+
+            <div class="popular-card-bottom">
+              <h3>IILM Greater Noida</h3>
+              <div class="popular-city">Greater Noida</div>
+
+              <div class="popular-meta">
+                <span>Avg <strong>₹8.6 LPA</strong></span>
+                <span>•</span>
+                <span>Fees <strong>₹10 Lakhs</strong></span>
+              </div>
+
+              <div class="popular-mini-stats">
+                <span>Applications Open</span>
+                <span>MBA / PGDM</span>
+              </div>
+
+              <div class="popular-tags">
+                <span>CAT</span>
+                <span>MAT</span>
+                <span>CMAT</span>
+              </div>
+
+              <a href="#" class="popular-btn">
+                <span>View College</span>
+                <span>→</span>
+              </a>
+            </div>
           </div>
-          <h3>IILM Greater Noida</h3>
-          <div class="popular-city">Greater Noida</div>
-          <div class="popular-meta">
-            <span>Avg <strong>₹8.6 LPA</strong></span>
-            <span>•</span>
-            <span>Fees <strong>₹10 Lakhs</strong></span>
-          </div>
-          <div class="popular-divider"></div>
-          <div class="popular-tags">
-            <span>CAT</span>
-            <span>MAT</span>
-            <span>CMAT</span>
-          </div>
-          <a href="#" class="popular-btn">
-            <span>View College</span>
-            <span>→</span>
-          </a>
         </div>
 
       </div>
