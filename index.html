@@ -768,24 +768,23 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
   
 /* APPLICATION WINDOW REDESIGN */
+/* ===== COMPACT APPLICATION WINDOW ===== */
 
-  /* ===== SMALL APPLICATION SLIDER ===== */
-
-.app-window-v2{
-  padding:26px 20px 74px;
+.app-window-v3{
+  padding:24px 20px 56px;
   background:
-    radial-gradient(circle at top left, rgba(122,85,231,0.08), transparent 24%),
-    linear-gradient(180deg,#f7f3ff 0%,#fcfbff 100%);
+    radial-gradient(circle at top left, rgba(122,85,231,0.07), transparent 24%),
+    linear-gradient(180deg,#f8f4ff 0%,#fcfbff 100%);
 }
 
-.app-window-shell{
+.app-window-wrap{
   max-width:1180px;
   margin:0 auto;
 }
 
 .app-window-head{
   max-width:700px;
-  margin:0 auto 20px;
+  margin:0 auto 18px;
   text-align:center;
 }
 
@@ -805,253 +804,159 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .app-window-head h2{
-  font-size:32px;
+  font-size:30px;
   line-height:1.08;
   letter-spacing:-0.04em;
   color:#172031;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
 .app-window-head p{
-  max-width:620px;
+  max-width:600px;
   margin:0 auto;
   font-size:14px;
   line-height:1.7;
   color:#6a7280;
 }
 
-.app-slider-shell{
-  position:relative;
-  padding:0 56px;
-}
-
-.app-slider-viewport{
-  overflow:hidden;
-  width:100%;
-}
-
-.app-slider-track{
-  display:flex;
+.app-status-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:14px;
-  transition:transform .55s cubic-bezier(.22,.61,.36,1);
-  will-change:transform;
+  margin-top:20px;
 }
 
-.app-modern-card{
-  position:relative;
-  min-width:calc((100% - 28px) / 3);
-  width:calc((100% - 28px) / 3);
-  height:240px;
-  border-radius:24px;
-  overflow:hidden;
-  padding:16px;
+.app-status-card{
   display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  background:#fff;
-  border:1px solid rgba(205,195,239,0.50);
-  box-shadow:0 16px 34px rgba(36,29,79,0.08);
-  transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 16px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.82);
+  border:1px solid rgba(218,210,238,0.70);
+  backdrop-filter:blur(12px);
+  box-shadow:0 12px 26px rgba(36,29,79,0.05);
+  min-height:86px;
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.app-status-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 32px rgba(36,29,79,0.08);
+  border-color:rgba(109,74,224,0.16);
+}
+
+.app-status-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+  flex:1;
+}
+
+.app-status-logo{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  background:#fbf8ff;
+  border:1px solid #ebe3fb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
   flex-shrink:0;
 }
 
-.app-modern-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 22px 42px rgba(36,29,79,0.12);
-  border-color:rgba(109,74,224,0.18);
+.app-status-logo img{
+  width:30px;
+  height:30px;
+  object-fit:contain;
 }
 
-.app-card-media{
-  position:absolute;
-  inset:0;
-  z-index:1;
+.app-status-info{
+  min-width:0;
 }
 
-.app-card-media img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.app-card-overlay{
-  position:absolute;
-  inset:0;
-  z-index:2;
-  background:linear-gradient(180deg, rgba(18,18,28,0.06) 0%, rgba(18,18,28,0.76) 100%);
-}
-
-.app-card-top{
-  position:absolute;
-  top:14px;
-  left:14px;
-  right:14px;
-  z-index:3;
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:8px;
-}
-
-.app-badge{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:7px 10px;
-  border-radius:999px;
-  background:rgba(255,255,255,0.88);
-  color:#5d36d2;
-  font-size:11px;
-  font-weight:800;
-  backdrop-filter:blur(10px);
-}
-
-.app-badge.open{
-  color:#12804a;
-}
-
-.app-content{
-  position:relative;
-  z-index:3;
-  color:#fff;
-}
-
-.app-modern-info h3{
-  font-size:19px;
-  line-height:1.1;
-  margin-bottom:5px;
-  letter-spacing:-0.03em;
-}
-
-.app-meta{
-  font-size:12px;
-  color:rgba(255,255,255,0.82);
-  margin-bottom:10px;
-}
-
-.app-modern-tags{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-bottom:14px;
-}
-
-.app-modern-tags span{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:7px 10px;
-  border-radius:999px;
-  font-size:11px;
-  font-weight:800;
-  background:rgba(255,255,255,0.16);
-  border:1px solid rgba(255,255,255,0.18);
-  color:#fff;
-  backdrop-filter:blur(10px);
-}
-
-.app-modern-right{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.apply-link-btn,
-.counselling-link-btn{
-  height:40px;
-  padding:0 15px;
-  border-radius:999px;
-  border:none;
-  font-size:13px;
-  font-weight:800;
-  cursor:pointer;
-  text-decoration:none;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  white-space:nowrap;
-  transition:all .22s ease;
-}
-
-.apply-link-btn{
-  background:#ffffff;
+.app-status-info h3{
+  font-size:17px;
+  line-height:1.15;
   color:#172031;
-  box-shadow:0 10px 18px rgba(0,0,0,0.10);
+  margin-bottom:4px;
+  letter-spacing:-0.02em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-.counselling-link-btn{
-  background:rgba(255,255,255,0.14);
-  color:#fff;
-  border:1px solid rgba(255,255,255,0.18);
-  backdrop-filter:blur(10px);
+.app-status-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  font-size:12px;
+  color:#6c7486;
 }
 
-.app-nav{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:42px;
-  height:42px;
-  border:none;
-  border-radius:50%;
-  background:rgba(255,255,255,0.92);
-  color:#5b37cf;
-  font-size:20px;
+.app-status-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:116px;
+  height:36px;
+  padding:0 14px;
+  border-radius:999px;
+  font-size:12px;
   font-weight:800;
-  cursor:pointer;
-  box-shadow:0 12px 28px rgba(36,29,79,0.12);
-  z-index:4;
-  transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+  flex-shrink:0;
 }
 
-.app-nav:hover{
-  transform:translateY(-50%) scale(1.05);
-  box-shadow:0 16px 32px rgba(36,29,79,0.18);
+.app-status-pill.open{
+  background:#e9f8ed;
+  color:#15803d;
+  border:1px solid #c8e8d0;
 }
 
-.app-nav.prev{
-  left:0;
+.app-status-pill.soon{
+  background:#fff4df;
+  color:#c56a00;
+  border:1px solid #f0d2a2;
 }
 
-.app-nav.next{
-  right:0;
+.app-status-pill.closed{
+  background:#fff0f0;
+  color:#d62828;
+  border:1px solid #efc2c2;
 }
 
-.app-nav:disabled{
-  opacity:.45;
-  cursor:not-allowed;
-}
-
-@media(max-width:1024px){
-  .app-modern-card{
-    min-width:calc((100% - 14px) / 2);
-    width:calc((100% - 14px) / 2);
+@media(max-width:860px){
+  .app-status-grid{
+    grid-template-columns:1fr;
   }
 }
 
-@media(max-width:720px){
-  .app-window-v2{
-    padding:20px 16px 64px;
+@media(max-width:640px){
+  .app-window-v3{
+    padding:20px 16px 48px;
   }
 
   .app-window-head h2{
-    font-size:28px;
+    font-size:26px;
   }
 
-  .app-slider-shell{
-    padding:0 44px;
+  .app-status-card{
+    padding:14px;
+    border-radius:18px;
+    align-items:flex-start;
+    flex-direction:column;
   }
 
-  .app-modern-card{
-    min-width:100%;
+  .app-status-left{
     width:100%;
-    height:228px;
-    border-radius:22px;
   }
 
-  .app-nav{
-    width:38px;
-    height:38px;
-    font-size:18px;
+  .app-status-pill{
+    min-width:auto;
+    width:100%;
   }
 }
 
@@ -3593,176 +3498,118 @@ select{
   </div>
 </section>
   
-  <section class="app-window-v2" id="application-window">
-  <div class="app-window-shell">
+  <section class="app-window-v3" id="application-window">
+  <div class="app-window-wrap">
     <div class="app-window-head">
-      <span class="app-window-tag">Admissions</span>
-      <h2>Application Window</h2>
-      <p>
-        Official application links for featured colleges, with counselling fallback when you want guided help.
-      </p>
+      <span class="app-window-tag">Application Window</span>
+      <h2>Admission Status</h2>
+      <p>Track current college application windows quickly and clearly.</p>
     </div>
 
-    <div class="app-slider-shell">
-      <button class="app-nav prev" id="appPrev" type="button" aria-label="Previous colleges">&#10094;</button>
+    <div class="app-status-grid">
 
-      <div class="app-slider-viewport">
-        <div class="app-slider-track" id="appSliderTrack">
-
-          <div class="app-modern-card">
-            <div class="app-card-media">
-              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80" alt="IILM Greater Noida">
-            </div>
-            <div class="app-card-overlay"></div>
-            <div class="app-card-top">
-              <span class="app-badge">MBA / PGDM</span>
-              <span class="app-badge open">Open Now</span>
-            </div>
-            <div class="app-content">
-              <div class="app-modern-info">
-                <h3>IILM Greater Noida</h3>
-                <div class="app-meta">Admissions 2026</div>
-                <div class="app-modern-tags">
-                  <span>Greater Noida</span>
-                  <span>Applications Open</span>
-                </div>
-              </div>
-              <div class="app-modern-right">
-                <a href="https://admissions.iilm.edu/" class="apply-link-btn" target="_blank">Apply Now</a>
-                <button class="counselling-link-btn" onclick="openCounsellingModal('IILM Greater Noida')">Need Help?</button>
-              </div>
+      <div class="app-status-card">
+        <div class="app-status-left">
+          <div class="app-status-logo">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=250,fit=crop/ix9hiMuysgYYl7hE/iilm-25YbjSFON1qC3QIm.jpg" alt="IILM">
+          </div>
+          <div class="app-status-info">
+            <h3>IILM Greater Noida</h3>
+            <div class="app-status-meta">
+              <span>Admissions 2026</span>
+              <span>•</span>
+              <span>Greater Noida</span>
             </div>
           </div>
-
-          <div class="app-modern-card">
-            <div class="app-card-media">
-              <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=900&q=80" alt="ISBR Bangalore">
-            </div>
-            <div class="app-card-overlay"></div>
-            <div class="app-card-top">
-              <span class="app-badge">MBA / PGDM</span>
-              <span class="app-badge open">Open Now</span>
-            </div>
-            <div class="app-content">
-              <div class="app-modern-info">
-                <h3>ISBR Bangalore</h3>
-                <div class="app-meta">Admissions 2026</div>
-                <div class="app-modern-tags">
-                  <span>Bangalore</span>
-                  <span>Applications Open</span>
-                </div>
-              </div>
-              <div class="app-modern-right">
-                <a href="https://apply.isbr.in/" class="apply-link-btn" target="_blank">Apply Now</a>
-                <button class="counselling-link-btn" onclick="openCounsellingModal('ISBR Bangalore')">Need Help?</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="app-modern-card">
-            <div class="app-card-media">
-              <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=900&q=80" alt="GIBS Bangalore">
-            </div>
-            <div class="app-card-overlay"></div>
-            <div class="app-card-top">
-              <span class="app-badge">MBA / PGDM</span>
-              <span class="app-badge open">Open Now</span>
-            </div>
-            <div class="app-content">
-              <div class="app-modern-info">
-                <h3>GIBS Bangalore</h3>
-                <div class="app-meta">Admissions 2026</div>
-                <div class="app-modern-tags">
-                  <span>Bangalore</span>
-                  <span>Apply Direct</span>
-                </div>
-              </div>
-              <div class="app-modern-right">
-                <a href="https://admission.gibsbschool.com/" class="apply-link-btn" target="_blank">Apply Now</a>
-                <button class="counselling-link-btn" onclick="openCounsellingModal('GIBS Bangalore')">Need Help?</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="app-modern-card">
-            <div class="app-card-media">
-              <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=900&q=80" alt="D Y Patil Pune">
-            </div>
-            <div class="app-card-overlay"></div>
-            <div class="app-card-top">
-              <span class="app-badge">MBA / PGDM</span>
-              <span class="app-badge open">Open Now</span>
-            </div>
-            <div class="app-content">
-              <div class="app-modern-info">
-                <h3>D Y Patil Pune</h3>
-                <div class="app-meta">Admissions 2026</div>
-                <div class="app-modern-tags">
-                  <span>Pune</span>
-                  <span>Applications Open</span>
-                </div>
-              </div>
-              <div class="app-modern-right">
-                <a href="https://dypatiluniversitypune.edu.in/applicationNew.php" class="apply-link-btn" target="_blank">Apply Now</a>
-                <button class="counselling-link-btn" onclick="openCounsellingModal('D Y Patil Pune')">Need Help?</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="app-modern-card">
-            <div class="app-card-media">
-              <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80" alt="PIBM Pune">
-            </div>
-            <div class="app-card-overlay"></div>
-            <div class="app-card-top">
-              <span class="app-badge">MBA / PGDM</span>
-              <span class="app-badge">Guidance</span>
-            </div>
-            <div class="app-content">
-              <div class="app-modern-info">
-                <h3>PIBM Pune</h3>
-                <div class="app-meta">Admissions guidance available</div>
-                <div class="app-modern-tags">
-                  <span>Pune</span>
-                  <span>Guided Help</span>
-                </div>
-              </div>
-              <div class="app-modern-right">
-                <a href="https://www.pibm.in/mba-and-pgdm-admissions.html" class="apply-link-btn" target="_blank">Apply Now</a>
-                <button class="counselling-link-btn" onclick="openCounsellingModal('PIBM Pune')">Need Help?</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="app-modern-card">
-            <div class="app-card-media">
-              <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80" alt="BML Munjal University">
-            </div>
-            <div class="app-card-overlay"></div>
-            <div class="app-card-top">
-              <span class="app-badge">MBA / PGDM</span>
-              <span class="app-badge">Guidance</span>
-            </div>
-            <div class="app-content">
-              <div class="app-modern-info">
-                <h3>BML Munjal</h3>
-                <div class="app-meta">Admissions guidance available</div>
-                <div class="app-modern-tags">
-                  <span>Delhi NCR</span>
-                  <span>Guided Help</span>
-                </div>
-              </div>
-              <div class="app-modern-right">
-                <a href="https://www.bmu.edu.in/apply/" class="apply-link-btn" target="_blank">Apply Now</a>
-                <button class="counselling-link-btn" onclick="openCounsellingModal('BML Munjal University')">Need Help?</button>
-              </div>
-            </div>
-          </div>
-
         </div>
+        <span class="app-status-pill open">Open Now</span>
       </div>
 
-      <button class="app-nav next" id="appNext" type="button" aria-label="Next colleges">&#10095;</button>
+      <div class="app-status-card">
+        <div class="app-status-left">
+          <div class="app-status-logo">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-BFJR52oG8QtjxRxL.jpg" alt="ISBR">
+          </div>
+          <div class="app-status-info">
+            <h3>ISBR Bangalore</h3>
+            <div class="app-status-meta">
+              <span>Admissions 2026</span>
+              <span>•</span>
+              <span>Bangalore</span>
+            </div>
+          </div>
+        </div>
+        <span class="app-status-pill open">Open Now</span>
+      </div>
+
+      <div class="app-status-card">
+        <div class="app-status-left">
+          <div class="app-status-logo">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg" alt="Bennett">
+          </div>
+          <div class="app-status-info">
+            <h3>Bennett University</h3>
+            <div class="app-status-meta">
+              <span>Admissions 2026</span>
+              <span>•</span>
+              <span>Greater Noida</span>
+            </div>
+          </div>
+        </div>
+        <span class="app-status-pill soon">Closing Soon</span>
+      </div>
+
+      <div class="app-status-card">
+        <div class="app-status-left">
+          <div class="app-status-logo">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/gibs-logo-YSvKlH38JHkKThES.jpg" alt="GIBS">
+          </div>
+          <div class="app-status-info">
+            <h3>GIBS Bangalore</h3>
+            <div class="app-status-meta">
+              <span>Admissions 2026</span>
+              <span>•</span>
+              <span>Bangalore</span>
+            </div>
+          </div>
+        </div>
+        <span class="app-status-pill open">Open Now</span>
+      </div>
+
+      <div class="app-status-card">
+        <div class="app-status-left">
+          <div class="app-status-logo">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=356,fit=crop/ix9hiMuysgYYl7hE/dy-patil-5ihPomGeIcVxZiIF.png" alt="DY Patil">
+          </div>
+          <div class="app-status-info">
+            <h3>D Y Patil Pune</h3>
+            <div class="app-status-meta">
+              <span>Admissions 2026</span>
+              <span>•</span>
+              <span>Pune</span>
+            </div>
+          </div>
+        </div>
+        <span class="app-status-pill soon">Closing Soon</span>
+      </div>
+
+      <div class="app-status-card">
+        <div class="app-status-left">
+          <div class="app-status-logo">
+            <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=250,fit=crop/ix9hiMuysgYYl7hE/pibm-logo-5ZZWQPNyHQrqrKxG.jpg" alt="PIBM">
+          </div>
+          <div class="app-status-info">
+            <h3>PIBM Pune</h3>
+            <div class="app-status-meta">
+              <span>Admissions 2026</span>
+              <span>•</span>
+              <span>Pune</span>
+            </div>
+          </div>
+        </div>
+        <span class="app-status-pill closed">Closed</span>
+      </div>
+
     </div>
   </div>
 </section>
