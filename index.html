@@ -638,22 +638,24 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 
   /* ===== HOME PAGE REDESIGN : WHY + APPLICATION WINDOW ===== */
 
+/* ===== SMALL PREMIUM WHY SECTION ===== */
+
 .why-section{
-  padding:72px 20px 24px;
+  padding:48px 20px 18px;
   background:
-    radial-gradient(circle at top left, rgba(122,85,231,0.10), transparent 24%),
-    radial-gradient(circle at bottom right, rgba(255,122,26,0.08), transparent 20%),
+    radial-gradient(circle at top left, rgba(122,85,231,0.08), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(255,122,26,0.06), transparent 18%),
     linear-gradient(180deg,#fcfbff 0%,#f7f3ff 100%);
 }
 
 .why-shell{
-  max-width:1180px;
+  max-width:1080px;
   margin:0 auto;
 }
 
 .why-head{
-  max-width:760px;
-  margin:0 auto 26px;
+  max-width:700px;
+  margin:0 auto 20px;
   text-align:center;
 }
 
@@ -661,177 +663,107 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:8px 16px;
+  padding:7px 14px;
   border-radius:999px;
   background:#efe8ff;
   color:#5b37cf;
-  font-size:12px;
+  font-size:11px;
   font-weight:800;
   letter-spacing:.03em;
-  margin-bottom:14px;
+  margin-bottom:12px;
   border:1px solid rgba(123,89,233,0.10);
 }
 
 .why-section h2{
-  font-size:40px;
-  line-height:1.06;
+  font-size:34px;
+  line-height:1.08;
   letter-spacing:-0.04em;
   color:#172031;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
 .why-sub{
   color:#667085;
-  font-size:15px;
-  line-height:1.75;
-  max-width:660px;
+  font-size:14px;
+  line-height:1.7;
+  max-width:620px;
   margin:0 auto;
 }
 
-.why-bento{
+.why-steps{
   display:grid;
-  grid-template-columns:1.1fr 1fr 1fr;
-  gap:18px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin-top:18px;
 }
 
-.why-spotlight{
+.why-step{
   position:relative;
-  min-height:360px;
-  border-radius:30px;
-  overflow:hidden;
-  padding:26px;
-  display:flex;
-  align-items:flex-end;
-  background:
-    linear-gradient(180deg, rgba(20,20,34,0.12) 0%, rgba(20,20,34,0.72) 100%),
-    url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-  box-shadow:0 22px 54px rgba(41,25,91,0.12);
-  border:1px solid rgba(255,255,255,0.40);
-}
-
-.why-spotlight::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg,rgba(109,74,224,0.06),rgba(18,19,33,0.22));
-}
-
-.why-spotlight-content{
-  position:relative;
-  z-index:2;
-  color:#fff;
-  max-width:90%;
-}
-
-.why-mini-label{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:7px 12px;
-  border-radius:999px;
-  background:rgba(255,255,255,0.14);
-  border:1px solid rgba(255,255,255,0.18);
-  backdrop-filter:blur(10px);
-  font-size:11px;
-  font-weight:800;
-  margin-bottom:14px;
-}
-
-.why-spotlight h3{
-  font-size:28px;
-  line-height:1.08;
-  margin-bottom:10px;
-  letter-spacing:-0.03em;
-}
-
-.why-spotlight p{
-  font-size:14px;
-  line-height:1.7;
-  color:rgba(255,255,255,0.84);
-}
-
-.why-small-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:18px;
-}
-
-.why-mini-card{
-  position:relative;
-  min-height:171px;
-  border-radius:26px;
-  overflow:hidden;
-  padding:22px;
-  background:rgba(255,255,255,0.84);
+  padding:18px 18px 16px;
+  border-radius:22px;
+  background:rgba(255,255,255,0.78);
   border:1px solid rgba(205,195,239,0.50);
   backdrop-filter:blur(16px);
-  box-shadow:0 16px 38px rgba(36,29,79,0.07);
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
+  box-shadow:0 14px 30px rgba(36,29,79,0.06);
+  min-height:150px;
   transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
 
-.why-mini-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 22px 42px rgba(36,29,79,0.11);
-  border-color:rgba(109,74,224,0.18);
+.why-step:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 36px rgba(36,29,79,0.10);
+  border-color:rgba(109,74,224,0.16);
 }
 
-.why-mini-card.purple{
+.why-step.purple{
   background:
-    radial-gradient(circle at top right, rgba(123,89,233,0.12), transparent 34%),
+    radial-gradient(circle at top right, rgba(123,89,233,0.10), transparent 34%),
     linear-gradient(180deg,#ffffff 0%,#f8f4ff 100%);
 }
 
-.why-mini-card.warm{
+.why-step.warm{
   background:
-    radial-gradient(circle at top right, rgba(255,122,26,0.10), transparent 32%),
-    linear-gradient(180deg,#fffdfb 0%,#fff4ec 100%);
+    radial-gradient(circle at top right, rgba(255,122,26,0.08), transparent 30%),
+    linear-gradient(180deg,#fffdfb 0%,#fff5ee 100%);
 }
 
-.why-mini-card.soft{
+.why-step.soft{
   background:
-    radial-gradient(circle at top right, rgba(170,145,245,0.12), transparent 30%),
-    linear-gradient(180deg,#ffffff 0%,#f7f3ff 100%);
+    radial-gradient(circle at top right, rgba(170,145,245,0.10), transparent 30%),
+    linear-gradient(180deg,#ffffff 0%,#f6f2ff 100%);
 }
 
-.why-icon-wrap{
-  width:56px;
-  height:56px;
-  border-radius:18px;
+.why-step-no{
+  width:36px;
+  height:36px;
+  border-radius:12px;
   display:flex;
   align-items:center;
   justify-content:center;
-  margin-bottom:16px;
-  background:linear-gradient(135deg,#fff1e8,#f3ebff);
+  margin-bottom:14px;
+  background:linear-gradient(135deg,#f3ebff,#fff2e8);
+  color:#5b37cf;
+  font-size:14px;
+  font-weight:800;
   box-shadow:inset 0 1px 0 rgba(255,255,255,0.75);
-  font-size:24px;
 }
 
-.why-mini-card h3{
-  font-size:22px;
-  line-height:1.12;
+.why-step h3{
+  font-size:19px;
+  line-height:1.15;
   color:#172031;
-  margin-bottom:8px;
+  margin-bottom:7px;
   letter-spacing:-0.03em;
 }
 
-.why-mini-card p{
-  font-size:14px;
-  line-height:1.7;
+.why-step p{
+  font-size:13px;
+  line-height:1.65;
   color:#667085;
-  max-width:92%;
+  margin-bottom:12px;
 }
 
-.why-mini-foot{
-  margin-top:14px;
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.why-mini-foot span{
+.why-step-mini{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -840,13 +772,37 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   font-size:11px;
   font-weight:800;
   color:#6c667b;
-  background:rgba(255,255,255,0.86);
+  background:rgba(255,255,255,0.88);
   border:1px solid #ece5fb;
 }
 
+@media(max-width:900px){
+  .why-steps{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:720px){
+  .why-section{
+    padding:40px 16px 10px;
+  }
+
+  .why-section h2{
+    font-size:28px;
+  }
+
+  .why-step{
+    min-height:auto;
+    padding:16px;
+  }
+}
+  
 /* APPLICATION WINDOW REDESIGN */
+
+  /* ===== SMALL APPLICATION SLIDER ===== */
+
 .app-window-v2{
-  padding:34px 20px 82px;
+  padding:26px 20px 74px;
   background:
     radial-gradient(circle at top left, rgba(122,85,231,0.08), transparent 24%),
     linear-gradient(180deg,#f7f3ff 0%,#fcfbff 100%);
@@ -858,8 +814,8 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .app-window-head{
-  max-width:720px;
-  margin:0 auto 24px;
+  max-width:700px;
+  margin:0 auto 20px;
   text-align:center;
 }
 
@@ -867,19 +823,19 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:8px 16px;
+  padding:7px 14px;
   border-radius:999px;
   background:#efe8ff;
   color:#5b37cf;
-  font-size:12px;
+  font-size:11px;
   font-weight:800;
   letter-spacing:.03em;
-  margin-bottom:14px;
+  margin-bottom:12px;
   border:1px solid rgba(123,89,233,0.10);
 }
 
 .app-window-head h2{
-  font-size:36px;
+  font-size:32px;
   line-height:1.08;
   letter-spacing:-0.04em;
   color:#172031;
@@ -889,35 +845,49 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 .app-window-head p{
   max-width:620px;
   margin:0 auto;
-  font-size:15px;
-  line-height:1.75;
+  font-size:14px;
+  line-height:1.7;
   color:#6a7280;
 }
 
-.app-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:16px;
+.app-slider-shell{
+  position:relative;
+  padding:0 56px;
+}
+
+.app-slider-viewport{
+  overflow:hidden;
+  width:100%;
+}
+
+.app-slider-track{
+  display:flex;
+  gap:14px;
+  transition:transform .55s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
 }
 
 .app-modern-card{
   position:relative;
-  min-height:280px;
-  border-radius:28px;
+  min-width:calc((100% - 28px) / 3);
+  width:calc((100% - 28px) / 3);
+  height:240px;
+  border-radius:24px;
   overflow:hidden;
-  padding:18px;
+  padding:16px;
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
   background:#fff;
   border:1px solid rgba(205,195,239,0.50);
-  box-shadow:0 18px 42px rgba(36,29,79,0.08);
+  box-shadow:0 16px 34px rgba(36,29,79,0.08);
   transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease;
+  flex-shrink:0;
 }
 
 .app-modern-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 24px 52px rgba(36,29,79,0.13);
+  transform:translateY(-4px);
+  box-shadow:0 22px 42px rgba(36,29,79,0.12);
   border-color:rgba(109,74,224,0.18);
 }
 
@@ -937,19 +907,19 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   position:absolute;
   inset:0;
   z-index:2;
-  background:linear-gradient(180deg, rgba(18,18,28,0.06) 0%, rgba(18,18,28,0.72) 100%);
+  background:linear-gradient(180deg, rgba(18,18,28,0.06) 0%, rgba(18,18,28,0.76) 100%);
 }
 
 .app-card-top{
   position:absolute;
-  top:16px;
-  left:16px;
-  right:16px;
+  top:14px;
+  left:14px;
+  right:14px;
   z-index:3;
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  gap:10px;
+  gap:8px;
 }
 
 .app-badge{
@@ -958,7 +928,7 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   justify-content:center;
   padding:7px 10px;
   border-radius:999px;
-  background:rgba(255,255,255,0.86);
+  background:rgba(255,255,255,0.88);
   color:#5d36d2;
   font-size:11px;
   font-weight:800;
@@ -976,23 +946,23 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .app-modern-info h3{
-  font-size:24px;
-  line-height:1.08;
-  margin-bottom:6px;
+  font-size:19px;
+  line-height:1.1;
+  margin-bottom:5px;
   letter-spacing:-0.03em;
 }
 
 .app-meta{
-  font-size:13px;
-  color:rgba(255,255,255,0.80);
-  margin-bottom:12px;
+  font-size:12px;
+  color:rgba(255,255,255,0.82);
+  margin-bottom:10px;
 }
 
 .app-modern-tags{
   display:flex;
-  gap:8px;
+  gap:7px;
   flex-wrap:wrap;
-  margin-bottom:16px;
+  margin-bottom:14px;
 }
 
 .app-modern-tags span{
@@ -1011,14 +981,14 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 
 .app-modern-right{
   display:flex;
-  gap:10px;
+  gap:8px;
   flex-wrap:wrap;
 }
 
 .apply-link-btn,
 .counselling-link-btn{
-  height:42px;
-  padding:0 16px;
+  height:40px;
+  padding:0 15px;
   border-radius:999px;
   border:none;
   font-size:13px;
@@ -1038,10 +1008,6 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   box-shadow:0 10px 18px rgba(0,0,0,0.10);
 }
 
-.apply-link-btn:hover{
-  transform:translateY(-2px);
-}
-
 .counselling-link-btn{
   background:rgba(255,255,255,0.14);
   color:#fff;
@@ -1049,93 +1015,73 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   backdrop-filter:blur(10px);
 }
 
-.counselling-link-btn:hover{
-  transform:translateY(-2px);
-  background:rgba(255,255,255,0.20);
-}
-
-.app-actions-row{
-  text-align:center;
-  margin-top:24px;
-}
-
-.view-more-btn{
-  height:46px;
-  padding:0 22px;
-  border-radius:999px;
-  border:1px solid rgba(22,32,47,.08);
-  background:#fff;
-  color:#172031;
+.app-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,0.92);
+  color:#5b37cf;
+  font-size:20px;
   font-weight:800;
   cursor:pointer;
-  box-shadow:0 10px 20px rgba(0,0,0,.04);
+  box-shadow:0 12px 28px rgba(36,29,79,0.12);
+  z-index:4;
+  transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
 }
 
-.view-more-btn:hover{
-  transform:translateY(-2px);
-  color:#5d36d2;
-  border-color:rgba(93,54,210,.15);
+.app-nav:hover{
+  transform:translateY(-50%) scale(1.05);
+  box-shadow:0 16px 32px rgba(36,29,79,0.18);
 }
 
-@media(max-width:1100px){
-  .why-bento{
-    grid-template-columns:1fr 1fr;
-  }
+.app-nav.prev{
+  left:0;
+}
 
-  .why-spotlight{
-    min-height:320px;
-    grid-column:1 / -1;
-  }
+.app-nav.next{
+  right:0;
+}
 
-  .app-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+.app-nav:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+@media(max-width:1024px){
+  .app-modern-card{
+    min-width:calc((100% - 14px) / 2);
+    width:calc((100% - 14px) / 2);
   }
 }
 
 @media(max-width:720px){
-  .why-section{
-    padding:62px 16px 18px;
-  }
-
-  .why-section h2{
-    font-size:30px;
-  }
-
-  .why-bento{
-    grid-template-columns:1fr;
-  }
-
-  .why-spotlight{
-    min-height:290px;
-    border-radius:24px;
-    padding:20px;
-  }
-
-  .why-mini-card{
-    min-height:unset;
-    border-radius:22px;
-    padding:20px;
-  }
-
   .app-window-v2{
-    padding:22px 16px 72px;
+    padding:20px 16px 64px;
   }
 
   .app-window-head h2{
-    font-size:29px;
+    font-size:28px;
   }
 
-  .app-grid{
-    grid-template-columns:1fr;
+  .app-slider-shell{
+    padding:0 44px;
   }
 
   .app-modern-card{
-    min-height:250px;
-    border-radius:24px;
+    min-width:100%;
+    width:100%;
+    height:228px;
+    border-radius:22px;
   }
 
-  .app-modern-info h3{
-    font-size:22px;
+  .app-nav{
+    width:38px;
+    height:38px;
+    font-size:18px;
   }
 }
 
@@ -3149,60 +3095,26 @@ select{
       </p>
     </div>
 
-    <div class="why-bento">
-      <div class="why-spotlight">
-        <div class="why-spotlight-content">
-          <span class="why-mini-label">Student-first platform</span>
-          <h3>Search, compare and decide with much less confusion</h3>
-          <p>
-            Discover MBA and PGDM colleges faster with clearer information, practical comparison and guidance when needed.
-          </p>
-        </div>
+    <div class="why-steps">
+      <div class="why-step purple">
+        <div class="why-step-no">01</div>
+        <h3>Search Smartly</h3>
+        <p>Find colleges by exam, city, course or preference without wasting time.</p>
+        <span class="why-step-mini">Exam + City based</span>
       </div>
 
-      <div class="why-small-grid">
-        <div class="why-mini-card purple">
-          <div class="why-icon-wrap">🎯</div>
-          <h3>Smart Search</h3>
-          <p>Search by exam, city, fees, college type or preference without wasting time.</p>
-          <div class="why-mini-foot">
-            <span>Exam-wise</span>
-            <span>City-wise</span>
-          </div>
-        </div>
-
-        <div class="why-mini-card warm">
-          <div class="why-icon-wrap">💬</div>
-          <h3>Free Guidance</h3>
-          <p>Talk to experts when you are confused between multiple colleges or choices.</p>
-          <div class="why-mini-foot">
-            <span>Free help</span>
-            <span>Human support</span>
-          </div>
-        </div>
+      <div class="why-step soft">
+        <div class="why-step-no">02</div>
+        <h3>Compare Better</h3>
+        <p>Understand fees, placements, ROI and admission fit in a cleaner way.</p>
+        <span class="why-step-mini">Fees • ROI • Placements</span>
       </div>
 
-      <div class="why-small-grid">
-        <div class="why-mini-card soft">
-          <div class="why-icon-wrap">📊</div>
-          <h3>Compare Better</h3>
-          <p>Understand fees, placements, ROI and admission fit in a much more practical way.</p>
-          <div class="why-mini-foot">
-            <span>Fees</span>
-            <span>Placements</span>
-            <span>ROI</span>
-          </div>
-        </div>
-
-        <div class="why-mini-card purple">
-          <div class="why-icon-wrap">⚡</div>
-          <h3>Fast & Clear</h3>
-          <p>No unnecessary overload — just the information students actually care about.</p>
-          <div class="why-mini-foot">
-            <span>Simple UI</span>
-            <span>Quick discovery</span>
-          </div>
-        </div>
+      <div class="why-step warm">
+        <div class="why-step-no">03</div>
+        <h3>Get Guidance</h3>
+        <p>Take expert help when you feel stuck between multiple colleges.</p>
+        <span class="why-step-mini">Free counselling</span>
       </div>
     </div>
   </div>
@@ -3312,112 +3224,166 @@ select{
       </p>
     </div>
 
-    <div class="app-grid">
+    <div class="app-slider-shell">
+      <button class="app-nav prev" id="appPrev" type="button" aria-label="Previous colleges">&#10094;</button>
 
-      <div class="app-modern-card">
-        <div class="app-card-media">
-          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80" alt="IILM Greater Noida">
-        </div>
-        <div class="app-card-overlay"></div>
-        <div class="app-card-top">
-          <span class="app-badge">MBA / PGDM</span>
-          <span class="app-badge open">Open Now</span>
-        </div>
-        <div class="app-content">
-          <div class="app-modern-info">
-            <h3>IILM Greater Noida</h3>
-            <div class="app-meta">Admissions 2026</div>
-            <div class="app-modern-tags">
-              <span>Greater Noida</span>
-              <span>Applications Open</span>
+      <div class="app-slider-viewport">
+        <div class="app-slider-track" id="appSliderTrack">
+
+          <div class="app-modern-card">
+            <div class="app-card-media">
+              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80" alt="IILM Greater Noida">
+            </div>
+            <div class="app-card-overlay"></div>
+            <div class="app-card-top">
+              <span class="app-badge">MBA / PGDM</span>
+              <span class="app-badge open">Open Now</span>
+            </div>
+            <div class="app-content">
+              <div class="app-modern-info">
+                <h3>IILM Greater Noida</h3>
+                <div class="app-meta">Admissions 2026</div>
+                <div class="app-modern-tags">
+                  <span>Greater Noida</span>
+                  <span>Applications Open</span>
+                </div>
+              </div>
+              <div class="app-modern-right">
+                <a href="https://admissions.iilm.edu/" class="apply-link-btn" target="_blank">Apply Now</a>
+                <button class="counselling-link-btn" onclick="openCounsellingModal('IILM Greater Noida')">Need Help?</button>
+              </div>
             </div>
           </div>
-          <div class="app-modern-right">
-            <a href="#" class="apply-link-btn">Apply Now</a>
-            <button class="counselling-link-btn" onclick="openCounsellingModal()">Need Help?</button>
+
+          <div class="app-modern-card">
+            <div class="app-card-media">
+              <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=900&q=80" alt="ISBR Bangalore">
+            </div>
+            <div class="app-card-overlay"></div>
+            <div class="app-card-top">
+              <span class="app-badge">MBA / PGDM</span>
+              <span class="app-badge open">Open Now</span>
+            </div>
+            <div class="app-content">
+              <div class="app-modern-info">
+                <h3>ISBR Bangalore</h3>
+                <div class="app-meta">Admissions 2026</div>
+                <div class="app-modern-tags">
+                  <span>Bangalore</span>
+                  <span>Applications Open</span>
+                </div>
+              </div>
+              <div class="app-modern-right">
+                <a href="https://apply.isbr.in/" class="apply-link-btn" target="_blank">Apply Now</a>
+                <button class="counselling-link-btn" onclick="openCounsellingModal('ISBR Bangalore')">Need Help?</button>
+              </div>
+            </div>
           </div>
+
+          <div class="app-modern-card">
+            <div class="app-card-media">
+              <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=900&q=80" alt="GIBS Bangalore">
+            </div>
+            <div class="app-card-overlay"></div>
+            <div class="app-card-top">
+              <span class="app-badge">MBA / PGDM</span>
+              <span class="app-badge open">Open Now</span>
+            </div>
+            <div class="app-content">
+              <div class="app-modern-info">
+                <h3>GIBS Bangalore</h3>
+                <div class="app-meta">Admissions 2026</div>
+                <div class="app-modern-tags">
+                  <span>Bangalore</span>
+                  <span>Apply Direct</span>
+                </div>
+              </div>
+              <div class="app-modern-right">
+                <a href="https://admission.gibsbschool.com/" class="apply-link-btn" target="_blank">Apply Now</a>
+                <button class="counselling-link-btn" onclick="openCounsellingModal('GIBS Bangalore')">Need Help?</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-modern-card">
+            <div class="app-card-media">
+              <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=900&q=80" alt="D Y Patil Pune">
+            </div>
+            <div class="app-card-overlay"></div>
+            <div class="app-card-top">
+              <span class="app-badge">MBA / PGDM</span>
+              <span class="app-badge open">Open Now</span>
+            </div>
+            <div class="app-content">
+              <div class="app-modern-info">
+                <h3>D Y Patil Pune</h3>
+                <div class="app-meta">Admissions 2026</div>
+                <div class="app-modern-tags">
+                  <span>Pune</span>
+                  <span>Applications Open</span>
+                </div>
+              </div>
+              <div class="app-modern-right">
+                <a href="https://dypatiluniversitypune.edu.in/applicationNew.php" class="apply-link-btn" target="_blank">Apply Now</a>
+                <button class="counselling-link-btn" onclick="openCounsellingModal('D Y Patil Pune')">Need Help?</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-modern-card">
+            <div class="app-card-media">
+              <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=900&q=80" alt="PIBM Pune">
+            </div>
+            <div class="app-card-overlay"></div>
+            <div class="app-card-top">
+              <span class="app-badge">MBA / PGDM</span>
+              <span class="app-badge">Guidance</span>
+            </div>
+            <div class="app-content">
+              <div class="app-modern-info">
+                <h3>PIBM Pune</h3>
+                <div class="app-meta">Admissions guidance available</div>
+                <div class="app-modern-tags">
+                  <span>Pune</span>
+                  <span>Guided Help</span>
+                </div>
+              </div>
+              <div class="app-modern-right">
+                <a href="https://www.pibm.in/mba-and-pgdm-admissions.html" class="apply-link-btn" target="_blank">Apply Now</a>
+                <button class="counselling-link-btn" onclick="openCounsellingModal('PIBM Pune')">Need Help?</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-modern-card">
+            <div class="app-card-media">
+              <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80" alt="BML Munjal University">
+            </div>
+            <div class="app-card-overlay"></div>
+            <div class="app-card-top">
+              <span class="app-badge">MBA / PGDM</span>
+              <span class="app-badge">Guidance</span>
+            </div>
+            <div class="app-content">
+              <div class="app-modern-info">
+                <h3>BML Munjal</h3>
+                <div class="app-meta">Admissions guidance available</div>
+                <div class="app-modern-tags">
+                  <span>Delhi NCR</span>
+                  <span>Guided Help</span>
+                </div>
+              </div>
+              <div class="app-modern-right">
+                <a href="https://www.bmu.edu.in/apply/" class="apply-link-btn" target="_blank">Apply Now</a>
+                <button class="counselling-link-btn" onclick="openCounsellingModal('BML Munjal University')">Need Help?</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="app-modern-card">
-        <div class="app-card-media">
-          <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=900&q=80" alt="ISBR Bangalore">
-        </div>
-        <div class="app-card-overlay"></div>
-        <div class="app-card-top">
-          <span class="app-badge">MBA / PGDM</span>
-          <span class="app-badge open">Open Now</span>
-        </div>
-        <div class="app-content">
-          <div class="app-modern-info">
-            <h3>ISBR Bangalore</h3>
-            <div class="app-meta">Admissions 2026</div>
-            <div class="app-modern-tags">
-              <span>Bangalore</span>
-              <span>Applications Open</span>
-            </div>
-          </div>
-          <div class="app-modern-right">
-            <a href="#" class="apply-link-btn">Apply Now</a>
-            <button class="counselling-link-btn" onclick="openCounsellingModal()">Need Help?</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="app-modern-card">
-        <div class="app-card-media">
-          <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=900&q=80" alt="GIBS Bangalore">
-        </div>
-        <div class="app-card-overlay"></div>
-        <div class="app-card-top">
-          <span class="app-badge">MBA / PGDM</span>
-          <span class="app-badge open">Open Now</span>
-        </div>
-        <div class="app-content">
-          <div class="app-modern-info">
-            <h3>GIBS Bangalore</h3>
-            <div class="app-meta">Admissions 2026</div>
-            <div class="app-modern-tags">
-              <span>Bangalore</span>
-              <span>Apply Direct</span>
-            </div>
-          </div>
-          <div class="app-modern-right">
-            <a href="#" class="apply-link-btn">Apply Now</a>
-            <button class="counselling-link-btn" onclick="openCounsellingModal()">Need Help?</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="app-modern-card">
-        <div class="app-card-media">
-          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=900&q=80" alt="D Y Patil University Pune">
-        </div>
-        <div class="app-card-overlay"></div>
-        <div class="app-card-top">
-          <span class="app-badge">MBA / PGDM</span>
-          <span class="app-badge open">Open Now</span>
-        </div>
-        <div class="app-content">
-          <div class="app-modern-info">
-            <h3>D Y Patil Pune</h3>
-            <div class="app-meta">Admissions 2026</div>
-            <div class="app-modern-tags">
-              <span>Pune</span>
-              <span>Applications Open</span>
-            </div>
-          </div>
-          <div class="app-modern-right">
-            <a href="#" class="apply-link-btn">Apply Now</a>
-            <button class="counselling-link-btn" onclick="openCounsellingModal()">Need Help?</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="app-actions-row">
-      <button class="view-more-btn">View More Colleges</button>
+      <button class="app-nav next" id="appNext" type="button" aria-label="Next colleges">&#10095;</button>
     </div>
   </div>
 </section>
@@ -3981,6 +3947,62 @@ if (reviewCards.length) {
     });
   });
 });
+</script>
+
+  <script>
+(function(){
+  const track = document.getElementById("appSliderTrack");
+  const prevBtn = document.getElementById("appPrev");
+  const nextBtn = document.getElementById("appNext");
+
+  if(!track || !prevBtn || !nextBtn) return;
+
+  const cards = Array.from(track.querySelectorAll(".app-modern-card"));
+  let currentIndex = 0;
+
+  function getCardsPerView(){
+    if(window.innerWidth <= 720) return 1;
+    if(window.innerWidth <= 1024) return 2;
+    return 3;
+  }
+
+  function updateSlider(){
+    const cardsPerView = getCardsPerView();
+    const cardStyle = window.getComputedStyle(cards[0]);
+    const cardWidth = cards[0].offsetWidth;
+    const gap = parseFloat(cardStyle.marginRight) || 14;
+    const moveX = currentIndex * (cardWidth + 14);
+
+    track.style.transform = `translateX(-${moveX}px)`;
+
+    const maxIndex = Math.max(0, cards.length - cardsPerView);
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    const maxIndex = Math.max(0, cards.length - getCardsPerView());
+    if(currentIndex < maxIndex){
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if(currentIndex > 0){
+      currentIndex--;
+      updateSlider();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    const maxIndex = Math.max(0, cards.length - getCardsPerView());
+    if(currentIndex > maxIndex) currentIndex = maxIndex;
+    updateSlider();
+  });
+
+  updateSlider();
+})();
 </script>
 
   <div class="sticky-cta">
