@@ -635,31 +635,22 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   }
 }
 
+  /* ===== SMALL HOW IT WORKS ===== */
 
-  /* ===== HOME PAGE REDESIGN : WHY + APPLICATION WINDOW ===== */
-
-/* ===== SMALL PREMIUM WHY SECTION ===== */
-
-.why-section{
-  padding:48px 20px 18px;
+.how-mini-section{
+  padding:30px 20px 20px;
   background:
     radial-gradient(circle at top left, rgba(122,85,231,0.08), transparent 24%),
-    radial-gradient(circle at bottom right, rgba(255,122,26,0.06), transparent 18%),
-    linear-gradient(180deg,#fcfbff 0%,#f7f3ff 100%);
+    linear-gradient(180deg,#fcfbff 0%,#f8f4ff 100%);
 }
 
-.why-shell{
-  max-width:1080px;
+.how-mini-shell{
+  max-width:980px;
   margin:0 auto;
-}
-
-.why-head{
-  max-width:700px;
-  margin:0 auto 20px;
   text-align:center;
 }
 
-.why-tag{
+.how-mini-tag{
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -670,130 +661,109 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   font-size:11px;
   font-weight:800;
   letter-spacing:.03em;
-  margin-bottom:12px;
   border:1px solid rgba(123,89,233,0.10);
-}
-
-.why-section h2{
-  font-size:34px;
-  line-height:1.08;
-  letter-spacing:-0.04em;
-  color:#172031;
   margin-bottom:10px;
 }
 
-.why-sub{
-  color:#667085;
-  font-size:14px;
-  line-height:1.7;
-  max-width:620px;
-  margin:0 auto;
+.how-mini-shell h2{
+  font-size:28px;
+  line-height:1.08;
+  letter-spacing:-0.03em;
+  color:#172031;
+  margin-bottom:8px;
 }
 
-.why-steps{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:14px;
-  margin-top:18px;
+.how-mini-shell p{
+  font-size:13px;
+  line-height:1.65;
+  color:#6a7280;
+  max-width:560px;
+  margin:0 auto 18px;
 }
 
-.why-step{
-  position:relative;
-  padding:18px 18px 16px;
-  border-radius:22px;
-  background:rgba(255,255,255,0.78);
-  border:1px solid rgba(205,195,239,0.50);
-  backdrop-filter:blur(16px);
-  box-shadow:0 14px 30px rgba(36,29,79,0.06);
-  min-height:150px;
-  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-}
-
-.why-step:hover{
-  transform:translateY(-4px);
-  box-shadow:0 18px 36px rgba(36,29,79,0.10);
-  border-color:rgba(109,74,224,0.16);
-}
-
-.why-step.purple{
-  background:
-    radial-gradient(circle at top right, rgba(123,89,233,0.10), transparent 34%),
-    linear-gradient(180deg,#ffffff 0%,#f8f4ff 100%);
-}
-
-.why-step.warm{
-  background:
-    radial-gradient(circle at top right, rgba(255,122,26,0.08), transparent 30%),
-    linear-gradient(180deg,#fffdfb 0%,#fff5ee 100%);
-}
-
-.why-step.soft{
-  background:
-    radial-gradient(circle at top right, rgba(170,145,245,0.10), transparent 30%),
-    linear-gradient(180deg,#ffffff 0%,#f6f2ff 100%);
-}
-
-.why-step-no{
-  width:36px;
-  height:36px;
-  border-radius:12px;
+.how-mini-strip{
   display:flex;
   align-items:center;
   justify-content:center;
-  margin-bottom:14px;
-  background:linear-gradient(135deg,#f3ebff,#fff2e8);
-  color:#5b37cf;
-  font-size:14px;
-  font-weight:800;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.75);
+  gap:12px;
+  flex-wrap:wrap;
+  background:rgba(255,255,255,0.72);
+  border:1px solid rgba(205,195,239,0.50);
+  backdrop-filter:blur(16px);
+  border-radius:999px;
+  padding:14px 18px;
+  box-shadow:0 12px 28px rgba(36,29,79,0.06);
 }
 
-.why-step h3{
-  font-size:19px;
-  line-height:1.15;
-  color:#172031;
-  margin-bottom:7px;
-  letter-spacing:-0.03em;
+.how-mini-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
 }
 
-.why-step p{
-  font-size:13px;
-  line-height:1.65;
-  color:#667085;
-  margin-bottom:12px;
-}
-
-.why-step-mini{
-  display:inline-flex;
+.how-mini-icon{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
   align-items:center;
   justify-content:center;
-  padding:7px 10px;
-  border-radius:999px;
-  font-size:11px;
+  background:linear-gradient(135deg,#ebfff6,#eef4ff);
+  color:#22b573;
+  font-size:14px;
   font-weight:800;
-  color:#6c667b;
-  background:rgba(255,255,255,0.88);
-  border:1px solid #ece5fb;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.8);
+  flex-shrink:0;
 }
 
-@media(max-width:900px){
-  .why-steps{
-    grid-template-columns:1fr;
-  }
+.how-mini-copy{
+  text-align:left;
 }
 
-@media(max-width:720px){
-  .why-section{
-    padding:40px 16px 10px;
+.how-mini-copy strong{
+  display:block;
+  font-size:12px;
+  line-height:1.2;
+  color:#172031;
+  font-weight:800;
+}
+
+.how-mini-copy span{
+  display:block;
+  font-size:10px;
+  line-height:1.3;
+  color:#7a8191;
+  margin-top:2px;
+}
+
+.how-mini-arrow{
+  font-size:16px;
+  color:#b4accf;
+  font-weight:800;
+}
+
+@media(max-width:768px){
+  .how-mini-section{
+    padding:24px 16px 16px;
   }
 
-  .why-section h2{
-    font-size:28px;
+  .how-mini-shell h2{
+    font-size:24px;
   }
 
-  .why-step{
-    min-height:auto;
-    padding:16px;
+  .how-mini-strip{
+    border-radius:24px;
+    padding:14px;
+    justify-content:flex-start;
+  }
+
+  .how-mini-item{
+    width:100%;
+  }
+
+  .how-mini-arrow{
+    display:none;
   }
 }
   
@@ -2943,6 +2913,266 @@ select{
   }
 }
 
+  /* ===== POPULAR COLLEGES SLIDER ===== */
+
+.popular-colleges{
+  padding:18px 20px 78px;
+  background:
+    radial-gradient(circle at top left, rgba(255,122,26,0.05), transparent 20%),
+    radial-gradient(circle at bottom right, rgba(122,85,231,0.08), transparent 24%),
+    linear-gradient(180deg,#f8f4ff 0%,#fcfbff 100%);
+}
+
+.popular-shell{
+  max-width:1240px;
+  margin:0 auto;
+  background:linear-gradient(180deg,#f5efe6 0%,#f7f1ea 100%);
+  border:1px solid rgba(220,205,186,0.85);
+  border-radius:34px;
+  padding:28px 28px 24px;
+  box-shadow:0 16px 38px rgba(60,38,12,0.05);
+}
+
+.popular-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:22px;
+}
+
+.popular-top h2{
+  font-size:26px;
+  line-height:1.08;
+  color:#172031;
+  letter-spacing:-0.03em;
+}
+
+.popular-nav{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.popular-arrow{
+  width:52px;
+  height:52px;
+  border:none;
+  border-radius:50%;
+  background:#ffffff;
+  color:#172031;
+  font-size:24px;
+  cursor:pointer;
+  box-shadow:0 10px 22px rgba(26,26,26,0.07);
+  transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+.popular-arrow:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 28px rgba(26,26,26,0.10);
+}
+
+.popular-arrow:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.popular-viewport{
+  overflow:hidden;
+}
+
+.popular-track{
+  display:flex;
+  gap:18px;
+  transition:transform .55s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
+}
+
+.popular-card{
+  min-width:calc((100% - 54px) / 4);
+  width:calc((100% - 54px) / 4);
+  background:rgba(255,255,255,0.88);
+  border:1px solid rgba(219,204,188,0.85);
+  border-radius:26px;
+  padding:22px;
+  box-shadow:0 14px 30px rgba(44,28,8,0.05);
+  flex-shrink:0;
+}
+
+.popular-card-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.popular-logo{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  background:#fbf7f2;
+  border:1px solid #e5d9ca;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.popular-logo img{
+  width:38px;
+  height:38px;
+  object-fit:contain;
+}
+
+.popular-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.popular-badge.open{
+  background:#e8f6ea;
+  color:#16803c;
+  border:1px solid #c8e7cf;
+}
+
+.popular-badge.soon{
+  background:#fff0e5;
+  color:#d46a00;
+  border:1px solid #f2c79f;
+}
+
+.popular-card h3{
+  font-size:20px;
+  line-height:1.15;
+  color:#172031;
+  margin-bottom:6px;
+  letter-spacing:-0.03em;
+}
+
+.popular-city{
+  font-size:14px;
+  color:#677084;
+  font-weight:700;
+  margin-bottom:18px;
+}
+
+.popular-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  font-size:14px;
+  color:#697287;
+  margin-bottom:18px;
+}
+
+.popular-meta strong{
+  color:#172031;
+}
+
+.popular-divider{
+  height:1px;
+  background:#eadfd3;
+  margin-bottom:18px;
+}
+
+.popular-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.popular-tags span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:9px 16px;
+  border-radius:999px;
+  background:#efe8ff;
+  color:#5b37cf;
+  border:1px solid #ddd1ff;
+  font-size:12px;
+  font-weight:800;
+}
+
+.popular-btn{
+  width:100%;
+  height:54px;
+  border:none;
+  border-radius:18px;
+  background:#f6e8da;
+  color:#ff6b00;
+  font-size:17px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  text-decoration:none;
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+
+.popular-btn:hover{
+  transform:translateY(-2px);
+}
+
+.popular-scrollbar{
+  margin-top:16px;
+  height:12px;
+  border-radius:999px;
+  background:#d9d1c8;
+  overflow:hidden;
+}
+
+.popular-scrollbar-fill{
+  height:100%;
+  width:35%;
+  border-radius:999px;
+  background:#bfb7ad;
+  transition:width .55s cubic-bezier(.22,.61,.36,1), transform .55s cubic-bezier(.22,.61,.36,1);
+}
+
+@media(max-width:1180px){
+  .popular-card{
+    min-width:calc((100% - 18px) / 2);
+    width:calc((100% - 18px) / 2);
+  }
+}
+
+@media(max-width:720px){
+  .popular-colleges{
+    padding:14px 16px 60px;
+  }
+
+  .popular-shell{
+    padding:22px 18px 18px;
+    border-radius:26px;
+  }
+
+  .popular-top h2{
+    font-size:22px;
+  }
+
+  .popular-arrow{
+    width:44px;
+    height:44px;
+    font-size:20px;
+  }
+
+  .popular-card{
+    min-width:100%;
+    width:100%;
+    padding:18px;
+  }
+}
+
 </style>
 </head>
 
@@ -3085,36 +3315,192 @@ select{
   </div>
 </section>
 
-<section class="why-section">
-  <div class="why-shell">
-    <div class="why-head">
-      <span class="why-tag">Why Swadeshi Shiksha</span>
-      <h2>Everything You Need to Make a Smarter MBA Decision</h2>
-      <p class="why-sub">
-        Built for students who want less confusion, faster discovery and clearer college comparisons.
-      </p>
+  <section class="popular-colleges">
+  <div class="popular-shell">
+    <div class="popular-top">
+      <h2>Popular Colleges</h2>
+
+      <div class="popular-nav">
+        <button class="popular-arrow" id="popularPrev" type="button" aria-label="Previous">&#10094;</button>
+        <button class="popular-arrow" id="popularNext" type="button" aria-label="Next">&#10095;</button>
+      </div>
     </div>
 
-    <div class="why-steps">
-      <div class="why-step purple">
-        <div class="why-step-no">01</div>
-        <h3>Search Smartly</h3>
-        <p>Find colleges by exam, city, course or preference without wasting time.</p>
-        <span class="why-step-mini">Exam + City based</span>
+    <div class="popular-viewport">
+      <div class="popular-track" id="popularTrack">
+
+        <div class="popular-card">
+          <div class="popular-card-top">
+            <div class="popular-logo">
+              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/iibs-logo-9CxeU1C36jDNT4qS.png" alt="IIBS">
+            </div>
+            <span class="popular-badge open">Open</span>
+          </div>
+          <h3>IIBS Bangalore</h3>
+          <div class="popular-city">Bangalore</div>
+          <div class="popular-meta">
+            <span>Avg <strong>₹8.6 LPA</strong></span>
+            <span>•</span>
+            <span>Fees <strong>₹9 Lakhs</strong></span>
+          </div>
+          <div class="popular-divider"></div>
+          <div class="popular-tags">
+            <span>CAT</span>
+            <span>MAT</span>
+            <span>CMAT</span>
+          </div>
+          <a href="#" class="popular-btn">
+            <span>View College</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="popular-card">
+          <div class="popular-card-top">
+            <div class="popular-logo">
+              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bml-munjal-kIZcRe9FY91QHy2V.webp" alt="BML Munjal">
+            </div>
+            <span class="popular-badge open">Open</span>
+          </div>
+          <h3>BML Munjal University</h3>
+          <div class="popular-city">Gurugram</div>
+          <div class="popular-meta">
+            <span>Avg <strong>₹8.5 LPA</strong></span>
+            <span>•</span>
+            <span>Fees <strong>₹13 Lakhs</strong></span>
+          </div>
+          <div class="popular-divider"></div>
+          <div class="popular-tags">
+            <span>CAT</span>
+            <span>XAT</span>
+            <span>MAT</span>
+          </div>
+          <a href="#" class="popular-btn">
+            <span>View College</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="popular-card">
+          <div class="popular-card-top">
+            <div class="popular-logo">
+              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg" alt="Bennett">
+            </div>
+            <span class="popular-badge soon">Closing Soon</span>
+          </div>
+          <h3>Bennett University</h3>
+          <div class="popular-city">Greater Noida</div>
+          <div class="popular-meta">
+            <span>Avg <strong>₹7.2 LPA</strong></span>
+            <span>•</span>
+            <span>Fees <strong>₹12 Lakhs</strong></span>
+          </div>
+          <div class="popular-divider"></div>
+          <div class="popular-tags">
+            <span>CAT</span>
+            <span>MAT</span>
+            <span>CMAT</span>
+          </div>
+          <a href="#" class="popular-btn">
+            <span>View College</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="popular-card">
+          <div class="popular-card-top">
+            <div class="popular-logo">
+              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-BFJR52oG8QtjxRxL.jpg" alt="JAGSoM">
+            </div>
+            <span class="popular-badge open">Open</span>
+          </div>
+          <h3>JAGSoM</h3>
+          <div class="popular-city">Bangalore</div>
+          <div class="popular-meta">
+            <span>Avg <strong>₹13.3 LPA</strong></span>
+            <span>•</span>
+            <span>Fees <strong>₹15 Lakhs</strong></span>
+          </div>
+          <div class="popular-divider"></div>
+          <div class="popular-tags">
+            <span>CAT</span>
+            <span>XAT</span>
+            <span>GMAT</span>
+          </div>
+          <a href="#" class="popular-btn">
+            <span>View College</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="popular-card">
+          <div class="popular-card-top">
+            <div class="popular-logo">
+              <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=250,fit=crop/ix9hiMuysgYYl7hE/iilm-25YbjSFON1qC3QIm.jpg" alt="IILM">
+            </div>
+            <span class="popular-badge open">Open</span>
+          </div>
+          <h3>IILM Greater Noida</h3>
+          <div class="popular-city">Greater Noida</div>
+          <div class="popular-meta">
+            <span>Avg <strong>₹8.6 LPA</strong></span>
+            <span>•</span>
+            <span>Fees <strong>₹10 Lakhs</strong></span>
+          </div>
+          <div class="popular-divider"></div>
+          <div class="popular-tags">
+            <span>CAT</span>
+            <span>MAT</span>
+            <span>CMAT</span>
+          </div>
+          <a href="#" class="popular-btn">
+            <span>View College</span>
+            <span>→</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="popular-scrollbar">
+      <div class="popular-scrollbar-fill" id="popularScrollbarFill"></div>
+    </div>
+  </div>
+</section>
+
+  <section class="how-mini-section">
+  <div class="how-mini-shell">
+    <span class="how-mini-tag">How it Works</span>
+    <h2>3 Simple Steps</h2>
+    <p>Search, compare and shortlist faster.</p>
+
+    <div class="how-mini-strip">
+      <div class="how-mini-item">
+        <div class="how-mini-icon">01</div>
+        <div class="how-mini-copy">
+          <strong>Search</strong>
+          <span>Find colleges</span>
+        </div>
       </div>
 
-      <div class="why-step soft">
-        <div class="why-step-no">02</div>
-        <h3>Compare Better</h3>
-        <p>Understand fees, placements, ROI and admission fit in a cleaner way.</p>
-        <span class="why-step-mini">Fees • ROI • Placements</span>
+      <div class="how-mini-arrow">→</div>
+
+      <div class="how-mini-item">
+        <div class="how-mini-icon">02</div>
+        <div class="how-mini-copy">
+          <strong>Compare</strong>
+          <span>Fees & ROI</span>
+        </div>
       </div>
 
-      <div class="why-step warm">
-        <div class="why-step-no">03</div>
-        <h3>Get Guidance</h3>
-        <p>Take expert help when you feel stuck between multiple colleges.</p>
-        <span class="why-step-mini">Free counselling</span>
+      <div class="how-mini-arrow">→</div>
+
+      <div class="how-mini-item">
+        <div class="how-mini-icon">03</div>
+        <div class="how-mini-copy">
+          <strong>Apply</strong>
+          <span>Or get help</span>
+        </div>
       </div>
     </div>
   </div>
@@ -4002,6 +4388,75 @@ if (reviewCards.length) {
   });
 
   updateSlider();
+})();
+</script>
+
+  <script>
+(function(){
+  const track = document.getElementById("popularTrack");
+  const prevBtn = document.getElementById("popularPrev");
+  const nextBtn = document.getElementById("popularNext");
+  const scrollbarFill = document.getElementById("popularScrollbarFill");
+
+  if(!track || !prevBtn || !nextBtn) return;
+
+  const cards = Array.from(track.querySelectorAll(".popular-card"));
+  let currentIndex = 0;
+
+  function getCardsPerView(){
+    if(window.innerWidth <= 720) return 1;
+    if(window.innerWidth <= 1180) return 2;
+    return 4;
+  }
+
+  function getGap(){
+    return 18;
+  }
+
+  function updatePopularSlider(){
+    const cardsPerView = getCardsPerView();
+    const maxIndex = Math.max(0, cards.length - cardsPerView);
+    const cardWidth = cards[0].offsetWidth;
+    const moveX = currentIndex * (cardWidth + getGap());
+
+    track.style.transform = `translateX(-${moveX}px)`;
+
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
+
+    if(scrollbarFill){
+      const visibleRatio = cardsPerView / cards.length;
+      const progress = maxIndex === 0 ? 0 : currentIndex / maxIndex;
+      const fillWidth = Math.max(visibleRatio * 100, 20);
+      const maxTranslate = 100 - fillWidth;
+
+      scrollbarFill.style.width = fillWidth + "%";
+      scrollbarFill.style.transform = `translateX(${progress * maxTranslate}%)`;
+    }
+  }
+
+  nextBtn.addEventListener("click", () => {
+    const maxIndex = Math.max(0, cards.length - getCardsPerView());
+    if(currentIndex < maxIndex){
+      currentIndex++;
+      updatePopularSlider();
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if(currentIndex > 0){
+      currentIndex--;
+      updatePopularSlider();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    const maxIndex = Math.max(0, cards.length - getCardsPerView());
+    if(currentIndex > maxIndex) currentIndex = maxIndex;
+    updatePopularSlider();
+  });
+
+  updatePopularSlider();
 })();
 </script>
 
