@@ -3189,34 +3189,30 @@ select{
   }
 }
 
-  /* FINAL FOOTER BOTTOM SPACE FIX */
+/* REAL FOOTER FIX */
 
 html,
 body{
-  margin:0 !important;
-  padding:0 !important;
-  background:#161022 !important;
-  overflow-x:hidden !important;
+  margin:0;
+  padding:0;
+  min-height:100%;
+  overflow-x:hidden;
 }
 
 body{
-  min-height:auto !important;
-  display:block !important;
+  min-height:100vh !important;
+  display:flex !important;
+  flex-direction:column !important;
+  background:#faf8f2;
 }
 
 .footer-polish{
-  margin:0 !important;
-  padding-bottom:0 !important;
-  background:linear-gradient(180deg, #24183f 0%, #161022 100%) !important;
-}
-
-.footer-polish-bottom{
+  margin-top:auto !important;
   margin-bottom:0 !important;
-  padding-bottom:18px !important;
 }
 
 .sticky-cta{
-  margin:0 !important;
+  position:fixed;
 }
 
 </style>
