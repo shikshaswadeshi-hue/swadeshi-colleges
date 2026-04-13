@@ -11,6 +11,26 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 
+  /* FIX FOOTER EXTRA SPACE */
+
+html, body {
+margin: 0;
+padding: 0;
+height: auto;
+min-height: auto;
+overflow-x: hidden;
+}
+
+body{
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+footer{
+margin-top:auto;
+}
+
 /* PREMIUM HEADER */
 .header{
   position: sticky;
