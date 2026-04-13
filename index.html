@@ -1845,259 +1845,365 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   }
 }
 
-  /* ===== TOP ARTICLES : MINIMAL NEWSPAPER STYLE ===== */
+  
+  /* ===== COMPACT ARTICLES + HEADLINE STRIP ===== */
 
 .top-articles-section{
-  padding: 88px 20px;
+  padding: 42px 20px 64px;
   background: linear-gradient(180deg, #ffffff 0%, #faf8f2 100%);
 }
 
 .top-articles-shell{
-  max-width: 1180px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
+/* moving headline strip */
+.article-strip{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 42px;
+  margin-bottom: 16px;
+  padding: 0 14px;
+  background: #fff;
+  border: 1px solid rgba(22,32,47,0.08);
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+
+.article-strip-label{
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #f4ebff;
+  color: #4d2fb2;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  z-index: 2;
+}
+
+.article-strip-fade{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 68px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.article-strip-fade.left{
+  left: 0;
+  background: linear-gradient(90deg,#fff 20%,rgba(255,255,255,0));
+}
+
+.article-strip-fade.right{
+  right: 0;
+  background: linear-gradient(270deg,#fff 20%,rgba(255,255,255,0));
+}
+
+.article-strip-track{
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  width: max-content;
+  animation: articleTicker 22s linear infinite;
+  white-space: nowrap;
+}
+
+.article-strip:hover .article-strip-track{
+  animation-play-state: paused;
+}
+
+.article-strip-item{
+  text-decoration: none;
+  color: #16202f;
+  font-size: 13px;
+  font-weight: 700;
+  opacity: .88;
+}
+
+.article-strip-item::before{
+  content: "•";
+  color: #ff6b00;
+  margin-right: 10px;
+}
+
+.article-strip-item:hover{
+  color: #4d2fb2;
+}
+
+@keyframes articleTicker{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+
+/* heading */
 .top-articles-head{
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 18px;
-  margin-bottom: 28px;
+  margin-bottom: 14px;
   flex-wrap: wrap;
 }
 
 .top-articles-copy{
-  max-width: 760px;
+  max-width: 620px;
 }
 
 .top-articles-tag{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 14px;
+  padding: 6px 12px;
   border-radius: 999px;
   background: #f4ebff;
   color: #4d2fb2;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 800;
   letter-spacing: .03em;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .top-articles-head h2{
-  font-size: 36px;
-  line-height: 1.12;
+  font-size: 28px;
+  line-height: 1.1;
   color: #16202f;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   letter-spacing: -0.03em;
 }
 
 .top-articles-head p{
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 13px;
+  line-height: 1.7;
   color: #6a6f7c;
-  max-width: 620px;
+  max-width: 560px;
 }
 
 .top-articles-view-all{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 44px;
-  padding: 0 18px;
+  height: 38px;
+  padding: 0 16px;
   border-radius: 999px;
   background: #fff;
   border: 1px solid rgba(22,32,47,0.08);
   color: #16202f;
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 800;
   transition: all .22s ease;
 }
 
 .top-articles-view-all:hover{
   transform: translateY(-2px);
   color: #4d2fb2;
-  border-color: rgba(77,47,178,0.14);
+  border-color: rgba(77,47,178,0.16);
 }
 
-.top-articles-board{
-  background: rgba(255,255,255,0.72);
-  border: 1px solid rgba(22,32,47,0.06);
+/* main compact card */
+.editorial-articles-card{
+  background: #fff;
+  border: 1px solid rgba(22,32,47,0.08);
   border-radius: 24px;
-  overflow: hidden;
+  padding: 18px;
   box-shadow: 0 12px 28px rgba(0,0,0,0.04);
 }
 
-.top-article-feature{
+.editorial-articles-grid{
   display: grid;
-  grid-template-columns: 1.1fr 1.2fr;
-  gap: 0;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 22px;
+  align-items: start;
+}
+
+/* left feature */
+.editorial-feature{
   text-decoration: none;
   color: inherit;
-  background: #fff;
 }
 
-.top-article-feature-media{
-  min-height: 280px;
+.editorial-feature-media{
+  width: 100%;
+  height: 190px;
+  border-radius: 18px;
   overflow: hidden;
+  margin-bottom: 14px;
 }
 
-.top-article-feature-media img{
+.editorial-feature-media img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.top-article-feature-content{
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.editorial-feature h3{
+  font-size: 16px;
+  line-height: 1.25;
+  color: #16202f;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
 }
 
-.top-article-meta{
+.editorial-feature p{
+  font-size: 13px;
+  line-height: 1.7;
+  color: #667085;
+  margin-bottom: 12px;
+  max-width: 92%;
+}
+
+.editorial-author{
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
 }
 
-.top-article-category{
+.editorial-author-dot{
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#ffede2,#efe8ff);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 30px;
-  padding: 0 12px;
-  border-radius: 999px;
-  background: #f4ebff;
   color: #4d2fb2;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 800;
 }
 
-.top-article-date{
+.editorial-author span{
+  font-size: 12px;
+  color: #6a6f7c;
+  font-weight: 600;
+}
+
+/* right list */
+.editorial-side{
+  padding-top: 2px;
+}
+
+.editorial-side h4{
+  font-size: 19px;
+  color: #16202f;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+
+.editorial-list{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.editorial-list-item{
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  align-items: center;
+}
+
+.editorial-list-thumb{
+  width: 92px;
+  height: 68px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f4f4f4;
+}
+
+.editorial-list-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.editorial-list-copy h5{
+  font-size: 14px;
+  line-height: 1.3;
+  color: #16202f;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.editorial-list-copy span{
   font-size: 12px;
   color: #7a8090;
   font-weight: 600;
 }
 
-.top-article-feature-content h3{
-  font-size: 30px;
-  line-height: 1.14;
-  color: #16202f;
-  margin-bottom: 12px;
-  letter-spacing: -0.03em;
-}
-
-.top-article-feature-content p{
-  font-size: 15px;
-  line-height: 1.75;
-  color: #667085;
-  margin-bottom: 16px;
-  max-width: 90%;
-}
-
-.top-article-read{
-  font-size: 14px;
-  font-weight: 700;
-  color: #4d2fb2;
-}
-
-.top-articles-list{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: #fffdf9;
-}
-
-.top-article-item{
-  text-decoration: none;
-  color: inherit;
-  padding: 22px 24px;
-  border-top: 1px solid rgba(22,32,47,0.08);
-  transition: background .2s ease;
-}
-
-.top-article-item:nth-child(odd){
-  border-right: 1px solid rgba(22,32,47,0.08);
-}
-
-.top-article-item:hover{
-  background: #fcf9ff;
-}
-
-.top-article-item .top-article-meta{
-  margin-bottom: 10px;
-}
-
-.top-article-item h4{
-  font-size: 21px;
-  line-height: 1.25;
-  color: #16202f;
-  margin-bottom: 10px;
-  letter-spacing: -0.02em;
-}
-
-.top-article-item p{
-  font-size: 14px;
-  line-height: 1.75;
-  color: #6a6f7c;
-  margin-bottom: 12px;
-}
-
-.top-article-inline{
-  font-size: 13px;
-  font-weight: 700;
+.editorial-list-item:hover h5,
+.editorial-feature:hover h3{
   color: #4d2fb2;
 }
 
 @media(max-width: 900px){
-  .top-article-feature{
+  .editorial-articles-grid{
     grid-template-columns: 1fr;
   }
 
-  .top-article-feature-media{
-    min-height: 220px;
-  }
-
-  .top-articles-list{
-    grid-template-columns: 1fr;
-  }
-
-  .top-article-item:nth-child(odd){
-    border-right: none;
+  .editorial-feature-media{
+    height: 210px;
   }
 }
 
 @media(max-width: 640px){
   .top-articles-section{
-    padding: 76px 16px;
+    padding: 34px 16px 54px;
+  }
+
+  .article-strip{
+    height: 40px;
+    padding: 0 12px;
+  }
+
+  .article-strip-item{
+    font-size: 12px;
   }
 
   .top-articles-head h2{
-    font-size: 29px;
+    font-size: 24px;
   }
 
   .top-articles-view-all{
     width: 100%;
   }
 
-  .top-article-feature-content{
-    padding: 22px;
+  .editorial-articles-card{
+    padding: 14px;
+    border-radius: 20px;
   }
 
-  .top-article-feature-content h3{
-    font-size: 24px;
+  .editorial-feature-media{
+    height: 180px;
+    border-radius: 16px;
   }
 
-  .top-article-item{
-    padding: 18px 18px;
+  .editorial-list-item{
+    grid-template-columns: 80px 1fr;
+    gap: 10px;
   }
 
-  .top-article-item h4{
-    font-size: 18px;
+  .editorial-list-thumb{
+    width: 80px;
+    height: 60px;
+    border-radius: 12px;
+  }
+
+  .editorial-list-copy h5{
+    font-size: 13px;
   }
 }
   
@@ -4044,6 +4150,26 @@ select{
   <section class="top-articles-section">
   <div class="top-articles-shell">
 
+    <!-- headline strip -->
+    <div class="article-strip">
+      <span class="article-strip-label">Highlights</span>
+      <div class="article-strip-fade left"></div>
+      <div class="article-strip-fade right"></div>
+
+      <div class="article-strip-track">
+        <a href="page.html?slug=cat-exam" class="article-strip-item">CAT 2026 Guide: Colleges, Cutoffs, Strategy and What to Do Next</a>
+        <a href="page.html?slug=mba-colleges-in-bangalore" class="article-strip-item">Top MBA Colleges in Bangalore</a>
+        <a href="page.html?slug=pgdm-vs-mba" class="article-strip-item">PGDM vs MBA: Which One Should You Choose?</a>
+        <a href="page.html?slug=best-mba-colleges-without-cat" class="article-strip-item">Best MBA Colleges Without CAT Score</a>
+
+        <!-- duplicate for seamless loop -->
+        <a href="page.html?slug=cat-exam" class="article-strip-item">CAT 2026 Guide: Colleges, Cutoffs, Strategy and What to Do Next</a>
+        <a href="page.html?slug=mba-colleges-in-bangalore" class="article-strip-item">Top MBA Colleges in Bangalore</a>
+        <a href="page.html?slug=pgdm-vs-mba" class="article-strip-item">PGDM vs MBA: Which One Should You Choose?</a>
+        <a href="page.html?slug=best-mba-colleges-without-cat" class="article-strip-item">Best MBA Colleges Without CAT Score</a>
+      </div>
+    </div>
+
     <div class="top-articles-head">
       <div class="top-articles-copy">
         <span class="top-articles-tag">Top Articles</span>
@@ -4054,89 +4180,74 @@ select{
       <a href="page.html" class="top-articles-view-all">View All Articles</a>
     </div>
 
-    <div class="top-articles-board">
+    <div class="editorial-articles-card">
+      <div class="editorial-articles-grid">
 
-      <a href="page.html?slug=cat-exam" class="top-article-feature">
-        <div class="top-article-feature-media">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80" alt="CAT 2026 Article">
-        </div>
-
-        <div class="top-article-feature-content">
-          <div class="top-article-meta">
-            <span class="top-article-category">Exam</span>
-            <span class="top-article-date">Updated April 2026</span>
+        <!-- left feature -->
+        <a href="page.html?slug=cat-exam" class="editorial-feature">
+          <div class="editorial-feature-media">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="CAT 2026 Guide">
           </div>
 
           <h3>CAT 2026 Guide: Colleges, Cutoffs, Strategy and What to Do Next</h3>
-          <p>A complete article for students who want to understand CAT-based MBA admissions, shortlist colleges, and plan the next move properly.</p>
-          <span class="top-article-read">Read Article →</span>
+          <p>A practical guide for students planning CAT-based MBA admissions and shortlisting the right colleges.</p>
+
+          <div class="editorial-author">
+            <span class="editorial-author-dot">SS</span>
+            <span>Swadeshi Shiksha Editorial</span>
+          </div>
+        </a>
+
+        <!-- right list -->
+        <div class="editorial-side">
+          <h4>Recent articles</h4>
+
+          <div class="editorial-list">
+            <a href="page.html?slug=mba-colleges-in-bangalore" class="editorial-list-item">
+              <div class="editorial-list-thumb">
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=600&q=80" alt="Top MBA Colleges in Bangalore">
+              </div>
+              <div class="editorial-list-copy">
+                <h5>Top MBA Colleges in Bangalore</h5>
+                <span>City Guide</span>
+              </div>
+            </a>
+
+            <a href="page.html?slug=pgdm-vs-mba" class="editorial-list-item">
+              <div class="editorial-list-thumb">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="PGDM vs MBA">
+              </div>
+              <div class="editorial-list-copy">
+                <h5>PGDM vs MBA: Which One Should You Choose?</h5>
+                <span>Decision Guide</span>
+              </div>
+            </a>
+
+            <a href="page.html?slug=best-mba-colleges-without-cat" class="editorial-list-item">
+              <div class="editorial-list-thumb">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80" alt="Best MBA Colleges Without CAT Score">
+              </div>
+              <div class="editorial-list-copy">
+                <h5>Best MBA Colleges Without CAT Score</h5>
+                <span>Admissions</span>
+              </div>
+            </a>
+
+            <a href="page.html?slug=top-mba-colleges-in-pune" class="editorial-list-item">
+              <div class="editorial-list-thumb">
+                <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80" alt="Top MBA Colleges in Pune">
+              </div>
+              <div class="editorial-list-copy">
+                <h5>Top MBA Colleges in Pune</h5>
+                <span>City Guide</span>
+              </div>
+            </a>
+          </div>
         </div>
-      </a>
-
-      <div class="top-articles-list">
-
-        <a href="page.html?slug=mba-colleges-in-bangalore" class="top-article-item">
-          <div class="top-article-meta">
-            <span class="top-article-category">City</span>
-            <span class="top-article-date">April 2026</span>
-          </div>
-          <h4>Top MBA Colleges in Bangalore</h4>
-          <p>Compare colleges in Bangalore by fees, placements, location and overall fit.</p>
-          <span class="top-article-inline">Read Article →</span>
-        </a>
-
-        <a href="page.html?slug=pgdm-vs-mba" class="top-article-item">
-          <div class="top-article-meta">
-            <span class="top-article-category">Decision</span>
-            <span class="top-article-date">April 2026</span>
-          </div>
-          <h4>PGDM vs MBA: Which One Should You Choose?</h4>
-          <p>A simple student-focused breakdown of degree value, structure and career direction.</p>
-          <span class="top-article-inline">Read Article →</span>
-        </a>
-
-        <a href="page.html?slug=best-mba-colleges-without-cat" class="top-article-item">
-          <div class="top-article-meta">
-            <span class="top-article-category">Admissions</span>
-            <span class="top-article-date">April 2026</span>
-          </div>
-          <h4>Best MBA Colleges Without CAT Score</h4>
-          <p>Explore colleges accepting MAT, CMAT, XAT and profile-based admissions.</p>
-          <span class="top-article-inline">Read Article →</span>
-        </a>
-
-        <a href="page.html?slug=mba-colleges-in-pune" class="top-article-item">
-          <div class="top-article-meta">
-            <span class="top-article-category">City</span>
-            <span class="top-article-date">April 2026</span>
-          </div>
-          <h4>Top MBA Colleges in Pune</h4>
-          <p>A practical guide for students comparing Pune colleges for ROI, placements and campus life.</p>
-          <span class="top-article-inline">Read Article →</span>
-        </a>
-
-        <a href="page.html?slug=how-to-choose-mba-college" class="top-article-item">
-          <div class="top-article-meta">
-            <span class="top-article-category">Guide</span>
-            <span class="top-article-date">April 2026</span>
-          </div>
-          <h4>How to Choose the Right MBA College</h4>
-          <p>Use fees, location, placements, entrance exams and career goal fit to shortlist smarter.</p>
-          <span class="top-article-inline">Read Article →</span>
-        </a>
-
-        <a href="page.html?slug=mat-accepting-mba-colleges" class="top-article-item">
-          <div class="top-article-meta">
-            <span class="top-article-category">Exam</span>
-            <span class="top-article-date">April 2026</span>
-          </div>
-          <h4>Top MBA Colleges Accepting MAT Score</h4>
-          <p>Find useful MAT-accepting colleges with strong value for students planning alternatives to CAT.</p>
-          <span class="top-article-inline">Read Article →</span>
-        </a>
 
       </div>
     </div>
+
   </div>
 </section>
 
