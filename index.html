@@ -4431,59 +4431,6 @@ renderApplicationCards();
   ]
 };
 
-  <script>
-const explorePremiumData = {
-  exam: [
-    { title: "CAT", icon: "📘", theme: "theme-1" },
-    { title: "XAT", icon: "📝", theme: "theme-2" },
-    { title: "CMAT", icon: "📗", theme: "theme-3" },
-    { title: "MAT", icon: "📕", theme: "theme-4" },
-    { title: "NMAT", icon: "📙", theme: "theme-5" },
-    { title: "SNAP", icon: "📓", theme: "theme-6" }
-  ],
-  city: [
-    { title: "Bangalore", icon: "🌆", theme: "theme-1" },
-    { title: "Delhi NCR", icon: "🏙️", theme: "theme-2" },
-    { title: "Pune", icon: "🌇", theme: "theme-3" },
-    { title: "Mumbai", icon: "🌃", theme: "theme-4" },
-    { title: "Hyderabad", icon: "🏢", theme: "theme-5" },
-    { title: "Jaipur", icon: "📍", theme: "theme-6" }
-  ],
-  college: [
-    { title: "GIBS", icon: "🏛️", theme: "theme-1" },
-    { title: "JAGSoM", icon: "🎓", theme: "theme-2" },
-    { title: "Jaipuria", icon: "🏫", theme: "theme-3" },
-    { title: "GL Bajaj", icon: "📚", theme: "theme-4" },
-    { title: "ISBR", icon: "🧾", theme: "theme-5" },
-    { title: "IBS", icon: "🏢", theme: "theme-6" }
-  ]
-};
-
-const explorePremiumGrid = document.getElementById("explorePremiumGrid");
-const premiumTabBtns = document.querySelectorAll(".premium-tab-btn");
-
-function renderExplorePremiumCards(tab){
-  const items = explorePremiumData[tab] || [];
-  explorePremiumGrid.innerHTML = items.map((item, index) => `
-    <a href="#" class="explore-premium-card ${item.theme}">
-      <span class="explore-premium-step">STEP0${index + 1}</span>
-      <div class="explore-premium-icon">${item.icon}</div>
-      <div class="explore-premium-title">${item.title}</div>
-    </a>
-  `).join("");
-}
-
-premiumTabBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    premiumTabBtns.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    renderExplorePremiumCards(btn.dataset.tab);
-  });
-});
-
-renderExplorePremiumCards("exam");
-</script>
-
 const reviewCards = document.querySelectorAll(".testimonial-card");
 const reviewDots = document.querySelectorAll(".slider-dot");
 const reviewPrev = document.getElementById("reviewPrev");
