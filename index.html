@@ -4944,6 +4944,312 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="sticky-cta">
   <a href="#application-window">🎯 Get Free Counselling</a>
 </div>
+
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  /* ---------------- FIREBASE CONFIG ---------------- */
+  const firebaseConfig = {
+    apiKey: "AIzaSyCQNocdvSpqjm7ZMcrVYW0Fc-iMycGQO94",
+    authDomain: "swadeshi-shiksha.firebaseapp.com",
+    projectId: "swadeshi-shiksha",
+    storageBucket: "swadeshi-shiksha.firebasestorage.app",
+    messagingSenderId: "82131651843",
+    appId: "1:82131651843:web:42ea4d14d111e1db422d36"
+  };
+
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+
+  const db = firebase.firestore();
+
+  /* ---------------- PREVENT DUPLICATE POPUP ---------------- */
+  if (document.getElementById("ss-lead-popup-overlay")) return;
+
+  /* ---------------- POPUP CREATION ---------------- */
+  const popup = document.createElement("div");
+  popup.id = "ss-lead-popup-overlay";
+  popup.style.position = "fixed";
+  popup.style.inset = "0";
+  popup.style.background = "rgba(10,12,24,0.62)";
+  popup.style.backdropFilter = "blur(8px)";
+  popup.style.display = "flex";
+  popup.style.alignItems = "center";
+  popup.style.justifyContent = "center";
+  popup.style.padding = "18px";
+  popup.style.zIndex = "999999";
+  popup.style.opacity = "0";
+  popup.style.pointerEvents = "none";
+  popup.style.transition = "opacity 0.35s ease";
+
+  const box = document.createElement("div");
+  box.style.width = "100%";
+  box.style.maxWidth = "440px";
+  box.style.background = "#ffffff";
+  box.style.borderRadius = "24px";
+  box.style.padding = "28px 24px 24px";
+  box.style.position = "relative";
+  box.style.boxShadow = "0 24px 60px rgba(0,0,0,0.28)";
+  box.style.transform = "translateY(20px) scale(0.96)";
+  box.style.transition = "transform 0.35s ease";
+  box.style.fontFamily = "Inter, Arial, sans-serif";
+  box.style.border = "1px solid rgba(0,0,0,0.05)";
+
+  box.innerHTML = `
+    <button id="ssLeadPopupClose" type="button"
+      style="
+        position:absolute;
+        top:12px;
+        right:12px;
+        width:38px;
+        height:38px;
+        border:none;
+        border-radius:50%;
+        background:#f4f4f8;
+        color:#3b4252;
+        font-size:22px;
+        cursor:pointer;
+      ">×</button>
+
+    <div style="text-align:center; margin-bottom:18px;">
+      <img
+        src="https://assets.zyrosite.com/ix9hiMuysgYYl7hE/fulllogo-2-vOg0Ds5alxZWfMuS.png"
+        alt="Swadeshi Shiksha"
+        style="max-width:110px; margin-bottom:10px;"
+      >
+      <div style="font-size:23px; font-weight:800; color:#ff6b00; line-height:1.1;">
+        Swadeshi-Shiksha
+      </div>
+      <p style="margin:12px 0 0; font-size:15px; line-height:1.65; color:#334155; font-weight:600;">
+        🎓 Get Up To ₹1 Lakh Scholarship
+      </p>
+      <p style="margin:6px 0 0; font-size:13px; line-height:1.7; color:#667085;">
+        Share your details and get free MBA / PGDM admission guidance.
+      </p>
+    </div>
+
+    <form id="ssLeadPopupForm" action="https://formsubmit.co/shikshaswadeshi@gmail.com" method="POST">
+      <input
+        type="text"
+        name="Name"
+        placeholder="Your Name"
+        required
+        style="width:100%; height:48px; padding:0 14px; margin:8px 0; border:1px solid #d9deea; border-radius:12px; font-size:14px; outline:none;"
+      >
+
+      <input
+        type="tel"
+        name="Phone"
+        placeholder="Phone Number"
+        required
+        style="width:100%; height:48px; padding:0 14px; margin:8px 0; border:1px solid #d9deea; border-radius:12px; font-size:14px; outline:none;"
+      >
+
+      <input
+        type="email"
+        name="Email"
+        placeholder="Email Address"
+        required
+        style="width:100%; height:48px; padding:0 14px; margin:8px 0; border:1px solid #d9deea; border-radius:12px; font-size:14px; outline:none;"
+      >
+
+      <select
+        name="Preferred Course"
+        required
+        style="width:100%; height:48px; padding:0 14px; margin:8px 0; border:1px solid #d9deea; border-radius:12px; font-size:14px; outline:none; background:#fff;"
+      >
+        <option value="">Select Preferred Course</option>
+        <option>MBA</option>
+        <option>PGDM</option>
+        <option>BBA</option>
+        <option>Direct MBA Admission</option>
+      </select>
+
+      <input type="hidden" name="Page URL" id="ssLeadPageUrl">
+      <input type="hidden" name="Lead Source" value="Homepage Popup">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://www.swadeshi-shiksha.com/mba-thank-you-form-submitted">
+
+      <button
+        id="ssLeadSubmitBtn"
+        type="submit"
+        style="
+          width:100%;
+          height:50px;
+          margin-top:12px;
+          border:none;
+          border-radius:14px;
+          background:linear-gradient(135deg,#ff7a1a,#ff5a00);
+          color:#fff;
+          font-size:15px;
+          font-weight:700;
+          cursor:pointer;
+          box-shadow:0 12px 24px rgba(255,107,0,0.22);
+        "
+      >
+        Apply Now
+      </button>
+    </form>
+  `;
+
+  popup.appendChild(box);
+  document.body.appendChild(popup);
+
+  /* ---------------- HELPERS ---------------- */
+  const closeBtn = document.getElementById("ssLeadPopupClose");
+  const form = document.getElementById("ssLeadPopupForm");
+  const submitBtn = document.getElementById("ssLeadSubmitBtn");
+  const pageUrlField = document.getElementById("ssLeadPageUrl");
+
+  if (pageUrlField) {
+    pageUrlField.value = window.location.href;
+  }
+
+  function openPopup() {
+    popup.style.opacity = "1";
+    popup.style.pointerEvents = "auto";
+    box.style.transform = "translateY(0) scale(1)";
+  }
+
+  function closePopup() {
+    popup.style.opacity = "0";
+    popup.style.pointerEvents = "none";
+    box.style.transform = "translateY(20px) scale(0.96)";
+  }
+
+  /* ---------------- AUTO OPEN ONCE PER SESSION ---------------- */
+  if (!sessionStorage.getItem("ssLeadPopupShown")) {
+    setTimeout(function () {
+      openPopup();
+      sessionStorage.setItem("ssLeadPopupShown", "yes");
+    }, 4500);
+  }
+
+  /* ---------------- CLOSE EVENTS ---------------- */
+  closeBtn.addEventListener("click", closePopup);
+
+  popup.addEventListener("click", function (e) {
+    if (e.target === popup) {
+      closePopup();
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closePopup();
+    }
+  });
+
+  /* ---------------- FORM SUBMIT ---------------- */
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const name = form.querySelector('input[name="Name"]').value.trim();
+    const phone = form.querySelector('input[name="Phone"]').value.trim();
+    const email = form.querySelector('input[name="Email"]').value.trim();
+    const course = form.querySelector('select[name="Preferred Course"]').value;
+    const pageURL = window.location.href;
+
+    if (!name || !phone || !email || !course) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    try {
+      await db.collection("leads").add({
+        name: name,
+        phone: phone,
+        email: email,
+        course: course,
+        pageURL: pageURL,
+        source: "homepage-popup",
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    } catch (err) {
+      console.error("Firestore save failed:", err);
+    }
+
+    form.submit();
+  });
+});
+</script>
+
+  <form id="popupForm" action="https://formsubmit.co/shikshaswadeshi@gmail.com" method="POST">
+
+  <input type="text" name="Name" placeholder="Your Name" required>
+
+  <input type="tel" name="Phone" placeholder="Phone Number" required>
+
+  <input type="email" name="Email" placeholder="Email Address" required>
+
+  <select name="Preferred Course" required>
+    <option value="">Select Preferred Course</option>
+    <option>MBA</option>
+    <option>PGDM</option>
+    <option>BBA</option>
+    <option>Direct MBA Admission</option>
+  </select>
+
+  <!-- IMPORTANT HIDDEN FIELDS -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://www.swadeshi-shiksha.com/mba-thank-you-form-submitted">
+  <input type="hidden" name="Page URL" id="pageUrl">
+  <input type="hidden" name="Lead Source" value="Homepage Popup">
+
+  <button type="submit" id="submitBtn">Apply Now</button>
+
+</form>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const form = document.getElementById("popupForm");
+  const submitBtn = document.getElementById("submitBtn");
+
+  if(!form) return;
+
+  form.addEventListener("submit", async function(e){
+    e.preventDefault(); // STOP default submit
+
+    const name = form.querySelector('[name="Name"]').value.trim();
+    const phone = form.querySelector('[name="Phone"]').value.trim();
+    const email = form.querySelector('[name="Email"]').value.trim();
+    const course = form.querySelector('[name="Preferred Course"]').value;
+    const pageURL = window.location.href;
+
+    if(!name || !phone || !email || !course) return;
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
+
+    try {
+      // 🔥 SAVE TO FIRESTORE
+      await db.collection("leads").add({
+        name: name,
+        phone: phone,
+        email: email,
+        course: course,
+        pageURL: pageURL,
+        source: "homepage-popup",
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+
+      console.log("Lead saved to Firestore");
+
+    } catch(err){
+      console.error("Firestore error:", err);
+    }
+
+    // ✅ ALWAYS SEND EMAIL (even if Firestore fails)
+    form.submit();
+  });
+
+});
+</script>
   
 </body>
 </html>
