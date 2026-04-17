@@ -5122,12 +5122,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ---------------- AUTO OPEN ONCE PER SESSION ---------------- */
-  if (!sessionStorage.getItem("ssLeadPopupShown")) {
-    setTimeout(function () {
-      openPopup();
-      sessionStorage.setItem("ssLeadPopupShown", "yes");
-    }, 4500);
-  }
+  setTimeout(function () {
+  openPopup();
+}, 4500);
 
   /* ---------------- CLOSE EVENTS ---------------- */
   closeBtn.addEventListener("click", closePopup);
@@ -5175,79 +5172,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     form.submit();
   });
-});
-</script>
-
-  <form id="popupForm" action="https://formsubmit.co/shikshaswadeshi@gmail.com" method="POST">
-
-  <input type="text" name="Name" placeholder="Your Name" required>
-
-  <input type="tel" name="Phone" placeholder="Phone Number" required>
-
-  <input type="email" name="Email" placeholder="Email Address" required>
-
-  <select name="Preferred Course" required>
-    <option value="">Select Preferred Course</option>
-    <option>MBA</option>
-    <option>PGDM</option>
-    <option>BBA</option>
-    <option>Direct MBA Admission</option>
-  </select>
-
-  <!-- IMPORTANT HIDDEN FIELDS -->
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://www.swadeshi-shiksha.com/mba-thank-you-form-submitted">
-  <input type="hidden" name="Page URL" id="pageUrl">
-  <input type="hidden" name="Lead Source" value="Homepage Popup">
-
-  <button type="submit" id="submitBtn">Apply Now</button>
-
-</form>
-
-  <script>
-document.addEventListener("DOMContentLoaded", function(){
-
-  const form = document.getElementById("popupForm");
-  const submitBtn = document.getElementById("submitBtn");
-
-  if(!form) return;
-
-  form.addEventListener("submit", async function(e){
-    e.preventDefault(); // STOP default submit
-
-    const name = form.querySelector('[name="Name"]').value.trim();
-    const phone = form.querySelector('[name="Phone"]').value.trim();
-    const email = form.querySelector('[name="Email"]').value.trim();
-    const course = form.querySelector('[name="Preferred Course"]').value;
-    const pageURL = window.location.href;
-
-    if(!name || !phone || !email || !course) return;
-
-    submitBtn.disabled = true;
-    submitBtn.innerText = "Submitting...";
-
-    try {
-      // 🔥 SAVE TO FIRESTORE
-      await db.collection("leads").add({
-        name: name,
-        phone: phone,
-        email: email,
-        course: course,
-        pageURL: pageURL,
-        source: "homepage-popup",
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-      });
-
-      console.log("Lead saved to Firestore");
-
-    } catch(err){
-      console.error("Firestore error:", err);
-    }
-
-    // ✅ ALWAYS SEND EMAIL (even if Firestore fails)
-    form.submit();
-  });
-
 });
 </script>
   
