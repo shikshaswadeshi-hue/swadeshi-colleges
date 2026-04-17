@@ -1506,96 +1506,10 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   }
 }
 
-/* TABBED EXPLORE SECTION */
-
-.explore-tabs-section{
-  padding: 95px 20px;
-  background:
-    radial-gradient(circle at top left, rgba(77,47,178,0.18), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255,107,0,0.18), transparent 30%),
-    linear-gradient(180deg, #f5f1ff 0%, #fff7f0 100%);
-}
-
-.explore-tabs-head{
-  max-width: 1180px;
-  margin: 0 auto 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.explore-tabs-copy{
-  max-width: 620px;
-}
-
-.explore-tabs-tag{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: #f4ebff;
-  color: #4d2fb2;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .03em;
-  margin-bottom: 14px;
-}
-
-.explore-tabs-copy h2{
-  font-size: 36px;
-  line-height: 1.15;
-  color: #16202f;
-  margin-bottom: 12px;
-}
-
-.explore-tabs-copy p{
-  font-size: 15px;
-  line-height: 1.75;
-  color: #6a6f7c;
-}
-
-.explore-tabs-switcher{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255,255,255,0.75);
-  border: 1px solid rgba(22,32,47,0.08);
-  padding: 8px;
-  border-radius: 999px;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.05);
-}
-
-.tab-btn{
-  height: 42px;
-  padding: 0 18px;
-  border: none;
-  border-radius: 999px;
-  background: transparent;
-  color: #4b5563;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all .22s ease;
-}
-
-.tab-btn:hover{
-  color: #16202f;
-}
-
-.tab-btn.active{
-  background: linear-gradient(135deg, #4d2fb2, #ff6b00);
-  color: #fff;
-  box-shadow: 0 12px 24px rgba(77,47,178,0.25);
-}
-
-/* ===== SMALL PREMIUM EXPLORE CARDS ===== */
+/* ===== EXPLORE MBA OPTIONS : NEW PREMIUM TABBED SECTION ===== */
 
 .explore-premium-section{
-  padding: 44px 20px 54px;
+  padding: 42px 20px 62px;
   background:
     radial-gradient(circle at top left, rgba(109,76,217,0.10), transparent 24%),
     radial-gradient(circle at bottom right, rgba(255,130,64,0.10), transparent 24%),
@@ -1603,69 +1517,78 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .explore-premium-shell{
-  max-width: 1120px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 26px;
-  border-radius: 28px;
-  background: linear-gradient(135deg, rgba(52,35,99,0.96), rgba(92,78,134,0.78));
+  padding: 38px;
+  border-radius: 34px;
+  background: linear-gradient(135deg, #2d2152 0%, #4a3b75 58%, #8d7aa4 100%);
   border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 20px 50px rgba(34,23,68,0.16);
+  box-shadow: 0 24px 60px rgba(34,23,68,0.16);
+  overflow: hidden;
 }
 
 .explore-premium-top{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:18px;
-  margin-bottom:22px;
-  flex-wrap:wrap;
+  display:grid;
+  grid-template-columns: 1.1fr auto;
+  gap: 26px;
+  align-items: center;
+  margin-bottom: 28px;
 }
 
 .explore-premium-copy{
-  max-width: 480px;
+  max-width: 620px;
 }
 
 .explore-premium-tag{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:7px 13px;
+  padding:8px 14px;
   border-radius:999px;
   background:rgba(255,255,255,0.10);
-  border:1px solid rgba(255,255,255,0.12);
-  color:#f5ecff;
-  font-size:11px;
+  border:1px solid rgba(255,255,255,0.14);
+  color:#f7efff;
+  font-size:12px;
   font-weight:800;
   letter-spacing:.03em;
-  margin-bottom:10px;
+  margin-bottom:14px;
 }
 
 .explore-premium-copy h2{
   font-size: 34px;
-  line-height: 1.06;
+  line-height: 1.05;
   color: #fff;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
+  margin: 0 0 12px;
+}
+
+.explore-premium-copy p{
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.78);
   margin: 0;
+  max-width: 560px;
 }
 
 .explore-premium-tabs{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  padding:7px;
+  padding:8px;
   border-radius:999px;
   background:rgba(255,255,255,0.10);
   border:1px solid rgba(255,255,255,0.14);
+  justify-self:end;
 }
 
 .premium-tab-btn{
-  height:40px;
-  padding:0 16px;
+  height:46px;
+  padding:0 22px;
   border:none;
   border-radius:999px;
   background:transparent;
-  color:rgba(255,255,255,0.80);
-  font-size:13px;
+  color:rgba(255,255,255,0.82);
+  font-size:15px;
   font-weight:800;
   cursor:pointer;
   transition:all .22s ease;
@@ -1681,108 +1604,192 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   box-shadow: 0 10px 22px rgba(159,71,255,0.22);
 }
 
+.explore-tab-panel{
+  display:none;
+  animation: exploreFade .35s ease;
+}
+
+.explore-tab-panel.active{
+  display:block;
+}
+
+@keyframes exploreFade{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
 .explore-premium-grid{
   display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.explore-premium-grid.two-row{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .explore-premium-card{
   position:relative;
-  min-height: 154px;
-  border-radius: 22px;
-  padding: 18px 16px 14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height: 196px;
+  border-radius: 24px;
+  padding: 18px 18px 16px;
   text-decoration:none;
   overflow:hidden;
-  box-shadow: 0 14px 30px rgba(18,16,40,0.16);
+  box-shadow: 0 16px 34px rgba(18,16,40,0.16);
   transition: transform .22s ease, box-shadow .22s ease;
 }
 
 .explore-premium-card:hover{
   transform: translateY(-4px);
-  box-shadow: 0 18px 36px rgba(18,16,40,0.20);
+  box-shadow: 0 22px 40px rgba(18,16,40,0.22);
 }
 
 .explore-premium-card::before{
   content:"";
   position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at top left, rgba(255,255,255,0.22), transparent 36%),
-    linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0));
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  right:-62px;
+  top:-62px;
+  background: radial-gradient(circle, rgba(255,255,255,0.24), transparent 72%);
   pointer-events:none;
 }
 
-.explore-premium-step{
+.explore-premium-card::after{
+  content:"";
   position:absolute;
-  top:14px;
-  left:14px;
-  font-size:12px;
-  font-weight:800;
-  color:rgba(255,255,255,0.92);
-  letter-spacing:.04em;
+  inset:0;
+  background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
+  pointer-events:none;
 }
 
-.explore-premium-icon{
-  width:54px;
-  height:54px;
-  margin:34px auto 14px;
-  border-radius:16px;
-  background:rgba(255,255,255,0.88);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95);
-  display:flex;
+.explore-card-top{
+  position:relative;
+  z-index:1;
+}
+
+.explore-card-badge{
+  display:inline-flex;
   align-items:center;
   justify-content:center;
-  font-size:24px;
+  min-height:28px;
+  padding: 0 10px;
+  border-radius:999px;
+  background: rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.92);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
 }
 
-.explore-premium-title{
-  text-align:center;
-  font-size:22px;
-  line-height:1.1;
+.explore-card-title{
+  font-size: 28px;
+  line-height: 1.05;
   color:#fff;
-  font-weight:800;
-  letter-spacing:-0.02em;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  margin: 0 0 10px;
 }
 
-/* card colors */
-.explore-premium-card.theme-1{
-  background: linear-gradient(135deg,#ffb15f,#ff7f73);
-}
-.explore-premium-card.theme-2{
-  background: linear-gradient(135deg,#ff6ca8,#d74cff);
-}
-.explore-premium-card.theme-3{
-  background: linear-gradient(135deg,#cf59ff,#8e52ff);
-}
-.explore-premium-card.theme-4{
-  background: linear-gradient(135deg,#8457ff,#5d7cff);
-}
-.explore-premium-card.theme-5{
-  background: linear-gradient(135deg,#5e88ff,#45b8ff);
-}
-.explore-premium-card.theme-6{
-  background: linear-gradient(135deg,#42c7ff,#36d6c7);
+.explore-card-text{
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.86);
+  max-width: 88%;
+  margin: 0;
 }
 
-@media(max-width: 900px){
-  .explore-premium-grid{
-    grid-template-columns:repeat(2, minmax(0, 1fr));
+.explore-card-bottom{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+  margin-top: 18px;
+}
+
+.explore-card-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: #ffd24d;
+  color: #3a2a00;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration:none;
+  box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+}
+
+.explore-card-btn:hover{
+  transform: translateY(-1px);
+}
+
+.explore-card-art{
+  font-size: 48px;
+  line-height: 1;
+  opacity: .95;
+  flex-shrink: 0;
+}
+
+/* different colors */
+.theme-pinkpurple{ background: linear-gradient(135deg,#f453c6 0%, #7c4dff 100%); }
+.theme-skyblue{ background: linear-gradient(135deg,#55c2ff 0%, #4d79ff 100%); }
+.theme-cyanmint{ background: linear-gradient(135deg,#38d6c3 0%, #56b4ff 100%); }
+.theme-peachpink{ background: linear-gradient(135deg,#ff7aa8 0%, #ffb37a 100%); }
+.theme-violet{ background: linear-gradient(135deg,#8f67ff 0%, #5d8dff 100%); }
+.theme-orangeviolet{ background: linear-gradient(135deg,#ff9f5a 0%, #9747ff 100%); }
+.theme-greenblue{ background: linear-gradient(135deg,#29c98b 0%, #4d8dff 100%); }
+.theme-rosepurple{ background: linear-gradient(135deg,#ff7096 0%, #a04cff 100%); }
+
+@media(max-width: 1100px){
+  .explore-premium-grid,
+  .explore-premium-grid.two-row{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .explore-premium-top{
+    grid-template-columns: 1fr;
+    align-items:flex-start;
+  }
+
+  .explore-premium-tabs{
+    justify-self:start;
   }
 }
 
-@media(max-width: 640px){
+@media(max-width: 680px){
   .explore-premium-section{
-    padding: 34px 16px 44px;
+    padding: 34px 16px 46px;
   }
 
   .explore-premium-shell{
-    padding: 18px;
-    border-radius: 22px;
+    padding: 20px;
+    border-radius: 24px;
   }
 
   .explore-premium-copy h2{
-    font-size: 26px;
+    font-size: 27px;
+  }
+
+  .explore-premium-copy p{
+    font-size: 14px;
   }
 
   .explore-premium-tabs{
@@ -1793,24 +1800,28 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   .premium-tab-btn{
     flex:1;
     padding:0 10px;
-    font-size:12px;
+    font-size:13px;
   }
 
-  .explore-premium-grid{
-    grid-template-columns:1fr;
-    gap:12px;
+  .explore-premium-grid,
+  .explore-premium-grid.two-row{
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .explore-premium-card{
-    min-height:132px;
-    border-radius:18px;
+    min-height: 182px;
+    border-radius: 20px;
   }
 
-  .explore-premium-title{
-    font-size:20px;
+  .explore-card-title{
+    font-size: 24px;
+  }
+
+  .explore-card-art{
+    font-size: 42px;
   }
 }
-
   
   /* ===== COMPACT ARTICLES + HEADLINE STRIP ===== */
 
@@ -3978,28 +3989,234 @@ body{
     </div>
   </div>
 </section>
-  <section class="explore-premium-section">
-  <div class="explore-premium-shell">
 
+  <section class="explore-premium-section" id="explore-options">
+  <div class="explore-premium-shell">
     <div class="explore-premium-top">
       <div class="explore-premium-copy">
         <span class="explore-premium-tag">Explore Smartly</span>
-        <h2>Explore MBA Options Faster</h2>
+        <h2>Discover Colleges in a More Intentional Way</h2>
+        <p>
+          Browse by entrance exam, preferred city, or top colleges through a cleaner and more premium discovery experience.
+        </p>
       </div>
 
-      <div class="explore-premium-tabs" id="explorePremiumTabs">
-        <button class="premium-tab-btn active" data-tab="exam" type="button">By Exam</button>
-        <button class="premium-tab-btn" data-tab="city" type="button">By City</button>
-        <button class="premium-tab-btn" data-tab="college" type="button">Top Colleges</button>
+      <div class="explore-premium-tabs">
+        <button class="premium-tab-btn active" data-tab="exam">By Exam</button>
+        <button class="premium-tab-btn" data-tab="city">By City</button>
+        <button class="premium-tab-btn" data-tab="college">Top Colleges</button>
       </div>
     </div>
 
-    <div class="explore-premium-grid" id="explorePremiumGrid"></div>
+    <!-- BY EXAM -->
+    <div class="explore-tab-panel active" id="tab-exam">
+      <div class="explore-premium-grid two-row">
+        <a href="page.html?slug=colleges-accepting-cat-2026-scores" class="explore-premium-card theme-pinkpurple">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Most Popular</span>
+            <h3 class="explore-card-title">CAT</h3>
+            <p class="explore-card-text">Explore top MBA colleges accepting CAT score.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">Explore</span>
+            <span class="explore-card-art">📘</span>
+          </div>
+        </a>
 
+        <a href="page.html?slug=colleges-accepting-xat-2026-scores" class="explore-premium-card theme-skyblue">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Top Entrance</span>
+            <h3 class="explore-card-title">XAT</h3>
+            <p class="explore-card-text">Discover colleges and PGDM institutes through XAT.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">Explore</span>
+            <span class="explore-card-art">📝</span>
+          </div>
+        </a>
+
+        <a href="page.html?slug=colleges-accepting-cmat-2026-scores" class="explore-premium-card theme-cyanmint">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Exam Route</span>
+            <h3 class="explore-card-title">CMAT</h3>
+            <p class="explore-card-text">Find colleges for CMAT-based MBA and PGDM admissions.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">Explore</span>
+            <span class="explore-card-art">📗</span>
+          </div>
+        </a>
+
+        <a href="page.html?slug=colleges-accepting-mat-2026-scores" class="explore-premium-card theme-peachpink">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Exam Route</span>
+            <h3 class="explore-card-title">MAT</h3>
+            <p class="explore-card-text">Browse MBA colleges accepting MAT score.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">Explore</span>
+            <span class="explore-card-art">📕</span>
+          </div>
+        </a>
+
+        <a href="page.html?slug=colleges-accepting-nmat-2026-scores" class="explore-premium-card theme-violet">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Exam Route</span>
+            <h3 class="explore-card-title">NMAT</h3>
+            <p class="explore-card-text">See NMAT-linked college options in one place.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">Explore</span>
+            <span class="explore-card-art">🎯</span>
+          </div>
+        </a>
+
+        <a href="page.html?slug=colleges-accepting-snap-2026-scores" class="explore-premium-card theme-orangeviolet">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Exam Route</span>
+            <h3 class="explore-card-title">SNAP</h3>
+            <p class="explore-card-text">Explore colleges and institutes through SNAP.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">Explore</span>
+            <span class="explore-card-art">📙</span>
+          </div>
+        </a>
+
+        <a href="page.html?slug=colleges-accepting-atma-2026-scores" class="explore-premium-card theme-greenblue">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Exam Route</span>
+            <h3 class="explore-card-title">ATMA</h3>
+            <p class="explore-card-text">Check ATMA accepting colleges for MBA admissions.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">Explore</span>
+            <span class="explore-card-art">📒</span>
+          </div>
+        </a>
+
+        <a href="page.html?slug=colleges-accepting-gmat-2026-scores" class="explore-premium-card theme-rosepurple">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Global Route</span>
+            <h3 class="explore-card-title">GMAT</h3>
+            <p class="explore-card-text">Explore selected B-schools and premium pathways through GMAT.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">Explore</span>
+            <span class="explore-card-art">🌍</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- BY CITY -->
+    <div class="explore-tab-panel" id="tab-city">
+      <div class="explore-premium-grid">
+        <a href="bangalore.html" class="explore-premium-card theme-skyblue">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Top MBA Hub</span>
+            <h3 class="explore-card-title">Bangalore</h3>
+            <p class="explore-card-text">Explore MBA and PGDM colleges in Bangalore.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">View City</span>
+            <span class="explore-card-art">🏙️</span>
+          </div>
+        </a>
+
+        <a href="delhi.html" class="explore-premium-card theme-pinkpurple">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Popular Choice</span>
+            <h3 class="explore-card-title">Delhi NCR</h3>
+            <p class="explore-card-text">Browse top colleges in Delhi, Noida, Ghaziabad and Gurgaon.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">View City</span>
+            <span class="explore-card-art">🌆</span>
+          </div>
+        </a>
+
+        <a href="pune.html" class="explore-premium-card theme-cyanmint">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Student Favorite</span>
+            <h3 class="explore-card-title">Pune</h3>
+            <p class="explore-card-text">Find PGDM and MBA options in Pune.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">View City</span>
+            <span class="explore-card-art">📍</span>
+          </div>
+        </a>
+
+        <a href="mumbai.html" class="explore-premium-card theme-peachpink">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Metro Picks</span>
+            <h3 class="explore-card-title">Mumbai</h3>
+            <p class="explore-card-text">Explore management institutes in Mumbai.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">View City</span>
+            <span class="explore-card-art">🏢</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- TOP COLLEGES -->
+    <div class="explore-tab-panel" id="tab-college">
+      <div class="explore-premium-grid">
+        <a href="college.html?slug=jagsom-bangalore" class="explore-premium-card theme-violet">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Top College</span>
+            <h3 class="explore-card-title">JAGSoM</h3>
+            <p class="explore-card-text">Explore JAGSoM courses, placements and admissions.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">View College</span>
+            <span class="explore-card-art">🏫</span>
+          </div>
+        </a>
+
+        <a href="college.html?slug=gibs-bangalore" class="explore-premium-card theme-orangeviolet">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Popular PGDM</span>
+            <h3 class="explore-card-title">GIBS</h3>
+            <p class="explore-card-text">Check fee, placements and profile of GIBS Bangalore.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">View College</span>
+            <span class="explore-card-art">🎓</span>
+          </div>
+        </a>
+
+        <a href="college.html?slug=iba-bangalore" class="explore-premium-card theme-greenblue">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">Trending</span>
+            <h3 class="explore-card-title">IBA</h3>
+            <p class="explore-card-text">Explore IBA Bangalore and compare it faster.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">View College</span>
+            <span class="explore-card-art">📚</span>
+          </div>
+        </a>
+
+        <a href="colleges.html" class="explore-premium-card theme-rosepurple">
+          <div class="explore-card-top">
+            <span class="explore-card-badge">More Options</span>
+            <h3 class="explore-card-title">View All</h3>
+            <p class="explore-card-text">Open the full college list and discover more options.</p>
+          </div>
+          <div class="explore-card-bottom">
+            <span class="explore-card-btn">Open List</span>
+            <span class="explore-card-art">✨</span>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
-
-
+  
   <section class="top-articles-section">
   <div class="top-articles-shell">
 
@@ -4698,6 +4915,29 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+});
+</script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const tabButtons = document.querySelectorAll('.premium-tab-btn');
+  const tabPanels = document.querySelectorAll('.explore-tab-panel');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      const currentTab = this.getAttribute('data-tab');
+
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabPanels.forEach(panel => panel.classList.remove('active'));
+
+      this.classList.add('active');
+
+      const activePanel = document.getElementById('tab-' + currentTab);
+      if (activePanel) {
+        activePanel.classList.add('active');
+      }
+    });
+  });
 });
 </script>
 
