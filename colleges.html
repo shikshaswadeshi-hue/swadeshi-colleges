@@ -579,151 +579,127 @@
       flex-shrink:0;
     }
 
-    .whyCarouselWrap{
-      position:relative;
-      overflow:hidden;
-      border-radius:28px;
-    }
+   .whyStepsSection{
+  position:relative;
+  overflow:hidden;
+  border-radius:34px;
+  min-height:320px;
+  padding:28px 24px;
+  border:1px solid #ece4fb;
+  box-shadow:0 18px 42px rgba(42,29,89,0.07);
+  background:
+    linear-gradient(135deg, rgba(22,32,47,0.70), rgba(93,54,210,0.55)),
+    url('assets/why-swadeshi-banner.jpg') center/cover no-repeat;
+}
 
-    .whyCarousel{
-      display:flex;
-      gap:20px;
-      overflow-x:auto;
-      scroll-behavior:smooth;
-      scroll-snap-type:x mandatory;
-      padding:8px 4px 10px;
-      scrollbar-width:none;
-    }
+.whyStepsOverlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(20,24,38,0.62) 0%, rgba(20,24,38,0.35) 45%, rgba(20,24,38,0.18) 100%);
+  pointer-events:none;
+}
 
-    .whyCarousel::-webkit-scrollbar{
-      display:none;
-    }
+.whyStepsContent{
+  position:relative;
+  z-index:1;
+  max-width:980px;
+}
 
-    .whyCard{
-      position:relative;
-      min-width:340px;
-      max-width:340px;
-      flex:0 0 340px;
-      scroll-snap-align:start;
-      border-radius:28px;
-      padding:22px;
-      background:
-        radial-gradient(circle at top right, rgba(255,122,26,0.10), transparent 35%),
-        radial-gradient(circle at bottom left, rgba(122,85,231,0.12), transparent 35%),
-        linear-gradient(135deg, #ffffff 0%, #faf7ff 100%);
-      border:1px solid #ece4fb;
-      box-shadow:0 14px 34px rgba(42,29,89,0.06);
-      overflow:hidden;
-      transition:transform 0.22s ease, box-shadow 0.22s ease;
-      will-change:transform;
-    }
+.whyStepsHead{
+  margin-bottom:20px;
+}
 
-    .whyCard::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:5px;
-      background:linear-gradient(90deg,#7a55e7,#9b7dff,#ff8a2d);
-    }
+.whyMiniBadge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.18);
+  color:#ffffff;
+  font-size:12px;
+  font-weight:800;
+  backdrop-filter:blur(8px);
+  margin-bottom:12px;
+}
 
-    .whyCard:hover{
-      transform:translateY(-6px) scale(1.01);
-      box-shadow:0 22px 42px rgba(42,29,89,0.10);
-    }
+.whyStepsHead h2{
+  margin:0 0 8px;
+  font-family:'Sora',sans-serif;
+  font-size:32px;
+  line-height:1.08;
+  letter-spacing:-0.04em;
+  color:#ffffff;
+  max-width:520px;
+}
 
-    .whyCardTop{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom:18px;
-    }
+.whyStepsHead p{
+  margin:0;
+  color:rgba(255,255,255,0.84);
+  font-size:14px;
+  line-height:1.7;
+  max-width:520px;
+}
 
-    .whyIcon{
-      width:54px;
-      height:54px;
-      border-radius:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:24px;
-      background:linear-gradient(135deg,#f7f2ff 0%,#ffffff 100%);
-      border:1px solid #ece4fb;
-      box-shadow:0 10px 20px rgba(96,55,212,0.08);
-    }
+.whyStepsGrid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:14px;
+  max-width:760px;
+}
 
-    .whyTag{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:9px 12px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:800;
-      background:#ffffff;
-      color:#6948dd;
-      border:1px solid #e6dbff;
-      box-shadow:0 8px 16px rgba(96,55,212,0.05);
-    }
+.whyStepCard{
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.16);
+  backdrop-filter:blur(10px);
+  border-radius:20px;
+  padding:16px;
+  box-shadow:0 12px 24px rgba(0,0,0,0.08);
+}
 
-    .whyCard h3{
-      margin:0 0 10px;
-      font-size:24px;
-      line-height:1.2;
-      color:#16202f;
-    }
+.whyStepNo{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.16);
+  color:#ffd6b5;
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:10px;
+}
 
-    .whyCard p{
-      margin:0;
-      color:#667085;
-      line-height:1.8;
-      font-size:15px;
-    }
+.whyStepCard h3{
+  margin:0 0 6px;
+  font-size:18px;
+  line-height:1.2;
+  color:#ffffff;
+}
 
-    .whyCarouselWrap::before,
-    .whyCarouselWrap::after{
-      content:"";
-      position:absolute;
-      top:0;
-      bottom:0;
-      width:36px;
-      z-index:2;
-      pointer-events:none;
-    }
+.whyStepCard p{
+  margin:0;
+  font-size:13px;
+  line-height:1.65;
+  color:rgba(255,255,255,0.82);
+}
 
-    .whyCarouselWrap::before{
-      left:0;
-      background:linear-gradient(90deg, #fbf9ff 0%, rgba(251,249,255,0) 100%);
-    }
+@media (max-width: 768px){
+  .whyStepsSection{
+    min-height:auto;
+    padding:22px 16px;
+    border-radius:24px;
+  }
 
-    .whyCarouselWrap::after{
-      right:0;
-      background:linear-gradient(270deg, #fbf9ff 0%, rgba(251,249,255,0) 100%);
-    }
+  .whyStepsHead h2{
+    font-size:26px;
+  }
 
-    .whyDots{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:8px;
-      margin-top:14px;
-    }
-
-    .whyDot{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:#d9cdf8;
-      transition:all 0.25s ease;
-    }
-
-    .whyDot.active{
-      width:26px;
-      border-radius:999px;
-      background:linear-gradient(135deg,#7a55e7 0%,#ff8a2d 100%);
-    }
+  .whyStepsGrid{
+    grid-template-columns:1fr;
+  }
+}
 
     .featuredGrid,
     .resultsGrid{
@@ -1606,62 +1582,44 @@
     </div>
 
     <section class="sectionBlock" id="whySection">
-      <div class="sectionShell">
-        <div class="sectionTitle">
-          <div>
-            <h2>Why Swadeshi Shiksha</h2>
-            <p>Built around guidance, clarity, and student-first discovery.</p>
-          </div>
+  <div class="whyStepsSection">
+    <div class="whyStepsOverlay"></div>
+
+    <div class="whyStepsContent">
+      <div class="whyStepsHead">
+        <span class="whyMiniBadge">Why Swadeshi Shiksha</span>
+        <h2>Your MBA journey, in simple steps</h2>
+        <p>Shortlist better, understand faster, and move ahead with clarity.</p>
+      </div>
+
+      <div class="whyStepsGrid">
+        <div class="whyStepCard">
+          <span class="whyStepNo">Step 1</span>
+          <h3>Search Smart</h3>
+          <p>Explore colleges by exam, city, or course in seconds.</p>
         </div>
 
-        <div class="whyCarouselWrap">
-          <div class="whyCarousel" id="whyCarousel">
-            <div class="whyCard">
-              <div class="whyCardTop">
-                <div class="whyIcon">🎓</div>
-                <span class="whyTag">Verified</span>
-              </div>
-              <h3>Verified College Profiles</h3>
-              <p>Explore admission-focused college pages with key details like approvals, fees, placements, and profile data in one place.</p>
-            </div>
+        <div class="whyStepCard">
+          <span class="whyStepNo">Step 2</span>
+          <h3>Compare Clearly</h3>
+          <p>Check fees, approvals, location, and profile details easily.</p>
+        </div>
 
-            <div class="whyCard">
-              <div class="whyCardTop">
-                <div class="whyIcon">📞</div>
-                <span class="whyTag">Support</span>
-              </div>
-              <h3>Free Counselling Support</h3>
-              <p>Get help with shortlisting, admissions, eligibility clarity, and confusion around exams or direct admission routes.</p>
-            </div>
+        <div class="whyStepCard">
+          <span class="whyStepNo">Step 3</span>
+          <h3>Get Guidance</h3>
+          <p>Talk to our team for shortlisting and admission clarity.</p>
+        </div>
 
-            <div class="whyCard">
-              <div class="whyCardTop">
-                <div class="whyIcon">🔎</div>
-                <span class="whyTag">Discovery</span>
-              </div>
-              <h3>Search. Compare. Decide.</h3>
-              <p>Discover colleges by exam, course, city, or name without opening many pages again and again.</p>
-            </div>
-
-            <div class="whyCard">
-              <div class="whyCardTop">
-                <div class="whyIcon">🚀</div>
-                <span class="whyTag">Future Ready</span>
-              </div>
-              <h3>Future-Ready Discovery Portal</h3>
-              <p>This platform is designed to become a stronger homepage experience with search, trust, and lead conversion together.</p>
-            </div>
-          </div>
-
-          <div class="whyDots" id="whyDots">
-            <span class="whyDot active"></span>
-            <span class="whyDot"></span>
-            <span class="whyDot"></span>
-            <span class="whyDot"></span>
-          </div>
+        <div class="whyStepCard">
+          <span class="whyStepNo">Step 4</span>
+          <h3>Move Confidently</h3>
+          <p>Take better admission decisions without confusion.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <section class="sectionBlock" id="featuredSection">
       <div class="sectionShell">
@@ -2064,69 +2022,6 @@
           </div>
         `;
       });
-
-    let whyCarouselAutoSlide;
-
-    function startWhyCarouselAutoSlide() {
-      const carousel = document.getElementById("whyCarousel");
-      if (!carousel) return;
-
-      stopWhyCarouselAutoSlide();
-
-      whyCarouselAutoSlide = setInterval(() => {
-        const firstCard = carousel.querySelector(".whyCard");
-        if (!firstCard) return;
-
-        const cardWidth = firstCard.offsetWidth + 20;
-        const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-
-        if (carousel.scrollLeft + cardWidth >= maxScrollLeft - 10) {
-          carousel.scrollTo({ left: 0, behavior: "smooth" });
-        } else {
-          carousel.scrollBy({ left: cardWidth, behavior: "smooth" });
-        }
-
-        setTimeout(updateWhyDots, 350);
-      }, 2800);
-    }
-
-    function stopWhyCarouselAutoSlide() {
-      if (whyCarouselAutoSlide) {
-        clearInterval(whyCarouselAutoSlide);
-      }
-    }
-
-    window.addEventListener("load", function() {
-      const carousel = document.getElementById("whyCarousel");
-      if (!carousel) return;
-
-      startWhyCarouselAutoSlide();
-
-      carousel.addEventListener("mouseenter", stopWhyCarouselAutoSlide);
-      carousel.addEventListener("mouseleave", startWhyCarouselAutoSlide);
-      carousel.addEventListener("touchstart", stopWhyCarouselAutoSlide, { passive: true });
-      carousel.addEventListener("touchend", () => {
-        setTimeout(startWhyCarouselAutoSlide, 1200);
-      });
-
-      updateWhyDots();
-      carousel.addEventListener("scroll", updateWhyDots, { passive: true });
-    });
-
-    function updateWhyDots() {
-      const carousel = document.getElementById("whyCarousel");
-      const dots = document.querySelectorAll(".whyDot");
-      const firstCard = carousel?.querySelector(".whyCard");
-
-      if (!carousel || !dots.length || !firstCard) return;
-
-      const cardWidth = firstCard.offsetWidth + 20;
-      const index = Math.round(carousel.scrollLeft / cardWidth);
-
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === index);
-      });
-    }
 
     const miniCollegeTrack = document.getElementById("miniCollegeTrack");
     const miniPrev = document.getElementById("miniPrev");
