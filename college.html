@@ -1,928 +1,1384 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>College Page</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
-<style>
-html{
-  scroll-behavior:smooth;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-body{
-  font-family:'Segoe UI', Arial, sans-serif;
-  margin:0;
-  background:#f4f7fc;
-  color:#1d2433;
-}
-
-a{
-  text-decoration:none;
-}
-
-/* TOP SEARCH BAR */
-
-.topSearchWrap{
-  position:sticky;
-  top:0;
-  z-index:999;
-  background:rgba(255,255,255,0.92);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid #e8ecf5;
-  padding:14px 20px;
-}
-
-.topSearchInner{
-  max-width:1200px;
-  margin:auto;
-}
-
-.topSearchBar{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:#ffffff;
-  border:1px solid #dce4f2;
-  border-radius:18px;
-  padding:10px 10px 10px 16px;
-  box-shadow:0 8px 20px rgba(16,24,40,0.06);
-}
-
-.searchIcon{
-  font-size:20px;
-  color:#667085;
-}
-
-#collegeSearchInput{
-  flex:1;
-  border:none;
-  outline:none;
-  background:transparent;
-  font-size:16px;
-  color:#111827;
-}
-
-#collegeSearchBtn{
-  border:none;
-  cursor:pointer;
-  background:linear-gradient(135deg,#1f36c7 0%,#3258f2 100%);
-  color:white;
-  border-radius:14px;
-  padding:13px 20px;
-  font-size:15px;
-  font-weight:700;
-  box-shadow:0 10px 20px rgba(31,54,199,0.22);
-}
-
-/* PAGE LAYOUT */
-
-.pageLayout{
-  display:flex;
-  gap:30px;
-  max-width:1200px;
-  margin:24px auto;
-  padding:0 20px 40px;
-  align-items:flex-start;
-}
-
-.contentArea{
-  flex:1;
-  min-width:0;
-}
-
-.leadSidebar{
-  width:330px;
-  flex-shrink:0;
-}
-
-/* HERO BANNER */
-
-.heroBanner{
-  position:relative;
-  width:100%;
-  min-height:360px;
-  border-radius:28px;
-  overflow:hidden;
-  background:linear-gradient(135deg,#0b153f 0%,#1f36c7 60%,#4b7cff 100%);
-  box-shadow:0 20px 45px rgba(15,23,42,0.16);
-  margin-bottom:22px;
-}
-
-.heroBanner img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  position:absolute;
-  inset:0;
-}
-
-.heroOverlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg,rgba(8,15,45,0.18) 0%,rgba(8,15,45,0.78) 100%);
-}
-
-.heroContent{
-  position:relative;
-  z-index:2;
-  padding:28px;
-  min-height:360px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  color:white;
-}
-
-.heroTopRow{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:16px;
-  flex-wrap:wrap;
-  margin-bottom:16px;
-}
-
-.heroBadge{
-  background:rgba(255,255,255,0.14);
-  border:1px solid rgba(255,255,255,0.18);
-  color:#fff;
-  padding:10px 14px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:700;
-  backdrop-filter:blur(8px);
-}
-
-.heroMain{
-  display:flex;
-  gap:18px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-#collegeLogo{
-  width:90px;
-  height:90px;
-  object-fit:contain;
-  border-radius:18px;
-  background:#fff;
-  padding:8px;
-  box-shadow:0 10px 24px rgba(0,0,0,0.18);
-  display:none;
-}
-
-.heroText h1{
-  margin:0;
-  font-size:38px;
-  line-height:1.08;
-  letter-spacing:-0.02em;
-}
-
-.heroText p{
-  margin:8px 0 0;
-  color:rgba(255,255,255,0.88);
-  font-size:16px;
-}
-
-.heroChips{
-  margin-top:22px;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.heroChip{
-  background:rgba(255,255,255,0.14);
-  border:1px solid rgba(255,255,255,0.14);
-  color:#fff;
-  padding:10px 14px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:700;
-}
-
-/* SECTION NAV */
-
-.sectionNav{
-  position:sticky;
-  top:82px;
-  z-index:100;
-  background:#ffffff;
-  padding:14px 16px;
-  margin-top:20px;
-  border-radius:16px;
-  box-shadow:0 8px 24px rgba(0,0,0,0.06);
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-  border:1px solid #e9eef7;
-}
-
-.sectionNav a{
-  color:#3258f2;
-  font-weight:700;
-  font-size:14px;
-}
-
-/* INFO CARDS */
-
-.infoGrid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:16px;
-  margin-top:20px;
-}
-
-.infoCard{
-  background:#ffffff;
-  padding:18px;
-  border-radius:18px;
-  box-shadow:0 10px 24px rgba(16,24,40,0.05);
-  border:1px solid #e8edf7;
-}
-
-.infoTitle{
-  font-size:13px;
-  color:#667085;
-  font-weight:600;
-}
-
-.infoValue{
-  font-size:20px;
-  font-weight:800;
-  margin-top:8px;
-  color:#101828;
-}
-
-/* SECTION STYLE */
-
-.section{
-  margin-top:28px;
-  background:white;
-  padding:26px;
-  border-radius:22px;
-  box-shadow:0 10px 28px rgba(16,24,40,0.05);
-  border:1px solid #e8edf7;
-}
-
-.section h2{
-  margin-top:0;
-  margin-bottom:18px;
-  font-size:24px;
-  color:#101828;
-  position:relative;
-  padding-left:14px;
-}
-
-.section h2::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:3px;
-  bottom:3px;
-  width:5px;
-  border-radius:999px;
-  background:linear-gradient(180deg,#3258f2 0%,#6a8bff 100%);
-}
-
-/* TABLES */
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:10px;
-  overflow:hidden;
-  border-radius:14px;
-}
-
-th,td{
-  border:1px solid #edf1f7;
-  padding:14px;
-  text-align:left;
-}
-
-th{
-  background:#f3f6ff;
-  color:#243b7a;
-}
-
-/* LISTS */
-
-ul{
-  padding-left:20px;
-  margin:0;
-}
-
-li{
-  margin-bottom:10px;
-  line-height:1.65;
-  color:#344054;
-}
-
-/* FAQ */
-
-.faq-container{
-  width:100%;
-}
-
-.faq-item{
-  background:#f8faff;
-  color:#101828;
-  margin-bottom:12px;
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid #e4ebf8;
-}
-
-.faq-question{
-  padding:18px 20px;
-  cursor:pointer;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:18px;
-  font-weight:700;
-}
-
-.faq-icon{
-  font-size:24px;
-  transition:transform 0.3s ease;
-  color:#3258f2;
-}
-
-.faq-answer{
-  max-height:0;
-  overflow:hidden;
-  background:#ffffff;
-  transition:max-height 0.4s ease;
-  padding:0 20px;
-}
-
-.faq-answer p{
-  color:#475467;
-  padding:0 0 18px;
-  margin:0;
-  font-size:16px;
-  line-height:1.7;
-}
-
-/* LEAD CARD */
-
-.leadCard{
-  position:sticky;
-  top:90px;
-  background:linear-gradient(180deg,#ffffff 0%,#f9fbff 100%);
-  padding:22px;
-  border-radius:22px;
-  border:1px solid #e7edf8;
-  box-shadow:0 14px 30px rgba(16,24,40,0.08);
-}
-
-.leadCard h3{
-  margin-top:0;
-  margin-bottom:8px;
-  font-size:24px;
-  color:#101828;
-}
-
-.leadSub{
-  margin:0 0 18px;
-  color:#667085;
-  font-size:14px;
-  line-height:1.6;
-}
-
-.leadCard input{
-  width:100%;
-  max-width:100%;
-  box-sizing:border-box;
-  padding:14px;
-  margin-bottom:12px;
-  border:1px solid #d9e2f2;
-  border-radius:12px;
-  font-size:14px;
-  background:#fff;
-}
-
-.leadCard input:focus{
-  outline:none;
-  border-color:#4d2fb2;
-  box-shadow:0 0 0 3px rgba(77,47,178,0.08);
-}
-
-.leadCard button{
-  width:100%;
-  padding:14px;
-  background:linear-gradient(135deg,#1f36c7 0%,#3258f2 100%);
-  color:white;
-  border:none;
-  border-radius:14px;
-  font-weight:700;
-  cursor:pointer;
-  font-size:15px;
-  box-shadow:0 10px 24px rgba(31,54,199,0.18);
-}
-
-.secureText{
-  font-size:12px;
-  color:#667085;
-  text-align:center;
-  margin-top:10px;
-}
-
-/* MOBILE */
-
-@media (max-width:900px){
-  .pageLayout{
-    flex-direction:column;
-  }
-
-  .leadSidebar{
-    width:100%;
-  }
-
-  .leadCard{
-    position:relative;
-    top:0;
-  }
-}
-
-@media (max-width:768px){
-  .topSearchWrap{
-    padding:12px 14px;
-  }
-
-  .topSearchBar{
-    flex-wrap:wrap;
-  }
-
-  #collegeSearchBtn{
-    width:100%;
-  }
-
-  .heroBanner{
-    min-height:300px;
-  }
-
-  .heroContent{
-    min-height:300px;
-    padding:20px;
-  }
-
-  .heroText h1{
-    font-size:28px;
-  }
-
-  .infoGrid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .section{
-    padding:20px;
-  }
-
-  .sectionNav{
-    top:74px;
-  }
-}
-
-@media (max-width:520px){
-  .infoGrid{
-    grid-template-columns:1fr;
-  }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College Profile | Swadeshi Shiksha</title>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(122,85,231,0.07), transparent 22%),
+        radial-gradient(circle at top right, rgba(255,122,26,0.05), transparent 18%),
+        #fcfbff;
+      color:#16202f;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    button,input{
+      font:inherit;
+    }
+
+    .page{
+      max-width:1220px;
+      margin:0 auto;
+      padding:18px 18px 80px;
+    }
+
+    /* HEADER */
+    .header{
+      position:sticky;
+      top:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 24px;
+      margin:14px auto 0;
+      background:rgba(255,255,255,0.84);
+      border:1px solid rgba(205,195,239,0.55);
+      backdrop-filter:blur(16px);
+      box-shadow:0 12px 34px rgba(36,29,79,0.08);
+      border-radius:24px;
+      max-width:calc(1220px - 36px);
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:fit-content;
+    }
+
+    .logo img{
+      height:46px;
+      width:auto;
+    }
+
+    .logo span{
+      font-weight:800;
+      font-size:16px;
+      color:#16202f;
+      letter-spacing:-0.02em;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      flex:1;
+      min-width:0;
+    }
+
+    .nav a{
+      font-size:14px;
+      font-weight:600;
+      color:#596377;
+      padding:10px 13px;
+      border-radius:999px;
+      white-space:nowrap;
+      transition:all .22s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      color:#6948dd;
+      background:#f4efff;
+    }
+
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      white-space:nowrap;
+      padding:12px 20px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#7b59e9,#5d36d2);
+      color:#fff;
+      font-size:14px;
+      font-weight:700;
+      box-shadow:0 14px 28px rgba(93,54,210,0.20);
+      transition:all .22s ease;
+      flex-shrink:0;
+    }
+
+    .cta:hover{
+      transform:translateY(-2px);
+    }
+
+    /* SEARCH SECTION */
+    .searchHeroMini{
+      padding:20px 18px 0;
+    }
+
+    .searchHeroInner{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg,#fbf9ff 0%, #f7f3ff 100%);
+      border:1px solid #eee7fb;
+      border-radius:34px;
+      padding:26px 24px 24px;
+      box-shadow:0 16px 40px rgba(42,29,89,0.06);
+    }
+
+    .searchHeroText{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 18px;
+      position:relative;
+      z-index:1;
+    }
+
+    .searchHeroBadge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #e9e1fb;
+      font-size:12px;
+      font-weight:800;
+      color:#6b49dd;
+      margin-bottom:12px;
+      box-shadow:0 8px 20px rgba(42,29,89,0.05);
+    }
+
+    .searchHeroText h1{
+      font-family:'Sora',sans-serif;
+      font-size:34px;
+      line-height:1.08;
+      letter-spacing:-0.04em;
+      color:#172031;
+      margin:0;
+    }
+
+    .searchHeroText p{
+      margin:10px auto 0;
+      font-size:15px;
+      line-height:1.75;
+      color:#667085;
+      max-width:700px;
+    }
+
+    .searchHeroBar{
+      max-width:940px;
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+    }
+
+    .searchBar{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:#fff;
+      border:1px solid #e8e0fb;
+      border-radius:18px;
+      padding:8px 8px 8px 14px;
+      box-shadow:0 12px 28px rgba(42,29,89,0.06);
+    }
+
+    .searchIcon{
+      font-size:20px;
+      line-height:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .searchInput{
+      flex:1;
+      border:none;
+      outline:none;
+      background:transparent;
+      font-size:15px;
+      color:#112033;
+    }
+
+    .searchBtn{
+      border:none;
+      cursor:pointer;
+      background:linear-gradient(135deg,#7a55e7,#6037d4);
+      color:#fff;
+      border-radius:12px;
+      padding:12px 18px;
+      font-size:14px;
+      font-weight:800;
+      box-shadow:0 10px 18px rgba(96,55,212,0.18);
+    }
+
+    /* PAGE ARTICLE LAYOUT */
+    .contentWrap{
+      max-width:1120px;
+      margin:26px auto 0;
+      background:#fff;
+      border:1px solid #ece4fb;
+      border-radius:32px;
+      box-shadow:0 18px 40px rgba(42,29,89,0.06);
+      overflow:hidden;
+    }
+
+    .articleHero{
+      padding:36px 40px 28px;
+      border-bottom:1px solid #f0ebfb;
+      background:
+        linear-gradient(180deg, rgba(123,89,233,0.03), rgba(123,89,233,0)),
+        #fff;
+    }
+
+    .articleTag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 13px;
+      border-radius:999px;
+      background:#f7f1ff;
+      border:1px solid #eadfff;
+      color:#724de3;
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:16px;
+    }
+
+    .articleTitle{
+      font-family:'Sora',sans-serif;
+      font-size:42px;
+      line-height:1.08;
+      letter-spacing:-0.05em;
+      color:#172031;
+      max-width:850px;
+      margin-bottom:14px;
+    }
+
+    .articleIntro{
+      max-width:760px;
+      color:#667085;
+      font-size:15px;
+      line-height:1.85;
+    }
+
+    .featureMedia{
+      margin-top:22px;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid #eee7fb;
+      background:linear-gradient(135deg,#f1eaff,#fbf9ff);
+      min-height:320px;
+      position:relative;
+    }
+
+    .featureMedia img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:none;
+    }
+
+    .featureFallback{
+      min-height:320px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#6948dd;
+      font-size:54px;
+      font-weight:800;
+      letter-spacing:-0.04em;
+    }
+
+    .articleBody{
+      display:grid;
+      grid-template-columns:220px minmax(0,1fr) 140px;
+      gap:28px;
+      padding:34px 40px 40px;
+    }
+
+    .leftRail{
+      position:sticky;
+      top:108px;
+      align-self:start;
+    }
+
+    .authorCard{
+      padding:18px;
+      border:1px solid #ece4fb;
+      border-radius:22px;
+      background:#fcfbff;
+      box-shadow:0 10px 24px rgba(42,29,89,0.04);
+    }
+
+    .authorAvatar{
+      width:62px;
+      height:62px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#efe6ff,#ffffff);
+      border:1px solid #e8e0fb;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#6948dd;
+      font-size:22px;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .authorCard h4{
+      font-size:16px;
+      line-height:1.3;
+      color:#172031;
+      margin-bottom:6px;
+    }
+
+    .authorCard p{
+      font-size:13px;
+      line-height:1.7;
+      color:#667085;
+      margin-bottom:10px;
+    }
+
+    .authorMeta{
+      padding-top:12px;
+      border-top:1px solid #f0ebfb;
+      display:grid;
+      gap:8px;
+      font-size:12px;
+      color:#7a8699;
+    }
+
+    .mainArticle{
+      min-width:0;
+    }
+
+    .quickFacts{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      margin-bottom:22px;
+    }
+
+    .factCard{
+      border:1px solid #ece4fb;
+      border-radius:20px;
+      padding:16px;
+      background:#fff;
+      box-shadow:0 10px 22px rgba(42,29,89,0.04);
+    }
+
+    .factLabel{
+      font-size:12px;
+      color:#7b8396;
+      font-weight:700;
+      margin-bottom:8px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+
+    .factValue{
+      font-size:18px;
+      color:#172031;
+      font-weight:800;
+      line-height:1.3;
+    }
+
+    .articleSection{
+      margin-top:24px;
+    }
+
+    .articleSection:first-child{
+      margin-top:0;
+    }
+
+    .articleSection h2{
+      font-family:'Sora',sans-serif;
+      font-size:28px;
+      line-height:1.15;
+      letter-spacing:-0.04em;
+      color:#172031;
+      margin-bottom:14px;
+    }
+
+    .articleSection p,
+    .articleSection li{
+      font-size:15px;
+      line-height:1.9;
+      color:#3f4a5c;
+    }
+
+    .articleSection ul{
+      padding-left:18px;
+      display:grid;
+      gap:8px;
+    }
+
+    .articleHighlight{
+      margin:22px 0;
+      padding:22px 24px;
+      border-left:4px solid #ff8a1f;
+      background:linear-gradient(180deg,#fffaf5 0%,#fff 100%);
+      border-radius:0 20px 20px 0;
+      color:#c76e12;
+      font-size:24px;
+      line-height:1.55;
+      font-family:'Sora',sans-serif;
+    }
+
+    .tableWrap{
+      width:100%;
+      overflow-x:auto;
+      border:1px solid #eee7fb;
+      border-radius:18px;
+      background:#fff;
+      box-shadow:0 8px 18px rgba(42,29,89,0.04);
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:560px;
+    }
+
+    th, td{
+      padding:14px 16px;
+      text-align:left;
+      border-bottom:1px solid #f1edf9;
+      font-size:14px;
+      color:#344054;
+    }
+
+    th{
+      background:#faf7ff;
+      color:#6948dd;
+      font-weight:800;
+    }
+
+    .tagList{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .miniTag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#f6f1ff;
+      border:1px solid #e7dcff;
+      color:#6948dd;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .faqContainer{
+      display:grid;
+      gap:12px;
+    }
+
+    .faqItem{
+      border:1px solid #ece4fb;
+      border-radius:18px;
+      overflow:hidden;
+      background:#fcfbff;
+    }
+
+    .faqQuestion{
+      padding:16px 18px;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      font-size:15px;
+      font-weight:800;
+      color:#172031;
+    }
+
+    .faqAnswer{
+      display:none;
+      padding:0 18px 18px;
+      color:#5f6980;
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .faqItem.active .faqAnswer{
+      display:block;
+    }
+
+    .shareRail{
+      position:sticky;
+      top:108px;
+      align-self:start;
+    }
+
+    .shareCard{
+      padding:16px 12px;
+      border:1px solid #ece4fb;
+      border-radius:22px;
+      background:#fcfbff;
+      box-shadow:0 10px 24px rgba(42,29,89,0.04);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+    }
+
+    .shareCard h5{
+      font-size:13px;
+      color:#172031;
+      margin:0;
+    }
+
+    .shareBtn{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      border:1px solid #e8e0fb;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:all .18s ease;
+      color:#6948dd;
+      font-weight:800;
+      font-size:13px;
+      box-shadow:0 8px 18px rgba(42,29,89,0.05);
+    }
+
+    .shareBtn:hover{
+      transform:translateY(-2px);
+      background:#f8f4ff;
+    }
+
+    /* LEAD BLOCK */
+    .articleLeadCta{
+      margin-top:28px;
+      padding:22px;
+      border-radius:24px;
+      background:linear-gradient(135deg,#7a55e7 0%, #5d36d2 100%);
+      color:#fff;
+      box-shadow:0 18px 34px rgba(93,54,210,0.18);
+    }
+
+    .articleLeadCta h3{
+      margin-bottom:8px;
+      font-size:24px;
+      font-family:'Sora',sans-serif;
+    }
+
+    .articleLeadCta p{
+      color:rgba(255,255,255,0.9);
+      margin-bottom:14px;
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .articleLeadCta .leadBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#ff9a34 0%, #ff7a1a 100%);
+      color:#fff;
+      border:none;
+      cursor:pointer;
+      font-weight:800;
+      font-size:14px;
+    }
+
+    /* FOOTER */
+    .footer{
+      margin-top:34px;
+      background:#16202f;
+      color:#ffffff;
+      border-radius:30px;
+      padding:30px 24px;
+    }
+
+    .footerGrid{
+      display:grid;
+      grid-template-columns:1.2fr 1fr 1fr 1fr;
+      gap:22px;
+    }
+
+    .footer h3,
+    .footer h4{
+      margin-bottom:12px;
+    }
+
+    .footer p,
+    .footer li,
+    .footer a,
+    .footer span{
+      color:rgba(255,255,255,0.76);
+      line-height:1.75;
+      font-size:14px;
+    }
+
+    .footer ul{
+      list-style:none;
+      padding:0;
+    }
+
+    .footer li{
+      margin-bottom:8px;
+    }
+
+    /* POPUP */
+    .popupOverlay{
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,0.68);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:5000;
+      padding:18px;
+    }
+
+    .popupCard{
+      width:100%;
+      max-width:470px;
+      background:#fff;
+      border-radius:28px;
+      padding:26px;
+      position:relative;
+      box-shadow:0 28px 70px rgba(15,23,42,0.24);
+      border:1px solid #ece4fb;
+    }
+
+    .popupClose{
+      position:absolute;
+      right:16px;
+      top:14px;
+      border:none;
+      background:transparent;
+      font-size:26px;
+      color:#6b7280;
+      cursor:pointer;
+    }
+
+    .popupCard h3{
+      font-family:'Sora',sans-serif;
+      font-size:28px;
+      line-height:1.08;
+      letter-spacing:-0.03em;
+      margin-bottom:10px;
+      color:#172030;
+    }
+
+    .popupCard p{
+      color:#667085;
+      line-height:1.75;
+      font-size:15px;
+      margin-bottom:18px;
+    }
+
+    .popupCard input{
+      width:100%;
+      padding:15px 14px;
+      border-radius:16px;
+      border:1px solid #dddff0;
+      outline:none;
+      margin-bottom:12px;
+      font-size:14px;
+      background:#fcfcff;
+    }
+
+    .popupSubmit{
+      width:100%;
+      border:none;
+      padding:15px;
+      border-radius:16px;
+      background:linear-gradient(135deg,#7a55e7,#6037d4);
+      color:#fff;
+      font-size:15px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 14px 28px rgba(96,55,212,0.18);
+    }
+
+    .popupNote{
+      margin-top:10px;
+      font-size:12px;
+      color:#7b8396;
+      text-align:center;
+    }
+
+    @media (max-width:1100px){
+      .articleBody{
+        grid-template-columns:1fr;
+      }
+
+      .leftRail,
+      .shareRail{
+        position:relative;
+        top:0;
+      }
+
+      .quickFacts,
+      .footerGrid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .shareCard{
+        flex-direction:row;
+        justify-content:flex-start;
+        flex-wrap:wrap;
+      }
+    }
+
+    @media (max-width:920px){
+      .header{
+        flex-wrap:wrap;
+        justify-content:center;
+        padding:14px 16px;
+        margin:14px 14px 0;
+      }
+
+      .logo{
+        width:100%;
+        justify-content:center;
+      }
+
+      .nav{
+        width:100%;
+        flex-wrap:wrap;
+      }
+
+      .cta{
+        width:100%;
+      }
+
+      .articleHero{
+        padding:28px 22px 22px;
+      }
+
+      .articleBody{
+        padding:24px 22px 28px;
+      }
+
+      .articleTitle{
+        font-size:34px;
+      }
+    }
+
+    @media (max-width:680px){
+      .page{
+        padding:18px 14px 60px;
+      }
+
+      .searchHeroMini{
+        padding:16px 14px 0;
+      }
+
+      .searchHeroInner{
+        border-radius:24px;
+        padding:20px 16px;
+      }
+
+      .searchBar{
+        flex-wrap:wrap;
+      }
+
+      .searchBtn{
+        width:100%;
+      }
+
+      .articleTitle{
+        font-size:28px;
+      }
+
+      .articleIntro{
+        font-size:14px;
+      }
+
+      .quickFacts,
+      .footerGrid{
+        grid-template-columns:1fr;
+      }
+
+      .contentWrap{
+        border-radius:24px;
+      }
+
+      .featureMedia,
+      .featureFallback{
+        min-height:220px;
+      }
+
+      .articleHighlight{
+        font-size:20px;
+        padding:18px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- TOP SEARCH -->
-<div class="topSearchWrap">
-  <div class="topSearchInner">
-    <div class="topSearchBar">
-      <span class="searchIcon">🔍</span>
-      <input id="collegeSearchInput" type="text" placeholder="Search another college...">
-      <button id="collegeSearchBtn">Search</button>
+  <div class="header">
+    <a href="/" class="logo">
+      <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+      <span>Swadeshi Shiksha</span>
+    </a>
+
+    <div class="nav">
+      <a href="https://swadeshi-colleges.vercel.app/colleges.html" class="active">Colleges</a>
+      <a href="https://swadeshi-colleges.vercel.app/exams.html">Exams</a>
+      <a href="https://swadeshi-colleges.vercel.app/courses.html">Courses</a>
+      <a href="https://swadeshi-colleges.vercel.app/resources.html">Resources</a>
     </div>
+
+    <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">Get Free MBA Guidance</a>
   </div>
-</div>
 
-<div class="pageLayout">
+  <section class="searchHeroMini">
+    <div class="searchHeroInner">
+      <div class="searchHeroText">
+        <span class="searchHeroBadge">College Profile</span>
+        <h1>Search Another College Instantly</h1>
+        <p>Compare verified MBA / PGDM colleges, fees, placements, approvals, and admission details in one place.</p>
+      </div>
 
-  <div class="contentArea">
-
-    <!-- HERO -->
-    <div class="heroBanner">
-      <img id="collegeImage" src="" alt="College Image" style="display:none;">
-      <div class="heroOverlay"></div>
-
-      <div class="heroContent">
-        <div class="heroTopRow">
-          <div class="heroBadge">Admissions Profile</div>
+      <div class="searchHeroBar">
+        <div class="searchBar">
+          <span class="searchIcon">🔍</span>
+          <input
+            type="text"
+            id="collegeSearchInput"
+            class="searchInput"
+            placeholder="Search another college, city, exam, or course..."
+          />
+          <button id="collegeSearchBtn" class="searchBtn">Search</button>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="heroMain">
-          <img id="collegeLogo" src="" alt="College Logo">
+  <div class="page">
+    <div class="contentWrap">
 
-          <div class="heroText">
-            <h1 id="collegeName"></h1>
-            <p id="collegeLocation"></p>
+      <section class="articleHero">
+        <span class="articleTag">College Admissions Profile</span>
+        <h1 class="articleTitle" id="collegeTitle">College Name</h1>
+        <p class="articleIntro" id="collegeIntro">
+          Explore admissions, fees, placements, courses, approvals, facilities, and important details for this college.
+        </p>
+
+        <div class="featureMedia">
+          <img id="collegeImage" src="" alt="College Image">
+          <div class="featureFallback" id="featureFallback">SS</div>
+        </div>
+      </section>
+
+      <section class="articleBody">
+        <aside class="leftRail">
+          <div class="authorCard">
+            <div class="authorAvatar">SS</div>
+            <h4>Swadeshi Shiksha Editorial</h4>
+            <p>Verified college profile with admissions-focused details for MBA / PGDM aspirants.</p>
+            <div class="authorMeta">
+              <span id="metaLocation">Location: —</span>
+              <span id="metaApproval">Approval: —</span>
+              <span id="metaUpdated">Updated for 2026 admissions</span>
+            </div>
           </div>
+        </aside>
+
+        <main class="mainArticle">
+
+          <div class="quickFacts">
+            <div class="factCard">
+              <div class="factLabel">Established</div>
+              <div class="factValue" id="factEstablished">—</div>
+            </div>
+            <div class="factCard">
+              <div class="factLabel">Average Package</div>
+              <div class="factValue" id="factAveragePackage">—</div>
+            </div>
+            <div class="factCard">
+              <div class="factLabel">Highest Package</div>
+              <div class="factValue" id="factHighestPackage">—</div>
+            </div>
+          </div>
+
+          <div class="articleSection" id="overviewSection">
+            <h2>Overview</h2>
+            <ul id="overviewList"></ul>
+          </div>
+
+          <div class="articleHighlight" id="articleHighlight">
+            A premium college profile page should not feel plain — it should help students understand the college quickly and clearly.
+          </div>
+
+          <div class="articleSection" id="coursesSection">
+            <h2>Courses</h2>
+            <div class="tableWrap">
+              <table id="coursesTable"></table>
+            </div>
+          </div>
+
+          <div class="articleSection" id="eligibilitySection">
+            <h2>Eligibility</h2>
+            <ul id="eligibilityList"></ul>
+          </div>
+
+          <div class="articleSection" id="applicationSection">
+            <h2>Application Process</h2>
+            <ul id="applicationList"></ul>
+          </div>
+
+          <div class="articleSection" id="admissionSection">
+            <h2>Admission Steps</h2>
+            <ul id="admissionList"></ul>
+          </div>
+
+          <div class="articleSection" id="feesSection">
+            <h2>Fees</h2>
+            <div class="tableWrap">
+              <table id="feesTable"></table>
+            </div>
+          </div>
+
+          <div class="articleSection" id="cutoffSection">
+            <h2>Cutoffs</h2>
+            <div class="tableWrap">
+              <table id="cutoffsTable"></table>
+            </div>
+          </div>
+
+          <div class="articleSection" id="placementsSection">
+            <h2>Placements</h2>
+            <ul id="placementsList"></ul>
+          </div>
+
+          <div class="articleSection" id="scholarshipsSection">
+            <h2>Scholarships</h2>
+            <ul id="scholarshipsList"></ul>
+          </div>
+
+          <div class="articleSection" id="whyChooseSection">
+            <h2>Why Choose This College</h2>
+            <ul id="whyChooseList"></ul>
+          </div>
+
+          <div class="articleSection" id="recruitersSection">
+            <h2>Top Recruiters</h2>
+            <div class="tagList" id="recruitersList"></div>
+          </div>
+
+          <div class="articleSection" id="facilitiesSection">
+            <h2>Facilities</h2>
+            <ul id="facilitiesList"></ul>
+          </div>
+
+          <div class="articleSection" id="faqSection">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faqContainer" id="faqContainer"></div>
+          </div>
+
+          <div class="articleLeadCta">
+            <h3>Need help choosing this college?</h3>
+            <p>Get free admission guidance, shortlist clarity, and fee / placement discussion from our team.</p>
+            <button class="leadBtn" onclick="openLeadPopup('College Content CTA')">Get Free Guidance</button>
+          </div>
+        </main>
+
+        <aside class="shareRail">
+          <div class="shareCard">
+            <h5>Share</h5>
+            <button class="shareBtn" onclick="shareWhatsApp()">WA</button>
+            <button class="shareBtn" onclick="shareFacebook()">f</button>
+            <button class="shareBtn" onclick="shareTwitter()">X</button>
+            <button class="shareBtn" onclick="shareLinkedIn()">in</button>
+            <button class="shareBtn" onclick="copyPageLink()">⧉</button>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <div class="footerGrid">
+        <div>
+          <h3>Swadeshi Shiksha</h3>
+          <p>Helping students discover the right MBA and PGDM colleges with clear information, trusted comparisons and expert guidance.</p>
         </div>
 
-        <div class="heroChips">
-          <div class="heroChip" id="chipEstablished">Established</div>
-          <div class="heroChip" id="chipApproval">Approval</div>
-          <div class="heroChip" id="chipAveragePackage">Average Package</div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#">Top MBA Colleges</a></li>
+            <li><a href="#">Compare Colleges</a></li>
+            <li><a href="#">Application Window</a></li>
+            <li><a href="#">Free Counselling</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Browse</h4>
+          <ul>
+            <li><a href="https://swadeshi-colleges.vercel.app/colleges.html?search=CAT">CAT Colleges</a></li>
+            <li><a href="https://swadeshi-colleges.vercel.app/colleges.html?search=CMAT">CMAT Colleges</a></li>
+            <li><a href="https://swadeshi-colleges.vercel.app/colleges.html?search=Bangalore">Bangalore</a></li>
+            <li><a href="https://swadeshi-colleges.vercel.app/colleges.html?search=Pune">Pune</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Get in Touch</h4>
+          <ul>
+            <li><a href="tel:+919643686800">+91 96436 86800</a></li>
+            <li><a href="mailto:info@swadeshi-shiksha.com">info@swadeshi-shiksha.com</a></li>
+            <li><span>Greater Noida, India</span></li>
+          </ul>
         </div>
       </div>
-    </div>
-
-    <div class="sectionNav">
-      <a href="#overviewSection">Overview</a>
-      <a href="#coursesSection">Courses</a>
-      <a href="#eligibilitySection">Eligibility</a>
-      <a href="#feesSection">Fees</a>
-      <a href="#placementsSection">Placements</a>
-      <a href="#faqSection">FAQ</a>
-    </div>
-
-    <div class="infoGrid">
-      <div class="infoCard">
-        <div class="infoTitle">Established</div>
-        <div class="infoValue" id="established"></div>
-      </div>
-
-      <div class="infoCard">
-        <div class="infoTitle">Approval</div>
-        <div class="infoValue" id="approval"></div>
-      </div>
-
-      <div class="infoCard">
-        <div class="infoTitle">Campus Size</div>
-        <div class="infoValue" id="campusSize"></div>
-      </div>
-
-      <div class="infoCard">
-        <div class="infoTitle">Highest Package</div>
-        <div class="infoValue" id="highestPackage"></div>
-      </div>
-
-      <div class="infoCard">
-        <div class="infoTitle">Average Package</div>
-        <div class="infoValue" id="averagePackage"></div>
-      </div>
-    </div>
-
-    <div class="section" id="overviewSection">
-      <h2>Overview</h2>
-      <ul id="overview"></ul>
-    </div>
-
-    <div class="section" id="coursesSection">
-      <h2>Courses</h2>
-      <table id="courses"></table>
-    </div>
-
-    <div class="section" id="eligibilitySection">
-      <h2>Eligibility</h2>
-      <ul id="eligibility"></ul>
-    </div>
-
-    <div class="section">
-      <h2>Application Process</h2>
-      <ul id="application"></ul>
-    </div>
-
-    <div class="section">
-      <h2>Admission Steps</h2>
-      <ul id="admission"></ul>
-    </div>
-
-    <div class="section" id="feesSection">
-      <h2>Fees</h2>
-      <table id="fees"></table>
-    </div>
-
-    <div class="section">
-      <h2>Cutoffs</h2>
-      <table id="cutoffs"></table>
-    </div>
-
-    <div class="section" id="placementsSection">
-      <h2>Placements</h2>
-      <ul id="placements"></ul>
-    </div>
-
-    <div class="section">
-      <h2>Scholarships</h2>
-      <ul id="scholarships"></ul>
-    </div>
-
-    <div class="section">
-      <h2>Why Choose This College</h2>
-      <ul id="whyChoose"></ul>
-    </div>
-
-    <div class="section">
-      <h2>Top Recruiters</h2>
-      <ul id="recruiters"></ul>
-    </div>
-
-    <div class="section">
-      <h2>Facilities</h2>
-      <ul id="facilities"></ul>
-    </div>
-
-    <div class="section" id="faqSection">
-      <h2>FAQ</h2>
-      <div class="faq-container" id="faqContainer"></div>
-    </div>
-
+    </footer>
   </div>
 
-  <div class="leadSidebar">
-    <div class="leadCard">
-      <h3>Free MBA Counselling</h3>
-      <p class="leadSub">Get expert guidance for admissions, colleges, fees, and placement clarity.</p>
+  <div class="popupOverlay" id="leadPopup">
+    <div class="popupCard">
+      <button class="popupClose" onclick="closeLeadPopup()">×</button>
+      <h3>Get Free MBA Guidance</h3>
+      <p>Share your details and our team will connect with you.</p>
 
-      <input id="leadName" type="text" placeholder="Your Name" required autocomplete="name">
-      <input id="leadPhone" type="tel" placeholder="Phone Number" maxlength="10" required autocomplete="tel">
-      <input id="leadCity" type="text" placeholder="City" required autocomplete="address-level2">
+      <input id="leadName" type="text" placeholder="Your Name">
+      <input id="leadPhone" type="tel" placeholder="Phone Number" maxlength="10">
+      <input id="leadEmail" type="email" placeholder="Email Address">
+      <input id="leadCity" type="text" placeholder="Preferred City / Location">
 
-      <button id="leadBtn">Get Free Counselling</button>
-      <p class="secureText">100% Free • No Spam</p>
+      <button class="popupSubmit" onclick="submitLead()">Submit Details</button>
+      <div class="popupNote">100% Free • No Spam</div>
     </div>
   </div>
 
-</div>
+  <script>
+    const firebaseConfig = {
+      apiKey:"AIzaSyCQNocdvSpqjm7ZMcrVYW0Fc-iMycGQO94",
+      authDomain:"swadeshi-shiksha.firebaseapp.com",
+      projectId:"swadeshi-shiksha"
+    };
 
-<script>
-const firebaseConfig = {
-  apiKey:"AIzaSyCQNocdvSpqjm7ZMcrVYW0Fc-iMycGQO94",
-  authDomain:"swadeshi-shiksha.firebaseapp.com",
-  projectId:"swadeshi-shiksha"
-};
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("slug");
 
-const params = new URLSearchParams(window.location.search);
-const slug = params.get("slug");
+    if(!slug){
+      document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>College page not found</h2>";
+      throw new Error("Missing slug parameter");
+    }
 
-if(!slug){
-  document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>College page not found</h2>";
-  throw new Error("Missing slug parameter");
-}
+    function safeText(value){
+      return value ? value : "—";
+    }
 
-/* TOP SEARCH */
-function goToCollegeSearch(){
-  const query = document.getElementById("collegeSearchInput").value.trim();
-  if(!query) return;
-  window.location.href = "colleges.html?search=" + encodeURIComponent(query);
-}
+    function renderList(listId, items){
+      const target = document.getElementById(listId);
+      target.innerHTML = "";
 
-document.getElementById("collegeSearchBtn").addEventListener("click", goToCollegeSearch);
-document.getElementById("collegeSearchInput").addEventListener("keydown", function(e){
-  if(e.key === "Enter"){
-    goToCollegeSearch();
-  }
-});
-
-db.collection("colleges").doc(slug).get().then(doc => {
-
-  if(!doc.exists){
-    document.body.innerHTML = "College not found";
-    return;
-  }
-
-  const d = doc.data();
-
-  /* HERO IMAGE */
-  if(d.image){
-    const collegeImage = document.getElementById("collegeImage");
-    collegeImage.src = d.image;
-    collegeImage.style.display = "block";
-  }
-
-  /* LOGO */
-  if(d.logo){
-    const collegeLogo = document.getElementById("collegeLogo");
-    collegeLogo.src = d.logo;
-    collegeLogo.style.display = "block";
-  }
-
-  /* TITLE + LOCATION */
-  document.getElementById("collegeName").innerText = d.title || d.name || "";
-  document.getElementById("collegeLocation").innerText = d.location || d.city || "";
-
-  /* INFO CARDS */
-  document.getElementById("established").innerText = d.established || "";
-  document.getElementById("approval").innerText = d.approval || "";
-  document.getElementById("campusSize").innerText = d.campusSize || "";
-  document.getElementById("highestPackage").innerText = d.highestPackage || "";
-  document.getElementById("averagePackage").innerText = d.averagePackage || "";
-
-  /* HERO CHIPS */
-  document.getElementById("chipEstablished").innerText = d.established ? "Est. " + d.established : "Established";
-  document.getElementById("chipApproval").innerText = d.approval ? d.approval : "Approval";
-  document.getElementById("chipAveragePackage").innerText = d.averagePackage ? "Avg. " + d.averagePackage : "Average Package";
-
-  /* OVERVIEW */
-  if(d.overview){
-    d.overview.forEach(item => {
-      const li = document.createElement("li");
-      li.innerText = item;
-      document.getElementById("overview").appendChild(li);
-    });
-  }
-
-  ["eligibility","application","admission","scholarships","whyChoose"].forEach(section => {
-    if(d[section]){
-      d[section].forEach(item => {
+      if(!items || !items.length){
         const li = document.createElement("li");
-        li.innerText = item;
-        document.getElementById(section).appendChild(li);
+        li.textContent = "Details will be updated soon.";
+        target.appendChild(li);
+        return;
+      }
+
+      items.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        target.appendChild(li);
       });
     }
-  });
 
-  /* COURSES */
-  document.getElementById("courses").innerHTML = `
-    <tr>
-      <th>Course</th>
-      <th>Duration</th>
-      <th>Eligibility</th>
-    </tr>
-  `;
+    function renderTable(tableId, headers, rows){
+      const table = document.getElementById(tableId);
+      table.innerHTML = "";
 
-  if(d.courses){
-    d.courses.forEach(row => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${row.col0 || ""}</td>
-        <td>${row.col1 || ""}</td>
-        <td>${row.col2 || ""}</td>
-      `;
-      document.getElementById("courses").appendChild(tr);
-    });
-  }
+      const headRow = document.createElement("tr");
+      headers.forEach(header => {
+        const th = document.createElement("th");
+        th.textContent = header;
+        headRow.appendChild(th);
+      });
+      table.appendChild(headRow);
 
-  /* FEES */
-  document.getElementById("fees").innerHTML = `
-    <tr>
-      <th>Course</th>
-      <th>Fees</th>
-    </tr>
-  `;
+      if(!rows || !rows.length){
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.colSpan = headers.length;
+        td.textContent = "Details will be updated soon.";
+        tr.appendChild(td);
+        table.appendChild(tr);
+        return;
+      }
 
-  if(d.fees){
-    d.fees.forEach(row => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${row.col0 || ""}</td>
-        <td>${row.col1 || ""}</td>
-      `;
-      document.getElementById("fees").appendChild(tr);
-    });
-  }
-
-  /* CUTOFFS */
-  document.getElementById("cutoffs").innerHTML = `
-    <tr>
-      <th>Exam</th>
-      <th>Percentile</th>
-    </tr>
-  `;
-
-  if(d.cutoffs){
-    d.cutoffs.forEach(row => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${row.col0 || ""}</td>
-        <td>${row.col1 || ""}</td>
-      `;
-      document.getElementById("cutoffs").appendChild(tr);
-    });
-  }
-
-  /* LIST SECTIONS */
-  ["placements","facilities"].forEach(section => {
-    if(d[section]){
-      d[section].forEach(item => {
-        const li = document.createElement("li");
-        li.innerText = item;
-        document.getElementById(section).appendChild(li);
+      rows.forEach(row => {
+        const tr = document.createElement("tr");
+        Object.values(row).slice(0, headers.length).forEach(value => {
+          const td = document.createElement("td");
+          td.textContent = value || "—";
+          tr.appendChild(td);
+        });
+        table.appendChild(tr);
       });
     }
-  });
 
-  /* RECRUITERS */
-  if(d.recruiters){
-    d.recruiters.forEach(company => {
-      const li = document.createElement("li");
-      li.innerText = company;
-      document.getElementById("recruiters").appendChild(li);
-    });
-  }
+    function renderRecruiters(items){
+      const target = document.getElementById("recruitersList");
+      target.innerHTML = "";
 
-  /* FAQ */
-  const faqContainer = document.getElementById("faqContainer");
+      if(!items || !items.length){
+        const span = document.createElement("span");
+        span.className = "miniTag";
+        span.textContent = "Updates soon";
+        target.appendChild(span);
+        return;
+      }
 
-  if(d.faq){
-    d.faq.forEach(row => {
-      const item = document.createElement("div");
-      item.className = "faq-item";
+      items.forEach(item => {
+        const span = document.createElement("span");
+        span.className = "miniTag";
+        span.textContent = item;
+        target.appendChild(span);
+      });
+    }
 
-      item.innerHTML = `
-        <div class="faq-question">
-          ${row.col0 || ""}
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <p>${row.col1 || ""}</p>
-        </div>
-      `;
+    function renderFaq(faq){
+      const faqContainer = document.getElementById("faqContainer");
+      faqContainer.innerHTML = "";
 
-      faqContainer.appendChild(item);
-    });
-  }
+      if(!faq || !faq.length){
+        faqContainer.innerHTML = `
+          <div class="faqItem active">
+            <div class="faqQuestion">FAQ updates will be added soon <span>+</span></div>
+            <div class="faqAnswer" style="display:block;">College-specific FAQs are not available right now.</div>
+          </div>
+        `;
+        return;
+      }
 
-  document.querySelectorAll(".faq-question").forEach(q => {
-    q.addEventListener("click", function(){
-      const answer = this.nextElementSibling;
-      const icon = this.querySelector(".faq-icon");
+      faq.forEach((row, index) => {
+        const item = document.createElement("div");
+        item.className = "faqItem";
 
-      if(answer.style.maxHeight){
-        answer.style.maxHeight = null;
-        icon.textContent = "+";
-      } else {
-        document.querySelectorAll(".faq-answer").forEach(a => a.style.maxHeight = null);
-        document.querySelectorAll(".faq-icon").forEach(i => i.textContent = "+");
-        answer.style.maxHeight = answer.scrollHeight + "px";
-        icon.textContent = "−";
+        item.innerHTML = `
+          <div class="faqQuestion">
+            <span>${row.col0 || row.question || "Question"}</span>
+            <span>${index === 0 ? "−" : "+"}</span>
+          </div>
+          <div class="faqAnswer" style="${index === 0 ? 'display:block;' : ''}">
+            ${row.col1 || row.answer || ""}
+          </div>
+        `;
+
+        if(index === 0){
+          item.classList.add("active");
+        }
+
+        item.querySelector(".faqQuestion").addEventListener("click", () => {
+          const isActive = item.classList.contains("active");
+          item.classList.toggle("active");
+          item.querySelector(".faqAnswer").style.display = isActive ? "none" : "block";
+          item.querySelector(".faqQuestion span:last-child").textContent = isActive ? "+" : "−";
+        });
+
+        faqContainer.appendChild(item);
+      });
+    }
+
+    function goToCollegeSearch(){
+      const query = document.getElementById("collegeSearchInput").value.trim();
+      if(!query) return;
+      window.location.href = "colleges.html?search=" + encodeURIComponent(query);
+    }
+
+    document.getElementById("collegeSearchBtn").addEventListener("click", goToCollegeSearch);
+    document.getElementById("collegeSearchInput").addEventListener("keydown", function(e){
+      if(e.key === "Enter"){
+        goToCollegeSearch();
       }
     });
-  });
 
-});
+    db.collection("colleges").doc(slug).get().then(doc => {
+      if(!doc.exists){
+        document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>College not found</h2>";
+        return;
+      }
 
-/* LEAD FORM SUBMIT */
-document.getElementById("leadBtn").addEventListener("click", function(){
+      const d = doc.data();
 
-  const name = document.getElementById("leadName").value.trim();
-  const phone = document.getElementById("leadPhone").value.trim();
-  const city = document.getElementById("leadCity").value.trim();
+      const title = d.title || d.name || "College Profile";
+      const location = d.location || d.city || "Location not available";
+      const approval = d.approval || "Approval details not available";
 
-  if(name.length < 2){
-    alert("Please enter a valid name");
-    return;
-  }
+      document.title = `${title} | Swadeshi Shiksha`;
 
-  const phoneRegex = /^[0-9]{10}$/;
-  if(!phoneRegex.test(phone)){
-    alert("Please enter a valid 10 digit phone number");
-    return;
-  }
+      document.getElementById("collegeTitle").textContent = title;
+      document.getElementById("collegeIntro").textContent =
+        `${title} profile covering courses, fees, placements, eligibility, admissions, facilities, and important details for students planning MBA / PGDM admissions.`;
 
-  db.collection("leads").add({
-    name:name,
-    phone:phone,
-    city:city,
-    college:slug,
-    date:new Date()
-  }).then(() => {
+      document.getElementById("metaLocation").textContent = `Location: ${location}`;
+      document.getElementById("metaApproval").textContent = `Approval: ${approval}`;
 
-    fetch("https://hook.eu1.make.com/f293ojy58ejyynknm63kgdy1eknop32h", {
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({
-        name:name,
-        phone:phone,
-        city:city,
-        college:slug
-      })
+      document.getElementById("factEstablished").textContent = safeText(d.established);
+      document.getElementById("factAveragePackage").textContent = safeText(d.averagePackage);
+      document.getElementById("factHighestPackage").textContent = safeText(d.highestPackage);
+
+      if(d.image){
+        const collegeImage = document.getElementById("collegeImage");
+        collegeImage.src = d.image;
+        collegeImage.style.display = "block";
+        document.getElementById("featureFallback").style.display = "none";
+      } else {
+        document.getElementById("featureFallback").textContent = (title || "SS").slice(0,2).toUpperCase();
+      }
+
+      renderList("overviewList", d.overview);
+      renderList("eligibilityList", d.eligibility);
+      renderList("applicationList", d.application);
+      renderList("admissionList", d.admission);
+      renderList("placementsList", d.placements);
+      renderList("scholarshipsList", d.scholarships);
+      renderList("whyChooseList", d.whyChoose);
+      renderList("facilitiesList", d.facilities);
+      renderRecruiters(d.recruiters);
+
+      renderTable("coursesTable", ["Course", "Duration", "Eligibility"], d.courses || []);
+      renderTable("feesTable", ["Course", "Fees"], d.fees || []);
+      renderTable("cutoffsTable", ["Exam", "Percentile"], d.cutoffs || []);
+
+      renderFaq(d.faq);
+
+      const overviewText = d.overview && d.overview.length
+        ? d.overview[0]
+        : `${title} is among the colleges students consider for MBA / PGDM admissions, and this profile gives a quick view of major decision-making details.`;
+
+      document.getElementById("articleHighlight").textContent = overviewText;
+    }).catch(error => {
+      console.error(error);
+      document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Something went wrong while loading this college.</h2>";
     });
 
-    alert("Thank you! Our counsellor will contact you soon.");
+    function openLeadPopup(source = ""){
+      document.getElementById("leadPopup").style.display = "flex";
+      document.getElementById("leadPopup").dataset.source = source || "Unknown Source";
+    }
 
-    document.getElementById("leadName").value = "";
-    document.getElementById("leadPhone").value = "";
-    document.getElementById("leadCity").value = "";
-  });
+    function closeLeadPopup(){
+      document.getElementById("leadPopup").style.display = "none";
+    }
 
-});
-</script>
+    async function submitLead(){
+      const name = document.getElementById("leadName").value.trim();
+      const phone = document.getElementById("leadPhone").value.trim();
+      const email = document.getElementById("leadEmail").value.trim();
+      const city = document.getElementById("leadCity").value.trim();
+      const source = document.getElementById("leadPopup").dataset.source || "College Page";
+
+      if(!name || !phone){
+        alert("Please enter your name and phone number.");
+        return;
+      }
+
+      try{
+        await db.collection("studentLeads").add({
+          name,
+          phone,
+          email,
+          city,
+          source,
+          collegeSlug: slug,
+          pageUrl: window.location.href,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+        alert("Details submitted successfully.");
+        closeLeadPopup();
+
+        document.getElementById("leadName").value = "";
+        document.getElementById("leadPhone").value = "";
+        document.getElementById("leadEmail").value = "";
+        document.getElementById("leadCity").value = "";
+      }catch(err){
+        console.error(err);
+        alert("Something went wrong. Please try again.");
+      }
+    }
+
+    function currentShareData(){
+      return {
+        url: window.location.href,
+        text: document.getElementById("collegeTitle").textContent || "Check this college profile",
+        encodedUrl: encodeURIComponent(window.location.href),
+        encodedText: encodeURIComponent(document.getElementById("collegeTitle").textContent || "Check this college profile")
+      };
+    }
+
+    function shareWhatsApp(){
+      const data = currentShareData();
+      window.open(`https://wa.me/?text=${data.encodedText}%20${data.encodedUrl}`, "_blank");
+    }
+
+    function shareFacebook(){
+      const data = currentShareData();
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${data.encodedUrl}`, "_blank");
+    }
+
+    function shareTwitter(){
+      const data = currentShareData();
+      window.open(`https://twitter.com/intent/tweet?text=${data.encodedText}&url=${data.encodedUrl}`, "_blank");
+    }
+
+    function shareLinkedIn(){
+      const data = currentShareData();
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${data.encodedUrl}`, "_blank");
+    }
+
+    function copyPageLink(){
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert("Page link copied.");
+      });
+    }
+
+    window.addEventListener("click", function(e){
+      const popup = document.getElementById("leadPopup");
+      if(e.target === popup){
+        closeLeadPopup();
+      }
+    });
+  </script>
 
 </body>
 </html>
