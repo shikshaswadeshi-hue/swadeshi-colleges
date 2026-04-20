@@ -8,1525 +8,1594 @@
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html{
+      scroll-behavior:smooth;
     }
 
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background: #faf8f2;
-      color: #16202f;
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(122,85,231,0.07), transparent 24%),
+        radial-gradient(circle at top right, rgba(255,122,26,0.05), transparent 20%),
+        #fcfbff;
+      color:#16202f;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    a{
+      text-decoration:none;
+      color:inherit;
     }
 
-    button {
-      font-family: inherit;
+    img{
+      display:block;
+      max-width:100%;
     }
 
-
-    .page {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 18px 16px 56px;
-}
-    
-    .sectionBlock {
-      margin-bottom: 22px;
+    button,input{
+      font:inherit;
     }
 
-    .sectionTitle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
+    .page{
+      max-width:1220px;
+      margin:0 auto;
+      padding:18px 18px 84px;
     }
 
-    .sectionTitle h2 {
-      margin: 0;
-      font-size: 22px;
-      color: #16202f;
+    .header{
+      position:sticky;
+      top:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 24px;
+      margin:14px auto 0;
+      background:rgba(255,255,255,0.84);
+      border:1px solid rgba(205,195,239,0.55);
+      backdrop-filter:blur(16px);
+      box-shadow:0 12px 34px rgba(36,29,79,0.08);
+      border-radius:24px;
+      max-width:calc(1220px - 36px);
+      transition:all .25s ease;
     }
 
-    .sectionTitle p {
-      margin: 0;
-      color: #667085;
-      font-size: 13px;
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:fit-content;
+    }
+
+    .logo img{
+      height:46px;
+      width:auto;
+    }
+
+    .logo span{
+      font-weight:800;
+      font-size:16px;
+      color:#16202f;
+      letter-spacing:-0.02em;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      flex:1;
+      min-width:0;
+    }
+
+    .nav a{
+      font-size:14px;
+      font-weight:600;
+      color:#596377;
+      padding:10px 13px;
+      border-radius:999px;
+      white-space:nowrap;
+      transition:all .22s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      color:#6948dd;
+      background:#f4efff;
+    }
+
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      white-space:nowrap;
+      padding:12px 20px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#7b59e9,#5d36d2);
+      color:#fff;
+      font-size:14px;
+      font-weight:700;
+      box-shadow:0 14px 28px rgba(93,54,210,0.20);
+      transition:all .22s ease;
+      flex-shrink:0;
+    }
+
+    .cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 34px rgba(93,54,210,0.28);
+    }
+
+    .searchHeroMini{
+      padding:20px 18px 0;
+    }
+
+    .searchHeroInner{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg,#fbf9ff 0%, #f7f3ff 100%);
+      border:1px solid #eee7fb;
+      border-radius:34px;
+      padding:28px 24px 24px;
+      box-shadow:0 16px 40px rgba(42,29,89,0.06);
+    }
+
+    .searchHeroInner::before{
+      content:"";
+      position:absolute;
+      width:240px;
+      height:240px;
+      top:-90px;
+      right:-80px;
+      border-radius:40px;
+      background:rgba(122,85,231,0.08);
+      transform:rotate(24deg);
+      pointer-events:none;
+    }
+
+    .searchHeroText{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 20px;
+      position:relative;
+      z-index:1;
+    }
+
+    .searchHeroBadge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #e9e1fb;
+      font-size:12px;
+      font-weight:800;
+      color:#6b49dd;
+      margin-bottom:12px;
+      box-shadow:0 8px 20px rgba(42,29,89,0.05);
+    }
+
+    .searchHeroText h1{
+      margin:0;
+      font-family:'Sora',sans-serif;
+      font-size:40px;
+      line-height:1.05;
+      letter-spacing:-0.04em;
+      color:#172031;
+    }
+
+    .searchHeroText p{
+      margin:12px auto 0;
+      font-size:15px;
+      line-height:1.75;
+      color:#667085;
+      max-width:720px;
+    }
+
+    .searchHeroBar{
+      max-width:940px;
+      margin:0 auto 20px;
+      position:relative;
+      z-index:1;
+    }
+
+    .searchBar{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:#fff;
+      border:1px solid #e8e0fb;
+      border-radius:18px;
+      padding:8px 8px 8px 14px;
+      box-shadow:0 12px 28px rgba(42,29,89,0.06);
+    }
+
+    .searchBarLarge{
+      border-radius:20px;
+    }
+
+    .searchIcon{
+      font-size:20px;
+      line-height:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .searchInput{
+      flex:1;
+      border:none;
+      outline:none;
+      background:transparent;
+      font-size:15px;
+      color:#112033;
+    }
+
+    .searchBtn{
+      border:none;
+      cursor:pointer;
+      background:linear-gradient(135deg,#7a55e7,#6037d4);
+      color:#fff;
+      border-radius:12px;
+      padding:12px 18px;
+      font-size:14px;
+      font-weight:800;
+      box-shadow:0 10px 18px rgba(96,55,212,0.18);
+    }
+
+    .miniCollegeCarouselWrap{
+      margin-top:6px;
+      position:relative;
+      z-index:1;
+    }
+
+    .miniCarouselHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .miniCarouselHead h3{
+      margin:0;
+      font-family:'Sora',sans-serif;
+      font-size:20px;
+      font-weight:700;
+      color:#16202f;
+      letter-spacing:-0.03em;
+    }
+
+    .miniCarouselNav{
+      display:flex;
+      gap:10px;
+    }
+
+    .miniCarouselNav button{
+      width:42px;
+      height:42px;
+      border:none;
+      border-radius:50%;
+      background:#fff;
+      color:#6540d8;
+      font-size:24px;
+      cursor:pointer;
+      box-shadow:0 10px 20px rgba(42,29,89,0.08);
+    }
+
+    .miniCollegeTrack{
+      display:grid;
+      grid-auto-flow:column;
+      grid-auto-columns:calc(25% - 15px);
+      gap:20px;
+      overflow-x:auto;
+      padding:4px 2px 10px;
+      scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+    }
+
+    .miniCollegeTrack::-webkit-scrollbar{
+      height:8px;
+    }
+
+    .miniCollegeTrack::-webkit-scrollbar-thumb{
+      background:rgba(93,54,210,0.18);
+      border-radius:999px;
+    }
+
+    .miniCollegeCard{
+      background:#fff;
+      border:1px solid #ece4fb;
+      border-radius:22px;
+      padding:16px;
+      box-shadow:0 12px 26px rgba(42,29,89,0.05);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      scroll-snap-align:start;
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .miniCollegeCard:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 34px rgba(42,29,89,0.10);
+      border-color:#ded0fb;
+    }
+
+    .miniCollegeTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .miniCollegeLogo{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      background:#faf7ff;
+      border:1px solid #eee7fb;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      flex-shrink:0;
+    }
+
+    .miniCollegeLogo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      padding:6px;
+    }
+
+    .miniStatus{
+      flex-shrink:0;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:800;
+      border:1px solid transparent;
+      line-height:1;
+    }
+
+    .miniStatus.open{
+      background:#edf8f0;
+      color:#16803c;
+      border-color:#cfe8d5;
+    }
+
+    .miniStatus.closing{
+      background:#fff1e8;
+      color:#d96b00;
+      border-color:#f2d1b6;
+    }
+
+    .miniCollegeName{
+      margin:0 0 4px;
+      font-size:15px;
+      line-height:1.2;
+      font-weight:800;
+      color:#16202f;
+      letter-spacing:-0.02em;
+    }
+
+    .miniMeta{
+      margin:0 0 12px;
+      color:#667085;
+      font-size:13px;
+      font-weight:600;
+    }
+
+    .miniStats{
+      margin:0 0 14px;
+      font-size:12.5px;
+      line-height:1.6;
+      color:#667085;
+      padding-bottom:12px;
+      border-bottom:1px solid #efe8fb;
+    }
+
+    .miniStats span{
+      color:#16202f;
+      font-weight:800;
+    }
+
+    .miniExamRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:14px;
+    }
+
+    .miniExamTag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#f4efff;
+      color:#6948dd;
+      border:1px solid #e6dbff;
+      font-size:11px;
+      font-weight:800;
+    }
+
+    .miniViewBtn{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      width:100%;
+      color:#6948dd;
+      font-size:14px;
+      font-weight:800;
+      padding:11px 12px;
+      margin-top:4px;
+      background:#f7f3ff;
+      border-radius:12px;
+      transition:all .18s ease;
+      border:1px solid #ece4fb;
+    }
+
+    .miniViewBtn:hover{
+      background:#f1eaff;
+      transform:translateX(2px);
+    }
+
+    .sectionBlock{
+      margin-top:26px;
+    }
+
+    .sectionShell{
+      background:linear-gradient(180deg,#fbf9ff 0%,#f8f5ff 100%);
+      border:1px solid #eee7fb;
+      border-radius:34px;
+      padding:24px 22px;
+      box-shadow:0 16px 40px rgba(42,29,89,0.05);
+    }
+
+    .sectionTitle{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+
+    .sectionTitle h2{
+      margin:0;
+      font-family:'Sora',sans-serif;
+      font-size:30px;
+      line-height:1.08;
+      letter-spacing:-0.04em;
+      color:#172031;
+    }
+
+    .sectionTitle p{
+      margin:0;
+      color:#6d7586;
+      font-size:14px;
+      line-height:1.7;
+      max-width:620px;
     }
 
     .browseWrap,
-.trendingWrap,
-.topStrip {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  align-items: center;
-}
+    .trendingWrap,
+    .topStrip{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
 
-.topStrip{
-  margin: 6px 0 24px;
-}
-
-    .browseChip,
-    .trendChip,
-    .topChip {
-      background: white;
-      border: 1px solid #e8e2d9;
-      color: #1d63c6;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 800;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.04);
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    .topStrip{
+      margin-top:24px;
     }
 
     .browseChip,
     .trendChip,
     .topChip{
-  display:inline-block;
-  text-decoration:none;
-}
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:#fff;
+      border:1px solid #e8e0fb;
+      color:#6948dd;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      box-shadow:0 8px 16px rgba(42,29,89,0.04);
+      cursor:pointer;
+      transition:transform 0.15s ease, box-shadow 0.15s ease, background .15s ease;
+    }
 
     .browseChip:hover,
     .trendChip:hover,
-    .topChip:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 20px rgba(0,0,0,0.07);
-    }
-
-    .whyCarouselWrap{
-  position:relative;
-  overflow:hidden;
-  border-radius:28px;
-}
-
-.whyCarousel{
-  display:flex;
-  gap:20px;
-  overflow-x:auto;
-  scroll-behavior:smooth;
-  scroll-snap-type:x mandatory;
-  padding:8px 4px 10px;
-  scrollbar-width:none;
-}
-
-.whyCarousel::-webkit-scrollbar{
-  display:none;
-}
-
-.whyCard{
-  position:relative;
-  min-width:340px;
-  max-width:340px;
-  flex:0 0 340px;
-  scroll-snap-align:start;
-  border-radius:28px;
-  padding:22px;
-  background:
-    radial-gradient(circle at top right, rgba(255,143,31,0.18), transparent 35%),
-    radial-gradient(circle at bottom left, rgba(29,99,198,0.14), transparent 35%),
-    linear-gradient(135deg, #ffffff 0%, #fff8f1 100%);
-  border:1px solid #efe1d3;
-  box-shadow:0 14px 34px rgba(16,24,40,0.07);
-  overflow:hidden;
-  transition:transform 0.22s ease, box-shadow 0.22s ease;
-  will-change: transform;
-}
-
-.whyCard::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:5px;
-  background:linear-gradient(90deg,#ff6a00,#ff8f1f,#1d63c6);
-}
-
-.whyCard:hover{
-  transform:translateY(-6px) scale(1.01);
-  box-shadow:0 22px 42px rgba(16,24,40,0.11);
-}
-
-.whyCardTop{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:18px;
-}
-
-.whyIcon{
-  width:54px;
-  height:54px;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:24px;
-  background:linear-gradient(135deg,#fff2e5 0%,#ffffff 100%);
-  border:1px solid #f0dfcf;
-  box-shadow:0 10px 20px rgba(255,106,0,0.08);
-}
-
-.whyTag{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:9px 12px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:800;
-  background:#ffffff;
-  color:#168b10;
-  border:1px solid #e5ebdf;
-  box-shadow:0 8px 16px rgba(22,139,16,0.06);
-}
-
-.whyCard h3{
-  margin:0 0 10px;
-  font-size:24px;
-  line-height:1.2;
-  color:#16202f;
-}
-
-.whyCard p{
-  margin:0;
-  color:#667085;
-  line-height:1.8;
-  font-size:15px;
-}
-
-    .featuredGrid,
-.resultsGrid {
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 22px !important;
-  align-items: start;
-}
-
-    .resultsHeader {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin: 12px 0 20px;
-    }
-
-    .resultsInfo {
-      font-size: 18px;
-      color: #475467;
-    }
-
-    .resultsInfo strong {
-      color: #101828;
-    }
-
-    .resultsCount {
-      background: linear-gradient(135deg, #fff4e7 0%, #ffffff 100%);
-      color: #ff6a00;
-      border: 1px solid #f1ddc8;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .collegeCard {
-  overflow: hidden;
-  background: white;
-  border-radius: 22px;
-  border: 1px solid #ece3d8;
-  box-shadow: 0 12px 26px rgba(16, 24, 40, 0.07);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-
-    .collegeCard{
-  width: 100%;
-  min-width: 0;
-}
-
-    .collegeCard:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 26px 48px rgba(255, 106, 0, 0.12);
-    }
-
-    .cardImageWrap {
-      position: relative;
-      height: 170px;
-      background: linear-gradient(135deg, #e6eefc 0%, #f7fbff 100%);
-      overflow: hidden;
-    }
-
-    .cardImageWrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .imageFallback {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      font-weight: 800;
-      color: #1d63c6;
-      background: linear-gradient(135deg, #e3ecff 0%, #f4f8ff 100%);
-    }
-
-    .featuredTag {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      background: linear-gradient(135deg, #ff6a00 0%, #ff8f1f 100%);
-      color: white;
-      font-size: 12px;
-      font-weight: 800;
-      padding: 8px 12px;
-      border-radius: 999px;
-      box-shadow: 0 8px 20px rgba(255, 106, 0, 0.25);
-    }
-
-    .verifiedTag {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: rgba(22, 161, 10, 0.92);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 800;
-      padding: 8px 12px;
-      border-radius: 999px;
-    }
-
-    .cardBody {
-      padding: 16px;
-    }
-
-    .titleRow {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 12px;
-    }
-
-    .collegeName {
-  margin: 0;
-  font-size: 20px;
-  line-height: 1.15;
-  font-weight: 800;
-  color: #16202f;
-  text-transform: capitalize;
-}
-
-    .logoMini {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      border: 1px solid #e7e2db;
-      background: #fffefb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      flex-shrink: 0;
-      font-size: 16px;
-      font-weight: 800;
-      color: #1d63c6;
-    }
-
-    .logoMini img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .collegeMeta {
-  font-size: 14px;
-  color: #667085;
-  line-height: 1.6;
-  margin-bottom: 14px;
-}
-
-    .badgeRow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 7px 11px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      border: 1px solid #efe4d8;
-      background: #fffaf4;
-      color: #4e5968;
-    }
-
-    .cardFooter {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: nowrap;
-    }
-
-    .smallText {
-      font-size: 14px;
-      color: #7a869a;
-    }
-
-    .viewBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 118px;
-  border-radius: 12px;
-  padding: 10px 14px;
-  background: linear-gradient(135deg, #1d63c6 0%, #4684dd 100%);
-  color: white;
-  font-size: 14px;
-  font-weight: 800;
-  box-shadow: 0 8px 18px rgba(29, 99, 198, 0.16);
-}
-
-    .leadCtaCard {
-      background: linear-gradient(135deg, #16202f 0%, #1d63c6 100%);
-      color: white;
-      border-radius: 28px;
-      padding: 24px;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 18px 38px rgba(16, 24, 40, 0.18);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 100%;
-    }
-
-    .leadCtaCard h3 {
-      margin: 0 0 10px;
-      font-size: 22px;
-      line-height: 1.15;
-    }
-
-    .leadCtaCard p {
-      margin: 0 0 18px;
-      color: rgba(255,255,255,0.9);
-      line-height: 1.7;
-      font-size: 15px;
-    }
-
-    .leadCtaPoints {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .leadPoint {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.16);
-      padding: 9px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .leadCtaBtn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 18px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #ff6a00 0%, #ff8f1f 100%);
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: 800;
-      cursor: pointer;
-      border: none;
-      min-width: 180px;
-    }
-
-    .emptyState {
-      grid-column: 1 / -1;
-      background: white;
-      border-radius: 28px;
-      border: 1px solid #ece3d8;
-      padding: 48px 24px;
-      text-align: center;
-      box-shadow: 0 16px 36px rgba(16, 24, 40, 0.06);
-    }
-
-    .emptyState h3 {
-      margin: 0 0 10px;
-      font-size: 28px;
-    }
-
-    .emptyState p {
-      margin: 0;
-      color: #667085;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .helpBox {
-  margin-top: 22px;
-  border-radius: 20px;
-  padding: 20px 18px;
-  background: linear-gradient(135deg, #fff2e5 0%, #eef8ea 100%);
-  color: #16202f;
-  text-align: center;
-  box-shadow: 0 12px 22px rgba(16, 24, 40, 0.08);
-  border: 1px solid #efe1d2;
-}
-
-    .helpBox strong {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-
-    .helpBox span {
-      font-size: 15px;
-      color: #667085;
-      display: block;
-      margin-bottom: 14px;
-    }
-
-    .footer {
-      margin-top: 34px;
-      background: #16202f;
-      color: #ffffff;
-      border-radius: 28px;
-      padding: 30px 24px;
-    }
-
-    .footerGrid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr 1fr;
-      gap: 24px;
-    }
-
-    .footer h3,
-    .footer h4 {
-      margin-top: 0;
-      margin-bottom: 12px;
-    }
-
-    .footer p,
-    .footer li {
-      color: rgba(255,255,255,0.78);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    .footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer li {
-      margin-bottom: 8px;
-    }
-
-    .popupOverlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.65);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 5000;
-      padding: 18px;
-    }
-
-    .popupCard {
-      width: 100%;
-      max-width: 460px;
-      background: #fff;
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 24px 60px rgba(15,23,42,0.24);
-      position: relative;
-    }
-
-    .popupClose {
-      position: absolute;
-      right: 16px;
-      top: 14px;
-      border: none;
-      background: transparent;
-      font-size: 24px;
-      cursor: pointer;
-      color: #667085;
-    }
-
-    .popupCard h3 {
-      margin: 0 0 8px;
-      font-size: 28px;
-      color: #101828;
-    }
-
-    .popupCard p {
-      margin: 0 0 18px;
-      color: #667085;
-      line-height: 1.65;
-      font-size: 15px;
-    }
-
-    .popupCard input {
-      width: 100%;
-      padding: 14px;
-      border-radius: 14px;
-      border: 1px solid #d7e0f0;
-      margin-bottom: 12px;
-      font-size: 14px;
-    }
-
-    .popupSubmit {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #ff6a00 0%, #ff8f1f 100%);
-      color: white;
-      font-weight: 800;
-      cursor: pointer;
-      font-size: 15px;
-      box-shadow: 0 10px 24px rgba(255,106,0,0.22);
-    }
-
-    .popupNote {
-      margin-top: 10px;
-      text-align: center;
-      color: #667085;
-      font-size: 12px;
+    .topChip:hover{
+      transform:translateY(-1px);
+      box-shadow:0 12px 20px rgba(42,29,89,0.08);
+      background:#faf7ff;
     }
 
     .guidesGrid{
-  display:grid;
-  grid-template-columns:repeat(2, minmax(0,1fr));
-  gap:18px;
-}
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+    }
 
-.guideCard{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  background:linear-gradient(135deg,#ffffff 0%,#fffaf4 100%);
-  border:1px solid #ece3d8;
-  border-radius:22px;
-  padding:20px;
-  box-shadow:0 12px 28px rgba(16,24,40,0.05);
-  transition:transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-}
+    .guideCard{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      background:#fff;
+      border:1px solid #ece4fb;
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 12px 28px rgba(42,29,89,0.05);
+      transition:transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
 
-.guideCard:hover{
-  transform:translateY(-4px);
-  box-shadow:0 18px 34px rgba(16,24,40,0.08);
-  background:linear-gradient(135deg,#fff9f2 0%,#fffdf9 100%);
-}
+    .guideCard:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 34px rgba(42,29,89,0.08);
+      background:#fcfbff;
+    }
 
-.guideCardText strong{
-  display:block;
-  font-size:18px;
-  color:#16202f;
-  margin-bottom:6px;
-}
+    .guideCardText strong{
+      display:block;
+      font-size:18px;
+      color:#16202f;
+      margin-bottom:6px;
+    }
 
-.guideCardText span{
-  display:block;
-  font-size:14px;
-  color:#667085;
-  line-height:1.6;
-}
+    .guideCardText span{
+      display:block;
+      font-size:14px;
+      color:#667085;
+      line-height:1.7;
+    }
 
-.guideArrow{
-  font-size:24px;
-  font-weight:800;
-  color:#ff6a00;
-  flex-shrink:0;
-}
+    .guideArrow{
+      font-size:24px;
+      font-weight:800;
+      color:#6948dd;
+      flex-shrink:0;
+    }
+
+    .whyCarouselWrap{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+    }
+
+    .whyCarousel{
+      display:flex;
+      gap:20px;
+      overflow-x:auto;
+      scroll-behavior:smooth;
+      scroll-snap-type:x mandatory;
+      padding:8px 4px 10px;
+      scrollbar-width:none;
+    }
+
+    .whyCarousel::-webkit-scrollbar{
+      display:none;
+    }
+
+    .whyCard{
+      position:relative;
+      min-width:340px;
+      max-width:340px;
+      flex:0 0 340px;
+      scroll-snap-align:start;
+      border-radius:28px;
+      padding:22px;
+      background:
+        radial-gradient(circle at top right, rgba(255,122,26,0.10), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(122,85,231,0.12), transparent 35%),
+        linear-gradient(135deg, #ffffff 0%, #faf7ff 100%);
+      border:1px solid #ece4fb;
+      box-shadow:0 14px 34px rgba(42,29,89,0.06);
+      overflow:hidden;
+      transition:transform 0.22s ease, box-shadow 0.22s ease;
+      will-change:transform;
+    }
+
+    .whyCard::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:5px;
+      background:linear-gradient(90deg,#7a55e7,#9b7dff,#ff8a2d);
+    }
+
+    .whyCard:hover{
+      transform:translateY(-6px) scale(1.01);
+      box-shadow:0 22px 42px rgba(42,29,89,0.10);
+    }
+
+    .whyCardTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .whyIcon{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      background:linear-gradient(135deg,#f7f2ff 0%,#ffffff 100%);
+      border:1px solid #ece4fb;
+      box-shadow:0 10px 20px rgba(96,55,212,0.08);
+    }
+
+    .whyTag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:9px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      background:#ffffff;
+      color:#6948dd;
+      border:1px solid #e6dbff;
+      box-shadow:0 8px 16px rgba(96,55,212,0.05);
+    }
+
+    .whyCard h3{
+      margin:0 0 10px;
+      font-size:24px;
+      line-height:1.2;
+      color:#16202f;
+    }
+
+    .whyCard p{
+      margin:0;
+      color:#667085;
+      line-height:1.8;
+      font-size:15px;
+    }
 
     .whyCarouselWrap::before,
-.whyCarouselWrap::after{
-  content:"";
-  position:absolute;
-  top:0;
-  bottom:0;
-  width:36px;
-  z-index:2;
-  pointer-events:none;
-}
+    .whyCarouselWrap::after{
+      content:"";
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:36px;
+      z-index:2;
+      pointer-events:none;
+    }
 
-.whyCarouselWrap::before{
-  left:0;
-  background:linear-gradient(90deg, #faf8f2 0%, rgba(250,248,242,0) 100%);
-}
+    .whyCarouselWrap::before{
+      left:0;
+      background:linear-gradient(90deg, #fbf9ff 0%, rgba(251,249,255,0) 100%);
+    }
 
-.whyCarouselWrap::after{
-  right:0;
-  background:linear-gradient(270deg, #faf8f2 0%, rgba(250,248,242,0) 100%);
-}
+    .whyCarouselWrap::after{
+      right:0;
+      background:linear-gradient(270deg, #fbf9ff 0%, rgba(251,249,255,0) 100%);
+    }
 
     .whyDots{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  margin-top:14px;
-}
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      margin-top:14px;
+    }
 
-.whyDot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:#e5d9cc;
-  transition:all 0.25s ease;
-}
+    .whyDot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#d9cdf8;
+      transition:all 0.25s ease;
+    }
 
-.whyDot.active{
-  width:26px;
-  border-radius:999px;
-  background:linear-gradient(135deg,#ff6a00 0%,#ff8f1f 100%);
-}
-    
-    @media (max-width: 980px) {
-  .featuredGrid,
-  .resultsGrid,
-  .footerGrid {
-    grid-template-columns: 1fr !important;
-  }
+    .whyDot.active{
+      width:26px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#7a55e7 0%,#ff8a2d 100%);
+    }
 
-  .guidesGrid{
-    grid-template-columns:1fr;
-  }
-}
+    .featuredGrid,
+    .resultsGrid{
+      display:grid !important;
+      grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+      gap:22px !important;
+      align-items:start;
+    }
 
-    @media (max-width: 700px) {
-    
-      .searchBar {
-        flex-wrap: wrap;
+    .resultsHeader{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin:8px 0 20px;
+    }
+
+    .resultsInfo{
+      font-size:18px;
+      color:#5f6980;
+    }
+
+    .resultsInfo strong{
+      color:#101828;
+    }
+
+    .resultsCount{
+      background:linear-gradient(135deg,#f6f0ff 0%, #ffffff 100%);
+      color:#6948dd;
+      border:1px solid #e7dcff;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .collegeCard{
+      overflow:hidden;
+      background:#fff;
+      border-radius:24px;
+      border:1px solid #ece4fb;
+      box-shadow:0 12px 26px rgba(42,29,89,0.06);
+      transition:transform 0.2s ease, box-shadow 0.2s ease, border-color .2s ease;
+      width:100%;
+      min-width:0;
+    }
+
+    .collegeCard:hover{
+      transform:translateY(-6px);
+      box-shadow:0 22px 42px rgba(42,29,89,0.10);
+      border-color:#dfd2fb;
+    }
+
+    .cardImageWrap{
+      position:relative;
+      height:178px;
+      background:linear-gradient(135deg,#eee6ff 0%,#f7f3ff 100%);
+      overflow:hidden;
+    }
+
+    .cardImageWrap img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .imageFallback{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:48px;
+      font-weight:800;
+      color:#6948dd;
+      background:linear-gradient(135deg,#ede5ff 0%,#f7f3ff 100%);
+    }
+
+    .featuredTag{
+      position:absolute;
+      top:16px;
+      left:16px;
+      background:linear-gradient(135deg,#ff9a34 0%,#ff7a1a 100%);
+      color:white;
+      font-size:12px;
+      font-weight:800;
+      padding:8px 12px;
+      border-radius:999px;
+      box-shadow:0 8px 20px rgba(255,122,26,0.22);
+    }
+
+    .verifiedTag{
+      position:absolute;
+      top:16px;
+      right:16px;
+      background:rgba(255,255,255,0.92);
+      color:#6948dd;
+      font-size:12px;
+      font-weight:800;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid #e8e0fb;
+      box-shadow:0 8px 18px rgba(42,29,89,0.08);
+    }
+
+    .cardBody{
+      padding:18px;
+    }
+
+    .titleRow{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:14px;
+      margin-bottom:12px;
+    }
+
+    .collegeName{
+      margin:0;
+      font-size:20px;
+      line-height:1.15;
+      font-weight:800;
+      color:#16202f;
+      text-transform:capitalize;
+    }
+
+    .logoMini{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      border:1px solid #ece4fb;
+      background:#faf7ff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      flex-shrink:0;
+      font-size:16px;
+      font-weight:800;
+      color:#6948dd;
+    }
+
+    .logoMini img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .collegeMeta{
+      font-size:14px;
+      color:#667085;
+      line-height:1.7;
+      margin-bottom:14px;
+    }
+
+    .badgeRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:16px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      padding:7px 11px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      border:1px solid #e8dffd;
+      background:#f8f4ff;
+      color:#5a4f74;
+    }
+
+    .cardFooter{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      flex-wrap:nowrap;
+    }
+
+    .smallText{
+      font-size:14px;
+      color:#7a869a;
+      line-height:1.6;
+    }
+
+    .viewBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:118px;
+      border-radius:12px;
+      padding:11px 14px;
+      background:linear-gradient(135deg,#7a55e7 0%, #6037d4 100%);
+      color:white;
+      font-size:14px;
+      font-weight:800;
+      box-shadow:0 10px 20px rgba(96,55,212,0.18);
+      white-space:nowrap;
+    }
+
+    .leadCtaCard{
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.12), transparent 26%),
+        linear-gradient(135deg,#7a55e7 0%, #5d36d2 100%);
+      color:white;
+      border-radius:28px;
+      padding:24px;
+      border:1px solid rgba(255,255,255,0.14);
+      box-shadow:0 18px 38px rgba(69,43,161,0.18);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:100%;
+    }
+
+    .leadCtaCard h3{
+      margin:0 0 10px;
+      font-size:24px;
+      line-height:1.15;
+      font-family:'Sora',sans-serif;
+    }
+
+    .leadCtaCard p{
+      margin:0 0 18px;
+      color:rgba(255,255,255,0.9);
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .leadCtaPoints{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:18px;
+    }
+
+    .leadPoint{
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.16);
+      padding:9px 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .leadCtaBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 18px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#ff9a34 0%,#ff7a1a 100%);
+      color:#ffffff;
+      font-size:15px;
+      font-weight:800;
+      cursor:pointer;
+      border:none;
+      min-width:180px;
+      box-shadow:0 12px 22px rgba(255,122,26,0.20);
+    }
+
+    .emptyState{
+      grid-column:1 / -1;
+      background:#fff;
+      border-radius:28px;
+      border:1px solid #ece4fb;
+      padding:48px 24px;
+      text-align:center;
+      box-shadow:0 16px 36px rgba(42,29,89,0.05);
+    }
+
+    .emptyState h3{
+      margin:0 0 10px;
+      font-family:'Sora',sans-serif;
+      font-size:28px;
+      color:#172031;
+    }
+
+    .emptyState p{
+      margin:0;
+      color:#667085;
+      font-size:16px;
+      line-height:1.8;
+    }
+
+    .helpBox{
+      margin-top:26px;
+      border-radius:28px;
+      padding:26px 20px;
+      background:linear-gradient(180deg,#fbf9ff 0%,#f5f0ff 100%);
+      color:#16202f;
+      text-align:center;
+      box-shadow:0 14px 32px rgba(42,29,89,0.06);
+      border:1px solid #ece4fb;
+    }
+
+    .helpBox strong{
+      display:block;
+      margin-bottom:8px;
+      font-family:'Sora',sans-serif;
+      font-size:24px;
+      line-height:1.2;
+      color:#172031;
+    }
+
+    .helpBox span{
+      font-size:15px;
+      color:#667085;
+      display:block;
+      margin-bottom:16px;
+      line-height:1.75;
+    }
+
+    .footer{
+      margin-top:34px;
+      background:#16202f;
+      color:#ffffff;
+      border-radius:30px;
+      padding:30px 24px;
+    }
+
+    .footerGrid{
+      display:grid;
+      grid-template-columns:1.2fr 1fr 1fr 1fr;
+      gap:22px;
+    }
+
+    .footer h3,
+    .footer h4{
+      margin-bottom:12px;
+    }
+
+    .footer p,
+    .footer li{
+      color:rgba(255,255,255,0.76);
+      line-height:1.75;
+      font-size:14px;
+    }
+
+    .footer ul{
+      list-style:none;
+    }
+
+    .footer li{
+      margin-bottom:8px;
+    }
+
+    .popupOverlay{
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,0.68);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:5000;
+      padding:18px;
+    }
+
+    .popupCard{
+      width:100%;
+      max-width:470px;
+      background:#fff;
+      border-radius:28px;
+      padding:26px;
+      position:relative;
+      box-shadow:0 28px 70px rgba(15,23,42,0.24);
+      border:1px solid #ece4fb;
+    }
+
+    .popupClose{
+      position:absolute;
+      right:16px;
+      top:14px;
+      border:none;
+      background:transparent;
+      font-size:26px;
+      color:#6b7280;
+      cursor:pointer;
+    }
+
+    .popupCard h3{
+      font-family:'Sora',sans-serif;
+      font-size:28px;
+      line-height:1.08;
+      letter-spacing:-0.03em;
+      margin-bottom:10px;
+      color:#172030;
+    }
+
+    .popupCard p{
+      color:#667085;
+      line-height:1.75;
+      font-size:15px;
+      margin-bottom:18px;
+    }
+
+    .popupCard input{
+      width:100%;
+      padding:15px 14px;
+      border-radius:16px;
+      border:1px solid #dddff0;
+      outline:none;
+      margin-bottom:12px;
+      font-size:14px;
+      transition:border-color .2s ease, box-shadow .2s ease;
+      background:#fcfcff;
+    }
+
+    .popupCard input:focus{
+      border-color:#7b59e9;
+      box-shadow:0 0 0 4px rgba(123,89,233,0.10);
+    }
+
+    .popupSubmit{
+      width:100%;
+      border:none;
+      padding:15px;
+      border-radius:16px;
+      background:linear-gradient(135deg,#7a55e7,#6037d4);
+      color:#fff;
+      font-size:15px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 14px 28px rgba(96,55,212,0.18);
+    }
+
+    .popupNote{
+      margin-top:10px;
+      font-size:12px;
+      color:#7b8396;
+      text-align:center;
+    }
+
+    @media (max-width:1200px){
+      .miniCollegeTrack{
+        grid-auto-columns:calc(33.333% - 12px);
+      }
+    }
+
+    @media (max-width:1100px){
+      .featuredGrid,
+      .resultsGrid,
+      .footerGrid{
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      }
+    }
+
+    @media (max-width:920px){
+      .header{
+        flex-wrap:wrap;
+        justify-content:center;
+        padding:14px 16px;
+        margin:14px 14px 0;
       }
 
-      .searchBtn {
-        width: 100%;
+      .logo{
+        width:100%;
+        justify-content:center;
       }
 
-      .collegeName {
-        font-size: 24px;
+      .nav{
+        width:100%;
+        flex-wrap:wrap;
       }
 
-      .viewBtn {
-        width: 100%;
+      .cta{
+        width:100%;
       }
 
-      .cardFooter {
-        align-items: stretch;
+      .searchHeroText h1{
+        font-size:34px;
       }
 
-      .cardImageWrap {
-        height: 190px;
+      .miniCollegeTrack{
+        grid-auto-columns:calc(50% - 10px);
+      }
+
+      .guidesGrid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:700px){
+      .searchBar{
+        flex-wrap:wrap;
+      }
+
+      .searchBtn{
+        width:100%;
+      }
+
+      .collegeName{
+        font-size:22px;
+      }
+
+      .viewBtn{
+        width:100%;
+      }
+
+      .cardFooter{
+        align-items:stretch;
+        flex-wrap:wrap;
+      }
+
+      .cardImageWrap{
+        height:190px;
       }
 
       .whyCard{
-  min-width:86%;
-  max-width:86%;
-  flex:0 0 86%;
-}
+        min-width:86%;
+        max-width:86%;
+        flex:0 0 86%;
+      }
     }
 
-.header{
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 14px 26px;
-  margin: 14px 18px 0;
-  background: rgba(255,255,255,0.78);
-  border: 1px solid rgba(255,255,255,0.55);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 12px 34px rgba(17,24,39,0.08);
-  border-radius: 22px;
-  max-width: calc(100% - 36px);
-  transition: all .25s ease;
-}
+    @media (max-width:680px){
+      .page{
+        padding:18px 14px 60px;
+      }
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  min-width: fit-content;
-}
+      .searchHeroMini{
+        padding:16px 14px 0;
+      }
 
-.logo img{
-  height:48px;
-  width:auto;
-  display:block;
-}
+      .searchHeroInner,
+      .sectionShell{
+        border-radius:24px;
+        padding:20px 16px;
+      }
 
-.logo span{
-  font-weight:800;
-  font-size:16px;
-  color:#16202f;
-  letter-spacing:-0.02em;
-}
+      .searchHeroText h1,
+      .sectionTitle h2{
+        font-size:28px;
+      }
 
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  flex:1;
-  min-width:0;
-}
+      .miniCarouselHead{
+        align-items:flex-start;
+        flex-direction:column;
+      }
 
-.nav a{
-  text-decoration:none;
-  color:#425066;
-  font-weight:600;
-  font-size:14px;
-  padding:10px 12px;
-  border-radius:999px;
-  transition:all .22s ease;
-  white-space:nowrap;
-}
+      .miniCollegeTrack{
+        grid-auto-columns:88%;
+      }
 
-.nav a:hover{
-  color:#4d2fb2;
-  background:#f4efff;
-  transform:translateY(-1px);
-}
-
-.cta{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  background:linear-gradient(135deg,#ff7a1a,#ff5a00);
-  color:#fff;
-  padding:12px 20px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:14px;
-  box-shadow:0 12px 24px rgba(255,107,0,0.20);
-  transition:transform .22s ease, box-shadow .22s ease;
-  white-space:nowrap;
-  width:auto;
-  flex-shrink:0;
-}
-
-.cta:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 28px rgba(255,107,0,0.28);
-}
-
-    @media (max-width: 900px){
-  .header{
-    flex-wrap:wrap;
-    justify-content:center;
-    padding:14px 16px;
-    margin:14px 14px 0;
-  }
-
-  .logo{
-    width:100%;
-    justify-content:center;
-  }
-
-  .nav{
-    width:100%;
-    justify-content:center;
-    flex-wrap:wrap;
-  }
-
-  .cta{
-    width:100%;
-  }
-}
-
-.searchHeroMini{
-  padding:14px 18px 0;
-}
-
-.searchHeroInner{
-  background:linear-gradient(180deg,#f9f6f0 0%, #f5efe5 100%);
-  border:1px solid #eadfce;
-  border-radius:28px;
-  padding:22px 20px 20px;
-  box-shadow:0 14px 28px rgba(0,0,0,0.04);
-}
-
-.searchHeroText{
-  text-align:center;
-  max-width:760px;
-  margin:0 auto 18px;
-}
-
-.searchHeroBadge{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:8px 14px;
-  border-radius:999px;
-  background:#fff;
-  border:1px solid #eadfce;
-  font-size:12px;
-  font-weight:800;
-  color:#4d2fb2;
-  margin-bottom:10px;
-}
-
-.searchHeroText h1{
-  margin:0;
-  font-size:34px;
-  line-height:1.05;
-  font-weight:800;
-  color:#16202f;
-}
-
-.searchHeroText p{
-  margin:10px auto 0;
-  font-size:15px;
-  line-height:1.6;
-  color:#5f6b7a;
-  max-width:700px;
-}
-
-.searchHeroBar{
-  max-width:920px;
-  margin:0 auto 18px;
-}
-
-.searchBarLarge{
-  background:#fff;
-  border:1px solid #eadfce;
-  border-radius:20px;
-  padding:10px 10px 10px 16px;
-  box-shadow:0 12px 26px rgba(0,0,0,0.05);
-}
-
-.miniCollegeCarouselWrap{
-  margin-top:10px;
-}
-
-.miniCarouselHead{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:14px;
-}
-
-.miniCarouselHead h3{
-  margin:0;
-  font-size:20px;
-  font-weight:800;
-  color:#16202f;
-  letter-spacing:-0.02em;
-}
-
-.miniCarouselNav{
-  display:flex;
-  gap:10px;
-}
-
-.miniCarouselNav button{
-  width:44px;
-  height:44px;
-  border:none;
-  border-radius:50%;
-  background:#fff;
-  color:#16202f;
-  font-size:28px;
-  cursor:pointer;
-  box-shadow:0 10px 24px rgba(0,0,0,0.06);
-}
-
-.miniCollegeTrack{
-  display:grid;
-  grid-auto-flow:column;
-  grid-auto-columns:calc(25% - 16px);
-  gap:20px;
-  overflow-x:auto;
-  padding:4px 2px 10px;
-  scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;
-}
-
-.miniCollegeTrack::-webkit-scrollbar{
-  height:8px;
-}
-
-.miniCollegeTrack::-webkit-scrollbar-thumb{
-  background:rgba(22,32,47,0.16);
-  border-radius:999px;
-}
-
-    .miniCollegeCard{
-  background:#ffffff;
-  border:1px solid #e9dfd2;
-  border-radius:18px;
-  padding:16px;
-  box-shadow:0 10px 24px rgba(16,24,40,0.06);
-  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-  scroll-snap-align:start;
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  height:100%;
-}
-
-.miniCollegeCard:hover{
-  transform:translateY(-4px);
-  box-shadow:0 18px 34px rgba(16,24,40,0.10);
-  border-color:#e2d4c2;
-}
-
-.miniCollegeTop{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:12px;
-  margin-bottom:12px;
-}
-
-.miniCollegeLogo{
-  width:42px;
-  height:42px;
-  border-radius:12px;
-  background:#f8f5ef;
-  border:1px solid #eee4d7;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  flex-shrink:0;
-}
-
-.miniCollegeLogo img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  padding:6px;
-}
-
-.miniStatus{
-  flex-shrink:0;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:5px 10px;
-  border-radius:999px;
-  font-size:10px;
-  font-weight:800;
-  border:1px solid transparent;
-  line-height:1;
-}
-
-.miniStatus.open{
-  background:#edf8f0;
-  color:#16803c;
-  border-color:#cfe8d5;
-}
-
-.miniStatus.closing{
-  background:#fff1e8;
-  color:#d96b00;
-  border-color:#f2d1b6;
-}
-
-.miniCollegeName{
-  margin:0 0 4px;
-  font-size:15px;
-  line-height:1.18;
-  font-weight:800;
-  color:#16202f;
-  letter-spacing:-0.02em;
-}
-
-.miniMeta{
-  margin:0 0 12px;
-  color:#667085;
-  font-size:13px;
-  font-weight:600;
-}
-
-.miniStats{
-  margin:0 0 14px;
-  font-size:12.5px;
-  line-height:1.5;
-  color:#667085;
-  padding-bottom:12px;
-  border-bottom:1px solid #efe5d8;
-}
-
-.miniStats span{
-  color:#16202f;
-  font-weight:800;
-}
-
-.miniExamRow{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:14px;
-}
-
-.miniExamTag{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:6px 10px;
-  border-radius:999px;
-  background:#f4efff;
-  color:#4d2fb2;
-  border:1px solid #e4d9ff;
-  font-size:11px;
-  font-weight:800;
-}
-
-.miniViewBtn{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  width:100%;
-  text-decoration:none;
-  color:#ff6a00;
-  font-size:14px;
-  font-weight:800;
-  padding:10px 12px;
-  margin-top:4px;
-  background:#fff5ec;
-  border-radius:10px;
-  transition:all .18s ease;
-}
-
-.miniViewBtn:hover{
-  background:#ffe9d6;
-  transform:translateX(2px);
-}
-
-    
-@media (max-width: 1200px){
-  .miniCollegeTrack{
-    grid-auto-columns:calc(33.333% - 12px);
-  }
-}
-
-@media (max-width: 900px){
-  .searchHeroInner{
-    border-radius:30px;
-    padding:24px 18px 22px;
-  }
-
-  .searchHeroText h1{
-    font-size:38px;
-  }
-
-  .miniCollegeTrack{
-    grid-auto-columns:calc(50% - 10px);
-  }
-}
-
-@media (max-width: 640px){
-  .searchHeroMini{
-    padding:14px 14px 0;
-  }
-
-  .searchHeroInner{
-    border-radius:24px;
-    padding:18px 14px;
-  }
-
-  .searchHeroText h1{
-    font-size:30px;
-  }
-
-  .searchHeroText p{
-    font-size:15px;
-  }
-
-  .searchBar{
-    flex-wrap:wrap;
-  }
-
-  .searchBtn{
-    width:100%;
-  }
-
-  .miniCarouselHead{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .miniCollegeTrack{
-    grid-auto-columns:88%;
-  }
-}
-
-.searchBar{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  background:#fff;
-  border:1px solid #eadfce;
-  border-radius:16px;
-  padding:8px 8px 8px 14px;
-}
-
-.searchIcon{
-  font-size:20px;
-  line-height:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.searchInput{
-  flex:1;
-  border:none;
-  outline:none;
-  background:transparent;
-  font-size:15px;
-  color:#112033;
-}
-
-.searchBtn{
-  border:none;
-  cursor:pointer;
-  background:linear-gradient(135deg,#ff6a00 0%,#ff8f1f 100%);
-  color:#fff;
-  border-radius:12px;
-  padding:12px 18px;
-  font-size:14px;
-  font-weight:800;
-  box-shadow:0 8px 18px rgba(255,106,0,0.18);
-}
-    
+      .featuredGrid,
+      .resultsGrid,
+      .footerGrid{
+        grid-template-columns:1fr !important;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="header">
-  <a href="/" class="logo">
-    <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
-    <span>Swadeshi Shiksha</span>
-  </a>
+    <a href="/" class="logo">
+      <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+      <span>Swadeshi Shiksha</span>
+    </a>
 
-  <div class="nav">
-  <a href="https://swadeshi-colleges.vercel.app/colleges.html">Colleges</a>
-  <a href="https://swadeshi-colleges.vercel.app/exams.html">Exams</a>
-  <a href="https://swadeshi-colleges.vercel.app/courses.html">Courses</a>
-  <a href="https://swadeshi-colleges.vercel.app/resources.html">Resources</a>
-</div>
-
-  <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">Get Free MBA Guidance</a>
-</div>
-
-<section class="searchHeroMini">
-  <div class="searchHeroInner">
-    <div class="searchHeroText">
-      <span class="searchHeroBadge">MBA Admissions 2026</span>
-      <h1>Search MBA Colleges Smarter</h1>
-      <p>Compare verified colleges, placements, fees, and location details in one place.</p>
+    <div class="nav">
+      <a href="https://swadeshi-colleges.vercel.app/colleges.html" class="active">Colleges</a>
+      <a href="https://swadeshi-colleges.vercel.app/exams.html">Exams</a>
+      <a href="https://swadeshi-colleges.vercel.app/courses.html">Courses</a>
+      <a href="https://swadeshi-colleges.vercel.app/resources.html">Resources</a>
     </div>
 
-    <div class="searchHeroBar">
-      <div class="searchBar searchBarLarge">
-        <span class="searchIcon">🔍</span>
-        <input
-          type="text"
-          id="searchInput"
-          class="searchInput"
-          placeholder="Search college, city, exam, or course..."
-        />
-        <button id="searchBtn" class="searchBtn">Search</button>
+    <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">Get Free MBA Guidance</a>
+  </div>
+
+  <section class="searchHeroMini">
+    <div class="searchHeroInner">
+      <div class="searchHeroText">
+        <span class="searchHeroBadge">MBA Admissions 2026</span>
+        <h1>Search MBA Colleges Smarter</h1>
+        <p>Compare verified colleges, placements, fees, and location details in one place.</p>
       </div>
-    </div>
 
-    <div class="miniCollegeCarouselWrap">
-      <div class="miniCarouselHead">
-        <h3>Popular Colleges</h3>
-        <div class="miniCarouselNav">
-          <button type="button" id="miniPrev">‹</button>
-          <button type="button" id="miniNext">›</button>
+      <div class="searchHeroBar">
+        <div class="searchBar searchBarLarge">
+          <span class="searchIcon">🔍</span>
+          <input
+            type="text"
+            id="searchInput"
+            class="searchInput"
+            placeholder="Search college, city, exam, or course..."
+          />
+          <button id="searchBtn" class="searchBtn">Search</button>
         </div>
       </div>
 
-      <div class="miniCollegeTrack" id="miniCollegeTrack">
-       <div class="miniCollegeCard">
-  <div class="miniCollegeBody">
-    <div class="miniCollegeTop">
-      <div class="miniCollegeLogo">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/iibs-logo-9CxeU1C36jDNT4qS.png" alt="IIBS Bangalore">
+      <div class="miniCollegeCarouselWrap">
+        <div class="miniCarouselHead">
+          <h3>Popular Colleges</h3>
+          <div class="miniCarouselNav">
+            <button type="button" id="miniPrev">‹</button>
+            <button type="button" id="miniNext">›</button>
+          </div>
+        </div>
+
+        <div class="miniCollegeTrack" id="miniCollegeTrack">
+          <div class="miniCollegeCard">
+            <div class="miniCollegeBody">
+              <div class="miniCollegeTop">
+                <div class="miniCollegeLogo">
+                  <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/iibs-logo-9CxeU1C36jDNT4qS.png" alt="IIBS Bangalore">
+                </div>
+                <span class="miniStatus open">Open</span>
+              </div>
+
+              <h4 class="miniCollegeName">IIBS Bangalore</h4>
+              <p class="miniMeta">Bangalore</p>
+
+              <div class="miniStats">
+                Avg <span>₹8.6 LPA</span> &nbsp; • &nbsp; Fees <span>₹9 Lakhs</span>
+              </div>
+
+              <div class="miniExamRow">
+                <span class="miniExamTag">CAT</span>
+                <span class="miniExamTag">MAT</span>
+                <span class="miniExamTag">CMAT</span>
+              </div>
+
+              <a href="college.html?slug=iibs-bangalore" class="miniViewBtn">
+                <span>View College</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="miniCollegeCard">
+            <div class="miniCollegeBody">
+              <div class="miniCollegeTop">
+                <div class="miniCollegeLogo">
+                  <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bml-munjal-kIZcRe9FY91QHy2V.webp" alt="BML Munjal University">
+                </div>
+                <span class="miniStatus open">Open</span>
+              </div>
+
+              <h4 class="miniCollegeName">BML Munjal University</h4>
+              <p class="miniMeta">Gurugram</p>
+
+              <div class="miniStats">
+                Avg <span>₹8.5 LPA</span> &nbsp; • &nbsp; Fees <span>₹13 Lakhs</span>
+              </div>
+
+              <div class="miniExamRow">
+                <span class="miniExamTag">CAT</span>
+                <span class="miniExamTag">XAT</span>
+                <span class="miniExamTag">MAT</span>
+              </div>
+
+              <a href="college.html?slug=bml-munjal-university" class="miniViewBtn">
+                <span>View College</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="miniCollegeCard">
+            <div class="miniCollegeBody">
+              <div class="miniCollegeTop">
+                <div class="miniCollegeLogo">
+                  <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg" alt="Bennett University">
+                </div>
+                <span class="miniStatus closing">Closing Soon</span>
+              </div>
+
+              <h4 class="miniCollegeName">Bennett University</h4>
+              <p class="miniMeta">Greater Noida</p>
+
+              <div class="miniStats">
+                Avg <span>₹7.2 LPA</span> &nbsp; • &nbsp; Fees <span>₹12 Lakhs</span>
+              </div>
+
+              <div class="miniExamRow">
+                <span class="miniExamTag">CAT</span>
+                <span class="miniExamTag">MAT</span>
+                <span class="miniExamTag">CMAT</span>
+              </div>
+
+              <a href="college.html?slug=bennett-university" class="miniViewBtn">
+                <span>View College</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="miniCollegeCard">
+            <div class="miniCollegeBody">
+              <div class="miniCollegeTop">
+                <div class="miniCollegeLogo">
+                  <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/jagsom-logo-A1aJb9Kj5xU0gL2n.png" alt="JAGSoM">
+                </div>
+                <span class="miniStatus open">Open</span>
+              </div>
+
+              <h4 class="miniCollegeName">JAGSoM</h4>
+              <p class="miniMeta">Bangalore</p>
+
+              <div class="miniStats">
+                Avg <span>₹13.3 LPA</span> &nbsp; • &nbsp; Fees <span>₹15 Lakhs</span>
+              </div>
+
+              <div class="miniExamRow">
+                <span class="miniExamTag">CAT</span>
+                <span class="miniExamTag">XAT</span>
+                <span class="miniExamTag">GMAT</span>
+              </div>
+
+              <a href="college.html?slug=jagsom-bangalore" class="miniViewBtn">
+                <span>View College</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="miniCollegeCard">
+            <div class="miniCollegeBody">
+              <div class="miniCollegeTop">
+                <div class="miniCollegeLogo">
+                  <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-m2W78zZN6NfP20oW.png" alt="ISBR Bangalore">
+                </div>
+                <span class="miniStatus open">Open</span>
+              </div>
+
+              <h4 class="miniCollegeName">ISBR Bangalore</h4>
+              <p class="miniMeta">Bangalore</p>
+
+              <div class="miniStats">
+                Avg <span>₹8 LPA</span> &nbsp; • &nbsp; Fees <span>₹11 Lakhs</span>
+              </div>
+
+              <div class="miniExamRow">
+                <span class="miniExamTag">CAT</span>
+                <span class="miniExamTag">MAT</span>
+                <span class="miniExamTag">CMAT</span>
+              </div>
+
+              <a href="college.html?slug=isbr-bangalore" class="miniViewBtn">
+                <span>View College</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      <span class="miniStatus open">Open</span>
     </div>
+  </section>
 
-    <h4 class="miniCollegeName">IIBS Bangalore</h4>
-    <p class="miniMeta">Bangalore</p>
-
-    <div class="miniStats">
-      Avg <span>₹8.6 LPA</span> &nbsp; • &nbsp; Fees <span>₹9 Lakhs</span>
-    </div>
-
-    <div class="miniExamRow">
-      <span class="miniExamTag">CAT</span>
-      <span class="miniExamTag">MAT</span>
-      <span class="miniExamTag">CMAT</span>
-    </div>
-
-    <a href="college.html?slug=iibs-bangalore" class="miniViewBtn">
-      <span>View College</span>
-      <span>→</span>
-    </a>
-  </div>
-</div>
-
-        <div class="miniCollegeCard">
-  <div class="miniCollegeBody">
-    <div class="miniCollegeTop">
-      <div class="miniCollegeLogo">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bml-munjal-kIZcRe9FY91QHy2V.webp" alt="BML Munjal University">
-      </div>
-      <span class="miniStatus open">Open</span>
-    </div>
-
-    <h4 class="miniCollegeName">BML Munjal University</h4>
-    <p class="miniMeta">Gurugram</p>
-
-    <div class="miniStats">
-      Avg <span>₹8.5 LPA</span> &nbsp; • &nbsp; Fees <span>₹13 Lakhs</span>
-    </div>
-
-    <div class="miniExamRow">
-      <span class="miniExamTag">CAT</span>
-      <span class="miniExamTag">XAT</span>
-      <span class="miniExamTag">MAT</span>
-    </div>
-
-    <a href="college.html?slug=bml-munjal-university" class="miniViewBtn">
-      <span>View College</span>
-      <span>→</span>
-    </a>
-  </div>
-</div>
-
-        <div class="miniCollegeCard">
-  <div class="miniCollegeBody">
-    <div class="miniCollegeTop">
-      <div class="miniCollegeLogo">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/bennet-university-logo-IW5rdP4f2NcRQpnD.jpg" alt="Bennett University">
-      </div>
-      <span class="miniStatus closing">Closing Soon</span>
-    </div>
-
-    <h4 class="miniCollegeName">Bennett University</h4>
-    <p class="miniMeta">Greater Noida</p>
-
-    <div class="miniStats">
-      Avg <span>₹7.2 LPA</span> &nbsp; • &nbsp; Fees <span>₹12 Lakhs</span>
-    </div>
-
-    <div class="miniExamRow">
-      <span class="miniExamTag">CAT</span>
-      <span class="miniExamTag">MAT</span>
-      <span class="miniExamTag">CMAT</span>
-    </div>
-
-    <a href="college.html?slug=bennett-university" class="miniViewBtn">
-      <span>View College</span>
-      <span>→</span>
-    </a>
-  </div>
-</div>
-
-        <div class="miniCollegeCard">
-  <div class="miniCollegeBody">
-    <div class="miniCollegeTop">
-      <div class="miniCollegeLogo">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/jagsom-logo-A1aJb9Kj5xU0gL2n.png" alt="JAGSoM">
-      </div>
-      <span class="miniStatus open">Open</span>
-    </div>
-
-    <h4 class="miniCollegeName">JAGSoM</h4>
-    <p class="miniMeta">Bangalore</p>
-
-    <div class="miniStats">
-      Avg <span>₹13.3 LPA</span> &nbsp; • &nbsp; Fees <span>₹15 Lakhs</span>
-    </div>
-
-    <div class="miniExamRow">
-      <span class="miniExamTag">CAT</span>
-      <span class="miniExamTag">XAT</span>
-      <span class="miniExamTag">GMAT</span>
-    </div>
-
-    <a href="college.html?slug=jagsom-bangalore" class="miniViewBtn">
-      <span>View College</span>
-      <span>→</span>
-    </a>
-  </div>
-</div>
-
-        <div class="miniCollegeCard">
-  <div class="miniCollegeBody">
-    <div class="miniCollegeTop">
-      <div class="miniCollegeLogo">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=366,fit=crop/ix9hiMuysgYYl7hE/isbr-logo-m2W78zZN6NfP20oW.png" alt="ISBR Bangalore">
-      </div>
-      <span class="miniStatus open">Open</span>
-    </div>
-
-    <h4 class="miniCollegeName">ISBR Bangalore</h4>
-    <p class="miniMeta">Bangalore</p>
-
-    <div class="miniStats">
-      Avg <span>₹8 LPA</span> &nbsp; • &nbsp; Fees <span>₹11 Lakhs</span>
-    </div>
-
-    <div class="miniExamRow">
-      <span class="miniExamTag">CAT</span>
-      <span class="miniExamTag">MAT</span>
-      <span class="miniExamTag">CMAT</span>
-    </div>
-
-    <a href="college.html?slug=isbr-bangalore" class="miniViewBtn">
-      <span>View College</span>
-      <span>→</span>
-    </a>
-  </div>
-</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="page">
-
+  <div class="page">
     <section class="sectionBlock" id="browseCourseSection">
-  <div class="sectionTitle">
-    <h2>Browse by Course</h2>
-    <p>Explore detailed course guides and admission pathways</p>
-  </div>
-  <div class="browseWrap">
-    <a class="browseChip" href="page.html?slug=mba-course-2026">MBA</a>
-    <a class="browseChip" href="page.html?slug=pgdm-course-2026">PGDM</a>
-    <a class="browseChip" href="page.html?slug=bba-course-guide">BBA</a>
-    <a class="browseChip" href="page.html?slug=direct-admission-mba-2026">Direct Admission</a>
-  </div>
-</section>
+      <div class="sectionShell">
+        <div class="sectionTitle">
+          <div>
+            <h2>Browse by Course</h2>
+            <p>Explore detailed course guides and admission pathways.</p>
+          </div>
+        </div>
+
+        <div class="browseWrap">
+          <a class="browseChip" href="page.html?slug=mba-course-2026">MBA</a>
+          <a class="browseChip" href="page.html?slug=pgdm-course-2026">PGDM</a>
+          <a class="browseChip" href="page.html?slug=bba-course-guide">BBA</a>
+          <a class="browseChip" href="page.html?slug=direct-admission-mba-2026">Direct Admission</a>
+        </div>
+      </div>
+    </section>
 
     <section class="sectionBlock" id="browseExamSection">
-  <div class="sectionTitle">
-    <h2>Browse by Exam</h2>
-    <p>Explore exam-specific guides and accepting colleges</p>
-  </div>
-  <div class="browseWrap">
-    <a class="browseChip" href="page.html?slug=colleges-accepting-cat-2026-scores">CAT</a>
-    <a class="browseChip" href="page.html?slug=colleges-accepting-xat-2026-scores">XAT</a>
-    <a class="browseChip" href="page.html?slug=colleges-accepting-nmat-2026-scores">NMAT</a>
-    <a class="browseChip" href="page.html?slug=colleges-accepting-cmat-2026-scores">CMAT</a>
-    <a class="browseChip" href="page.html?slug=colleges-accepting-snap-2026-scores">SNAP</a>
-    <a class="browseChip" href="page.html?slug=colleges-accepting-mh-cet-2026-scores">MH-CET</a>
-  </div>
-</section>
+      <div class="sectionShell">
+        <div class="sectionTitle">
+          <div>
+            <h2>Browse by Exam</h2>
+            <p>Explore exam-specific guides and accepting colleges.</p>
+          </div>
+        </div>
+
+        <div class="browseWrap">
+          <a class="browseChip" href="page.html?slug=colleges-accepting-cat-2026-scores">CAT</a>
+          <a class="browseChip" href="page.html?slug=colleges-accepting-xat-2026-scores">XAT</a>
+          <a class="browseChip" href="page.html?slug=colleges-accepting-nmat-2026-scores">NMAT</a>
+          <a class="browseChip" href="page.html?slug=colleges-accepting-cmat-2026-scores">CMAT</a>
+          <a class="browseChip" href="page.html?slug=colleges-accepting-snap-2026-scores">SNAP</a>
+          <a class="browseChip" href="page.html?slug=colleges-accepting-mh-cet-2026-scores">MH-CET</a>
+        </div>
+      </div>
+    </section>
 
     <section class="sectionBlock" id="browseCitySection">
-  <div class="sectionTitle">
-    <h2>Browse by City</h2>
-    <p>Explore city-wise college guides and admission options</p>
-  </div>
-  <div class="browseWrap">
-    <a class="browseChip" href="page.html?slug=mba-colleges-in-delhi-ncr-2026">Delhi NCR</a>
-    <a class="browseChip" href="page.html?slug=mba-colleges-in-bangalore-2026">Bangalore</a>
-    <a class="browseChip" href="page.html?slug=mba-colleges-in-pune-2026">Pune</a>
-    <a class="browseChip" href="page.html?slug=mba-colleges-in-mumbai-2026">Mumbai</a>
-  </div>
-</section>
+      <div class="sectionShell">
+        <div class="sectionTitle">
+          <div>
+            <h2>Browse by City</h2>
+            <p>Explore city-wise college guides and admission options.</p>
+          </div>
+        </div>
+
+        <div class="browseWrap">
+          <a class="browseChip" href="page.html?slug=mba-colleges-in-delhi-ncr-2026">Delhi NCR</a>
+          <a class="browseChip" href="page.html?slug=mba-colleges-in-bangalore-2026">Bangalore</a>
+          <a class="browseChip" href="page.html?slug=mba-colleges-in-pune-2026">Pune</a>
+          <a class="browseChip" href="page.html?slug=mba-colleges-in-mumbai-2026">Mumbai</a>
+        </div>
+      </div>
+    </section>
 
     <section class="sectionBlock" id="guidesSection">
-  <div class="sectionTitle">
-    <h2>Popular Guides</h2>
-    <p>Explore high-intent pages students search for most</p>
-  </div>
+      <div class="sectionShell">
+        <div class="sectionTitle">
+          <div>
+            <h2>Popular Guides</h2>
+            <p>Explore high-intent pages students search for most.</p>
+          </div>
+        </div>
 
-  <div class="guidesGrid">
-    <a class="guideCard" href="page.html?slug=mba-course-2026">
-      <div class="guideCardText">
-        <strong>MBA Course Guide 2026</strong>
-        <span>Eligibility, admissions, fees, and career scope</span>
-      </div>
-      <div class="guideArrow">→</div>
-    </a>
+        <div class="guidesGrid">
+          <a class="guideCard" href="page.html?slug=mba-course-2026">
+            <div class="guideCardText">
+              <strong>MBA Course Guide 2026</strong>
+              <span>Eligibility, admissions, fees, and career scope</span>
+            </div>
+            <div class="guideArrow">→</div>
+          </a>
 
-    <a class="guideCard" href="page.html?slug=pgdm-course-2026">
-      <div class="guideCardText">
-        <strong>PGDM Course Guide 2026</strong>
-        <span>Understand AICTE-approved PGDM pathways</span>
-      </div>
-      <div class="guideArrow">→</div>
-    </a>
+          <a class="guideCard" href="page.html?slug=pgdm-course-2026">
+            <div class="guideCardText">
+              <strong>PGDM Course Guide 2026</strong>
+              <span>Understand AICTE-approved PGDM pathways</span>
+            </div>
+            <div class="guideArrow">→</div>
+          </a>
 
-    <a class="guideCard" href="page.html?slug=colleges-accepting-cat-2026-scores">
-      <div class="guideCardText">
-        <strong>Colleges Accepting CAT Scores</strong>
-        <span>Explore CAT-accepting MBA and PGDM colleges</span>
-      </div>
-      <div class="guideArrow">→</div>
-    </a>
+          <a class="guideCard" href="page.html?slug=colleges-accepting-cat-2026-scores">
+            <div class="guideCardText">
+              <strong>Colleges Accepting CAT Scores</strong>
+              <span>Explore CAT-accepting MBA and PGDM colleges</span>
+            </div>
+            <div class="guideArrow">→</div>
+          </a>
 
-    <a class="guideCard" href="page.html?slug=mba-colleges-in-bangalore-2026">
-      <div class="guideCardText">
-        <strong>MBA Colleges in Bangalore</strong>
-        <span>City-wise shortlist for admissions and comparison</span>
+          <a class="guideCard" href="page.html?slug=mba-colleges-in-bangalore-2026">
+            <div class="guideCardText">
+              <strong>MBA Colleges in Bangalore</strong>
+              <span>City-wise shortlist for admissions and comparison</span>
+            </div>
+            <div class="guideArrow">→</div>
+          </a>
+        </div>
       </div>
-      <div class="guideArrow">→</div>
-    </a>
-  </div>
-</section>
+    </section>
 
     <section class="sectionBlock" id="trendingSection">
-      <div class="sectionTitle">
-        <h2>Trending Searches</h2>
-        <p>Click any topic below to update results on this page instantly</p>
-      </div>
+      <div class="sectionShell">
+        <div class="sectionTitle">
+          <div>
+            <h2>Trending Searches</h2>
+            <p>Click any topic below to update results on this page instantly.</p>
+          </div>
+        </div>
 
-      <div class="trendingWrap" id="trendingWrap">
-        <button class="trendChip" data-search="Amity University">Amity University</button>
-        <button class="trendChip" data-search="Example University">Example University</button>
-        <button class="trendChip" data-search="MBA colleges in Bangalore">MBA colleges in Bangalore</button>
-        <button class="trendChip" data-search="MBA colleges in Delhi NCR">MBA colleges in Delhi NCR</button>
+        <div class="trendingWrap" id="trendingWrap">
+          <button class="trendChip" data-search="Amity University">Amity University</button>
+          <button class="trendChip" data-search="Example University">Example University</button>
+          <button class="trendChip" data-search="MBA colleges in Bangalore">MBA colleges in Bangalore</button>
+          <button class="trendChip" data-search="MBA colleges in Delhi NCR">MBA colleges in Delhi NCR</button>
+        </div>
       </div>
     </section>
 
@@ -1537,75 +1606,85 @@
     </div>
 
     <section class="sectionBlock" id="whySection">
-  <div class="sectionTitle">
-    <h2>Why Swadeshi Shiksha</h2>
-    <p>Built around guidance, clarity, and student-first discovery</p>
-  </div>
-
-  <div class="whyCarouselWrap">
-    <div class="whyCarousel" id="whyCarousel">
-      <div class="whyCard">
-        <div class="whyCardTop">
-          <div class="whyIcon">🎓</div>
-          <span class="whyTag">Verified</span>
+      <div class="sectionShell">
+        <div class="sectionTitle">
+          <div>
+            <h2>Why Swadeshi Shiksha</h2>
+            <p>Built around guidance, clarity, and student-first discovery.</p>
+          </div>
         </div>
-        <h3>Verified College Profiles</h3>
-        <p>Explore admission-focused college pages with key details like approvals, fees, placements, and profile data in one place.</p>
-      </div>
 
-      <div class="whyCard">
-        <div class="whyCardTop">
-          <div class="whyIcon">📞</div>
-          <span class="whyTag">Support</span>
+        <div class="whyCarouselWrap">
+          <div class="whyCarousel" id="whyCarousel">
+            <div class="whyCard">
+              <div class="whyCardTop">
+                <div class="whyIcon">🎓</div>
+                <span class="whyTag">Verified</span>
+              </div>
+              <h3>Verified College Profiles</h3>
+              <p>Explore admission-focused college pages with key details like approvals, fees, placements, and profile data in one place.</p>
+            </div>
+
+            <div class="whyCard">
+              <div class="whyCardTop">
+                <div class="whyIcon">📞</div>
+                <span class="whyTag">Support</span>
+              </div>
+              <h3>Free Counselling Support</h3>
+              <p>Get help with shortlisting, admissions, eligibility clarity, and confusion around exams or direct admission routes.</p>
+            </div>
+
+            <div class="whyCard">
+              <div class="whyCardTop">
+                <div class="whyIcon">🔎</div>
+                <span class="whyTag">Discovery</span>
+              </div>
+              <h3>Search. Compare. Decide.</h3>
+              <p>Discover colleges by exam, course, city, or name without opening many pages again and again.</p>
+            </div>
+
+            <div class="whyCard">
+              <div class="whyCardTop">
+                <div class="whyIcon">🚀</div>
+                <span class="whyTag">Future Ready</span>
+              </div>
+              <h3>Future-Ready Discovery Portal</h3>
+              <p>This platform is designed to become a stronger homepage experience with search, trust, and lead conversion together.</p>
+            </div>
+          </div>
+
+          <div class="whyDots" id="whyDots">
+            <span class="whyDot active"></span>
+            <span class="whyDot"></span>
+            <span class="whyDot"></span>
+            <span class="whyDot"></span>
+          </div>
         </div>
-        <h3>Free Counselling Support</h3>
-        <p>Get help with shortlisting, admissions, eligibility clarity, and confusion around exams or direct admission routes.</p>
       </div>
-
-      <div class="whyCard">
-        <div class="whyCardTop">
-          <div class="whyIcon">🔎</div>
-          <span class="whyTag">Discovery</span>
-        </div>
-        <h3>Search. Compare. Decide.</h3>
-        <p>Discover colleges by exam, course, city, or name without opening many pages again and again.</p>
-      </div>
-
-      <div class="whyCard">
-        <div class="whyCardTop">
-          <div class="whyIcon">🚀</div>
-          <span class="whyTag">Future Ready</span>
-        </div>
-        <h3>Future-Ready Discovery Portal</h3>
-        <p>This platform is designed to become a stronger homepage experience with search, trust, and lead conversion together.</p>
-      </div>
-    </div>
-
-    <div class="whyDots" id="whyDots">
-      <span class="whyDot active"></span>
-      <span class="whyDot"></span>
-      <span class="whyDot"></span>
-      <span class="whyDot"></span>
-    </div>
-  </div>
-</section>
-
-    <section class="sectionBlock" id="featuredSection">
-      <div class="sectionTitle">
-        <h2>Featured & Verified Colleges</h2>
-        <p>Priority picks highlighted by Swadeshi Shiksha</p>
-      </div>
-
-      <div id="featuredList" class="featuredGrid"></div>
     </section>
 
-    <section id="resultsSection">
-      <div class="resultsHeader">
-        <div id="searchInfo" class="resultsInfo"></div>
-        <div id="resultsCount" class="resultsCount">0 colleges</div>
-      </div>
+    <section class="sectionBlock" id="featuredSection">
+      <div class="sectionShell">
+        <div class="sectionTitle">
+          <div>
+            <h2>Featured & Verified Colleges</h2>
+            <p>Priority picks highlighted by Swadeshi Shiksha.</p>
+          </div>
+        </div>
 
-      <div id="collegeList" class="resultsGrid"></div>
+        <div id="featuredList" class="featuredGrid"></div>
+      </div>
+    </section>
+
+    <section class="sectionBlock" id="resultsSection">
+      <div class="sectionShell">
+        <div class="resultsHeader">
+          <div id="searchInfo" class="resultsInfo"></div>
+          <div id="resultsCount" class="resultsCount">0 colleges</div>
+        </div>
+
+        <div id="collegeList" class="resultsGrid"></div>
+      </div>
     </section>
 
     <div class="helpBox">
@@ -1688,12 +1767,13 @@
     const list = document.getElementById("collegeList");
     const featuredList = document.getElementById("featuredList");
     list.style.display = "grid";
-list.style.gridTemplateColumns = "repeat(2, minmax(0, 1fr))";
-list.style.gap = "18px";
+    list.style.gridTemplateColumns = "repeat(2, minmax(0, 1fr))";
+    list.style.gap = "18px";
 
-featuredList.style.display = "grid";
-featuredList.style.gridTemplateColumns = "repeat(2, minmax(0, 1fr))";
-featuredList.style.gap = "18px";
+    featuredList.style.display = "grid";
+    featuredList.style.gridTemplateColumns = "repeat(2, minmax(0, 1fr))";
+    featuredList.style.gap = "18px";
+
     const searchInfo = document.getElementById("searchInfo");
     const resultsCount = document.getElementById("resultsCount");
     const searchInput = document.getElementById("searchInput");
@@ -1987,88 +2067,88 @@ featuredList.style.gap = "18px";
 
     let whyCarouselAutoSlide;
 
-function startWhyCarouselAutoSlide() {
-  const carousel = document.getElementById("whyCarousel");
-  if (!carousel) return;
+    function startWhyCarouselAutoSlide() {
+      const carousel = document.getElementById("whyCarousel");
+      if (!carousel) return;
 
-  stopWhyCarouselAutoSlide();
+      stopWhyCarouselAutoSlide();
 
-  whyCarouselAutoSlide = setInterval(() => {
-    const firstCard = carousel.querySelector(".whyCard");
-    if (!firstCard) return;
+      whyCarouselAutoSlide = setInterval(() => {
+        const firstCard = carousel.querySelector(".whyCard");
+        if (!firstCard) return;
 
-    const cardWidth = firstCard.offsetWidth + 20;
-
-    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+        const cardWidth = firstCard.offsetWidth + 20;
+        const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
 
         if (carousel.scrollLeft + cardWidth >= maxScrollLeft - 10) {
-      carousel.scrollTo({ left: 0, behavior: "smooth" });
-    } else {
-      carousel.scrollBy({ left: cardWidth, behavior: "smooth" });
+          carousel.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          carousel.scrollBy({ left: cardWidth, behavior: "smooth" });
+        }
+
+        setTimeout(updateWhyDots, 350);
+      }, 2800);
     }
 
-    setTimeout(updateWhyDots, 350);
-  }, 2800);
-}
+    function stopWhyCarouselAutoSlide() {
+      if (whyCarouselAutoSlide) {
+        clearInterval(whyCarouselAutoSlide);
+      }
+    }
 
-function stopWhyCarouselAutoSlide() {
-  if (whyCarouselAutoSlide) {
-    clearInterval(whyCarouselAutoSlide);
-  }
-}
+    window.addEventListener("load", function() {
+      const carousel = document.getElementById("whyCarousel");
+      if (!carousel) return;
 
-window.addEventListener("load", function() {
-  const carousel = document.getElementById("whyCarousel");
-  if (!carousel) return;
+      startWhyCarouselAutoSlide();
 
-  startWhyCarouselAutoSlide();
+      carousel.addEventListener("mouseenter", stopWhyCarouselAutoSlide);
+      carousel.addEventListener("mouseleave", startWhyCarouselAutoSlide);
+      carousel.addEventListener("touchstart", stopWhyCarouselAutoSlide, { passive: true });
+      carousel.addEventListener("touchend", () => {
+        setTimeout(startWhyCarouselAutoSlide, 1200);
+      });
 
-  carousel.addEventListener("mouseenter", stopWhyCarouselAutoSlide);
-  carousel.addEventListener("mouseleave", startWhyCarouselAutoSlide);
-  carousel.addEventListener("touchstart", stopWhyCarouselAutoSlide, { passive: true });
-  carousel.addEventListener("touchend", () => {
-  setTimeout(startWhyCarouselAutoSlide, 1200);
-});
-    updateWhyDots();
-  carousel.addEventListener("scroll", updateWhyDots, { passive: true });
-});
+      updateWhyDots();
+      carousel.addEventListener("scroll", updateWhyDots, { passive: true });
+    });
 
-function updateWhyDots() {
-  const carousel = document.getElementById("whyCarousel");
-  const dots = document.querySelectorAll(".whyDot");
-  const firstCard = carousel?.querySelector(".whyCard");
+    function updateWhyDots() {
+      const carousel = document.getElementById("whyCarousel");
+      const dots = document.querySelectorAll(".whyDot");
+      const firstCard = carousel?.querySelector(".whyCard");
 
-  if (!carousel || !dots.length || !firstCard) return;
+      if (!carousel || !dots.length || !firstCard) return;
 
-  const cardWidth = firstCard.offsetWidth + 20;
-  const index = Math.round(carousel.scrollLeft / cardWidth);
+      const cardWidth = firstCard.offsetWidth + 20;
+      const index = Math.round(carousel.scrollLeft / cardWidth);
 
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
-  });
-}
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    }
 
-   const miniCollegeTrack = document.getElementById("miniCollegeTrack");
-const miniPrev = document.getElementById("miniPrev");
-const miniNext = document.getElementById("miniNext");
+    const miniCollegeTrack = document.getElementById("miniCollegeTrack");
+    const miniPrev = document.getElementById("miniPrev");
+    const miniNext = document.getElementById("miniNext");
 
-if (miniCollegeTrack && miniPrev && miniNext) {
-  const getScrollAmount = () => {
-    const firstCard = miniCollegeTrack.querySelector(".miniCollegeCard");
-    if (!firstCard) return 320;
-    const style = window.getComputedStyle(miniCollegeTrack);
-    const gap = parseInt(style.columnGap || style.gap || 18, 10);
-    return firstCard.offsetWidth + gap;
-  };
+    if (miniCollegeTrack && miniPrev && miniNext) {
+      const getScrollAmount = () => {
+        const firstCard = miniCollegeTrack.querySelector(".miniCollegeCard");
+        if (!firstCard) return 320;
+        const style = window.getComputedStyle(miniCollegeTrack);
+        const gap = parseInt(style.columnGap || style.gap || 18, 10);
+        return firstCard.offsetWidth + gap;
+      };
 
-  miniPrev.addEventListener("click", function () {
-    miniCollegeTrack.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
-  });
+      miniPrev.addEventListener("click", function () {
+        miniCollegeTrack.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+      });
 
-  miniNext.addEventListener("click", function () {
-    miniCollegeTrack.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
-  });
-}
+      miniNext.addEventListener("click", function () {
+        miniCollegeTrack.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+      });
+    }
   </script>
 </body>
 </html>
