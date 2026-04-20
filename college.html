@@ -8,7 +8,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     *{
@@ -23,11 +23,11 @@
 
     body{
       font-family:'Inter',sans-serif;
+      color:#1a2233;
       background:
-        radial-gradient(circle at top left, rgba(122,85,231,0.07), transparent 22%),
-        radial-gradient(circle at top right, rgba(255,122,26,0.05), transparent 18%),
-        #fcfbff;
-      color:#16202f;
+        radial-gradient(circle at top left, rgba(122,85,231,0.06), transparent 22%),
+        radial-gradient(circle at top right, rgba(255,122,26,0.04), transparent 20%),
+        #fbfaff;
     }
 
     a{
@@ -61,10 +61,10 @@
       gap:18px;
       padding:14px 24px;
       margin:14px auto 0;
-      background:rgba(255,255,255,0.84);
-      border:1px solid rgba(205,195,239,0.55);
-      backdrop-filter:blur(16px);
-      box-shadow:0 12px 34px rgba(36,29,79,0.08);
+      background:rgba(255,255,255,0.82);
+      border:1px solid rgba(217,208,244,0.7);
+      backdrop-filter:blur(18px);
+      box-shadow:0 14px 36px rgba(34,25,73,0.08);
       border-radius:24px;
       max-width:calc(1220px - 36px);
     }
@@ -131,68 +131,21 @@
 
     .cta:hover{
       transform:translateY(-2px);
+      box-shadow:0 18px 34px rgba(93,54,210,0.26);
     }
 
-    /* SEARCH SECTION */
-    .searchHeroMini{
-      padding:20px 18px 0;
+    /* SEARCH BAR ONLY */
+    .searchWrap{
+      padding:18px 18px 0;
     }
 
-    .searchHeroInner{
-      position:relative;
-      overflow:hidden;
-      background:linear-gradient(180deg,#fbf9ff 0%, #f7f3ff 100%);
-      border:1px solid #eee7fb;
-      border-radius:34px;
-      padding:26px 24px 24px;
-      box-shadow:0 16px 40px rgba(42,29,89,0.06);
-    }
-
-    .searchHeroText{
-      text-align:center;
-      max-width:760px;
-      margin:0 auto 18px;
-      position:relative;
-      z-index:1;
-    }
-
-    .searchHeroBadge{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:8px 14px;
-      border-radius:999px;
-      background:#fff;
-      border:1px solid #e9e1fb;
-      font-size:12px;
-      font-weight:800;
-      color:#6b49dd;
-      margin-bottom:12px;
-      box-shadow:0 8px 20px rgba(42,29,89,0.05);
-    }
-
-    .searchHeroText h1{
-      font-family:'Sora',sans-serif;
-      font-size:34px;
-      line-height:1.08;
-      letter-spacing:-0.04em;
-      color:#172031;
-      margin:0;
-    }
-
-    .searchHeroText p{
-      margin:10px auto 0;
-      font-size:15px;
-      line-height:1.75;
-      color:#667085;
-      max-width:700px;
-    }
-
-    .searchHeroBar{
-      max-width:940px;
-      margin:0 auto;
-      position:relative;
-      z-index:1;
+    .searchShell{
+      background:rgba(255,255,255,0.72);
+      border:1px solid #ece5fb;
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 18px 40px rgba(42,29,89,0.05);
+      backdrop-filter:blur(10px);
     }
 
     .searchBar{
@@ -203,15 +156,16 @@
       border:1px solid #e8e0fb;
       border-radius:18px;
       padding:8px 8px 8px 14px;
-      box-shadow:0 12px 28px rgba(42,29,89,0.06);
+      box-shadow:0 12px 28px rgba(42,29,89,0.05);
     }
 
     .searchIcon{
-      font-size:20px;
+      font-size:18px;
       line-height:1;
       display:flex;
       align-items:center;
       justify-content:center;
+      color:#6c49dd;
     }
 
     .searchInput{
@@ -235,225 +189,301 @@
       box-shadow:0 10px 18px rgba(96,55,212,0.18);
     }
 
-    /* PAGE ARTICLE LAYOUT */
+    /* MAIN WRAP */
     .contentWrap{
       max-width:1120px;
-      margin:26px auto 0;
+      margin:28px auto 0;
       background:#fff;
       border:1px solid #ece4fb;
-      border-radius:32px;
-      box-shadow:0 18px 40px rgba(42,29,89,0.06);
+      border-radius:34px;
+      box-shadow:0 22px 48px rgba(42,29,89,0.06);
       overflow:hidden;
     }
 
-    .articleHero{
-      padding:36px 40px 28px;
-      border-bottom:1px solid #f0ebfb;
+    /* HERO */
+    .heroTop{
+      padding:44px 42px 28px;
       background:
-        linear-gradient(180deg, rgba(123,89,233,0.03), rgba(123,89,233,0)),
+        linear-gradient(180deg, rgba(123,89,233,0.035), rgba(123,89,233,0)),
         #fff;
+      border-bottom:1px solid #f0ebfb;
     }
 
-    .articleTag{
+    .eyebrow{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:8px 13px;
+      padding:8px 14px;
       border-radius:999px;
-      background:#f7f1ff;
-      border:1px solid #eadfff;
-      color:#724de3;
+      border:1px solid #ebdfff;
+      background:#f8f3ff;
+      color:#6f4de1;
       font-size:12px;
       font-weight:800;
+      margin-bottom:18px;
+    }
+
+    .heroHead{
+      display:grid;
+      grid-template-columns:110px minmax(0,1fr);
+      gap:22px;
+      align-items:start;
+    }
+
+    .heroLogo{
+      width:110px;
+      height:110px;
+      border-radius:28px;
+      background:linear-gradient(135deg,#f6f0ff,#ffffff);
+      border:1px solid #ede5fb;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      box-shadow:0 16px 32px rgba(42,29,89,0.06);
+    }
+
+    .heroLogo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      padding:12px;
+      display:none;
+    }
+
+    .heroLogoFallback{
+      font-family:'Cormorant Garamond',serif;
+      font-size:34px;
+      font-weight:700;
+      color:#6b49dd;
+      letter-spacing:-0.04em;
+    }
+
+    .heroText h1{
+      font-family:'Cormorant Garamond',serif;
+      font-size:58px;
+      line-height:0.95;
+      letter-spacing:-0.04em;
+      color:#111827;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .heroMeta{
+      font-size:15px;
+      color:#6b7280;
+      line-height:1.8;
       margin-bottom:16px;
     }
 
-    .articleTitle{
-      font-family:'Sora',sans-serif;
-      font-size:42px;
-      line-height:1.08;
-      letter-spacing:-0.05em;
-      color:#172031;
-      max-width:850px;
-      margin-bottom:14px;
-    }
-
-    .articleIntro{
+    .heroIntro{
       max-width:760px;
-      color:#667085;
+      color:#4b5565;
       font-size:15px;
-      line-height:1.85;
+      line-height:1.95;
     }
 
-    .featureMedia{
-      margin-top:22px;
-      border-radius:24px;
+    .shareInline{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:14px 0 18px;
+    }
+
+    .shareLabel{
+      font-size:13px;
+      font-weight:700;
+      color:#667085;
+      margin-right:2px;
+    }
+
+    .shareBtn{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      border:1px solid #e8e0fb;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:all .18s ease;
+      color:#6948dd;
+      box-shadow:0 8px 18px rgba(42,29,89,0.05);
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .shareBtn:hover{
+      transform:translateY(-2px);
+      background:#f8f4ff;
+    }
+
+    .heroImageWrap{
+      margin-top:28px;
+      border-radius:28px;
       overflow:hidden;
+      background:linear-gradient(135deg,#f4efff,#fcfbff);
       border:1px solid #eee7fb;
-      background:linear-gradient(135deg,#f1eaff,#fbf9ff);
-      min-height:320px;
+      min-height:360px;
       position:relative;
+      box-shadow:0 16px 34px rgba(42,29,89,0.05);
     }
 
-    .featureMedia img{
+    .heroImageWrap img{
       width:100%;
       height:100%;
       object-fit:cover;
       display:none;
     }
 
-    .featureFallback{
-      min-height:320px;
+    .heroImageFallback{
+      min-height:360px;
       display:flex;
       align-items:center;
       justify-content:center;
-      color:#6948dd;
-      font-size:54px;
-      font-weight:800;
-      letter-spacing:-0.04em;
+      font-family:'Cormorant Garamond',serif;
+      font-size:72px;
+      color:#6b49dd;
+      letter-spacing:-0.05em;
     }
 
-    .articleBody{
+    /* BODY GRID */
+    .articleGrid{
       display:grid;
-      grid-template-columns:220px minmax(0,1fr) 140px;
-      gap:28px;
-      padding:34px 40px 40px;
+      grid-template-columns:minmax(0,1fr) 320px;
+      gap:34px;
+      padding:34px 42px 42px;
     }
 
-    .leftRail{
-      position:sticky;
-      top:108px;
-      align-self:start;
-    }
-
-    .authorCard{
-      padding:18px;
-      border:1px solid #ece4fb;
-      border-radius:22px;
-      background:#fcfbff;
-      box-shadow:0 10px 24px rgba(42,29,89,0.04);
-    }
-
-    .authorAvatar{
-      width:62px;
-      height:62px;
-      border-radius:50%;
-      background:linear-gradient(135deg,#efe6ff,#ffffff);
-      border:1px solid #e8e0fb;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#6948dd;
-      font-size:22px;
-      font-weight:800;
-      margin-bottom:14px;
-    }
-
-    .authorCard h4{
-      font-size:16px;
-      line-height:1.3;
-      color:#172031;
-      margin-bottom:6px;
-    }
-
-    .authorCard p{
-      font-size:13px;
-      line-height:1.7;
-      color:#667085;
-      margin-bottom:10px;
-    }
-
-    .authorMeta{
-      padding-top:12px;
-      border-top:1px solid #f0ebfb;
-      display:grid;
-      gap:8px;
-      font-size:12px;
-      color:#7a8699;
-    }
-
-    .mainArticle{
+    .articleMain{
       min-width:0;
     }
 
-    .quickFacts{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:14px;
-      margin-bottom:22px;
+    .articleAside{
+      min-width:0;
     }
 
-    .factCard{
-      border:1px solid #ece4fb;
-      border-radius:20px;
-      padding:16px;
+    .quoteBlock{
+      margin-bottom:30px;
+      padding:24px 0 10px 24px;
+      border-left:3px solid #f4b16b;
+      color:#c77821;
+      font-family:'Cormorant Garamond',serif;
+      font-size:34px;
+      line-height:1.2;
+      letter-spacing:-0.03em;
+    }
+
+    .contentSection{
+      margin-bottom:30px;
+    }
+
+    .contentSection:last-child{
+      margin-bottom:0;
+    }
+
+    .contentSection h2{
+      font-family:'Cormorant Garamond',serif;
+      font-size:38px;
+      line-height:1;
+      letter-spacing:-0.03em;
+      color:#111827;
+      margin-bottom:16px;
+    }
+
+    .contentSection p,
+    .contentSection li{
+      font-size:15px;
+      line-height:1.95;
+      color:#465062;
+    }
+
+    .contentSection ul{
+      padding-left:18px;
+      display:grid;
+      gap:10px;
+    }
+
+    .contentCard{
       background:#fff;
-      box-shadow:0 10px 22px rgba(42,29,89,0.04);
+      border:1px solid #ece4fb;
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 14px 30px rgba(42,29,89,0.04);
+    }
+
+    .factsCard{
+      position:sticky;
+      top:104px;
+      background:linear-gradient(180deg,#ffffff 0%,#fbf9ff 100%);
+      border:1px solid #ece4fb;
+      border-radius:28px;
+      padding:22px;
+      box-shadow:0 18px 36px rgba(42,29,89,0.06);
+    }
+
+    .factsCard h3{
+      font-family:'Sora',sans-serif;
+      font-size:20px;
+      line-height:1.2;
+      color:#172031;
+      margin-bottom:16px;
+      letter-spacing:-0.03em;
+    }
+
+    .factItem{
+      padding:14px 0;
+      border-bottom:1px solid #f1ebfb;
+    }
+
+    .factItem:last-child{
+      border-bottom:none;
+      padding-bottom:0;
     }
 
     .factLabel{
       font-size:12px;
       color:#7b8396;
       font-weight:700;
-      margin-bottom:8px;
       text-transform:uppercase;
-      letter-spacing:.04em;
+      letter-spacing:.05em;
+      margin-bottom:6px;
     }
 
     .factValue{
       font-size:18px;
       color:#172031;
       font-weight:800;
-      line-height:1.3;
+      line-height:1.35;
     }
 
-    .articleSection{
-      margin-top:24px;
+    .quickTags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:20px;
     }
 
-    .articleSection:first-child{
-      margin-top:0;
-    }
-
-    .articleSection h2{
-      font-family:'Sora',sans-serif;
-      font-size:28px;
-      line-height:1.15;
-      letter-spacing:-0.04em;
-      color:#172031;
-      margin-bottom:14px;
-    }
-
-    .articleSection p,
-    .articleSection li{
-      font-size:15px;
-      line-height:1.9;
-      color:#3f4a5c;
-    }
-
-    .articleSection ul{
-      padding-left:18px;
-      display:grid;
-      gap:8px;
-    }
-
-    .articleHighlight{
-      margin:22px 0;
-      padding:22px 24px;
-      border-left:4px solid #ff8a1f;
-      background:linear-gradient(180deg,#fffaf5 0%,#fff 100%);
-      border-radius:0 20px 20px 0;
-      color:#c76e12;
-      font-size:24px;
-      line-height:1.55;
-      font-family:'Sora',sans-serif;
+    .quickTag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#f6f1ff;
+      border:1px solid #e6dbff;
+      color:#6948dd;
+      font-size:12px;
+      font-weight:800;
     }
 
     .tableWrap{
       width:100%;
       overflow-x:auto;
       border:1px solid #eee7fb;
-      border-radius:18px;
+      border-radius:20px;
       background:#fff;
       box-shadow:0 8px 18px rgba(42,29,89,0.04);
     }
@@ -464,8 +494,8 @@
       min-width:560px;
     }
 
-    th, td{
-      padding:14px 16px;
+    th,td{
+      padding:15px 16px;
       text-align:left;
       border-bottom:1px solid #f1edf9;
       font-size:14px;
@@ -478,26 +508,26 @@
       font-weight:800;
     }
 
-    .tagList{
+    .recruiterWrap{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
     }
 
-    .miniTag{
+    .recruiterTag{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:8px 12px;
+      padding:9px 13px;
       border-radius:999px;
-      background:#f6f1ff;
-      border:1px solid #e7dcff;
+      background:#f8f4ff;
+      border:1px solid #e8deff;
       color:#6948dd;
       font-size:12px;
       font-weight:800;
     }
 
-    .faqContainer{
+    .faqList{
       display:grid;
       gap:12px;
     }
@@ -526,94 +556,47 @@
       padding:0 18px 18px;
       color:#5f6980;
       font-size:14px;
-      line-height:1.8;
+      line-height:1.85;
     }
 
     .faqItem.active .faqAnswer{
       display:block;
     }
 
-    .shareRail{
-      position:sticky;
-      top:108px;
-      align-self:start;
-    }
-
-    .shareCard{
-      padding:16px 12px;
-      border:1px solid #ece4fb;
-      border-radius:22px;
-      background:#fcfbff;
-      box-shadow:0 10px 24px rgba(42,29,89,0.04);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:12px;
-    }
-
-    .shareCard h5{
-      font-size:13px;
-      color:#172031;
-      margin:0;
-    }
-
-    .shareBtn{
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      border:1px solid #e8e0fb;
-      background:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      transition:all .18s ease;
-      color:#6948dd;
-      font-weight:800;
-      font-size:13px;
-      box-shadow:0 8px 18px rgba(42,29,89,0.05);
-    }
-
-    .shareBtn:hover{
-      transform:translateY(-2px);
-      background:#f8f4ff;
-    }
-
-    /* LEAD BLOCK */
-    .articleLeadCta{
-      margin-top:28px;
+    .guidanceBox{
+      margin-top:22px;
       padding:22px;
-      border-radius:24px;
+      border-radius:26px;
       background:linear-gradient(135deg,#7a55e7 0%, #5d36d2 100%);
       color:#fff;
       box-shadow:0 18px 34px rgba(93,54,210,0.18);
     }
 
-    .articleLeadCta h3{
-      margin-bottom:8px;
-      font-size:24px;
+    .guidanceBox h4{
       font-family:'Sora',sans-serif;
+      font-size:22px;
+      line-height:1.2;
+      margin-bottom:8px;
+      letter-spacing:-0.03em;
     }
 
-    .articleLeadCta p{
+    .guidanceBox p{
       color:rgba(255,255,255,0.9);
-      margin-bottom:14px;
       font-size:14px;
       line-height:1.8;
+      margin-bottom:14px;
     }
 
-    .articleLeadCta .leadBtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:12px;
-      background:linear-gradient(135deg,#ff9a34 0%, #ff7a1a 100%);
-      color:#fff;
+    .guidanceBtn{
       border:none;
-      cursor:pointer;
-      font-weight:800;
+      background:linear-gradient(135deg,#ff9a34 0%,#ff7a1a 100%);
+      color:#fff;
+      border-radius:12px;
+      padding:12px 16px;
       font-size:14px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 12px 22px rgba(255,122,26,0.20);
     }
 
     /* FOOTER */
@@ -736,25 +719,14 @@
     }
 
     @media (max-width:1100px){
-      .articleBody{
+      .articleGrid,
+      .footerGrid{
         grid-template-columns:1fr;
       }
 
-      .leftRail,
-      .shareRail{
+      .factsCard{
         position:relative;
         top:0;
-      }
-
-      .quickFacts,
-      .footerGrid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-      }
-
-      .shareCard{
-        flex-direction:row;
-        justify-content:flex-start;
-        flex-wrap:wrap;
       }
     }
 
@@ -780,16 +752,27 @@
         width:100%;
       }
 
-      .articleHero{
-        padding:28px 22px 22px;
+      .heroTop{
+        padding:30px 22px 22px;
       }
 
-      .articleBody{
-        padding:24px 22px 28px;
+      .articleGrid{
+        padding:26px 22px 28px;
+        gap:24px;
       }
 
-      .articleTitle{
-        font-size:34px;
+      .heroHead{
+        grid-template-columns:1fr;
+      }
+
+      .heroLogo{
+        width:92px;
+        height:92px;
+        border-radius:24px;
+      }
+
+      .heroText h1{
+        font-size:44px;
       }
     }
 
@@ -798,13 +781,13 @@
         padding:18px 14px 60px;
       }
 
-      .searchHeroMini{
+      .searchWrap{
         padding:16px 14px 0;
       }
 
-      .searchHeroInner{
-        border-radius:24px;
-        padding:20px 16px;
+      .searchShell{
+        border-radius:22px;
+        padding:14px;
       }
 
       .searchBar{
@@ -815,31 +798,22 @@
         width:100%;
       }
 
-      .articleTitle{
-        font-size:28px;
+      .heroText h1{
+        font-size:34px;
       }
 
-      .articleIntro{
-        font-size:14px;
-      }
-
-      .quickFacts,
-      .footerGrid{
-        grid-template-columns:1fr;
-      }
-
-      .contentWrap{
-        border-radius:24px;
-      }
-
-      .featureMedia,
-      .featureFallback{
+      .heroImageWrap,
+      .heroImageFallback{
         min-height:220px;
       }
 
-      .articleHighlight{
-        font-size:20px;
-        padding:18px;
+      .quoteBlock{
+        font-size:26px;
+        padding-left:16px;
+      }
+
+      .contentSection h2{
+        font-size:30px;
       }
     }
   </style>
@@ -862,25 +836,17 @@
     <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">Get Free MBA Guidance</a>
   </div>
 
-  <section class="searchHeroMini">
-    <div class="searchHeroInner">
-      <div class="searchHeroText">
-        <span class="searchHeroBadge">College Profile</span>
-        <h1>Search Another College Instantly</h1>
-        <p>Compare verified MBA / PGDM colleges, fees, placements, approvals, and admission details in one place.</p>
-      </div>
-
-      <div class="searchHeroBar">
-        <div class="searchBar">
-          <span class="searchIcon">🔍</span>
-          <input
-            type="text"
-            id="collegeSearchInput"
-            class="searchInput"
-            placeholder="Search another college, city, exam, or course..."
-          />
-          <button id="collegeSearchBtn" class="searchBtn">Search</button>
-        </div>
+  <section class="searchWrap">
+    <div class="searchShell">
+      <div class="searchBar">
+        <span class="searchIcon">🔍</span>
+        <input
+          type="text"
+          id="collegeSearchInput"
+          class="searchInput"
+          placeholder="Search another college, city, exam, or course..."
+        />
+        <button id="collegeSearchBtn" class="searchBtn">Search</button>
       </div>
     </div>
   </section>
@@ -888,140 +854,174 @@
   <div class="page">
     <div class="contentWrap">
 
-      <section class="articleHero">
-        <span class="articleTag">College Admissions Profile</span>
-        <h1 class="articleTitle" id="collegeTitle">College Name</h1>
-        <p class="articleIntro" id="collegeIntro">
-          Explore admissions, fees, placements, courses, approvals, facilities, and important details for this college.
-        </p>
+      <section class="heroTop">
+        <span class="eyebrow">College Editorial Profile</span>
 
-        <div class="featureMedia">
+        <div class="heroHead">
+          <div class="heroLogo">
+            <img id="collegeLogo" src="" alt="College Logo">
+            <div class="heroLogoFallback" id="heroLogoFallback">SS</div>
+          </div>
+
+          <div class="heroText">
+            <h1 id="collegeTitle">College Name</h1>
+            <div class="heroMeta" id="collegeMeta">Location • Approval</div>
+
+            <div class="shareInline">
+              <span class="shareLabel">Share</span>
+              <button class="shareBtn" onclick="shareWhatsApp()">WA</button>
+              <button class="shareBtn" onclick="shareFacebook()">f</button>
+              <button class="shareBtn" onclick="shareTwitter()">X</button>
+              <button class="shareBtn" onclick="shareLinkedIn()">in</button>
+              <button class="shareBtn" onclick="copyPageLink()">⧉</button>
+            </div>
+
+            <p class="heroIntro" id="collegeIntro">
+              Explore verified details around admissions, fees, placements, approvals, recruiters, facilities, and student decision-making factors.
+            </p>
+          </div>
+        </div>
+
+        <div class="heroImageWrap">
           <img id="collegeImage" src="" alt="College Image">
-          <div class="featureFallback" id="featureFallback">SS</div>
+          <div class="heroImageFallback" id="heroImageFallback">Swadeshi Shiksha</div>
         </div>
       </section>
 
-      <section class="articleBody">
-        <aside class="leftRail">
-          <div class="authorCard">
-            <div class="authorAvatar">SS</div>
-            <h4>Swadeshi Shiksha Editorial</h4>
-            <p>Verified college profile with admissions-focused details for MBA / PGDM aspirants.</p>
-            <div class="authorMeta">
-              <span id="metaLocation">Location: —</span>
-              <span id="metaApproval">Approval: —</span>
-              <span id="metaUpdated">Updated for 2026 admissions</span>
-            </div>
-          </div>
-        </aside>
+      <section class="articleGrid">
+        <main class="articleMain">
 
-        <main class="mainArticle">
-
-          <div class="quickFacts">
-            <div class="factCard">
-              <div class="factLabel">Established</div>
-              <div class="factValue" id="factEstablished">—</div>
-            </div>
-            <div class="factCard">
-              <div class="factLabel">Average Package</div>
-              <div class="factValue" id="factAveragePackage">—</div>
-            </div>
-            <div class="factCard">
-              <div class="factLabel">Highest Package</div>
-              <div class="factValue" id="factHighestPackage">—</div>
-            </div>
+          <div class="quoteBlock" id="highlightQuote">
+            A well-designed college profile should feel premium, readable, and genuinely useful for students.
           </div>
 
-          <div class="articleSection" id="overviewSection">
+          <div class="contentSection">
             <h2>Overview</h2>
-            <ul id="overviewList"></ul>
+            <div class="contentCard">
+              <ul id="overviewList"></ul>
+            </div>
           </div>
 
-          <div class="articleHighlight" id="articleHighlight">
-            A premium college profile page should not feel plain — it should help students understand the college quickly and clearly.
-          </div>
-
-          <div class="articleSection" id="coursesSection">
+          <div class="contentSection">
             <h2>Courses</h2>
             <div class="tableWrap">
               <table id="coursesTable"></table>
             </div>
           </div>
 
-          <div class="articleSection" id="eligibilitySection">
+          <div class="contentSection">
             <h2>Eligibility</h2>
-            <ul id="eligibilityList"></ul>
+            <div class="contentCard">
+              <ul id="eligibilityList"></ul>
+            </div>
           </div>
 
-          <div class="articleSection" id="applicationSection">
+          <div class="contentSection">
             <h2>Application Process</h2>
-            <ul id="applicationList"></ul>
+            <div class="contentCard">
+              <ul id="applicationList"></ul>
+            </div>
           </div>
 
-          <div class="articleSection" id="admissionSection">
+          <div class="contentSection">
             <h2>Admission Steps</h2>
-            <ul id="admissionList"></ul>
+            <div class="contentCard">
+              <ul id="admissionList"></ul>
+            </div>
           </div>
 
-          <div class="articleSection" id="feesSection">
+          <div class="contentSection">
             <h2>Fees</h2>
             <div class="tableWrap">
               <table id="feesTable"></table>
             </div>
           </div>
 
-          <div class="articleSection" id="cutoffSection">
+          <div class="contentSection">
             <h2>Cutoffs</h2>
             <div class="tableWrap">
               <table id="cutoffsTable"></table>
             </div>
           </div>
 
-          <div class="articleSection" id="placementsSection">
+          <div class="contentSection">
             <h2>Placements</h2>
-            <ul id="placementsList"></ul>
+            <div class="contentCard">
+              <ul id="placementsList"></ul>
+            </div>
           </div>
 
-          <div class="articleSection" id="scholarshipsSection">
+          <div class="contentSection">
             <h2>Scholarships</h2>
-            <ul id="scholarshipsList"></ul>
+            <div class="contentCard">
+              <ul id="scholarshipsList"></ul>
+            </div>
           </div>
 
-          <div class="articleSection" id="whyChooseSection">
+          <div class="contentSection">
             <h2>Why Choose This College</h2>
-            <ul id="whyChooseList"></ul>
+            <div class="contentCard">
+              <ul id="whyChooseList"></ul>
+            </div>
           </div>
 
-          <div class="articleSection" id="recruitersSection">
+          <div class="contentSection">
             <h2>Top Recruiters</h2>
-            <div class="tagList" id="recruitersList"></div>
+            <div class="contentCard">
+              <div class="recruiterWrap" id="recruitersList"></div>
+            </div>
           </div>
 
-          <div class="articleSection" id="facilitiesSection">
+          <div class="contentSection">
             <h2>Facilities</h2>
-            <ul id="facilitiesList"></ul>
+            <div class="contentCard">
+              <ul id="facilitiesList"></ul>
+            </div>
           </div>
 
-          <div class="articleSection" id="faqSection">
+          <div class="contentSection">
             <h2>Frequently Asked Questions</h2>
-            <div class="faqContainer" id="faqContainer"></div>
+            <div class="faqList" id="faqContainer"></div>
           </div>
 
-          <div class="articleLeadCta">
-            <h3>Need help choosing this college?</h3>
-            <p>Get free admission guidance, shortlist clarity, and fee / placement discussion from our team.</p>
-            <button class="leadBtn" onclick="openLeadPopup('College Content CTA')">Get Free Guidance</button>
-          </div>
         </main>
 
-        <aside class="shareRail">
-          <div class="shareCard">
-            <h5>Share</h5>
-            <button class="shareBtn" onclick="shareWhatsApp()">WA</button>
-            <button class="shareBtn" onclick="shareFacebook()">f</button>
-            <button class="shareBtn" onclick="shareTwitter()">X</button>
-            <button class="shareBtn" onclick="shareLinkedIn()">in</button>
-            <button class="shareBtn" onclick="copyPageLink()">⧉</button>
+        <aside class="articleAside">
+          <div class="factsCard">
+            <h3>Quick Facts</h3>
+
+            <div class="factItem">
+              <div class="factLabel">Established</div>
+              <div class="factValue" id="factEstablished">—</div>
+            </div>
+
+            <div class="factItem">
+              <div class="factLabel">Approval</div>
+              <div class="factValue" id="factApproval">—</div>
+            </div>
+
+            <div class="factItem">
+              <div class="factLabel">Campus Size</div>
+              <div class="factValue" id="factCampusSize">—</div>
+            </div>
+
+            <div class="factItem">
+              <div class="factLabel">Highest Package</div>
+              <div class="factValue" id="factHighestPackage">—</div>
+            </div>
+
+            <div class="factItem">
+              <div class="factLabel">Average Package</div>
+              <div class="factValue" id="factAveragePackage">—</div>
+            </div>
+
+            <div class="quickTags" id="quickTags"></div>
+
+            <div class="guidanceBox">
+              <h4>Need admission clarity?</h4>
+              <p>Talk to our team for free counselling, shortlist support, and next-step guidance.</p>
+              <button class="guidanceBtn" onclick="openLeadPopup('College Editorial CTA')">Get Free Guidance</button>
+            </div>
           </div>
         </aside>
       </section>
@@ -1031,7 +1031,7 @@
       <div class="footerGrid">
         <div>
           <h3>Swadeshi Shiksha</h3>
-          <p>Helping students discover the right MBA and PGDM colleges with clear information, trusted comparisons and expert guidance.</p>
+          <p>Helping students discover the right MBA and PGDM colleges with verified information, cleaner comparison, and expert admission guidance.</p>
         </div>
 
         <div>
@@ -1070,7 +1070,7 @@
     <div class="popupCard">
       <button class="popupClose" onclick="closeLeadPopup()">×</button>
       <h3>Get Free MBA Guidance</h3>
-      <p>Share your details and our team will connect with you.</p>
+      <p>Share your details and our team will connect with you shortly.</p>
 
       <input id="leadName" type="text" placeholder="Your Name">
       <input id="leadPhone" type="tel" placeholder="Phone Number" maxlength="10">
@@ -1146,11 +1146,14 @@
 
       rows.forEach(row => {
         const tr = document.createElement("tr");
-        Object.values(row).slice(0, headers.length).forEach(value => {
+        const values = Object.values(row).slice(0, headers.length);
+
+        for(let i = 0; i < headers.length; i++){
           const td = document.createElement("td");
-          td.textContent = value || "—";
+          td.textContent = values[i] || "—";
           tr.appendChild(td);
-        });
+        }
+
         table.appendChild(tr);
       });
     }
@@ -1161,7 +1164,7 @@
 
       if(!items || !items.length){
         const span = document.createElement("span");
-        span.className = "miniTag";
+        span.className = "recruiterTag";
         span.textContent = "Updates soon";
         target.appendChild(span);
         return;
@@ -1169,9 +1172,31 @@
 
       items.forEach(item => {
         const span = document.createElement("span");
-        span.className = "miniTag";
+        span.className = "recruiterTag";
         span.textContent = item;
         target.appendChild(span);
+      });
+    }
+
+    function renderQuickTags(data){
+      const wrap = document.getElementById("quickTags");
+      wrap.innerHTML = "";
+
+      const tags = [];
+      if(data.location || data.city) tags.push(data.location || data.city);
+      if(data.approval) tags.push(data.approval);
+      if(data.ranking) tags.push(data.ranking);
+
+      if(!tags.length){
+        wrap.innerHTML = `<span class="quickTag">College Profile</span>`;
+        return;
+      }
+
+      tags.forEach(tag => {
+        const span = document.createElement("span");
+        span.className = "quickTag";
+        span.textContent = tag;
+        wrap.appendChild(span);
       });
     }
 
@@ -1182,8 +1207,8 @@
       if(!faq || !faq.length){
         faqContainer.innerHTML = `
           <div class="faqItem active">
-            <div class="faqQuestion">FAQ updates will be added soon <span>+</span></div>
-            <div class="faqAnswer" style="display:block;">College-specific FAQs are not available right now.</div>
+            <div class="faqQuestion"><span>FAQs will be updated soon</span><span>−</span></div>
+            <div class="faqAnswer" style="display:block;">This college page does not have FAQ entries yet.</div>
           </div>
         `;
         return;
@@ -1191,21 +1216,17 @@
 
       faq.forEach((row, index) => {
         const item = document.createElement("div");
-        item.className = "faqItem";
+        item.className = "faqItem" + (index === 0 ? " active" : "");
 
         item.innerHTML = `
           <div class="faqQuestion">
             <span>${row.col0 || row.question || "Question"}</span>
             <span>${index === 0 ? "−" : "+"}</span>
           </div>
-          <div class="faqAnswer" style="${index === 0 ? 'display:block;' : ''}">
+          <div class="faqAnswer" style="${index === 0 ? "display:block;" : ""}">
             ${row.col1 || row.answer || ""}
           </div>
         `;
-
-        if(index === 0){
-          item.classList.add("active");
-        }
 
         item.querySelector(".faqQuestion").addEventListener("click", () => {
           const isActive = item.classList.contains("active");
@@ -1238,31 +1259,39 @@
       }
 
       const d = doc.data();
-
       const title = d.title || d.name || "College Profile";
       const location = d.location || d.city || "Location not available";
-      const approval = d.approval || "Approval details not available";
+      const approval = d.approval || "Approval not available";
 
       document.title = `${title} | Swadeshi Shiksha`;
 
       document.getElementById("collegeTitle").textContent = title;
+      document.getElementById("collegeMeta").textContent = `${location} • ${approval}`;
       document.getElementById("collegeIntro").textContent =
-        `${title} profile covering courses, fees, placements, eligibility, admissions, facilities, and important details for students planning MBA / PGDM admissions.`;
-
-      document.getElementById("metaLocation").textContent = `Location: ${location}`;
-      document.getElementById("metaApproval").textContent = `Approval: ${approval}`;
+        `${title} profile covering admissions, fees, placements, eligibility, scholarships, recruiters, facilities, and major decision-making details for MBA / PGDM aspirants.`;
 
       document.getElementById("factEstablished").textContent = safeText(d.established);
-      document.getElementById("factAveragePackage").textContent = safeText(d.averagePackage);
+      document.getElementById("factApproval").textContent = safeText(d.approval);
+      document.getElementById("factCampusSize").textContent = safeText(d.campusSize);
       document.getElementById("factHighestPackage").textContent = safeText(d.highestPackage);
+      document.getElementById("factAveragePackage").textContent = safeText(d.averagePackage);
+
+      if(d.logo){
+        const collegeLogo = document.getElementById("collegeLogo");
+        collegeLogo.src = d.logo;
+        collegeLogo.style.display = "block";
+        document.getElementById("heroLogoFallback").style.display = "none";
+      } else {
+        document.getElementById("heroLogoFallback").textContent = (title || "SS").slice(0,2).toUpperCase();
+      }
 
       if(d.image){
         const collegeImage = document.getElementById("collegeImage");
         collegeImage.src = d.image;
         collegeImage.style.display = "block";
-        document.getElementById("featureFallback").style.display = "none";
+        document.getElementById("heroImageFallback").style.display = "none";
       } else {
-        document.getElementById("featureFallback").textContent = (title || "SS").slice(0,2).toUpperCase();
+        document.getElementById("heroImageFallback").textContent = title;
       }
 
       renderList("overviewList", d.overview);
@@ -1273,19 +1302,19 @@
       renderList("scholarshipsList", d.scholarships);
       renderList("whyChooseList", d.whyChoose);
       renderList("facilitiesList", d.facilities);
-      renderRecruiters(d.recruiters);
 
       renderTable("coursesTable", ["Course", "Duration", "Eligibility"], d.courses || []);
       renderTable("feesTable", ["Course", "Fees"], d.fees || []);
       renderTable("cutoffsTable", ["Exam", "Percentile"], d.cutoffs || []);
-
+      renderRecruiters(d.recruiters);
+      renderQuickTags(d);
       renderFaq(d.faq);
 
       const overviewText = d.overview && d.overview.length
         ? d.overview[0]
-        : `${title} is among the colleges students consider for MBA / PGDM admissions, and this profile gives a quick view of major decision-making details.`;
+        : `${title} offers important decision-making details for students comparing MBA and PGDM admission options.`;
 
-      document.getElementById("articleHighlight").textContent = overviewText;
+      document.getElementById("highlightQuote").textContent = overviewText;
     }).catch(error => {
       console.error(error);
       document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Something went wrong while loading this college.</h2>";
@@ -1379,6 +1408,5 @@
       }
     });
   </script>
-
 </body>
 </html>
