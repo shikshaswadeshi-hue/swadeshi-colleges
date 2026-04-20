@@ -25,9 +25,9 @@
       font-family:'Inter',sans-serif;
       color:#151b2c;
       background:
-        radial-gradient(circle at top left, rgba(123,89,233,0.12), transparent 18%),
-        radial-gradient(circle at top right, rgba(255,122,26,0.09), transparent 16%),
-        linear-gradient(180deg,#f8f5ff 0%, #fdfcff 22%, #ffffff 100%);
+        radial-gradient(circle at top left, rgba(123,89,233,0.10), transparent 18%),
+        radial-gradient(circle at top right, rgba(255,140,60,0.07), transparent 16%),
+        linear-gradient(180deg,#f8f5ff 0%, #fcfbff 22%, #ffffff 100%);
     }
 
     a{
@@ -142,7 +142,7 @@
     .searchShell{
       border-radius:28px;
       padding:14px;
-      background:rgba(255,255,255,0.72);
+      background:rgba(255,255,255,0.74);
       border:1px solid #ece5fb;
       box-shadow:0 18px 34px rgba(42,29,89,0.05);
       backdrop-filter:blur(8px);
@@ -197,24 +197,36 @@
     .heroCard{
       position:relative;
       overflow:hidden;
-      border-radius:36px;
+      border-radius:38px;
       background:
         radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 20%),
-        linear-gradient(135deg,#6f49e7 0%, #5a36d0 48%, #ff8a2f 100%);
-      padding:34px;
-      box-shadow:0 28px 56px rgba(78,47,188,0.24);
+        linear-gradient(135deg,#6f49e7 0%, #5f3ad6 42%, #7e57f1 68%, #ff8b33 100%);
+      padding:36px;
+      box-shadow:0 30px 58px rgba(78,47,188,0.22);
       color:#fff;
     }
 
     .heroCard::before{
       content:"";
       position:absolute;
-      width:280px;
-      height:280px;
-      right:-80px;
-      top:-100px;
+      width:300px;
+      height:300px;
+      right:-90px;
+      top:-120px;
       border-radius:50%;
-      background:rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.08);
+      pointer-events:none;
+    }
+
+    .heroCard::after{
+      content:"";
+      position:absolute;
+      width:220px;
+      height:220px;
+      left:-70px;
+      bottom:-90px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.06);
       pointer-events:none;
     }
 
@@ -223,7 +235,7 @@
       z-index:1;
       display:grid;
       grid-template-columns:minmax(0,1.05fr) minmax(320px,0.95fr);
-      gap:26px;
+      gap:30px;
       align-items:stretch;
     }
 
@@ -237,22 +249,22 @@
     .heroTopLine{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:16px;
       flex-wrap:wrap;
-      margin-bottom:16px;
+      margin-bottom:18px;
     }
 
     .heroLogo{
-      width:76px;
-      height:76px;
+      width:78px;
+      height:78px;
       border-radius:24px;
-      background:rgba(255,255,255,0.16);
+      background:rgba(255,255,255,0.15);
       border:1px solid rgba(255,255,255,0.24);
       display:flex;
       align-items:center;
       justify-content:center;
       overflow:hidden;
-      box-shadow:0 14px 28px rgba(0,0,0,0.10);
+      box-shadow:0 16px 30px rgba(0,0,0,0.10);
       flex-shrink:0;
       backdrop-filter:blur(10px);
     }
@@ -278,19 +290,26 @@
 
     .heroTitle h1{
       font-family:'Sora',sans-serif;
-      font-size:52px;
+      font-size:50px;
       line-height:0.98;
       letter-spacing:-0.05em;
-      margin-bottom:10px;
+      margin-bottom:6px;
       font-weight:800;
-      max-width:700px;
+      max-width:680px;
+    }
+
+    .heroSubtle{
+      font-size:14px;
+      line-height:1.7;
+      color:rgba(255,255,255,0.82);
+      max-width:580px;
     }
 
     .heroMeta{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin-bottom:16px;
+      margin:18px 0 16px;
     }
 
     .metaPill{
@@ -351,13 +370,24 @@
 
     .heroImageWrap{
       width:100%;
-      min-height:360px;
-      border-radius:30px;
+      min-height:365px;
+      border-radius:32px;
       overflow:hidden;
       background:rgba(255,255,255,0.12);
-      border:1px solid rgba(255,255,255,0.18);
-      box-shadow:0 20px 34px rgba(0,0,0,0.10);
+      border:1px solid rgba(255,255,255,0.20);
+      box-shadow:0 20px 34px rgba(0,0,0,0.12);
       backdrop-filter:blur(8px);
+      position:relative;
+    }
+
+    .heroImageWrap::before{
+      content:"";
+      position:absolute;
+      inset:12px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,0.14);
+      pointer-events:none;
+      z-index:1;
     }
 
     .heroImageWrap img{
@@ -369,7 +399,7 @@
 
     .heroImageFallback{
       width:100%;
-      min-height:360px;
+      min-height:365px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -431,26 +461,40 @@
       color:#fff;
       box-shadow:0 18px 32px rgba(42,29,89,0.10);
       min-width:0;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .factCard::before{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-30px;
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.10);
+      pointer-events:none;
     }
 
     .factCard:nth-child(1){
-      background:linear-gradient(135deg,#704ae7,#8c69f2);
+      background:linear-gradient(135deg,#6943e3,#8763f3);
     }
 
     .factCard:nth-child(2){
-      background:linear-gradient(135deg,#5432c5,#6d49df);
+      background:linear-gradient(135deg,#5733ca,#6d49df);
     }
 
     .factCard:nth-child(3){
-      background:linear-gradient(135deg,#ff8f35,#ff6f1d);
+      background:linear-gradient(135deg,#ff9038,#ff741f);
     }
 
     .factCard:nth-child(4){
-      background:linear-gradient(135deg,#7a55e7,#5935d0);
+      background:linear-gradient(135deg,#7a55e7,#5a36d0);
     }
 
     .factCard:nth-child(5){
-      background:linear-gradient(135deg,#ff9d40,#ff7a1d);
+      background:linear-gradient(135deg,#ff9d42,#ff7d1f);
     }
 
     .factLabel{
@@ -460,6 +504,8 @@
       letter-spacing:.06em;
       opacity:.86;
       margin-bottom:8px;
+      position:relative;
+      z-index:1;
     }
 
     .factValue{
@@ -467,6 +513,8 @@
       line-height:1.28;
       font-weight:800;
       word-break:break-word;
+      position:relative;
+      z-index:1;
     }
 
     /* CONTENT */
@@ -479,9 +527,9 @@
     .contentSection{
       background:#fff;
       border:1px solid #eee8fb;
-      border-radius:28px;
-      padding:26px 26px 24px;
-      box-shadow:0 12px 28px rgba(42,29,89,0.05);
+      border-radius:30px;
+      padding:28px 28px 26px;
+      box-shadow:0 14px 30px rgba(42,29,89,0.05);
       position:relative;
       overflow:hidden;
     }
@@ -495,6 +543,16 @@
       width:4px;
       border-radius:0 999px 999px 0;
       background:linear-gradient(180deg,#7a55e7,#ff8428);
+    }
+
+    .contentSection::after{
+      content:"";
+      position:absolute;
+      top:0;
+      right:0;
+      width:140px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(122,85,231,0.22), transparent);
     }
 
     .contentSection h2{
@@ -513,7 +571,7 @@
     .editorialText p,
     .editorialText li{
       font-size:15px;
-      line-height:1.9;
+      line-height:1.92;
       color:#445062;
     }
 
@@ -527,8 +585,9 @@
       width:100%;
       overflow-x:auto;
       border:1px solid #eee7fb;
-      border-radius:20px;
+      border-radius:22px;
       background:#fff;
+      box-shadow:0 8px 18px rgba(42,29,89,0.03);
     }
 
     table{
@@ -546,7 +605,7 @@
     }
 
     th{
-      background:#faf7ff;
+      background:linear-gradient(180deg,#faf7ff 0%, #f6f1ff 100%);
       color:#6948dd;
       font-weight:800;
     }
@@ -568,6 +627,7 @@
       color:#6948dd;
       font-size:12px;
       font-weight:800;
+      box-shadow:0 6px 12px rgba(42,29,89,0.03);
     }
 
     .faqList{
@@ -578,9 +638,10 @@
 
     .faqItem{
       border:1px solid #ece4fb;
-      border-radius:18px;
+      border-radius:20px;
       overflow:hidden;
       background:#fff;
+      box-shadow:0 6px 14px rgba(42,29,89,0.03);
     }
 
     .faqQuestion{
@@ -609,8 +670,8 @@
 
     .ctaStrip{
       margin-top:6px;
-      border-radius:30px;
-      padding:28px 30px;
+      border-radius:32px;
+      padding:30px 30px;
       background:linear-gradient(135deg,#6f49e7 0%, #5b38d1 52%, #ff882c 100%);
       color:#fff;
       box-shadow:0 24px 42px rgba(78,47,188,0.18);
@@ -619,6 +680,26 @@
       justify-content:space-between;
       gap:18px;
       flex-wrap:wrap;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .ctaStrip::before{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      right:-50px;
+      top:-50px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.08);
+      pointer-events:none;
+    }
+
+    .ctaStrip > div,
+    .ctaStrip button{
+      position:relative;
+      z-index:1;
     }
 
     .ctaStrip h3{
@@ -910,6 +991,7 @@
 
               <div class="heroTitle">
                 <h1 id="collegeTitle">College Name</h1>
+                <div class="heroSubtle">Admissions profile, fees, placements, and verified details at one glance.</div>
               </div>
             </div>
 
@@ -1089,7 +1171,7 @@
             <h3>Need help deciding on this college?</h3>
             <p>Get free counselling, shortlist support, fee clarity, and guidance from the Swadeshi Shiksha team.</p>
           </div>
-          <button onclick="openLeadPopup('College Vibrant Luxury CTA')">Get Free Guidance</button>
+          <button onclick="openLeadPopup('College Premium CTA')">Get Free Guidance</button>
         </div>
       </div>
     </div>
