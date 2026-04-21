@@ -950,20 +950,20 @@
 <body>
 
   <div class="header">
-    <a href="/" class="logo">
-      <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
-      <span>Swadeshi Shiksha</span>
-    </a>
+  <a href="/" class="logo">
+    <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+    <span>Swadeshi Shiksha</span>
+  </a>
 
-    <div class="nav">
-      <a href="https://swadeshi-colleges.vercel.app/colleges.html" class="active">Colleges</a>
-      <a href="https://swadeshi-colleges.vercel.app/exams.html">Exams</a>
-      <a href="https://swadeshi-colleges.vercel.app/courses.html">Courses</a>
-      <a href="https://swadeshi-colleges.vercel.app/resources.html">Resources</a>
-    </div>
-
-    <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">Get Free MBA Guidance</a>
+  <div class="nav">
+    <a href="/colleges.html" class="active">Colleges</a>
+    <a href="/exams.html">Exams</a>
+    <a href="/courses.html">Courses</a>
+    <a href="/resources.html">Resources</a>
   </div>
+
+  <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">Get Free MBA Guidance</a>
+</div>
 
   <section class="searchWrap">
     <div class="searchShell">
@@ -1196,10 +1196,10 @@
         <div>
           <h4>Browse</h4>
           <ul>
-            <li><a href="https://swadeshi-colleges.vercel.app/colleges.html?search=CAT">CAT Colleges</a></li>
-            <li><a href="https://swadeshi-colleges.vercel.app/colleges.html?search=CMAT">CMAT Colleges</a></li>
-            <li><a href="https://swadeshi-colleges.vercel.app/colleges.html?search=Bangalore">Bangalore</a></li>
-            <li><a href="https://swadeshi-colleges.vercel.app/colleges.html?search=Pune">Pune</a></li>
+            <li><a href="/colleges.html?search=CAT">CAT Colleges</a></li>
+<li><a href="/colleges.html?search=CMAT">CMAT Colleges</a></li>
+<li><a href="/colleges.html?search=Bangalore">Bangalore</a></li>
+<li><a href="/colleges.html?search=Pune">Pune</a></li>
           </ul>
         </div>
 
@@ -1365,10 +1365,10 @@
     }
 
     function goToCollegeSearch(){
-      const query = document.getElementById("collegeSearchInput").value.trim();
-      if(!query) return;
-      window.location.href = "colleges.html?search=" + encodeURIComponent(query);
-    }
+  const query = document.getElementById("collegeSearchInput").value.trim();
+  if(!query) return;
+  window.location.href = "/colleges.html?search=" + encodeURIComponent(query);
+}
 
     document.getElementById("collegeSearchBtn").addEventListener("click", goToCollegeSearch);
     document.getElementById("collegeSearchInput").addEventListener("keydown", function(e){
