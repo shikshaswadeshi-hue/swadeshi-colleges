@@ -3204,10 +3204,10 @@ body{
   </a>
 
   <div class="nav">
-  <a href="https://swadeshi-colleges.vercel.app/colleges.html">Colleges</a>
-  <a href="https://swadeshi-colleges.vercel.app/exams.html">Exams</a>
-  <a href="https://swadeshi-colleges.vercel.app/courses.html">Courses</a>
-  <a href="https://swadeshi-colleges.vercel.app/resources.html">Resources</a>
+  <a href="/colleges.html">Colleges</a>
+  <a href="/exams.html">Exams</a>
+  <a href="/courses.html">Courses</a>
+  <a href="/resources.html">Resources</a>
 </div>
 
   <a href="#application-window" class="cta">Get Free MBA Guidance</a>
@@ -4395,12 +4395,12 @@ body{
       </div>
 
       <div class="footer-links-col">
-        <h4>Browse</h4>
-        <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=CAT">CAT Colleges</a>
-        <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=CMAT">CMAT Colleges</a>
-        <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=Bangalore">Bangalore</a>
-        <a href="https://swadeshi-colleges.vercel.app/colleges.html?search=Pune">Pune</a>
-      </div>
+  <h4>Browse</h4>
+  <a href="/colleges.html?search=CAT">CAT Colleges</a>
+  <a href="/colleges.html?search=CMAT">CMAT Colleges</a>
+  <a href="/colleges.html?search=Bangalore">Bangalore</a>
+  <a href="/colleges.html?search=Pune">Pune</a>
+</div>
 
       <div class="footer-contact-col">
         <h4>Get in Touch</h4>
@@ -4429,7 +4429,7 @@ function goToSearchPage() {
   if (!query) return;
 
   window.open(
-    "https://swadeshi-colleges.vercel.app/colleges.html?search=" + encodeURIComponent(query),
+    "/colleges.html?search=" + encodeURIComponent(query),
     "_blank"
   );
 }
@@ -4623,28 +4623,28 @@ renderApplicationCards();
 
   const explorePremiumData = {
   exam: [
-    { title: "CAT", desc: "Explore top MBA colleges accepting CAT score.", icon: "📘", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=CAT", tone: "light", large: true, mini: "Most Popular" },
-    { title: "XAT", desc: "Discover colleges and PGDM institutes through XAT.", icon: "📝", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=XAT", tone: "dark", large: true, mini: "Top Entrance" },
-    { title: "CMAT", desc: "Find colleges for CMAT-based admissions.", icon: "📗", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=CMAT", tone: "soft", mini: "Exam Route" },
-    { title: "MAT", desc: "Browse colleges accepting MAT score.", icon: "📙", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=MAT", tone: "warm", mini: "Exam Route" },
-    { title: "NMAT", desc: "See NMAT-linked college options.", icon: "📕", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=NMAT", tone: "light", mini: "Exam Route" },
-    { title: "SNAP", desc: "Explore colleges through SNAP.", icon: "📓", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=SNAP", tone: "soft", mini: "Exam Route" }
+    { title: "CAT", desc: "Explore top MBA colleges accepting CAT score.", icon: "📘", link: "/colleges.html?search=CAT", tone: "light", large: true, mini: "Most Popular" },
+    { title: "XAT", desc: "Discover colleges and PGDM institutes through XAT.", icon: "📝", link: "/colleges.html?search=XAT", tone: "dark", large: true, mini: "Top Entrance" },
+    { title: "CMAT", desc: "Find colleges for CMAT-based admissions.", icon: "📗", link: "/colleges.html?search=CMAT", tone: "soft", mini: "Exam Route" },
+    { title: "MAT", desc: "Browse colleges accepting MAT score.", icon: "📙", link: "/colleges.html?search=MAT", tone: "warm", mini: "Exam Route" },
+    { title: "NMAT", desc: "See NMAT-linked college options.", icon: "📕", link: "/colleges.html?search=NMAT", tone: "light", mini: "Exam Route" },
+    { title: "SNAP", desc: "Explore colleges through SNAP.", icon: "📓", link: "/colleges.html?search=SNAP", tone: "soft", mini: "Exam Route" }
   ],
   city: [
-    { title: "Bangalore", desc: "Explore MBA colleges in Bangalore.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Bangalore", tone: "light", large: true, mini: "Top City" },
-    { title: "Pune", desc: "Discover strong MBA options in Pune.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Pune", tone: "warm", large: true, mini: "Top City" },
-    { title: "Delhi NCR", desc: "Browse colleges across Delhi NCR.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Delhi NCR", tone: "dark", mini: "Popular Region" },
-    { title: "Mumbai", desc: "See MBA and PGDM colleges in Mumbai.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Mumbai", tone: "soft", mini: "Popular Region" },
-    { title: "Chennai", desc: "Explore colleges in Chennai.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Chennai", tone: "light", mini: "City Search" },
-    { title: "Greater Noida", desc: "Find colleges near Greater Noida.", icon: "📍", link: "https://swadeshi-colleges.vercel.app/colleges.html?search=Greater Noida", tone: "warm", mini: "City Search" }
+    { title: "Bangalore", desc: "Explore MBA colleges in Bangalore.", icon: "📍", link: "/colleges.html?search=Bangalore", tone: "light", large: true, mini: "Top City" },
+    { title: "Pune", desc: "Discover strong MBA options in Pune.", icon: "📍", link: "/colleges.html?search=Pune", tone: "warm", large: true, mini: "Top City" },
+    { title: "Delhi NCR", desc: "Browse colleges across Delhi NCR.", icon: "📍", link: "/colleges.html?search=Delhi NCR", tone: "dark", mini: "Popular Region" },
+    { title: "Mumbai", desc: "See MBA and PGDM colleges in Mumbai.", icon: "📍", link: "/colleges.html?search=Mumbai", tone: "soft", mini: "Popular Region" },
+    { title: "Chennai", desc: "Explore colleges in Chennai.", icon: "📍", link: "/colleges.html?search=Chennai", tone: "light", mini: "City Search" },
+    { title: "Greater Noida", desc: "Find colleges near Greater Noida.", icon: "📍", link: "/colleges.html?search=Greater Noida", tone: "warm", mini: "City Search" }
   ],
   college: [
-    { title: "IILM", desc: "View IILM Greater Noida details.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=iilm-greater-noida", tone: "light", large: true, mini: "Featured College" },
-{ title: "ISBR", desc: "Explore ISBR Bangalore.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=isbr-bangalore", tone: "dark", large: true, mini: "Featured College" },
-{ title: "GIBS", desc: "Explore GIBS Bangalore.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=gibs-bangalore", tone: "soft", mini: "🔥 Trending College" },
-{ title: "D Y Patil", desc: "See D Y Patil Pune details.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=d-y-patil-pune", tone: "warm", mini: "🔥 Trending College" },
-{ title: "PIBM", desc: "Explore PIBM Pune.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=pibm-pune", tone: "light", mini: "🔥 Trending College" },
-{ title: "IIBS", desc: "Explore IIBS Bangalore.", icon: "🏫", link: "https://swadeshi-colleges.vercel.app/college.html?slug=iibs-bangalore", tone: "soft", mini: "🔥 Trending College" }
+    { title: "IILM", desc: "View IILM Greater Noida details.", icon: "🏫", link: "/college.html?slug=iilm-greater-noida", tone: "light", large: true, mini: "Featured College" },
+{ title: "ISBR", desc: "Explore ISBR Bangalore.", icon: "🏫", link: "/college.html?slug=isbr-bangalore", tone: "dark", large: true, mini: "Featured College" },
+{ title: "GIBS", desc: "Explore GIBS Bangalore.", icon: "🏫", link: "/college.html?slug=gibs-bangalore", tone: "soft", mini: "🔥 Trending College" },
+{ title: "D Y Patil", desc: "See D Y Patil Pune details.", icon: "🏫", link: "/college.html?slug=d-y-patil-pune", tone: "warm", mini: "🔥 Trending College" },
+{ title: "PIBM", desc: "Explore PIBM Pune.", icon: "🏫", link: "/college.html?slug=pibm-pune", tone: "light", mini: "🔥 Trending College" },
+{ title: "IIBS", desc: "Explore IIBS Bangalore.", icon: "🏫", link: "/college.html?slug=iibs-bangalore", tone: "soft", mini: "🔥 Trending College" }
   ]
 };
 
