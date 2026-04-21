@@ -397,22 +397,25 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   }
 
     .ss-trust-strip{
+    max-width: 100%;
     grid-template-columns: repeat(2,1fr);
-    gap: 12px;
-    margin-top: 18px;
+    gap: 10px;
+    margin-top: 14px;
   }
 
   .ss-trust-item{
-    padding: 18px 14px;
-    border-radius: 18px;
+    min-height: 108px;
+    padding: 14px 12px;
+    border-radius: 16px;
   }
 
   .ss-trust-item strong{
-    font-size: 24px;
+    font-size: 16px;
+    margin-bottom: 8px;
   }
 
   .ss-trust-item span{
-    font-size: 13px;
+    font-size: 12px;
     max-width: 100%;
   }
 }
@@ -499,91 +502,97 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   }
 
   .ss-trust-strip{
-    grid-template-columns:1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
-}
 
   .ss-trust-strip{
-  max-width: 1320px;
-  margin: 30px auto 0;
-  padding: 0 6px 10px;
+  max-width: 980px;
+  margin: 18px auto 0;
+  padding: 0 4px 8px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .ss-trust-item{
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,244,255,0.96) 100%);
-  border: 1px solid rgba(96,76,175,0.10);
-  border-radius: 24px;
-  padding: 24px 18px 20px;
-  text-align: center;
-  box-shadow: 0 14px 34px rgba(31, 24, 56, 0.06);
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  min-height: 122px;
+  border-radius: 20px;
+  padding: 16px 14px 14px;
+  text-align: left;
+  box-shadow: 0 10px 24px rgba(24, 20, 43, 0.08);
+  transition: transform .22s ease, box-shadow .22s ease;
+  border: 1px solid rgba(255,255,255,0.45);
+}
+
+.ss-trust-item:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(24, 20, 43, 0.14);
 }
 
 .ss-trust-item::before{
   content: "";
   position: absolute;
-  inset: 0 0 auto 0;
-  height: 4px;
-  background: linear-gradient(90deg, #4d2fb2 0%, #8b5cf6 55%, #ff7a1a 100%);
-}
-
-.ss-trust-item::after{
-  content: "";
-  position: absolute;
-  width: 140px;
-  height: 140px;
-  top: -70px;
-  right: -70px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(124,87,255,0.10), transparent 70%);
-  pointer-events: none;
-}
-
-.ss-trust-item:hover{
-  transform: translateY(-5px);
-  box-shadow: 0 22px 42px rgba(31, 24, 56, 0.10);
-  border-color: rgba(77,47,178,0.18);
+  width: 86px;
+  height: 86px;
+  border-radius: 18px;
+  top: -26px;
+  right: -18px;
+  opacity: .18;
+  transform: rotate(18deg);
 }
 
 .ss-trust-item strong{
   display: block;
-  font-size: 31px;
+  font-size: 18px;
   line-height: 1;
   font-weight: 800;
-  letter-spacing: -0.04em;
-  color: #191532;
+  letter-spacing: -0.03em;
+  color: #141b34;
   margin-bottom: 10px;
 }
 
 .ss-trust-item span{
   display: block;
-  color: #6a7183;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1.45;
-  font-weight: 600;
-  max-width: 180px;
-  margin: 0 auto;
+  font-weight: 700;
+  color: #435067;
+  max-width: 150px;
 }
 
-  .ss-trust-item:nth-child(1)::before{
-  background: linear-gradient(90deg,#4d2fb2,#7c57ff);
+.ss-trust-item.purple-card{
+  background: linear-gradient(135deg, #f3eeff 0%, #ebe3ff 100%);
 }
 
-.ss-trust-item:nth-child(2)::before{
-  background: linear-gradient(90deg,#22c55e,#10b981);
+.ss-trust-item.purple-card::before{
+  background: linear-gradient(135deg, #7c57ff, #4d2fb2);
 }
 
-.ss-trust-item:nth-child(3)::before{
-  background: linear-gradient(90deg,#0ea5e9,#6366f1);
+.ss-trust-item.orange-card{
+  background: linear-gradient(135deg, #fff1e7 0%, #ffe4d2 100%);
 }
 
-.ss-trust-item:nth-child(4)::before{
-  background: linear-gradient(90deg,#ff7a1a,#ff5a00);
+.ss-trust-item.orange-card::before{
+  background: linear-gradient(135deg, #ff9a4d, #ff5a00);
+}
+
+.ss-trust-item.blue-card{
+  background: linear-gradient(135deg, #eaf4ff 0%, #ddecff 100%);
+}
+
+.ss-trust-item.blue-card::before{
+  background: linear-gradient(135deg, #4da3ff, #4d6bff);
+}
+
+.ss-trust-item.pink-card{
+  background: linear-gradient(135deg, #fff0f7 0%, #ffe1ef 100%);
+}
+
+.ss-trust-item.pink-card::before{
+  background: linear-gradient(135deg, #ff73b3, #ff5a8c);
 }
   
 /* PREMIUM TRUSTED SECTION */
@@ -3349,21 +3358,24 @@ body{
 </section>
 
 <section class="ss-trust-strip">
-  <div class="ss-trust-item">
+  <div class="ss-trust-item purple-card">
     <strong>500+</strong>
-    <span>Verified MBA & PGDM colleges to explore</span>
+    <span>Verified colleges to explore</span>
   </div>
-  <div class="ss-trust-item">
+
+  <div class="ss-trust-item orange-card">
     <strong>Free</strong>
-    <span>1-to-1 counselling support for students</span>
+    <span>1-to-1 counselling support</span>
   </div>
-  <div class="ss-trust-item">
+
+  <div class="ss-trust-item blue-card">
     <strong>Compare</strong>
-    <span>Fees, ROI, placements and approvals</span>
+    <span>Fees, ROI & placements</span>
   </div>
-  <div class="ss-trust-item">
+
+  <div class="ss-trust-item pink-card">
     <strong>Student First</strong>
-    <span>Simple, clear and no-confusion discovery</span>
+    <span>Simple and clear discovery</span>
   </div>
 </section>
 
