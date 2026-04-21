@@ -397,23 +397,25 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
   }
 
     .ss-trust-strip{
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-    margin-top:18px;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+    margin-top: 18px;
   }
 
   .ss-trust-item{
-    padding:18px 12px;
-    border-radius:18px;
+    padding: 18px 14px;
+    border-radius: 18px;
   }
 
   .ss-trust-item strong{
-    font-size:20px;
+    font-size: 24px;
   }
 
   .ss-trust-item span{
-    font-size:13px;
+    font-size: 13px;
+    max-width: 100%;
   }
+}
 
   .ss-badge{
     font-size:12px;
@@ -502,33 +504,86 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
   .ss-trust-strip{
-  max-width:1320px;
-  margin:28px auto 0;
-  padding:0 6px 10px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
+  max-width: 1320px;
+  margin: 30px auto 0;
+  padding: 0 6px 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
 }
 
 .ss-trust-item{
-  background:#fff;
-  border-radius:22px;
-  padding:22px 18px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,244,255,0.96) 100%);
+  border: 1px solid rgba(96,76,175,0.10);
+  border-radius: 24px;
+  padding: 24px 18px 20px;
+  text-align: center;
+  box-shadow: 0 14px 34px rgba(31, 24, 56, 0.06);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.ss-trust-item::before{
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4d2fb2 0%, #8b5cf6 55%, #ff7a1a 100%);
+}
+
+.ss-trust-item::after{
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: -70px;
+  right: -70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,87,255,0.10), transparent 70%);
+  pointer-events: none;
+}
+
+.ss-trust-item:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 22px 42px rgba(31, 24, 56, 0.10);
+  border-color: rgba(77,47,178,0.18);
 }
 
 .ss-trust-item strong{
-  display:block;
-  font-size:24px;
-  color:#16202f;
-  margin-bottom:6px;
+  display: block;
+  font-size: 31px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #191532;
+  margin-bottom: 10px;
 }
 
 .ss-trust-item span{
-  color:#677284;
-  font-size:14px;
-  font-weight:500;
+  display: block;
+  color: #6a7183;
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 600;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+  .ss-trust-item:nth-child(1)::before{
+  background: linear-gradient(90deg,#4d2fb2,#7c57ff);
+}
+
+.ss-trust-item:nth-child(2)::before{
+  background: linear-gradient(90deg,#22c55e,#10b981);
+}
+
+.ss-trust-item:nth-child(3)::before{
+  background: linear-gradient(90deg,#0ea5e9,#6366f1);
+}
+
+.ss-trust-item:nth-child(4)::before{
+  background: linear-gradient(90deg,#ff7a1a,#ff5a00);
 }
   
 /* PREMIUM TRUSTED SECTION */
@@ -563,11 +618,20 @@ body{font-family:'Inter',sans-serif;background:#faf8f2;color:#16202f}
 }
 
 .trusted-head h2{
-  font-size: 34px;
-  line-height: 1.12;
-  color: #16202f;
+  font-size: 38px;
+  line-height: 1.08;
   margin-bottom: 12px;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+  color: #1d1640;
+  font-family: 'Inter', sans-serif;
+}
+
+.trusted-head h2 .highlight{
+  background: linear-gradient(135deg, #4d2fb2 0%, #7c57ff 55%, #ff7a1a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .trusted-head p{
@@ -3287,26 +3351,26 @@ body{
 <section class="ss-trust-strip">
   <div class="ss-trust-item">
     <strong>500+</strong>
-    <span>Colleges to Explore</span>
+    <span>Verified MBA & PGDM colleges to explore</span>
   </div>
   <div class="ss-trust-item">
     <strong>Free</strong>
-    <span>Counselling Support</span>
+    <span>1-to-1 counselling support for students</span>
   </div>
   <div class="ss-trust-item">
     <strong>Compare</strong>
-    <span>Fees, ROI & Placements</span>
+    <span>Fees, ROI, placements and approvals</span>
   </div>
   <div class="ss-trust-item">
     <strong>Student First</strong>
-    <span>Simple & Clear Discovery</span>
+    <span>Simple, clear and no-confusion discovery</span>
   </div>
 </section>
 
  <section class="trusted-section">
   <div class="trusted-shell">
     <div class="trusted-head">
-      <h2>Trusted by Students Exploring India’s Top B-Schools</h2>
+      <h2>Trusted by Students Exploring <span class="highlight">India’s Top B-Schools</span></h2>
       <p>From well-known institutes to rising MBA brands, students use Swadeshi Shiksha to compare smarter and decide faster.</p>
     </div>
 
