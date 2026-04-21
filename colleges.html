@@ -1638,7 +1638,6 @@
       <div class="sectionShell">
         <div class="resultsHeader">
           <div id="searchInfo" class="resultsInfo"></div>
-          <div id="resultsCount" class="resultsCount">0 colleges</div>
         </div>
 
         <div id="collegeList" class="resultsGrid"></div>
@@ -1910,7 +1909,6 @@
 
       searchInfo.innerHTML = currentSearch
         ? `Showing results for <strong>${currentSearch}</strong>`
-        : `Showing all available colleges`;
 
       resultsCount.textContent = `${results.length} college${results.length === 1 ? "" : "s"}`;
 
