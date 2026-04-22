@@ -1458,6 +1458,18 @@
   </section>
 
   <div class="page">
+
+    <section class="sectionBlock" id="resultsSection">
+  <div class="sectionShell">
+    <div class="resultsHeader">
+      <div id="searchInfo" class="resultsInfo"></div>
+      <div id="resultsCount" class="resultsCount">0 colleges</div>
+    </div>
+
+    <div id="collegeList" class="resultsGrid"></div>
+  </div>
+</section>
+    
     <section class="sectionBlock" id="browseCourseSection">
       <div class="sectionShell">
         <div class="sectionTitle">
@@ -1633,16 +1645,6 @@
         </div>
 
         <div id="featuredList" class="featuredGrid"></div>
-      </div>
-    </section>
-
-    <section class="sectionBlock" id="resultsSection">
-      <div class="sectionShell">
-        <div class="resultsHeader">
-          <div id="searchInfo" class="resultsInfo"></div>
-        </div>
-
-        <div id="collegeList" class="resultsGrid"></div>
       </div>
     </section>
 
@@ -1898,21 +1900,26 @@
         if (!query) return true;
 
         const haystack = [
-          college.name,
-          college.city,
-          college.state,
-          college.approvedBy,
-          college.course,
-          college.type
-        ].join(" ").toLowerCase();
+  college.name,
+  college.shortName,
+  college.city,
+  college.state,
+  college.approvedBy,
+  college.course,
+  college.type,
+  college.feesSummary,
+  college.placementSummary,
+  college.focusKeyword
+].join(" ").toLowerCase();
 
         return haystack.includes(query);
       });
 
       searchInfo.innerHTML = currentSearch
-        ? `Showing results for <strong>${currentSearch}</strong>`
+  ? `Showing results for <strong>${currentSearch}</strong>`
+  : `Showing all <strong>published colleges</strong>`;
 
-      resultsCount.textContent = `${results.length} college${results.length === 1 ? "" : "s"}`;
+resultsCount.textContent = `${results.length} college${results.length === 1 ? "" : "s"}`;
 
       if (!results.length) {
         list.innerHTML = `
@@ -1990,18 +1997,22 @@
           const d = doc.data();
 
           allColleges.push({
-            id: doc.id,
-            name: d.name || "Unnamed College",
-            city: d.city || "",
-            state: d.state || "",
-            approvedBy: d.approvedBy || d.approval || "",
-            established: d.established || "",
-            course: d.course || d.program || "",
-            type: d.type || "",
-            logo: d.logo || d.logoUrl || "",
-            image: d.image || d.banner || d.coverImage || "",
-            featured: d.featured === true
-          });
+  id: doc.id,
+  name: d.name || "Unnamed College",
+  shortName: d.shortName || "",
+  city: d.city || "",
+  state: d.state || "",
+  approvedBy: d.approvedBy || d.approval || "",
+  established: d.established || "",
+  course: d.course || d.program || "",
+  type: d.type || "",
+  logo: d.logo || d.logoUrl || "",
+  image: d.image || d.banner || d.coverImage || "",
+  featured: d.featured === true,
+  feesSummary: d.feesSummary || "",
+  placementSummary: d.placementSummary || "",
+  focusKeyword: d.seo && d.seo.focusKeyword ? d.seo.focusKeyword : ""
+});
         });
 
         renderFeatured();
