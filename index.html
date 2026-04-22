@@ -5265,10 +5265,43 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ---------------- AUTO OPEN ONCE PER SESSION ---------------- */
-  setTimeout(function () {
+  /* ---------------- AUTO OPEN TWICE WITH 1 MIN GAP AFTER CLOSE ---------------- */
+let popupOpenCount = 0;
+let secondPopupScheduled = false;
+const maxPopupOpens = 2;
+
+function triggerPopupOpen() {
+  if (popupOpenCount >= maxPopupOpens) return;
   openPopup();
+  popupOpenCount++;
+}
+
+function scheduleSecondPopup() {
+  if (secondPopupScheduled || popupOpenCount >= maxPopupOpens) return;
+
+  secondPopupScheduled = true;
+
+  setTimeout(function () {
+    if (popupOpenCount < maxPopupOpens) {
+      openPopup();
+      popupOpenCount++;
+    }
+  }, 60000);
+}
+
+/* first popup */
+setTimeout(function () {
+  triggerPopupOpen();
 }, 4500);
 
+function closePopup() {
+  popup.style.opacity = "0";
+  popup.style.pointerEvents = "none";
+  box.style.transform = "translateY(20px) scale(0.96)";
+
+  scheduleSecondPopup();
+}
+  
   /* ---------------- CLOSE EVENTS ---------------- */
   closeBtn.addEventListener("click", closePopup);
 
