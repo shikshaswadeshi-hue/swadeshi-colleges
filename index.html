@@ -3386,9 +3386,9 @@ body{
       </div>
     </div>
 
-<button class="ss-arrow ss-prev" aria-label="Previous slide">&#10094;</button>
-<button class="ss-arrow ss-next" aria-label="Next slide">&#10095;</button>
-
+<button id="prevSlide" class="ss-arrow ss-prev" aria-label="Previous slide">&#10094;</button>
+<button id="nextSlide" class="ss-arrow ss-next" aria-label="Next slide">&#10095;</button>
+    
 <div class="ss-dots">
   <span class="ss-dot active"></span>
   <span class="ss-dot"></span>
@@ -5357,6 +5357,69 @@ function closePopup() {
   });
 });
 </script>
-  
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll(".ss-slide");
+  const dots = document.querySelectorAll(".ss-dot");
+  const prevBtn = document.getElementById("prevSlide");
+  const nextBtn = document.getElementById("nextSlide");
+
+  if (!slides.length) return;
+
+  let currentSlide = 0;
+  let autoSlide;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    showSlide((currentSlide + 1) % slides.length);
+  }
+
+  function prevSlide() {
+    showSlide((currentSlide - 1 + slides.length) % slides.length);
+  }
+
+  function startAutoSlide() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(nextSlide, 4000);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", function () {
+      prevSlide();
+      startAutoSlide();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function () {
+      nextSlide();
+      startAutoSlide();
+    });
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", function () {
+      showSlide(index);
+      startAutoSlide();
+    });
+  });
+
+  showSlide(0);
+  startAutoSlide();
+});
+</script>
+
 </body>
 </html>
