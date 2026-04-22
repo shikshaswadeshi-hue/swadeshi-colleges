@@ -735,6 +735,11 @@ function parseLinks(lines){
 }
 
 function renderContentPage(data){
+  if(data.layout === "simple"){
+    renderSimplePage(data);
+    return;
+  }
+
   let html = `
   <div class="breadcrumb">
     <a href="https://www.swadeshi-shiksha.com">Home</a>
@@ -858,6 +863,92 @@ function renderContentPage(data){
 
   pageContent.innerHTML = html;
   initRevealAnimations();
+}
+
+  function renderSimplePage(data){
+  let html = `
+    <div class="breadcrumb">
+      <a href="https://www.swadeshi-shiksha.com">Home</a>
+      <span>/</span>
+      <span>${data.title || "Page"}</span>
+    </div>
+
+    <div class="section show" style="max-width:900px; margin:0 auto 22px; opacity:1; transform:none;">
+      <h1 style="margin:0 0 12px; font-size:40px; line-height:1.1; color:#16202f;">
+        ${data.title || ""}
+      </h1>
+      ${data.introText ? `<p style="font-size:17px; color:#4f5b67; line-height:1.8;">${data.introText}</p>` : ""}
+    </div>
+  `;
+
+  if(data.sections && data.sections.length){
+    data.sections.forEach(section => {
+
+      if(section.type === "text"){
+        html += `
+          <div class="section show" style="max-width:900px; margin:0 auto 22px; opacity:1; transform:none;">
+            ${section.heading ? `<h2>${section.heading}</h2>` : ""}
+            <p>${section.text || ""}</p>
+          </div>
+        `;
+      }
+
+      if(section.type === "list"){
+        const items = (section.items || []).map(item => `<li>${item}</li>`).join("");
+        html += `
+          <div class="section show" style="max-width:900px; margin:0 auto 22px; opacity:1; transform:none;">
+            ${section.heading ? `<h2>${section.heading}</h2>` : ""}
+            <ul>${items}</ul>
+          </div>
+        `;
+      }
+
+      if(section.type === "table"){
+        const parsedRows = parseTableRows(section.rows || []);
+        let tableHtml = "";
+
+        if(parsedRows.length){
+          const firstRow = parsedRows[0];
+          const remainingRows = parsedRows.slice(1);
+
+          tableHtml += "<table>";
+          tableHtml += "<tr>" + firstRow.map(col => `<th>${col}</th>`).join("") + "</tr>";
+
+          remainingRows.forEach(row => {
+            tableHtml += "<tr>" + row.map(col => `<td>${col}</td>`).join("") + "</tr>";
+          });
+
+          tableHtml += "</table>";
+        }
+
+        html += `
+          <div class="section show" style="max-width:900px; margin:0 auto 22px; opacity:1; transform:none;">
+            ${section.heading ? `<h2>${section.heading}</h2>` : ""}
+            ${tableHtml}
+          </div>
+        `;
+      }
+
+      if(section.type === "links"){
+        const links = parseLinks(section.links || []);
+        const linksHtml = links.map(link => `
+          <a class="relatedLink" href="${link.url}" target="_blank" rel="noopener noreferrer">
+            ${link.label}
+          </a>
+        `).join("");
+
+        html += `
+          <div class="section show" style="max-width:900px; margin:0 auto 22px; opacity:1; transform:none;">
+            ${section.heading ? `<h2>${section.heading}</h2>` : ""}
+            <div class="relatedLinks">${linksHtml}</div>
+          </div>
+        `;
+      }
+
+    });
+  }
+
+  pageContent.innerHTML = html;
 }
 
 function initRevealAnimations(){
