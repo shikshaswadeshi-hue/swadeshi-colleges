@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>College Profile | Swadeshi Shiksha</title>
+  <meta name="description" content="">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="">
+
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image" content="">
+
+  <script type="application/ld+json" id="schemaJson"></script>
 
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -50,7 +67,6 @@
       padding:18px 18px 82px;
     }
 
-    /* HEADER */
     .header{
       position:sticky;
       top:0;
@@ -134,7 +150,6 @@
       box-shadow:0 18px 34px rgba(93,54,210,0.28);
     }
 
-    /* SEARCH */
     .searchWrap{
       padding:18px 18px 0;
     }
@@ -187,13 +202,11 @@
       box-shadow:0 10px 18px rgba(96,55,212,0.18);
     }
 
-    /* MAIN */
     .contentWrap{
       margin:30px auto 0;
       max-width:1140px;
     }
 
-    /* HERO */
     .heroCard{
       position:relative;
       overflow:hidden;
@@ -302,7 +315,7 @@
       font-size:14px;
       line-height:1.7;
       color:rgba(255,255,255,0.82);
-      max-width:580px;
+      max-width:620px;
     }
 
     .heroMeta{
@@ -412,7 +425,6 @@
       color:#fff;
     }
 
-    /* NAV */
     .sectionNavWrap{
       margin-top:18px;
       padding:10px;
@@ -447,7 +459,6 @@
       color:#6948dd;
     }
 
-    /* FACTS */
     .factsGrid{
       margin-top:20px;
       display:grid;
@@ -477,25 +488,11 @@
       pointer-events:none;
     }
 
-    .factCard:nth-child(1){
-      background:linear-gradient(135deg,#6943e3,#8763f3);
-    }
-
-    .factCard:nth-child(2){
-      background:linear-gradient(135deg,#5733ca,#6d49df);
-    }
-
-    .factCard:nth-child(3){
-      background:linear-gradient(135deg,#ff9038,#ff741f);
-    }
-
-    .factCard:nth-child(4){
-      background:linear-gradient(135deg,#7a55e7,#5a36d0);
-    }
-
-    .factCard:nth-child(5){
-      background:linear-gradient(135deg,#ff9d42,#ff7d1f);
-    }
+    .factCard:nth-child(1){ background:linear-gradient(135deg,#6943e3,#8763f3); }
+    .factCard:nth-child(2){ background:linear-gradient(135deg,#5733ca,#6d49df); }
+    .factCard:nth-child(3){ background:linear-gradient(135deg,#ff9038,#ff741f); }
+    .factCard:nth-child(4){ background:linear-gradient(135deg,#7a55e7,#5a36d0); }
+    .factCard:nth-child(5){ background:linear-gradient(135deg,#ff9d42,#ff7d1f); }
 
     .factLabel{
       font-size:11px;
@@ -517,7 +514,6 @@
       z-index:1;
     }
 
-    /* CONTENT */
     .contentInner{
       margin-top:22px;
       display:grid;
@@ -579,6 +575,36 @@
       padding-left:18px;
       display:grid;
       gap:10px;
+    }
+
+    .summaryGrid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .summaryCard{
+      border:1px solid #ede4ff;
+      background:linear-gradient(180deg,#fcfaff 0%, #ffffff 100%);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:0 10px 18px rgba(42,29,89,0.04);
+    }
+
+    .summaryLabel{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#7a55e7;
+      margin-bottom:8px;
+    }
+
+    .summaryValue{
+      font-size:15px;
+      line-height:1.8;
+      color:#344054;
+      font-weight:600;
     }
 
     .tableWrap{
@@ -730,7 +756,6 @@
       flex-shrink:0;
     }
 
-    /* FOOTER */
     .footer{
       margin-top:34px;
       background:#16202f;
@@ -768,7 +793,6 @@
       margin-bottom:8px;
     }
 
-    /* POPUP */
     .popupOverlay{
       position:fixed;
       inset:0;
@@ -849,13 +873,18 @@
       text-align:center;
     }
 
+    .hiddenSection{
+      display:none;
+    }
+
     @media (max-width:1100px){
       .heroGrid{
         grid-template-columns:1fr;
       }
 
       .factsGrid,
-      .footerGrid{
+      .footerGrid,
+      .summaryGrid{
         grid-template-columns:repeat(2,minmax(0,1fr));
       }
     }
@@ -932,7 +961,8 @@
       }
 
       .factsGrid,
-      .footerGrid{
+      .footerGrid,
+      .summaryGrid{
         grid-template-columns:1fr;
       }
 
@@ -950,20 +980,20 @@
 <body>
 
   <div class="header">
-  <a href="/" class="logo">
-    <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
-    <span>Swadeshi Shiksha</span>
-  </a>
+    <a href="/" class="logo">
+      <img src="swadeshi-logo.png" alt="Swadeshi Shiksha Logo">
+      <span>Swadeshi Shiksha</span>
+    </a>
 
-  <div class="nav">
-    <a href="/colleges.html" class="active">Colleges</a>
-    <a href="/exams.html">Exams</a>
-    <a href="/courses.html">Courses</a>
-    <a href="/resources.html">Resources</a>
+    <div class="nav">
+      <a href="/colleges.html" class="active">Colleges</a>
+      <a href="/exams.html">Exams</a>
+      <a href="/courses.html">Courses</a>
+      <a href="/resources.html">Resources</a>
+    </div>
+
+    <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">Get Free MBA Guidance</a>
   </div>
-
-  <a href="javascript:void(0)" class="cta" onclick="openLeadPopup('Header MBA Guidance CTA')">Get Free MBA Guidance</a>
-</div>
 
   <section class="searchWrap">
     <div class="searchShell">
@@ -991,13 +1021,14 @@
 
               <div class="heroTitle">
                 <h1 id="collegeTitle">College Name</h1>
-                <div class="heroSubtle">Admissions profile, fees, placements, and verified details at one glance.</div>
+                <div class="heroSubtle" id="heroSubtleText">Admissions profile, fees, placements, and verified details at one glance.</div>
               </div>
             </div>
 
             <div class="heroMeta">
               <span class="metaPill" id="metaLocation">Location</span>
               <span class="metaPill" id="metaApproval">Approval</span>
+              <span class="metaPill" id="metaRanking">Ranking</span>
             </div>
 
             <div class="shareInline">
@@ -1047,8 +1078,10 @@
       <div class="sectionNavWrap">
         <nav class="sectionNav">
           <a href="#overviewSection">Overview</a>
+          <a href="#quickHighlightsSection">Highlights</a>
           <a href="#coursesSection">Courses</a>
           <a href="#feesSection">Fees</a>
+          <a href="#cutoffsSection">Cutoffs</a>
           <a href="#placementsSection">Placements</a>
           <a href="#faqSection">FAQ</a>
         </nav>
@@ -1078,6 +1111,28 @@
       </div>
 
       <div class="contentInner">
+
+        <section class="contentSection" id="quickHighlightsSection">
+          <h2>Quick Highlights</h2>
+          <div class="summaryGrid">
+            <div class="summaryCard">
+              <div class="summaryLabel">Location</div>
+              <div class="summaryValue" id="summaryLocation">—</div>
+            </div>
+            <div class="summaryCard">
+              <div class="summaryLabel">Short Name</div>
+              <div class="summaryValue" id="summaryShortName">—</div>
+            </div>
+            <div class="summaryCard">
+              <div class="summaryLabel">Fees Summary</div>
+              <div class="summaryValue" id="summaryFees">—</div>
+            </div>
+            <div class="summaryCard">
+              <div class="summaryLabel">Placement Summary</div>
+              <div class="summaryValue" id="summaryPlacement">—</div>
+            </div>
+          </div>
+        </section>
 
         <section class="contentSection" id="overviewSection">
           <h2>Overview</h2>
@@ -1197,9 +1252,9 @@
           <h4>Browse</h4>
           <ul>
             <li><a href="/colleges.html?search=CAT">CAT Colleges</a></li>
-<li><a href="/colleges.html?search=CMAT">CMAT Colleges</a></li>
-<li><a href="/colleges.html?search=Bangalore">Bangalore</a></li>
-<li><a href="/colleges.html?search=Pune">Pune</a></li>
+            <li><a href="/colleges.html?search=CMAT">CMAT Colleges</a></li>
+            <li><a href="/colleges.html?search=Bangalore">Bangalore</a></li>
+            <li><a href="/colleges.html?search=Pune">Pune</a></li>
           </ul>
         </div>
 
@@ -1242,37 +1297,74 @@
     const db = firebase.firestore();
 
     const params = new URLSearchParams(window.location.search);
-    const slug = params.get("slug");
+    const pageSlug = params.get("slug");
 
-    if(!slug){
+    if(!pageSlug){
       document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>College page not found</h2>";
       throw new Error("Missing slug parameter");
     }
 
     function safeText(value){
-      return value ? value : "—";
+      return value && String(value).trim() ? value : "—";
     }
 
-    function renderList(listId, items){
-      const target = document.getElementById(listId);
-      target.innerHTML = "";
+    function cleanText(value){
+      return value && String(value).trim() ? String(value).trim() : "";
+    }
 
-      if(!items || !items.length){
+    function showOrHideSection(id, hasData){
+      const section = document.getElementById(id);
+      if(!section) return;
+      section.style.display = hasData ? "" : "none";
+    }
+
+    function setMeta(attr, key, value){
+      let el = document.querySelector(`meta[${attr}="${key}"]`);
+      if(!el){
+        el = document.createElement("meta");
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", value || "");
+    }
+
+    function setCanonical(url){
+      let el = document.querySelector('link[rel="canonical"]');
+      if(!el){
+        el = document.createElement("link");
+        el.setAttribute("rel", "canonical");
+        document.head.appendChild(el);
+      }
+      el.setAttribute("href", url || window.location.href);
+    }
+
+    function renderList(listId, items, emptyText = "Details will be updated soon."){
+      const target = document.getElementById(listId);
+      if(!target) return false;
+
+      target.innerHTML = "";
+      const validItems = Array.isArray(items) ? items.filter(item => cleanText(item)) : [];
+
+      if(!validItems.length){
         const li = document.createElement("li");
-        li.textContent = "Details will be updated soon.";
+        li.textContent = emptyText;
         target.appendChild(li);
-        return;
+        return false;
       }
 
-      items.forEach(item => {
+      validItems.forEach(item => {
         const li = document.createElement("li");
         li.textContent = item;
         target.appendChild(li);
       });
+
+      return true;
     }
 
     function renderTable(tableId, headers, rows){
       const table = document.getElementById(tableId);
+      if(!table) return false;
+
       table.innerHTML = "";
 
       const headRow = document.createElement("tr");
@@ -1283,63 +1375,81 @@
       });
       table.appendChild(headRow);
 
-      if(!rows || !rows.length){
+      const validRows = Array.isArray(rows)
+        ? rows.filter(row => row && Object.values(row).some(v => cleanText(v)))
+        : [];
+
+      if(!validRows.length){
         const tr = document.createElement("tr");
         const td = document.createElement("td");
         td.colSpan = headers.length;
         td.textContent = "Details will be updated soon.";
         tr.appendChild(td);
         table.appendChild(tr);
-        return;
+        return false;
       }
 
-      rows.forEach(row => {
+      validRows.forEach(row => {
         const tr = document.createElement("tr");
         const values = Object.values(row).slice(0, headers.length);
+
         for(let i = 0; i < headers.length; i++){
           const td = document.createElement("td");
           td.textContent = values[i] || "—";
           tr.appendChild(td);
         }
+
         table.appendChild(tr);
       });
+
+      return true;
     }
 
     function renderRecruiters(items){
       const target = document.getElementById("recruitersList");
-      target.innerHTML = "";
+      if(!target) return false;
 
-      if(!items || !items.length){
+      target.innerHTML = "";
+      const validItems = Array.isArray(items) ? items.filter(item => cleanText(item)) : [];
+
+      if(!validItems.length){
         const span = document.createElement("span");
         span.className = "recruiterTag";
         span.textContent = "Updates soon";
         target.appendChild(span);
-        return;
+        return false;
       }
 
-      items.forEach(item => {
+      validItems.forEach(item => {
         const span = document.createElement("span");
         span.className = "recruiterTag";
         span.textContent = item;
         target.appendChild(span);
       });
+
+      return true;
     }
 
     function renderFaq(faq){
       const faqContainer = document.getElementById("faqContainer");
-      faqContainer.innerHTML = "";
+      if(!faqContainer) return false;
 
-      if(!faq || !faq.length){
+      faqContainer.innerHTML = "";
+      const validFaq = Array.isArray(faq)
+        ? faq.filter(row => row && (cleanText(row.col0) || cleanText(row.question) || cleanText(row.col1) || cleanText(row.answer)))
+        : [];
+
+      if(!validFaq.length){
         faqContainer.innerHTML = `
           <div class="faqItem active">
             <div class="faqQuestion"><span>FAQs will be updated soon</span><span>−</span></div>
             <div class="faqAnswer" style="display:block;">This college page does not have FAQ entries yet.</div>
           </div>
         `;
-        return;
+        return false;
       }
 
-      faq.forEach((row, index) => {
+      validFaq.forEach((row, index) => {
         const item = document.createElement("div");
         item.className = "faqItem" + (index === 0 ? " active" : "");
 
@@ -1362,13 +1472,163 @@
 
         faqContainer.appendChild(item);
       });
+
+      return true;
+    }
+
+    function buildLocation(d){
+      return [cleanText(d.city), cleanText(d.state)].filter(Boolean).join(", ")
+        || cleanText(d.country)
+        || cleanText(d.location)
+        || "India";
+    }
+
+    function buildHeroSubtle(d, seo){
+      return seo.excerpt
+        || d.placementSummary
+        || d.feesSummary
+        || "Admissions profile, fees, placements, and verified details at one glance.";
+    }
+
+    function buildSchema(d, seo){
+      return {
+        "@context": "https://schema.org",
+        "@type": seo.schemaType || "CollegeOrUniversity",
+        "name": d.name || "",
+        "alternateName": d.shortName || "",
+        "description": seo.excerpt || seo.metaDescription || "",
+        "url": seo.canonicalUrl || window.location.href,
+        "image": seo.ogImage || d.image || "",
+        "logo": d.logo || "",
+        "sameAs": [],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": d.city || "",
+          "addressRegion": d.state || "",
+          "addressCountry": d.country || "India"
+        }
+      };
+    }
+
+    function applySeo(d){
+      const seo = d.seo || {};
+      const pageTitle = seo.metaTitle || d.title || d.name || "College Profile | Swadeshi Shiksha";
+      const pageDescription = seo.metaDescription || seo.excerpt || "Explore fees, placements, courses, admission details and more on Swadeshi Shiksha.";
+      const canonicalUrl = seo.canonicalUrl || window.location.href;
+      const ogTitle = seo.ogTitle || pageTitle;
+      const ogDescription = seo.ogDescription || pageDescription;
+      const ogImage = seo.ogImage || d.image || "";
+      const robots = seo.robots || "index,follow";
+
+      document.title = pageTitle;
+      setMeta("name", "description", pageDescription);
+      setMeta("name", "robots", robots);
+      setCanonical(canonicalUrl);
+
+      setMeta("property", "og:title", ogTitle);
+      setMeta("property", "og:description", ogDescription);
+      setMeta("property", "og:image", ogImage);
+      setMeta("property", "og:type", "website");
+      setMeta("property", "og:url", canonicalUrl);
+
+      setMeta("name", "twitter:card", "summary_large_image");
+      setMeta("name", "twitter:title", ogTitle);
+      setMeta("name", "twitter:description", ogDescription);
+      setMeta("name", "twitter:image", ogImage);
+
+      const schemaJson = document.getElementById("schemaJson");
+      if(schemaJson){
+        schemaJson.textContent = JSON.stringify(buildSchema(d, seo));
+      }
+    }
+
+    function applyCollegeData(d){
+      const seo = d.seo || {};
+      const title = d.title || d.name || "College Profile";
+      const location = buildLocation(d);
+      const approval = d.approval || "Approval not available";
+      const ranking = d.ranking || "Ranking not available";
+      const imageAlt = seo.imageAlt || `${d.name || "College"} campus image`;
+
+      applySeo(d);
+
+      document.getElementById("collegeTitle").textContent = title;
+      document.getElementById("heroSubtleText").textContent = buildHeroSubtle(d, seo);
+      document.getElementById("metaLocation").textContent = location;
+      document.getElementById("metaApproval").textContent = approval;
+      document.getElementById("metaRanking").textContent = ranking;
+
+      document.getElementById("factEstablished").textContent = safeText(d.established);
+      document.getElementById("factApproval").textContent = safeText(d.approval);
+      document.getElementById("factCampusSize").textContent = safeText(d.campusSize);
+      document.getElementById("factHighestPackage").textContent = safeText(d.highestPackage);
+      document.getElementById("factAveragePackage").textContent = safeText(d.averagePackage);
+
+      document.getElementById("summaryLocation").textContent = safeText(location);
+      document.getElementById("summaryShortName").textContent = safeText(d.shortName || d.name);
+      document.getElementById("summaryFees").textContent = safeText(d.feesSummary);
+      document.getElementById("summaryPlacement").textContent = safeText(d.placementSummary);
+
+      const collegeLogo = document.getElementById("collegeLogo");
+      const logoFallback = document.getElementById("heroLogoFallback");
+      if(d.logo){
+        collegeLogo.src = d.logo;
+        collegeLogo.alt = `${d.name || "College"} logo`;
+        collegeLogo.style.display = "block";
+        logoFallback.style.display = "none";
+      } else {
+        logoFallback.textContent = (d.shortName || title || "SS").slice(0,2).toUpperCase();
+      }
+
+      const collegeImage = document.getElementById("collegeImage");
+      const heroImageFallback = document.getElementById("heroImageFallback");
+      if(d.image){
+        collegeImage.src = d.image;
+        collegeImage.alt = imageAlt;
+        collegeImage.style.display = "block";
+        heroImageFallback.style.display = "none";
+      } else {
+        heroImageFallback.textContent = title;
+      }
+
+      const hasOverview = renderList("overviewList", d.overview);
+      const hasEligibility = renderList("eligibilityList", d.eligibility);
+      const hasApplication = renderList("applicationList", d.application);
+      const hasAdmission = renderList("admissionList", d.admission);
+      const hasPlacements = renderList("placementsList", d.placements);
+      const hasScholarships = renderList("scholarshipsList", d.scholarships);
+      const hasWhyChoose = renderList("whyChooseList", d.whyChoose);
+      const hasFacilities = renderList("facilitiesList", d.facilities);
+
+      const hasCourses = renderTable("coursesTable", ["Course", "Duration", "Exam"], d.courses || []);
+      const hasFees = renderTable("feesTable", ["Course", "Total Fees"], d.fees || []);
+      const hasCutoffs = renderTable("cutoffsTable", ["Exam", "Percentile"], d.cutoffs || []);
+      const hasRecruiters = renderRecruiters(d.recruiters);
+      const hasFaq = renderFaq(d.faq);
+
+      showOrHideSection("overviewSection", hasOverview);
+      showOrHideSection("eligibilitySection", hasEligibility);
+      showOrHideSection("applicationSection", hasApplication);
+      showOrHideSection("admissionSection", hasAdmission);
+      showOrHideSection("placementsSection", hasPlacements);
+      showOrHideSection("scholarshipsSection", hasScholarships);
+      showOrHideSection("whyChooseSection", hasWhyChoose);
+      showOrHideSection("facilitiesSection", hasFacilities);
+      showOrHideSection("coursesSection", true);
+      showOrHideSection("feesSection", true);
+      showOrHideSection("cutoffsSection", true);
+      showOrHideSection("recruitersSection", true);
+      showOrHideSection("faqSection", true);
+
+      const hasQuickHighlights = cleanText(d.shortName || d.name) || cleanText(location) || cleanText(d.feesSummary) || cleanText(d.placementSummary);
+      showOrHideSection("quickHighlightsSection", !!hasQuickHighlights);
     }
 
     function goToCollegeSearch(){
-  const query = document.getElementById("collegeSearchInput").value.trim();
-  if(!query) return;
-  window.location.href = "/colleges.html?search=" + encodeURIComponent(query);
-}
+      const query = document.getElementById("collegeSearchInput").value.trim();
+      if(!query) return;
+      window.location.href = "/colleges.html?search=" + encodeURIComponent(query);
+    }
 
     document.getElementById("collegeSearchBtn").addEventListener("click", goToCollegeSearch);
     document.getElementById("collegeSearchInput").addEventListener("keydown", function(e){
@@ -1377,61 +1637,14 @@
       }
     });
 
-    db.collection("colleges").doc(slug).get().then(doc => {
+    db.collection("colleges").doc(pageSlug).get().then(doc => {
       if(!doc.exists){
         document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>College not found</h2>";
         return;
       }
 
       const d = doc.data();
-      const title = d.title || d.name || "College Profile";
-      const location = d.location || d.city || "Location not available";
-      const approval = d.approval || "Approval not available";
-
-      document.title = `${title} | Swadeshi Shiksha`;
-
-      document.getElementById("collegeTitle").textContent = title;
-      document.getElementById("metaLocation").textContent = location;
-      document.getElementById("metaApproval").textContent = approval;
-
-      document.getElementById("factEstablished").textContent = safeText(d.established);
-      document.getElementById("factApproval").textContent = safeText(d.approval);
-      document.getElementById("factCampusSize").textContent = safeText(d.campusSize);
-      document.getElementById("factHighestPackage").textContent = safeText(d.highestPackage);
-      document.getElementById("factAveragePackage").textContent = safeText(d.averagePackage);
-
-      if(d.logo){
-        const collegeLogo = document.getElementById("collegeLogo");
-        collegeLogo.src = d.logo;
-        collegeLogo.style.display = "block";
-        document.getElementById("heroLogoFallback").style.display = "none";
-      } else {
-        document.getElementById("heroLogoFallback").textContent = (title || "SS").slice(0,2).toUpperCase();
-      }
-
-      if(d.image){
-        const collegeImage = document.getElementById("collegeImage");
-        collegeImage.src = d.image;
-        collegeImage.style.display = "block";
-        document.getElementById("heroImageFallback").style.display = "none";
-      } else {
-        document.getElementById("heroImageFallback").textContent = title;
-      }
-
-      renderList("overviewList", d.overview);
-      renderList("eligibilityList", d.eligibility);
-      renderList("applicationList", d.application);
-      renderList("admissionList", d.admission);
-      renderList("placementsList", d.placements);
-      renderList("scholarshipsList", d.scholarships);
-      renderList("whyChooseList", d.whyChoose);
-      renderList("facilitiesList", d.facilities);
-
-      renderTable("coursesTable", ["Course", "Duration", "Eligibility"], d.courses || []);
-      renderTable("feesTable", ["Course", "Fees"], d.fees || []);
-      renderTable("cutoffsTable", ["Exam", "Percentile"], d.cutoffs || []);
-      renderRecruiters(d.recruiters);
-      renderFaq(d.faq);
+      applyCollegeData(d);
     }).catch(error => {
       console.error(error);
       document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Something went wrong while loading this college.</h2>";
@@ -1465,7 +1678,7 @@
           email,
           city,
           source,
-          collegeSlug: slug,
+          collegeSlug: pageSlug,
           pageUrl: window.location.href,
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
