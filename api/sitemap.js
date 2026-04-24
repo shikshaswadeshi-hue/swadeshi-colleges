@@ -13,30 +13,41 @@ const STATIC_PAGES = [
 
 function getField(fields, key) {
   if (!fields || !fields[key]) return "";
-
-  const value = fields[key];
-
-  return (
-    value.stringValue ||
-    value.integerValue ||
-    value.doubleValue ||
-    value.booleanValue ||
-    ""
-  );
+  return fields[key].stringValue || "";
 }
 
-async function fetchCollection(collectionName) {
-  const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/${collectionName}`;
+async function fetchPublishedDocs(collectionName) {
+  const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents:runQuery`;
 
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      structuredQuery: {
+        from: [{ collectionId: collectionName }],
+        where: {
+          fieldFilter: {
+            field: { fieldPath: "status" },
+            op: "EQUAL",
+            value: { stringValue: "published" }
+          }
+        }
+      }
+    })
+  });
 
   if (!response.ok) {
-    console.error(`Failed to fetch ${collectionName}`);
+    console.error(`Failed to fetch ${collectionName}`, await response.text());
     return [];
   }
 
   const data = await response.json();
-  return data.documents || [];
+
+  return data
+    .filter((item) => item.document)
+    .map((item) => item.document);
 }
 
 function createUrlTag(url, priority = "0.8") {
@@ -50,8 +61,8 @@ function createUrlTag(url, priority = "0.8") {
 
 export default async function handler(req, res) {
   try {
-    const colleges = await fetchCollection("colleges");
-    const contentPages = await fetchCollection("contentPages");
+    const colleges = await fetchPublishedDocs("colleges");
+    const contentPages = await fetchPublishedDocs("contentPages");
 
     const urls = [];
 
@@ -60,13 +71,12 @@ export default async function handler(req, res) {
     });
 
     colleges.forEach((doc) => {
-      const fields = doc.fields || {};
-      const slug = getField(fields, "slug");
+      const slug = getField(doc.fields, "slug");
 
       if (slug) {
         urls.push(
           createUrlTag(
-            `https://swadeshi-shiksha.com/college.html?slug=${slug}`,
+            `https://swadeshi-shiksha.com/college.html?slug=${encodeURIComponent(slug)}`,
             "0.8"
           )
         );
@@ -74,13 +84,12 @@ export default async function handler(req, res) {
     });
 
     contentPages.forEach((doc) => {
-      const fields = doc.fields || {};
-      const slug = getField(fields, "slug");
+      const slug = getField(doc.fields, "slug");
 
       if (slug) {
         urls.push(
           createUrlTag(
-            `https://swadeshi-shiksha.com/page.html?slug=${slug}`,
+            `https://swadeshi-shiksha.com/page.html?slug=${encodeURIComponent(slug)}`,
             "0.8"
           )
         );
